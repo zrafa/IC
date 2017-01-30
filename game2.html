@@ -1,0 +1,55 @@
+<HTML>
+<HEAD></HEAD>
+<BODY>
+<div width="100" height="200"><svg id="prueba" viewBox="0 0 100 200" width="100%" height="100%"></svg>
+<script src="externals/snap/snap.svg-min.js"></script>
+<script>
+
+var svg = Snap('#prueba');
+//var r = svg.rect(40,40,60,20).attr({fill: '#abc'});
+//var c = svg.circle(20,20,10).attr({fill: '#fab'});
+var textAttrs = { fontSize: '7', fontFamily: 'Helvetica', textAnchor: 'middle', dominantBaseline: 'middle', alignmentBaseline: 'middle', };
+
+var boxAttrs = { fill: '#fff', stroke: '#000', strokeWidth: '0.5', };
+var nullAttrs = { fill: '#eee', stroke: '#ddd' };
+function binBox(id, n, x, y, v) { 
+	var g = svg.g();
+	for (var i = 0; i < 10 - n; i++) { 
+		g.append(svg.rect(x + (i + 1) * 8, y, 8, 10,2).attr(nullAttrs));
+	}
+	var x0 = i;
+	for (var i = x0; i < n; i++) { 
+		g.append(svg.rect(x + (i + 1) * 8, y, 8, 10,2).attr(boxAttrs));
+		g.append(svg.text(x + (i + 1) * 8  + 4, y + 5, v[i]).attr(textAttrs)); 
+	}; 
+	g.append(svg.text(x + (n + 1) * 8 + 4, y + 5, '=').attr(textAttrs));
+	g.append(svg.rect(x + (n + 2) * 8, y, 32, 10,1).attr(boxAttrs)); 
+	//g.append(svg.text(x, y + 5, (id == '') ? '0' : id).attr({textAttrs}));
+	g.attr({id: id});
+	return g;
+}
+function getRandom(min, max) { return Math.floor(Math.random() * (max - min) + min); }
+
+function makeItem(item) {
+	var bv = getRandom(0,15).toString(2);
+	console.log(bv);
+
+	var b = Array(getRandom(0,10-bv.length)).join('0')+bv;
+	var n = b.length;
+	
+	return binBox(id,n,20,50+10*item,b);
+}
+
+var id = 0;
+function insertItem() {
+	var m = makeItem(id);
+	id = id + 1;
+
+	//m.animate({ transform: 't0,50+10*item' }, 1000, mina.bounce );
+}
+
+insertItem();
+
+</script>
+</div>
+</BODY>

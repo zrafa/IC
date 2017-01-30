@@ -1,0 +1,58 @@
+<!-- INCLUDE src/reveal.header -->
+
+<section>
+<h2>Composición de color</h2>
+<div class="tangle" id="colorCalc">
+        <!--
+        {
+                "initialize":"function (container){
+                        var rootElement = document.getElementById('colorCalc');
+                        var model = {
+                                initialize: function() {
+                                        this.r = 100;
+                                        this.g = 100;
+					this.b = 100;
+					this.rgb = '';
+                                },
+                                update: function() {
+					this.rgb = 'rgb(' + this.r + ',' + this.g + ',' + this.b + ')';
+					var cell = document.getElementById('colorCell');
+					cell.style.background = this.rgb;
+                                }
+                        };
+                        var tangle=new Tangle(rootElement, model);
+                }"
+        }
+        -->
+	<table> <tr><td> <table> <tr><td>R:</td><td class="TKAdjustableNumber" data-var="r" data-min="0" data-max="255"></td></tr> <tr><td>G:</td><td class="TKAdjustableNumber" data-var="g" data-min="0" data-max="255"></td></tr> <tr><td>B:</td><td class="TKAdjustableNumber" data-var="b" data-min="0" data-max="255"></td></tr> </table> </td><td id="colorCell"></td></tr> </table> <p class="post_it" data-var="rgb" style="text-align: center;" id="colorFormula"></p>
+</div>
+</section>
+
+<section data-transition="convex-in convex-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Comando ping</h2>
+ <div class="asciinema">
+  	<!-- 
+	{ 
+		"URL": "src/ping.json" 
+	} 
+	-->
+  </div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="convex-in convex-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Comando traceroute</h2>
+ <div class="asciinema">
+  	<!-- 
+	{ 
+		"URL": "src/traceroute.json" 
+	} 
+	-->
+  </div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<!-- INCLUDE src/reveal.trailer -->

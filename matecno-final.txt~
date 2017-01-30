@@ -1,0 +1,94 @@
+
+Introducción
+
+El material que presento en este trabajo final para el curso de Producción de Materiales Educativos y Diseños Tecnopedagógicos corresponde a la materia Introducción a la Computación, de primer año de las carreras de Licenciatura en Ciencias de la Computación y Licenciatura en Sistemas de Información, Facultad de Informática de la Universidad Nacional del Comahue.
+
+El diseño de este material está motivado por la experiencia previa con alumnos de primer año de estas carreras. Creo necesario interpolar aquí un breve relato.
+
+Al principio de mi carrera docente en la hoy Facultad de Informática me desempeñé, como es común, en las materias iniciales, para pasar a funcionar, más adelante y progresivamente, en asignaturas de tercer y cuarto año, durante una cantidad de tiempo. 
+
+Luego de casi diez años de actividad docente en esa etapa avanzada del trayecto educativo, me tocó, circunstancialmente, volver a materias de primer año. El cambio fue verdaderamente impactante, no sólo porque los estudiantes ingresantes eran muy diferentes de los de tercero, sino que además eran muy diferentes de aquellos estudiantes de primer año que yo había conocido anteriormente. 
+
+Por otro lado, claro, el tiempo también había transcurrido para mí. Pude notar que mi capacidad de observación era más profunda que al principio de mi carrera docente, y que podía captar más, racional y afectivamente hablando, de lo que ocurría en el aula. Pude revisar prácticas docentes anteriores que ahora se evidenciaban inadecuadas, y apreciar aquellas que habían mejorado con el tiempo.
+
+Siempre que cambiamos de lugar obtenemos una segunda vista que contribuye a comprender la escena, como si pasáramos de tener un único ojo abierto a lograr visión estereoscópica, tridimensional. 
+
+La reflexión en base a esta experiencia me ha mostrado que los docentes de mi generación necesitamos abordar cuidadosamente la cuestión de la distancia etaria, con todas sus dimensiones culturales, para recuperar la efectividad de nuestro trabajo de enseñanza, construyendo activamente una teoría de la mente de los estudiantes, potencialmente transformando nuestras prácticas, y en cierto modo reinventándonos a nosotros mismos. Esto ha sido válido, seguramente, en cualquier época; pero tal vez más aún hoy, dada una serie de cambios (o quizás "desplazamientos") sociales, políticos, económicos, etc., sin olvidar los tecnológicos, que han atravesado estos últimos años y que han redefinido el ser joven hoy, en este país y en esta región.
+
+Entre las consecuencias de estos desplazamientos se ubican muchos rasgos identitarios, que no podemos obviar, de los estudiantes ingresantes. Tienen que ver con las destrezas lectoescritoras; con la identificación de clase en función de signos exteriores, como el sociolecto; con el uso del tiempo en la comunicación interpares, en la recreación, en los consumos culturales; con la capacidad de invertir un monto dado de esfuerzo en obligaciones con rédito dudoso o no inmediato; con el uso de la metacognición, con la percepción de las propias destrezas y la autoestima; con la capacidad de empatía intergeneracional; con la amplitud, en suma, del universo cultural. 
+
+Todos estos rasgos identitarios no serían otra cosa que rasgos, a secas, si no los contrapusiéramos como figura sobre el fondo de los procesos educativos de los cuales queremos que estas personas sean parte. En ese contexto, rápidamente todos estos rasgos se constituyen en problemas. Vistos como obstáculos, son apremiantes. Tomados como oportunidades, son promisorios. La investigación sobre mis estudiantes prosigue.
+
+ 
+Objetivos del material
+
+Encontré en los nuevos estudiantes de primer año dificultades cognitivas y actitudinales que requerían atención y que debían ser abordadas desde varios frentes. Un punto importante era su percepción y manejo del tiempo libre. Allí donde la motivación decaía, quedaba en peligro la continuidad del aprendizaje. En particular, era necesario atraer su atención fuera de las horas áulicas, presentando los contenidos de la forma más atractiva posible y aportando al material didáctico elementos que les resultaran afectivamente afines para hacer posible el "enganche" con los temas curriculares. 
+
+Dada la identidad y los hábitos de estos estudiantes, las plataformas digitales eran un escenario de trabajo obvio para el enfoque multiestratégico que se buscaba. Me apasionó el desafío de disponer de una tecnología general, a medida de la situación (es decir, que ofreciera la mayor cantidad posible de oportunidades), para la preparación de material didáctico transmedial. Se fue configurando una lista de requerimientos:
+
+
+De la metodología
+Que no requiera software propietario
+Que interactúe con toda clase de herramientas, medios y formatos elegidos
+por el usuario
+Que sea transferible a docentes no especializados en el quehacer informático
+Que no requiera herramientas de autor especiales
+
+De los materiales creados con ella
+Que sirvan a la vez para apoyar las clases y para que los alumnos las
+reproduzcan en casa
+Que puedan contener medios de cualquier naturaleza: gráficos, audio, videos,
+animaciones
+Que no requiera visualizadores especiales (como presentador de PowerPoint o
+LibreOffice, ni plugins de Flash u otros medios)
+Que puedan referenciar recursos publicados en la red
+Que puedan ser navegados en diferentes trayectos
+Que resulten accesibles para alumnos en situación de discapacidad (ciegos o
+sordos)
+Que permitan la inclusión de actividades interactivas
+Que permitan la inclusión de contenidos realizados programáticamente
+Que puedan funcionar en plataformas móviles
+Que se puedan publicar bajo una licencia libre
+
+
+Para implementar esta metodología (que es un trabajo en curso) seleccioné como herramienta fundamental el proyecto libre reveal.js (http://lab.hakim.se/reveal-js), que es un framework que permite hacer presentaciones en HTML5 con Javascript. Esta pareja de tecnologías, asociadas, conforma un marco de trabajo extremadamente versátil, y el framework creado sobre ellas reúne todas las condiciones pedidas.
+
+Durante el cursado 2016 de la materia Introducción a la Computación preparé material con la doble finalidad de servir como ayuda al dictado de la clase y como material de repaso para los estudiantes. Para esto modifiqué a nivel de programación los fuentes, accesibles, del framework, agregándole la capacidad de presentar texto en forma de apuntes complementarios a las transparencias de la presentación. Más adelante solicité al grupo de desarrolladores del proyecto una nueva modificación que excedía mis destrezas de programación, solicitud que fue resuelta satisfactoriamente al cabo de algunas semanas, aportando nueva funcionalidad que alineaba aún más a la herramienta con mis objetivos.
+
+El framework así configurado resulta de especial interés al permitir la inclusión de actividades interactivas en el material didáctico. Entendemos aquí por una actividad interactiva, aquella que requiere la involucración activa del usuario del material didáctico en algún ciclo de uso del mismo. Destacamos que al proponer el rol de usuario del material, lo oponemos en alguna forma al de espectador: leer un material textual, visualizar un video, son formas de espectación. Al hablar de involucración activa, queremos indicar que el usuario debe dar un paso más allá para usar adecuadamente el material.
+
+Damos por sentado, como una condición natural del proceso de aprendizaje, que el usuario de todo material didáctico debe involucrarse intelectual y afectivamente con ese material para extraer significado de él. El estudiante debe abocarse volitivamente a la lectura o visualización y debe participar intelectualmente en la interpretación de ese material presentado. Sin embargo, resulta interesante romper con la situación de consumidor pasivo a la que puede llevar el rol de permanente espectador del material didáctico para posibilitar otros microescenarios de aprendizaje.
+
+Esta idea central es puesta en acción, por ejemplo, por la actual corriente de ludificación del aprendizaje, que aprovecha elementos afectivos, mecanismos profundos de involucración, para construir significados a partir de nuevas formas de presentación y de interacción con el material, mediadas tecnológicamente. La aplicación de principios activos del juego al proceso de aprendizaje explota la motivación, la curiosidad, la capacidad de creación de destrezas, y promueve la oportunidad de reflexionar metacognitivamente sobre esa capacidad.
+
+Una "demo"
+
+El material que presento es una "demo" o selección de dos instancias de interactividad incorporadas al material originalmente preparado para ese dictado. La selección simplemente intenta mostrar las posibilidades del framework propuesto, y debe considerarse como recortes o fragmentos, reunidos, de un material continuo, que en realidad abarca los contenidos de una unidad.
+
+La primera instancia es un modelo interactivo que permite la investigación individual sobre un contenido dado, y la segunda es la inclusión de una cartelera electrónica para discusión mediada de los contenidos de una unidad.
+
+Modelo interactivo
+Un modelo interactivo, de un sistema cualquiera, plantea naturalmente una actividad de "what if" (qué pasaría si). Si el usuario puede actuar sobre el modelo proporcionando parámetros de entrada a la actividad simulada del sistema, entonces puede poner en juego su curiosidad, formular preguntas, modelar hipótesis, construir significado activamente. Una planilla de cálculo, un gráfico interactivo de una función, son buenos ejemplos. En el caso de uso de esta herramienta en mi materia de primer año, Introducción a la Computación, se trata de presentar un modelo interactivo de la codificación de números en punto flotante tal cual la utilizan las computadoras. 
+
+Esta codificación binaria, estandarizada bajo la norma denominada IEEE754, utiliza una adaptación de la notación científica al sistema binario para representar números con parte fraccionaria. Resulta un primer contacto de los alumnos con formatos y protocolos estándar de la computación. Les requiere formar o reforzar destrezas básicas en cálculo y ofrece la oportunidad de revisar la idea, frecuentemente adquirida, de que los números admiten una única representación (o de que números y numerales son la misma cosa). Esta diferenciación es clave para apreciar la existencia de diferentes formas de representación de la información, con sus consecuencias de portabilidad, de tiempo de ejecución, de espacio de almacenamiento necesario, de factibilidad de la encriptación, de la compresión, etc.
+
+El modelo ofrece un programa traductor de representación numérica, que convierte números en formato decimal con parte fraccionaria a la representación IEEE754, y desglosa esa representación en sus partes componentes de signo, exponente y mantisa. Las actividades correspondientes son la exploración de representaciones de diferentes números, la comprobación del carácter finito o periódico del desarrollo fraccional binario de algunos números, y la reflexión sobre las consecuencias para la exactitud de las operaciones. 
+
+Ejemplo de actividad
+Se propone la suma 0.1 + 0.2 en cualquier lenguaje de programación accesible a los estudiantes, y se indica comprobar si esta suma resulta igual a 0.3 en el mismo lenguaje. El resultado es contrario a lo esperado, y el fenómeno se explica utilizando el modelo en clase, explorando las formas que toman la representación de los sumandos y de la suma. Surgen las ideas de exactitud y precisión, y su relación con la cantidad de información. La actividad busca volver interesante un tema normalmente considerado árido y "puro número" explotando la sorpresa latente. Movidos por la curiosidad, los estudiantes vuelven al modelo y experimentan con otros valores, mejorando la comprensión del tema.
+
+Cartelera electrónica
+La asignatura está mediada por la plataforma PEDCO de la Universidad del Comahue, y esta plataforma ofrece foros electrónicos. Estos foros son utilizados por los estudiantes para consultas a las cátedras, o por los docentes para comunicar novedades. Una alternativa interesante a los foros de PEDCO es la inclusión de una cartelera soportada por Padlet. La posibilidad de incluir el espacio de colaboración en el mismo material, y de verlo modificarse en tiempo real, supera al modelo de interacción propuesto por el foro PEDCO, que es más propio de la generación anterior de tecnologías Web. 
+
+La transparencia final de una unidad de la materia, junto con las referencias, ofrece un enlace a una cartelera Padlet dedicada a la unidad. Esta cartelera funciona como espacio colaborativo para múltiples actividades, en tiempo real o con interacción diferida. 
+
+Ejemplos de actividades: 
+
+- ¿Qué temas de esta unidad te han resultado más difíciles? ¿Cuáles más interesantes? ¿Quiénes coinciden?
+
+- En un examen final ha aparecido la siguiente respuesta a una pregunta. ¿Es correcta la afirmación? ¿Por qué? Comentar de la misma manera las afirmaciones de tus compañeros. 
+
+- Buscar y pegar en la cartelera, fotos de sistemas de cómputo anteriores a la PC, con referencia de la fuente. Responder en la misma cartelera lo siguiente: ¿Cuál es el orden cronológico de las fotos? ¿Qué sistemas de cómputo contaban con sistemas operativos multiprogramados? ¿Cuáles con sistemas operativos de tiempo compartido? ¿A qué generación pertenecen los sistemas de cómputo? ¿Qué lenguajes de programación eran dominantes en la época de aparición de cada uno de esos sistemas? ¿Qué inventos o descubrimientos significativos son de la misma época? 
+
+
+

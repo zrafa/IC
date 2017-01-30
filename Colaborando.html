@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Colaborando con el SL</title>
+		<meta name="description" content="Colaborando con el SL">
+		<meta name="author" content="Eduardo Grosclaude">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="externals/reveal/css/reveal.css">
+		<link rel="stylesheet" href="externals/css/theme/rdci.css" id="theme">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
+		<link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96">
+		<meta name="theme-color" content="#ffffff">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="externals/reveal/lib/css/zenburn.css">
+ 		<link rel="stylesheet" type="text/css" href="externals/asciinema-player/asciinema-player.css" />
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'externals/reveal/css/print/pdf.css' : 'externals/reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+	  <div class="reveal">
+		<div class="slides">
+
+<!------------------------------------------------------------------>
+
+
+<!------------------------>
+<section data-background="img/colab/capadocia-2.jpg" data-transition="fade-in fade-out" data-coursemod-shown="false" data-title="Colaborando con el SL">
+<div class="frosted">
+	</br> 
+	<h2>Colaborando con el</h2>
+	<h1>Software Libre</h1>
+	</br> 
+</div>
+</br>
+<div class="frosted">
+Eduardo Grosclaude 2016
+</div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition=fade-in fade-out">
+<h2>Un poco de historia</h2>
+<ul>
+<li>Docencia en primer año de Lic. Computación</li>
+	<ul>
+	<li>Presentaciones en PDF</li>
+	<li>Estáticas</li>
+	<li>Eficaces pero aburridas</li>
+	<li>No reemplazan al libro</li>
+	<ul>
+	<li class="fragment">¡No reemplazan al libro!</li>
+		<ul>
+		<li class="fragment">¡No-<span class="fragment">reemplazan-</span><span class="fragment">al-</span><span class="fragment">libro!</span></li>
+			<ul>
+			<li class="fragment">¡En serio!</li>
+			</ul>
+		</ul>
+	</ul>
+	<li class="fragment">Posibilidades limitadas</li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<!------------------------>
+<section data-transition="fade-in slide-out">
+<h2>Presentaciones</h2>
+<ul>
+	<li>Que sirvan a la vez para dar la clase y para estudiar</li>
+	<li>Que no requieran editores ni visualizadores especiales</li>
+	<li>Que no requieran componentes propietarios</li>
+	<li>Que funcionen en cualquier plataforma, incluyendo móviles</li>
+	<div class="fragment">
+	<li>Que permitan insertar medios diversos</li>
+		<ul>
+		<li>Videos, audio</li>
+		<li>Navegar la web</li>
+		<li>Animaciones</li>
+		<li>Actividades interactivas</li>
+		</ul>
+	</div>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="zoom-in concave-out" data-background="img/colab/thtbabw.gif">
+<div class="frosted">
+<h3>¡Tiene que haber una forma mejor!</h3>
+</div>
+<!--
+<img src="img/colab/thtbabw.gif" class="plain stretch"> 
+-->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Reveal.js</h2>
+<ul>
+	<li>Framework hecho en HTML5 + Javascript</li>
+	<li>Muchos plugins</li>
+	<ul>
+		<li>Pizarra, menú, audio, matemática</li>
+	</ul>
+	<li>Proyecto con vitalidad</li>
+	<li><a href="http://github.com/hakimel/reveal.js" target="_blank"> https://github.com/hakimel/reveal.js</a></li>
+</ul>
+<img src="img/colab/blog-github.png" class="plain stretch"> 
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in convex-out">
+<h2>Plugin de notas</h2>
+<img src="img/colab/notes.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="convex-in slide-out">
+<h2>Modificando el plugin</h2>
+<img src="img/colab/notes-oso.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Completando la metodología</h2>
+<img src="img/colab/audiovisual.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Foro de <i>issues</i></h2>
+<img src="img/colab/reveal-issues.png" class="plain stretch"> 
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in slide-out" data-background="img/colab/tumbleweed.gif">
+<div class="frosted">
+<h2>Primera solicitud</h2>
+</div>
+<!--
+<div class="fragment">
+<img src="img/colab/tumbleweed.gif" class="plain stretch"> 
+</div>
+-->
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in none-out">
+<h2>Segunda solicitud</h2>
+<ul>
+<li>"Quiero un plugin que haga lo siguiente:</li>
+<ol>
+<li>	Dividir la pantalla en 2/3 para imagen y 1/3 para texto</li>
+<li>	Sin reloj ni bloque de próxima slide</li>
+<li>	Una sola ventana, no dos</li>
+<li>	Que arranque por default en modo curso</li>
+<li>	Tecla para conmutar modo curso/modo presentación"</li>
+</ol>
+<li class="fragment">"Por favor"</li>
+</ul>
+<div class="fragment">
+<img src="img/colab/fishing.gif" class="plain stretch"> 
+</div>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in none-out">
+<h2>Segunda solicitud</h2>
+<img src="img/colab/pedido.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="none-in zoom-out">
+<h2>Pasadas unas semanas</h2>
+<img src="img/colab/pedido-2.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="zoom-in zoom-out">
+<h2>¡Uno que sabe!</h2>
+<img src="img/colab/maarten.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in convex-out" data-coursemod-shown="true">
+<h2>A compartir ideas</h2>
+<ul>
+	<li>Que se pueda especificar qué modo es el default</li>
+	<li>Que se pueda especificar slide por slide</li>
+	<li>Que el texto aparezca acompañando los diferentes fragmentos </li>
+</ul>
+<aside data-markdown class="notes">
+##¡Esto funciona!
+Esta diapositiva tiene texto asociado que aparece al costado y explica lo que queremos describir en la imagen.
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>A empezar el testing</h2>
+<img src="img/colab/audio.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>A corregir bugs</h2>
+<img src="img/colab/bug.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+
+
+<section data-state="retardos" data-coursemod-shown="true" data-transition="convex-in convex-out">
+<h2>Ancho de banda digital</h2>
+
+<script src="src/bw/jquery-3.1.0.js"></script>
+<script>
+	$(document).ready(function () {
+		
+		var start = false;
+		var mult = 1;
+		
+		var num1 = 0;
+		var num2 = 0;
+		
+		var colr = false;
+		
+		var fin = 0;
+		
+		var isps = ["1Mbps","2Mbps","3Mbps","4Mbps"];
+		
+		function animar(index1, index2) {
+		
+			w1 = ($("#canal1").width() / 10);
+			w2 = ($("#canal2").width() / (10 * mult));
+			
+			bkg = "";
+			
+			tnum1 = "";
+			tnum2 = "";
+			
+			b1 = "background-color:none;-webkit-box-shadow:none;box-shadow:none;";
+			b2 = "background-color:none;-webkit-box-shadow:none;box-shadow:none;";
+			
+			if(index1 > 0){
+				tnum1 = num1;
+				b1 = "background-color:red;-webkit-box-shadow: 0 0 0 1px #ccc;box-shadow: 0 0 0 1px #ccc;";
+			}
+		
+			$("#canal1").prepend("<div class='pq1' style='width:"+w1+"px;"+b1+"'>"+tnum1+"</div>");
+			index1--;
+			num1++;
+			
+			for(i = 0; i < mult; i++){
+				
+				if(index2 > 0){
+					tnum2 = num2;
+					b2 = "background-color:green;-webkit-box-shadow: 0 0 0 1px #ccc;box-shadow: 0 0 0 1px #ccc;";
+				}
+				else {
+					b2 = "background-color:none;-webkit-box-shadow:none;box-shadow:none;";
+					tnum2 = "";
+				}
+			
+				$("#canal2").prepend("<div class='pq2' style='width:"+w2+"px;"+b2+"'>"+tnum2+"</div>");
+				index2--;
+				num2++;
+				colr = false;
+				bkg = "";
+			}
+		
+			if(start && num1 < fin){
+	
+				setTimeout(function () {
+					
+					animar(index1, index2);
+					
+				},500);
+			
+			}
+			else{
+				$("#start").removeAttr("disabled");
+				$("#multadd").removeAttr("disabled");
+				$("#multsub").removeAttr("disabled");
+				start = false;
+			}
+			
+		}
+		
+		$("#start").click(function () {
+			
+			if(!start){
+			
+				$(this).attr("disabled","true");
+				$("#multadd").attr("disabled","true");
+				$("#multsub").attr("disabled","true");
+			
+				start = true;			
+			
+				$("#canal1").html("");
+				$("#canal2").html("");		
+			
+				num1 = 0;
+				num2 = 0;
+			
+				cant = $("#cantPaq").val();
+				
+				fin = 10 + (cant * 1);
+			
+				animar(cant,cant);
+				
+			}
+			
+		});
+		
+		$("#multadd").click(function () {			
+			
+			if(mult < 4){
+				mult++;		
+			}
+			
+			$("#isp2").html(isps[mult - 1]);
+			
+		});
+		
+		$("#multsub").click(function () {
+			
+			if(mult > 1){
+				mult--;			
+			}
+			
+			$("#isp2").html(isps[mult - 1]);
+			
+		});
+		
+		$("#colorear").click(function () {
+		
+			colr = true;
+			
+		});
+		
+	});
+</script>
+
+<!--
+
+	*{
+		 box-sizing: border-box;
+		 vertical-align: top;
+	}
+
+	body{
+		width: 100%;
+		margin: 0px;
+		padding: 30px;
+		text-align: center;
+	}
+-->
+<style type="text/css">
+	
+	.isp{
+		display: block;
+		width: 100%;
+		height: 40px;
+		font-size: 15px;
+		margin: auto;
+	}
+
+	#canal1{
+
+		display: inline-block;
+		width: 600px;
+		height: 40px;
+		margin-bottom: 12px;
+		background-color: #ccc;
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		text-align: left;
+	
+	}
+	
+	#canal2{
+
+		display: inline-block;
+		width: 600px;
+		height: 40px;
+		margin-bottom: 12px;
+		background-color: #ccc;
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		text-align: left;
+	
+	}
+	
+	.pq1{
+		
+		display: inline-block;
+		background-color: none;
+		height: 40px;
+		position: relative;
+		text-align: center;
+		
+	}
+	
+	.pq2{
+		
+		display: inline-block;
+		background-color: none;
+		height: 40px;
+		position: relative;
+		text-align: center;
+		
+	}
+	
+	.gabinete{
+		display: inline-block;
+		width: 8%;
+	}
+	
+	#botonera{
+		display: block;
+	}
+
+</style>
+</br>
+<div style="box-sizing: border-box; vertical-align: top; text-align: center;" class="stretch"> 
+	<span id="isp1" class="isp">1Mbps</span>
+	<img src="src/bw/gabinete.png" alt="gabinete.png" class="gabinete plain">
+	<div id="canal1"></div>
+	<img src="src/bw/gabinete.png" alt="gabinete.png" class="gabinete plain">
+
+	<span id="isp2" class="isp">1Mbps</span>
+	<img src="src/bw/gabinete.png" alt="gabinete.png" class="gabinete plain">
+	<div id="canal2"></div>
+	<img src="src/bw/gabinete.png" alt="gabinete.png" class="gabinete plain">
+	
+	<div id="botonera">
+		<button id="start">Iniciar</button>
+		<button id="multadd">+ 1Mbps</button>
+		<button id="multsub">- 1Mbps</button>
+		<input type="number" min="1" max="20" value="1" id="cantPaq" /><span style="font-size: 15px;"> paquetes</span>
+	</div>
+</br>
+<small><i>Animación por Iván Eidelstein, Jorge L. Beroisa</i></small>
+</div>
+<aside data-markdown class="notes">
+##Ancho de banda digital
+La velocidad de transmisión de una interfaz a veces es llamada ancho de banda digital.
+
+El **retardo de transmisión** depende de la velocidad de transmisión de la interfaz, mientras que el **retardo de propagación** es una función de la distancia que tiene que recorrer la señal por el medio.
+
+Dos enlaces de la misma longitud tendrán aproximadamente el mismo retardo de propagación, sin importar el ancho de banda digital de las interfaces. 
+
+* Cuando ambos enlaces transmitan a la vez, los bits emitidos al mismo tiempo llegarán al otro extremo del enlace en el mismo tiempo. 
+* Sin embargo, cuando una de las interfaces tenga una velocidad de transmisión **mayor** que la otra, el **espacio** ocupado en el enlace por la señal que codifica cada bit será **menor** que la del otro enlace.
+</aside>
+</section>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Git, Github, Gitlab</h2>
+<img src="img/colab/git.png" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-coursemod-shown="true">
+<h2>Modelos de workflow</h2>
+<h3>Centralizado</h3>
+<img src="img/colab/git-108.png" class="plain stretch">
+<aside data-markdown class="notes">
+## Modelo centralizado
+* Existe un único repositorio compartido
+* Cada desarrollador mantiene su propio **repositorio local**
+* Cada desarrollador debe hacer **pull** antes de **push**
+</aside>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in slide-out" data-coursemod-shown="true">
+<h2>Modelos de workflow</h2>
+<h3>Integration manager</h3>
+<img src="img/colab/git-110.png" class="plain stretch">
+<aside data-markdown class="notes">
+## Modelo de gestión de integración
+* Cada desarrollador **clona** el repo principal hacia su propio repo público
+* Edita haciendo cambios sobre su repo local y luego efectúa el **push** hacia su propio repo público
+* Notifica al mantenedor del proyecto (**pull request**)
+* El mantenedor agrega el repo del colaborador como remoto 
+* Hace **merge** hacia su repo local
+* Hace **push** hacia el repo principal
+</aside>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in slide-out" data-coursemod-shown="true">
+<h2>Modelos de workflow</h2>
+<h3>Dictador y generales</h3>
+<img src="img/colab/git-112.png" class="plain stretch">
+<aside data-markdown class="notes">
+##Modelo de "Dictador y generales"
+* La rama **master** es la del dictador
+* Los colaboradores trabajan localmente y hacen **rebase** hacia el master
+* Los generales hacen **merge** de las ramas bajas hacia la rama master
+* El dictador hace **push** de su master al repo principal
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Modelo del dictador</h2>
+<img src="img/colab/torvalds.png" class="plain stretch"> 
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in fade-out">
+<h2>Otras formas de colaborar</h2>
+<ul>
+   <div class="fragment">
+	<li>Mejorar la documentación</li>
+	<ul>
+		<li>Incorrecta u obsoleta</li>
+	</ul>
+   </div>
+   <div class="fragment">
+	<li>Traducciones</li>
+	<ul>
+		<li>Plataforma Transifex</li>
+	</ul>
+   </div>
+   <div class="fragment">
+	<li>Aportar datos a bases libres</li>
+	<ul>
+		<li>Open Street Maps</li>
+		<li>Wikipedia</li>
+	</ul>
+   </div>
+   <div class="fragment">
+	<li>Errores</li>
+	<ul>
+		<li>Testing</li>
+		<li>Corrección de bugs</li>
+	</ul>
+   </div>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="fade-in slide-out">
+<h2>Otras formas de colaborar</h2>
+<ul>
+   <div>
+	<li>Aportando ideas</li>
+	<ul>
+		<li>Haciendo requerimientos o críticas</li>
+		<li>Contribuyendo con arte gráfico o sonoro</li>
+		<li>Usando los canales preferidos del proyecto</li>
+	</ul>
+   </div>
+   <div class="fragment">
+	<li>Difundiendo</li>
+	<ul>
+		<li>Capacitándose responsablemente como consultor</li>
+		<li>Ayudando a otros usuarios con nuestro conocimiento</li>
+	</ul>
+   </div>
+   <div class="fragment">
+	<li>¡Agradeciendo!</li>
+   </div>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in fade-out">
+<h2>Lemas y anti-lemas</h2>
+<table>
+<tr class="fragment"><td>El SL es defectuoso</td><td>La calidad se logra interactuando con los desarrolladores</td></tr>
+<tr class="fragment"><td>El SL no tiene mi aplicación favorita Win_Coso&trade;&copy;&reg;</td><td>Podés contribuir a que exista un reemplazo ("Si no está hecho es porque no lo hiciste")</td></tr>
+<tr class="fragment"><td>La documentación es espantosa</td><td>Pero está públicamente accesible y la podés modificar vos</td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<!------------------------
+<section data-transition="fade-in fade-out">
+<h2>Lemas y anti-lemas</h2>
+<table>
+<tr><td>El SL no tiene mi aplicación favorita Win_Coso&trade;&copy;&reg;</td><td>Podés contribuir a que exista un reemplazo ("Si no está hecho es porque no lo hiciste")</td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+------------------------>
+<!------------------------
+<section data-transition="fade-in fade-out">
+<h2>Lemas y anti-lemas</h2>
+<table>
+<tr><td>La documentación es espantosa</td><td>Pero está públicamente accesible y la podés modificar vos</td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+------------------------>
+<!------------------------>
+<section data-transition="fade-in slide-out">
+<h2>Lemas y anti-lemas</h2>
+<table>
+<tr><td style="vertical-align: top">Hay que saber inglés</td><td style="text-align: center"><img src="img/colab/tevez.jpg"><i>Veridíficul</i></td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>¡Muchas gracias!</h2>
+<img src="img/colab/colaborando-qrcode.svg" class="plain stretch"> 
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<!------------------------------------------------------------------>
+   </div>
+</div>
+
+<!--
+<link rel="stylesheet" href="externals/tangle/TangleKit/TangleKit.css" type="text/css">
+<script src="externals/tangle/Tangle.js"></script>
+<script src="externals/tangle/TangleKit/mootools.js"></script>
+<script src="externals/tangle/TangleKit/sprintf.js"></script>
+<script src="externals/tangle/TangleKit/BVTouchable.js"></script>
+<script src="externals/tangle/TangleKit/TangleKit.js"></script>
+-->
+<script src="externals/reveal/lib/js/head.min.js"></script>
+<script src="externals/reveal/js/reveal.js"></script>
+<!-- 
+<script src="externals/svg/dist/svg.min.js"></script>
+<script src="externals/snap/snap.svg-min.js"></script>
+-->
+
+<script>
+
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: false,
+		previewLinks: true,
+		theme: 'rdci',
+		transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+		// ----------------------------------------------------------------------------
+		coursemod: {
+			enabled: true,
+			shown: false,
+		},
+		chart: {
+			defaults: { 
+				global: { 
+					title: { fontColor: "#222" }, 
+					legend: {
+						position: "bottom",
+						labels: { fontColor: "#000", size: "14px" },
+					},
+					tooltips: {
+						labels: { fontColor: "#022", size: "14px" },
+					},
+				}, 
+				scale: { 
+					scaleLabel: { fontColor: "#022" }, 
+					gridLines: { color: "#444", zeroLineColor: "#444" }, 
+					ticks: { fontColor: "#022" }, 
+				} 
+			},
+			line: { borderColor: [ 
+				"rgba(20,220,220,.8)" , 
+				"rgba(220,120,120,.8)", 
+				"rgba(20,120,220,.8)",
+				"rgba(220,20,120,.8)",
+				"rgba(20,20,220,.8)" ]
+			}, 
+			bar: { backgroundColor: [ 
+				"rgba(20,220,220,.8)" , 
+				"rgba(20,120,220,.8)",
+				"rgba(20,20,220,.8)",
+				"rgba(120,20,220,.8)",
+				"rgba(220,120,20,.8)", 
+				"rgba(220,20,20,.8)",
+			 ]
+			}, 
+			pie: { backgroundColor: [ 
+				["rgba(0,0,0,.8)" , 
+				"rgba(220,20,20,.8)", 
+				"rgba(20,220,20,.8)", 
+				"rgba(220,220,20,.8)", 
+				"rgba(20,20,220,.8)"] 
+			]},
+			radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+		},
+		// ----------------------------------------------------------------------------
+		menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+			themes: false,
+			transitions: false,
+			markers: true,
+			hideMissingTitles: true,
+			custom: [
+				// { title: 'Plugins', icon: '<i class="fa fa-external-link"></i>', src: 'toc.html' },
+				// { title: 'About', icon: '<i class="fa fa-info"></i>', content: '<p>Int Comp</p>' },
+				{ title: 'Imprimir', icon: '<i class="fa fa-print"></i>', src: 'src/print.html' },
+			]
+		},
+		// ----------------------------------------------------------------------------
+		anything: [ 
+			{className: "rand",  defaults: {min: 0, max: 9}, 
+				initialize: (function(container, options){ 
+					container.innerHTML = Math.trunc( options.min + Math.random()*(options.max-options.min + 1) ); 
+			}) },
+			{className: "chart",  
+				initialize: (function(container, options){ 
+					container.chart = new Chart(container.getContext("2d"), options);  
+				}) 
+			},
+			{className: "animate",  
+				initialize: (function(container, options){ 
+				Reveal.addEventListener( 'fragmentshown', function( event ) {
+					if (typeof event.fragment.beginElement === "function" ) { 
+						event.fragment.beginElement(); 	
+					}
+				});
+				Reveal.addEventListener( 'fragmenthidden', function( event ) {
+					if (event.fragment.hasAttribute('data-reverse') ) { 
+						var reverse = event.fragment.parentElement.querySelector('[id=\"' + event.fragment.getAttribute('data-reverse') + '\"]');
+						if ( reverse && typeof reverse.beginElement === "function" ) { 
+							reverse.beginElement(); 	
+						}										 	
+					}
+				});
+				if ( container.getAttribute("data-svg-src") ) { 
+					var xhr = new XMLHttpRequest(); 
+					xhr.onload = function() { 
+						if (xhr.readyState === 4) { 
+							var svg = container.querySelector('svg');
+							container.removeChild( svg );
+							container.innerHTML = xhr.responseText + container.innerHTML;
+							if ( svg ) {
+								container.querySelector('svg').innerHTML = container.querySelector('svg').innerHTML + svg.innerHTML;
+							}
+						} 
+						else { 
+							console.warn( "Failed to get file. ReadyState: " + xhr.readyState + ", Status: " + xhr.status); 
+						}
+					}; 
+					xhr.open( 'GET', container.getAttribute("data-svg-src"), true ); 
+					xhr.send();
+				}
+			}) },
+			{className: "tangle", 
+				initialize: (function(container, options) { if(options && options.initialize) {options.initialize(container)} }) },
+			{className: "plot",  defaults: {width:800, height: 400, grid:true}, 
+				initialize: (function(container, options){ options.target = "#"+container.id; functionPlot(options) }) },
+			{className: "asciicast",
+                                 defaults: { theme: 'monokai', fontSize: '15px' },
+                                 initialize: (function(container, options) { asciinema.player.js.CreatePlayer(container, options.URL, options); })
+                        },
+			{className: "snapsvg",
+				initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} }) 
+			},
+			{className: "svganimate", 
+				defaults: {width:600, height:400}, 
+				initialize: (function(container, options){ 
+					if(options && options.src) {
+						container.innerHTML = SVG(options.src);
+					} else { 
+						container.innerHTML = SVG(container); 
+					}
+				})
+			},
+			{className: "anything",  
+				initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} }) },
+
+		],
+		// ----------------------------------------------------------------------------
+
+
+		// -------- Math plugin ----------
+		math: {
+			mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+			//	mathjax: '../MathJax-master/MathJax.js',
+			config: 'TeX-AMS_HTML-full'
+		},
+
+
+		// -------- Chalkboard -----------
+		chalkboard: { 
+			// optionally load pre-recorded chalkboard drawing from file
+			// src: "chalkboard.json",
+			//readOnly: undefined, 
+			toggleChalkboardButton: { left: "80px" },
+			toggleNotesButton: { left: "130px" },
+			//transition: 800,
+			//theme: "whiteboard",
+			// configuration options for notes canvas and chalkboard
+			//color: [ 'rgba(0,0,255,1)', 'rgba(255,255,255,0.5)' ],
+			//background: [ 'rgba(127,127,127,.1)' , 'plugin/chalkboard/img/blackboard.png' ],
+			//pen:  [ 'reveal.js-plugins/chalkboard/img/boardmarker.png', 'reveal.js-plugins/chalkboard/img/chalk.png' ],
+		},
+		keyboard: {
+			67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+			66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+			46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+			 8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+			68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+			82: function() { Recorder.toggleRecording(); }, // press 'r' to start/stop recording
+			90: function() { Recorder.downloadZip(); },     // press 'z' to download zip containing audio files
+			84: function() { Recorder.fetchTTS(); }     // press 't' to fetch TTS audio files
+		},
+
+		// -------- Dependencies ---------
+		dependencies: [
+			{ src: 'externals/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'externals/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'externals/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'externals/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'externals/reveal/plugin/zoom-js/zoom.js', async: true },
+			// { src: 'plugin/notes/notes.js', async: true },
+			//{ src: 'externals/explain/explain.js', async: true },
+			//{ src: 'externals/reveal/plugin/function-plot/site/js/vendor/jquery-1.11.2.min.js' },
+			//{ src: 'externals/reveal/plugin/function-plot/site/js/vendor/d3.js' },
+			//{ src: 'externals/reveal/plugin/function-plot/dist/function-plot.js' },
+			//{ src: 'externals/reveal/plugin/chart/Moment.js'},
+			//{ src: 'externals/reveal/plugin/chart/Chart.min.js'},
+			// { src: 'externals/reveal/plugin/search/search.js', async: true},
+			//{ src: 'externals/reveal-plugin/chart/csv2chart.js'},
+			// { src: 'externals/asciinema-player/asciinema-player.js' },
+			{ src: 'externals/reveal-plugins/anything/anything.js' },
+			{ src: 'externals/reveal-plugins/chalkboard/chalkboard.js' },
+			{ src: 'externals/reveal-plugins/menu/menu.js' },
+			// { src: 'externals/reveal-plugins/mathsvg/math.js', async: true },
+			//{ src: 'externals/reveal-plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
+			//{ src: 'externals/reveal-plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
+			//{ src: 'externals/snap/snap.svg-min.js', async: true },
+			{ src: 'externals/coursemod/coursemod.js', async: true },
+			// ... 
+		]
+	});
+</script>
+
+</body>
+</html>

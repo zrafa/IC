@@ -1,2 +1,2 @@
-# IC2017
-Introducción a la Computación 2017
+# RDCI
+Redes de Computadoras I

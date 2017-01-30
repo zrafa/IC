@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="externals/snap/snap.svg-min.js"></script>
+</head>
+<body>
+<div width="300" height="300">
+  <svg id="svg" viewBox="0 0 100 100" width="100%" height="100%"></svg>
+</div>
+<script>
+  var svg = Snap("#svg");
+  var r = svg.rect(0, 0, 100, 100).attr({
+    fill: "#BBBBBB",
+    stroke: "#000000"
+  });
+  var c = svg.circle(20, 20, 15).attr({
+    fill: "#AA0022"
+  });
+  var d = svg.circle(50, 50, 10).attr({
+    fill: "#ffffff"
+  });
+
+
+  function lookat(x, dur) {
+    var bb = x.getBBox();
+    var s = bb.x + ' ' + bb.y + ' ' + bb.r0 * 2 + ' ' + bb.r0 * 2;
+    svg.animate({
+      viewBox: s
+    }, dur, mina.bounce);
+  };
+
+
+  var f1 = function() {
+    lookat(d, 500)
+  };
+  var f2 = function() {
+    lookat(c, 500)
+  };
+
+  var restore = function() {
+    svg.animate({
+      viewBox: '0 0 100 100'
+    }, 500, mina.linear);
+  };
+
+  r.hover(restore);
+  d.click(f1);
+  c.hover(f2);
+
+</script>
+</body>
+</html>

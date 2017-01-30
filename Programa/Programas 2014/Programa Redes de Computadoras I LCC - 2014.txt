@@ -1,0 +1,99 @@
+﻿ASIGNATURA: 
+REDES DE COMPUTADORAS I 
+DEPARTAMENTO:  
+INGENIERIA DE COMPUTADORAS
+ÁREA:  
+REDES
+ORIENTACIÓN:
+ 
+CARRERA: 
+Licenciatura en Ciencias de la Computación
+PLAN:(Ordenanza/año)
+         1112/13
+AÑO:(Vigencia)
+         2014
+CUATRIMESTRE:  
+Segundo
+AÑO: (Plan de Estudios)
+3°
+CORRELATIVAS
+Cursadas: Sistemas Operativos I
+Aprobadas: Arquitectura y Organización de Computadoras I
+EQUIPO DE CÁTEDRA: Grosclaude Eduardo, Zanellato Claudio
+ 
+HORAS Y HORARIOS DE CLASE TOTALES:  64
+HORAS Y HORARIOS DE TEORÍA:  32, 2 hs. semanales
+HORAS Y HORARIOS DE PRÁCTICA EN AULA: 16,  1 h. semanal
+HORAS Y HORARIOS DE LABORATORIO:  16,  1 h. semanal
+HORAS ESTIMADAS EXTRACLASE DE DEDICACION DEL ALUMNO:  2 hs.
+
+OBJETIVOS DE LA MATERIA: 
+Que el alumno logre: Comprender la estructura interna de las redes de computadoras, los modelos de referencia y protocolos asociados. Comprender la seguridad en redes y la administración de redes a nivel de protocolos. 
+
+CONTENIDOS MINIMOS (según plan de estudios): 
+Redes y Comunicaciones. Técnicas de transmisión de datos. Modelos, topologías, algoritmos de ruteo y protocolos. Sistemas operativos de redes. Seguridad en Redes. Elementos de criptografía. Sistemas cliente/servidor y sus variantes. Modelo computacional de la Web. Introducción a Administración de Redes. Computación orientada a redes. Protocolos de integración, Sistemas Colaborativos. 
+
+PLAN DE PRACTICOS?
+Introducción
+Principios de comunicaciones y transmisión de datos. Tecnologías de enlaces. Modelos de referencia. Capas, interfaces y protocolos. 
+Seguridad
+Criptografía. Distribución de claves compartidas. Criptografía asimétrica. Políticas de acceso. Seguridad en ambientes inalámbricos.
+
+
+Administración de Redes. Protocolo SNMP. Protocolos LDAP, NFS, SMB. VPNs.
+
+PROGRAMA ANALÍTICO:
+
+UNIDAD I: Introducción a las redes
+Introducción. Definición y clasificación de redes. Internet. Redes de acceso. ISPs. Hardware y software de red: Comunicaciones, transmisión de datos, medios físicos, topologías, protocolos, interfaces y servicios. Arquitectura de capas. Modelos de referencia Internet y OSI. Introducción histórica. Estándares.
+UNIDAD II: Capa  de Aplicación.
+Arquitecturas de aplicaciones de red. Modelo Cliente-Servidor. Comunicación entre procesos distribuidos. Noción de direccionamiento. Protocolos de aplicación. Servicios requeridos. HTTP. Modelo computacional de la Web. Conexiones persistentes y no persistentes. Cookies, Caching. DNS, sistema de dominios, arquitectura del servicio, tipos de registros, modos de consulta. Otros protocolos: FTP, SMTP, POP3, IMAP, LDAP, NFS, protocolos P2P. Sistemas operativos de red. Protocolos de integración, sistemas colaborativos. Estándares HTML, MIME, seguridad, encriptación. 
+UNIDAD III: Capa de transporte.
+Primitivas del servicio de transporte. Servicios con y sin conexión. Servicios confiables y no confiables.  Direccionamiento y multiplexado. Segmentos. UDP. Formato de mensajes. Aplicaciones. Transmisión confible de datos. Protocolos GBN y SR.  TCP. Formato de mensajes. Aplicaciones de streams y de mensajes. Versiones de TCP. Interfaz de sockets.
+UNIDAD IV: Capa de red
+Servicios de la capa de red. Conceptos de internetworking, forwarding, switching y routing. Modelos de servicio de red. Circuitos virtuales y Datagramas. Switches y routers. IPv4. Direccionamiento. CIDR. Formato de mensajes. Fragmentación. ICMP. Algoritmos de ruteo de Estado de Enlace y de Vector Distancia. Sistemas autónomos, Ruteo interior y exterior. Tunneling.  IPv6. NAT. Multicast. Congestión. Tratamiento de la congestión end­to­end y asistido por la red. 
+UNIDAD V: Capa de enlace
+Capa de enlace. Servicios. Detección y corrección de errores. Framing. Control de flujo. Direccionamiento de enlace. Protocolos de aceso múltiple. Redes Locales. Ethernet compartida y conmutada.  Broadcast y dominio de broadcast. Protocolo PPP. 
+UNIDAD VI: Capa física
+Capa física. Transmisión de datos. Concepto de ancho de banda. Teoremas relacionados. Redes inalámbricas. Redes móviles.
+UNIDAD VII: Seguridad Informática
+Criptografía. Infraestructura de claves asimétricas. PKI. Firma digital, certificados digitales, autoridad certificadora. Control de acceso. Firewalls. Firewalls de aplicación y filtros de paquetes. Casos de estudio PGP, SSL, SSH.
+UNIDAD VIII: Complementos
+Integración. Protocolos de ventana deslizante. Tratamiento de la congestión en Internet. Dispositivos de interconexión. Virtualización de enlaces. Redes Privadas Virtuales de nivel 2 y 3.  Diseño y Administración de redes.
+
+PROPUESTA METODOLÓGICA: 
+Clase expositiva facilitada por transparencias de la bibliografía seleccionada y material propio de la cátedra. Actividades guiadas de laboratorio especiales para tópicos seleccionados, con material físico y de software ad hoc. Modalidad didáctica de anamnesis rápida habitual al inicio de la clase y momento de síntesis al cierre.
+
+Cuestionarios automáticos de repaso al cierre de las principales unidades.
+
+Resolución de problemas surgidos de la teoría y estudios de caso en las clases de prácticas. 
+
+CONDICIONES DE ACREDITACIÓN Y EVALUACIÓN:
+Aprobación de dos parciales teórico-prácticos (con respectivas instancias de recuperación) para aprobar el cursado. Aprobación de examen final teórico-práctico para aprobar la materia. Promoción con nota superior a 7 (siete) en ambos parciales, en cualquiera de sus instancias.
+HORARIOS DE CONSULTA A ESTUDIANTES:
+Docente: (días y horas)
+Eduardo Grosclaude: Lunes y Miércoles de 10:00 a 16:00
+BIBLIOGRAFÍA BÁSICA: 
+Kurose, Computer Networking, A Top-Down Approach Featuring The Internet.
+
+Bonaventure, Redes de Computadoras, Principios, Protocolos y Práctica.
+
+BIBLIOGRAFÍA DE CONSULTA:
+Peterson, Computer Networks: A Systems Approach.
+Tanenbaum, Computer Networks
+
+Stallings, Comunicaciones y Redes de Computadores
+
+
+
+
+
+PROFESOR/A
+
+
+DIRECTOR/A DE DEPARTAMENTO
+
+
+
+ SECRETARIA ACADÉMICA
+

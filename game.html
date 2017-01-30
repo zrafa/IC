@@ -1,0 +1,69 @@
+<HTML>
+<HEAD></HEAD>
+<BODY>
+<div width="100" height="200">
+
+
+<svg id="prueba" viewBox="0 0 100 200" width="100%" height="100%"></svg>
+
+
+<script src="externals/snap/snap.svg-min.js"></script>
+<script>
+
+
+var testItem = {
+	x:0, y:0,
+	d:0,
+	b:0,
+	h:0,
+	type:0,
+	status:0,
+};
+
+var t = new Object(testItem);
+
+					
+console.log(t);
+
+var svg = Snap('#prueba');
+var r = svg.rect(40,40,60,20).attr({fill: '#abc'});
+var c = svg.circle(20,20,10).attr({fill: '#fab'});
+r.attr({id:'pipi'});
+
+var rememberInitialPos = function(posx,posy) { console.log('Remember'); 
+  this.ox =  posx - this.cx;
+  this.oy = posy - this.cy;
+  dropTarget = s.select("g[id=braindrop]"); //get the svg node that is the object I will drag "this" to.
+  dropTargetBBox = this.getBBox(dropTarget); //get the bounding box object
+ }
+
+
+var returnToInitialPos = function() { console.log('Return'); this.transform(this.origXY); console.log(this.transform(this.origXY))};
+var moveFromInitialPos = function(dx,dy,posx,posy) { 
+
+this.attr({ transform: (this.origXY ? "T" : "t") + [dx, dy] }); }
+dragging = function(dx, dy, posx, posy){
+  this.cx =  posx - this.ox; 
+  this.cy = posy - this.oy;
+  t = 't' + this.cx + ',' + this.cy;
+  this.transform(t);
+  
+  brainBox = this.getBBox(); //get the bounding box object for "this", which is the svg artwork that I'm draggin
+  var intersect = Snap.path.isBBoxIntersect(brainBox, iou.dropTargetBBox); //test for an overlap of the svg artwork and drop target
+  if (intersect == true){
+   dropTarget.select('path').attr({stroke: "#f00", strokeWidth: 3});//show a highlight
+  } else {
+   dropTarget.select('path').attr({stroke: "#f2f2f2", strokeWidth: 1});//remove a highligh
+  }
+  
+ }
+
+var captureDrag = function(eve) { console.log(eve); this.attr({fill : '#456'}); };
+
+c.drag(moveFromInitialPos, rememberInitialPos, returnToInitialPos);
+addEventListener('drag.over.pipi',captureDrag); 
+
+
+</script>
+</div>
+</BODY>

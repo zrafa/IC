@@ -1,0 +1,6 @@
+if [ $# == 0 ]; then
+	echo beige black blood ic league moon night serif simple sky solarized white
+else
+	tema="$1" perl -p -i -e 'BEGIN {$t = $ENV{'tema'}} s/theme\/[^\.]+\.css" *id/theme\/$t.css" id/' src/reveal.header 
+	make all
+fi

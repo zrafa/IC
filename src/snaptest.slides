@@ -1,0 +1,46 @@
+<!-- INCLUDE src/reveal.header -->
+
+<section>
+<div id="id1" class="snapsvg stretch postit">
+	<svg viewBox="0 0 200 200" width="200" height="200"></svg> 
+<!-- {
+	"initialize" : "function (container) {
+		var d = SVG(container).size(200,200);
+		var rect2 = d.rect(20,20).attr({fill: '#11f'});
+		rect2.animate().fill('#04f').move(100,100);
+	}"
+} -->
+</div>
+</section>
+
+<section>
+<div id="id2" class="snapsvg stretch postit">
+	<svg viewBox="0 0 200 200" width="200" height="200"></svg> 
+<!--
+	{
+		"initialize" : "function (container) {
+		      var draw = SVG(container);
+		      var r = draw.rect(100,100).radius(10).fill('#f03');
+		      r.animate().fill('#04f').move(100,100);
+		}"
+	}
+-->
+</div>
+</section>
+
+<section>
+<div class="animate postit stretch" data-svg-src="src/test.svg" >
+<svg viewBox="0 0 800 600" width="800" height="600"></svg>
+<!--
+	{
+		"initialize" : "function (container) {
+		      var draw = SVG(container);
+		      var r = draw.rect(10,10).radius(10).fill('#f03');
+		      r.animate().fill('#04f').move(20,20);
+		}"
+	}
+-->
+</div>
+</section>
+
+<!-- INCLUDE src/reveal.trailer -->
