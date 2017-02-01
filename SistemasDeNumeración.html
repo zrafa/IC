@@ -2,8 +2,8 @@
 <html lang="es">
 	<head>
 		<meta charset="utf-8">
-		<title>Redes de Computadoras I</title>
-		<meta name="description" content="Redes de Computadoras I">
+		<title>Introducción a la Computación</title>
+		<meta name="description" content="Introducción a la Computación">
 		<meta name="author" content="Eduardo Grosclaude">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,7 +36,7 @@
 <!------------------------------------------------------------------>
 
 				
-<section data-markdown> 
+<section data-markdown data-coursemod-shown="false"> 
  <script type="text/template">
 ##Unidad I 
 ###Representación de la Información 
@@ -52,13 +52,8 @@
 ##Sistemas de Numeración
 </section>
 
-<section data-state="conversion" data-coursemod-shown="false">
+<section data-state="conversion">
 <h2>Contando con los dedos</h2>
-<span class="fragment" id="conversion0" data-fragmentshown="shownext" data-fragmenthidden="showprev"></span>
-<span class="fragment" id="conversion1" data-fragmentshown="shownext" data-fragmenthidden="showprev"></span>
-<span class="fragment" id="conversion2" data-fragmentshown="shownext" data-fragmenthidden="showprev"></span>
-<span class="fragment" id="conversion3" data-fragmentshown="shownext" data-fragmenthidden="showprev"></span>
-
 <div id="senarycontainer" class="snapsvg stretch" width="100%" height="100%">
 	<svg id="senary" viewBox="0 0 400 200" width="100%" height="100%"></svg>
 	<!-- {
@@ -66,42 +61,59 @@
 			var svg = Snap('#senary');
 			var conv = [];
 			var img = [];
+			var dig = [];
 
-			var num = 36;
-			var d1 = 500;
+			var num = 0;
+			var WIDGET; 
 
-			var widget = function(n,x,y) {
-				svg.text(x,y,n).attr({ fontSize: '20', fontFamily: 'Helvetica', 
-					textAnchor: 'middle', dominantBaseline: 'middle', alignmentBaseline: 'middle'});
+			var widget = function(n, liminf, limsup) {
+				this.n = n;
+				this.down = svg.polyline(1,5, 10,0, 10,10);
+				this.text = svg.text(25,5,n.toString()).attr({ 
+					fontSize: '20', fontFamily: 'Helvetica', 
+					textAnchor: 'middle', dominantBaseline: 'middle', 
+					alignmentBaseline: 'middle'});
+				this.up = svg.polyline(40,0, 40,10, 49,5);
+				this.set = function(n) { 
+					shownum(n); 
+					this.svg[1].node.innerHTML = n; 
+				}; 
+				this.value = function() { return this.svg[1].node.innerHTML };
+				this.downOnClick = function() { if(1 * WIDGET.value() > liminf) WIDGET.set(1 * WIDGET.value() - 1) };
+				this.upOnClick   = function() { if(1 * WIDGET.value() < limsup) WIDGET.set(1 * WIDGET.value() + 1) };
+				this.down.click(this.downOnClick);
+				this.up.click(this.upOnClick);
+				this.svg = svg.g(this.down, this.text, this.up);
+				WIDGET = this;
 			};
 
 
 			var shownum = function(n) {
-				var i = 3;
-				widget(n,0,100);
-				while((n > 0) && (i >= 0)) {
-					conv[i] = n % 6;
-					n = Math.floor(n / 6);
-					var lorr = ((i % 2 === 1)? 'l' : 'r'); 
-					console.log(i, lorr);
-					var src = Snap.format('img/manos/mickey/{h}h{x}.svg',{
-						h: lorr,
-						x: conv[i]});
+				for(var i = 0; i < 4; i++) {
 					if(img[i]) img[i].attr({opacity: '0.0'});
+					if(dig[i]) dig[i].attr({opacity: '0.0'});
+				}
+				var i = 3;
+				do {
+					conv[i] = n % 6;
+					var src = Snap.format('img/manos/mickey/{h}h{x}.svg',{
+						h: ((i % 2 === 1)? 'r' : 'l'), 
+						x: conv[i]});
 					img[i] = svg.image(src,70 * i,0,90,90)
 						.attr({opacity: '0.0'})
-						.animate({opacity: '1.0'},d1);
+						.animate({opacity: '1.0'},100);
+					dig[i] = svg.text(70 * i + 45, 100, conv[i].toString()).attr({
+						fontSize: '28', fontFamily: 'Helvetica', 
+						textAnchor: 'middle', dominantBaseline: 'middle', 
+						alignmentBaseline: 'middle' });
+					n = Math.floor(n / 6);
 					i--;
-				}
+				} while((n > 0) && (i >= 0));
 			}; 
 
-			var shownext = function(fragment) { console.log('in next', num); shownum(num); if(num < 500) num++; };
-			var showprev = function(fragment) { shownum(num); if(num > 0) num--;};
-
-			Reveal.addEventListener('fragmentshown', function(event){ 
-				eval(event.fragment.getAttribute('data-fragmentshown'))(event.fragment); });
-			Reveal.addEventListener('fragmenthidden', function(event){ 
-				eval(event.fragment.getAttribute('data-fragmenthidden'))(event.fragment); });
+			WIDGET = new widget(num, 0, 99);
+			WIDGET.svg.transform('T158 160S2');
+			shownum(num);
 	}"
 	} -->
 
@@ -111,100 +123,37 @@
 
 
  
-<section>
-
-	<section data-markdown>
-##Contando objetos con dígitos
-- Nuestros dígitos habituales son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-- Son diez dígitos
-- Nuestra **base** habitual es 10
-- El mecanismo para contar es completamente general: &#8681;
-	</section>
-
-<section>
-<h2>Contar en base 10</h2>
-<ul>
-<li class="fragment">1,</li>
-<li class="fragment">2,</li>
-<li class="fragment">3,</li>
-<li class="fragment">...,</li>
-<li class="fragment">9  ¡Se agotó la secuencia!</li>
-</ul>
-</section>
-
-<section>
-<h2>Se agotó la secuencia 1 vez</h2>
-<ul>
-<li class="fragment">10,</li>
-<li class="fragment">11,</li>
-<li class="fragment">12,</li>
-<li class="fragment">...,</li>
-<li class="fragment">19 ¡Otra vez!</li>
-</ul>
-</section>
-
-<section>
-<h2>Se agotó la secuencia dos veces</h2>
-<ul>
-<li class="fragment">20,</li>
-<li class="fragment">21,</li>
-<li class="fragment">22,</li>
-<li class="fragment">...,</li>
-<li class="fragment">29</li>	
-</ul>
-</section>
-
-
-<section>
-<h2>Se agotó la secuencia nueve veces</h2>
-<ul>
-<li class="fragment">90,</li>
-<li class="fragment">91,</li>
-<li class="fragment">92,</li>
-<li class="fragment">...,</li>
-<li class="fragment">99</li>	
-</ul>
-</section>
-
-</section>
-
 
 
 <section data-markdown>
 ##Sistema posicional
-- Vamos asignando a cada objeto los dígitos disponibles en el sistema
+- Tenemos un sistema con una cierta cantidad de dígitos (la **base**)
+- Para contar objetos, vamos asignando a cada objeto los dígitos disponibles en el sistema
 - Al acabarse los dígitos, volvemos a 0
 - Pero anotamos que se agotó la secuencia con un 1 a la izquierda
+- Este 1 tiene el **peso**, o representa el valor, de la **base**
 </section>
  
 <section>
 <h2>Sistema posicional</h2>
 <ul>
-<li>Cada vez que se agota la secuencia incrementamos la posición de la izquierda</li>
-<li>Al agotarse la secuencia a la izquierda:</li>
+<li>Cada vez que se agota la secuencia en una posición, incrementamos la posición a su izquierda</li>
+<li>Al agotarse la secuencia en la posición de la izquierda:</li>
 <ul>
-<li>Usamos una posición más a la izquierda</li>
-<li>y volvemos a empezar con 0 en todas las demás posiciones</li>
+<li>Usamos una posición todavía más a la izquierda</li>
+<li>y volvemos a empezar con 0 en todas las demás posiciones a su derecha</li>
 </ul>
+<li>El peso de cada dígito es igual a <b>la base afectada a un exponente creciente, que comienza en 0</b>
 </ul>
 <p>
-<span class="post_it">&nbsp;El mecanismo no depende de cuál sea la base&nbsp;</span>
+<span class="post_it">&nbsp;El mecanismo es siempre el mismo, independientemente de cuál sea la <b>base</b>&nbsp;</span>
 </p>
 </section>
 
 
 
-<section data-background="#3c53b5" data-background-transition="zoom">
-<h1>Preguntas</h1>
-<ol>
-<li class="fragment">¿Cómo se escribe <b>la base</b>, en un sistema de base 10?</li>
-<li class="fragment">¿Cómo se escribe <b>la base al cuadrado</b>, en un sistema de base 10?</li>
-<li class="fragment">¿Y al cubo?</li>
-<li class="fragment">¿Y a la cuarta?</li>
-<li class="fragment">¿Y lo mismo, pero en otras bases?</li>
-</ol>
-</section>
 
+<!---------------------------------------
 <section>
 <section data-markdown>
 ##¿Cómo contar en base 5?
@@ -271,10 +220,68 @@
 
 
 </section>
+--------------------------------------->
 
 
 <section data-markdown>
-##¿Y en base 2?
+##Sistema decimal
+- Nuestros dígitos habituales son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+- Son **diez dígitos**
+- Nuestra **base** habitual es 10
+</section>
+
+<!-----------------------------------------------
+<section>
+<h2>Contar en base 10</h2>
+<ul>
+<li class="fragment">1,</li>
+<li class="fragment">2,</li>
+<li class="fragment">3,</li>
+<li class="fragment">...,</li>
+<li class="fragment">9  ¡Se agotó la secuencia!</li>
+</ul>
+</section>
+
+<section>
+<h2>Se agotó la secuencia 1 vez</h2>
+<ul>
+<li class="fragment">10,</li>
+<li class="fragment">11,</li>
+<li class="fragment">12,</li>
+<li class="fragment">...,</li>
+<li class="fragment">19 ¡Otra vez!</li>
+</ul>
+</section>
+
+<section>
+<h2>Se agotó la secuencia dos veces</h2>
+<ul>
+<li class="fragment">20,</li>
+<li class="fragment">21,</li>
+<li class="fragment">22,</li>
+<li class="fragment">...,</li>
+<li class="fragment">29</li>	
+</ul>
+</section>
+
+
+<section>
+<h2>Se agotó la secuencia nueve veces</h2>
+<ul>
+<li class="fragment">90,</li>
+<li class="fragment">91,</li>
+<li class="fragment">92,</li>
+<li class="fragment">...,</li>
+<li class="fragment">99</li>	
+</ul>
+</section>
+
+
+----------------------------------------------->
+
+<section data-markdown>
+##Sistema binario
+- ¿Y en base 2?
 - Tengo dos dígitos
 - Los dígitos son 0, 1
 - ¿Cómo se escriben los números en base 2?
@@ -283,13 +290,13 @@
 
 
 <section>
-<h2>¿Y en base 16?</h2>
+<h2>Sistema hexadecimal</h2>
 <ul>
+<li>¿Y en base 16?</li>
 <li>Tengo dieciséis dígitos</li>
-<li>Los dígitos son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ...
+<li>Los dígitos son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
 <span class="fragment"> A, B, C, D, E, F</span></li>
 <li>¿Cómo se escribe <b>16</b> en base 16?</li>
-
 </ul>
 </section>
 
@@ -305,14 +312,15 @@
 </section>
  
 
-<section data-background="#3cb5c5" data-background-transition="zoom">
-<h1>¿Preguntas?</h1>
+
+<section data-background="#3cb5c5" data-background-transition="zoom" data-coursemod-shown="false">
+<h2>¿Preguntas?</h2>
 </section>
 
 
 
-<section data-background="#3c53b5" data-background-transition="zoom">
-<h1>¡Preguntas!</h1>
+<section data-background="#3c53b5" data-background-transition="zoom" class="preguntas" data-coursemod-shown="false">
+<h2>¡Preguntas!</h2>
 <ol>
 <li class="fragment">Dado un sistema posicional de base $b$, ¿cómo se escribe $b$ en ese sistema?</li>
 <li class="fragment">¿Y $b + 1$?</li>
@@ -325,14 +333,37 @@
 </section>
 
 
+<section data-background="#3c53b5" data-background-transition="zoom" class="preguntas" data-coursemod-shown="false">
+<h2>Preguntas</h2>
+<ol>
+<li class="fragment">¿Cómo se escribe <b>la base</b>, en un sistema de base 10?</li>
+<li class="fragment">¿Cómo se escribe <b>la base al cuadrado</b>, en un sistema de base 10?</li>
+<li class="fragment">¿Y al cubo?</li>
+<li class="fragment">¿Y a la cuarta?</li>
+<li class="fragment">¿Y lo mismo, pero en otras bases?</li>
+</ol>
+</section>
 
 <section id="potencias">
 <h2>Expresión general</h2>
-Todo número $n$ se escribe en base $b$ como
+Todo entero no negativo $n$ se escribe en base $b$ como
+<p>
+$n = \sum_{i=0}^{k}{x_i \times b^i} = $
+</p>
+<p class="fragment">
+$= x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b^0$
+</p>
+<p class="fragment">
+Con $0 \le x_i \lt b$
+</p>
+
+</section>
+
+
+<section id="potencias">
+<h2>Expresión general</h2>
 <p>
 $n = x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b^0$
-</p><p>
-Con $0 \le x_i \lt b$
 </p>
 <p class="post_it fragment">
 $2017_{(10} = 2 $
@@ -372,7 +403,6 @@ $7 $
 </section>
 
 
-
 <section>
 <h2>Conversión de base</h2>
 <ul>
@@ -394,7 +424,7 @@ Convertir $61_{(10}$ a base $3$
 <tr></tr>
 </table>
 <p>
-<span class="fragment">$61_{(10} = 2 * 3^3 + 0 * 3^2 + 2 * 3 + 1$ </span>
+<span class="fragment">$61_{(10} = 2 \times 3^3 + 0 \times 3^2 + 2 \times 3 + 1$ </span>
 </p>
 <span class="fragment">$61_{(10} = 2021_{(3}$ </span>
 </section>
@@ -407,35 +437,37 @@ Convertir $61_{(10}$ a base $3$
 <span class="fragment">Aplicamos la <a href="#/potencias" target="_blank">Expresión general</a></span>
 
 <p>
-<span class="fragment">$2 * 3^3 + 0 * 3^2 + 2 * 3 + 1  =  61_{(10}$ </span>
+<span class="fragment">$2 \times 3^3 + 0 \times 3^2 + 2 \times 3 + 1  =  61_{(10}$ </span>
 </p>
 </section>
 
-<section data-background="#3c53b5" data-background-transition="zoom">
-<h1>¿Más preguntas?</h1>
+<section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
+<h2>¿Más preguntas?</h2>
 </section>
 
-<section data-transition="slide-in fade-out">
+<section data-transition="slide-in fade-out" data-coursemod-shown="false">
 <h2>Humor para nerds</h2>
 <img class="plain stretch" src="img/finger-1.png" >
 </section>
 
-<section data-transition="slide-out fade-in">
+<section data-transition="slide-out fade-in" data-coursemod-shown="false">
 <h2>Humor para nerds</h2>
 <img class="plain stretch" src="img/finger-2.png">
 </section>
 
-<section data-background="#3c53b5" data-background-transition="zoom">
-<h1>¡Más preguntas!</h1>
+<!-----
+<section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
+<h2>¡Más preguntas!</h2>
 <ol>
 <li class="fragment">Si contáramos en base 2 con los dedos (dedo estirado = 1, dedo recogido = 0), ¿hasta qué número podríamos contar con una mano? ¿Y con las dos?</li>
 <li class="fragment">¿Cómo sería un sistema posicional en base 6 con ambas manos? La derecha contando las unidades y la izquierda las "seisenas"...</li>
 <li class="fragment">¿Hasta cuánto podríamos contar con este sistema?</li>
 </ol>
 </section>
+--->
 
-<section data-background="#3c53b5" data-background-transition="zoom">
-<h1>Y más preguntas</h1>
+<section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
+<h2>Y más preguntas</h2>
 <p>
 El número $28_{(x}$ está en una base desconocida. 
 Esa base, ¿puede ser...
@@ -529,8 +561,8 @@ $1100010_{(2} = 001100010_{(2} = 142_{(8}$
 
 </section>
 
-<section data-background="#3c53b5" data-background-transition="zoom">
-<h1>Y más preguntas</h1>
+<section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
+<h2>Y más preguntas</h2>
 <ol>
 <li>$AF3_{(16} = X_{(10}$ <span class="fragment"> $= 2803_{(10}$</li>
 <li>$AF3_{(16} = X_{(2}$ <span class="fragment"> $= 101011110011_{(2}$</li>
@@ -747,7 +779,7 @@ $1100010_{(2} = 001100010_{(2} = 142_{(8}$
 			{ src: 'externals/reveal-plugins/anything/anything.js' },
 			{ src: 'externals/reveal-plugins/chalkboard/chalkboard.js' },
 			{ src: 'externals/reveal-plugins/menu/menu.js' },
-			//{ src: 'externals/reveal-plugins/mathsvg/math.js', async: true },
+			{ src: 'externals/reveal-plugins/mathsvg/math.js', async: true },
 			//{ src: 'externals/reveal-plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
 			//{ src: 'externals/reveal-plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
 			{ src: 'externals/snap/snap.svg-min.js', async: true },
