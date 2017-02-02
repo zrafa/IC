@@ -41,54 +41,54 @@
 ##Unidad I 
 ###Representación de la Información 
 
-1. Sistemas de Numeración <!-- .element: class="post_it" -->
+1. Sistemas de Numeración <!-- .element: class="postit" -->
 1. Unidades de Información
 1. Representación Digital de Datos 
  </script>
 </section>
 
 
-<section data-markdown>
-##Sistemas de Numeración
+<section>
+<h2>Sistemas de Numeración</h2>
+<aside data-markdown class="notes">
+En este primer tema de la unidad veremos las propiedades de los sistemas de numeración más importantes para el estudio de la arquitectura de computadoras, en especial los sistemas **binario y hexadecimal**.
+</aside>
 </section>
 
-<section data-state="conversion">
+<section>
 <h2>Contando con los dedos</h2>
 <div id="senarycontainer" class="snapsvg stretch" width="100%" height="100%">
 	<svg id="senary" viewBox="0 0 400 200" width="100%" height="100%"></svg>
 	<!-- {
 		"initialize": "function(container, options) { 
 			var svg = Snap('#senary');
-			var conv = [];
-			var img = [];
-			var dig = [];
-
+			var conv = [], img = [], dig = [];
 			var num = 0;
-			var WIDGET; 
+			var txtattr = { fontSize: '20', fontFamily: 'Helvetica', 
+				textAnchor: 'middle', dominantBaseline: 'middle', 
+				alignmentBaseline: 'middle'};
+			var format = 'img/manos/mickey/{h}h{x}.svg';
 
-			var widget = function(n, liminf, limsup) {
+			var WIDGET; 
+			var widget = function(n, liminf, limsup, callback) {
 				this.n = n;
 				this.down = svg.polyline(1,5, 10,0, 10,10);
-				this.text = svg.text(25,5,n.toString()).attr({ 
-					fontSize: '20', fontFamily: 'Helvetica', 
-					textAnchor: 'middle', dominantBaseline: 'middle', 
-					alignmentBaseline: 'middle'});
+				this.text = svg.text(25,5,n.toString()).attr(txtattr);
 				this.up = svg.polyline(40,0, 40,10, 49,5);
 				this.set = function(n) { 
-					shownum(n); 
+					callback(n); 
 					this.svg[1].node.innerHTML = n; 
 				}; 
 				this.value = function() { return this.svg[1].node.innerHTML };
-				this.downOnClick = function() { if(1 * WIDGET.value() > liminf) WIDGET.set(1 * WIDGET.value() - 1) };
-				this.upOnClick   = function() { if(1 * WIDGET.value() < limsup) WIDGET.set(1 * WIDGET.value() + 1) };
+				this.downOnClick = function() { this.attr({fill:'#aaf'}); if(1 * WIDGET.value() > liminf) WIDGET.set(1 * WIDGET.value() - 1); this.animate({fill:'#000'},300);  };
+				this.upOnClick   = function() { this.attr({fill:'#aaf'}); if(1 * WIDGET.value() < limsup) WIDGET.set(1 * WIDGET.value() + 1); this.animate({fill:'#000'},300);  };
 				this.down.click(this.downOnClick);
 				this.up.click(this.upOnClick);
 				this.svg = svg.g(this.down, this.text, this.up);
-				WIDGET = this;
 			};
 
 
-			var shownum = function(n) {
+			var convb6 = function(n) {
 				for(var i = 0; i < 4; i++) {
 					if(img[i]) img[i].attr({opacity: '0.0'});
 					if(dig[i]) dig[i].attr({opacity: '0.0'});
@@ -96,28 +96,65 @@
 				var i = 3;
 				do {
 					conv[i] = n % 6;
-					var src = Snap.format('img/manos/mickey/{h}h{x}.svg',{
-						h: ((i % 2 === 1)? 'r' : 'l'), 
-						x: conv[i]});
+					var src = Snap.format(format,{ h: ((i % 2 === 1)? 'r' : 'l'), x: conv[i]});
 					img[i] = svg.image(src,70 * i,0,90,90)
 						.attr({opacity: '0.0'})
 						.animate({opacity: '1.0'},100);
-					dig[i] = svg.text(70 * i + 45, 100, conv[i].toString()).attr({
-						fontSize: '28', fontFamily: 'Helvetica', 
-						textAnchor: 'middle', dominantBaseline: 'middle', 
-						alignmentBaseline: 'middle' });
+					dig[i] = svg.text(70 * i + 45, 100, conv[i].toString()).attr(txtattr);
 					n = Math.floor(n / 6);
 					i--;
 				} while((n > 0) && (i >= 0));
 			}; 
 
-			WIDGET = new widget(num, 0, 99);
-			WIDGET.svg.transform('T158 160S2');
-			shownum(num);
+			WIDGET = new widget(num, 0, 99, convb6);
+			WIDGET.svg.transform('T158 160S3');
+			convb6(num);
 	}"
 	} -->
 
 </div>
+<aside data-markdown class="notes">
+Todos conocemos el método tradicional de contar con los dedos. Como tenemos cinco dedos
+en cada mano, podemos contar hasta diez. Pero también podemos utilizar un método diferente 
+del tradicional, que resulta ser muy interesante. 
+
+Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
+de la izquierda**. Los dedos de la mano derecha **vuelven a 0**, y seguimos contando
+con la derecha. 
+
+Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda,
+y la derecha vuelve a 0.  Cada dedo en alto de la mano izquierda significa que se agotó la secuencia de la mano 
+derecha una vez. 
+
+Notemos que este método tiene mayor capacidad que el tradicional, ya que podemos contar hasta
+diez y todavía nos queda mucho por contar con los dedos de ambas manos. 
+
+Notemos además que esta ventaja se debe a que el método asigna **valores diferentes** a ambas
+manos. La derecha vale la cantidad de dedos que muestre, pero la izquierda vale **seis por
+su cantidad de dedos**. Esto se abrevia diciendo que se trata de un **sistema de numeración
+posicional**. Por otra parte, al ser posicional, podemos representar números relativamente
+grandes con pocos dígitos. En este sistema, disponemos únicamente de **6 dígitos (0, 1, 2,
+3, 4, 5)** porque ésos son los que podemos representar con cada mano, es decir, **en cada
+posición**.
+
+Dado un número no negativo que se pueda representar con dos manos, podemos saber qué dedos levantar 
+en cada mano haciendo una sencilla cuenta de división entera (sin decimales): dividimos el número por 6 
+y tomamos el cociente y el resto.  **El cociente es el número de la izquierda, y el resto, el de la derecha**.
+
+Tomemos por ejemplo el número 15. Al dividir 15 por 6, el cociente es 2 y el resto es 3. En este sistema, 
+escribimos el 15 como **dos dedos en la izquierda, y tres dedos en la derecha**, lo que podemos abreviar como **2,3**
+o directamente **23** (que se pronuncia **dos tres** porque **no quiere decir veintitrés**, sino 
+**quince**, pero escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
+de sumar **$2 \times 6 + 3$** obtenemos, efectivamente, 15. 
+
+- ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
+- Si agregamos una tercera mano, de un amigo, ¿hasta qué número llegamos? 
+- ¿Y cómo se representa el 36? ¿Y el 37?
+- Y, si el número no se puede representar con dos manos, ¿cómo es el procedimiento para saber qué
+dedos levantar?
+
+</aside>
+
 </section>
 
 
@@ -125,168 +162,107 @@
  
 
 
-<section data-markdown>
-##Sistema posicional
-- Tenemos un sistema con una cierta cantidad de dígitos (la **base**)
-- Para contar objetos, vamos asignando a cada objeto los dígitos disponibles en el sistema
-- Al acabarse los dígitos, volvemos a 0
-- Pero anotamos que se agotó la secuencia con un 1 a la izquierda
-- Este 1 tiene el **peso**, o representa el valor, de la **base**
+<!--------------------------------------
+<section>
+<h2>Sistema posicional</h2>
+<ul>
+<li>Tenemos un sistema con una cierta cantidad de dígitos (la <b>base</b>)</li>
+<ul>
+<li>Para contar objetos, vamos asignando a cada objeto los dígitos disponibles en el sistema</li>
+<li>Al acabarse los dígitos, volvemos a 0</li>
+<li>Pero anotamos que se agotó la secuencia con un 1 a la izquierda</li>
+<li>Este 1 tiene el <i>peso</i>, o representa el valor, de la base</li>
+</ul>
+</ul>
 </section>
  
 <section>
 <h2>Sistema posicional</h2>
-<ul>
-<li>Cada vez que se agota la secuencia en una posición, incrementamos la posición a su izquierda</li>
-<li>Al agotarse la secuencia en la posición de la izquierda:</li>
-<ul>
-<li>Usamos una posición todavía más a la izquierda</li>
-<li>y volvemos a empezar con 0 en todas las demás posiciones a su derecha</li>
-</ul>
-<li>El peso de cada dígito es igual a <b>la base afectada a un exponente creciente, que comienza en 0</b>
-</ul>
-<p>
-<span class="post_it">&nbsp;El mecanismo es siempre el mismo, independientemente de cuál sea la <b>base</b>&nbsp;</span>
-</p>
+<div class="double">
+	<ul>
+	<div>
+		<li>Cada vez que se agota la secuencia en una posición, incrementamos la posición a su izquierda</li>
+	</div>
+	<span></span>
+	<div>
+		<li>Al agotarse la secuencia en la posición de la izquierda:</li>
+			<ul>
+				<li style="fontSize: smaller">Usamos una posición todavía más a la izquierda</li>
+				<li style="fontSize: smaller">y volvemos a empezar con 0 en todas las demás posiciones a su derecha</li>
+			</ul>
+	</div>
+	</ul>
+</div>
 </section>
 
 
+-------------------------------------->
 
-
-<!---------------------------------------
-<section>
-<section data-markdown>
-##¿Cómo contar en base 5?
-- Tengo cinco dígitos
-- Los dígitos son 0, 1, 2, 3, 4
-- ¿Cómo se escriben los números en base 5?
-- ¿Cómo se escribe **5** en base 5?
-</section>
 
 
 <section>
-<h2>Contemos en base 5</h2>
+<h2>Sistema decimal</h2>
 <ul>
-<li class="fragment">1,</li>
-<li class="fragment">2,</li>
-<li class="fragment">...,</li>
-<li class="fragment">4 ¡Se agotó la secuencia!</li>	
-</ul>
-</section>
-
-<section>
-<h2>Se agotó la secuencia una vez</h2>
+<li>Nuestros dígitos habituales son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</li>
+<li>Son diez dígitos</li>
+<li>Nuestra <b>base</b> habitual es 10</li>
+<li>En este sistema:</li>
 <ul>
-<li class="fragment">10,</li>
-<li class="fragment">11,</li>
-<li class="fragment">12,</li>
-<li class="fragment">13,</li>
-<li class="fragment">14 ¡Se agotó la secuencia!</li>	
+	<li>$15 = 1 \times 10 + 5$</li>
+	<li>$125 = 1 \times 100 + 2 \times 10 + 5$</li>
+	<li>$3125 = 3 \times 1000 + 1 \times 100 + 2 \times 10 + 5$</li>
 </ul>
-</section>
-
-<section>
-<h2>Se agotó la secuencia dos veces</h2>
-<ul>
-<li class="fragment">20,</li>
-<li class="fragment">21,</li>
-<li class="fragment">22,</li>
-<li class="fragment">23,</li>
-<li class="fragment">24</li>	
 </ul>
-</section>
+<aside data-markdown class="notes">
+Si reflexionamos sobre el sistema decimal, de diez dígitos, encontramos que las cifras de las decenas
+y de las unidades (y de las centenas, y de las unidades de mil, etc.) también forman un sistema posicional, 
+sólo que con 10 dígitos en lugar de los seis del sistema anterior. 
+Cuando escribimos **15** en el sistema decimal, esta expresión equivale a decir "para saber de qué cantidad estoy hablando,
+tome el 1 y multiplíquelo por 10, y luego sume el 5".
 
-<section>
-<h2>Se agotó la secuencia cuatro veces</h2>
-<ul>
-<li class="fragment">40,</li>
-<li class="fragment">41,</li>
-<li class="fragment">42,</li>
-<li class="fragment">43,</li>
-<li class="fragment">44</li>	
-</ul>
-</section>
+Cuando queremos pasar esa expresión a un sistema con otra cantidad de dígitos, 
+el procedimiento de averiguar los dígitos que van en cada posición
+se llama **conversión de base**. La **base** de un sistema es la cantidad de dígitos de que dispone, o sea que
+el sistema decimal habitual es de base 10, mientras que el de los deditos es de base 6. 
 
-<section>
-<h2>¿Cuánto valen estos números en base 5?</h2>
-<ul>
-<li class="fragment">100,</li>
-<li class="fragment">101,</li>
-<li class="fragment">102,</li>
-<li class="fragment">103,</li>
-<li class="fragment">104</li>	
-</ul>
-</section>
+Anteriormente escribíamos **15** en el sistema de base 6 como **23**. Sin embargo, necesitamos evitar la confusión 
+entre ambos significados de **23**. Para esto usamos índices subscriptos que indican la base. Así, **quince** es
+**$15_{(10}$** porque está en base diez (la del sistema decimal, habitual) y **$23_{(10}$** es **veintitrés**, pero 
+**$23_{(6}$** es **dos tres en base 6**, y por lo tanto vale **quince**. Como 10 es nuestra base habitual, cuando 
+no usemos índice subscripto estaremos sobreentendiendo que hablamos **en base 10**, Es decir, **$15_{(10}$** se
+puede escribir, simplemente, **$15$**.
 
-
-</section>
---------------------------------------->
-
-
-<section data-markdown>
-##Sistema decimal
-- Nuestros dígitos habituales son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-- Son **diez dígitos**
-- Nuestra **base** habitual es 10
-</section>
-
-<!-----------------------------------------------
-<section>
-<h2>Contar en base 10</h2>
-<ul>
-<li class="fragment">1,</li>
-<li class="fragment">2,</li>
-<li class="fragment">3,</li>
-<li class="fragment">...,</li>
-<li class="fragment">9  ¡Se agotó la secuencia!</li>
-</ul>
-</section>
-
-<section>
-<h2>Se agotó la secuencia 1 vez</h2>
-<ul>
-<li class="fragment">10,</li>
-<li class="fragment">11,</li>
-<li class="fragment">12,</li>
-<li class="fragment">...,</li>
-<li class="fragment">19 ¡Otra vez!</li>
-</ul>
-</section>
-
-<section>
-<h2>Se agotó la secuencia dos veces</h2>
-<ul>
-<li class="fragment">20,</li>
-<li class="fragment">21,</li>
-<li class="fragment">22,</li>
-<li class="fragment">...,</li>
-<li class="fragment">29</li>	
-</ul>
+Notemos, de paso, que un mismo número puede escribirse de muchas maneras: en prácticamente cualquier base que 
+se nos ocurra, sin necesidad de contar con los dedos; y que la forma habitual, en base 10, no es más
+importante o mejor que las otras (salvo, claro, que ya estamos acostumbrados a ella). Otras culturas han desarrollado
+otros sistemas de numeración y escriben los números de otra manera. Esto muestra que hay una **diferencia entre
+número y numeral**, diferencia que es algo difícil de ver debido a la costumbre de identificar a los números con su
+representación en decimal. 
+- El **numeral** es lo que escribimos ($15$, **$15_{(10}$** o **$23_{(6}$**). 
+- El **número** es la cantidad de la cual estamos hablando (la misma en los tres casos).
+</aside>
 </section>
 
 
 <section>
-<h2>Se agotó la secuencia nueve veces</h2>
+<h2>Sistema binario</h2>
 <ul>
-<li class="fragment">90,</li>
-<li class="fragment">91,</li>
-<li class="fragment">92,</li>
-<li class="fragment">...,</li>
-<li class="fragment">99</li>	
+<li>Tenemos dos dígitos</li>
+<li>Los dígitos son 0, 1</li>
+<li>En este sistema:</li>
+<ul>
+	<li>$15 = 1\times8 + 1\times4 + 1\times2 + 1\times1 = 1111_{(2}$</li>
+	<li>$125 = 1\times64 + 1\times32 + 1\times16$ $ + 1\times8 + $ $1\times4 + 0\times2 + 1\times1$ $= 1111101_{(2}$</li>
 </ul>
-</section>
+<li>¿Cómo se escriben los números 0 y 1 en base 2?</li>
+<li>¿Cómo se escribe 2 en base 2?</li>
+<li>¿Cómo se escriben 3, 4, 5, en base 2?</li>
+</ul>
+<aside data-markdown class="notes">
+Comprender y manejar la notación en sistema binario es sumamente importante para el estudio de la computación. El sistema binario comprende únicamente dos dígitos, **0 y 1**. 
 
-
------------------------------------------------>
-
-<section data-markdown>
-##Sistema binario
-- ¿Y en base 2?
-- Tengo dos dígitos
-- Los dígitos son 0, 1
-- ¿Cómo se escriben los números 0 y 1 en base 2?
-- ¿Cómo se escribe **2** en base 2?
-- ¿Cómo se escriben 3, 4, 5, en base 2?
+Las computadoras digitales, tal como las conocemos hoy, almacenan todos sus datos en forma de números binarios. Es **muy recomendable**, para la práctica de esta materia, adquirir velocidad y seguridad en la conversión de y a sistema binario.
+</aside>
 </section>
 
 
@@ -294,8 +270,8 @@
 <h2>Sistema hexadecimal</h2>
 <ul>
 <li>¿Y en base 16?</li>
-<li>Tengo dieciséis dígitos</li>
-<li>Los dígitos son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+<li>Tenemos dieciséis dígitos</li>
+<li>Los dígitos son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ... </li>
 <span class="fragment"> A, B, C, D, E, F</span></li>
 <li>¿Cómo se escribe <b>8</b> en base 16?</li>
 <li>¿Y <b>10</b> en base 16?</li>
@@ -304,8 +280,16 @@
 <li>¿Y <b>17</b>?</li>
 <li>¿Y <b>32</b>?</li>
 </ul>
+<aside data-markdown class="notes">
+Otro sistema de numeración importante es el hexadecimal o de base 16. En este sistema tenemos **más dígitos** que en el decimal, por lo cual tenemos que recurrir a "dígitos" nuevos, tomados del alfabeto. Así, A representa el 10, B el 11, etc.
+
+El sistema hexadecimal nos resultará útil porque con él podremos expresar fácilmente números que llevarían muchos dígitos en sistema binario. 
+- La conversión entre binarios y hexadecimales es sumamente directa.
+- Al ser un sistema con más dígitos que el binario, la expresión de cualquier número será más corta.
+</aside>
 </section>
 
+<!------------
 <section>
 <h2>Especificando la base</h2>
 <ul>
@@ -315,12 +299,17 @@
 <li>"Los $101_{(2}$  Dálmatas"</li>
 </ul>
 </ul>
+<aside data-markdown class="notes">
+</aside>
+<aside data-markdown class="notes">
+</aside>
 </section>
- 
-
+------------>
 
 <section data-background="#3cb5c5" data-background-transition="zoom" data-coursemod-shown="false">
 <h2>¿Preguntas?</h2>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 
@@ -336,6 +325,8 @@
 <li class="fragment">¿Cómo se escribe 17 en base 16, en base 5, en base 2, en base 10?
 <li class="fragment">¿A qué número me refiero cuando escribo 101?
 </ol>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 
@@ -348,6 +339,8 @@
 <li class="fragment">¿Y a la cuarta?</li>
 <li class="fragment">¿Y lo mismo, pero en otras bases?</li>
 </ol>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 <section id="potencias">
@@ -363,6 +356,8 @@ $= x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b^0
 Con $0 \le x_i \lt b$
 </p>
 
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 
@@ -371,7 +366,7 @@ Con $0 \le x_i \lt b$
 <p>
 $n = x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b^0$
 </p>
-<p class="post_it fragment">
+<p class="postit fragment">
 $2017_{(10} = 2 $
 <span class="fragment">$\times 1000 + $</span>
 $0 $
@@ -383,7 +378,7 @@ $7 $
 </p>
 
 
-<p class="post_it fragment">
+<p class="postit fragment">
 $2017_{(10} = 2 $
 <span class="fragment">$\times 10^{3} + $</span>
 $0 $
@@ -394,7 +389,7 @@ $7 $
 <span class="fragment">$\times 10^{0}$</span>
 </p>
 
-<p class="post_it fragment">
+<p class="postit fragment">
 $2017_{(8} = 2 $
 <span class="fragment">$\times 8^{3} + $</span>
 $0 $
@@ -406,6 +401,8 @@ $7 $
 <span class="fragment">$ = 1039_{(10}$</span>
 </p>
 
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 
@@ -416,24 +413,51 @@ $7 $
 <li>De base $b$ a decimal</li>
 <li>De base $b_1$ a $b_2$</li>
 </ul>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
+<!--------------------------------
 <section>
 <h2>De decimal a base $b$</h2>
 Convertir $61_{(10}$ a base $3$
 <table>
 <tr><td>Número</td><td>Número/3</td><td>Resto</td></tr>
-<tr><td class="fragment">61</td><td class="fragment">20</td><td class="fragment post_it">1</td></tr>
+<tr><td class="fragment">61</td><td class="fragment">20</td><td class="fragment postit">1</td></tr>
 
-<tr><td class="fragment">20</td><td class="fragment">6</td><td class="fragment post_it">2</td></tr>
-<tr><td class="fragment">6</td><td class="fragment post_it">2</td><td class="fragment post_it">0</td></tr>
+<tr><td class="fragment">20</td><td class="fragment">6</td><td class="fragment postit">2</td></tr>
+<tr><td class="fragment">6</td><td class="fragment postit">2</td><td class="fragment postit">0</td></tr>
 <tr></tr>
 </table>
 <p>
 <span class="fragment">$61_{(10} = 2 \times 3^3 + 0 \times 3^2 + 2 \times 3 + 1$ </span>
 </p>
 <span class="fragment">$61_{(10} = 2021_{(3}$ </span>
+<aside data-markdown class="notes">
+</aside>
 </section>
+-------------------------------->
+<section>
+<h2>Decimal a base $b$</h2>
+Convertir $61_{(10}$ a base $3$
+<p></p>
+<table style="width: 50%; font-size: 38px; border:none; border-bottom:none; border-collapse:separate;">
+<tr><td style="border-bottom:none;">61</td><td style="border-left: 2px solid #000; border-bottom: 2px solid #000">3</td><td colspan="2" style="border-bottom:none;"></td></tr>
+
+<tr><td class="fragment" style="border-bottom:none; color:#33f; " >1</td><td class="fragment" style="border-bottom:none;" >20</td><td class="fragment" style="border-bottom:2px solid #000; border-left:2px solid #000;">3</td><td style="border-bottom:none;"></td></tr>
+
+<tr ><td style="border-bottom:none;" ></td><td class="fragment" style="border-bottom:none;color:#33f; " >2</td><td class="fragment" style="border-bottom:none;">6</td><td class="fragment" style="border-bottom:2px solid #000; border-left:2px solid #000;">3</td></tr>
+
+<tr><td></td><td></td><td class="fragment" style="color:#33f;" >0</td><td class="fragment" style="color:#33f;" >2</td></tr>
+</table>
+
+<p></p><p></p>
+<span class="fragment">$61_{(10} = 2021_{(3}$ </span>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
 
 <section>
 <h2>De base $b$ a decimal</h2>
@@ -442,24 +466,69 @@ Convertir $61_{(10}$ a base $3$
 </p>
 <span class="fragment">Aplicamos la <a href="#/potencias" target="_blank">Expresión general</a></span>
 
-<p>
-<span class="fragment">$2 \times 3^3 + 0 \times 3^2 + 2 \times 3 + 1  =  61_{(10}$ </span>
-</p>
+<p> <span class="fragment">$2021_{(3} = 2 \times 3^3 + 0 \times 3^2 + 2 \times 3^1 + 1 \times 3^0$ </span> </p>
+<p> <span class="fragment">$= 2 \times 3^3 + 0 \times 3^2 + 2 \times 3 + 1 \times 1 =  $ </span> </p>
+<p> <span class="fragment">$= 2 \times 27 + 0 \times 9 + 2 \times 3 + 1 \times 1 =  $ </span> </p>
+<p> <span class="fragment">$= 54 + 0 + 6 + 1  =  61_{(10}$ </span> </p>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 <section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
 <h2>¿Más preguntas?</h2>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
+<section data-transition="convex-in convex-out" data-coursemod-shown="false">
+<h2>Humor para nerds</h2>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<div class="snapsvg stretch" width="100%" height="100%">
+	<svg id="slideshow" viewBox="0 0 400 260" width="100%" height="100%"></svg>
+	<!-- {
+		"set"   : ["img/finger-1.png", "img/finger-2.png"], 
+		"initialize": "function(container, options) { 
+			var svg = Snap('#slideshow');
+			var img;
+			var d1 = 500;
+			var imgset = options.set;
+			var setcount = imgset.length;
+			var round = 0;
+
+			var showimg = function(n) { 
+				var src = imgset[n];
+				var img = svg.image(src,0,0,400,260).attr({opacity: '0.0'});
+				img.animate({opacity: '1.0'},d1);
+			}; 
+			var nextimg = function() { round=(round+1)%setcount; showimg(round); };
+			var previmg = function() { round=(round-1)%setcount; showimg(round); };
+
+			Reveal.addEventListener('fragmentshown',
+				function(event){ eval(event.fragment.getAttribute('data-fragmentshown'))(event.fragment); });
+			Reveal.addEventListener('fragmenthidden',
+				function(event){ eval(event.fragment.getAttribute('data-fragmenthidden'))(event.fragment); });
+			showimg(0);
+		}"
+	} -->
+</div>
+</section>
+
+
+<!-------
 <section data-transition="slide-in fade-out" data-coursemod-shown="false">
 <h2>Humor para nerds</h2>
 <img class="plain stretch" src="img/finger-1.png" >
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 <section data-transition="slide-out fade-in" data-coursemod-shown="false">
 <h2>Humor para nerds</h2>
 <img class="plain stretch" src="img/finger-2.png">
+<aside data-markdown class="notes">
+</aside>
 </section>
+--->
 
 <!-----
 <section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
@@ -469,6 +538,8 @@ Convertir $61_{(10}$ a base $3$
 <li class="fragment">¿Cómo sería un sistema posicional en base 6 con ambas manos? La derecha contando las unidades y la izquierda las "seisenas"...</li>
 <li class="fragment">¿Hasta cuánto podríamos contar con este sistema?</li>
 </ol>
+<aside data-markdown class="notes">
+</aside>
 </section>
 --->
 
@@ -484,6 +555,8 @@ Esa base, ¿puede ser...
 <li class="fragment">...10?</li>
 <li class="fragment">...16?</li>
 </ul>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 
@@ -500,27 +573,35 @@ Esa base, ¿puede ser...
 		<li>Binario &#11012 octal (base 8)</li>
 	</ul>
 </ul>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 <section data-transition="slide-in fade-out" data-transition-speed="slow">
 <h2>Equivalencias</h2>
 <img class="stretch" src="img/equivalencias.png">
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 <section data-transition="fade-in fade-out" data-transition-speed="slow">
 <h2>Equivalencias</h2>
 <img class="stretch" src="img/equivalencias-octal.png">
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 <section data-transition="fade-in slide-out" data-transition-speed="slow">
 <h2>Equivalencias</h2>
 <img class="stretch" src="img/equivalencias-hexa.png">
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 <section>
 <h2>Binario a hexadecimal</h2>
 <ul>
-<li class="post_it">Cada cuatro dígitos binarios representan un dígito hexadecimal</li>
+<li class="postit">Cada cuatro dígitos binarios representan un dígito hexadecimal</li>
 <ul>
 <li>Agrupo los dígitos binarios de a cuatro y reemplazo cada grupo por el dígito hexadecimal equivalente:</li>
 <ul>
@@ -534,11 +615,13 @@ $100010_{(2} = 00100010_{(2} = 22_{(16}$
 <li>Hexadecimal a binario: procedimiento inverso</li>
 </ul>
 </section>
+<aside data-markdown class="notes">
+</aside>
 
 <section>
 <h2>Binario a octal</h2>
 <ul>
-<li class="post_it">Cada <b>tres</b> dígitos binarios representan un dígito octal</li>
+<li class="postit">Cada <b>tres</b> dígitos binarios representan un dígito octal</li>
 <ul>
 <li>Agrupo los dígitos binarios de a tres y reemplazo cada grupo por el dígito octal equivalente:</li>
 <ul>
@@ -552,6 +635,8 @@ $1100010_{(2} = 001100010_{(2} = 142_{(8}$
 <li>Octal a binario: procedimiento inverso</li>
 </ul>
 </section>
+<aside data-markdown class="notes">
+</aside>
 
 
 <section data-markdown>
@@ -736,7 +821,7 @@ $1100010_{(2} = 001100010_{(2} = 142_{(8}$
 		math: {
 			mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
 			//	mathjax: '../MathJax-master/MathJax.js',
-			config: 'TeX-AMS_HTML-full'
+			config: 'TeX-AMS_HTML-full' 
 		},
 
 

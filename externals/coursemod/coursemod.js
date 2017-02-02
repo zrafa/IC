@@ -61,7 +61,7 @@
     }
 
     function updateNotes(currentSlide) {
-        var notes = currentSlide.querySelector('.coursemod');
+        var notes = currentSlide.querySelector('.notes');
         if (notes !== null) {
 		    holders.courseView.innerHTML = notes.innerHTML;
         } else if(currentSlide.hasAttribute('data-coursemod')){

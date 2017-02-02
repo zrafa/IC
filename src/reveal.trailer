@@ -154,7 +154,7 @@
 		math: {
 			mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
 			//	mathjax: '../MathJax-master/MathJax.js',
-			config: 'TeX-AMS_HTML-full'
+			config: 'TeX-AMS_HTML-full' 
 		},
 
 
