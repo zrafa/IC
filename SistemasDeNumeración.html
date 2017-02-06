@@ -69,6 +69,22 @@ En este primer tema de la unidad veremos las propiedades de los sistemas de nume
 				alignmentBaseline: 'middle'};
 			var format = 'img/manos/mickey/{h}h{x}.svg';
 
+			function debounce(func, wait, immediate) {
+			  var timeout;
+			  return function() {
+			    var context = this,
+			      args = arguments;
+			    var later = function() {
+			      timeout = null;
+			      if (!immediate) func.apply(context, args);
+			    };
+			    var callNow = immediate && !timeout;
+			    clearTimeout(timeout);
+			    timeout = setTimeout(later, wait);
+			    if (callNow) func.apply(context, args);
+			  };
+};
+
 			var WIDGET; 
 			var widget = function(n, liminf, limsup, callback) {
 				this.n = n;
@@ -76,14 +92,17 @@ En este primer tema de la unidad veremos las propiedades de los sistemas de nume
 				this.text = svg.text(25,5,n.toString()).attr(txtattr);
 				this.up = svg.polyline(40,0, 40,10, 49,5);
 				this.set = function(n) { 
+					if(this.handled) return;
+					this.handled = true;
 					callback(n); 
 					this.svg[1].node.innerHTML = n; 
+					this.handled = false;
 				}; 
 				this.value = function() { return this.svg[1].node.innerHTML };
-				this.downOnClick = function() { this.attr({fill:'#aaf'}); if(1 * WIDGET.value() > liminf) WIDGET.set(1 * WIDGET.value() - 1); this.animate({fill:'#000'},300);  };
-				this.upOnClick   = function() { this.attr({fill:'#aaf'}); if(1 * WIDGET.value() < limsup) WIDGET.set(1 * WIDGET.value() + 1); this.animate({fill:'#000'},300);  };
-				this.down.click(this.downOnClick);
-				this.up.click(this.upOnClick);
+				this.downOnClick = function() { this.attr({fill:'#aaf'}); if(1 * WIDGET.value() > liminf) WIDGET.set(1 * WIDGET.value() - 1); this.animate({fill:'#000'},100); };
+				this.upOnClick   = function() { this.attr({fill:'#aaf'}); if(1 * WIDGET.value() < limsup) WIDGET.set(1 * WIDGET.value() + 1); this.animate({fill:'#000'},100); };
+				this.down.click(debounce(this.downOnClick, 10, false));
+				this.up.click(debounce(this.upOnClick, 10, false));
 				this.svg = svg.g(this.down, this.text, this.up);
 			};
 
@@ -99,7 +118,7 @@ En este primer tema de la unidad veremos las propiedades de los sistemas de nume
 					var src = Snap.format(format,{ h: ((i % 2 === 1)? 'r' : 'l'), x: conv[i]});
 					img[i] = svg.image(src,70 * i,0,90,90)
 						.attr({opacity: '0.0'})
-						.animate({opacity: '1.0'},100);
+						.animate({opacity: '1.0'},50);
 					dig[i] = svg.text(70 * i + 45, 100, conv[i].toString()).attr(txtattr);
 					n = Math.floor(n / 6);
 					i--;
@@ -135,7 +154,8 @@ su cantidad de dedos**. Esto se abrevia diciendo que se trata de un **sistema de
 posicional**. Por otra parte, al ser posicional, podemos representar números relativamente
 grandes con pocos dígitos. En este sistema, disponemos únicamente de **6 dígitos (0, 1, 2,
 3, 4, 5)** porque ésos son los que podemos representar con cada mano, es decir, **en cada
-posición**.
+posición**. Pero los números representables solamente dependen de cuántas manos (o, mejor 
+dicho, de cuántas **posiciones**) podamos utilizar.
 
 Dado un número no negativo que se pueda representar con dos manos, podemos saber qué dedos levantar 
 en cada mano haciendo una sencilla cuenta de división entera (sin decimales): dividimos el número por 6 
@@ -144,7 +164,7 @@ y tomamos el cociente y el resto.  **El cociente es el número de la izquierda, 
 Tomemos por ejemplo el número 15. Al dividir 15 por 6, el cociente es 2 y el resto es 3. En este sistema, 
 escribimos el 15 como **dos dedos en la izquierda, y tres dedos en la derecha**, lo que podemos abreviar como **2,3**
 o directamente **23** (que se pronuncia **dos tres** porque **no quiere decir veintitrés**, sino 
-**quince**, pero escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
+**quince**, sólo que escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
 de sumar **$2 \times 6 + 3$** obtenemos, efectivamente, 15. 
 
 - ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
@@ -503,10 +523,14 @@ Convertir $61_{(10}$ a base $3$
 			var nextimg = function() { round=(round+1)%setcount; showimg(round); };
 			var previmg = function() { round=(round-1)%setcount; showimg(round); };
 
-			Reveal.addEventListener('fragmentshown',
-				function(event){ eval(event.fragment.getAttribute('data-fragmentshown'))(event.fragment); });
-			Reveal.addEventListener('fragmenthidden',
-				function(event){ eval(event.fragment.getAttribute('data-fragmenthidden'))(event.fragment); });
+
+			Reveal.addEventListener('fragmentshown', function(event){ 
+				var hndlr = event.fragment.getAttribute('data-fragmentshown'); 
+				eval(hndlr)(event.fragment); });
+			Reveal.addEventListener('fragmenthidden', function(event){ 
+				var hndlr = event.fragment.getAttribute('data-fragmenthidden'); 
+				eval(hndlr)(event.fragment); });
+
 			showimg(0);
 		}"
 	} -->
@@ -515,6 +539,10 @@ Convertir $61_{(10}$ a base $3$
 
 
 <!-------
+			//Reveal.addEventListener('fragmentshown',
+			//	function(event){ eval(event.fragment.getAttribute('data-fragmentshown'))(event.fragment); });
+			//Reveal.addEventListener('fragmenthidden',
+			//	function(event){ eval(event.fragment.getAttribute('data-fragmenthidden'))(event.fragment); });
 <section data-transition="slide-in fade-out" data-coursemod-shown="false">
 <h2>Humor para nerds</h2>
 <img class="plain stretch" src="img/finger-1.png" >

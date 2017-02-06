@@ -27,7 +27,8 @@ su cantidad de dedos**. Esto se abrevia diciendo que se trata de un **sistema de
 posicional**. Por otra parte, al ser posicional, podemos representar números relativamente
 grandes con pocos dígitos. En este sistema, disponemos únicamente de **6 dígitos (0, 1, 2,
 3, 4, 5)** porque ésos son los que podemos representar con cada mano, es decir, **en cada
-posición**.
+posición**. Pero los números representables solamente dependen de cuántas manos (o, mejor 
+dicho, de cuántas **posiciones**) podamos utilizar.
 
 Dado un número no negativo que se pueda representar con dos manos, podemos saber qué dedos levantar 
 en cada mano haciendo una sencilla cuenta de división entera (sin decimales): dividimos el número por 6 
@@ -36,7 +37,7 @@ y tomamos el cociente y el resto.  **El cociente es el número de la izquierda, 
 Tomemos por ejemplo el número 15. Al dividir 15 por 6, el cociente es 2 y el resto es 3. En este sistema, 
 escribimos el 15 como **dos dedos en la izquierda, y tres dedos en la derecha**, lo que podemos abreviar como **2,3**
 o directamente **23** (que se pronuncia **dos tres** porque **no quiere decir veintitrés**, sino 
-**quince**, pero escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
+**quince**, sólo que escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
 de sumar **$2 \times 6 + 3$** obtenemos, efectivamente, 15. 
 
 - ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
