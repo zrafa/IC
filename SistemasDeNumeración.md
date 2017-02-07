@@ -187,3 +187,5 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 
 
 ## Y más preguntas
+
+## Y hasta un jueguito
