@@ -153,8 +153,7 @@ var Tableau = function(height) {
 	score.transform('S5');
 	var endgame = function() {
 		clearInterval(CONFIG.timer);
-		svg.rect(10, 10, 80, 50, 3, 3).attr(waitAttrs);
-		svg.text(50, 35, 'GAME OVER').attr(textAttrs);
+		svg.image('img/gameover.png',10,10,80,50);
 		chg.blur();
 		setTimeout(Bingame, 3000);
 	};
