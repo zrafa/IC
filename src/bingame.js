@@ -109,9 +109,7 @@ var d2bChallenge = function(id, value) {
 	this.notify = function(bitsValue) {
 		if(value === bitsValue) {
 			owner.svg.blur();
-			setTimeout(function() {
-				owner.svg.remove();
-			}, 1000);
+			setTimeout(function() { owner.svg.remove(); }, 1000);
 			TABLEAU.removeChallenge(owner.id);
 		}
 	}
@@ -143,22 +141,22 @@ var CONFIG = {
 };
 
 var Tableau = function(height) {
+	var background = svg.rect(0, 0, 100, 70, 1, 1).attr({ fill: '#bbf' });
+	var score = svg.text(50, 35, '0').attr(textAttrs);
 	var t = [height];
 	var chg = svg.g();
 	for(var i = 0; i < height; i++)
 		t[i] = 0;
 	var filled = 0;
 	var removing = false;
-	var score = svg.text(50, 35, '0').attr(textAttrs);
-	score.attr({
-		opacity: '0.1'
-	});
+	score.attr({ opacity: '0.1' });
 	score.transform('S5');
 	var endgame = function() {
 		clearInterval(CONFIG.timer);
 		svg.rect(10, 10, 80, 50, 3, 3).attr(waitAttrs);
 		svg.text(50, 35, 'GAME OVER').attr(textAttrs);
 		chg.blur();
+		setTimeout(Bingame, 3000);
 	};
 	var addChallenge = function() {
 		while(removing);
@@ -203,8 +201,12 @@ var Tableau = function(height) {
 }
 
 var Bingame = function() {
-	svg.rect(0, 0, 100, 70, 1, 1).attr({
-		fill: '#bbf'
-	});
-	TABLEAU = new Tableau(5);
+	TABLEAU = 0;
+	CONFIG.removes = 0;
+	var again =  svg.g(
+		svg.circle(50, 35, 30), 
+		svg.polyline(35,10, 35,60, 77,35).attr({fill:'#fff'})
+	);
+	again.attr({opacity: '0.5'});
+	again.click(function(){TABLEAU = new Tableau(5)});
 };
