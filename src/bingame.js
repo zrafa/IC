@@ -203,9 +203,9 @@ var Bingame = function() {
 	TABLEAU = 0;
 	CONFIG.removes = 0;
 	var again =  svg.g(
-		svg.circle(50, 35, 30), 
+		svg.circle(50, 35, 30).attr({fill:'#22f'}), 
 		svg.polyline(35,10, 35,60, 77,35).attr({fill:'#fff'})
 	);
-	again.attr({opacity: '0.5'});
+	again.attr({opacity: '0.7'});
 	again.click(function(){TABLEAU = new Tableau(5)});
 };
