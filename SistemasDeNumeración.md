@@ -13,10 +13,8 @@ del tradicional, que resulta ser muy interesante.
 - Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
 de la izquierda**. Los dedos de la mano derecha **vuelven a 0**, y seguimos contando
 con la derecha. 
-- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda,
-y la derecha vuelve a 0.  
-- Cada dedo en alto de la mano izquierda significa que **se agotó la secuencia de la mano 
-derecha una vez**. 
+- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda, y la derecha vuelve a 0.  
+- Cada dedo en alto de la mano izquierda significa que **se agotó la secuencia de la mano derecha una vez**.
 
 Notemos que este método tiene mayor capacidad que el tradicional, ya que podemos contar hasta
 diez y todavía nos queda mucho por contar con los dedos de ambas manos. 
@@ -81,8 +79,9 @@ importante o mejor que las otras (salvo, claro, que ya estamos acostumbrados a e
 otros sistemas de numeración y escriben los números de otra manera. Esto muestra que hay una **diferencia entre
 número y numeral**, diferencia que es algo difícil de ver debido a la costumbre de identificar a los números con su
 representación en decimal. 
-- El **numeral** es lo que escribimos ($15$, **$15_{(10}$** o **$23_{(6}$**). 
-- El **número** es la cantidad de la cual estamos hablando (la misma en los tres casos).
+
+* El **numeral** es lo que escribimos ($15$, **$15_{(10}$** o **$23_{(6}$**). 
+* El **número** es la cantidad de la cual estamos hablando (la misma en los tres casos).
 
 
 ## Sistema binario
@@ -97,6 +96,7 @@ Las computadoras digitales, tal como las conocemos hoy, almacenan todos sus dato
 Otro sistema de numeración importante es el hexadecimal o de base 16. En este sistema tenemos **más dígitos** que en el decimal, por lo cual tenemos que recurrir a "dígitos" nuevos, tomados del alfabeto. Así, A representa el 10, B el 11, etc.
 
 El sistema hexadecimal nos resultará útil porque con él podremos expresar fácilmente números que llevarían muchos dígitos en sistema binario. 
+
 - La conversión entre binarios y hexadecimales es sumamente directa.
 - Al ser un sistema con más dígitos que el binario, la expresión de cualquier número será más corta.
 
@@ -137,6 +137,7 @@ Veremos algunos casos interesantes de conversiones de base. Serán especialmente
 Conversión de base 10 a otras bases## Conversión de base 10 a otras bases
 
 El procedimiento para convertir un número escrito en base 10 a cualquier otra base (llamémosla **base destino**) es siempre el mismo y se basa en la división entera (sin decimales): 
+
 - Dividir el número original por la base destino, anotando cociente y resto
 - Mientras se pueda seguir dividiendo:
    - Volver al paso anterior reemplazando el número original por el nuevo cociente
@@ -159,7 +160,7 @@ Conversión de otras bases a base 10## Conversión de otras bases a base 10
 
 La conversión en el sentido opuesto, de una base $b$ cualquiera a base 10, se realiza simplemente aplicando la Expresión General. Cada uno de los dígitos del número original (ahora en base $b$ arbitraria) es el coeficiente de alguna potencia de la base original. Esta potencia depende de la posición de dicho dígito. Una vez que escribimos todos los productos de los dígitos originales por las potencias de la base, hacemos la suma y nos queda el resultado: el número original convertido a base 10.
 
-Es de la mayor importancia cuidar de que las potencias de la base que intervienen en el cálculo estén **ordenadas y completas**. Es fácil si escribimos estas potencias a partir de la derecha, comenzando por la que tiene exponente 0, e ir escribiendo los términos de derecha a izquierda.
+Es de la mayor importancia cuidar de que las potencias de la base que intervienen en el cálculo estén **ordenadas y completas**. Es fácil si escribimos estas potencias a partir de la derecha, comenzando por la que tiene exponente 0, y vamos completando los términos de derecha a izquierda hasta agotar las posiciones del número original.
 
 
 ## ¿Más preguntas?
@@ -194,12 +195,14 @@ Para poder aplicar este truco se necesita la tabla de equivalencias entre los d�
 ## Equivalencias
 
 Notemos que:
+
 - El sistema octal tiene ocho dígitos **(0 ... 7)** y cada uno de ellos se puede representar con **tres dígitos binarios**.
 
 
 ## Equivalencias
 
 Notemos que:
+
 - El sistema hexadecimal tiene dieciséis dígitos **(0 ... F)** y cada uno de ellos se puede representar con **cuatro dígitos binarios**.
 
 
