@@ -412,6 +412,7 @@ $7 $
 <span class="fragment">$\times 10^{0}$</span>
 </p>
 
+<p class="fragment">Pero:</p>
 <p class="postit fragment">
 $2017_{(8} = 2 $
 <span class="fragment">$\times 8^{3} + $</span>
@@ -437,6 +438,7 @@ $7 $
 <li>De base $b_1$ a $b_2$</li>
 </ul>
 <aside data-markdown class="notes">
+Veremos algunos casos interesantes de conversiones de base. Serán especialmente importantes los casos donde el número de origen o de destino de la conversión esté en base 10, nuestro sistema habitual, pero también nos dedicaremos a algunas conversiones de base donde ninguna de ellas sea 10.
 </aside>
 </section>
 
@@ -458,7 +460,9 @@ Convertir $61_{(10}$ a base $3$
 <p></p><p></p>
 <span class="fragment">$61_{(10} = 2021_{(3}$ </span>
 <aside data-markdown class="notes">
-El procedimiento para convertir un número escrito en base 10 a cualquier otra base (llamémosla base destino) es siempre el mismo y se basa en la división entera (sin decimales): 
+## Conversión de base 10 a otras bases
+
+El procedimiento para convertir un número escrito en base 10 a cualquier otra base (llamémosla **base destino**) es siempre el mismo y se basa en la división entera (sin decimales): 
 - Dividir el número original por la base destino, anotando cociente y resto
 - Mientras se pueda seguir dividiendo:
    - Volver al paso anterior reemplazando el número original por el nuevo cociente
@@ -490,6 +494,8 @@ Finalmente, gracias a la Expresión General, escribimos los dígitos de nuestro 
 <p> <span class="fragment">$= 2 \times 27 + 0 \times 9 + 2 \times 3 + 1 \times 1 =  $ </span> </p>
 <p> <span class="fragment">$= 54 + 0 + 6 + 1  =  61_{(10}$ </span> </p>
 <aside data-markdown class="notes">
+## Conversión de otras bases a base 10
+
 La conversión en el sentido opuesto, de una base $b$ cualquiera a base 10, se realiza simplemente aplicando la Expresión General. Cada uno de los dígitos del número original (ahora en base $b$ arbitraria) es el coeficiente de alguna potencia de la base original. Esta potencia depende de la posición de dicho dígito. Una vez que escribimos todos los productos de los dígitos originales por las potencias de la base, hacemos la suma y nos queda el resultado: el número original convertido a base 10.
 
 Es de la mayor importancia cuidar de que las potencias que intervienen en el cálculo estén **ordenadas y completas**. Es fácil si escribimos estas potencias a partir de la derecha, comenzando por la que tiene exponente 0, e ir escribiendo los términos de derecha a izquierda.
@@ -539,39 +545,6 @@ Es de la mayor importancia cuidar de que las potencias que intervienen en el cá
 </section>
 
 
-<!-------
-			//Reveal.addEventListener('fragmentshown',
-			//	function(event){ eval(event.fragment.getAttribute('data-fragmentshown'))(event.fragment); });
-			//Reveal.addEventListener('fragmenthidden',
-			//	function(event){ eval(event.fragment.getAttribute('data-fragmenthidden'))(event.fragment); });
-<section data-transition="slide-in fade-out" data-coursemod-shown="false">
-<h2>Humor para nerds</h2>
-<img class="plain stretch" src="img/finger-1.png" >
-<aside data-markdown class="notes">
-</aside>
-</section>
-
-<section data-transition="slide-out fade-in" data-coursemod-shown="false">
-<h2>Humor para nerds</h2>
-<img class="plain stretch" src="img/finger-2.png">
-<aside data-markdown class="notes">
-</aside>
-</section>
---->
-
-<!-----
-<section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
-<h2>¡Más preguntas!</h2>
-<ol>
-<li class="fragment">Si contáramos en base 2 con los dedos (dedo estirado = 1, dedo recogido = 0), ¿hasta qué número podríamos contar con una mano? ¿Y con las dos?</li>
-<li class="fragment">¿Cómo sería un sistema posicional en base 6 con ambas manos? La derecha contando las unidades y la izquierda las "seisenas"...</li>
-<li class="fragment">¿Hasta cuánto podríamos contar con este sistema?</li>
-</ol>
-<aside data-markdown class="notes">
-</aside>
-</section>
---->
-
 <section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
 <h2>Y más preguntas</h2>
 <p>
@@ -590,7 +563,7 @@ Esa base, ¿puede ser...
 
 
 <section>
-<h2>Conversión de base $b_1$ a base $b_2$</h2>
+<h2>Conversión de $b_1$ a $b_2$</h2>
 <ul>
 	<li>Caso general</li>
 	<ul>
@@ -603,6 +576,16 @@ Esa base, ¿puede ser...
 	</ul>
 </ul>
 <aside data-markdown class="notes">
+## Conversión entre bases arbitrarias
+
+Hemos visto los casos de conversión entre base 10 y otras bases, en ambos sentidos. Ahora veamos los casos donde ninguna de las bases origen o destino son la base 10.
+
+La buena noticia es que, en general, **esto ya sabemos hacerlo**. Si tenemos dos bases $b1$ y $b2$ cualesquiera, ninguna de las cuales es 10, sabiendo hacer las conversiones anteriores podemos hacer la conversión de $b1$ a $b2$ sencillamente haciendo **dos conversiones pasando por la base 10**. Si queremos convertir de $b1$ a $b2$, convertimos primero **de $b1$ a base 10**, aplicando el procedimiento ya visto, y luego **de base 10 a $b2$**. Eso es todo.
+
+Pero en algunos casos especiales podemos aprovechar cierta relación existente entre las bases a convertir: por ejemplo, cuando son **2 y 16**, o **2 y 8**. La base 2 es la del sistema **binario**, y las bases 16 y 8 son las del sistema **hexadecimal** y del sistema **octal** respectivamente. 
+
+En estos casos, como 16 y 8 son potencias de 2 (la otra base), podemos aplicar un truco matemático para hacer la conversión en un solo paso y con muchísima facilidad. Por fortuna son estos casos especiales los que se presentan con mayor frecuencia en nuestra disciplina.
+
 </aside>
 </section>
 
@@ -610,6 +593,7 @@ Esa base, ¿puede ser...
 <h2>Equivalencias</h2>
 <img class="stretch" src="img/equivalencias.png">
 <aside data-markdown class="notes">
+Para poder aplicar este truco se necesita la tabla de equivalencias entre los dígitos de los diferentes sistemas. Si no logramos memorizarla, conviene al menos saber reproducirla, asegurándose de saber **contar** en las bases 2, 8 y 16 para reconstruir la tabla si es necesario. Pero con la práctica, se logra memorizarla fácilmente.
 </aside>
 </section>
 
@@ -617,6 +601,8 @@ Esa base, ¿puede ser...
 <h2>Equivalencias</h2>
 <img class="stretch" src="img/equivalencias-octal.png">
 <aside data-markdown class="notes">
+Notemos que:
+- El sistema octal tiene ocho dígitos **(0 ... 7)** y cada uno de ellos se puede representar con **tres dígitos binarios**.
 </aside>
 </section>
 
@@ -624,6 +610,8 @@ Esa base, ¿puede ser...
 <h2>Equivalencias</h2>
 <img class="stretch" src="img/equivalencias-hexa.png">
 <aside data-markdown class="notes">
+Notemos que:
+- El sistema hexadecimal tiene dieciséis dígitos **(0 ... F)** y cada uno de ellos se puede representar con **cuatro dígitos binarios**.
 </aside>
 </section>
 
@@ -641,11 +629,18 @@ $11100010_{(2} = E2_{(16}$
 $100010_{(2} = 00100010_{(2} = 22_{(16}$
 </ul>
 </ul>
-<li>Hexadecimal a binario: procedimiento inverso</li>
+<li class="fragment">Hexadecimal a binario: procedimiento inverso</li>
 </ul>
-</section>
 <aside data-markdown class="notes">
+## Conversión entre sistemas binario y hexadecimal
+
+El truco para convertir de base 2 a base 16 consiste simplemente en agrupar los dígitos binarios de a cuatro, y reemplazar cada grupo de cuatro dígitos por su equivalente en base 16 según la tabla anterior.
+
+Si hace falta completar un grupo de cuatro dígitos binarios, se completa con ceros a la izquierda.
+
+Si el problema es convertir, inversamente, de base 16 a base 2, de igual forma reemplazamos cada dígito hexadecimal por los cuatro dígitos binarios que lo representan.
 </aside>
+</section>
 
 <section>
 <h2>Binario a octal</h2>
@@ -663,9 +658,12 @@ $1100010_{(2} = 001100010_{(2} = 142_{(8}$
 </ul>
 <li>Octal a binario: procedimiento inverso</li>
 </ul>
-</section>
 <aside data-markdown class="notes">
+## Conversión entre sistemas binario y octal
+
+El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemplazar cada grupo de **tres** dígitos binarios (completando con ceros a la izquierda si hace falta) por el dígito octal equivalente. Lo mismo si la conversión es en el otro sentido.
 </aside>
+</section>
 
 
 <section data-markdown>

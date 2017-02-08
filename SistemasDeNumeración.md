@@ -129,11 +129,14 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 
 ## Conversión de base
 
+Veremos algunos casos interesantes de conversiones de base. Serán especialmente importantes los casos donde el número de origen o de destino de la conversión esté en base 10, nuestro sistema habitual, pero también nos dedicaremos a algunas conversiones de base donde ninguna de ellas sea 10.
 
 
 ## Decimal a base $b$
 
-El procedimiento para convertir un número escrito en base 10 a cualquier otra base (llamémosla base destino) es siempre el mismo y se basa en la división entera (sin decimales): 
+Conversión de base 10 a otras bases## Conversión de base 10 a otras bases
+
+El procedimiento para convertir un número escrito en base 10 a cualquier otra base (llamémosla **base destino**) es siempre el mismo y se basa en la división entera (sin decimales): 
 - Dividir el número original por la base destino, anotando cociente y resto
 - Mientras se pueda seguir dividiendo:
    - Volver al paso anterior reemplazando el número original por el nuevo cociente
@@ -152,6 +155,8 @@ Finalmente, gracias a la Expresión General, escribimos los dígitos de nuestro 
 
 ## De base $b$ a decimal
 
+Conversión de otras bases a base 10## Conversión de otras bases a base 10
+
 La conversión en el sentido opuesto, de una base $b$ cualquiera a base 10, se realiza simplemente aplicando la Expresión General. Cada uno de los dígitos del número original (ahora en base $b$ arbitraria) es el coeficiente de alguna potencia de la base original. Esta potencia depende de la posición de dicho dígito. Una vez que escribimos todos los productos de los dígitos originales por las potencias de la base, hacemos la suma y nos queda el resultado: el número original convertido a base 10.
 
 Es de la mayor importancia cuidar de que las potencias que intervienen en el cálculo estén **ordenadas y completas**. Es fácil si escribimos estas potencias a partir de la derecha, comenzando por la que tiene exponente 0, e ir escribiendo los términos de derecha a izquierda.
@@ -163,44 +168,57 @@ Es de la mayor importancia cuidar de que las potencias que intervienen en el cá
 
 ## Humor para nerds
 
-## Humor para nerds
-
-
-
-## Humor para nerds
-
-
-
-## ¡Más preguntas!
-
-
-
 ## Y más preguntas
 
 
 
-## Conversión de base $b_1$ a base $b_2$
+## Conversión de $b_1$ a $b_2$
+
+Conversión entre bases arbitrarias## Conversión entre bases arbitrarias
+
+Hemos visto los casos de conversión entre base 10 y otras bases, en ambos sentidos. Ahora veamos los casos donde ninguna de las bases origen o destino son la base 10.
+
+La buena noticia es que, en general, **esto ya sabemos hacerlo**. Si tenemos dos bases $b1$ y $b2$ cualesquiera, ninguna de las cuales es 10, sabiendo hacer las conversiones anteriores podemos hacer la conversión de $b1$ a $b2$ sencillamente haciendo **dos conversiones pasando por la base 10**. Si queremos convertir de $b1$ a $b2$, convertimos primero **de $b1$ a base 10**, aplicando el procedimiento ya visto, y luego **de base 10 a $b2$**. Eso es todo.
+
+Pero en algunos casos especiales podemos aprovechar cierta relación existente entre las bases a convertir: por ejemplo, cuando son **2 y 16**, o **2 y 8**. La base 2 es la del sistema **binario**, y las bases 16 y 8 son las del sistema **hexadecimal** y del sistema **octal** respectivamente. 
+
+En estos casos, como 16 y 8 son potencias de 2 (la otra base), podemos aplicar un truco matemático para hacer la conversión en un solo paso y con muchísima facilidad. Por fortuna son estos casos especiales los que se presentan con mayor frecuencia en nuestra disciplina.
 
 
 
 ## Equivalencias
 
+Para poder aplicar este truco se necesita la tabla de equivalencias entre los dígitos de los diferentes sistemas. Si no logramos memorizarla, conviene al menos saber reproducirla, asegurándose de saber **contar** en las bases 2, 8 y 16 para reconstruir la tabla si es necesario. Pero con la práctica, se logra memorizarla fácilmente.
 
 
 ## Equivalencias
 
+Notemos que:
+- El sistema octal tiene ocho dígitos **(0 ... 7)** y cada uno de ellos se puede representar con **tres dígitos binarios**.
 
 
 ## Equivalencias
 
+Notemos que:
+- El sistema hexadecimal tiene dieciséis dígitos **(0 ... F)** y cada uno de ellos se puede representar con **cuatro dígitos binarios**.
 
 
 ## Binario a hexadecimal
 
+Conversión entre sistemas binario y hexadecimal## Conversión entre sistemas binario y hexadecimal
+
+El truco para convertir de base 2 a base 16 consiste simplemente en agrupar los dígitos binarios de a cuatro, y reemplazar cada grupo de cuatro dígitos por su equivalente en base 16 según la tabla anterior.
+
+Si hace falta completar un grupo de cuatro dígitos binarios, se completa con ceros a la izquierda.
+
+Si el problema es convertir, inversamente, de base 16 a base 2, de igual forma reemplazamos cada dígito hexadecimal por los cuatro dígitos binarios que lo representan.
 
 
 ## Binario a octal
 
+Conversión entre sistemas binario y octal## Conversión entre sistemas binario y octal
+
+El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemplazar cada grupo de **tres** dígitos binarios (completando con ceros a la izquierda si hace falta) por el dígito octal equivalente. Lo mismo si la conversión es en el otro sentido.
 
 
 ## Y más preguntas
