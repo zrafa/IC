@@ -10,13 +10,13 @@ Todos conocemos el método tradicional de contar con los dedos. Como tenemos cin
 en cada mano, podemos contar hasta diez. Pero también podemos utilizar un método diferente 
 del tradicional, que resulta ser muy interesante. 
 
-Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
+- Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
 de la izquierda**. Los dedos de la mano derecha **vuelven a 0**, y seguimos contando
 con la derecha. 
-
-Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda,
-y la derecha vuelve a 0.  Cada dedo en alto de la mano izquierda significa que se agotó la secuencia de la mano 
-derecha una vez. 
+- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda,
+y la derecha vuelve a 0.  
+- Cada dedo en alto de la mano izquierda significa que **se agotó la secuencia de la mano 
+derecha una vez**. 
 
 Notemos que este método tiene mayor capacidad que el tradicional, ya que podemos contar hasta
 diez y todavía nos queda mucho por contar con los dedos de ambas manos. 
@@ -24,7 +24,9 @@ diez y todavía nos queda mucho por contar con los dedos de ambas manos.
 Notemos además que esta ventaja se debe a que el método asigna **valores diferentes** a ambas
 manos. La derecha vale la cantidad de dedos que muestre, pero la izquierda vale **seis por
 su cantidad de dedos**. Esto se abrevia diciendo que se trata de un **sistema de numeración
-posicional**. Por otra parte, al ser posicional, podemos representar números relativamente
+posicional**. 
+
+Al tratarse de un sistema posicional, podemos representar números relativamente
 grandes con pocos dígitos. En este sistema, disponemos únicamente de **6 dígitos (0, 1, 2,
 3, 4, 5)** porque ésos son los que podemos representar con cada mano, es decir, **en cada
 posición**. Pero los números representables solamente dependen de cuántas manos (o, mejor 
@@ -35,13 +37,14 @@ en cada mano haciendo una sencilla cuenta de división entera (sin decimales): d
 y tomamos el cociente y el resto.  **El cociente es el número de la izquierda, y el resto, el de la derecha**.
 
 Tomemos por ejemplo el número 15. Al dividir 15 por 6, el cociente es 2 y el resto es 3. En este sistema, 
-escribimos el 15 como **dos dedos en la izquierda, y tres dedos en la derecha**, lo que podemos abreviar como **2,3**
+escribimos el 15 como **dos dedos en la izquierda, y tres dedos en la derecha**, lo que podemos abreviar como **(2,3)**
 o directamente **23** (que se pronuncia **dos tres** porque **no quiere decir veintitrés**, sino 
 **quince**, sólo que escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
 de sumar **$2 \times 6 + 3$** obtenemos, efectivamente, 15. 
 
 - ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
 - Si agregamos una tercera mano, de un amigo, ¿hasta qué número llegamos? 
+- Y con cuatro manos, ¿hasta qué número llegamos? 
 - ¿Y cómo se representa el 36? ¿Y el 37?
 - Y, si el número no se puede representar con dos manos, ¿cómo es el procedimiento para saber qué
 dedos levantar?
@@ -128,16 +131,30 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 
 
 
-## De decimal a base $b$
-
-
-
 ## Decimal a base $b$
+
+El procedimiento para convertir un número escrito en base 10 a cualquier otra base (llamémosla base destino) es siempre el mismo y se basa en la división entera (sin decimales): 
+- Dividir el número original por la base destino, anotando cociente y resto
+- Mientras se pueda seguir dividiendo:
+   - Volver al paso anterior reemplazando el número original por el nuevo cociente
+
+Notemos que cada uno de los restos obtenidos es con toda seguridad **menor que la base destino**, ya que, en otro caso, podríamos haber seguido adelante con la división entera.
+
+Notemos también que el último cociente es también **menor que la base destino**, por el mismo motivo de antes (podríamos haber proseguido la división).
+
+Lo que acabamos de decir garantiza que tanto el último cociente, como todos los restos aparecidos en el proceso, **pueden ser dígitos de un sistema en la base destino** al ser todos menores que ella.
+
+Finalmente, gracias a la Expresión General, escribimos los dígitos de nuestro número convertido usando **el último cociente y todos los restos en orden inverso a como aparecieron**. Ésta es la expresión de nuestro número original en la base destino.
+
+- ¿Cómo podemos usar la Expresión General para explicar por qué este procedimiento es correcto, al menos para el caso de convertir **61 a base 3**?
 
 
 
 ## De base $b$ a decimal
 
+La conversión en el sentido opuesto, de una base $b$ cualquiera a base 10, se realiza simplemente aplicando la Expresión General. Cada uno de los dígitos del número original (ahora en base $b$ arbitraria) es el coeficiente de alguna potencia de la base original. Esta potencia depende de la posición de dicho dígito. Una vez que escribimos todos los productos de los dígitos originales por las potencias de la base, hacemos la suma y nos queda el resultado: el número original convertido a base 10.
+
+Es de la mayor importancia cuidar de que las potencias que intervienen en el cálculo estén **ordenadas y completas**. Es fácil si escribimos estas potencias a partir de la derecha, comenzando por la que tiene exponente 0, e ir escribiendo los términos de derecha a izquierda.
 
 
 ## ¿Más preguntas?

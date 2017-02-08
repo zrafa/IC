@@ -101,13 +101,13 @@ Todos conocemos el método tradicional de contar con los dedos. Como tenemos cin
 en cada mano, podemos contar hasta diez. Pero también podemos utilizar un método diferente 
 del tradicional, que resulta ser muy interesante. 
 
-Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
+- Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
 de la izquierda**. Los dedos de la mano derecha **vuelven a 0**, y seguimos contando
 con la derecha. 
-
-Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda,
-y la derecha vuelve a 0.  Cada dedo en alto de la mano izquierda significa que se agotó la secuencia de la mano 
-derecha una vez. 
+- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda,
+y la derecha vuelve a 0.  
+- Cada dedo en alto de la mano izquierda significa que **se agotó la secuencia de la mano 
+derecha una vez**. 
 
 Notemos que este método tiene mayor capacidad que el tradicional, ya que podemos contar hasta
 diez y todavía nos queda mucho por contar con los dedos de ambas manos. 
@@ -115,7 +115,9 @@ diez y todavía nos queda mucho por contar con los dedos de ambas manos.
 Notemos además que esta ventaja se debe a que el método asigna **valores diferentes** a ambas
 manos. La derecha vale la cantidad de dedos que muestre, pero la izquierda vale **seis por
 su cantidad de dedos**. Esto se abrevia diciendo que se trata de un **sistema de numeración
-posicional**. Por otra parte, al ser posicional, podemos representar números relativamente
+posicional**. 
+
+Al tratarse de un sistema posicional, podemos representar números relativamente
 grandes con pocos dígitos. En este sistema, disponemos únicamente de **6 dígitos (0, 1, 2,
 3, 4, 5)** porque ésos son los que podemos representar con cada mano, es decir, **en cada
 posición**. Pero los números representables solamente dependen de cuántas manos (o, mejor 
@@ -126,13 +128,14 @@ en cada mano haciendo una sencilla cuenta de división entera (sin decimales): d
 y tomamos el cociente y el resto.  **El cociente es el número de la izquierda, y el resto, el de la derecha**.
 
 Tomemos por ejemplo el número 15. Al dividir 15 por 6, el cociente es 2 y el resto es 3. En este sistema, 
-escribimos el 15 como **dos dedos en la izquierda, y tres dedos en la derecha**, lo que podemos abreviar como **2,3**
+escribimos el 15 como **dos dedos en la izquierda, y tres dedos en la derecha**, lo que podemos abreviar como **(2,3)**
 o directamente **23** (que se pronuncia **dos tres** porque **no quiere decir veintitrés**, sino 
 **quince**, sólo que escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
 de sumar **$2 \times 6 + 3$** obtenemos, efectivamente, 15. 
 
 - ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
 - Si agregamos una tercera mano, de un amigo, ¿hasta qué número llegamos? 
+- Y con cuatro manos, ¿hasta qué número llegamos? 
 - ¿Y cómo se representa el 36? ¿Y el 37?
 - Y, si el número no se puede representar con dos manos, ¿cómo es el procedimiento para saber qué
 dedos levantar?
@@ -401,43 +404,39 @@ $7 $
 </aside>
 </section>
 
-<!--------------------------------
-<section>
-<h2>De decimal a base $b$</h2>
-Convertir $61_{(10}$ a base $3$
-<table>
-<tr><td>Número</td><td>Número/3</td><td>Resto</td></tr>
-<tr><td class="fragment">61</td><td class="fragment">20</td><td class="fragment postit">1</td></tr>
-
-<tr><td class="fragment">20</td><td class="fragment">6</td><td class="fragment postit">2</td></tr>
-<tr><td class="fragment">6</td><td class="fragment postit">2</td><td class="fragment postit">0</td></tr>
-<tr></tr>
-</table>
-<p>
-<span class="fragment">$61_{(10} = 2 \times 3^3 + 0 \times 3^2 + 2 \times 3 + 1$ </span>
-</p>
-<span class="fragment">$61_{(10} = 2021_{(3}$ </span>
-<aside data-markdown class="notes">
-</aside>
-</section>
--------------------------------->
 <section>
 <h2>Decimal a base $b$</h2>
 Convertir $61_{(10}$ a base $3$
 <p></p>
 <table style="width: 50%; font-size: 38px; border:none; border-bottom:none; border-collapse:separate;">
-<tr><td style="border-bottom:none;">61</td><td style="border-left: 2px solid #000; border-bottom: 2px solid #000">3</td><td colspan="2" style="border-bottom:none;"></td></tr>
+<tr> 
+<td style="border-bottom:none;" class="fragment" data-fragment-index="0">61</td><td style="border-left: 2px solid #000; border-bottom: 2px solid #000" class="fragment" data-fragment-index="0">3</td><td colspan="2" style="border-bottom:none;"></td></tr>
 
-<tr><td class="fragment" style="border-bottom:none; color:#33f; " >1</td><td class="fragment" style="border-bottom:none;" >20</td><td class="fragment" style="border-bottom:2px solid #000; border-left:2px solid #000;">3</td><td style="border-bottom:none;"></td></tr>
+<tr><td class="fragment" style="border-bottom:none; color:#33f; "  data-fragment-index="2">1</td><td class="fragment" style="border-bottom:none;"  data-fragment-index="1">20</td><td class="fragment" style="border-bottom:2px solid #000; border-left:2px solid #000;" data-fragment-index="3">3</td><td style="border-bottom:none;"></td></tr>
 
-<tr ><td style="border-bottom:none;" ></td><td class="fragment" style="border-bottom:none;color:#33f; " >2</td><td class="fragment" style="border-bottom:none;">6</td><td class="fragment" style="border-bottom:2px solid #000; border-left:2px solid #000;">3</td></tr>
+<tr ><td style="border-bottom:none;" ></td><td class="fragment" style="border-bottom:none;color:#33f; "  data-fragment-index="5">2</td><td class="fragment" style="border-bottom:none;" data-fragment-index="4">6</td><td class="fragment" style="border-bottom:2px solid #000; border-left:2px solid #000;" data-fragment-index="6">3</td></tr>
 
-<tr><td></td><td></td><td class="fragment" style="color:#33f;" >0</td><td class="fragment" style="color:#33f;" >2</td></tr>
+<tr><td></td><td></td><td class="fragment" style="color:#33f;"  data-fragment-index="8">0</td><td class="fragment" style="color:#33f;"  data-fragment-index="7">2</td></tr>
 </table>
 
 <p></p><p></p>
 <span class="fragment">$61_{(10} = 2021_{(3}$ </span>
 <aside data-markdown class="notes">
+El procedimiento para convertir un número escrito en base 10 a cualquier otra base (llamémosla base destino) es siempre el mismo y se basa en la división entera (sin decimales): 
+- Dividir el número original por la base destino, anotando cociente y resto
+- Mientras se pueda seguir dividiendo:
+   - Volver al paso anterior reemplazando el número original por el nuevo cociente
+
+Notemos que cada uno de los restos obtenidos es con toda seguridad **menor que la base destino**, ya que, en otro caso, podríamos haber seguido adelante con la división entera.
+
+Notemos también que el último cociente es también **menor que la base destino**, por el mismo motivo de antes (podríamos haber proseguido la división).
+
+Lo que acabamos de decir garantiza que tanto el último cociente, como todos los restos aparecidos en el proceso, **pueden ser dígitos de un sistema en la base destino** al ser todos menores que ella.
+
+Finalmente, gracias a la Expresión General, escribimos los dígitos de nuestro número convertido usando **el último cociente y todos los restos en orden inverso a como aparecieron**. Ésta es la expresión de nuestro número original en la base destino.
+
+- ¿Cómo podemos usar la Expresión General para explicar por qué este procedimiento es correcto, al menos para el caso de convertir **61 a base 3**?
+
 </aside>
 </section>
 
@@ -455,6 +454,9 @@ Convertir $61_{(10}$ a base $3$
 <p> <span class="fragment">$= 2 \times 27 + 0 \times 9 + 2 \times 3 + 1 \times 1 =  $ </span> </p>
 <p> <span class="fragment">$= 54 + 0 + 6 + 1  =  61_{(10}$ </span> </p>
 <aside data-markdown class="notes">
+La conversión en el sentido opuesto, de una base $b$ cualquiera a base 10, se realiza simplemente aplicando la Expresión General. Cada uno de los dígitos del número original (ahora en base $b$ arbitraria) es el coeficiente de alguna potencia de la base original. Esta potencia depende de la posición de dicho dígito. Una vez que escribimos todos los productos de los dígitos originales por las potencias de la base, hacemos la suma y nos queda el resultado: el número original convertido a base 10.
+
+Es de la mayor importancia cuidar de que las potencias que intervienen en el cálculo estén **ordenadas y completas**. Es fácil si escribimos estas potencias a partir de la derecha, comenzando por la que tiene exponente 0, e ir escribiendo los términos de derecha a izquierda.
 </aside>
 </section>
 
