@@ -366,29 +366,10 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 </aside>
 </section>
 
-<section id="potencias">
+
+
+<section id="potencias2">
 <h2>Expresión general</h2>
-Todo entero no negativo $n$ se escribe en base $b$ como
-<p>
-$n = \sum_{i=0}^{k}{x_i \times b^i} = $
-</p>
-<p class="fragment">
-$= x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b^0$
-</p>
-<p class="fragment">
-Con $0 \le x_i \lt b$
-</p>
-
-<aside data-markdown class="notes">
-</aside>
-</section>
-
-
-<section id="potencias">
-<h2>Expresión general</h2>
-<p>
-$n = x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b^0$
-</p>
 <p class="postit fragment">
 $2017_{(10} = 2 $
 <span class="fragment">$\times 1000 + $</span>
@@ -424,11 +405,54 @@ $7 $
 <span class="fragment">$\times 8^{0}$</span>
 <span class="fragment">$ = 1039_{(10}$</span>
 </p>
+<p class="fragment">O sea que:
+$n = x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b^0$
+</p>
 
 <aside data-markdown class="notes">
+Como hemos visto intuitivamente en el sistema de contar con los dedos, y como hemos confirmado repasando los sistemas decimal, binario y hexadecimal, los sistemas posicionales tienen una cosa muy importante en común: las cifras de un **numeral** escrito en cualquier base no son otra cosa que los **factores por los cuales hay que multiplicar las sucesivas potencias de la base** para saber a qué **número** nos estamos refiriendo.
+
+Por ejemplo, el numeral **2017** escrito en base 10 no es otra cosa que la suma de:
+
+$2 \times 1000 + 0 \times 100 + 1 \times 10 + 7 \times 1$. 
+
+Los dígitos 2, 0, 1 y 7 multiplican, respectivamente, a $10^3$, $10^2$, $10^1$ y $10^0$, que son potencias de la base 10. Este **numeral** designa al **número** 2017 porque esta cuenta, efectivamente, da **2017**.
+
+Sin embargo, si el número está expresado en otra base, la cuenta debe hacerse con potencias de esa otra base. Si hablamos de $2017_{(8}$, entonces las cifras 2, 0, 1 y 7 multiplican a $8^3$, $8^2$, $8^1$ y $8^0$. Este **numeral** designa al **número** 1039 porque esta cuenta, efectivamente, da **1039**.
+
 </aside>
 </section>
 
+<section id="potencias">
+<h2>Expresión general</h2>
+Todo entero no negativo $n$ se escribe en base $b$ como
+<p>
+$n = \sum_{i=0}^{k}{x_i \times b^i} = $
+</p>
+<p class="fragment">
+$= x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b^0$
+</p>
+<p class="fragment">
+Con $0 \le x_i \lt b$
+</p>
+<aside data-markdown class="notes">
+Este análisis permite enunciar una ley o expresión general que indica cómo se escribe un número $n$ cualquiera, no negativo, en una base $b$:
+`$$n = x_{k} \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_{0} \times b^0$$`
+
+Esta ecuación puede escribirse en notación de sumatoria como:
+
+`$$n = \sum_{i=0}^{k}{x_i \times b^i}$$`
+
+En estas ecuaciones: 
+
+- Los números `$x_i$` son las cifras del numeral.
+- Los números $b^i$ son potencias de la base, comenzando por la de exponente cero a la derecha, **ordenadas y completas**, y tantas como cifras tenga el numeral. 
+- Los números `$x_i$` son necesariamente **menores que $b$** ya que son dígitos en una base que tiene $b$ dígitos.
+ 
+
+
+</aside>
+</section>
 
 <section>
 <h2>Conversión de base</h2>
@@ -669,7 +693,7 @@ El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemp
 </section>
 
 
-<section data-markdown>
+<section data-markdown data-coursemod-shown="false">
 ##Resumen conversión de base
 1. Decimal a base $b$
  * División iterativa por la base (último cociente y restos)

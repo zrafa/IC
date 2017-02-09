@@ -121,9 +121,34 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 
 ## Expresión general
 
+Como hemos visto intuitivamente en el sistema de contar con los dedos, y como hemos confirmado repasando los sistemas decimal, binario y hexadecimal, los sistemas posicionales tienen una cosa muy importante en común: las cifras de un **numeral** escrito en cualquier base no son otra cosa que los **factores por los cuales hay que multiplicar las sucesivas potencias de la base** para saber a qué **número** nos estamos refiriendo.
+
+Por ejemplo, el numeral **2017** escrito en base 10 no es otra cosa que la suma de:
+
+$2 \times 1000 + 0 \times 100 + 1 \times 10 + 7 \times 1$. 
+
+Los dígitos 2, 0, 1 y 7 multiplican, respectivamente, a $10^3$, $10^2$, $10^1$ y $10^0$, que son potencias de la base 10. Este **numeral** designa al **número** 2017 porque esta cuenta, efectivamente, da **2017**.
+
+Sin embargo, si el número está expresado en otra base, la cuenta debe hacerse con potencias de esa otra base. Si hablamos de $2017_{(8}$, entonces las cifras 2, 0, 1 y 7 multiplican a $8^3$, $8^2$, $8^1$ y $8^0$. Este **numeral** designa al **número** 1039 porque esta cuenta, efectivamente, da **1039**.
+
 
 
 ## Expresión general
+
+Este análisis permite enunciar una ley o expresión general que indica cómo se escribe un número $n$ cualquiera, no negativo, en una base $b$:
+`$$n = x_{k} \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_{0} \times b^0$$`
+
+Esta ecuación puede escribirse en notación de sumatoria como:
+
+`$$n = \sum_{i=0}^{k}{x_i \times b^i}$$`
+
+En estas ecuaciones: 
+
+- Los números `$x_i$` son las cifras del numeral.
+- Los números $b^i$ son potencias de la base, comenzando por la de exponente cero a la derecha, **ordenadas y completas**, y tantas como cifras tenga el numeral. 
+- Los números `$x_i$` son necesariamente **menores que $b$** ya que son dígitos en una base que tiene $b$ dígitos.
+ 
+
 
 
 
