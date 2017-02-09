@@ -690,24 +690,7 @@ El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemp
 	<svg id="bingame" viewBox="0 0 100 100" width="100%" height="100%"></svg>
 	<script src="src/bingame.js"></script>
 	<!-- { "initialize": "function(container, options) { 
-		svg = Snap('#bingame');
-
-		Snap.plugin(function(Snap, Element, Paper, global) {
-		  Element.prototype.blur = function(callback) {
-		    var f = svg.filter(Snap.filter.blur(5, 10));
-		    var filterChild = f.node.firstChild;
-		    this.attr({
-		      filter: f
-		    }); 
-		    Snap.animate(0, 10, function(v) {
-		      filterChild.attributes[0].value = v + ',' + v;
-		    }, 1000);
-		    setTimeout(callback, 1000);
-		  };  
-		});
-
-
-		Bingame();
+		Bingame('#bingame');
 	}" } -->
 </div>
 </section>

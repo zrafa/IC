@@ -156,7 +156,7 @@ var Tableau = function(height) {
 			.attr({opacity:'0.0'});
 		img.animate({opacity: '0.7'},3000);
 		chg.blur();
-		setTimeout(Bingame, 3000);
+		setTimeout(newgame, 3000);
 	};
 	var addChallenge = function() {
 		var i = t.indexOf(0);
@@ -197,7 +197,7 @@ var Tableau = function(height) {
 	CONFIG.timer = setInterval(update, CONFIG.time);
 }
 
-var Bingame = function() {
+var newgame = function() {
 	TABLEAU = 0;
 	CONFIG.removes = 0;
 	var again =  svg.g(
@@ -206,3 +206,24 @@ var Bingame = function() {
 	).attr({opacity: '0.7'});
 	again.click(function(){TABLEAU = new Tableau(5)});
 };
+
+var Bingame = function(where) {
+	svg = Snap(where);
+
+	Snap.plugin(function(Snap, Element, Paper, global) {
+	  Element.prototype.blur = function(callback) {
+	    var f = svg.filter(Snap.filter.blur(5, 10));
+	    var filterChild = f.node.firstChild;
+	    this.attr({
+	      filter: f
+	    });
+	    Snap.animate(0, 10, function(v) {
+	      filterChild.attributes[0].value = v + ',' + v;
+	    }, 1000);
+	    setTimeout(callback, 1000);
+	  };
+	});
+
+	newgame();
+};
+
