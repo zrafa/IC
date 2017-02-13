@@ -378,7 +378,8 @@ Como hemos visto intuitivamente en el sistema de contar con los dedos, y como he
 
 Por ejemplo, el numeral **2017** escrito en base 10 no es otra cosa que la suma de:
 
-$2 \times 1000 + 0 \times 100 + 1 \times 10 + 7 \times 1$. 
+$$2 \times 1000 + 0 \times 100 + 1 \times 10 + 7 \times 1 = $$ 
+$$2 \times 10^3 + 0 \times 10^2 + 1 \times 10^1 + 7 \times 10^0$$ 
 
 Los dígitos 2, 0, 1 y 7 multiplican, respectivamente, a $10^3$, $10^2$, $10^1$ y $10^0$, que son potencias de la base 10. Este **numeral** designa al **número** 2017 porque esta cuenta, efectivamente, da **2017**.
 

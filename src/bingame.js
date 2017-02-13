@@ -190,11 +190,14 @@ var Tableau = function(height) {
 	var update = function() {
 		if(filled === height)
 			endgame();
-		else
+		else {
 			addChallenge();
+			if(CONFIG.timer) clearInterval(CONFIG.timer);
+			if(CONFIG.removes % 10 === 9) CONFIG.time -= 500;
+			CONFIG.timer = setInterval(update, CONFIG.time);
+		}
 	};
 	update();
-	CONFIG.timer = setInterval(update, CONFIG.time);
 }
 
 var newgame = function() {
