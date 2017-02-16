@@ -134,9 +134,9 @@ var d2bChallenge = function(id, value) {
 }
 
 var CONFIG = {
-	limsup: 32,
+	limsup: 4,
 	timer: 0,
-	time: 5000,
+	time: 3000,
 	removes: 0,
 };
 
@@ -167,8 +167,9 @@ var Tableau = function(height) {
 		});
 		t[i].svg.animate({
 			'transform': transf
-		}, 200, mina.bounce);
+		}, 400, mina.bounce);
 		filled++;
+		scan();
 	};
 	this.removeChallenge = function(id) {
 		filled--;
@@ -177,15 +178,20 @@ var Tableau = function(height) {
 				t[i] = 0;
 			}
 		CONFIG.removes++;
-		scan(id);
+		scan();
 		score.attr('text', CONFIG.removes);
 	};
-	var scan = function(id) {
-		for(var i = 0; i < height; i++)
-			if(t[i] != 0 && t[i].id > id)
-				t[i].svg.animate({
-					'transform': t[i].svg.transform() + 't0,12'
-				}, 200, mina.bounce);
+	var scan = function() {
+		for(var i = 0; i < height-1; i++)
+			if(t[i] === 0) {
+				t[i] = t[i+1];
+				t[i+1] = 0;
+			}
+		for(i = 0; i< height; i++)
+		    if(t[i] != 0)
+			t[i].svg.animate({
+				'transform': Snap.format('t0,{y}',{y: 12 * (height - i)})
+			}, 200, mina.bounce);
 	};
 	var update = function() {
 		if(filled === height)
@@ -193,7 +199,7 @@ var Tableau = function(height) {
 		else {
 			addChallenge();
 			if(CONFIG.timer) clearInterval(CONFIG.timer);
-			if(CONFIG.removes % 10 === 9) CONFIG.time -= 500;
+			if(CONFIG.removes % 10 === 9) { CONFIG.time -= 300; CONFIG.limsup *= 2}
 			CONFIG.timer = setInterval(update, CONFIG.time);
 		}
 	};
