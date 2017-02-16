@@ -170,12 +170,12 @@ var Tableau = function(height) {
 		scan();
 	};
 	this.removeChallenge = function(id) {
-		filled--;
 		for(var i = 0; i < height; i++)
 			if(t[i] != 0 && t[i].id === id) {
 				t[i] = 0;
 			}
 		CONFIG.removes++;
+		filled--;
 		scan();
 		score.attr('text', CONFIG.removes);
 	};
@@ -197,7 +197,7 @@ var Tableau = function(height) {
 		else {
 			addChallenge();
 			if(CONFIG.timer) clearInterval(CONFIG.timer);
-			if(CONFIG.removes % 10 === 9) { CONFIG.time -= 300; CONFIG.limsup *= 2}
+			if(CONFIG.removes === 2 * CONFIG.limsup) { CONFIG.time -= 200; CONFIG.limsup += 6}
 			CONFIG.timer = setInterval(update, CONFIG.time);
 		}
 	};
