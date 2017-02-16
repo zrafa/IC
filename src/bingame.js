@@ -1,8 +1,6 @@
 var svg;
 
 var TABLEAU;
-var Waiting;
-
 
 var textAttrs = {
 	fontSize: '7',
@@ -160,7 +158,7 @@ var Tableau = function(height) {
 	};
 	var addChallenge = function() {
 		var i = t.indexOf(0);
-		t[i] = new d2bChallenge(Ident(), getRandom(0, CONFIG.limsup));
+		t[i] = new d2bChallenge(Ident(), getRandom(1, CONFIG.limsup));
 		chg.add(t[i].svg);
 		var transf = Snap.format('t0,{y}', {
 			y: 12 * (height - filled)
