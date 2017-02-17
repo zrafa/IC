@@ -199,7 +199,10 @@ var Tableau = function(height) {
 		else {
 			addChallenge();
 			if(CONFIG.timer) clearInterval(CONFIG.timer);
-			if(CONFIG.removes === 2 * CONFIG.limsup) { CONFIG.time -= 200; CONFIG.limsup += 6}
+			if(CONFIG.removes === 2 * CONFIG.limsup) { 
+				CONFIG.time -= 200; 
+				CONFIG.limsup += 4;
+			}
 			CONFIG.timer = setInterval(update, CONFIG.time);
 		}
 	};
@@ -229,7 +232,7 @@ var Bingame = function(where) {
 	    });
 	    Snap.animate(0, 10, function(v) {
 	      filterChild.attributes[0].value = v + ',' + v;
-	    }, 1000);
+	    }, 800);
 	    setTimeout(callback, 1000);
 	  };
 	});
