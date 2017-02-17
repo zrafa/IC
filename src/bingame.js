@@ -209,6 +209,7 @@ var Tableau = function(height) {
 var newgame = function() {
 	TABLEAU = 0;
 	CONFIG.removes = 0;
+	CONFIG.limsup = 3;
 	var again =  svg.g(
 		svg.circle(50, 35, 30).attr({fill:'#22f'}), 
 		svg.polyline(35,10, 35,60, 77,35).attr({fill:'#fff'})
