@@ -150,23 +150,25 @@ var Tableau = function(height) {
 	score.transform('S5');
 	var endgame = function() {
 		clearInterval(CONFIG.timer);
+		chg.blur();
 		var img = svg.image('img/gameover.png',10,10,80,50)
 			.attr({opacity:'0.0'});
-		img.animate({opacity: '0.7'},3000);
-		chg.blur();
-		setTimeout(newgame, 3000);
+		score.animate({opacity: '1.0', fill: '#000'}, 2000,mina.easeinout,
+			function() {
+				img.animate({opacity: '1.0'},2000,mina.easeinout,
+					function() { setTimeout(newgame, 1000) });
+			}
+		);
 	};
 	var addChallenge = function() {
 		var i = t.indexOf(0);
-		t[i] = new d2bChallenge(Ident(), getRandom(1, CONFIG.limsup));
-		chg.add(t[i].svg);
 		var transf = Snap.format('t0,{y}', {
 			y: 12 * (height - filled)
 		});
-		t[i].svg.animate({
-			'transform': transf
-		}, 400, mina.bounce);
 		filled++;
+		t[i] = new d2bChallenge(Ident(), getRandom(1, CONFIG.limsup));
+		chg.add(t[i].svg);
+		t[i].svg.animate({ 'transform': transf }, 1000, mina.bounce);
 		scan();
 	};
 	this.removeChallenge = function(id) {
@@ -174,9 +176,9 @@ var Tableau = function(height) {
 			if(t[i] != 0 && t[i].id === id) {
 				t[i] = 0;
 			}
-		CONFIG.removes++;
 		filled--;
 		scan();
+		CONFIG.removes++;
 		score.attr('text', CONFIG.removes);
 	};
 	var scan = function() {
@@ -189,7 +191,7 @@ var Tableau = function(height) {
 		    if(t[i] != 0)
 			t[i].svg.animate({
 				'transform': Snap.format('t0,{y}',{y: 12 * (height - i)})
-			}, 200, mina.bounce);
+			}, 1000, mina.bounce);
 	};
 	var update = function() {
 		if(filled === height)
