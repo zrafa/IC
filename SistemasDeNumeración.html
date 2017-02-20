@@ -441,15 +441,16 @@ Con $0 \le x_i \lt b$
 Este análisis permite enunciar una ley o expresión general que indica cómo se escribe un número $n$ cualquiera, no negativo, en una base $b$:
 `$$n = x_{k} \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_{0} \times b^0$$`
 
-Esta ecuación puede escribirse en notación de sumatoria como:
+Esta ecuación puede escribirse más sintéticamente en notación de sumatoria como:
 
 `$$n = \sum_{i=0}^{k}{x_i \times b^i}$$`
 
 En estas ecuaciones: 
 
 - Los números `$x_i$` son las cifras del numeral.
-- Los números $b^i$ son potencias de la base, comenzando por la de exponente cero a la derecha, **ordenadas y completas**, y tantas como cifras tenga el numeral. 
-- Los números `$x_i$` son necesariamente **menores que $b$** ya que son dígitos en una base que tiene $b$ dígitos.
+- Los números $b^i$ son potencias de la base, cuyos exponentes crecen de derecha a izquierda y comienzan por 0.
+- Las potencias están **ordenadas y completas**, y son tantas como las cifras del numeral. 
+- Los números `$x_i$` son necesariamente **menores que $b$**, ya que son dígitos en un sistema de numeración que tiene $b$ dígitos.
  
 
 
@@ -486,23 +487,25 @@ Convertir $61_{(10}$ a base $3$
 <p></p><p></p>
 <span class="fragment">$61_{(10} = 2021_{(3}$ </span>
 <aside data-markdown class="notes">
-## Conversión de base 10 a otras bases
+### Conversión de base 10 a otras bases
 
 El procedimiento para convertir un número escrito en base 10 a cualquier otra base (llamémosla **base destino**) es siempre el mismo y se basa en la división entera (sin decimales): 
 
 - Dividir el número original por la base destino, anotando cociente y resto
 - Mientras se pueda seguir dividiendo:
    - Volver al paso anterior reemplazando el número original por el nuevo cociente
+- Finalmente escribimos los dígitos de nuestro número convertido usando **el último cociente y todos los restos en orden inverso a como aparecieron**. 
 
-Notemos que cada uno de los restos obtenidos es con toda seguridad **menor que la base destino**, ya que, en otro caso, podríamos haber seguido adelante con la división entera.
+Ésta es la expresión de nuestro número original en la base destino.
 
-Notemos también que el último cociente es también **menor que la base destino**, por el mismo motivo de antes (podríamos haber proseguido la división).
+- Notemos que cada uno de los restos obtenidos es con toda seguridad **menor que la base destino**, ya que, en otro caso, podríamos haber seguido adelante con la división entera.
+- Notemos también que el último cociente es también **menor que la base destino**, por el mismo motivo de antes (podríamos haber proseguido la división).
+- Lo que acabamos de decir garantiza que tanto el último cociente, como todos los restos aparecidos en el proceso, **pueden ser dígitos de un sistema en la base destino** al ser todos menores que ella.
 
-Lo que acabamos de decir garantiza que tanto el último cociente, como todos los restos aparecidos en el proceso, **pueden ser dígitos de un sistema en la base destino** al ser todos menores que ella.
 
-Finalmente, gracias a la Expresión General, escribimos los dígitos de nuestro número convertido usando **el último cociente y todos los restos en orden inverso a como aparecieron**. Ésta es la expresión de nuestro número original en la base destino.
+**Pregunta**
 
-- ¿Cómo podemos usar la Expresión General para explicar por qué este procedimiento es correcto, al menos para el caso de convertir **61 a base 3**?
+¿Cómo podemos usar la Expresión General para explicar por qué este procedimiento es correcto, al menos para el caso de convertir **61 a base 3**?
 
 </aside>
 </section>
@@ -521,7 +524,7 @@ Finalmente, gracias a la Expresión General, escribimos los dígitos de nuestro 
 <p> <span class="fragment">$= 2 \times 27 + 0 \times 9 + 2 \times 3 + 1 \times 1 =  $ </span> </p>
 <p> <span class="fragment">$= 54 + 0 + 6 + 1  =  61_{(10}$ </span> </p>
 <aside data-markdown class="notes">
-## Conversión de otras bases a base 10
+### Conversión de otras bases a base 10
 
 La conversión en el sentido opuesto, de una base $b$ cualquiera a base 10, se realiza simplemente aplicando la Expresión General. Cada uno de los dígitos del número original (ahora en base $b$ arbitraria) es el coeficiente de alguna potencia de la base original. Esta potencia depende de la posición de dicho dígito. Una vez que escribimos todos los productos de los dígitos originales por las potencias de la base, hacemos la suma y nos queda el resultado: el número original convertido a base 10.
 
@@ -603,11 +606,11 @@ Esa base, ¿puede ser...
 	</ul>
 </ul>
 <aside data-markdown class="notes">
-## Conversión entre bases arbitrarias
+### Conversión entre bases arbitrarias
 
 Hemos visto los casos de conversión entre base 10 y otras bases, en ambos sentidos. Ahora veamos los casos donde ninguna de las bases origen o destino son la base 10.
 
-La buena noticia es que, en general, **esto ya sabemos hacerlo**. Si tenemos dos bases $b1$ y $b2$ cualesquiera, ninguna de las cuales es 10, sabiendo hacer las conversiones anteriores podemos hacer la conversión de $b1$ a $b2$ sencillamente haciendo **dos conversiones pasando por la base 10**. Si queremos convertir de $b1$ a $b2$, convertimos primero **de $b1$ a base 10**, aplicando el procedimiento ya visto, y luego **de base 10 a $b2$**. Eso es todo.
+La buena noticia es que, en general, **esto ya sabemos hacerlo**. Si tenemos dos bases $b_1$ y $b_2$ cualesquiera, ninguna de las cuales es 10, sabiendo hacer las conversiones anteriores podemos hacer la conversión de $b_1$ a $b_2$ sencillamente haciendo **dos conversiones pasando por la base 10**. Si queremos convertir de $b_1$ a $b_2$, convertimos primero **de $b_1$ a base 10**, aplicando el procedimiento ya visto, y luego **de base 10 a $b_2$**. Eso es todo.
 
 Pero en algunos casos especiales podemos aprovechar cierta relación existente entre las bases a convertir: por ejemplo, cuando son **2 y 16**, o **2 y 8**. La base 2 es la del sistema **binario**, y las bases 16 y 8 son las del sistema **hexadecimal** y del sistema **octal** respectivamente. 
 
@@ -661,7 +664,7 @@ $100010_{(2} = 00100010_{(2} = 22_{(16}$
 <li class="fragment">Hexadecimal a binario: procedimiento inverso</li>
 </ul>
 <aside data-markdown class="notes">
-## Conversión entre sistemas binario y hexadecimal
+### Conversión entre sistemas binario y hexadecimal
 
 El truco para convertir de base 2 a base 16 consiste simplemente en agrupar los dígitos binarios de a cuatro, y reemplazar cada grupo de cuatro dígitos por su equivalente en base 16 según la tabla anterior.
 
@@ -688,7 +691,7 @@ $1100010_{(2} = 001100010_{(2} = 142_{(8}$
 <li>Octal a binario: procedimiento inverso</li>
 </ul>
 <aside data-markdown class="notes">
-## Conversión entre sistemas binario y octal
+### Conversión entre sistemas binario y octal
 
 El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemplazar cada grupo de **tres** dígitos binarios (completando con ceros a la izquierda si hace falta) por el dígito octal equivalente. Lo mismo si la conversión es en el otro sentido.
 </aside>

@@ -2,49 +2,56 @@ var svg;
 
 var TABLEAU;
 
-var textAttrs = {
-	fontSize: '7',
-	fontFamily: 'Helvetica',
-	textAnchor: 'middle',
-	dominantBaseline: 'middle',
-	alignmentBaseline: 'middle'
-};
-var boxAttrs = {
-	fill: '#fff',
-	stroke: '#000',
-	strokeWidth: '0.5',
-};
-var nullAttrs = {
-	fill: '#fff',
-	stroke: '#fff'
-};
-var nullTextAttrs = {
-	fill: '#fff'
-};
-var hoverAttrs = {
-	fill: '#6ff',
-	stroke: '#000',
-	strokeWidth: '0.5'
-};
-var waitAttrs = {
-	fill: '#f66',
-	stroke: '#000',
-	strokeWidth: '0.5'
-};
-var waitTextAttrs = {
-	strokeWidth: '0.5'
-};
-var pickTextAttrs = {
-	fontSize: '5',
-	fontFamily: 'Helvetica',
-	textAnchor: 'middle',
-	dominantBaseline: 'middle',
-	alignmentBaseline: 'middle'
-};
-var pickAttrs = {
-	fill: '#f88'
+var attrs = {
+	text: {
+		fontSize: '7',
+		fontFamily: 'Helvetica',
+		textAnchor: 'middle',
+		dominantBaseline: 'middle',
+		alignmentBaseline: 'middle', 
+	},
+	box: {
+		fill: '#fff',
+		stroke: '#000',
+		strokeWidth: '0.5', 
+	},
+	bkg: { 
+		fill: '#ccf' 
+	},
+	null: {
+		fill: '#fff',
+		stroke: '#fff',
+	},
+	nullText : {
+		fill: '#fff',
+	},
+	hover: {
+		fill: '#6ff',
+		stroke: '#000',
+		strokeWidth: '0.5',
+	},
+	wait: {
+		fill: '#f66',
+		stroke: '#000',
+		strokeWidth: '0.5',
+	},
+	waitText: {
+		strokeWidth: '0.5',
+	},
+	pickText: {
+		fontSize: '5',
+		fontFamily: 'Helvetica',
+		textAnchor: 'middle',
+		dominantBaseline: 'middle',
+		alignmentBaseline: 'middle',
+	},
+	pick: {
+		fill: '#f88',
+	},
 };
 
+//var gameover = 'http://vignette1.wikia.nocookie.net/crappy-games/images/1/10/Mljuegos0.png';
+var gameover = 'img/gameover.png';
 
 var Idents = 1;
 var Ident = function() {
@@ -57,14 +64,14 @@ var getRandom = function(min, max) {
 
 var Bit = function(owner, bitID, value, x, y) {
 	this.svg = svg.g(
-		svg.rect(x, y, 8, 10, 1).attr(boxAttrs),
-		svg.text(x + 4, y + 5, value.toString()).attr(textAttrs)
+		svg.rect(x, y, 8, 10, 1).attr(attrs.box),
+		svg.text(x + 4, y + 5, value.toString()).attr(attrs.text)
 	);
 	this.mouseOver = function() {
-		this[0].attr(hoverAttrs)
+		this[0].attr(attrs.hover)
 	};
 	this.mouseOut = function() {
-		this[0].attr(boxAttrs)
+		this[0].attr(attrs.box)
 	};
 	this.toggle = function() {
 		this[1].node.innerHTML = (this[1].node.innerHTML == '1') ? '0' : '1';
@@ -74,8 +81,8 @@ var Bit = function(owner, bitID, value, x, y) {
 	this.enabled = true;
 	this.disable = function() {
 		this.enabled = false;
-		this.svg[0].attr(nullAttrs);
-		this.svg[1].attr(nullTextAttrs);
+		this.svg[0].attr(attrs.null);
+		this.svg[1].attr(attrs.nullText);
 		this.svg.unclick(this.toggle);
 		this.svg.unmouseover(this.mouseOver);
 		this.svg.unmouseout(this.mouseOut);
@@ -113,8 +120,8 @@ var d2bChallenge = function(id, value) {
 	}
 	this.Answer = function(value) {
 		this.svg = svg.g(
-			svg.rect(0, 0, 15, 10, 1, 1).attr(boxAttrs),
-			svg.text(8, 5, value.toString()).attr(textAttrs)
+			svg.rect(0, 0, 15, 10, 1, 1).attr(attrs.box),
+			svg.text(8, 5, value.toString()).attr(attrs.text)
 		);
 	}
 	this.bitword = new this.Bitword(value.toString(2).length);
@@ -122,7 +129,7 @@ var d2bChallenge = function(id, value) {
 		x: 10 * (7 - value.toString(2).length)
 	}));
 
-	this.equal = svg.text(74, 6, '=').attr(textAttrs);
+	this.equal = svg.text(74, 6, '=').attr(attrs.text);
 
 	this.answer = new this.Answer(value);
 	this.answer.svg.transform('T80,0');
@@ -133,14 +140,16 @@ var d2bChallenge = function(id, value) {
 
 var CONFIG = {
 	limsup: 4,
+	getLimSup: function() { return limsup },
+	setLimSup: function(l) { limsup = l },
 	timer: 0,
 	time: 3000,
 	removes: 0,
 };
 
 var Tableau = function(height) {
-	var background = svg.rect(0, 0, 100, 70, 1, 1).attr({ fill: '#bbf' });
-	var score = svg.text(50, 35, '0').attr(textAttrs);
+	var background = svg.rect(0, 0, 100, 70, 1, 1).attr(attrs.bkg);
+	var score = svg.text(50, 35, '0').attr(attrs.text);
 	var t = [height];
 	var chg = svg.g();
 	for(var i = 0; i < height; i++)
@@ -151,7 +160,7 @@ var Tableau = function(height) {
 	var endgame = function() {
 		clearInterval(CONFIG.timer);
 		chg.blur();
-		var img = svg.image('img/gameover.png',10,10,80,50)
+		var img = svg.image(gameover,10,10,80,50)
 			.attr({opacity:'0.0'});
 		score.animate({opacity: '1.0', fill: '#000'}, 2000,mina.easeinout,
 			function() {
@@ -166,7 +175,7 @@ var Tableau = function(height) {
 			y: 12 * (height - filled)
 		});
 		filled++;
-		t[i] = new d2bChallenge(Ident(), getRandom(1, CONFIG.limsup));
+		t[i] = new d2bChallenge(Ident(), getRandom(1, CONFIG.getLimSup()));
 		chg.add(t[i].svg);
 		t[i].svg.animate({ 'transform': transf }, 1000, mina.bounce);
 		scan();
@@ -199,11 +208,13 @@ var Tableau = function(height) {
 		else {
 			addChallenge();
 			if(CONFIG.timer) clearInterval(CONFIG.timer);
-			if(CONFIG.removes === 2 * CONFIG.limsup) { 
-				CONFIG.time -= 200; 
-				CONFIG.limsup += 4;
+			console.log('pre update ',CONFIG.getLimSup());
+			if(CONFIG.removes === 2 * CONFIG.getLimSup()) { 
+				CONFIG.time = Math.max (CONFIG.time - 200, 0); 
+				CONFIG.setLimSup(Math.min (CONFIG.getLimSup() + 4, 255));
 			}
 			CONFIG.timer = setInterval(update, CONFIG.time);
+			console.log('pos update ',CONFIG.getLimSup());
 		}
 	};
 	update();
@@ -212,7 +223,7 @@ var Tableau = function(height) {
 var newgame = function() {
 	TABLEAU = 0;
 	CONFIG.removes = 0;
-	CONFIG.limsup = 3;
+	CONFIG.setLimSup(3);
 	var again =  svg.g(
 		svg.circle(50, 35, 30).attr({fill:'#22f'}), 
 		svg.polyline(35,10, 35,60, 77,35).attr({fill:'#fff'})
