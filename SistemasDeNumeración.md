@@ -256,3 +256,7 @@ El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemp
 ## Y más preguntas
 
 ## Y hasta un jueguito
+
+## Referencias
+
+
