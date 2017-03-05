@@ -198,6 +198,15 @@ Es de la mayor importancia cuidar de que las potencias de la base que interviene
 
 ## Humor para nerds
 
+¿Cómo sería un sistema de **contar con los dedos en base 2**? Dedo arriba = 1, dedo abajo = 0...
+
+¿Cómo hacemos el 1, el 2, el 3...?
+
+¿Hasta qué número podemos contar con una mano? ¿Y con dos manos?
+
+¿Y cómo se indica el **4** en este sistema?
+
+
 ## Y más preguntas
 
 

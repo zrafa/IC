@@ -304,13 +304,13 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 <section data-background="#3c53b5" data-background-transition="zoom" class="preguntas" data-coursemod-shown="false">
 <h2>¡Preguntas!</h2>
 <ol>
+<li class="fragment">Si $n < b$, ¿cuántos dígitos se necesitan para escribir $n$ en base $b$?</li>
 <li class="fragment">Dado un sistema posicional de base $b$, ¿cómo se escribe $b$ en ese sistema?</li>
 <li class="fragment">¿Y $b + 1$?</li>
 
 <li class="fragment">¿Y $b^2$?</li>
-<li class="fragment">¿Cómo se escribe 26 en base 5?
-<li class="fragment">¿Cómo se escribe 17 en base 16, en base 5, en base 2, en base 10?
-<li class="fragment">¿A qué número me refiero cuando escribo 101?
+<li class="fragment">¿Cómo se escribe 26 en base 5?</li>
+<li class="fragment">¿Cómo se escribe 17 en base 16, en base 5, en base 2, en base 10?</li>
 </ol>
 <aside data-markdown class="notes">
 </aside>
@@ -502,7 +502,7 @@ Es de la mayor importancia cuidar de que las potencias de la base que interviene
 </aside>
 </section>
 
-<section data-transition="convex-in convex-out" data-coursemod-shown="false">
+<section data-transition="convex-in convex-out">
 <h2>Humor para nerds</h2>
 <span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
 <div class="snapsvg stretch" width="100%" height="100%">
@@ -536,6 +536,15 @@ Es de la mayor importancia cuidar de que las potencias de la base que interviene
 		}"
 	} -->
 </div>
+<aside data-markdown class="notes">
+¿Cómo sería un sistema de **contar con los dedos en base 2**? Dedo arriba = 1, dedo abajo = 0...
+
+¿Cómo hacemos el 1, el 2, el 3...?
+
+¿Hasta qué número podemos contar con una mano? ¿Y con dos manos?
+
+¿Y cómo se indica el **4** en este sistema?
+</aside>
 </section>
 
 
