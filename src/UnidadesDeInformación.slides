@@ -191,4 +191,23 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <img src="img/terapeuta.jpg" class="stretch">
 </section>
 
+<!------------------------>
+<section data-transition="slide-in slide-out" data-coursemod-shown="false">
+<h2>Referencias</h2>
+<ul>
+
+	<li><a href="https://es.m.wikipedia.org/wiki/Bit">Bit <b>(b)</b></a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Byte">Byte <b>(B)</b></a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Prefijo_binario">Prefijos binarios</a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Prefijos_del_Sistema_Internacional">Sistema Internacional</a></li>
+	<li><a href="https://padlet.com/eduardo_grosclaude/ic2017">Estudiando
+ IC</a></li>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+
 <!-- INCLUDE src/reveal.trailer -->

@@ -1,11 +1,10 @@
 
-## Sistemas de Numeración
+#Sistemas de Numeración
 
 En este primer tema de la unidad veremos las propiedades de los sistemas de numeración más importantes para el estudio de la arquitectura de computadoras, en especial los sistemas **binario y hexadecimal**.
 
 
-## Contando con los dedos
-
+##Un sistema diferente
 Todos conocemos el método tradicional de contar con los dedos. Como tenemos cinco dedos
 en cada mano, podemos contar hasta diez. Pero también podemos utilizar un método diferente 
 del tradicional, que resulta ser muy interesante. 
@@ -13,11 +12,21 @@ del tradicional, que resulta ser muy interesante.
 - Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
 de la izquierda**. Los dedos de la mano derecha **vuelven a 0**, y seguimos contando
 con la derecha. 
-- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda, y la derecha vuelve a 0.  
+- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda, y la derecha vuelve a 0.
 - Cada dedo en alto de la mano izquierda significa que **se agotó la secuencia de la mano derecha una vez**.
+
+###Preguntas
+- ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
+- Si agregamos una tercera mano, de un amigo, ¿hasta qué número llegamos? 
+- ¿Y cómo se representa el 36? ¿Y el 37?
+- Y con cuatro manos, ¿hasta qué número llegamos? 
+- Y, si el número no se puede representar con dos manos, ¿cómo es el procedimiento para saber qué dedos levantar?
+
 
 Notemos que este método tiene mayor capacidad que el tradicional, ya que podemos contar hasta
 diez y todavía nos queda mucho por contar con los dedos de ambas manos. 
+
+##Sistema posicional
 
 Notemos además que esta ventaja se debe a que el método asigna **valores diferentes** a ambas
 manos. La derecha vale la cantidad de dedos que muestre, pero la izquierda vale **seis por
@@ -30,7 +39,9 @@ grandes con pocos dígitos. En este sistema, disponemos únicamente de **6 dígi
 posición**. Pero los números representables solamente dependen de cuántas manos (o, mejor 
 dicho, de cuántas **posiciones**) podamos utilizar.
 
-Dado un número no negativo que se pueda representar con dos manos, podemos saber qué dedos levantar 
+###Calculando cada posición
+
+En este sistema, dado un número no negativo que se pueda representar con dos manos, podemos saber qué dedos levantar 
 en cada mano haciendo una sencilla cuenta de división entera (sin decimales): dividimos el número por 6 
 y tomamos el cociente y el resto.  **El cociente es el número de la izquierda, y el resto, el de la derecha**.
 
@@ -40,38 +51,34 @@ o directamente **23** (que se pronuncia **dos tres** porque **no quiere decir ve
 **quince**, sólo que escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
 de sumar **$2 \times 6 + 3$** obtenemos, efectivamente, 15. 
 
-- ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
-- Si agregamos una tercera mano, de un amigo, ¿hasta qué número llegamos? 
-- Y con cuatro manos, ¿hasta qué número llegamos? 
-- ¿Y cómo se representa el 36? ¿Y el 37?
-- Y, si el número no se puede representar con dos manos, ¿cómo es el procedimiento para saber qué
-dedos levantar?
 
 
 
-## Sistema posicional
-
-## Sistema posicional
-
-## Sistema decimal
-
+##Sistema decimal
 Si reflexionamos sobre el sistema decimal, de diez dígitos, encontramos que las cifras de las decenas
 y de las unidades (y de las centenas, y de las unidades de mil, etc.) también forman un sistema posicional, 
 sólo que con 10 dígitos en lugar de los seis del sistema anterior. 
 Cuando escribimos **15** en el sistema decimal, esta expresión equivale a decir "para saber de qué cantidad estoy hablando,
 tome el 1 y multiplíquelo por 10, y luego sume el 5".
 
+###Base de un sistema de numeración
+
 Cuando queremos pasar esa expresión a un sistema con otra cantidad de dígitos, 
 el procedimiento de averiguar los dígitos que van en cada posición
 se llama **conversión de base**. La **base** de un sistema es la cantidad de dígitos de que dispone, o sea que
 el sistema decimal habitual es de base 10, mientras que el de los deditos es de base 6. 
 
-Anteriormente escribíamos **15** en el sistema de base 6 como **23**. Sin embargo, necesitamos evitar la confusión 
-entre ambos significados de **23**. Para esto usamos índices subscriptos que indican la base. Así, **quince** es
-**$15_{(10}$** porque está en base diez (la del sistema decimal, habitual) y **$23_{(10}$** es **veintitrés**, pero 
-**$23_{(6}$** es **dos tres en base 6**, y por lo tanto vale **quince**. Como 10 es nuestra base habitual, cuando 
-no usemos índice subscripto estaremos sobreentendiendo que hablamos **en base 10**, Es decir, **$15_{(10}$** se
-puede escribir, simplemente, **$15$**.
+###Indicando la base con subíndices
+
+Anteriormente escribíamos **15** en el sistema de base 6 como **23**. Sin embargo, necesitamos evitar la confusión entre ambos significados de **23**. Para esto usamos índices subscriptos que indican la base. Así, 
+
+- **Quince** es **$15_{(10}$** porque está en base diez (la del sistema decimal, habitual), y 
+- **$23_{(10}$** es **veintitrés**, 
+- pero **$23_{(6}$** es **dos tres en base 6**, y por lo tanto vale **quince**.
+
+Como 10 es nuestra base habitual, cuando no usemos índice subscripto estaremos sobreentendiendo que hablamos **en base 10**. Es decir, **$15_{(10}$** se puede escribir, simplemente, **$15$**.
+
+###Número y numeral
 
 Notemos, de paso, que un mismo número puede escribirse de muchas maneras: en prácticamente cualquier base que 
 se nos ocurra, sin necesidad de contar con los dedos; y que la forma habitual, en base 10, no es más
@@ -84,15 +91,15 @@ representación en decimal.
 * El **número** es la cantidad de la cual estamos hablando (la misma en los tres casos).
 
 
-## Sistema binario
 
+
+##Sistema binario
 Comprender y manejar la notación en sistema binario es sumamente importante para el estudio de la computación. El sistema binario comprende únicamente dos dígitos, **0 y 1**. 
 
 Las computadoras digitales, tal como las conocemos hoy, almacenan todos sus datos en forma de números binarios. Es **muy recomendable**, para la práctica de esta materia, adquirir velocidad y seguridad en la conversión de y a sistema binario.
 
 
-## Sistema hexadecimal
-
+##Sistema hexadecimal
 Otro sistema de numeración importante es el hexadecimal o de base 16. En este sistema tenemos **más dígitos** que en el decimal, por lo cual tenemos que recurrir a "dígitos" nuevos, tomados del alfabeto. Así, A representa el 10, B el 11, etc.
 
 El sistema hexadecimal nos resultará útil porque con él podremos expresar fácilmente números que llevarían muchos dígitos en sistema binario. 
@@ -101,26 +108,11 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 - Al ser un sistema con más dígitos que el binario, la expresión de cualquier número será más corta.
 
 
-## Especificando la base
 
 
 
 
-
-## ¿Preguntas?
-
-
-
-## ¡Preguntas!
-
-
-
-## Preguntas
-
-
-
-## Expresión general
-
+##Una expresión general
 Como hemos visto intuitivamente en el sistema de contar con los dedos, y como hemos confirmado repasando los sistemas decimal, binario y hexadecimal, los sistemas posicionales tienen una cosa muy importante en común: las cifras de un **numeral** escrito en cualquier base no son otra cosa que los **factores por los cuales hay que multiplicar las sucesivas potencias de la base** para saber a qué **número** nos estamos refiriendo.
 
 Por ejemplo, el numeral **2017** escrito en base 10 no es otra cosa que la suma de:
@@ -134,32 +126,27 @@ Sin embargo, si el número está expresado en otra base, la cuenta debe hacerse 
 
 
 
-## Expresión general
-
 Este análisis permite enunciar una ley o expresión general que indica cómo se escribe un número $n$ cualquiera, no negativo, en una base $b$:
-`$$n = x_{k} \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_{0} \times b^0$$`
+$$n = x_{k} \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_{0} \times b^0$$
 
 Esta ecuación puede escribirse más sintéticamente en notación de sumatoria como:
 
-`$$n = \sum_{i=0}^{k}{x_i \times b^i}$$`
+$$n = \sum_{i=0}^{k}{x_i \times b^i}$$
 
-En estas ecuaciones: 
+En estas ecuaciones (que son equivalentes): 
 
-- Los números `$x_i$` son las cifras del numeral.
+- Los números $x_i$ son las cifras del numeral.
 - Los números $b^i$ son potencias de la base, cuyos exponentes crecen de derecha a izquierda y comienzan por 0.
 - Las potencias están **ordenadas y completas**, y son tantas como las cifras del numeral. 
-- Los números `$x_i$` son necesariamente **menores que $b$**, ya que son dígitos en un sistema de numeración que tiene $b$ dígitos.
+- Los números $x_i$ son necesariamente **menores que $b$**, ya que son dígitos en un sistema de numeración que tiene $b$ dígitos.
  
 
 
 
 
-## Conversión de base
-
+##Conversión de base
 Veremos algunos casos interesantes de conversiones de base. Serán especialmente importantes los casos donde el número de origen o de destino de la conversión esté en base 10, nuestro sistema habitual, pero también nos dedicaremos a algunas conversiones de base donde ninguna de ellas sea 10.
 
-
-## Decimal a base $b$
 
 ### Conversión de base 10 a otras bases
 
@@ -183,8 +170,6 @@ El procedimiento para convertir un número escrito en base 10 a cualquier otra b
 
 
 
-## De base $b$ a decimal
-
 ### Conversión de otras bases a base 10
 
 La conversión en el sentido opuesto, de una base $b$ cualquiera a base 10, se realiza simplemente aplicando la Expresión General. Cada uno de los dígitos del número original (ahora en base $b$ arbitraria) es el coeficiente de alguna potencia de la base original. Esta potencia depende de la posición de dicho dígito. Una vez que escribimos todos los productos de los dígitos originales por las potencias de la base, hacemos la suma y nos queda el resultado: el número original convertido a base 10.
@@ -192,28 +177,19 @@ La conversión en el sentido opuesto, de una base $b$ cualquiera a base 10, se r
 Es de la mayor importancia cuidar de que las potencias de la base que intervienen en el cálculo estén **ordenadas y completas**. Es fácil si escribimos estas potencias a partir de la derecha, comenzando por la que tiene exponente 0, y vamos completando los términos de derecha a izquierda hasta agotar las posiciones del número original.
 
 
-## ¿Más preguntas?
 
 
-
-## Humor para nerds
-
+##Preguntas
 ¿Cómo sería un sistema de **contar con los dedos en base 2**? Dedo arriba = 1, dedo abajo = 0...
 
-¿Cómo hacemos el 1, el 2, el 3...?
-
-¿Hasta qué número podemos contar con una mano? ¿Y con dos manos?
-
-¿Y cómo se indica el **4** en este sistema?
-
-
-## Y más preguntas
+- ¿Cómo hacemos el 1, el 2, el 3...?
+- ¿Hasta qué número podemos contar con una mano? ¿Y con dos manos?
+- ¿Y cómo se indica el **4** en este sistema?
 
 
 
-## Conversión de $b_1$ a $b_2$
 
-### Conversión entre bases arbitrarias
+##Conversión entre bases arbitrarias
 
 Hemos visto los casos de conversión entre base 10 y otras bases, en ambos sentidos. Ahora veamos los casos donde ninguna de las bases origen o destino son la base 10.
 
@@ -225,26 +201,44 @@ En estos casos, como 16 y 8 son potencias de 2 (la otra base), podemos aplicar u
 
 
 
-## Equivalencias
-
+##Equivalencias entre sistemas
 Para poder aplicar este truco se necesita la tabla de equivalencias entre los dígitos de los diferentes sistemas. Si no logramos memorizarla, conviene al menos saber reproducirla, asegurándose de saber **contar** en las bases 2, 8 y 16 para reconstruir la tabla si es necesario. Pero con la práctica, se logra memorizarla fácilmente.
 
 
-## Equivalencias
+Notemos que:
+
+- El sistema octal tiene ocho dígitos **(0 ... 7)** y cada uno de ellos se puede representar con **tres dígitos binarios**:
+  	- 000
+  	- 001
+  	- 010
+  	- 011
+  	- 100
+  	- 101
+  	- 110
+  	- 111
+
 
 Notemos que:
 
-- El sistema octal tiene ocho dígitos **(0 ... 7)** y cada uno de ellos se puede representar con **tres dígitos binarios**.
+- El sistema hexadecimal tiene dieciséis dígitos **(0 ... F)** y cada uno de ellos se puede representar con **cuatro dígitos binarios**:
+  	- 0000
+  	- 0001
+  	- 0010
+  	- 0011
+  	- 0100
+  	- 0101
+  	- 0110
+  	- 0111
+  	- 1000
+  	- 1001
+  	- 1010
+  	- 1011
+  	- 1100
+  	- 1101
+  	- 1110
+  	- 1111
 
 
-## Equivalencias
-
-Notemos que:
-
-- El sistema hexadecimal tiene dieciséis dígitos **(0 ... F)** y cada uno de ellos se puede representar con **cuatro dígitos binarios**.
-
-
-## Binario a hexadecimal
 
 ### Conversión entre sistemas binario y hexadecimal
 
@@ -255,17 +249,11 @@ Si hace falta completar un grupo de cuatro dígitos binarios, se completa con ce
 Si el problema es convertir, inversamente, de base 16 a base 2, de igual forma reemplazamos cada dígito hexadecimal por los cuatro dígitos binarios que lo representan.
 
 
-## Binario a octal
-
 ### Conversión entre sistemas binario y octal
 
 El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemplazar cada grupo de **tres** dígitos binarios (completando con ceros a la izquierda si hace falta) por el dígito octal equivalente. Lo mismo si la conversión es en el otro sentido.
 
 
-## Y más preguntas
 
-## Y hasta un jueguito
-
-## Referencias
 
 

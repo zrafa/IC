@@ -36,20 +36,23 @@
 <!------------------------------------------------------------------>
 
 				
-<section data-markdown data-coursemod-shown="false"> 
- <script type="text/template">
-##Unidad I 
-###Representación de la Información 
-
-1. Sistemas de Numeración <!-- .element: class="postit" -->
-1. Unidades de Información
-1. Representación Digital de Datos 
- </script>
+<section data-coursemod-shown="false" data-background="img/background01.jpg"> 
+<div class="frosted">
+<h2>Unidad I</h2>
+<h3>Representación de la Información</h3>
+</div>
+<div class="frosted">
+<ol>
+<li>Sistemas de Numeración</li>
+<li>Unidades de Información</li>
+<li>Representación Digital de Datos</li>
+</ol>
+</div>
 </section>
 
 
 <section>
-<h2>Sistemas de Numeración</h2>
+<h1>Sistemas de Numeración</h1>
 <aside data-markdown class="notes">
 En este primer tema de la unidad veremos las propiedades de los sistemas de numeración más importantes para el estudio de la arquitectura de computadoras, en especial los sistemas **binario y hexadecimal**.
 </aside>
@@ -133,6 +136,7 @@ En este primer tema de la unidad veremos las propiedades de los sistemas de nume
 
 </div>
 <aside data-markdown class="notes">
+##Un sistema diferente
 Todos conocemos el método tradicional de contar con los dedos. Como tenemos cinco dedos
 en cada mano, podemos contar hasta diez. Pero también podemos utilizar un método diferente 
 del tradicional, que resulta ser muy interesante. 
@@ -140,11 +144,30 @@ del tradicional, que resulta ser muy interesante.
 - Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
 de la izquierda**. Los dedos de la mano derecha **vuelven a 0**, y seguimos contando
 con la derecha. 
-- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda, y la derecha vuelve a 0.  
+- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda, y la derecha vuelve a 0.
 - Cada dedo en alto de la mano izquierda significa que **se agotó la secuencia de la mano derecha una vez**.
 
+###Preguntas
+- ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
+- Si agregamos una tercera mano, de un amigo, ¿hasta qué número llegamos? 
+- ¿Y cómo se representa el 36? ¿Y el 37?
+- Y con cuatro manos, ¿hasta qué número llegamos? 
+- Y, si el número no se puede representar con dos manos, ¿cómo es el procedimiento para saber qué dedos levantar?
+</aside>
+</section>
+
+<section>
+<h2>Sistema posicional</h2>
+En este sistema:
+	<p>
+	"Quince" = $2 \times6 + 3$ = "23"</li>
+	</p>
+<img class="stretch" src="img/contando.png">
+<aside data-markdown class="notes">
 Notemos que este método tiene mayor capacidad que el tradicional, ya que podemos contar hasta
 diez y todavía nos queda mucho por contar con los dedos de ambas manos. 
+
+##Sistema posicional
 
 Notemos además que esta ventaja se debe a que el método asigna **valores diferentes** a ambas
 manos. La derecha vale la cantidad de dedos que muestre, pero la izquierda vale **seis por
@@ -157,7 +180,9 @@ grandes con pocos dígitos. En este sistema, disponemos únicamente de **6 dígi
 posición**. Pero los números representables solamente dependen de cuántas manos (o, mejor 
 dicho, de cuántas **posiciones**) podamos utilizar.
 
-Dado un número no negativo que se pueda representar con dos manos, podemos saber qué dedos levantar 
+###Calculando cada posición
+
+En este sistema, dado un número no negativo que se pueda representar con dos manos, podemos saber qué dedos levantar 
 en cada mano haciendo una sencilla cuenta de división entera (sin decimales): dividimos el número por 6 
 y tomamos el cociente y el resto.  **El cociente es el número de la izquierda, y el resto, el de la derecha**.
 
@@ -167,12 +192,6 @@ o directamente **23** (que se pronuncia **dos tres** porque **no quiere decir ve
 **quince**, sólo que escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
 de sumar **$2 \times 6 + 3$** obtenemos, efectivamente, 15. 
 
-- ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
-- Si agregamos una tercera mano, de un amigo, ¿hasta qué número llegamos? 
-- Y con cuatro manos, ¿hasta qué número llegamos? 
-- ¿Y cómo se representa el 36? ¿Y el 37?
-- Y, si el número no se puede representar con dos manos, ¿cómo es el procedimiento para saber qué
-dedos levantar?
 
 </aside>
 
@@ -183,43 +202,6 @@ dedos levantar?
  
 
 
-<!--------------------------------------
-<section>
-<h2>Sistema posicional</h2>
-<ul>
-<li>Tenemos un sistema con una cierta cantidad de dígitos (la <b>base</b>)</li>
-<ul>
-<li>Para contar objetos, vamos asignando a cada objeto los dígitos disponibles en el sistema</li>
-<li>Al acabarse los dígitos, volvemos a 0</li>
-<li>Pero anotamos que se agotó la secuencia con un 1 a la izquierda</li>
-<li>Este 1 tiene el <i>peso</i>, o representa el valor, de la base</li>
-</ul>
-</ul>
-</section>
- 
-<section>
-<h2>Sistema posicional</h2>
-<div class="double">
-	<ul>
-	<div>
-		<li>Cada vez que se agota la secuencia en una posición, incrementamos la posición a su izquierda</li>
-	</div>
-	<span></span>
-	<div>
-		<li>Al agotarse la secuencia en la posición de la izquierda:</li>
-			<ul>
-				<li style="fontSize: smaller">Usamos una posición todavía más a la izquierda</li>
-				<li style="fontSize: smaller">y volvemos a empezar con 0 en todas las demás posiciones a su derecha</li>
-			</ul>
-	</div>
-	</ul>
-</div>
-</section>
-
-
--------------------------------------->
-
-
 
 <section>
 <h2>Sistema decimal</h2>
@@ -227,31 +209,41 @@ dedos levantar?
 <li>Nuestros dígitos habituales son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</li>
 <li>Son diez dígitos</li>
 <li>Nuestra <b>base</b> habitual es 10</li>
+<div class="fragment">
 <li>En este sistema:</li>
 <ul>
-	<li>$15 = 1 \times 10 + 5$</li>
-	<li>$125 = 1 \times 100 + 2 \times 10 + 5$</li>
-	<li>$3125 = 3 \times 1000 + 1 \times 100 + 2 \times 10 + 5$</li>
+	<li class="fragment">$15 = 1 \times 10 + 5$</li>
+	<li class="fragment">$125 = 1 \times 100 + 2 \times 10 + 5$</li>
+	<li class="fragment">$3125 = 3 \times 1000 + 1 \times 100 + 2 \times 10 + 5$</li>
 </ul>
+</div>
 </ul>
 <aside data-markdown class="notes">
+##Sistema decimal
 Si reflexionamos sobre el sistema decimal, de diez dígitos, encontramos que las cifras de las decenas
 y de las unidades (y de las centenas, y de las unidades de mil, etc.) también forman un sistema posicional, 
 sólo que con 10 dígitos en lugar de los seis del sistema anterior. 
 Cuando escribimos **15** en el sistema decimal, esta expresión equivale a decir "para saber de qué cantidad estoy hablando,
 tome el 1 y multiplíquelo por 10, y luego sume el 5".
 
+###Base de un sistema de numeración
+
 Cuando queremos pasar esa expresión a un sistema con otra cantidad de dígitos, 
 el procedimiento de averiguar los dígitos que van en cada posición
 se llama **conversión de base**. La **base** de un sistema es la cantidad de dígitos de que dispone, o sea que
 el sistema decimal habitual es de base 10, mientras que el de los deditos es de base 6. 
 
-Anteriormente escribíamos **15** en el sistema de base 6 como **23**. Sin embargo, necesitamos evitar la confusión 
-entre ambos significados de **23**. Para esto usamos índices subscriptos que indican la base. Así, **quince** es
-**$15_{(10}$** porque está en base diez (la del sistema decimal, habitual) y **$23_{(10}$** es **veintitrés**, pero 
-**$23_{(6}$** es **dos tres en base 6**, y por lo tanto vale **quince**. Como 10 es nuestra base habitual, cuando 
-no usemos índice subscripto estaremos sobreentendiendo que hablamos **en base 10**, Es decir, **$15_{(10}$** se
-puede escribir, simplemente, **$15$**.
+###Indicando la base con subíndices
+
+Anteriormente escribíamos **15** en el sistema de base 6 como **23**. Sin embargo, necesitamos evitar la confusión entre ambos significados de **23**. Para esto usamos índices subscriptos que indican la base. Así, 
+
+- **Quince** es **$15_{(10}$** porque está en base diez (la del sistema decimal, habitual), y 
+- **$23_{(10}$** es **veintitrés**, 
+- pero **$23_{(6}$** es **dos tres en base 6**, y por lo tanto vale **quince**.
+
+Como 10 es nuestra base habitual, cuando no usemos índice subscripto estaremos sobreentendiendo que hablamos **en base 10**. Es decir, **$15_{(10}$** se puede escribir, simplemente, **$15$**.
+
+###Número y numeral
 
 Notemos, de paso, que un mismo número puede escribirse de muchas maneras: en prácticamente cualquier base que 
 se nos ocurra, sin necesidad de contar con los dedos; y que la forma habitual, en base 10, no es más
@@ -266,21 +258,37 @@ representación en decimal.
 </section>
 
 
+<section data-background="#3c53b5" data-background-transition="zoom" class="preguntas" data-coursemod-shown="false">
+<h2>Preguntas</h2>
+<ol>
+<li class="fragment">¿Qué es un sistema posicional?</li>
+<li class="fragment">¿Qué es la base de un sistema de numeración?</li>
+<li class="fragment">¿Cuál es la diferencia entre número y numeral?</li>
+</ol>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
 <section>
 <h2>Sistema binario</h2>
 <ul>
 <li>Tenemos dos dígitos</li>
 <li>Los dígitos son 0, 1</li>
+
+<li>¿Cómo se escriben los números 0 y 1 en base 2?</li>
+<li>¿Cómo se escriben <b>2, 3, 4, 5</b> en base 2?</li>
+<div class="fragment">
 <li>En este sistema:</li>
 <ul>
-	<li>$15 = 1\times8 + 1\times4 + 1\times2 + 1\times1 = 1111_{(2}$</li>
-	<li>$125 = 1\times64 + 1\times32 + 1\times16$ $ + 1\times8 + $ $1\times4 + 0\times2 + 1\times1$ $= 1111101_{(2}$</li>
+	<li class="fragment">$10 = 1\times8 + 0\times4$ $+$ $1\times2 + 0\times1 = 1010_{(2}$</li>
+	<li class="fragment">$15 = 1\times8 + 1\times4 + 1\times2 + 1\times1 = 1111_{(2}$</li>
+	<li class="fragment">$17 = 1\times16$ $+$ $0\times8$ $+$ $0\times4$ $+$ $0\times2$ $+$ $1\times1$ $= 10001_{(2}$</li>
+	<li class="fragment">$125 = 1\times64 + 1\times32 + 1\times16$ $+$ $1\times8$ $+$ $1\times4 + 0\times2 + 1\times1$ $= 1111101_{(2}$</li>
 </ul>
-<li>¿Cómo se escriben los números 0 y 1 en base 2?</li>
-<li>¿Cómo se escribe 2 en base 2?</li>
-<li>¿Cómo se escriben 3, 4, 5, en base 2?</li>
+</div>
 </ul>
 <aside data-markdown class="notes">
+##Sistema binario
 Comprender y manejar la notación en sistema binario es sumamente importante para el estudio de la computación. El sistema binario comprende únicamente dos dígitos, **0 y 1**. 
 
 Las computadoras digitales, tal como las conocemos hoy, almacenan todos sus datos en forma de números binarios. Es **muy recomendable**, para la práctica de esta materia, adquirir velocidad y seguridad en la conversión de y a sistema binario.
@@ -295,14 +303,13 @@ Las computadoras digitales, tal como las conocemos hoy, almacenan todos sus dato
 <li>Tenemos dieciséis dígitos</li>
 <li>Los dígitos son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ... </li>
 <span class="fragment"> A, B, C, D, E, F</span></li>
-<li>¿Cómo se escribe <b>8</b> en base 16?</li>
-<li>¿Y <b>10</b> en base 16?</li>
-<li>¿Y <b>15</b>?</li>
-<li>¿Y <b>16</b>?</li>
-<li>¿Y <b>17</b>?</li>
-<li>¿Y <b>32</b>?</li>
+<li class="fragment">¿Cómo se escribe <b>8</b> en base 16?</li>
+<li class="fragment">¿Y <b>10</b> en base 16?</li>
+<li class="fragment">¿Y <b>15</b>? ¿Y <b>16</b>? ¿Y <b>17</b>?</li>
+<li class="fragment">¿Y <b>32</b>?</li>
 </ul>
 <aside data-markdown class="notes">
+##Sistema hexadecimal
 Otro sistema de numeración importante es el hexadecimal o de base 16. En este sistema tenemos **más dígitos** que en el decimal, por lo cual tenemos que recurrir a "dígitos" nuevos, tomados del alfabeto. Así, A representa el 10, B el 11, etc.
 
 El sistema hexadecimal nos resultará útil porque con él podremos expresar fácilmente números que llevarían muchos dígitos en sistema binario. 
@@ -312,27 +319,8 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 </aside>
 </section>
 
-<!------------
-<section>
-<h2>Especificando la base</h2>
-<ul>
-<li>Para evitar ambigüedades especificamos la base en forma suscripta</li> 
-<ul>
-<li>"Los $101_{(10}$ Dálmatas"</li>
-<li>"Los $101_{(2}$  Dálmatas"</li>
-</ul>
-</ul>
-<aside data-markdown class="notes">
-</aside>
-<aside data-markdown class="notes">
-</aside>
-</section>
------------->
-
 <section data-background="#3cb5c5" data-background-transition="zoom" data-coursemod-shown="false">
 <h2>¿Preguntas?</h2>
-<aside data-markdown class="notes">
-</aside>
 </section>
 
 
@@ -343,7 +331,6 @@ El sistema hexadecimal nos resultará útil porque con él podremos expresar fá
 <li class="fragment">Si $n < b$, ¿cuántos dígitos se necesitan para escribir $n$ en base $b$?</li>
 <li class="fragment">Dado un sistema posicional de base $b$, ¿cómo se escribe $b$ en ese sistema?</li>
 <li class="fragment">¿Y $b + 1$?</li>
-
 <li class="fragment">¿Y $b^2$?</li>
 <li class="fragment">¿Cómo se escribe 26 en base 5?</li>
 <li class="fragment">¿Cómo se escribe 17 en base 16, en base 5, en base 2, en base 10?</li>
@@ -411,6 +398,7 @@ $n = x_k \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_0 \times b
 </div>
 
 <aside data-markdown class="notes">
+##Una expresión general
 Como hemos visto intuitivamente en el sistema de contar con los dedos, y como hemos confirmado repasando los sistemas decimal, binario y hexadecimal, los sistemas posicionales tienen una cosa muy importante en común: las cifras de un **numeral** escrito en cualquier base no son otra cosa que los **factores por los cuales hay que multiplicar las sucesivas potencias de la base** para saber a qué **número** nos estamos refiriendo.
 
 Por ejemplo, el numeral **2017** escrito en base 10 no es otra cosa que la suma de:
@@ -445,7 +433,7 @@ Esta ecuación puede escribirse más sintéticamente en notación de sumatoria c
 
 `$$n = \sum_{i=0}^{k}{x_i \times b^i}$$`
 
-En estas ecuaciones: 
+En estas ecuaciones (que son equivalentes): 
 
 - Los números `$x_i$` son las cifras del numeral.
 - Los números $b^i$ son potencias de la base, cuyos exponentes crecen de derecha a izquierda y comienzan por 0.
@@ -465,6 +453,7 @@ En estas ecuaciones:
 <li>De base $b_1$ a $b_2$</li>
 </ul>
 <aside data-markdown class="notes">
+##Conversión de base
 Veremos algunos casos interesantes de conversiones de base. Serán especialmente importantes los casos donde el número de origen o de destino de la conversión esté en base 10, nuestro sistema habitual, pero también nos dedicaremos a algunas conversiones de base donde ninguna de ellas sea 10.
 </aside>
 </section>
@@ -573,13 +562,12 @@ Es de la mayor importancia cuidar de que las potencias de la base que interviene
 	} -->
 </div>
 <aside data-markdown class="notes">
+##Preguntas
 ¿Cómo sería un sistema de **contar con los dedos en base 2**? Dedo arriba = 1, dedo abajo = 0...
 
-¿Cómo hacemos el 1, el 2, el 3...?
-
-¿Hasta qué número podemos contar con una mano? ¿Y con dos manos?
-
-¿Y cómo se indica el **4** en este sistema?
+- ¿Cómo hacemos el 1, el 2, el 3...?
+- ¿Hasta qué número podemos contar con una mano? ¿Y con dos manos?
+- ¿Y cómo se indica el **4** en este sistema?
 </aside>
 </section>
 
@@ -615,7 +603,7 @@ Esa base, ¿puede ser...
 	</ul>
 </ul>
 <aside data-markdown class="notes">
-### Conversión entre bases arbitrarias
+##Conversión entre bases arbitrarias
 
 Hemos visto los casos de conversión entre base 10 y otras bases, en ambos sentidos. Ahora veamos los casos donde ninguna de las bases origen o destino son la base 10.
 
@@ -632,6 +620,7 @@ En estos casos, como 16 y 8 son potencias de 2 (la otra base), podemos aplicar u
 <h2>Equivalencias</h2>
 <img class="stretch" src="img/equivalencias.png">
 <aside data-markdown class="notes">
+##Equivalencias entre sistemas
 Para poder aplicar este truco se necesita la tabla de equivalencias entre los dígitos de los diferentes sistemas. Si no logramos memorizarla, conviene al menos saber reproducirla, asegurándose de saber **contar** en las bases 2, 8 y 16 para reconstruir la tabla si es necesario. Pero con la práctica, se logra memorizarla fácilmente.
 </aside>
 </section>
@@ -642,7 +631,15 @@ Para poder aplicar este truco se necesita la tabla de equivalencias entre los d�
 <aside data-markdown class="notes">
 Notemos que:
 
-- El sistema octal tiene ocho dígitos **(0 ... 7)** y cada uno de ellos se puede representar con **tres dígitos binarios**.
+- El sistema octal tiene ocho dígitos **(0 ... 7)** y cada uno de ellos se puede representar con **tres dígitos binarios**:
+  	- 000
+  	- 001
+  	- 010
+  	- 011
+  	- 100
+  	- 101
+  	- 110
+  	- 111
 </aside>
 </section>
 
@@ -652,12 +649,29 @@ Notemos que:
 <aside data-markdown class="notes">
 Notemos que:
 
-- El sistema hexadecimal tiene dieciséis dígitos **(0 ... F)** y cada uno de ellos se puede representar con **cuatro dígitos binarios**.
+- El sistema hexadecimal tiene dieciséis dígitos **(0 ... F)** y cada uno de ellos se puede representar con **cuatro dígitos binarios**:
+  	- 0000
+  	- 0001
+  	- 0010
+  	- 0011
+  	- 0100
+  	- 0101
+  	- 0110
+  	- 0111
+  	- 1000
+  	- 1001
+  	- 1010
+  	- 1011
+  	- 1100
+  	- 1101
+  	- 1110
+  	- 1111
+
 </aside>
 </section>
 
 <section>
-<h2>Binario a hexadecimal</h2>
+<h2>Binario &#11012  hexadecimal</h2>
 <ul>
 <li class="postit">Cada cuatro dígitos binarios representan un dígito hexadecimal</li>
 <ul>
@@ -684,7 +698,7 @@ Si el problema es convertir, inversamente, de base 16 a base 2, de igual forma r
 </section>
 
 <section>
-<h2>Binario a octal</h2>
+<h2>Binario &#11012  octal</h2>
 <ul>
 <li class="postit">Cada <b>tres</b> dígitos binarios representan un dígito octal</li>
 <ul>
@@ -697,7 +711,7 @@ $100010_{(2} = 42_{(8}$
 $1100010_{(2} = 001100010_{(2} = 142_{(8}$
 </ul>
 </ul>
-<li>Octal a binario: procedimiento inverso</li>
+<li class="fragment">Octal a binario: procedimiento inverso</li>
 </ul>
 <aside data-markdown class="notes">
 ### Conversión entre sistemas binario y octal
@@ -717,7 +731,8 @@ El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemp
  * Agrupar los dígitos binarios de a 4
 4. Binario &#11012 octal
  * Agrupar los dígitos binarios de a 3
-
+<aside data-markdown class="notes">
+</aside>
 </section>
 
 <section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
@@ -750,9 +765,10 @@ El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemp
 <section data-transition="slide-in slide-out" data-coursemod-shown="false">
 <h2>Referencias</h2>
 <ul>
+	<li><a href="SistemasDeNumeración-notes.pdf">Notas de esta presentación</li>
 	<li><a href="apunte/IC-Sistemas_Numericos.pdf">Apunte de Cátedra: Sistemas de Numeración</li>
 	<li><a href="https://padlet.com/eduardo_grosclaude/ic2017">Estudiando
- Redes</a></li>
+ IC</a></li>
 </ul>
 <aside data-markdown class="notes">
 </aside>

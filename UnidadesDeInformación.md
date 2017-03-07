@@ -1,6 +1,4 @@
 
-## Unidades de Información
-
 En este segundo tema de la unidad veremos qué es la información y cómo podemos cuantificar, es decir, medir, la cantidad de información que puede alojar un dispositivo, o la cantidad de información que representa una pieza cualquiera de información. Veremos además las relaciones entre las diferentes unidades de información.
 
 
@@ -19,12 +17,6 @@ Esta pregunta es **binaria**: se responde con un sí o con un no. Por lo tanto, 
 Notemos que, en los manuales de lógica o de informática, encontraremos siempre asociados los **bits** con los valores de **0 y 1**. Aunque esto es útil a los efectos de emplear los bits en computación, no es del todo exacto. Lo que está codificando un bit no es exactamente un dígito. Lo que viajó desde la ciudad sitiada hasta su destino no es un 0 ni un 1. Es **un bit de información**, aquella unidad de información que permite tomar una decisión entre dos alternativas.
 
 
-## Representando datos con bytes
 
-## Representando datos con bytes
-
-## Los prefijos, comparados
-
-## Cantidad de información
 
 

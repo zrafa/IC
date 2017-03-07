@@ -18,7 +18,9 @@ arqui: Arquitectura.html
 %.html: src/%.slides $(DEPS) 
 	util/macro $< > $*.html
 	util/asides.pl $< > $*.md
-#	pandoc $*.md -o $*-notes.pdf
+	#pandoc $*.md -o $*-notes.pdf
+	pandoc -V lang=spanish -V fontfamily=arev $*.md --toc -o $*-notes.pdf
+	pandoc $*.md -t epub -o $*-notes.epub
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
 #	pandoc $*-ok.md -o $*.pdf
 
