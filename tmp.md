@@ -154,7 +154,7 @@ El procedimiento para convertir un número escrito en base 10 a cualquier otra b
 
 - Dividir el número original por la base destino, anotando cociente y resto
 - Mientras se pueda seguir dividiendo:
-      - Volver al paso anterior reemplazando el número original por el nuevo cociente
+   - Volver al paso anterior reemplazando el número original por el nuevo cociente
 - Finalmente escribimos los dígitos de nuestro número convertido usando **el último cociente y todos los restos en orden inverso a como aparecieron**. 
 
 Ésta es la expresión de nuestro número original en la base destino.

@@ -17,12 +17,17 @@ arqui: Arquitectura.html
 
 %.html: src/%.slides $(DEPS) 
 	util/macro $< > $*.html
+	$(eval TITLE = $(shell perl -ne '/data-title=\"(.+)\">/ and print "$$1"' $<) )
 	util/asides.pl $< > $*.md
-	#pandoc $*.md -o $*-notes.pdf
-	pandoc -V lang=spanish -V fontfamily=arev $*.md --toc -o $*-notes.pdf
-	pandoc $*.md -t epub -o $*-notes.epub
+	pandoc \
+		-V lang=spanish \
+		-V fontfamily=sans\
+		-V papersize=A4 \
+		-V title="$(TITLE)" \
+		$*.md --toc -o $*-notes.pdf
+
+
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
-#	pandoc $*-ok.md -o $*.pdf
 
 clean: 
 	mv demo.html Redes.html Software.html SistemasOperativos.html SistemasDeCómputo.html SistemasDeNumeración.html UnidadesDeInformación.html RepresentaciónDigitalDeDatos.html TextoYMultimedia.html Arquitectura.html attic
