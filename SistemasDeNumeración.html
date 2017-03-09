@@ -989,8 +989,9 @@ El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemp
 
 		// -------- Math plugin ----------
 		math: {
-			//mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
-			mathjax: 'externals/mathjax/MathJax.js',
+			//mathjax: 'https://cdn.mathjax.org/mathjax/latest/Ma2YthJax.js',
+			// mathjax: 'externals/mathjax/MathJax.js',
+			mathjax: window.location.search.match( /localversion/g ) ? 'externals/mathjax/MathJax.js' : 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
 			config: 'TeX-AMS_HTML-full' 
 		},
 
