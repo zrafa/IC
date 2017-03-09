@@ -339,4 +339,63 @@ body {
 	color: white;
 }
 
+/* ic.css */
+.reveal .transparent_bg:after  {
+  content: ' ';
+  background: rgba(255, 255, 255, 0.8);
+  background-size: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.red_box  {
+  background: rgba(240, 150, 150, 0.9);
+/*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);  */
+}
+
+.blue_box  {
+  background: rgba(120, 220, 220, 0.9);
+/*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);  */
+}
+.post_it {
+  background: rgba(255, 255, 10, 0.9);
+}
+
+background-image { max-height: 100%; max-width:100%; }
+
+svg  { top:0; left:0; max-height: 100%; max-width:100%; width:100%; height:100%; }
+
+
+/**************************************************************************************************************************/	
+
+.subscript {
+  vertical-align: sub; 
+  font-size: small;
+}
+
+.reveal .plainstretch {
+  max-height: 70%;
+  height: 70%;
+   max-width: 100%; 
+  width: 100%;
+  border: none;
+  box-shadow: none; 
+}
+.preguntas {
+	--data-background: "#3c53b5";
+	--data-background-transition: "zoom";
+}
+
+resumen {
+	data-background: "#3cb5c5";
+	data-background-transition: "zoom";
+}
 	
+.plaintable th, 
+.plaintable td {
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+}

@@ -191,49 +191,47 @@ escribimos el 15 como **dos dedos en la izquierda, y tres dedos en la derecha**,
 o directamente **23** (que se pronuncia **dos tres** porque **no quiere decir veintitrés**, sino 
 **quince**, sólo que escrito en este sistema).  Como el dígito 2 de la izquierda vale por 6, si hacemos la operación 
 de sumar **$2 \times 6 + 3$** obtenemos, efectivamente, 15. 
-
-
 </aside>
-
 </section>
 
 
-
- 
-
-
-
 <section>
-<h2>Sistema decimal</h2>
+<h2>Muchos sistemas</h2>
 <ul>
-<li>Nuestros dígitos habituales son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</li>
-<li>Son diez dígitos</li>
-<li>Nuestra <b>base</b> habitual es 10</li>
-<div class="fragment">
-<li>En este sistema:</li>
+<li><b>Base</b></li>
 <ul>
-	<li class="fragment">$15 = 1 \times 10 + 5$</li>
-	<li class="fragment">$125 = 1 \times 100 + 2 \times 10 + 5$</li>
-	<li class="fragment">$3125 = 3 \times 1000 + 1 \times 100 + 2 \times 10 + 5$</li>
+	<li>El sistema de numeración anterior tiene 6 dígitos (0, 1, 2, 3, 4, 5), luego 
+	la base de este sistema es <b>6</b></li>
 </ul>
-</div>
+<li><b>Número</b> y <b>numeral</b></li>
+<ul>
+	<li>Un número puede tener muchas representaciones, en diferentes bases</li>
+	<li>Indicamos la base con un índice subscripto</li>
+</ul>
+
+		$$15 = 15_{(10} = 23_{(6}$$</li>
 </ul>
 <aside data-markdown class="notes">
-##Sistema decimal
-Si reflexionamos sobre el sistema decimal, de diez dígitos, encontramos que las cifras de las decenas
-y de las unidades (y de las centenas, y de las unidades de mil, etc.) también forman un sistema posicional, 
-sólo que con 10 dígitos en lugar de los seis del sistema anterior. 
-Cuando escribimos **15** en el sistema decimal, esta expresión equivale a decir "para saber de qué cantidad estoy hablando,
-tome el 1 y multiplíquelo por 10, y luego sume el 5".
-
 ###Base de un sistema de numeración
 
-Cuando queremos pasar esa expresión a un sistema con otra cantidad de dígitos, 
-el procedimiento de averiguar los dígitos que van en cada posición
-se llama **conversión de base**. La **base** de un sistema es la cantidad de dígitos de que dispone, o sea que
+La **base** de un sistema es la cantidad de dígitos de que dispone, o sea que
 el sistema decimal habitual es de base 10, mientras que el de los deditos es de base 6. 
 
-###Indicando la base con subíndices
+###Número y numeral
+
+Notemos que un mismo número puede escribirse de muchas maneras: en prácticamente cualquier base que 
+se nos ocurra, sin necesidad de contar con los dedos; y que la forma habitual, en base 10, no es más
+importante o mejor que las otras (salvo, claro, que ya estamos acostumbrados a ella). Otras culturas han desarrollado
+otros sistemas de numeración y escriben los números de otra manera. 
+
+Esto muestra que hay una **diferencia entre
+número y numeral**, diferencia que es algo difícil de ver debido a la costumbre de identificar a los números con su
+representación en decimal. 
+
+* El **numeral** es lo que escribimos ($15$, **$15_{(10}$** o **$23_{(6}$**). 
+* El **número** es la cantidad de la cual estamos hablando (la misma en los tres casos).
+
+###Indicando la base
 
 Anteriormente escribíamos **15** en el sistema de base 6 como **23**. Sin embargo, necesitamos evitar la confusión entre ambos significados de **23**. Para esto usamos índices subscriptos que indican la base. Así, 
 
@@ -243,19 +241,15 @@ Anteriormente escribíamos **15** en el sistema de base 6 como **23**. Sin embar
 
 Como 10 es nuestra base habitual, cuando no usemos índice subscripto estaremos sobreentendiendo que hablamos **en base 10**. Es decir, **$15_{(10}$** se puede escribir, simplemente, **$15$**.
 
-###Número y numeral
-
-Notemos, de paso, que un mismo número puede escribirse de muchas maneras: en prácticamente cualquier base que 
-se nos ocurra, sin necesidad de contar con los dedos; y que la forma habitual, en base 10, no es más
-importante o mejor que las otras (salvo, claro, que ya estamos acostumbrados a ella). Otras culturas han desarrollado
-otros sistemas de numeración y escriben los números de otra manera. Esto muestra que hay una **diferencia entre
-número y numeral**, diferencia que es algo difícil de ver debido a la costumbre de identificar a los números con su
-representación en decimal. 
-
-* El **numeral** es lo que escribimos ($15$, **$15_{(10}$** o **$23_{(6}$**). 
-* El **número** es la cantidad de la cual estamos hablando (la misma en los tres casos).
+Cuando queremos pasar un número escrito en una base a un sistema con otra cantidad de dígitos, 
+el procedimiento de averiguar los dígitos que van en cada posición
+se llama **conversión de base**. Más adelante veremos procedimientos de conversión de base para cualquier caso que aparezca.
 </aside>
 </section>
+
+
+
+ 
 
 
 <section data-background="#3c53b5" data-background-transition="zoom" class="preguntas" data-coursemod-shown="false">
@@ -270,11 +264,41 @@ representación en decimal.
 </section>
 
 <section>
+<h2>Sistema decimal</h2>
+<ul>
+<li>Nuestros diez dígitos habituales son 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</li>
+<li>Nuestra <b>base</b> habitual es 10</li>
+<div class="fragment">
+<li>En este sistema:</li>
+<ul>
+	<li class="fragment">$15 = 1 \times 10 + 5$</li>
+	<li class="fragment">$125 = 1 \times 100 + 2 \times 10 + 5$</li>
+	<li class="fragment">$3125 = 3 \times 1000 + 1 \times 100 + 2 \times 10 + 5$</li>
+</ul>
+</div>
+</ul>
+<aside data-markdown class="notes">
+##Sistema decimal
+Si reflexionamos sobre el sistema decimal, de diez dígitos, encontramos que 
+también forma un sistema posicional, 
+sólo que con 10 dígitos en lugar de los seis del sistema anterior. 
+
+Cuando escribimos **15** en el sistema decimal, esta expresión equivale a decir "para saber de qué cantidad estoy hablando,
+tome el 1 y multiplíquelo por 10, y luego sume el 5".
+
+Si el número (o, mejor dicho, el **numeral**) tiene más dígitos, esos dígitos van multiplicados por **potencias de 10** que van creciendo hacia la izquierda. La cifra de las unidades está multiplicada por la potencia de 10 de exponente 0 (es decir, por $10^0$, que es igual a 1).
+
+Esto se cumple para todos los sistemas posicionales, sólo que con potencias **de la base correspondiente**.
+</aside>
+</section>
+
+
+
+<section>
 <h2>Sistema binario</h2>
 <ul>
-<li>Tenemos dos dígitos</li>
-<li>Los dígitos son 0, 1</li>
-
+<li>Tenemos dos dígitos que son 0, 1</li>
+<li>La base es 2</li>
 <li>¿Cómo se escriben los números 0 y 1 en base 2?</li>
 <li>¿Cómo se escriben <b>2, 3, 4, 5</b> en base 2?</li>
 <div class="fragment">
@@ -282,8 +306,7 @@ representación en decimal.
 <ul>
 	<li class="fragment">$10 = 1\times8 + 0\times4$ $+$ $1\times2 + 0\times1 = 1010_{(2}$</li>
 	<li class="fragment">$15 = 1\times8 + 1\times4 + 1\times2 + 1\times1 = 1111_{(2}$</li>
-	<li class="fragment">$17 = 1\times16$ $+$ $0\times8$ $+$ $0\times4$ $+$ $0\times2$ $+$ $1\times1$ $= 10001_{(2}$</li>
-	<li class="fragment">$125 = 1\times64 + 1\times32 + 1\times16$ $+$ $1\times8$ $+$ $1\times4 + 0\times2 + 1\times1$ $= 1111101_{(2}$</li>
+	<li class="fragment">$40 = 1\times32 + 0\times16$ $+$ $1\times8$ $+$ $0\times4 + 0\times2 + 0\times1$ $= 101000_{(2}$</li>
 </ul>
 </div>
 </ul>
@@ -291,7 +314,43 @@ representación en decimal.
 ##Sistema binario
 Comprender y manejar la notación en sistema binario es sumamente importante para el estudio de la computación. El sistema binario comprende únicamente dos dígitos, **0 y 1**. 
 
-Las computadoras digitales, tal como las conocemos hoy, almacenan todos sus datos en forma de números binarios. Es **muy recomendable**, para la práctica de esta materia, adquirir velocidad y seguridad en la conversión de y a sistema binario.
+Igual que ocurre con el sistema decimal, los numerales se escriben como suma de dígitos del sistema multiplicados por potencias de la base. En este sistema, cada 1 en una posición indica que sumamos una potencia de 2. Esa potencia de 2 es $2^n$, donde $n$ es la posición, y las posiciones se cuentan desde 0. 
+
+Por ejemplo, 
+
+`$$10 = 1\times8 + 0\times4 + 1\times2 + 0\times1 = 1010_{(2}$$`  
+
+y 
+
+`$$15 = 1\times8 + 1\times4 + 1\times2 + 1\times1 = 1111_{(2}$$`  
+
+###Trucos para conversión rápida
+
+Las computadoras digitales, tal como las conocemos hoy, almacenan todos sus datos en forma de números binarios. Es **muy recomendable**, para la práctica de esta materia, adquirir velocidad y seguridad en la conversión de y a sistema binario. 
+
+Una manera de facilitar esto es memorizar los valores de algunas potencias iniciales de la base 2:
+
+   $$2^0 = 1$$
+   $$2^1 = 2$$
+   $$2^2 = 4$$
+   $$2^3 = 8$$
+   $$2^4 = 16$$
+   $$2^5 = 32$$
+   $$2^6 = 64$$
+   $$2^7 = 128$$
+
+¿Qué utilidad tiene memorizar esta tabla? Que nos permite convertir mentalmente algunos casos simples de números en sistema decimal, a base 2.
+Por ejemplo, el número **40** equivale a **32 + 8**, que son ambas potencias de 2. Luego, la expresión de 40 en sistema binario será **101000**.
+
+Otro truco interesante consiste en ver que si un numeral está en base 2, **multiplicarlo por 2 equivale a desplazar un lugar a la izquierda todos sus dígitos, completando con un 0 al final**. Así, si sabemos que `$40_{(10} = 101000_{(2}$`, ¿cómo escribimos rápidamente **80**, que es `$40\times2$`? Tomamos la expresión de 40 en base 2 y la desplazamos a la izquierda agregando un 0: `$1010000_{(2} = 80_{(10}$`.
+
+De todas maneras, estos no son más que trucos que pueden servir en no todos los casos. Más adelante veremos el procedimiento de conversión general correcto.
+
+**Preguntas**
+
+- ¿Cuál es el truco para calcular rápidamente la expresión binaria de 20, si conocemos la de 40?
+- ¿Cómo calculamos la de 40, si conocemos la de 10?
+- ¿Cómo podemos expresar estas reglas en forma general?
 </aside>
 </section>
 
@@ -482,7 +541,7 @@ El procedimiento para convertir un número escrito en base 10 a cualquier otra b
 
 - Dividir el número original por la base destino, anotando cociente y resto
 - Mientras se pueda seguir dividiendo:
-      - Volver al paso anterior reemplazando el número original por el nuevo cociente
+    - Volver al paso anterior reemplazando el número original por el nuevo cociente
 - Finalmente escribimos los dígitos de nuestro número convertido usando **el último cociente y todos los restos en orden inverso a como aparecieron**. 
 
 Ésta es la expresión de nuestro número original en la base destino.
@@ -930,8 +989,8 @@ El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta con reemp
 
 		// -------- Math plugin ----------
 		math: {
-			mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
-			//	mathjax: '../MathJax-master/MathJax.js',
+			//mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+			mathjax: 'externals/mathjax/MathJax.js',
 			config: 'TeX-AMS_HTML-full' 
 		},
 
