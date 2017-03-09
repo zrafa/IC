@@ -1,12 +1,13 @@
 /**
- * A simple theme for reveal.js presentations, similar
- * to the default theme. The accent color is darkblue.
+  max-width: 100%;
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
  *
- * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
- * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
  */
-@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
+  color: #fff; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -15,14 +16,14 @@ body {
   background-color: #fff; }
 
 .reveal {
-  font-family: "Lato", sans-serif;
-  font-size: 36px;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 38px;
   font-weight: normal;
-  color: #000; }
+  color: #222; }
 
 ::selection {
   color: #fff;
-  background: rgba(0, 0, 0, 0.99);
+  background: #98bdef;
   text-shadow: none; }
 
 .reveal .slides > section,
@@ -40,23 +41,23 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #000;
-  font-family: "News Cycle", Impact, sans-serif;
-  font-weight: normal;
+  color: #222;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: none;
+ /* text-transform: uppercase;*/
   text-shadow: none;
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 3.77em; }
+  font-size: 2.5em; }
 
 .reveal h2 {
-  font-size: 2.11em; }
+  font-size: 1.6em; }
 
 .reveal h3 {
-  font-size: 1.55em; }
+  font-size: 1.3em; }
 
 .reveal h4 {
   font-size: 1em; }
@@ -99,16 +100,24 @@ body {
   list-style-type: square; }
 
 .reveal ul ul {
-  list-style-type: disc; }
+  list-style-type: disc; 
+  }
 
 .reveal ul ul ul {
-  list-style-type: circle; }
+  list-style-type: circle; 
+}
+
+.reveal ol ol ol,
+.reveal ul ul ul {
+  font-size: 0.60em;
+}
 
 .reveal ul ul,
 .reveal ul ol,
 .reveal ol ol,
 .reveal ol ul {
   display: block;
+  font-size: 0.80em;
   margin-left: 40px; }
 
 .reveal dt {
@@ -182,8 +191,7 @@ body {
 .reveal table td[align="right"] {
   text-align: right; }
 
-.reveal table tbody tr:last-child th,
-.reveal table tbody tr:last-child td {
+.reveal table tr:last-child td {
   border-bottom: none; }
 
 .reveal sup {
@@ -205,146 +213,80 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #00008B;
+  color: #2a76dd;
   text-decoration: none;
-  -webkit-transition: color .15s ease;
-  -moz-transition: color .15s ease;
-  transition: color .15s ease; }
+  -webkit-transition: color 0.15s ease;
+  -moz-transition: color 0.15s ease;
+  transition: color 0.15s ease; }
 
 .reveal a:hover {
-  color: #0000f1;
+  color: #6ca0e8;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #00003f; }
+  background: #1a53a1; }
 
 /*********************************************
  * IMAGES
  *********************************************/
+
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+  border: 4px solid #222; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); 
+}
 
 .reveal section img.plain {
   border: 0;
   box-shadow: none; }
 
 .reveal a img {
-  -webkit-transition: all .15s linear;
-  -moz-transition: all .15s linear;
-  transition: all .15s linear; }
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  transition: all 0.15s linear; }
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #00008B;
+  border-color: #2a76dd;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
-
-/*********************************************
- * NAVIGATION CONTROLS
- *********************************************/
-.reveal .controls .navigate-left,
-.reveal .controls .navigate-left.enabled {
-  border-right-color: #00008B; }
-
-.reveal .controls .navigate-right,
-.reveal .controls .navigate-right.enabled {
-  border-left-color: #00008B; }
-
-.reveal .controls .navigate-up,
-.reveal .controls .navigate-up.enabled {
-  border-bottom-color: #00008B; }
-
-.reveal .controls .navigate-down,
-.reveal .controls .navigate-down.enabled {
-  border-top-color: #00008B; }
-
-.reveal .controls .navigate-left.enabled:hover {
-  border-right-color: #0000f1; }
-
-.reveal .controls .navigate-right.enabled:hover {
-  border-left-color: #0000f1; }
-
-.reveal .controls .navigate-up.enabled:hover {
-  border-bottom-color: #0000f1; }
-
-.reveal .controls .navigate-down.enabled:hover {
-  border-top-color: #0000f1; }
-
-/*********************************************
- * PROGRESS BAR
- *********************************************/
-.reveal .progress {
-  background: rgba(0, 0, 0, 0.2); }
-
-.reveal .progress span {
-  background: #00008B;
-  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
-
 /*********************************************
  * OSO
  *********************************************/
-
-.double {
-	-webkit-columns: 2;
-	-moz-columns: 2;
-	columns: 2;
-	-webkit-column-gap:75px;
-	-moz-column-gap:75px;
-	column-gap:75px
+/*********************************************
+ * TAGCLOUD
+ *********************************************/
+span.clouditem {
+  padding-left: 0.15em;
+  padding-right: 0.15em;
+  line-height: 90%;
+}
+.menucontents a:link {
+	text-decoration: none;
+}
+	
+/* Tangle */
+.TKNumberField {
+  background: rgba(255, 255, 10, 0.9);  
 }
 
-.double li {
-	-webkit-column-break-inside: avoid;
-	page-break-inside: avoid;
-	break-inside: avoid;
+.TKNumberFieldInput {
+  font-size: 38px;
+  background: rgba(255, 255, 10, 0.9);  
 }
 
-.frosted {
-	background-color: rgba(250,252,255,0.7); 
-	border-radius: 10px;
-}
 
-.postit {
-	background-color: #FFFF00;
-}
+/*.reveal .slide-background {
+  max-height: 90%; max-width:90%;
+}*/
 
-.stretch {
-  height: 100%;
-  max-height: 100%;
-  box-sizing: border-box; 
-}
-
-.color1 {
-	background-color: #AADDFF;
-	border-radius: 10px;
-}
-
-.color2 {
-	background-color: #FFDD55;
-	border-radius: 10px;
-}
-
-.preguntas {
-	color: white;
-}
-
-.preguntas h1,
-.preguntas h2 {
-	color: white;
-}
-
-/* ic.css */
-.reveal .transparent_bg:after  {
+.transparent_bg:after  {
   content: ' ';
   background: rgba(255, 255, 255, 0.8);
   background-size: cover;
-  display: block;
+  display: block; 
   width: 100%;
   height: 100%;
 }
@@ -359,15 +301,14 @@ body {
 /*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);  */
 }
 .post_it {
-  background: rgba(255, 255, 10, 0.9);
+  background: rgba(255, 255, 10, 0.9);  
 }
 
 background-image { max-height: 100%; max-width:100%; }
 
 svg  { top:0; left:0; max-height: 100%; max-width:100%; width:100%; height:100%; }
 
-
-/**************************************************************************************************************************/	
+/*img  { max-height: 100%; max-width:100%; }*/
 
 .subscript {
   vertical-align: sub; 
@@ -399,3 +340,62 @@ resumen {
 	border-right: 1px solid black;
 	border-top: 1px solid black;
 }
+
+.double {
+	-webkit-columns: 2;
+	-moz-columns: 2;
+	columns: 2;
+	-webkit-column-gap:75px;
+	-moz-column-gap:75px;
+	column-gap:75px
+}
+
+.double li {
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+	break-inside: avoid;
+}
+
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #2a76dd; }
+
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #2a76dd; }
+
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #2a76dd; }
+
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #2a76dd; }
+
+.reveal .controls .navigate-left.enabled:hover {
+  border-right-color: #6ca0e8; }
+
+.reveal .controls .navigate-right.enabled:hover {
+  border-left-color: #6ca0e8; }
+
+.reveal .controls .navigate-up.enabled:hover {
+  border-bottom-color: #6ca0e8; }
+
+.reveal .controls .navigate-down.enabled:hover {
+  border-top-color: #6ca0e8; }
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2); }
+
+.reveal .progress span {
+  background: #2a76dd;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
