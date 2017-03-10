@@ -3,6 +3,10 @@ DTAPE=/home/oso/IC2016/decktape
 
 all: re so comp pres siste uni repre texto arqui soft demo
 
+git: 
+	util/github "mm"
+
+
 demo: demo.html
 re: Redes.html
 soft: Software.html
