@@ -214,6 +214,10 @@ Algunas materias que dicta
 </ul>
 </section>
 
+<section>
+<h2>Acreditación</h2>
+<img src="img/cursado.png" class="plain stretch">
+</section>
 <!--
 			<section>
 				<h3>Acreditación</h3>
@@ -323,8 +327,8 @@ Algunas materias que dicta
 
 		// ----------------------------------------------------------------------------
 		coursemod: {
-			enabled: true,
-			shown: true,
+			enabled: false,
+			shown: false,
 		},
 		chart: {
 			defaults: { 
@@ -448,8 +452,9 @@ Algunas materias que dicta
 
 		// -------- Math plugin ----------
 		math: {
-			mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
-			//	mathjax: '../MathJax-master/MathJax.js',
+			//mathjax: 'https://cdn.mathjax.org/mathjax/latest/Ma2YthJax.js',
+			// mathjax: 'externals/mathjax/MathJax.js',
+			mathjax: window.location.search.match( /localversion/g ) ? 'externals/mathjax/MathJax.js' : 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
 			config: 'TeX-AMS_HTML-full' 
 		},
 

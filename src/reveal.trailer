@@ -27,8 +27,8 @@
 
 		// ----------------------------------------------------------------------------
 		coursemod: {
-			enabled: true,
-			shown: true,
+			enabled: false,
+			shown: false,
 		},
 		chart: {
 			defaults: { 
