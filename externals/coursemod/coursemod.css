@@ -25,6 +25,7 @@ reveal.coursemod__presentation {
     display: none;
     font-family: "Helvetica", sans-serif;
     font-size: 1em;
+    /*font-size: 1.1vw;*/
     height: 100%;
     line-height: 1.3;
     overflow-y: scroll;

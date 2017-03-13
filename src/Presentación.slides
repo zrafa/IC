@@ -1,4 +1,4 @@
-<!-- INCLUDE src/reveal.header -->
+<!-- INCLUDE src/reveal-pres.header -->
 				
 <section data-markdown>
 ##Introducción 
@@ -267,4 +267,4 @@ Algunas materias que dicta
 <h1>¿Más preguntas?</h1>
 </section>
 
-<!-- INCLUDE src/reveal.trailer -->
+<!-- INCLUDE src/reveal-pres.trailer -->
