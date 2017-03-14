@@ -7,7 +7,7 @@
 
 1. Sistemas de Numeración 
 1. Unidades de Información
-1. Representación Digital de Datos 
+1. Representación Digital de Datos <!-- .element: class="postit" -->
  1. Datos Numéricos
  1. Texto
  1. Multimedia
@@ -15,7 +15,7 @@
 </section>
 
 
-<section data-markdown>
+<section data-markdown data-background="#00CCFF">
 ##Representación 
 ##de datos numéricos
 </section>
@@ -37,31 +37,29 @@
 <aside data-markdown class="notes">
 ###Representación de datos numéricos
 
-Hemos visto ejemplos de sistemas de numeración: en base 6, en base 10, o decimal, en base 2, o binario, en base 16, o hexadecimal, y en base 8, u octal; y sabemos convertir la representación de un número en cada una de estas bases, a los sistemas en las demás bases. Sin embargo, aún nos falta considerar la representación numérica de varios casos importantes:  
+Hemos visto muchos ejemplos de sistemas de numeración: en base 6, en base 10 o decimal, en base 2 o binario, en base 16 o hexadecimal, y en base 8 u octal; y sabemos convertir la representación de un número en cada una de estas bases, a los sistemas en las demás bases. Sin embargo, aún nos falta considerar la representación numérica de muchos e importantes casos:  
 
-- Hemos utilizado estos sistemas para representar únicamente números **enteros**. Nos falta ver de qué manera representar números racionales, es decir aquellos que tienen una parte fraccionaria (los "decimales").
+- Hemos utilizado estos sistemas para representar únicamente números <b>enteros</b>. Nos falta ver de qué manera representar números racionales, es decir aquellos que presentan una parte fraccionaria (los "decimales").
 - Además estos enteros han sido siempre **no negativos**, es decir, sabemos representar únicamente el 0 y los naturales. Nos falta considerar los negativos.
-- Por otra parte, no nos hemos planteado el problema de la **cantidad de dígitos**. Idealmente, un sistema de numeración puede usar infinitos dígitos para representar números arbitrariamente grandes. Si bien esto es matemáticamente correcto, las computadoras son objetos físicos que tienen unas ciertas limitaciones, y con ellas no es posible representar números de infinita cantidad de dígitos. 
+- Por otra parte, no nos hemos planteado el problema de la **cantidad de dígitos**. Nuestros sistemas de numeración podían usar infinitos dígitos para representar números arbitrariamente grandes. Si bien esto es matemáticamente correcto, las computadoras son objetos físicos que tienen unas ciertas limitaciones, y pronto encontraremos que no es posible representar números de infinita cantidad de dígitos con ellas. 
 
 En esta parte de la unidad mostraremos sistemas de representación utilizados en computación que permiten tratar estos problemas.
 </aside>
 </section>
 
-
-
 <section>
 
-<h2>Clasificación de los números</h2>
-<table class="plain" style="font-size: 55%; text-align: left; margin:2em; border-collapse:collapse" width="100%">
+<table class="plain" style="margin:2em; font-size:50%; border-collapse:collapse" width="100%">
 <tr>
 <td>
 <table style="margin:4px; border:2px solid silver">
 <tr>
 <td>
 <table style="margin:1em">
+<caption><a href="https://es.wikipedia.org/wiki/N%C3%BAmero" title="Número">Clasificación de números</a></caption>
 <tr>
 <td>
-<center><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_complejo" title="Número complejo">Complejos</a><br />
+<center><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_complejo" title="Número complejo">Complejos</a><br />
 <big><big><big><span class="Unicode">ℂ</span></big></big></big></center>
 </td>
 <td>
@@ -71,7 +69,7 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 <table>
 <tr>
 <td>
-<center><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_real" title="Número real">Reales</a><br />
+<center><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_real" title="Número real">Reales</a><br />
 <big><big><big><span class="Unicode">ℝ</span></big></big></big></center>
 </td>
 <td>
@@ -81,7 +79,7 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 <table>
 <tr>
 <td>
-<center> <a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_racional" title="Número racional">Racionales</a><br />
+<center> <a href="https://es.wikipedia.org/wiki/N%C3%BAmero_racional" title="Número racional">Racionales</a><br />
 <big><big><big><span class="Unicode">ℚ</span></big></big></big></center>
 </td>
 <td>
@@ -91,7 +89,7 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 <table>
 <tr>
 <td>
-<center><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_entero" title="Número entero">Enteros</a><br />
+<center><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_entero" title="Número entero">Enteros</a><br />
 <big><big><big><span class="Unicode">ℤ</span></big></big></big></center>
 </td>
 <td>
@@ -101,19 +99,19 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 <table>
 <tr>
 <td>
-<center><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_natural" title="Número natural">Naturales</a><br />
+<center><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_natural" title="Número natural">Naturales</a><br />
 <big><big><big><span class="Unicode">ℕ</span></big></big></big></center>
 </td>
 <td>
 <table style="border-left:4px solid green">
 <tr>
-<td>1: <a href="https://es.m.wikipedia.org/wiki/Uno" title="Uno">uno</a></td>
+<td>1: <a href="https://es.wikipedia.org/wiki/Uno" title="Uno">uno</a></td>
 </tr>
 <tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_primo" title="Número primo">Naturales primos</a></td>
+<td><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_primo" title="Número primo">Naturales primos</a></td>
 </tr>
 <tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_compuesto" title="Número compuesto">Naturales compuestos</a></td>
+<td><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_compuesto" title="Número compuesto">Naturales compuestos</a></td>
 </tr>
 </table>
 </td>
@@ -122,10 +120,10 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 </td>
 </tr>
 <tr>
-<td>0: <a href="https://es.m.wikipedia.org/wiki/Cero" title="Cero">Cero</a></td>
+<td>0: <a href="https://es.wikipedia.org/wiki/Cero" title="Cero">Cero</a></td>
 </tr>
 <tr>
-<td><a href="https://es.m.wikipedia.org/wiki/Entero_negativo" class="mw-redirect" title="Entero negativo">Enteros negativos</a></td>
+<td><a href="https://es.wikipedia.org/wiki/Entero_negativo" class="mw-redirect" title="Entero negativo">Enteros negativos</a></td>
 </tr>
 </table>
 </td>
@@ -135,39 +133,16 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 </tr>
 <tr>
 <td>
-<table width="100%">
-<tr> <td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_fraccionario" class="mw-redirect" title="Número fraccionario">Fraccionarios</a></td> <td>
-<table style="border-left:4px solid green">
+<table>
 <tr>
-<td><a href="https://es.m.wikipedia.org/wiki/Fracci%C3%B3n_propia" class="mw-redirect" title="Fracción propia">Fracción propia</a></td>
-</tr>
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/Fracci%C3%B3n_impropia" class="mw-redirect" title="Fracción impropia">Fracción impropia</a></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr style="text-align: left;">
-<td>
-<table width="100%">
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_irracional" title="Número irracional">Irracionales</a></td>
+<td><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_fraccionario" class="mw-redirect" title="Número fraccionario">Fraccionarios</a></td>
 <td>
 <table style="border-left:4px solid green">
 <tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_algebraico" title="Número algebraico">Irracionales algebraicos</a></td>
+<td><a href="https://es.wikipedia.org/wiki/Fracci%C3%B3n_propia" class="mw-redirect" title="Fracción propia">Fracción propia</a></td>
 </tr>
 <tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_trascendente" title="Número trascendente">Trascendentes</a></td>
+<td><a href="https://es.wikipedia.org/wiki/Fracci%C3%B3n_impropia" class="mw-redirect" title="Fracción impropia">Fracción impropia</a></td>
 </tr>
 </table>
 </td>
@@ -182,7 +157,32 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 </td>
 </tr>
 <tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_imaginario" title="Número imaginario">Imaginarios</a></td>
+<td>
+<table>
+<tr>
+<td><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_irracional" title="Número irracional">Irracionales</a></td>
+<td>
+<table style="border-left:4px solid green">
+<tr>
+<td><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_algebraico" title="Número algebraico">Irracionales algebraicos</a></td>
+</tr>
+<tr>
+<td><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_trascendente" title="Número trascendente">Trascendentes</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td><a href="https://es.wikipedia.org/wiki/N%C3%BAmero_imaginario" title="Número imaginario">Imaginarios</a></td>
 </tr>
 </table>
 </td>
@@ -230,12 +230,12 @@ Para representar fraccionarios consideraremos los sistemas de **punto fijo** y *
 <h2>Rango de representación (RR)</h2>
 <ul>
 <li>Intervalo de números representables de un sistema de representación numérica</li>
-<li>Notación $[a, b]$, con $a$ y $b$ límites inferior y superior del RR</li>
 <li>Depende:</li>
 <ul>
 <li>De la cantidad de dígitos del sistema de representación</li>
 <li>De la forma como funciona el sistema de representación </li>
 </ul>
+<li>Notación $[a, b]$, con $a$ y $b$ límites inferior y superior del RR</li>
 </ul>
 <aside data-markdown class="notes">
 ###Rango de representación
@@ -258,7 +258,7 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
 	<ul>
 	   <li>Dos para el primer bit; por cada una de éstas, dos para el segundo; por cada una...($2 \times 2 \times 2 ... = 2^k$)</li>
 	</ul>
-   <li> &rarr; Rango de representación <span class="post_it">$[0, 2^k-1]$</span></li>
+   <li> &#8680; Rango de representación <span class="post_it">$[0, 2^k-1]$</span></li>
 	<ul>
 	   <li class="fragment">Con 8 bits: $[0, 2^8-1] = [0, 255]$</li>
 	   <li class="fragment">Con 16 bits: $[0, 2^{16}-1] = [0, 65.535]$</li>
@@ -268,21 +268,15 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
 <aside data-markdown class="notes">
 ###Representación sin signo
 
-Consideremos primero qué ocurre cuando queremos representar números enteros **no negativos** (es decir, **positivos o cero**) sobre una cantidad fija de bits. Simplemente usamos el sistema binario de numeración, tal como lo conocemos, pero limitándonos a una cantidad fija de bits o dígitos binarios. ¿Cuál será el rango de representación?
+Consideremos primero qué ocurre cuando queremos representar números enteros **no negativos** (es decir, **positivos o cero**) sobre una cantidad fija de bits. Simplemente usando el sistema binario de numeración, tal como lo conocemos, pero limitándonos a una cantidad fija de bits, podemos representar los números desde cero hasta un cierto límite superior. 
 
-El **cero** siempre puede representarse (es decir, el límite inferior del rango de representación será 0). Pero ¿cuál será el límite superior? Es decir, si la cantidad de dígitos binarios en este sistema es $k$, ¿cuál es el número más grande que podremos representar? 
-
-Podemos estudiarlo de dos maneras.
-
-**1. Usando combinatoria**
-
-Contemos cuántos números diferentes podemos escribir con $k$ dígitos binarios. Imaginemos un número binario cualquiera con $k$ dígitos. El dígito de más a la derecha tiene únicamente dos posibilidades (0 o 1). Por cada una de éstas hay nuevamente dos posibilidades para el siguiente hacia la izquierda (lo que da las cuatro posibilidades 00, 01, 10, 11). Por cada una de éstas, hay dos posibilidades para el siguiente (dando las ocho posibilidades 000, 001, 010, 011, 100, 101, 110, 111), etc., y así hasta la posición $k$. No hay más posibilidades. Como hemos multiplicado 2 por sí mismo $k$ veces, la cantidad de números que se pueden escribir es $2^k$. Luego, el número más grande posible es $2^k - 1$. (**Pregunta**: ¿Por qué $2^k - 1$ y no $2^k$?).
-
-**2. Usando álgebra**
-
-El número más grande que podemos representar en un sistema sin signo a $k$ dígitos es, seguramente, aquel donde todos los $k$ dígitos valen **1**. La Expresión General que hemos visto nos dice que si un número $n$ está escrito en base 2, **con $k$ dígitos**, entonces 
+Si la cantidad de dígitos binarios en este sistema es $k$, ¿cuál es el número más grande que podremos representar? Seguramente será aquel donde todos los $k$ dígitos valen **1**. La Expresión General que hemos visto nos dice que si un número $n$ está escrito en base 2, **con $k$ dígitos**, entonces 
 $$n = x_{k-1}\times 2^{k-1} + ... + x_1\times2^1+x_0\times2^0$$ 
-y, si queremos escribir el más grande de todos, deberán ser todos los $x_i$ iguales a 1. (**Pregunta**: ¿Por qué si el número $n$ tiene $k$ dígitos binarios, el índice del más significativo es $k-1$ y no $k$?)
+y si queremos escribir el más grande de todos, serán todos los $x_i$ iguales a 1.
+
+**Pregunta**
+
+¿Por qué si el número $n$ tiene $k$ dígitos binarios, el índice del más significativo es $k-1$ y no $k$?
 
 Esta suma vale entonces 
 
@@ -291,7 +285,6 @@ $$  = 1\times 2^{k-1} + ... + 1\times2^1+1\times2^0 = $$
 $$  = 2^{k-1} + ... + 2^1+2^0 = $$ 
 $$  = 2^{k}-1 $$ 
 
-Usando ambos argumentos hemos llegado a que el número más grande que podemos representar con $k$ dígitos binarios es $2^k-1$. Por lo tanto, **el rango de representación de un sistema sin signo a $k$ dígitos es $[0, 2^k - 1]$**. Todos los números representables en esta clase de sistemas son **positivos o cero**.
 </aside>
 </section>
 
@@ -306,17 +299,6 @@ Usando ambos argumentos hemos llegado a que el número más grande que podemos r
 		<li>En exceso a $2^n-1$</li>
 	</ul>
 </ul>
-<aside data-markdown class="notes">
-###Representación con signo
-
-En la vida diaria manejamos continuamente números negativos, y los distinguimos de los positivos simplemente agregando un signo "menos". Representar esos datos en la memoria de la computadora no es tan directo, porque, como hemos visto, la memoria **solamente puede alojar ceros y unos**. Es decir, ¡no podemos simplemente guardar un signo "menos"! Lo único que podemos hacer es almacenar secuencias de ceros y unos.
-
-Esto no era un problema cuando los números eran no negativos. Para poder representar, ahora, tanto números **positivos como negativos**, necesitamos cambiar la forma de representación. Esto quiere decir que una secuencia particular de dígitos binarios, que en un sistema sin signo tiene un cierto significado, ahora tendrá un significado diferente. Algunas secuencias, que antes representaban números positivos, ahora representarán negativos.
-
-Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (S-M)**, **Complemento a 2 (C2)** y **En exceso a **$2^n - 1$**.
-
-Es importante tener en cuenta que **solamente se puede operar entre datos representados con el mismo sistema de representación**, y que el **resultado** de toda operación **vuelve a estar representado en el mismo sistema**.
-</aside>
 </section>
 
 <section data-background="#3c53b5" data-background-transition="zoom">
@@ -339,11 +321,6 @@ Es importante tener en cuenta que **solamente se puede operar entre datos repres
 	</ul>
    <li>Los restantes bits, el valor absoluto o magnitud</li>
 </ul>
-<aside data-markdown class="notes">
-###Sistema de Signo-magnitud (S-M)
-
-El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más simple de comprender. Se trata 
-</aside>
 </section>
 
 <section>
@@ -924,7 +901,7 @@ $a$ &#8680; $0000$, $a + 1$ &#8680; $0001$, ..., $b$ &#8680; $1111$
 </section>
    
 <!-- 
-https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
+https://es.wikipedia.org/wiki/IEEE_coma_flotante
 -->
     
 <section>
@@ -1255,8 +1232,8 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 <h2>Referencias</h2>
 <ul>
 <li><a href="http://pedco.fi.uncoma.edu.ar/mod/resource/view.php?id=145680" target="_blank">Apunte de Cátedra: Representación de Datos Numéricos</a></li>
-<li><a href="https://es.m.wikipedia.org/wiki/Complemento_a_dos" target="_blank">Wikipedia: Complemento a dos</a></li>
-<li><a href="https://es.m.wikipedia.org/wiki/Representaci%C3%B3n_de_n%C3%BAmeros_con_signo" target="_blank">Wikipedia: Representación de números con signo</li>
+<li><a href="https://es.wikipedia.org/wiki/Complemento_a_dos" target="_blank">Wikipedia: Complemento a dos</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Representaci%C3%B3n_de_n%C3%BAmeros_con_signo" target="_blank">Wikipedia: Representación de números con signo</li>
 <li><a href="http://perso.ens-lyon.fr/jean-michel.muller/goldberg.pdf" target="_blank">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a>, David Goldberg, Xerox PARC, 1991</li>
 </ul>
 </section>
