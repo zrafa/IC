@@ -29,9 +29,18 @@ arqui: Arquitectura.html
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
 		$*.md --toc -o $*-notes.pdf
+	pandoc \
+		-s \
+		-V lang=spanish \
+		-V fontfamily=sans \
+		-V papersize=A4 \
+		-V title="$(TITLE)" \
+		$*.md --toc -o $*-notes.rtf
 
 
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
+
+
 
 clean: 
 	mv Presentación.html Software.html SistemasOperativos.html SistemasDeCómputo.html SistemasDeNumeración.html UnidadesDeInformación.html RepresentaciónDigitalDeDatos.html TextoYMultimedia.html Arquitectura.html attic
