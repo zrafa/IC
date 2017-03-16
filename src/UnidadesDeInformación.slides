@@ -70,7 +70,7 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 
 
 <section data-markdown>
-##*Byte* (*binary term*)
+##Byte (*binary term*)
 - Conjunto de 8 bits
 * Con un **byte** puedo representar:
   - Números del 0 al 255
