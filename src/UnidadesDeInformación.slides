@@ -59,7 +59,7 @@ La memoria de las computadoras está diseñada de forma que **no se puede almace
 	<!--
 	<section  data-background="img/Beacons.gif" data-menu-title="El viaje de un bit">
 	</section>
-	->>
+	-->
 	<!--
 	<section data-background="black">
 	<video id="beacons" width="800" height="400" class="stretch" preload controls>
@@ -71,6 +71,7 @@ La memoria de las computadoras está diseñada de forma que **no se puede almace
 	<iframe data-autoplay width="100%" height="100%" class="stretch" 
 		src="https://www.youtube.com/embed/sIhnYFRu4ao?wmode=opaque&rel=0" frameborder="0" allowfullscreen>
 	</iframe>    
+	</section>
 <aside data-markdown class="notes">
 ###El viaje de un bit
 
@@ -84,14 +85,13 @@ Esta pregunta es **binaria**: se responde con un sí o con un no. Por lo tanto, 
 
 Notemos que, en los manuales de lógica o de informática, encontraremos siempre asociados los **bits** con los valores de **0 y 1**. Aunque esto es útil a los efectos de emplear los bits en computación, no es del todo exacto. Lo que está codificando un bit no es exactamente un dígito. Lo que viajó desde la ciudad sitiada hasta su destino no es un 0 ni un 1. Es **un bit de información**, aquella unidad de información que permite tomar una decisión entre dos alternativas.
 </aside>
-	</section>
 </section>
 
 
 <section>
 <h2>Byte</h2>
 <ul>
-<li>Conjunto ordenado de (casi siempre) 8 bits</li>
+<li>Conjunto ordenado de 8 bits</li>
 <li>Con un <b>byte</b> puedo representar:</li>
 <ul>
   <li>Números del 0 al 255</li>
@@ -101,7 +101,12 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <li>Abreviado <b>B</b> (mayúscula)</li>
 </ul>
 <aside data-markdown class="notes">
+##Byte
+Como el bit es una medida tan pequeña de información, resulta necesario definir unidades más grandes. En particular, y debido a la forma como se organiza la memoria de las computadoras, es útil tener como unidad al **byte** (abreviado **B** mayúscula), que es una secuencia de **8 bits**. Podemos imaginarnos la memoria de las computadoras como una estantería muy alta, compuesta por estantes que contienen ocho casilleros. Cada una de estos estantes es una **posición o celda de memoria**, y contiene exactamente ocho bits (un byte) de información.
 
+Como los valores de los bits que forman un byte son independientes entre sí, existen $2^8$ diferentes valores para esos ocho bits. Si los asociamos con números en el sistema binario, esos valores serán **00000000**, **00000001**, **00000010**, ..., etc., hasta el **11111111**. En decimal, esos valores corresponden a los números **0, 1, 2, ..., 255**.
+
+Cada byte de la memoria de una computadora, entonces, puede alojar un número entre 0 y 255. Esos números representarán diferentes piezas de información: si los vemos como bytes independientes, pueden representar **caracteres** como letras y otros símbolos, pero también pueden estar formando parte de otras estructuras de información más complejas, y tener otros significados.
 </aside>
 </section>
 
@@ -117,6 +122,10 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <tr><td>01000011</td><td>C</td></tr>
 <tr><td colspan="2" align="center">...</td></tr>
 </table>
+<aside data-markdown class="notes">
+##Representando datos con bytes
+Para poder tratar y comunicar la información, que está organizada en bytes, es necesario que exista una asignación fija de valores binarios a caracteres. Es decir, se necesita una **tabla de caracteres** que asigne un símbolo a cada valor posible entre 0 y 255.
+</aside>
 </section>
 
 <section>
@@ -130,16 +139,32 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <tr><td>1</td><td>00110001</td></tr>
 <tr><td>7</td><td>00110111</td></tr>
 </table>
+<aside data-markdown class="notes">
+La memoria de la computadora es como un espacio donde se almacenan temporariamente contenidos del tamaño de un byte. Si pudiéramos ver el contenido de una sección de la memoria mientras la computadora está trabajando, veríamos que cada byte tiene determinados contenidos binarios. Esos contenidos pueden codificar los caracteres de un mensaje, carácter por carácter.
+</aside>
 </section>
 
-<section data-markdown>
-##Múltiplos del bit y del byte
-* Sistema Internacional
- * Unidades son potencias de 10
- * Prefijos **kilo, mega, giga, tera...**
-* Sistema de Prefijos Binarios
- * Unidades son potencias de 2
- * Prefijos **kibi, mebi, gibi, tebi...**
+<section>
+<h2>Múltiplos del bit y del byte</h2>
+<ul>
+<li>Sistema Internacional</li>
+<ul>
+<li>Unidades son potencias de $10^3$ = 1000</li>
+<li>Prefijos <b>kilo, mega, giga, tera...</b></li>
+</ul>
+<li>Sistema de Prefijos Binarios</li>
+<ul>
+<li>Unidades son potencias de $2^{10}$ = 1024</li>
+<li>Prefijos <b>kibi, mebi, gibi, tebi...</b></li>
+</ul>
+</ul>
+<aside data-markdown class="notes">
+Sabiendo que la memoria está organizada en bytes, es interesante saber qué capacidad tendrá la memoria de una computadora dada y qué tamaño tendrán las piezas de información que caben en esta memoria. Como la memoria de una computadora, y la cantidad de información que compone un mensaje, un programa, una imagen, etc., suelen ser muy grandes, utilizamos **múltiplos** de la unidad de memoria, que es el byte.
+
+Existen en realidad dos sistemas diferentes de múltiplos: el **Sistema Internacional** y el **Sistema de Prefijos Binarios**. Las unidades de ambos sistemas son parecidas, pero no exactamente iguales. 
+
+Los dos sistemas difieren esencialmente en el factor de la unidad en los sucesivos múltiplos. En el caso del Sistema Internacional, todos los factores son alguna potencia de 1000. En el caso del Sistema de Prefijos Binarios, todos los factores son potencias de 1024. 
+</aside>
 </section>
 
 
@@ -155,6 +180,17 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <tr><td>Zettabyte</td><td></td><td>$10^{21}$ bytes</td><td>ZB</td></tr>
 <tr><td>Yottabyte</td><td></td><td>$10^{24}$ bytes</td><td>YB</td></tr>
 </table>
+<aside data-markdown class="notes">
+###Sistema Internacional
+En el llamado Sistema Internacional, la unidad básica, el byte, se multiplica por potencias de 1000. Así, tenemos:
+
+- El **kilobyte** (1000 bytes)
+- El **megabyte** (1000 $\times$ 1000 bytes = 1000 kilobytes = un millón de bytes)
+- El **gigabyte** (1000 $\times$ 1000 $\times$ 1000 bytes = mil megabytes = mil millones de bytes)
+- El **terabyte** (1000 $\times$ 1000 $\times$ 1000 $\times$ 1000 bytes = mil gigabytes = un billón de bytes), y otros múltiplos mayores.
+
+Como puede verse, cada unidad se forma multiplicando la anterior por 1000.
+</aside>
 </section>
 
 <section>
@@ -169,6 +205,19 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <tr><td>Zebibyte</td><td></td><td>$2^{70}$ bytes</td><td>ZiB</td></tr>
 <tr><td>Yobibyte</td><td></td><td>$2^{80}$ bytes</td><td>YiB</td></tr>
 </table>
+<aside data-markdown class="notes">
+###Sistema de Prefijos Binarios
+En el llamado Sistema de Prefijos Binarios, el byte se multiplica por potencias de $2^{10}$, que es 1024. Así, tenemos:
+
+- El **kibibyte** (1024 bytes)
+- El **mebibyte** (1024 $\times$ 1024 bytes, **aproximadamente** un millón de bytes, pero exactamente 1048576 bytes)
+- El **gibibyte** (1024 $\times$ 1024 $\times$ 1024 bytes, **aproximadamente** mil millones de bytes)
+- El **tebibyte** (1024 $\times$ 1024 $\times$ 1024 $\times$ 1024 bytes, aproximadamente un millón de mebibytes, o aproximadamente un billón de bytes), y otros múltiplos mayores.
+
+Como puede verse, cada unidad se forma multiplicando la anterior por 1024.
+
+Notemos que los prefijos **kilo, mega, giga, tera**, del Sistema Internacional, cambian a **kibi, mebi, gibi, tebi**, del sistema de Prefijos Binarios.
+</aside>
 </section>
 
 <section>
@@ -180,6 +229,17 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <tr><td>T &rarr;</td><td>$1000^4$</td><td>$1024^4$</td><td>&larr; Ti</td></tr>
 <tr><td colspan="4" align="center">...</td></tr>
 </table>
+<aside data-markdown class="notes">
+¿Por qué existen **dos** sistemas en lugar de uno? En realidad la adopción del Sistema de Prefijos Binarios se debe a las características de la memoria de las computadoras:
+
+- Cada posición o celda de la memoria tiene su dirección, que es el número de la posición de esa celda dentro del conjunto de toda la memoria de la computadora.
+- Cuando la computadora accede a una posición o celda de su memoria, para leer o escribir un contenido en esa posición, debe especificar la dirección de la celda.
+- Como la computadora usa exclusivamente números binarios, al especificar la dirección de la celda usa una cantidad de dígitos binarios. 
+- Por lo tanto, la cantidad de posiciones que puede acceder usando direcciones es una potencia de 2: si usa 8 bits para especificar cada dirección, accederá a $2^8$ bytes, cuyas direcciones estarán entre 0 y 255. Si usa 10 bits, accederá a $2^{10}$ bytes, cuyas direcciones serán 0 a 1023.
+- Entonces, tener una memoria de, por ejemplo, exactamente **mil bytes**, complicaría técnicamente las cosas porque las direcciones 1000 a 1023 no existirían. Si un programa quisiera acceder a la posición 1020 habría un grave problema. Habría que tener en cuenta excepciones por todos lados y la vida de los diseñadores de computadoras y de los programadores sería lamentable.
+- En consecuencia, todas las memorias se fabrican en tamaños que son potencias de 2 y el Sistema de Prefijos Binarios se adapta perfectamente a medir esos tamaños.
+
+</aside>
 </section>
 
 
@@ -195,10 +255,15 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <tr><td>Un disco rígido</td><td>1 TiB</td></tr>
 </table>
 <aside data-markdown class="notes">
+En computación se utilizan, en diferentes situaciones, ambos sistemas de unidades. Es costumbre usar el Sistema Internacional para hablar de velocidades de transmisión de datos, pero usar Prefijos Binarios al hablar de almacenamiento de memoria, o en unidades de almacenamiento permanente, como los discos.
+
+- Entonces, cuando un proveedor de servicios de Internet ofrece **un enlace de 1 Mbps**, nos está diciendo que por ese enlace podremos transferir **exactamente 1 millón de bits por segundo**. El proveedor utiliza el Sistema Internacional.
+- Los textos, imágenes, sonido, video, programas, etc., se guardan en **archivos**, que son sucesiones de bytes. Encontramos archivos en el disco de nuestra computadora, y podemos descargar archivos desde las redes. Cuando nos interesa saber cuánto mide un archivo, en términos de bytes, usamos el Sistema Internacional porque el archivo no tiene por qué tener un tamaño que sea potencia de 2. 
+- Por el contrario, los fabricantes de medios de almacenamiento, como memorias, discos rígidos o pendrives, deberían (aunque a veces no lo hacen) utilizar Prefijos Binarios para expresar las capacidades de almacenamiento de esos medios. Así, un *"pendrive de dieciséis gigabytes"*, si tiene una capacidad de $16 \times 2^{30}$ bytes, debería publicitarse en realidad como *"pendrive de dieciséis gibibytes"*.
 </aside>
 </section>
 
-<section>
+<section data-coursemod-shown="false">
 <h3>Un disco rígido de 5 MB... en 1956</h3>
 <img src="img/5MBharddisk.jpg" class="stretch">
 </section>
