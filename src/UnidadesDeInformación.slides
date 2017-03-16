@@ -1,6 +1,6 @@
 <!-- INCLUDE src/reveal.header -->
 				
-<section data-markdown data-coursemod-shown="false"> 
+<section data-markdown data-coursemod-shown="false" data-title="Unidades de Información"> 
  <script type="text/template">
 ##Unidad I 
 ###Representación de la Información 
@@ -13,26 +13,45 @@
 
 
 <section>
-<h2>Unidades de Información</h2>
+<h1>Unidades de Información</h1>
 
 <aside data-markdown class="notes">
 En este segundo tema de la unidad veremos qué es la información y cómo podemos cuantificar, es decir, medir, la cantidad de información que puede alojar un dispositivo, o la cantidad de información que representa una pieza cualquiera de información. Veremos además las relaciones entre las diferentes unidades de información.
+
+##Información
+
+A lo largo de la historia se han inventado y fabricado máquinas, que son dispositivos que **transforman la energía**, es decir, convierten una forma de energía en otra. Las computadoras, en cambio, convierten una forma de **información** en otra. 
+
+Los programas de computadora reciben alguna forma de información (la **entrada** del programa), la **procesan** de alguna manera, y emiten alguna información de **salida**. La **entrada** es un conjunto de datos de partida, para que trabaje el programa, y la **salida** generada por el programa es alguna forma de respuesta o solución a un problema. Sabemos, además, que el material con el cual trabajan las computadoras son textos, documentos, mensajes, imágenes, sonido, etc. Todas estas son formas en las que se codifica y se almacena la información. 
+
+Un epistemólogo dice que la información es "una diferencia relevante". Si vemos que el semáforo cambia de rojo a verde, recibimos información ("podemos avanzar"). Al cambiar el estado del semáforo aparece una **diferencia** que puedo observar. Es **relevante** porque modifica de alguna forma el estado de mi conocimiento o me permite tomar una decisión respecto de algo. 
+
+¿Qué es, exactamente, esta información? No podemos tocarla ni pesarla, pero ¿se puede medir? Y si se puede medir, ¿entonces se puede medir la cantidad de información que aporta un texto, una imagen?
 </aside>
 </section>
 
 
 
 
-<section data-markdown>
-##*Bit* (*binary digit*)
-- La mínima unidad de información
- * Teoría de la Información, Claude Shannon, 1948
- * Un **bit** es la respuesta a la pregunta más simple posible
-   * Dos valores posibles
-   * Representados por V/F, Sí/No, 1/0, etc.
-- Abreviado **b**
-- Equivalente a un dígito binario
+<section>
+<h2>Bit</h2>
+<ul>
+<li>La mínima unidad de información
+<li>"La información que se recibe al especificar una de dos alternativas igualmente probables" (Teoría de la Información)
+<li>La respuesta a la pregunta más simple posible
+<li>Dos valores posibles, representados por V/F, Sí/No, 1/0, etc.
+<li>Abreviado <b>b</b> (minúscula)
+</ul>
 <aside data-markdown class="notes">
+##Bit
+
+La Teoría de la Información, una teoría matemática desarrollada alrededor de 1950, dice que el **bit** es "la mínima unidad de información". Un bit es la información que recibimos "cuando se especifica una de dos alternativas igualmente probables". Si tenemos una pregunta **binaria**, es decir, aquella que puede ser respondida **con un sí o con un no**, entonces, al recibir una respuesta, estamos recibiendo un bit de información. Las preguntas binarias son las más simples posibles (porque no podemos decidir entre **menos** respuestas), de ahí que la información necesaria para responderlas sea la mínima unidad de información. 
+
+De manera que un bit es una unidad de información que puede tomar sólo dos valores. Podemos pensar estos valores como **verdadero o falso**, como **sí o no**, o como **0 y 1**. 
+
+Cuando las computadoras trabajan con piezas de información complejas, como los textos o imágenes, estas piezas son representadas como conjuntos ordenados de bits, de un cierto tamaño. Así, por ejemplo, la secuencia de ocho bits **01000001** puede representar la letra A mayúscula. Un documento estará constituido por palabras; éstas están formadas por símbolos como las letras, y éstas serán representadas por secuencias de bits. 
+
+La memoria de las computadoras está diseñada de forma que **no se puede almacenar otra cosa que bits** en esa memoria. Los textos, las imágenes, los sonidos, los videos, los programas que ejecuta, los mensajes que recibe o envía; todo lo que puede guardar, procesar, o emitir una computadora digital, debe estar en algún momento representado por una secuencia de bits. Los bits son, en cierta forma, como los átomos de la información.  Por eso el bit es la unidad fundamental que usamos para medirla, y definiremos también algunas unidades mayores, o múltiplos.
 </aside>
 </section>
 
@@ -69,14 +88,21 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 </section>
 
 
-<section data-markdown>
-##Byte (*binary term*)
-- Conjunto de 8 bits
-* Con un **byte** puedo representar:
-  - Números del 0 al 255
-  - Caracteres como letras u otros símbolos
-  - 256 posibilidades diferentes
-- Abreviado **B**
+<section>
+<h2>Byte</h2>
+<ul>
+<li>Conjunto ordenado de (casi siempre) 8 bits</li>
+<li>Con un <b>byte</b> puedo representar:</li>
+<ul>
+  <li>Números del 0 al 255</li>
+  <li>256 posibilidades diferentes</li>
+  <li>Caracteres como letras u otros símbolos</li>
+</ul>
+<li>Abreviado <b>B</b> (mayúscula)</li>
+</ul>
+<aside data-markdown class="notes">
+
+</aside>
 </section>
 
 <section>
@@ -196,6 +222,8 @@ Notemos que, en los manuales de lógica o de informática, encontraremos siempre
 <h2>Referencias</h2>
 <ul>
 
+
+	<li><a href="UnidadesDeInformación-notes.pdf">Notas de esta presentación</li>
 	<li><a href="https://es.m.wikipedia.org/wiki/Bit">Bit <b>(b)</b></a></li>
 	<li><a href="https://es.m.wikipedia.org/wiki/Byte">Byte <b>(B)</b></a></li>
 	<li><a href="https://es.m.wikipedia.org/wiki/Prefijo_binario">Prefijos binarios</a></li>
