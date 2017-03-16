@@ -1,0 +1,222 @@
+<!-- INCLUDE src/demo.header -->
+
+
+<!------------------------>
+<section data-background="img/background02.jpg" data-transition="slide-in slide-out" data-coursemod-shown="false">
+<div class="frosted">
+	<h3>Introducción a la Computación</h3>
+	<h4>Demostrando una metodología didáctica</h4>
+	Eduardo Grosclaude
+</div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<section>
+<h2>Demostrando una metodología didáctica</h2>
+<ul>
+<li>Las siguientes transparencias muestran un material didáctico con el doble propósito de servir al docente como apoyo para dar la clase y al estudiante para repasarla.</li>
+<li>El docente pulsa "C" para convertir el material al "modo presentación" y viceversa (¡haga la prueba!). El estudiante que accede al material visualiza el texto que acompaña las diapositivas en "modo apunte".</li>
+</ul>
+<aside data-markdown class="notes">
+* En la diapositiva "Cálculo de punto flotante" se propone una actividad que requiere la interacción del estudiante con el material.
+* En la diapositiva final, "Referencias", el vínculo "Estudiando IC" remite a una cartelera interactiva donde los estudiantes pueden participar colaborativamente.
+</aside> 
+</section>
+
+
+
+<section>
+<h2>Variables muy diferentes</h2>
+<ul>	
+<li>"Tiempo en que la luz recorre una millonésima de milímetro"</li>
+<ul>	
+	<li>$t = e / v$</li>
+	<li>$e = 1\ nm = 0,000000001\ m$</li>
+	<li>$v = 300.000\ km/s = 300.000.000\ m/s$</li>
+</ul>
+</ul>
+<aside data-markdown class="notes">
+Hemos visto el método de representación de datos numéricos en punto fijo. Este método tiene sus limitaciones, por ejemplo, cuando necesitamos operar con números de magnitudes muy diferentes. Los cálculos se vuelven difíciles en papel y lápiz. 
+
+Lo mismo ocurre en el interior de la computadora. Si elegimos una representación de punto fijo con muchos lugares para la parte fraccionaria, a veces nos faltarán bits para la parte entera. Si elegimos lo contrario, a veces nos faltarán bits para la parte fraccionaria. Un sistema de punto fijo es muy poco flexible.
+</aside>
+</section>
+    
+<section>
+<h2>Notación científica</h2>
+<ul>	
+<li>$e = 0.000000001\ m$ <span class="fragment">$ = 1 \times 10^{-9}\ m$</span></li>
+<li>$v = 300000000\ m/s$ <span class="fragment">$ = 3 \times 10^8\ m/s$</span></li>
+<li>$t = e/v = 0.00000000000000000333\ s$</li>
+<li class="fragment">$t = e / v = (1 \times 10^{-9}\ m) / (3 \times 10^8\ m/s)$</li>
+<li class="fragment">$t = e / v = \frac{(1 \times 10^{-9}\ m)}{(3 \times 10^8\ m/s)}$ <span class="fragment"> $ = \frac{1}{3} \times \frac{10^{-9}\ m}{10^8\ m/s}$</span></li>
+<li class="fragment">$t = 1 / 3 \times 10^{-9-8}\ s \Longrightarrow t = 0.333 \times 10^{-17}\ s$</li>
+</ul>
+<aside data-markdown class="notes">
+Con la **notación científica** podemos expresar números de una gran variedad de magnitudes y precisiones, en un formato uniforme.
+
+Además, la notación científica nos ayuda a interpretar nuestros resultados al establecer claramente el **orden de magnitud** de los números que expresamos (dado por el exponente de la base).
+</aside>
+</section>
+
+<section data-coursemod-shown="false">
+<h2>Notación científica</h2>
+<ul>	
+	<li>$t = 0.333 \times 10^{-17}\ s$</li>
+	<ul>
+		<li>Coeficiente = $0.333$</li>
+		<li>Exponente = $-17$</li>
+	</ul>
+	<li class="fragment">Normalización</li>
+	<ul class="fragment">
+		<li>$1 <= coeficiente < base$</li>
+		<li>$0.333 \times 10^{-17} = 3.33 \times 10^{-18}$</li>
+	</ul>
+</ul>
+</section>
+
+
+<section data-coursemod-shown="false">
+<h2>Representación en punto flotante</h2>
+<ul>	
+	<li>Formato <i>IEEE 754 single precision</i>, 32 bits</li>
+	<ul>
+		<li>1 bit de <strong>signo</strong></li>
+		<li>8 bits para el <strong>exponente</strong> (en exceso 127)</li>
+		<li>23 bits para la <strong>mantisa</strong></li>
+	</ul>
+	<span class="fragment">
+	<li>Formato <i>IEEE 754 double precision</i>, 64 bits</li>
+	<ul>
+		<li>1 bit de <strong>signo</strong></li>
+		<li>11 bits para el <strong>exponente</strong> (en exceso 1023)</li>
+		<li>52 bits para la <strong>mantisa</strong></li>
+	</ul>
+	</span>
+</ul>
+</section>
+
+
+ 
+
+
+<section>
+ <h2>Cálculo de punto flotante</h2>
+ <div class="tangle" id="ieee754Calc">
+         <script type="text/javascript" src="ieee754.js"></script>
+         <!--
+         {
+                 "initialize":"function(container) {
+                         var rootElement = document.getElementById('ieee754Calc');
+                         var model = {
+                                 initialize: function() {
+                                         this.decimal = 0;
+                                         this.sign = 0;
+                                         this.exponent = 0;
+                                         this.mantissa = 0;
+                                         this.hexa = '00000000';
+                                 },
+                                 update: function() {
+                                         var e = this.decimal;
+                                         var n = parseFloat(e);
+                                         var f = packIEEE754(e, 8, 23);
+                                         this.hexa = hexaString(f);
+                                         this.sign = f[0];
+                                         this.exponent = f.slice(1,9).join('');
+                                         this.mantissa = f.slice(9,32).join('');
+                                         var mstr;
+                                         if (n === 0) {
+                                                 return;
+                                         } else if (n !== n) {
+                                                 mstr = 'NaN';
+                                         } else if (n === Infinity) {
+                                                 mstr = '\\infty';
+                                         } else if (n === -Infinity) {
+                                                 mstr = '- \\infty';
+                                         } else {
+                                                 mstr = mathString(e, this.sign, this.exponent, this.mantissa);
+                                         }
+                                         var mathfield = MathJax.Hub.getAllJax('ieee754Formula')[0];
+                                         MathJax.Hub.Queue(['Text',mathfield,mstr]);
+                                 }
+                         };
+                         var tangle=new Tangle(rootElement, model);
+                   }"
+         }
+         -->
+         <table>
+                 <tr><td>Decimal</td><td style="font-size:44px;" class="TKNumberField" data-var="decimal"></td></tr>
+                 <tr><td>Signo</td><td data-var="sign"></td></tr>
+                 <tr><td>Exponente</td><td data-var="exponent"></td></tr>
+                 <tr><td>Mantisa</td><td data-var="mantissa"></td></tr>
+                 <tr><td>Hexa</td><td data-var="hexa"></td></tr>
+         </table>
+         <p class="post_it" data-var="math" style="text-align: center;" id="ieee754Formula">$ $</p>
+ </div>
+<aside data-markdown class="notes">
+**Ejercicios**
+* ¿En qué se parecen las mantisas de números como 0.5, 2.5, 6.25?
+* ¿En qué se parecen las mantisas de números como 0.1, 0.2, 0.3?
+* En una consola python, o con el lenguaje que prefiera, ejecute la suma **0.1 + 0.2**. ¿Cuál es el resultado?
+* En el mismo lenguaje, ¿cuál es el valor lógico de **0.1 + 0.2 == 0.3**? ¿Es V o F?
+* ¿Puede explicarse este resultado a partir de los desarrollos de la mantisa de esos números en punto flotante?
+</aside>
+</section>
+ 
+
+
+<section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
+<h2>Preguntas</h2>
+<ul>
+	<li>¿Cuál es el rango de representación de IEEE754, precisión simple?</li>
+</ul>
+</section>
+
+<section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false" class="preguntas">
+<h2>Preguntas</h2>
+<ul>
+	<li>Usando el calculador de IEEE754 contenido en este material, o cualquier otro:</li>
+	<ol>
+		<li class="fragment">¿Qué pasa con el resultado a medida que agregamos <b>muchos</b> decimales?</li>
+		<li class="fragment">¿Qué pasa con el resultado si ingresamos números <b>enormes</b> como 1e30 (que significa $1 \times 10^{30}$), 1e35, etc.?</li>
+		<li class="fragment">Si ingresamos el dato $0.1$, ¿qué resultado da $(-1)^s \times 2^{e-127} \times (1+m)$? ¿Se reconstruye exactamente el valor $0.1$? ¿Cuál es el error en este caso?</li>
+	</ol>
+</ul>
+</section>
+
+<!--
+<section>
+<h2>Error de aproximación</h2>
+<pre><code>
+  $ python
+  Python 2.7.9 (default, Mar  1 2015, 12:57:24) 
+  [GCC 4.9.2] on linux2
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> a = 0.1
+  >>> b = 0.2
+  >>> c = a + b
+  >>> c == a + b
+  True
+  >>> c == 0.3
+  False
+  >>> c
+  0.30000000000000004
+
+</code></pre>
+</section>
+-->
+
+<section data-coursemod-shown="false">
+<h2>Referencias</h2>
+<ul>
+<li><a href="http://pedco.uncoma.edu.ar/mod/resource/view.php?id=145680" target="_blank">Apunte de Cátedra: Representación de Datos Numéricos</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Complemento_a_dos" target="_blank">Wikipedia: Complemento a dos</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Representaci%C3%B3n_de_n%C3%BAmeros_con_signo" target="_blank">Wikipedia: Representación de números con signo</li>
+<li><a href="http://perso.ens-lyon.fr/jean-michel.muller/goldberg.pdf" target="_blank">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a>, David Goldberg, Xerox PARC, 1991</li>
+<li><a href="https://padlet.com/eduardo_grosclaude/ic_2016">Estudiando IC</a></li>
+</ul>
+</section>
+
+<!-- INCLUDE src/demo.trailer -->

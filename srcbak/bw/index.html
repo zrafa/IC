@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<script type="text/javascript" src="jquery-3.1.0.js" ></script>
+
+<script type="text/javascript" >
+
+	$(document).ready(function () {
+		
+		var start = false;
+		var mult = 1;
+		
+		var num1 = 0;
+		var num2 = 0;
+		
+		var colr = false;
+		
+		var fin = 0;
+		
+		var isps = ["Red  - 1MB","HiperRed - 2MB","MultiMonsterRed - 3MB","MortalKombatFatalityRed - 4MB"];
+		
+		function animar(index1, index2) {
+		
+			w1 = ($("#canal1").width() / 10);
+			w2 = ($("#canal2").width() / (10 * mult));
+			
+			bkg = "";
+			
+			tnum1 = "";
+			tnum2 = "";
+			
+			b1 = "background-color:none;-webkit-box-shadow:none;box-shadow:none;";
+			b2 = "background-color:none;-webkit-box-shadow:none;box-shadow:none;";
+			
+			if(index1 > 0){
+				tnum1 = num1;
+				b1 = "background-color:red;-webkit-box-shadow: 0 0 0 1px #ccc;box-shadow: 0 0 0 1px #ccc;";
+			}
+		
+			$("#canal1").prepend("<div class='pq1' style='width:"+w1+"px;"+b1+"'>"+tnum1+"</div>");
+			index1--;
+			num1++;
+			
+			for(i = 0; i < mult; i++){
+				
+				if(index2 > 0){
+					tnum2 = num2;
+					b2 = "background-color:green;-webkit-box-shadow: 0 0 0 1px #ccc;box-shadow: 0 0 0 1px #ccc;";
+				}
+				else {
+					b2 = "background-color:none;-webkit-box-shadow:none;box-shadow:none;";
+					tnum2 = "";
+				}
+			
+				$("#canal2").prepend("<div class='pq2' style='width:"+w2+"px;"+b2+"'>"+tnum2+"</div>");
+				index2--;
+				num2++;
+				colr = false;
+				bkg = "";
+			}
+		
+			if(start && num1 < fin){
+	
+				setTimeout(function () {
+					
+					animar(index1, index2);
+					
+				},500);
+			
+			}
+			else{
+				$("#start").removeAttr("disabled");
+				$("#multadd").removeAttr("disabled");
+				$("#multsub").removeAttr("disabled");
+				start = false;
+			}
+			
+		}
+		
+		$("#start").click(function () {
+			
+			if(!start){
+			
+				$(this).attr("disabled","true");
+				$("#multadd").attr("disabled","true");
+				$("#multsub").attr("disabled","true");
+			
+				start = true;			
+			
+				$("#canal1").html("");
+				$("#canal2").html("");		
+			
+				num1 = 0;
+				num2 = 0;
+			
+				cant = $("#cantPaq").val();
+				
+				fin = 10 + (cant * 1);
+			
+				animar(cant,cant);
+				
+			}
+			
+		});
+		
+		$("#multadd").click(function () {			
+			
+			if(mult < 4){
+				mult++;		
+			}
+			
+			$("#isp2").html(isps[mult - 1]);
+			
+		});
+		
+		$("#multsub").click(function () {
+			
+			if(mult > 1){
+				mult--;			
+			}
+			
+			$("#isp2").html(isps[mult - 1]);
+			
+		});
+		
+		$("#colorear").click(function () {
+		
+			colr = true;
+			
+		});
+		
+	});
+
+</script>
+
+<style type="text/css">
+
+	*{
+		 box-sizing: border-box;
+		 vertical-align: top;
+	}
+
+	body{
+		width: 100%;
+		margin: 0px;
+		padding: 30px;
+		text-align: center;
+	}
+	
+	.isp{
+		display: block;
+		width: 20%;
+		height: 50px;
+		font-size: 15px;
+		margin: auto;
+	}
+
+	#canal1{
+
+		display: inline-block;
+		width: 600px;
+		height: 50px;
+		margin-bottom: 30px;
+		background-color: #ccc;
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		text-align: left;
+	
+	}
+	
+	#canal2{
+
+		display: inline-block;
+		width: 600px;
+		height: 50px;
+		margin-bottom: 30px;
+		background-color: #ccc;
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		text-align: left;
+	
+	}
+	
+	.pq1{
+		
+		display: inline-block;
+		background-color: none;
+		height: 50px;
+		position: relative;
+		text-align: center;
+		
+	}
+	
+	.pq2{
+		
+		display: inline-block;
+		background-color: none;
+		height: 50px;
+		position: relative;
+		text-align: center;
+		
+	}
+	
+	.gabinete{
+		display: inline-block;
+		width: 6%;
+	}
+	
+	#botonera{
+		display: block;
+	}
+	
+
+</style>
+
+<title>Ancho de Banda - RDCI</title>
+</head>
+<body>
+
+	<span id="isp1" class="isp">Red - 1MB</span>
+	<img src="gabinete.png" alt="gabinete.png" class="gabinete">
+	<div id="canal1"></div>
+	<img src="gabinete.png" alt="gabinete.png" class="gabinete">
+
+	<span id="isp2" class="isp">Red - 1MB</span>
+	<img src="gabinete.png" alt="gabinete.png" class="gabinete">
+	<div id="canal2"></div>
+	<img src="gabinete.png" alt="gabinete.png" class="gabinete">
+	
+	<div id="botonera">
+	
+		<button id="start">Iniciar</button>
+		
+		<button id="multadd">+</button>
+		<button id="multsub">-</button>
+		
+		<input type="number" min="1" max="20" value="1" id="cantPaq" />
+	
+	</div>
+
+</body>
+</html>

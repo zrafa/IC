@@ -10,6 +10,7 @@ if(/^<aside/ ... /<\/aside/) {
 	 s/^<aside.*$//;
 	 s/^<\/aside.*$//;
 	push @lines, $_;
+#cutycapt --url=http://localhost:8000/UnidadesDeInformaci%C3%B3n.html#/4 --out=aaa.png
 }
 
 END { print @lines; }

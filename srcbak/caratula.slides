@@ -1,0 +1,10 @@
+<!------------------------>
+<section data-background="img/background01.jpg" data-transition="slide-in slide-out">
+<div class="frosted">
+	<h2>Redes de Computadoras I</h2>
+	<h1>Introducción</h1>
+</div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>

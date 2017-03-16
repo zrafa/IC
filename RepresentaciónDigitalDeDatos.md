@@ -36,15 +36,15 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
 
 Consideremos primero qué ocurre cuando queremos representar números enteros **no negativos** (es decir, **positivos o cero**) sobre una cantidad fija de bits. Simplemente usamos el sistema binario de numeración, tal como lo conocemos, pero limitándonos a una cantidad fija de bits o dígitos binarios. ¿Cuál será el rango de representación?
 
-El **cero** siempre puede representarse (es decir, el límite inferior será 0). Pero ¿cuál será el límite superior del rango de representación?. Es decir, si la cantidad de dígitos binarios en este sistema es $k$, ¿cuál es el número más grande que podremos representar? 
+El **cero** siempre puede representarse (es decir, el límite inferior del rango de representación será 0). Pero ¿cuál será el límite superior? Es decir, si la cantidad de dígitos binarios en este sistema es $k$, ¿cuál es el número más grande que podremos representar? 
 
 Podemos estudiarlo de dos maneras.
 
-**Usando combinatoria**
+**1. Usando combinatoria**
 
 Contemos cuántos números diferentes podemos escribir con $k$ dígitos binarios. Imaginemos un número binario cualquiera con $k$ dígitos. El dígito de más a la derecha tiene únicamente dos posibilidades (0 o 1). Por cada una de éstas hay nuevamente dos posibilidades para el siguiente hacia la izquierda (lo que da las cuatro posibilidades 00, 01, 10, 11). Por cada una de éstas, hay dos posibilidades para el siguiente (dando las ocho posibilidades 000, 001, 010, 011, 100, 101, 110, 111), etc., y así hasta la posición $k$. No hay más posibilidades. Como hemos multiplicado 2 por sí mismo $k$ veces, la cantidad de números que se pueden escribir es $2^k$. Luego, el número más grande posible es $2^k - 1$. (**Pregunta**: ¿Por qué $2^k - 1$ y no $2^k$?).
 
-**Usando álgebra**
+**2. Usando álgebra**
 
 El número más grande que podemos representar en un sistema sin signo a $k$ dígitos es, seguramente, aquel donde todos los $k$ dígitos valen **1**. La Expresión General que hemos visto nos dice que si un número $n$ está escrito en base 2, **con $k$ dígitos**, entonces 
 $$n = x_{k-1}\times 2^{k-1} + ... + x_1\times2^1+x_0\times2^0$$ 
@@ -57,5 +57,21 @@ $$  = 1\times 2^{k-1} + ... + 1\times2^1+1\times2^0 = $$
 $$  = 2^{k-1} + ... + 2^1+2^0 = $$ 
 $$  = 2^{k}-1 $$ 
 
-Usando ambos argumentos hemos llegado a que el número más grande que podemos representar con $k$ dígitos binarios es $2^k-1$. Por lo tanto, **el rango de representación de un sistema sin signo a $k$ dígitos es $[0, 2^k - 1]$**.
+Usando ambos argumentos hemos llegado a que el número más grande que podemos representar con $k$ dígitos binarios es $2^k-1$. Por lo tanto, **el rango de representación de un sistema sin signo a $k$ dígitos es $[0, 2^k - 1]$**. Todos los números representables en esta clase de sistemas son **positivos o cero**.
+
+
+###Representación con signo
+
+En la vida diaria manejamos continuamente números negativos, y los distinguimos de los positivos simplemente agregando un signo "menos". Representar esos datos en la memoria de la computadora no es tan directo, porque, como hemos visto, la memoria **solamente puede alojar ceros y unos**. Es decir, ¡no podemos simplemente guardar un signo "menos"! Lo único que podemos hacer es almacenar secuencias de ceros y unos.
+
+Esto no era un problema cuando los números eran no negativos. Para poder representar, ahora, tanto números **positivos como negativos**, necesitamos cambiar la forma de representación. Esto quiere decir que una secuencia particular de dígitos binarios, que en un sistema sin signo tiene un cierto significado, ahora tendrá un significado diferente. Algunas secuencias, que antes representaban números positivos, ahora representarán negativos.
+
+Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (S-M)**, **Complemento a 2 (C2)** y **En exceso a **$2^n - 1$**.
+
+Es importante tener en cuenta que **solamente se puede operar entre datos representados con el mismo sistema de representación**, y que el **resultado** de toda operación **vuelve a estar representado en el mismo sistema**.
+
+
+###Sistema de Signo-magnitud (S-M)
+
+El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más simple de comprender. Se trata 
 
