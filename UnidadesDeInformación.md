@@ -35,7 +35,7 @@ La información que está transportando la señal que viaja es la respuesta a un
 
 Esta pregunta es **binaria**: se responde con un sí o con un no. Por lo tanto, lo que ha viajado es **un bit de información**. 
 
-Notemos que, en los manuales de lógica o de informática, encontraremos siempre asociados los **bits** con los valores de **0 y 1**. Aunque esto es útil a los efectos de emplear los bits en computación, no es del todo exacto. Lo que está codificando un bit no es exactamente un dígito. Lo que viajó desde la ciudad sitiada hasta su destino no es un 0 ni un 1. Es **un bit de información**, aquella unidad de información que permite tomar una decisión entre dos alternativas.
+Notemos que, en los manuales de lógica o de informática, encontraremos siempre asociados los **bits** con los valores de **0 y 1**. Aunque esto es útil a los efectos de emplear los bits en computación, no es del todo exacto. Un bit no es exactamente un dígito. Lo que viajó desde la ciudad sitiada hasta su destino no es un 0 ni un 1. Es **un bit de información**, aquella unidad de información que permite tomar una decisión entre dos alternativas. Sin embargo, la identificación de los bits con los dígitos binarios es útil para todo lo que tiene que ver con las computadoras.
 
 
 ##Byte
@@ -66,9 +66,11 @@ En el llamado Sistema Internacional, la unidad básica, el byte, se multiplica p
 - El **kilobyte** (1000 bytes)
 - El **megabyte** (1000 $\times$ 1000 bytes = 1000 kilobytes = un millón de bytes)
 - El **gigabyte** (1000 $\times$ 1000 $\times$ 1000 bytes = mil megabytes = mil millones de bytes)
-- El **terabyte** (1000 $\times$ 1000 $\times$ 1000 $\times$ 1000 bytes = mil gigabytes = un billón de bytes), y otros múltiplos mayores.
+- El **terabyte** (1000 $\times$ 1000 $\times$ 1000 $\times$ 1000 bytes = mil gigabytes = un billón de bytes), y otros múltiplos mayores como **petabyte, exabyte, zettabyte, yottabyte**.
 
 Como puede verse, cada unidad se forma multiplicando la anterior por 1000.
+
+Los símbolos de cada múltiplo, utilizados al especificar las unidades, son **k minúscula** para **kilo**, **M mayúscula** para **mega**, **G mayúscula** para **giga**, **T mayúscula** para **tera**, etc.
 
 
 ###Sistema de Prefijos Binarios
@@ -77,11 +79,13 @@ En el llamado Sistema de Prefijos Binarios, el byte se multiplica por potencias 
 - El **kibibyte** (1024 bytes)
 - El **mebibyte** (1024 $\times$ 1024 bytes, **aproximadamente** un millón de bytes, pero exactamente 1048576 bytes)
 - El **gibibyte** (1024 $\times$ 1024 $\times$ 1024 bytes, **aproximadamente** mil millones de bytes)
-- El **tebibyte** (1024 $\times$ 1024 $\times$ 1024 $\times$ 1024 bytes, aproximadamente un millón de mebibytes, o aproximadamente un billón de bytes), y otros múltiplos mayores.
+- El **tebibyte** (1024 $\times$ 1024 $\times$ 1024 $\times$ 1024 bytes, aproximadamente un millón de mebibytes, o aproximadamente un billón de bytes), y otros múltiplos mayores como **pebibyte, exbibyte, zebibyte, yobibyte**.
 
 Como puede verse, cada unidad se forma multiplicando la anterior por 1024.
 
 Notemos que los prefijos **kilo, mega, giga, tera**, del Sistema Internacional, cambian a **kibi, mebi, gibi, tebi**, del sistema de Prefijos Binarios.
+
+Los símbolos de cada múltiplo, utilizados al especificar las unidades, son **Ki**, con K mayúscula, para **kibi**, **Mi** para **mebi**, **Gi** para **gibi**, **Ti** para **tebi**, etc.
 
 
 ¿Por qué existen **dos** sistemas en lugar de uno? En realidad la adopción del Sistema de Prefijos Binarios se debe a las características de la memoria de las computadoras:
@@ -95,7 +99,7 @@ Notemos que los prefijos **kilo, mega, giga, tera**, del Sistema Internacional, 
 
 
 
-En computación se utilizan, en diferentes situaciones, ambos sistemas de unidades. Es costumbre usar el Sistema Internacional para hablar de velocidades de transmisión de datos, pero usar Prefijos Binarios al hablar de almacenamiento de memoria, o en unidades de almacenamiento permanente, como los discos.
+En computación se utilizan, en diferentes situaciones, ambos sistemas de unidades. Es costumbre usar el Sistema Internacional para hablar de velocidades de transmisión de datos o tamaños de archivos, pero usar Prefijos Binarios al hablar de almacenamiento de memoria, o en unidades de almacenamiento permanente, como los discos.
 
 - Entonces, cuando un proveedor de servicios de Internet ofrece **un enlace de 1 Mbps**, nos está diciendo que por ese enlace podremos transferir **exactamente 1 millón de bits por segundo**. El proveedor utiliza el Sistema Internacional.
 - Los textos, imágenes, sonido, video, programas, etc., se guardan en **archivos**, que son sucesiones de bytes. Encontramos archivos en el disco de nuestra computadora, y podemos descargar archivos desde las redes. Cuando nos interesa saber cuánto mide un archivo, en términos de bytes, usamos el Sistema Internacional porque el archivo no tiene por qué tener un tamaño que sea potencia de 2. 
