@@ -36,6 +36,7 @@ Es conveniente repasar la clasificación de los diferentes conjuntos de números
 - [Imaginarios](https://es.m.wikipedia.org/wiki/N%C3%BAmero_imaginario)
 
 **Preguntas**
+
 - El **cero**, ¿es un natural?
 - ¿Existen números naturales negativos? ¿Y racionales negativos?
 - ¿Es correcto decir que un racional tiene una parte decimal que es, o bien finita, o bien periódica?
@@ -124,21 +125,68 @@ Como estamos reservando un bit para expresar el signo, ese bit ya no se puede us
 
 ###Rango de representación de SM(k)
 
-De los $k$ bits del sistema de signo-magnitud a k bits, hay uno reservado para el signo, lo que implica que quedan $k-1$ para representar el valor absoluto. 
-
-Estos $k-1$ bits son un número **no negativo** (porque son el valor absoluto de algún número). Al ser un número no negativo, puede representarse con el sistema sin signo, pero sobre $k-1$ bits: es decir, SS(k-1). Este valor absoluto, entonces, tendrá a su vez un cierto rango de representación **que coincide con el de SS(k-1)**. 
-
-Por otra parte sabemos, por lo anterior, que el rango de representación de SS(k) es $[0, 2^k-1]$. Por lo tanto, el rango de SS(k-1), reemplazando, será $[0, 2^{k-1} -1]$.
-
-Esto quiere decir que el número de máximo valor absoluto representable en SM(k) es $2^{k-1}-1$. Pero también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1.  El número más pequeño, negativo, representable, es el opuesto del máximo, positivo, representable. 
+- De los $k$ bits del sistema de signo-magnitud a k bits, hay uno reservado para el signo, lo que implica que quedan $k-1$ para representar el valor absoluto. 
+- Estos $k-1$ bits son un número **no negativo** (porque son el valor absoluto de algún número). Al ser un número no negativo de $k-1$ bits, puede representarse con el sistema sin signo sobre $k-1$ bits: es decir, SS(k-1). Este número tendrá un valor máximo representable **que coincide con el límite superior del rango de representación de SS(k-1)**. 
+- Sabemos que el rango de representación de SS(k) es $[0, 2^k-1]$. Por lo tanto, el rango de SS(k-1), reemplazando, será $[0, 2^{k-1} -1]$.
+- Esto quiere decir que el número de máximo valor absoluto representable en SM(k) es $2^{k-1}-1$. 
+- Pero en SM(k) también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1. El opuesto del máximo positivo representable es a su vez el número más pequeño, negativo, representable: $-(2^{k-1}-1)$.
 
 Con lo cual hemos calculado tanto el límite inferior como el superior del rango de representación, que, finalmente, es $[-(2^{k-1}-1),2^{k-1}-1]$.
+
 
 ###Limitaciones de Signo-Magnitud
 Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
 
-- Existen dos representaciones del 0 ("positiva" y "negativa"), lo cual desperdicia un representante
-- Esto acorta el rango de representación
-- La aritmética en SM no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente
+- Existen dos representaciones del 0 ("positiva" y "negativa"), lo cual desperdicia un representante.
+- Esto acorta el rango de representación.
+- La aritmética en SM no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente.
 - El problema aritmético se agrava con la existencia de las dos representaciones del cero: cada vez que un programa quisiera comparar un valor resultado de un cómputo con 0, debería hacer **dos** comparaciones.
+
+Por estos motivos, el sistema de SM rápidamente dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
+
+
+Para comprender el sistema de complemento a 2 es necesario primero conocer la **operación** de complementar a 2.
+
+##Operación de Complemento a 2
+
+La **operación** de complementar a 2 consiste aritméticamente en obtener el **opuesto** de un número (el que tiene signo opuesto).
+
+Para obtener el complemento a 2 de un número escrito en base 2, **se invierte cada uno de los bits (reemplazando 0 por 1 y viceversa) y al resultado se le suma 1**. 
+
+El resultado de esta operación ($C_2(a)$) es el opuesto del número original $a$, y por lo tanto tiene la propiedad de que $a$ y $C_2(a)$ suman 0:
+
+$$C_2(a) + a = 0$$
+
+**Ejemplos**
+
+- Busquemos el complemento a 2 de $111010$. Invirtiendo todos los bits, obtenemos $000101$. Sumando 1, queda $000110$.
+- Busquemos el complemento a 2 de $0011$. Invirtiendo todos los bits, obtenemos $1100$. Sumando 1, queda $1101$.
+
+
+##Sistema de Complemento a 2
+
+Ahora que contamos con la **operación de complementar a 2**, podemos ver cómo se construye el **sistema de representación en Complemento a 2**.
+
+Para representar un número $a$ en Complemento a 2 a k bits:
+
+- Si $a$ es positivo o cero, lo representamos como en SM(k), es decir, lo escribimos en base 2 a k bits. El dígito binario de más a la izquierda es 0.
+- Si $a$ es negativo, tomamos su valor absoluto y lo complementamos a 2. El dígito binario de más a la izquierda es 1.
+
+**Ejemplos**
+
+- Representemos el número 17 en complemento a 2 con 8 bits. Como es positivo, lo escribimos en base 2, obteniendo $00010001$, y eso es todo. 
+- Representemos el número -17 en complemento a 2 con 8 bits. Como es negativo, escribimos su valor absoluto en base 2, que es $00010001$, y lo complementamos a 2. El resultado final es $11101111$.
+
+
+###Conversión de C2 a decimal
+
+Para convertir un número $n$ escrito en el sistema de complemento a 2, a decimal, lo primero es determinar el signo. Si el bit más alto es 1, $n$ es negativo. En otro caso, $n$ es positivo. 
+
+- Si $n$ es positivo, se interpreta el número como en el sistema sin signo, es decir, se utiliza la Expresión General para hacer la conversión de base como normalmente.
+- Si $n$ es negativo, se lo complementa a 2, obteniendo el opuesto de $n$. Este número, que ahora es positivo, se convierte a base 10 como en el caso anterior, y finalmente se le agrega el signo "-" para reflejar el hecho de que es negativo.
+
+**Ejemplos**
+
+- Convertir a decimal $n = 00010001$. Es positivo, luego aplicamos la Expresión General dando $17_{(10}$.
+- Convertir a decimal $n = 11101111$. Es negativo, luego lo complementamos a 2 obteniendo $00010001$. Aplicamos la Expresión General obteniendo $17_{(10}$. Como $n$ era negativo, agregamos el signo menos y obtenemos el resultado final $-17_{(10}$.
 

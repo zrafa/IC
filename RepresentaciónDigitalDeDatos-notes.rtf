@@ -12,7 +12,10 @@
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Representaci\u243?n con signo\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Sistema de Signo-magnitud (S-M)\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Rango de representaci\u243?n de SM(k)\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Limitaciones de Signo-Magnitud\sa180\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Limitaciones de Signo-Magnitud\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Operaci\u243?n de Complemento a 2\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sistema de Complemento a 2\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Conversi\u243?n de C2 a decimal\sa180\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Veremos de qu\u233? manera puede ser tratada mediante computadoras la informaci\u243?n correspondiente a n\u250?meros, textos, im\u225?genes y otros datos. Necesitaremos conocer las formas de representaci\u243?n de datos, y comenzaremos por los datos num\u233?ricos.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Representaci\u243?n de datos num\u233?ricos\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Hemos visto ejemplos de sistemas de numeraci\u243?n: en base 6, en base 10, o decimal, en base 2, o binario, en base 16, o hexadecimal, y en base 8, u octal; y sabemos convertir la representaci\u243?n de un n\u250?mero en cada una de estas bases, a los sistemas en las dem\u225?s bases. Sin embargo, a\u250?n nos falta considerar la representaci\u243?n num\u233?rica de varios casos importantes:\par}
@@ -94,7 +97,14 @@ Trascendentes
 Imaginarios
 }}}
 \sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\b Preguntas} - El {\b cero}, \u191?es un natural? - \u191?Existen n\u250?meros naturales negativos? \u191?Y racionales negativos? - \u191?Es correcto decir que un racional tiene una parte decimal que es, o bien finita, o bien peri\u243?dica? - \u191?Puede haber dos expresiones diferentes para el mismo n\u250?mero, en el mismo sistema de numeraci\u243?n decimal? - El n\u250?mero 0.9999... con 9 peri\u243?dico, y el n\u250?mero 1, \u191?son dos n\u250?meros diferentes o el mismo n\u250?mero? Si son diferentes, \u191?qu\u233? n\u250?mero se encuentra entre ellos dos? - El n\u250?mero 1 es a la vez natural y entero. \u191?Por qu\u233? no puede haber un n\u250?mero que sea a la vez racional e irracional? - \u191?Por qu\u233? jam\u225?s podremos computar la sucesi\u243?n completa de decimales de {\i \u960?}?\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Preguntas}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El {\b cero}, \u191?es un natural?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \u191?Existen n\u250?meros naturales negativos? \u191?Y racionales negativos?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \u191?Es correcto decir que un racional tiene una parte decimal que es, o bien finita, o bien peri\u243?dica?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \u191?Puede haber dos expresiones diferentes para el mismo n\u250?mero, en el mismo sistema de numeraci\u243?n decimal?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El n\u250?mero 0.9999... con 9 peri\u243?dico, y el n\u250?mero 1, \u191?son dos n\u250?meros diferentes o el mismo n\u250?mero? Si son diferentes, \u191?qu\u233? n\u250?mero se encuentra entre ellos dos?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El n\u250?mero 1 es a la vez natural y entero. \u191?Por qu\u233? no puede haber un n\u250?mero que sea a la vez racional e irracional?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \u191?Por qu\u233? jam\u225?s podremos computar la sucesi\u243?n completa de decimales de {\i \u960?}?\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Datos enteros\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Veremos tres sistemas de representaci\u243?n de datos num\u233?ricos enteros, llamados {\b signo-magnitud}, {\b complemento a 2} y {\b exceso a 2{\super {\i n}\u8197?\u8722?\u8197?1}}.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Datos fraccionarios\par}
@@ -131,15 +141,41 @@ Imaginarios
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \u8197?\u8722?\u8197?7{\sub (10}\u8196?=\u8196?10000111{\sub (2}\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Como estamos reservando un bit para expresar el signo, ese bit ya no se puede usar para representar magnitud; y como el sistema tiene una cantidad de bits fija, el RR ya no podr\u225? representar el n\u250?mero m\u225?ximo que era posible con el sistema {\b sin signo}.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Rango de representaci\u243?n de SM(k)\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 De los {\i k} bits del sistema de signo-magnitud a k bits, hay uno reservado para el signo, lo que implica que quedan {\i k}\u8197?\u8722?\u8197?1 para representar el valor absoluto.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Estos {\i k}\u8197?\u8722?\u8197?1 bits son un n\u250?mero {\b no negativo} (porque son el valor absoluto de alg\u250?n n\u250?mero). Al ser un n\u250?mero no negativo, puede representarse con el sistema sin signo, pero sobre {\i k}\u8197?\u8722?\u8197?1 bits: es decir, SS(k-1). Este valor absoluto, entonces, tendr\u225? a su vez un cierto rango de representaci\u243?n {\b que coincide con el de SS(k-1)}.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Por otra parte sabemos, por lo anterior, que el rango de representaci\u243?n de SS(k) es [0,\u8198?2{\super {\i k}}\u8197?\u8722?\u8197?1]. Por lo tanto, el rango de SS(k-1), reemplazando, ser\u225? [0,\u8198?2{\super {\i k}\u8197?\u8722?\u8197?1}\u8197?\u8722?\u8197?1].\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Esto quiere decir que el n\u250?mero de m\u225?ximo valor absoluto representable en SM(k) es 2{\super {\i k}\u8197?\u8722?\u8197?1}\u8197?\u8722?\u8197?1. Pero tambi\u233?n se puede representar su opuesto negativo, simplemente cambiando el bit m\u225?s alto por 1. El n\u250?mero m\u225?s peque\u241?o, negativo, representable, es el opuesto del m\u225?ximo, positivo, representable.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab De los {\i k} bits del sistema de signo-magnitud a k bits, hay uno reservado para el signo, lo que implica que quedan {\i k}\u8197?\u8722?\u8197?1 para representar el valor absoluto.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Estos {\i k}\u8197?\u8722?\u8197?1 bits son un n\u250?mero {\b no negativo} (porque son el valor absoluto de alg\u250?n n\u250?mero). Al ser un n\u250?mero no negativo de {\i k}\u8197?\u8722?\u8197?1 bits, puede representarse con el sistema sin signo sobre {\i k}\u8197?\u8722?\u8197?1 bits: es decir, SS(k-1). Este n\u250?mero tendr\u225? un valor m\u225?ximo representable {\b que coincide con el l\u237?mite superior del rango de representaci\u243?n de SS(k-1)}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sabemos que el rango de representaci\u243?n de SS(k) es [0,\u8198?2{\super {\i k}}\u8197?\u8722?\u8197?1]. Por lo tanto, el rango de SS(k-1), reemplazando, ser\u225? [0,\u8198?2{\super {\i k}\u8197?\u8722?\u8197?1}\u8197?\u8722?\u8197?1].\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Esto quiere decir que el n\u250?mero de m\u225?ximo valor absoluto representable en SM(k) es 2{\super {\i k}\u8197?\u8722?\u8197?1}\u8197?\u8722?\u8197?1.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Pero en SM(k) tambi\u233?n se puede representar su opuesto negativo, simplemente cambiando el bit m\u225?s alto por 1. El opuesto del m\u225?ximo positivo representable es a su vez el n\u250?mero m\u225?s peque\u241?o, negativo, representable: \u8197?\u8722?\u8197?(2{\super {\i k}\u8197?\u8722?\u8197?1}\u8197?\u8722?\u8197?1).\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Con lo cual hemos calculado tanto el l\u237?mite inferior como el superior del rango de representaci\u243?n, que, finalmente, es [\u8197?\u8722?\u8197?(2{\super {\i k}\u8197?\u8722?\u8197?1}\u8197?\u8722?\u8197?1),\u8198?2{\super {\i k}\u8197?\u8722?\u8197?1}\u8197?\u8722?\u8197?1].\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Limitaciones de Signo-Magnitud\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Si bien {\b SM(k)} es simple, no es tan efectivo, por varias razones:\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Existen dos representaciones del 0 ("positiva" y "negativa"), lo cual desperdicia un representante\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Esto acorta el rango de representaci\u243?n\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La aritm\u233?tica en SM no es f\u225?cil, ya que cada operaci\u243?n debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Existen dos representaciones del 0 ("positiva" y "negativa"), lo cual desperdicia un representante.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Esto acorta el rango de representaci\u243?n.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La aritm\u233?tica en SM no es f\u225?cil, ya que cada operaci\u243?n debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El problema aritm\u233?tico se agrava con la existencia de las dos representaciones del cero: cada vez que un programa quisiera comparar un valor resultado de un c\u243?mputo con 0, deber\u237?a hacer {\b dos} comparaciones.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Por estos motivos, el sistema de SM r\u225?pidamente dej\u243? de usarse y se dise\u241?\u243? un sistema que elimin\u243? estos problemas, el sistema de {\b complemento a 2}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para comprender el sistema de complemento a 2 es necesario primero conocer la {\b operaci\u243?n} de complementar a 2.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Operaci\u243?n de Complemento a 2\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La {\b operaci\u243?n} de complementar a 2 consiste aritm\u233?ticamente en obtener el {\b opuesto} de un n\u250?mero (el que tiene signo opuesto).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para obtener el complemento a 2 de un n\u250?mero escrito en base 2, {\b se invierte cada uno de los bits (reemplazando 0 por 1 y viceversa) y al resultado se le suma 1}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El resultado de esta operaci\u243?n ({\i C}{\sub 2}({\i a})) es el opuesto del n\u250?mero original {\i a}, y por lo tanto tiene la propiedad de que {\i a} y {\i C}{\sub 2}({\i a}) suman 0:\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\i C}{\sub 2}({\i a})\u8197?+\u8197?{\i a}\u8196?=\u8196?0\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplos}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Busquemos el complemento a 2 de 111010. Invirtiendo todos los bits, obtenemos 000101. Sumando 1, queda 000110.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Busquemos el complemento a 2 de 0011. Invirtiendo todos los bits, obtenemos 1100. Sumando 1, queda 1101.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Sistema de Complemento a 2\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Ahora que contamos con la {\b operaci\u243?n de complementar a 2}, podemos ver c\u243?mo se construye el {\b sistema de representaci\u243?n en Complemento a 2}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para representar un n\u250?mero {\i a} en Complemento a 2 a k bits:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si {\i a} es positivo o cero, lo representamos como en SM(k), es decir, lo escribimos en base 2 a k bits. El d\u237?gito binario de m\u225?s a la izquierda es 0.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si {\i a} es negativo, tomamos su valor absoluto y lo complementamos a 2. El d\u237?gito binario de m\u225?s a la izquierda es 1.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplos}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Representemos el n\u250?mero 17 en complemento a 2 con 8 bits. Como es positivo, lo escribimos en base 2, obteniendo 00010001, y eso es todo.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Representemos el n\u250?mero -17 en complemento a 2 con 8 bits. Como es negativo, escribimos su valor absoluto en base 2, que es 00010001, y lo complementamos a 2. El resultado final es 11101111.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Conversi\u243?n de C2 a decimal\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para convertir un n\u250?mero {\i n} escrito en el sistema de complemento a 2, a decimal, lo primero es determinar el signo. Si el bit m\u225?s alto es 1, {\i n} es negativo. En otro caso, {\i n} es positivo.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si {\i n} es positivo, se interpreta el n\u250?mero como en el sistema sin signo, es decir, se utiliza la Expresi\u243?n General para hacer la conversi\u243?n de base como normalmente.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si {\i n} es negativo, se lo complementa a 2, obteniendo el opuesto de {\i n}. Este n\u250?mero, que ahora es positivo, se convierte a base 10 como en el caso anterior, y finalmente se le agrega el signo "-" para reflejar el hecho de que es negativo.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplos}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Convertir a decimal {\i n}\u8196?=\u8196?00010001. Es positivo, luego aplicamos la Expresi\u243?n General dando 17{\sub (10}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Convertir a decimal {\i n}\u8196?=\u8196?11101111. Es negativo, luego lo complementamos a 2 obteniendo 00010001. Aplicamos la Expresi\u243?n General obteniendo 17{\sub (10}. Como {\i n} era negativo, agregamos el signo menos y obtenemos el resultado final \u8197?\u8722?\u8197?17{\sub (10}.\sa180\par}
 }
