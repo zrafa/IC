@@ -1,4 +1,7 @@
 
+Veremos de qué manera puede ser tratada mediante computadoras la información correspondiente a números, textos, imágenes y otros datos. Necesitaremos conocer las formas de representación de datos, y comenzaremos por los datos numéricos.
+
+
 ###Representación de datos numéricos
 
 Hemos visto ejemplos de sistemas de numeración: en base 6, en base 10, o decimal, en base 2, o binario, en base 16, o hexadecimal, y en base 8, u octal; y sabemos convertir la representación de un número en cada una de estas bases, a los sistemas en las demás bases. Sin embargo, aún nos falta considerar la representación numérica de varios casos importantes:  
@@ -10,6 +13,36 @@ Hemos visto ejemplos de sistemas de numeración: en base 6, en base 10, o decima
 En esta parte de la unidad mostraremos sistemas de representación utilizados en computación que permiten tratar estos problemas.
 
 
+##Clasificación de los números
+Es conveniente repasar la clasificación de los diferentes conjuntos de números y conocer las diferencias importantes entre éstos. Los títulos en el cuadro (tomado de Wikipedia) son referencias a los artículos enciclopédicos sobre cada uno de esos conjuntos.
+
+- [Números complejos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_complejo)
+- [Complejos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_complejo)
+- [Reales](https://es.m.wikipedia.org/wiki/N%C3%BAmero_real)
+- [Racionales](https://es.m.wikipedia.org/wiki/N%C3%BAmero_racional)
+- [Enteros](https://es.m.wikipedia.org/wiki/N%C3%BAmero_entero)
+- [Naturales](https://es.m.wikipedia.org/wiki/N%C3%BAmero_natural)
+- [Uno](https://es.m.wikipedia.org/wiki/Uno)
+- [Naturales primos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_primo)
+- [Naturales compuestos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_compuesto)
+- [Cero](https://es.m.wikipedia.org/wiki/Cero)
+- [Enteros negativos](https://es.m.wikipedia.org/wiki/Entero_negativo)
+- [Fraccionarios](https://es.m.wikipedia.org/wiki/N%C3%BAmero_fraccionario)
+- [Fracción propia](https://es.m.wikipedia.org/wiki/Fracci%C3%B3n_propia)
+- [Fracción impropia](https://es.m.wikipedia.org/wiki/Fracci%C3%B3n_impropia)
+- [Irracionales](https://es.m.wikipedia.org/wiki/N%C3%BAmero_irracional)
+- [Irracionales algebraicos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_algebraico)
+- [Trascendentes](https://es.m.wikipedia.org/wiki/N%C3%BAmero_trascendente)
+- [Imaginarios](https://es.m.wikipedia.org/wiki/N%C3%BAmero_imaginario)
+
+**Preguntas**
+- El **cero**, ¿es un natural?
+- ¿Existen números naturales negativos? ¿Y racionales negativos?
+- ¿Es correcto decir que un racional tiene una parte decimal que es, o bien finita, o bien periódica?
+- ¿Puede haber dos expresiones diferentes para el mismo número, en el mismo sistema de numeración decimal?
+- El número 0.9999... con 9 periódico, y el número 1, ¿son dos números diferentes o el mismo número? Si son diferentes, ¿qué número se encuentra entre ellos dos?
+- El número 1 es a la vez natural y entero. ¿Por qué no puede haber un número que sea a la vez racional e irracional?
+- ¿Por qué jamás podremos computar la sucesión completa de decimales de $\pi$?
 
 
 ###Datos enteros
@@ -59,6 +92,12 @@ $$  = 2^{k}-1 $$
 
 Usando ambos argumentos hemos llegado a que el número más grande que podemos representar con $k$ dígitos binarios es $2^k-1$. Por lo tanto, **el rango de representación de un sistema sin signo a $k$ dígitos es $[0, 2^k - 1]$**. Todos los números representables en esta clase de sistemas son **positivos o cero**.
 
+**Ejemplos**
+
+- Para un sistema de representación sin signo a 8 bits: $[0, 2^8-1] = [0, 255]$
+- Con 16 bits: $[0, 2^{16}-1] = [0, 65.535]$
+- Con 32 bits: $[0, 2^{32}-1] = [0, 4.294.967.295]$
+
 
 ###Representación con signo
 
@@ -66,12 +105,40 @@ En la vida diaria manejamos continuamente números negativos, y los distinguimos
 
 Esto no era un problema cuando los números eran no negativos. Para poder representar, ahora, tanto números **positivos como negativos**, necesitamos cambiar la forma de representación. Esto quiere decir que una secuencia particular de dígitos binarios, que en un sistema sin signo tiene un cierto significado, ahora tendrá un significado diferente. Algunas secuencias, que antes representaban números positivos, ahora representarán negativos.
 
-Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (S-M)**, **Complemento a 2 (C2)** y **En exceso a **$2^n - 1$**.
+Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (S-M)**, **Complemento a 2 (C2)** y **En exceso a $2^n - 1$**.
 
 Es importante tener en cuenta que **solamente se puede operar entre datos representados con el mismo sistema de representación**, y que el **resultado** de toda operación **vuelve a estar representado en el mismo sistema**.
 
 
 ###Sistema de Signo-magnitud (S-M)
 
-El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más simple de comprender. Se trata 
+El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más sencillo de comprender. Se trata simplemente de utilizar un bit (el de más a la izquierda) para representar el signo. Si este bit tiene valor 0, el número representado es positivo; si es 1, es negativo. Los demás bits se utilizan para representar la magnitud, es decir, el valor absoluto del número en cuestión.
+
+**Ejemplos**
+
+- $7_{(10} = 00000111_{(2}$
+- $-7_{(10} = 10000111_{(2}$
+
+Como estamos reservando un bit para expresar el signo, ese bit ya no se puede usar para representar magnitud; y como el sistema tiene una cantidad de bits fija, el RR ya no podrá representar el número máximo que era posible con el sistema **sin signo**.
+
+
+###Rango de representación de SM(k)
+
+De los $k$ bits del sistema de signo-magnitud a k bits, hay uno reservado para el signo, lo que implica que quedan $k-1$ para representar el valor absoluto. 
+
+Estos $k-1$ bits son un número **no negativo** (porque son el valor absoluto de algún número). Al ser un número no negativo, puede representarse con el sistema sin signo, pero sobre $k-1$ bits: es decir, SS(k-1). Este valor absoluto, entonces, tendrá a su vez un cierto rango de representación **que coincide con el de SS(k-1)**. 
+
+Por otra parte sabemos, por lo anterior, que el rango de representación de SS(k) es $[0, 2^k-1]$. Por lo tanto, el rango de SS(k-1), reemplazando, será $[0, 2^{k-1} -1]$.
+
+Esto quiere decir que el número de máximo valor absoluto representable en SM(k) es $2^{k-1}-1$. Pero también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1.  El número más pequeño, negativo, representable, es el opuesto del máximo, positivo, representable. 
+
+Con lo cual hemos calculado tanto el límite inferior como el superior del rango de representación, que, finalmente, es $[-(2^{k-1}-1),2^{k-1}-1]$.
+
+###Limitaciones de Signo-Magnitud
+Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
+
+- Existen dos representaciones del 0 ("positiva" y "negativa"), lo cual desperdicia un representante
+- Esto acorta el rango de representación
+- La aritmética en SM no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente
+- El problema aritmético se agrava con la existencia de las dos representaciones del cero: cada vez que un programa quisiera comparar un valor resultado de un cómputo con 0, debería hacer **dos** comparaciones.
 

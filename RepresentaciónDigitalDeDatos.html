@@ -44,16 +44,18 @@
 1. Sistemas de Numeración 
 1. Unidades de Información
 1. Representación Digital de Datos 
- 1. Datos Numéricos
+ 1. Datos Numéricos <!-- .element: class="postit" -->
  1. Texto
  1. Multimedia
  </script>
 </section>
 
 
-<section data-markdown>
-##Representación 
-##de datos numéricos
+<section>
+<h2>Representación de datos numéricos</h2>
+<aside data-markdown class="notes">
+Veremos de qué manera puede ser tratada mediante computadoras la información correspondiente a números, textos, imágenes y otros datos. Necesitaremos conocer las formas de representación de datos, y comenzaremos por los datos numéricos.
+</aside>
 </section>
 
 <section>
@@ -88,7 +90,8 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 <section>
 
 <h2>Clasificación de los números</h2>
-<table class="plain" style="font-size: 55%; text-align: left; margin:2em; border-collapse:collapse" width="100%">
+<div style="text-align: center;">
+<table class="plain" style="font-size: 50%; text-align: left; margin:2em; border-collapse:collapse" width="100%">
 <tr>
 <td>
 <table style="margin:4px; border:2px solid silver">
@@ -230,7 +233,38 @@ En esta parte de la unidad mostraremos sistemas de representación utilizados en
 </td>
 </tr>
 </table>
+</div>
 <aside data-markdown class="notes">
+##Clasificación de los números
+Es conveniente repasar la clasificación de los diferentes conjuntos de números y conocer las diferencias importantes entre éstos. Los títulos en el cuadro (tomado de Wikipedia) son referencias a los artículos enciclopédicos sobre cada uno de esos conjuntos.
+
+- [Números complejos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_complejo)
+- [Complejos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_complejo)
+- [Reales](https://es.m.wikipedia.org/wiki/N%C3%BAmero_real)
+- [Racionales](https://es.m.wikipedia.org/wiki/N%C3%BAmero_racional)
+- [Enteros](https://es.m.wikipedia.org/wiki/N%C3%BAmero_entero)
+- [Naturales](https://es.m.wikipedia.org/wiki/N%C3%BAmero_natural)
+- [Uno](https://es.m.wikipedia.org/wiki/Uno)
+- [Naturales primos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_primo)
+- [Naturales compuestos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_compuesto)
+- [Cero](https://es.m.wikipedia.org/wiki/Cero)
+- [Enteros negativos](https://es.m.wikipedia.org/wiki/Entero_negativo)
+- [Fraccionarios](https://es.m.wikipedia.org/wiki/N%C3%BAmero_fraccionario)
+- [Fracción propia](https://es.m.wikipedia.org/wiki/Fracci%C3%B3n_propia)
+- [Fracción impropia](https://es.m.wikipedia.org/wiki/Fracci%C3%B3n_impropia)
+- [Irracionales](https://es.m.wikipedia.org/wiki/N%C3%BAmero_irracional)
+- [Irracionales algebraicos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_algebraico)
+- [Trascendentes](https://es.m.wikipedia.org/wiki/N%C3%BAmero_trascendente)
+- [Imaginarios](https://es.m.wikipedia.org/wiki/N%C3%BAmero_imaginario)
+
+**Preguntas**
+- El **cero**, ¿es un natural?
+- ¿Existen números naturales negativos? ¿Y racionales negativos?
+- ¿Es correcto decir que un racional tiene una parte decimal que es, o bien finita, o bien periódica?
+- ¿Puede haber dos expresiones diferentes para el mismo número, en el mismo sistema de numeración decimal?
+- El número 0.9999... con 9 periódico, y el número 1, ¿son dos números diferentes o el mismo número? Si son diferentes, ¿qué número se encuentra entre ellos dos?
+- El número 1 es a la vez natural y entero. ¿Por qué no puede haber un número que sea a la vez racional e irracional?
+- ¿Por qué jamás podremos computar la sucesión completa de decimales de $\pi$?
 </aside>
 </section>
 
@@ -289,17 +323,22 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
 <section>
 <h2>Representación sin signo</h2>
 <ul>
-   <li>Sólo puede expresar números <b>no negativos</b></li>
-   <li>Con $k$ bits, tengo $2^k$ posibilidades</li>
+   <li><b>SS(k)</b> expresa sólo números <b>no negativos</b></li>
+   <div class="fragment">
+   <ol>
+   <li>Con $k$ bits, tengo $2^k$ posibilidades: $2 \times 2 \times 2 ... = 2^k$</li>
+   <li class="fragment">Con $k$ bits, el mayor número binario posible es 111111....1 = $\sum_{i=0}^k{2^i} = 2^k-1$</li>
+   </ol>
+   </div>
+   <li class="fragment"> &rarr; Rango de representación <span class="post_it">$[0, 2^k-1]$</span></li>
+   <div>
 	<ul>
-	   <li>Dos para el primer bit; por cada una de éstas, dos para el segundo; por cada una...($2 \times 2 \times 2 ... = 2^k$)</li>
-	</ul>
-   <li> &rarr; Rango de representación <span class="post_it">$[0, 2^k-1]$</span></li>
-	<ul>
+	   <li class="fragment">Con 4 bits: $[0, 2^4-1] = [0, 15]$</li>
 	   <li class="fragment">Con 8 bits: $[0, 2^8-1] = [0, 255]$</li>
 	   <li class="fragment">Con 16 bits: $[0, 2^{16}-1] = [0, 65.535]$</li>
 	   <li class="fragment">Con 32 bits: $[0, 2^{32}-1] = [0, 4.294.967.295]$</li>
 	</ul>
+   </div>
 </ul>
 <aside data-markdown class="notes">
 ###Representación sin signo
@@ -328,6 +367,12 @@ $$  = 2^{k-1} + ... + 2^1+2^0 = $$
 $$  = 2^{k}-1 $$ 
 
 Usando ambos argumentos hemos llegado a que el número más grande que podemos representar con $k$ dígitos binarios es $2^k-1$. Por lo tanto, **el rango de representación de un sistema sin signo a $k$ dígitos es $[0, 2^k - 1]$**. Todos los números representables en esta clase de sistemas son **positivos o cero**.
+
+**Ejemplos**
+
+- Para un sistema de representación sin signo a 8 bits: $[0, 2^8-1] = [0, 255]$
+- Con 16 bits: $[0, 2^{16}-1] = [0, 65.535]$
+- Con 32 bits: $[0, 2^{32}-1] = [0, 4.294.967.295]$
 </aside>
 </section>
 
@@ -349,7 +394,7 @@ En la vida diaria manejamos continuamente números negativos, y los distinguimos
 
 Esto no era un problema cuando los números eran no negativos. Para poder representar, ahora, tanto números **positivos como negativos**, necesitamos cambiar la forma de representación. Esto quiere decir que una secuencia particular de dígitos binarios, que en un sistema sin signo tiene un cierto significado, ahora tendrá un significado diferente. Algunas secuencias, que antes representaban números positivos, ahora representarán negativos.
 
-Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (S-M)**, **Complemento a 2 (C2)** y **En exceso a **$2^n - 1$**.
+Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (S-M)**, **Complemento a 2 (C2)** y **En exceso a $2^n - 1$**.
 
 Es importante tener en cuenta que **solamente se puede operar entre datos representados con el mismo sistema de representación**, y que el **resultado** de toda operación **vuelve a estar representado en el mismo sistema**.
 </aside>
@@ -374,41 +419,76 @@ Es importante tener en cuenta que **solamente se puede operar entre datos repres
 	<li>1 &rarr; negativo</li>
 	</ul>
    <li>Los restantes bits, el valor absoluto o magnitud</li>
+   <div class="fragment">
+	<ul>
+	   <li>Positivos</li>
+		$7_{(10} = 00000111_{(2}$
+	   <span class="fragment">
+	   <li>Negativos</li>
+		$-7_{(10} = 10000111_{(2}$
+	   </span>
+	</ul>
+   </div>
+   <li class="fragment">¿Rango de representación?</li>
 </ul>
 <aside data-markdown class="notes">
 ###Sistema de Signo-magnitud (S-M)
 
-El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más simple de comprender. Se trata 
+El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más sencillo de comprender. Se trata simplemente de utilizar un bit (el de más a la izquierda) para representar el signo. Si este bit tiene valor 0, el número representado es positivo; si es 1, es negativo. Los demás bits se utilizan para representar la magnitud, es decir, el valor absoluto del número en cuestión.
+
+**Ejemplos**
+
+- `$7_{(10} = 00000111_{(2}$`
+- `$-7_{(10} = 10000111_{(2}$`
+
+Como estamos reservando un bit para expresar el signo, ese bit ya no se puede usar para representar magnitud; y como el sistema tiene una cantidad de bits fija, el RR ya no podrá representar el número máximo que era posible con el sistema **sin signo**.
 </aside>
 </section>
 
 <section>
-<h2>Signo-Magnitud en 8 bits</h2>
+<h2>RR de SM(k)</h2>
 <ul>
-   <li>Positivos</li>
-	$7_{(10} = 00000111_{(2}$
-   <span class="fragment">
-   <li>Negativos</li>
-	$-7_{(10} = 10000111_{(2}$
-   </span>
-   <li class="fragment">¿Rango de representación?</li>
-</ul>
-</section>
-
-<section>
-<h2>RR de Signo-Magnitud con n bits</h2>
-<ul>
-   <li>Hay $n$ bits pero uno es para el signo</li>
+   <li>Hay $k$ bits pero uno es para el signo</li>
 	<p class="post_it">
-   		&rarr; El valor absoluto se expresa en $n-1$ bits
+   		&rarr; El valor absoluto se expresa en $k-1$ bits
 	</p>
-   <li>Como el RR Sin Signo en $n-1$ bits es $[0, 2^{n-1}-1]$...</li>
-   <li>...el RR de Signo-Magnitud en $n$ bits es
-   <span class="post_it">$[-(2^{n-1}-1), 2^{n-1}-1]$</span></li>
+   <ul>
+   <li class="fragment">El RR de <b>SS(k-1)</b> es $[0, 2^{k-1}-1]$</li>
+   <li class="fragment">SM(k) puede expresar tantos positivos como negativos</li>
+   </ul>
+   <li class="fragment">Luego, el RR de <b>SM(k)</b> es <span class="post_it">$[-(2^{k-1}-1), 2^{k-1}-1]$</span></li>
+   <div class="fragment">
+   <ul>
+   <li>RR SM(4) = $[-(2^{3}-1, 2^{3}-1]$ $=$ $[-7,7]$</li>
+   <li>RR SM(8) = $[-(2^{7}-1, 2^{7}-1]$ $=$ $[-127,127]$</li>
+   <li>RR SM(16) = $[-(2^{15}-1, 2^{15}-1]$ $=$ $[-32767,32767]$</li>
+   </ul>
+   </div>
 </ul>
+<aside data-markdown class="notes">
+###Rango de representación de SM(k)
+
+De los $k$ bits del sistema de signo-magnitud a k bits, hay uno reservado para el signo, lo que implica que quedan $k-1$ para representar el valor absoluto. 
+
+Estos $k-1$ bits son un número **no negativo** (porque son el valor absoluto de algún número). Al ser un número no negativo, puede representarse con el sistema sin signo, pero sobre $k-1$ bits: es decir, SS(k-1). Este valor absoluto, entonces, tendrá a su vez un cierto rango de representación **que coincide con el de SS(k-1)**. 
+
+Por otra parte sabemos, por lo anterior, que el rango de representación de SS(k) es $[0, 2^k-1]$. Por lo tanto, el rango de SS(k-1), reemplazando, será $[0, 2^{k-1} -1]$.
+
+Esto quiere decir que el número de máximo valor absoluto representable en SM(k) es $2^{k-1}-1$. Pero también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1.  El número más pequeño, negativo, representable, es el opuesto del máximo, positivo, representable. 
+
+Con lo cual hemos calculado tanto el límite inferior como el superior del rango de representación, que, finalmente, es $[-(2^{k-1}-1),2^{k-1}-1]$.
+
+###Limitaciones de Signo-Magnitud
+Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
+
+- Existen dos representaciones del 0 ("positiva" y "negativa"), lo cual desperdicia un representante
+- Esto acorta el rango de representación
+- La aritmética en SM no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente
+- El problema aritmético se agrava con la existencia de las dos representaciones del cero: cada vez que un programa quisiera comparar un valor resultado de un cómputo con 0, debería hacer **dos** comparaciones.
+</aside>
 </section>
 
-<section data-background="#3c53b5" data-background-transition="zoom">
+<section data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false">
 <h2>Preguntas</h2>
 <p>
 Signo-Magnitud en 8 bits
@@ -421,10 +501,6 @@ Signo-Magnitud en 8 bits
 <li>$-128_{(10} = X_{(2} =$ <span class="fragment">Imposible</span></li>
 <li>$10000000_{(2} = X_{(10} =$ <span class="fragment">¿Y $00000000_{(2}$?</span></li>
 </ol>
-</section>
-
-<section data-background="#b53c53" data-background-transition="zoom">
-<img src="img/sm.jpg" class="stretch">
 </section>
 
 
@@ -443,7 +519,7 @@ Signo-Magnitud en 8 bits
 <section>
 <h2>Operación de complemento a 2</h2>
 <ul>
-	<li>Devuelve el opuesto <i>("el negativo")</i> de un número</li>
+	<li>Devuelve el opuesto de un número</li>
 	<ul>
 	<li>Si $a > 0, -a < 0$
 	<li>Si $a < 0, -a > 0$
