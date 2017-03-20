@@ -52,7 +52,7 @@
 
 
 <section>
-<h2>Representación de datos numéricos</h2>
+<h1>Representación de datos numéricos</h1>
 <aside data-markdown class="notes">
 Veremos de qué manera puede ser tratada mediante computadoras la información correspondiente a números, textos, imágenes y otros datos. Necesitaremos conocer las formas de representación de datos, y comenzaremos por los datos numéricos.
 </aside>
@@ -276,6 +276,7 @@ Es conveniente repasar la clasificación de los diferentes conjuntos de números
 <ul>
 <li>Enteros</li>
 <ul>
+<li>Sin signo</li>
 <li>Signo-Magnitud</li>
 <li>Complemento a 2 </li>
 <li>Exceso a $2^{n-1}$</li>
@@ -289,7 +290,7 @@ Es conveniente repasar la clasificación de los diferentes conjuntos de números
 <aside data-markdown class="notes">
 ###Datos enteros
 
-Veremos tres sistemas de representación de datos numéricos enteros, llamados **signo-magnitud**, **complemento a 2** y **exceso a $2^{n-1}$**.
+Veremos un sistema de representación de datos no negativos, llamado **sin signo**, y tres sistemas de representación de datos numéricos enteros, llamados **signo-magnitud**, **complemento a 2** y **exceso a $2^{n-1}$**.
 
 ###Datos fraccionarios
 
@@ -311,7 +312,7 @@ Para representar fraccionarios consideraremos los sistemas de **punto fijo** y *
 <aside data-markdown class="notes">
 ###Rango de representación
 
-Cada sistema de representación de datos numéricos tiene su propio **rango de representación** (que podemos abreviar **RR**), o intervalo de números representables. Nungún número fuera de este rango puede ser representado en dicho sistema. Conocer este intervalo es importante para saber con qué limitaciones puede enfrentarse un programa que utilice alguno de esos sistemas.
+Cada sistema de representación de datos numéricos tiene su propio **rango de representación** (que podemos abreviar **RR**), o intervalo de números representables. Ningún número fuera de este rango puede ser representado en dicho sistema. Conocer este intervalo es importante para saber con qué limitaciones puede enfrentarse un programa que utilice alguno de esos sistemas.
 
 El rango de los números representados bajo un sistema está dado por sus **límites inferior y superior**, que definen qué zona de la recta numérica puede ser representada.  Como ocurre con todo intervalo numérico, el rango de representación puede ser escrito como $[a, b]$, donde $a$ y $b$ son sus límites inferior y superior, respectivamente. 
 
@@ -325,6 +326,7 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
 <h2>Representación sin signo</h2>
 <ul>
    <li><b>SS(k)</b> expresa sólo números <b>no negativos</b></li>
+   <li>Simplemente usar $k$ dígitos binarios</li>
    <div class="fragment">
    <ol>
    <li>Con $k$ bits, tengo $2^k$ posibilidades: $2 \times 2 \times 2 ... = 2^k$</li>
@@ -336,7 +338,6 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
 	<ul>
 	   <li class="fragment">Con 4 bits: $[0, 2^4-1] = [0, 15]$</li>
 	   <li class="fragment">Con 8 bits: $[0, 2^8-1] = [0, 255]$</li>
-	   <li class="fragment">Con 16 bits: $[0, 2^{16}-1] = [0, 65.535]$</li>
 	   <li class="fragment">Con 32 bits: $[0, 2^{32}-1] = [0, 4.294.967.295]$</li>
 	</ul>
    </div>
@@ -387,6 +388,8 @@ Usando ambos argumentos hemos llegado a que el número más grande que podemos r
 		<li>Complemento a 2 (<strong>C2</strong>)</li>
 		<li>En exceso a $2^n-1$</li>
 	</ul>
+<li>Solamente se puede operar entre datos representados con el mismo sistema de representación</li>
+<li>El resultado de toda operación vuelve a estar representado en el mismo sistema</li>
 </ul>
 <aside data-markdown class="notes">
 ###Representación con signo
@@ -500,8 +503,11 @@ Signo-Magnitud en 8 bits
 <ul>
 <li>No utiliza eficientemente el espacio de representación</li>
 <li>No es conveniente para la aritmética</li>
-<li>Complemento a 2 ($C_2$)corrige los problemas de signo-magnitud</li>
-<li>La forma de representación en $C_2$ es diferente</li>
+<li>Complemento a 2 ($C_2$) 
+<ul>
+	<li>Corrige los problemas de signo-magnitud</li>
+	<li>La forma de representación en $C_2$ es diferente</li>
+</ul>
 </ul>
 <aside data-markdown class="notes">
 ###Limitaciones de Signo-Magnitud
@@ -553,6 +559,7 @@ El resultado de esta operación ($C_2(a)$) es el opuesto del número original $a
 
 - Busquemos el complemento a 2 de $111010$. Invirtiendo todos los bits, obtenemos $000101$. Sumando 1, queda $000110$.
 - Busquemos el complemento a 2 de $0011$. Invirtiendo todos los bits, obtenemos $1100$. Sumando 1, queda $1101$.
+- Comprobemos que el resultado obtenido en el último caso, $1101$, es efectivamente el opuesto de $0011$: $0011 + 1101 = 0$.
 </aside>
 </section>
 
