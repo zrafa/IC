@@ -70,9 +70,11 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
 
 ###Representación sin signo
 
-Consideremos primero qué ocurre cuando queremos representar números enteros **no negativos** (es decir, **positivos o cero**) sobre una cantidad fija de bits. Simplemente usamos el sistema binario de numeración, tal como lo conocemos, pero limitándonos a una cantidad fija de bits o dígitos binarios. ¿Cuál será el rango de representación?
+Consideremos primero qué ocurre cuando queremos representar números enteros **no negativos** (es decir, **positivos o cero**) sobre una cantidad fija de bits. 
 
-El **cero** siempre puede representarse (es decir, el límite inferior del rango de representación será 0). Pero ¿cuál será el límite superior? Es decir, si la cantidad de dígitos binarios en este sistema es $k$, ¿cuál es el número más grande que podremos representar? 
+En el sistema **sin signo**, simplemente usamos el sistema binario de numeración, tal como lo conocemos, **pero limitándonos a una cantidad fija** de dígitos binarios o bits. Podemos entonces abreviar el nombre de este sistema como **$SS(k)$**, donde $k$ es la cantidad fija de bits, o ancho, de cada número representado.
+
+¿Cuál será el rango de representación? El **cero** puede representarse, así que el límite inferior del rango de representación será 0. Pero ¿cuál será el límite superior? Es decir, si la cantidad de dígitos binarios en este sistema es $k$, ¿cuál es el número más grande que podremos representar? 
 
 Podemos estudiarlo de dos maneras.
 
@@ -108,12 +110,12 @@ En la vida diaria manejamos continuamente números negativos, y los distinguimos
 
 Esto no era un problema cuando los números eran no negativos. Para poder representar, ahora, tanto números **positivos como negativos**, necesitamos cambiar la forma de representación. Esto quiere decir que una secuencia particular de dígitos binarios, que en un sistema sin signo tiene un cierto significado, ahora tendrá un significado diferente. Algunas secuencias, que antes representaban números positivos, ahora representarán negativos.
 
-Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (S-M)**, **Complemento a 2 (C2)** y **En exceso a $2^n - 1$**.
+Veremos los **sistemas de representación con signo** llamados **Signo-magnitud ($SM$)**, **Complemento a 2 ($C_2$)** y **En exceso a $2^n - 1$**.
 
 Es importante tener en cuenta que **solamente se puede operar entre datos representados con el mismo sistema de representación**, y que el **resultado** de toda operación **vuelve a estar representado en el mismo sistema**.
 
 
-###Sistema de Signo-magnitud (S-M)
+###Sistema de Signo-magnitud ($SM$)
 
 El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más sencillo de comprender. Se trata simplemente de utilizar un bit (el de más a la izquierda) para representar el signo. Si este bit tiene valor 0, el número representado es positivo; si es 1, es negativo. Los demás bits se utilizan para representar la magnitud, es decir, el valor absoluto del número en cuestión.
 
@@ -125,26 +127,27 @@ El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero e
 Como estamos reservando un bit para expresar el signo, ese bit ya no se puede usar para representar magnitud; y como el sistema tiene una cantidad de bits fija, el RR ya no podrá representar el número máximo que era posible con el sistema **sin signo**.
 
 
-###Rango de representación de SM(k)
+###Rango de representación de $SM(k)$
 
-- De los $k$ bits del sistema de signo-magnitud a k bits, hay uno reservado para el signo, lo que implica que quedan $k-1$ para representar el valor absoluto. 
-- Estos $k-1$ bits son un número **no negativo** (porque son el valor absoluto de algún número). Al ser un número no negativo de $k-1$ bits, puede representarse con el sistema sin signo sobre $k-1$ bits: es decir, SS(k-1). Este número tendrá un valor máximo representable **que coincide con el límite superior del rango de representación de SS(k-1)**. 
-- Sabemos que el rango de representación de SS(k) es $[0, 2^k-1]$. Por lo tanto, el rango de SS(k-1), reemplazando, será $[0, 2^{k-1} -1]$.
-- Esto quiere decir que el número de máximo valor absoluto representable en SM(k) es $2^{k-1}-1$. 
-- Pero en SM(k) también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1. El opuesto del máximo positivo representable es a su vez el número más pequeño, negativo, representable: $-(2^{k-1}-1)$.
+- En todo número escrito en el sistema de signo-magnitud a $k$ bits, ya sea positivo o negativo, hay un bit reservado para el signo, lo que implica que quedan $k-1$ bits para representar su valor absoluto. 
+- Siendo un valor absoluto, estos $k-1$ bits representan un número **no negativo**. Además este número está representado con el sistema **sin signo** sobre $k-1$ bits, es decir, $SS(k-1)$. 
+- Este número no negativo en $SS(k-1)$ tendrá un valor máximo representable que coincide con el **límite superior** del rango de representación **de $SS(k-1)$**. 
+- Sabemos que el rango de representación de $SS(k)$ es $[0, 2^k-1]$. Por lo tanto, el rango de $SS(k-1)$, reemplazando, será $[0, 2^{k-1} -1]$.
+- Esto quiere decir que el número representable en $SM(k)$ cuyo valor absoluto es máximo, es $2^{k-1}-1$. Por lo tanto éste es el límite superior del rango de representación de $SM(k)$.
+- Pero en $SM(k)$ también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1. El opuesto del máximo positivo representable es a su vez el número más pequeño, negativo, representable: $-(2^{k-1}-1)$.
 
-Con lo cual hemos calculado tanto el límite inferior como el superior del rango de representación, que, finalmente, es $[-(2^{k-1}-1),2^{k-1}-1]$.
+Con lo cual hemos calculado tanto el límite inferior como el superior del rango de representación de $SM(k)$, que, finalmente, es $[-(2^{k-1}-1),2^{k-1}-1]$.
 
 
 ###Limitaciones de Signo-Magnitud
-Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
+Si bien **$SM(k)$** es simple, no es tan efectivo, por varias razones:
 
 - Existen dos representaciones del 0 ("positiva" y "negativa"), lo cual desperdicia un representante.
 - Esto acorta el rango de representación.
-- La aritmética en SM no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente.
+- La aritmética en $SM$ no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente.
 - El problema aritmético se agrava con la existencia de las dos representaciones del cero: cada vez que un programa quisiera comparar un valor resultado de un cómputo con 0, debería hacer **dos** comparaciones.
 
-Por estos motivos, el sistema de SM rápidamente dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
+Por estos motivos, el sistema de $SM$ rápidamente dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
 
 
 Para comprender el sistema de complemento a 2 es necesario primero conocer la **operación** de complementar a 2.
@@ -155,9 +158,20 @@ La **operación** de complementar a 2 consiste aritméticamente en obtener el **
 
 Para obtener el complemento a 2 de un número escrito en base 2, **se invierte cada uno de los bits (reemplazando 0 por 1 y viceversa) y al resultado se le suma 1**. 
 
-El resultado de esta operación ($C_2(a)$) es el opuesto del número original $a$, y por lo tanto tiene la propiedad de que $a$ y $C_2(a)$ suman 0:
+
+**Otra forma**
+
+Otro modo de calcular el complemento a 2 de un número en base 2 es **copiar los bits, desde la derecha, hasta el primer 1 inclusive; e invertir todos los demás a la izquierda**.
+
+**Propiedad fundamental**
+
+El resultado de esta operación, $C_2(a)$, es el opuesto del número original $a$, y por lo tanto tiene la propiedad de que $a$ y $C_2(a)$ suman 0:
 
 $$C_2(a) + a = 0$$
+
+**Comprobación**
+
+Podemos comprobar si la complementación fue bien hecha aplicando la **propiedad fundamental** del complemento. Si, al sumar nuestro resultado con el número original, no obtenemos 0, corresponde revisar la operación.
 
 **Ejemplos**
 
@@ -166,27 +180,28 @@ $$C_2(a) + a = 0$$
 - Comprobemos que el resultado obtenido en el último caso, $1101$, es efectivamente el opuesto de $0011$: $0011 + 1101 = 0$.
 
 
-##Sistema de Complemento a 2
+##Representación en Complemento a 2
 
 Ahora que contamos con la **operación de complementar a 2**, podemos ver cómo se construye el **sistema de representación en Complemento a 2**.
 
-Para representar un número $a$ en Complemento a 2 a k bits:
+Para representar un número $a$ en complemento a 2 a k bits, comenzamos por considerar su signo:
 
-- Si $a$ es positivo o cero, lo representamos como en SM(k), es decir, lo escribimos en base 2 a k bits. El dígito binario de más a la izquierda es 0.
-- Si $a$ es negativo, tomamos su valor absoluto y lo complementamos a 2. El dígito binario de más a la izquierda es 1.
+- Si $a$ es positivo o cero, lo representamos como en SM(k), es decir, lo escribimos en base 2 a k bits. 
+- Si $a$ es negativo, tomamos su valor absoluto y lo complementamos a 2. 
+
 
 **Ejemplos**
 
-- Representemos el número 17 en complemento a 2 con 8 bits. Como es positivo, lo escribimos en base 2, obteniendo $00010001$, y eso es todo. 
-- Representemos el número -17 en complemento a 2 con 8 bits. Como es negativo, escribimos su valor absoluto en base 2, que es $00010001$, y lo complementamos a 2. El resultado final es $11101111$.
+- Representemos el número 17 en complemento a 2 con 8 bits. Como es positivo, lo escribimos en base 2, obteniendo $00010001$, que es 17 en notación complemento a 2 con 8 bits.
+- Representemos el número -17 en complemento a 2 con 8 bits. Como es negativo, escribimos su valor absoluto en base 2, que es $00010001$, y lo complementamos a 2. El resultado final es $11101111$ que es -17 en notación complemento a 2 con 8 bits.
 
 
-###Conversión de C2 a decimal
+###Conversión de C2 a base 10
 
-Para convertir un número $n$ escrito en el sistema de complemento a 2, a decimal, lo primero es determinar el signo. Si el bit más alto es 1, $n$ es negativo. En otro caso, $n$ es positivo. 
+Para convertir un número $n$, escrito en el sistema de complemento a 2, a decimal, lo primero es determinar el signo. Si el bit más alto es 1, $n$ es negativo. En otro caso, $n$ es positivo. Utilizaremos esta información enseguida.
 
 - Si $n$ es positivo, se interpreta el número como en el sistema sin signo, es decir, se utiliza la Expresión General para hacer la conversión de base como normalmente.
-- Si $n$ es negativo, se lo complementa a 2, obteniendo el opuesto de $n$. Este número, que ahora es positivo, se convierte a base 10 como en el caso anterior, y finalmente se le agrega el signo "-" para reflejar el hecho de que es negativo.
+- Si $n$ es negativo, se lo complementa a 2, obteniendo el opuesto de $n$. Este número, que ahora es positivo, se convierte a base 10 como en el caso anterior; y finalmente se le agrega el signo "-" para reflejar el hecho de que es negativo.
 
 **Ejemplos**
 
