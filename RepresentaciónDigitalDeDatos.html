@@ -36,7 +36,7 @@
 <!------------------------------------------------------------------>
 
 
-<section data-markdown data-coursemod-shown="false">
+<section data-markdown data-coursemod-shown="false" data-title="Representación de la información">
  <script type="text/template">
 ##Unidad I 
 ###Representación de la Información 
@@ -279,7 +279,7 @@ Es conveniente repasar la clasificación de los diferentes conjuntos de números
 <li>Sin signo</li>
 <li>Signo-Magnitud</li>
 <li>Complemento a 2 </li>
-<li>Exceso a $2^{n-1}$</li>
+<li>Notación en exceso</li>
 </ul>
 <li>Fraccionarios</li>
 <ul>
@@ -290,7 +290,7 @@ Es conveniente repasar la clasificación de los diferentes conjuntos de números
 <aside data-markdown class="notes">
 ###Datos enteros
 
-Veremos un sistema de representación de datos no negativos, llamado **sin signo**, y tres sistemas de representación de datos numéricos enteros, llamados **signo-magnitud**, **complemento a 2** y **exceso a $2^{n-1}$**.
+Veremos un sistema de representación de datos no negativos, llamado **sin signo**, y tres sistemas de representación de datos numéricos enteros, llamados **signo-magnitud**, **complemento a 2** y **notación en exceso**.
 
 ###Datos fraccionarios
 
@@ -310,11 +310,11 @@ Para representar fraccionarios consideraremos los sistemas de **punto fijo** y *
 </ul>
 </ul>
 <aside data-markdown class="notes">
-###Rango de representación
+##Rango de representación
 
 Cada sistema de representación de datos numéricos tiene su propio **rango de representación** (que podemos abreviar **RR**), o intervalo de números representables. Ningún número fuera de este rango puede ser representado en dicho sistema. Conocer este intervalo es importante para saber con qué limitaciones puede enfrentarse un programa que utilice alguno de esos sistemas.
 
-El rango de los números representados bajo un sistema está dado por sus **límites inferior y superior**, que definen qué zona de la recta numérica puede ser representada.  Como ocurre con todo intervalo numérico, el rango de representación puede ser escrito como $[a, b]$, donde $a$ y $b$ son sus límites inferior y superior, respectivamente. 
+El rango de los números representados bajo un sistema está dado por sus **límites inferior y superior**, que definen qué zona de la recta numérica puede ser representada.  Como ocurre con todo intervalo numérico cerrado, el rango de representación puede ser escrito como $[a, b]$, donde $a$ y $b$ son sus límites inferior y superior, respectivamente. 
 
 Por la forma en que están diseñados, algunos sistemas de representación sólo pueden representar números muy pequeños, o sólo positivos, o tanto negativos como positivos.  En general, el RR **será más grande cuantos más dígitos binarios**, o bits, tenga el sistema. Sin embargo, el RR depende también de la forma como el sistema **utilice** esos dígitos binarios, ya que un sistema puede ser más o menos **eficiente** que otro en el uso de esos dígitos, aunque la cantidad de dígitos sea la misma en ambos sistemas.
 
@@ -323,7 +323,7 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
 </section>
 
 <section>
-<h2>Representación sin signo</h2>
+<h2>Representación sin signo SS(k)</h2>
 <ul>
    <li><b>SS(k)</b> expresa sólo números <b>no negativos</b></li>
    <li>Simplemente usar $k$ dígitos binarios</li>
@@ -343,11 +343,13 @@ Por lo tanto, decimos que el rango de representación depende a la vez de la **c
    </div>
 </ul>
 <aside data-markdown class="notes">
-###Representación sin signo
+##Representación sin signo SS(k)
 
 Consideremos primero qué ocurre cuando queremos representar números enteros **no negativos** (es decir, **positivos o cero**) sobre una cantidad fija de bits. 
 
-En el sistema **sin signo**, simplemente usamos el sistema binario de numeración, tal como lo conocemos, **pero limitándonos a una cantidad fija** de dígitos binarios o bits. Podemos entonces abreviar el nombre de este sistema como **$SS(k)$**, donde $k$ es la cantidad fija de bits, o ancho, de cada número representado.
+En el sistema **sin signo**, simplemente usamos el sistema binario de numeración, tal como lo conocemos, **pero limitándonos a una cantidad fija** de dígitos binarios o bits. Podemos entonces abreviar el nombre de este sistema como **SS(k)**, donde $k$ es la cantidad fija de bits, o ancho, de cada número representado.
+
+###Rango de representación de SS(k)
 
 ¿Cuál será el rango de representación? El **cero** puede representarse, así que el límite inferior del rango de representación será 0. Pero ¿cuál será el límite superior? Es decir, si la cantidad de dígitos binarios en este sistema es $k$, ¿cuál es el número más grande que podremos representar? 
 
@@ -370,7 +372,7 @@ $$  = 1\times 2^{k-1} + ... + 1\times2^1+1\times2^0 = $$
 $$  = 2^{k-1} + ... + 2^1+2^0 = $$ 
 $$  = 2^{k}-1 $$ 
 
-Usando ambos argumentos hemos llegado a que el número más grande que podemos representar con $k$ dígitos binarios es $2^k-1$. Por lo tanto, **el rango de representación de un sistema sin signo a $k$ dígitos es $[0, 2^k - 1]$**. Todos los números representables en esta clase de sistemas son **positivos o cero**.
+Usando ambos argumentos hemos llegado a que el número más grande que podemos representar con $k$ dígitos binarios es $2^k-1$. Por lo tanto, **el rango de representación de un sistema sin signo a $k$ dígitos, o SS(k), es $[0, 2^k - 1]$**. Todos los números representables en esta clase de sistemas son **positivos o cero**.
 
 **Ejemplos**
 
@@ -386,21 +388,21 @@ Usando ambos argumentos hemos llegado a que el número más grande que podemos r
 <li>Permite representar <b>negativos y no negativos</b></li>
 <li><strong>Varias técnicas</strong></li>
 	<ul>
-		<li>Signo-magnitud (<strong>$SM$</strong>)</li>
-		<li>Complemento a 2 (<strong>$C_2$</strong>)</li>
-		<li>En exceso a $2^n-1$</li>
+		<li>Signo-magnitud (<strong>SM</strong>)</li>
+		<li>Complemento a 2 (<strong>C2</strong>)</li>
+		<li>Notación en exceso</li>
 	</ul>
 <li>Solamente se puede operar entre datos representados con el mismo sistema de representación</li>
 <li>El resultado de toda operación vuelve a estar representado en el mismo sistema</li>
 </ul>
 <aside data-markdown class="notes">
-###Representación con signo
+##Representación con signo
 
 En la vida diaria manejamos continuamente números negativos, y los distinguimos de los positivos simplemente agregando un signo "menos". Representar esos datos en la memoria de la computadora no es tan directo, porque, como hemos visto, la memoria **solamente puede alojar ceros y unos**. Es decir, ¡no podemos simplemente guardar un signo "menos"! Lo único que podemos hacer es almacenar secuencias de ceros y unos.
 
 Esto no era un problema cuando los números eran no negativos. Para poder representar, ahora, tanto números **positivos como negativos**, necesitamos cambiar la forma de representación. Esto quiere decir que una secuencia particular de dígitos binarios, que en un sistema sin signo tiene un cierto significado, ahora tendrá un significado diferente. Algunas secuencias, que antes representaban números positivos, ahora representarán negativos.
 
-Veremos los **sistemas de representación con signo** llamados **Signo-magnitud ($SM$)**, **Complemento a 2 ($C_2$)** y **En exceso a $2^n - 1$**.
+Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (SM)**, **Complemento a 2 (C2)** y **Notación en exceso**.
 
 Es importante tener en cuenta que **solamente se puede operar entre datos representados con el mismo sistema de representación**, y que el **resultado** de toda operación **vuelve a estar representado en el mismo sistema**.
 </aside>
@@ -413,6 +415,13 @@ Es importante tener en cuenta que **solamente se puede operar entre datos repres
 	<li class="fragment">Un número escrito en un sistema de representación <b>con signo</b>, ¿es siempre negativo?</li>
 	<li class="fragment">¿Para qué querríamos escribir un número positivo en un sistema de representación con signo?</li>
 </ol>
+<aside data-markdown class="notes">
+**Preguntas**
+
+- ¿Cuáles son los límites del rango de representación de un sistema de representación numérica?
+- Un número escrito en un sistema de representación **con signo**, ¿es siempre negativo?
+- ¿Para qué querríamos escribir un número positivo en un sistema de representación con signo?
+</aside>
 </section>
 
 
@@ -438,9 +447,9 @@ Es importante tener en cuenta que **solamente se puede operar entre datos repres
    <li class="fragment">¿Rango de representación?</li>
 </ul>
 <aside data-markdown class="notes">
-###Sistema de Signo-magnitud ($SM$)
+##Sistema de Signo-magnitud SM(k)
 
-El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más sencillo de comprender. Se trata simplemente de utilizar un bit (el de más a la izquierda) para representar el signo. Si este bit tiene valor 0, el número representado es positivo; si es 1, es negativo. Los demás bits se utilizan para representar la magnitud, es decir, el valor absoluto del número en cuestión.
+El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más sencillo de comprender. Se trata simplemente de utilizar un bit (el de más a la izquierda) para representar el **signo**. Si este bit tiene valor 0, el número representado es positivo; si es 1, es negativo. Los demás bits se utilizan para representar la **magnitud**, es decir, el **valor absoluto** del número en cuestión.
 
 **Ejemplos**
 
@@ -452,17 +461,15 @@ Como estamos reservando un bit para expresar el signo, ese bit ya no se puede us
 </section>
 
 <section>
-<h2>RR de $SM(k)$</h2>
+<h2>RR de SM(k)</h2>
 <ul>
    <li>Hay $k$ bits pero uno es para el signo</li>
-	<p class="post_it">
-   		&rarr; El valor absoluto se expresa en $k-1$ bits
-	</p>
    <ul>
-   <li class="fragment">El RR de <b>$SS(k-1)$</b> es $[0, 2^{k-1}-1]$</li>
-   <li class="fragment"><b>$SM(k)$</b> puede expresar tantos positivos como negativos</li>
+   <li class="fragment">El valor absoluto se expresa en $k-1$ bits</li>
+   <li class="fragment">El RR de <b>SS(k-1)</b> es $[0, 2^{k-1}-1]$</li>
+   <li class="fragment"><b>SM(k)</b> puede expresar tantos positivos como negativos</li>
    </ul>
-   <li class="fragment">Luego, el RR de <b>$SM(k)$</b> es <span class="post_it">$[-(2^{k-1}-1), 2^{k-1}-1]$</span></li>
+   <li class="fragment">Luego, el RR de <b>SM(k)</b> es <span class="post_it">$[-(2^{k-1}-1), 2^{k-1}-1]$</span></li>
    <div class="fragment">
    <ul>
    <li>RR SM(4) = $[-(2^{3}-1), 2^{3}-1]$ $=$ $[-7,7]$</li>
@@ -472,16 +479,16 @@ Como estamos reservando un bit para expresar el signo, ese bit ya no se puede us
    </div>
 </ul>
 <aside data-markdown class="notes">
-###Rango de representación de $SM(k)$
+###Rango de representación de SM(k)
 
 - En todo número escrito en el sistema de signo-magnitud a $k$ bits, ya sea positivo o negativo, hay un bit reservado para el signo, lo que implica que quedan $k-1$ bits para representar su valor absoluto. 
-- Siendo un valor absoluto, estos $k-1$ bits representan un número **no negativo**. Además este número está representado con el sistema **sin signo** sobre $k-1$ bits, es decir, $SS(k-1)$. 
-- Este número no negativo en $SS(k-1)$ tendrá un valor máximo representable que coincide con el **límite superior** del rango de representación **de $SS(k-1)$**. 
-- Sabemos que el rango de representación de $SS(k)$ es $[0, 2^k-1]$. Por lo tanto, el rango de $SS(k-1)$, reemplazando, será $[0, 2^{k-1} -1]$.
-- Esto quiere decir que el número representable en $SM(k)$ cuyo valor absoluto es máximo, es $2^{k-1}-1$. Por lo tanto éste es el límite superior del rango de representación de $SM(k)$.
-- Pero en $SM(k)$ también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1. El opuesto del máximo positivo representable es a su vez el número más pequeño, negativo, representable: $-(2^{k-1}-1)$.
+- Siendo un valor absoluto, estos $k-1$ bits representan un número **no negativo**. Además este número está representado con el sistema **sin signo** sobre $k-1$ bits, es decir, SS(k-1). 
+- Este número no negativo en SS(k-1) tendrá un valor máximo representable que coincide con el **límite superior** del rango de representación **de SS(k-1)**. 
+- Sabemos que el rango de representación de SS(k) es $[0, 2^k-1]$. Por lo tanto, el rango de SS(k-1), reemplazando, será $[0, 2^{k-1} -1]$.
+- Esto quiere decir que el número representable en SM(k) cuyo valor absoluto es máximo, es $2^{k-1}-1$. Por lo tanto éste es el límite superior del rango de representación de SM(k).
+- Pero en SM(k) también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1. El opuesto del máximo positivo representable es a su vez el número más pequeño, negativo, representable: $-(2^{k-1}-1)$.
 
-Con lo cual hemos calculado tanto el límite inferior como el superior del rango de representación de $SM(k)$, que, finalmente, es $[-(2^{k-1}-1),2^{k-1}-1]$.
+Con lo cual hemos calculado tanto el límite inferior como el superior del rango de representación de SM(k), que, finalmente, es $[-(2^{k-1}-1),2^{k-1}-1]$.
 </aside>
 </section>
 
@@ -502,26 +509,28 @@ Signo-Magnitud en 8 bits
 
 
 <section>
-<h2>Limitaciones de $SM$</h2>
+<h2>Limitaciones de SM</h2>
 <ul>
 <li>No utiliza eficientemente el espacio de representación</li>
 <li>No es conveniente para la aritmética</li>
-<li>Complemento a 2 ($C_2$) 
+<li>Complemento a 2 (C2) 
 <ul>
 	<li>Corrige los problemas de signo-magnitud</li>
-	<li>La forma de representación en $C_2$ es diferente</li>
+	<li>La forma de representación en C2 es diferente</li>
 </ul>
 </ul>
 <aside data-markdown class="notes">
 ###Limitaciones de Signo-Magnitud
-Si bien **$SM(k)$** es simple, no es tan efectivo, por varias razones:
+Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
 
 - Existen dos representaciones del 0 ("positiva" y "negativa"), lo cual desperdicia un representante.
 - Esto acorta el rango de representación.
-- La aritmética en $SM$ no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente.
+- La aritmética en SM no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente.
 - El problema aritmético se agrava con la existencia de las dos representaciones del cero: cada vez que un programa quisiera comparar un valor resultado de un cómputo con 0, debería hacer **dos** comparaciones.
 
-Por estos motivos, el sistema de $SM$ rápidamente dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
+##Sistema de Complemento a 2
+
+Por estos motivos, el sistema de SM dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
 </aside>
 </section>
 
@@ -530,8 +539,9 @@ Por estos motivos, el sistema de $SM$ rápidamente dejó de usarse y se diseñó
 <ul>
 	<li>Devuelve el opuesto de un número</li>
 	<ul>
-	<li>Si $a > 0, -a < 0$
-	<li>Si $a < 0, -a > 0$
+	<li>Si $a > 0, -a < 0$</li>
+	<li>Si $a < 0, -a > 0$</li>
+	<li>$a + (-a) = 0$</li>
 	</ul>
 <div class="post_it">
 	<li>Procedimiento</li>
@@ -548,9 +558,9 @@ Por estos motivos, el sistema de $SM$ rápidamente dejó de usarse y se diseñó
 <aside data-markdown class="notes">
 Para comprender el sistema de complemento a 2 es necesario primero conocer la **operación** de complementar a 2.
 
-##Operación de Complemento a 2
+###Operación de Complemento a 2
 
-La **operación** de complementar a 2 consiste aritméticamente en obtener el **opuesto** de un número (el que tiene signo opuesto).
+La **operación** de complementar a 2 consiste aritméticamente en obtener el **opuesto** de un número (el que tiene el mismo valor absoluto pero signo opuesto).
 
 Para obtener el complemento a 2 de un número escrito en base 2, **se invierte cada uno de los bits (reemplazando 0 por 1 y viceversa) y al resultado se le suma 1**. 
 
@@ -561,9 +571,9 @@ Otro modo de calcular el complemento a 2 de un número en base 2 es **copiar los
 
 **Propiedad fundamental**
 
-El resultado de esta operación, $C_2(a)$, es el opuesto del número original $a$, y por lo tanto tiene la propiedad de que $a$ y $C_2(a)$ suman 0:
+El resultado de esta operación, C2($a$), es el opuesto del número original $a$, y por lo tanto tiene la propiedad de que $a$ y C2($a$) suman 0:
 
-`$$C_2(a) + a = 0$$`
+`$$C2(a) + a = 0$$`
 
 **Comprobación**
 
@@ -582,7 +592,7 @@ Podemos comprobar si la complementación fue bien hecha aplicando la **propiedad
 <table>
 <tr><th>Procedimiento</th><th>Ejemplo</th></tr>
 <tr><td><li>Positivos o cero</li></td>			<td align="right">$17_{(10}$</td></tr>
-<tr><td>&nbsp;&nbsp;Se representan como en S-M</td>	<td align="right">$00010001_{(2}$</td></tr>
+<tr><td>&nbsp;&nbsp;Se representan como en SM</td>	<td align="right">$00010001_{(2}$</td></tr>
 </table>
 <div class="fragment">
 <table>
@@ -593,7 +603,7 @@ Podemos comprobar si la complementación fue bien hecha aplicando la **propiedad
 </div>
 </table>
 <aside data-markdown class="notes">
-##Representación en Complemento a 2
+###Representación en Complemento a 2
 
 Ahora que contamos con la **operación de complementar a 2**, podemos ver cómo se construye el **sistema de representación en Complemento a 2**.
 
@@ -635,8 +645,8 @@ Para convertir un número $n$, escrito en el sistema de complemento a 2, a decim
 
 **Ejemplos**
 
-- Convertir a decimal $n = 00010001$. Es positivo, luego aplicamos la Expresión General dando $17_{(10}$.
-- Convertir a decimal $n = 11101111$. Es negativo, luego lo complementamos a 2 obteniendo $00010001$. Aplicamos la Expresión General obteniendo `$17_{(10}$`. Como $n$ era negativo, agregamos el signo menos y obtenemos el resultado final `$-17_{(10}$`.
+- Convertir a decimal $n = 00010001$. Es positivo, luego, aplicamos la Expresión General dando $17_{(10}$.
+- Convertir a decimal $n = 11101111$. Es negativo; luego, lo complementamos a 2 obteniendo $00010001$. Aplicamos la Expresión General obteniendo `$17_{(10}$`. Como $n$ era negativo, agregamos el signo menos y obtenemos el resultado final `$-17_{(10}$`.
 </aside>
 </section>
 
@@ -657,31 +667,50 @@ Complemento a 2 en 8 bits
 
     
 <section>
-<h2>RR de C2 con $n$ bits</h2>
+<h2>RR de C2 con $k$ bits</h2>
 <ul>
-<li>$-128 = -2^{n-1}$ &#8680; ¡era imposible en S-M!
-<li>RR S-M $n$ bits: $[-(2^{n-1}-1), 2^{n-1}-1]$
-<li>RR C2 n bits: $[-(2^{n-1}), 2^{n-1}-1]$
-<li><span class="post_it">El RR de C2 tiene un valor más que el de S-M</span>
+<li>En C2 a 8 bits, $-128 = -2^{k-1}$ 
+<ul>
+<li>¡Era imposible en SM(8)!</li>
 </ul>
+<li>RR SM $k$ bits: $[-(2^{k-1}-1), 2^{k-1}-1]$</li>
+<li>RR C2 $k$ bits: $[-(2^{k-1}), 2^{k-1}-1]$</li>
+<ul>
+<li><span class="post_it">El RR de C2 tiene un valor más que el de SM</span></li>
+</ul>
+</ul>
+<aside data-markdown class="notes">
+###RR de C2 con $k$ bits
+
+La forma de utilizar los bits en el sistema de complemento a 2 permite recuperar un representante que estaba desperdiciado en SM. 
+
+El rango de representación del sistema complemento a 2 sobre $k$ bits es $[-(2^{k-1}), 2^{k-1}-1]$. El límite superior del RR de C2 es el mismo que el de SM, pero el **límite inferior** es menor; luego el RR de C2 es mayor que el de SM. 
+
+El sistema de complemento a 2 tiene otras ventajas sobre SM:
+
+- El cero tiene una única representación, lo que facilita las comparaciones.
+- Las cuentas se hacen bit a bit, en lugar de requerir comprobaciones de signo.
+- El mecanismo de cálculo es eficiente y fácil de implementar en hardware.
+- Solamente se requiere diseñar un algoritmo para **sumar**, no uno para sumar y otro para restar.
+</aside>
 </section>
    
-<section>
-<h2>Ventajas de C2 sobre S-M</h2>
-<ul>
-    	<li>Un valor más en el RR</li>
-	<li>El <strong>cero</strong> tiene una única representación</li>
-	<li>Las cuentas se hacen bit a bit</li>
-	<li>Mecanismo de cálculo eficiente </li>
-	<li>Fácil implementación computacional</li>
-</ul>
-</section>
 
 <section>
 <h2>Rangos de Representación</h2>
 <img src="img/sistemas.png" class="stretch">
+<aside data-markdown class="notes">
+###Comparando rangos de representación
+
+Diferentes sistemas, entonces, tienen diferentes rangos de representación. Si construimos un cuadro donde podamos comparar los rangos de representación **sin signo, signo-magnitud y complemento a 2** para una misma cantidad de bits, veremos que todas las combinaciones de bits están utilizadas, sólo que de diferente forma. 
+
+El cuadro comparativo para cuatro bits mostrará que las combinaciones 0000...1111 representan los primeros 16 números no negativos para el sistema sin signo, mientras que esas mismas combinaciones tienen otro significado en los sistemas con signo. En éstos últimos, una misma combinación con el bit más significativo en 1 siempre es negativa, pero el orden en que aparecen esas combinaciones es diferente entre SM y C2. 
+
+Si descartamos el bit de signo y consideramos sólo las magnitudes, los números negativos en SM aparecen con sus magnitudes crecientes alejándose del 0, mientras que en C2 esas magnitudes comienzan en cero al representar el negativo más pequeño posible y crecen a medida que se acercan al cero.
+</aside>
 </section>
 
+<!----------------------------------------
 <section>
 <h2>Aritmética en C2</h2>
 <ul>
@@ -706,6 +735,7 @@ $\frac{00001001\\+\\00001000}{00010001}$
 </ul>
 </ul>
 </section>
+----------------------------------->
 
 <section>
 <h2>Aritmética en C2</h2>
@@ -723,18 +753,30 @@ $\frac{00001001\\+\\00001000}{00010001}$
 </ul>
 </section>
 
-<section data-background="#3c53b5" data-background-transition="zoom">
+<section class="preguntas" data-background="#3c53b5" data-background-transition="zoom">
 <h2>Preguntas</h2>
 <ol>
 	<li class="fragment">Un número en complemento a 2, ¿tiene siempre su bit más a la izquierda en 1?</li>
-	<li class="fragment">El complemento a 2 de un número, es decir, $C_2(x)$, ¿es siempre un número negativo?</li>
-	<li class="fragment">¿Quién es $C_2(0)$?</li>
-	<li class="fragment">¿Cuánto vale $C_2(C_2(x))$? Es decir, ¿qué pasa si complemento a 2 el complemento a 2 de $x$?</li>
-	<li class="fragment">¿Cuánto vale $x + C_2(x)$? Es decir, ¿qué pasa si sumo a $x$ su propio complemento a 2?</li>
+	<li class="fragment">El complemento a 2 de un número, es decir, $C2(x)$, ¿es siempre un número negativo?</li>
+	<li class="fragment">¿Quién es $C2(0)$?</li>
+	<li class="fragment">¿Cuánto vale $C2(C2(x))$? Es decir, ¿qué pasa si complemento a 2 el complemento a 2 de $x$?</li>
+	<li class="fragment">¿Cuánto vale $x + C2(x)$? Es decir, ¿qué pasa si sumo a $x$ su propio complemento a 2?</li>
 	<li class="fragment">¿Cómo puedo verificar si calculé correctamente un complemento a 2?</li>
 </ol>
+<aside data-markdown class="notes">
+**Preguntas**
+
+- Un número en complemento a 2, ¿tiene siempre su bit más a la izquierda en 1?
+- El complemento a 2 de un número, es decir, **C2(x)**, ¿es siempre un número negativo?
+- ¿Quién es **C2(0)**?
+- ¿Cuánto vale **C2(C2(x))**? Es decir, ¿qué pasa si complemento a 2 el complemento a 2 de $x$?
+- ¿Cuánto vale **x + C2(x)**? Es decir, ¿qué pasa si sumo a $x$ su propio complemento a 2?
+- ¿Cómo puedo verificar si calculé correctamente un complemento a 2?
+
+</aside>
 </section>
 
+<!-------------------------------
 <section data-background="#3c53b5" data-background-transition="zoom">
 <h2>Desafío</h2>
 <ul>
@@ -745,6 +787,7 @@ $\frac{00001001\\+\\00001000}{00010001}$
 	</ol>
 </ul>
 </section>
+------------------------------->
 
 <section>
 <h2>Overflow o desbordamiento en C2</h2>
@@ -757,49 +800,132 @@ $\frac{00001001\\+\\00001000}{00010001}$
 	<li>Iguales &#8680; no hay <i>overflow</i></li>
     </ul>
     </ul>
+<aside data-markdown class="notes">
+###Overflow o desbordamiento en C2
+
+
+En todo sistema de ancho fijo, la suma de **dos números positivos, o de dos números negativos** puede dar un resultado que sea imposible de representar debido a las limitaciones del rango de representación. Este problema se conoce como desbordamiento, u *overflow*.  Cuando ocurre una situación de overflow, el resultado de la operación **no es válido** y debe ser descartado.
+
+Si conocemos los valores en decimal de dos números que queremos sumar, usando nuestro conocimiento del rango de representación del sistema podemos saber si el resultado quedará dentro de ese rango, y así sabemos, de antemano, si ese resultado será válido. Pero las computadoras no tienen forma de conocer a priori esta condición, ya que todo lo que tienen es la representación en C2 de ambos números. Por eso necesitan alguna forma de detectar las situaciones de overflow, y el modo más fácil para ellas es comprobar los dos últimos bits de la fila de bits de acarreo o *carry*. 
+
+El último bit de la fila de carry, el que se posiciona en la última de las $k$ columnas de la representación, se llama *carry-in*. El siguiente bit de carry, el que ya no puede acarrearse sobre ningún dígito válido porque se han rebasado los $k$ dígitos de la representación, se llama el *carry-out*. 
+
+- Si, luego de efectuar una suma en C2, los valores de los bits de *carry-in* y *carry-out* son **iguales**, entonces la computadora detecta que el resultado no ha desbordado y que **la suma es válida**. La operación de suma se ha efectuado exitosamente.
+- Si, luego de efectuar una suma en C2, los valores de los bits de *carry-in* y *carry-out* son **diferentes**, entonces la computadora detecta que el resultado ha desbordado y que **la suma no es válida**. La operación de suma no se ha llevado a cabo exitosamente, y el resultado debe ser descartado.  
+</aside>
+</section>
+
+
+
+
+<section data-menu-title="Caso sin overflow">
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<div class="snapsvg stretch" width="100%" height="100%">
+	<svg id="ss1" viewBox="0 0 400 300" width="100%" height="100%"></svg>
+	<script src="src/svgfragments.js"></script>
+	<!-- {
+		"imgset"   : [ "img/no-of0.png", "img/no-of1.png", "img/no-of2.png", "img/no-of3.png", "img/no-of4.png", "img/no-of5.png", "img/no-of6.png", "img/no-of7.png", "img/no-of8.png" ], 
+		"width" : 400,
+		"height": 300,
+		"svg" : "#ss1",
+		"initialize": "function(container, options) { svgfragments(container, options) }"
+	} -->
+</div>
+<aside data-markdown class="notes">
+**Suma sin overflow**
+
+Siguiendo atentamente la secuencia de bits de carry podemos detectar, igual que lo hace la computadora, si se producirá un desbordamiento. En el caso de la operación $23 + (-9)$, el resultado (que es 14) cae dentro del rango de representación, y esto se refleja en los bits de *carry-in* y de *carry-out*, cuyos valores son iguales.
+</aside>
 </section>
 
 
 
 
 
+
+<section data-menu-title="Caso con overflow">
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<div class="snapsvg stretch" width="100%" height="100%">
+	<svg id="ss2" viewBox="0 0 400 300" width="100%" height="100%"></svg>
+	<!-- {
+		"imgset"   : [ "img/si-of0.png", "img/si-of1.png", "img/si-of2.png", "img/si-of3.png", "img/si-of4.png", "img/si-of5.png", "img/si-of6.png", "img/si-of7.png", "img/si-of8.png" ], 
+		"width" : 400,
+		"height": 300,
+		"svg" : "#ss2",
+		"initialize": "function(container, options) { svgfragments(container, options) }"
+	} -->
+</div>
+<aside data-markdown class="notes">
+
+**Suma con overflow**
+
+En el caso de la operación $123 + 9$ en C2 a 8 bits, el resultado (que es 132) cae fuera del rango de representación, y esto se refleja en los bits de *carry-in* y de *carry-out*, que son diferentes. El resultado no es válido y debe ser descartado.
+</aside>
+</section>
+
+
+<!------------------------------------------------------------------------
+
 <section data-menu-title="Caso sin overflow">
-	<section data-transition="none">
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of0.png" class="plain stretch">
 	</section>
-	<section data-transition="none">
+
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of1.png" class="plain stretch">
 	</section>
-	<section data-transition="none">
+
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of2.png" class="plain stretch">
 	</section>
-	<section data-transition="none">
+
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of3.png" class="plain stretch">
 	</section>
-	<section data-transition="none">
+
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of4.png" class="plain stretch">
 	</section>
-	<section data-transition="none">
+
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of5.png" class="plain stretch">
 	</section>
-	<section data-transition="none">
+
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of6.png" class="plain stretch">
 	</section>
-	<section data-transition="none">
+
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of7.png" class="plain stretch">
 	</section>
-	<section data-transition="none">
+
+	<section data-transition="fade-in">
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/no-of8.png" class="plain stretch">
 	</section>
+
 </section>
 
 <section data-menu-title="Caso con overflow">
@@ -839,19 +965,30 @@ $\frac{00001001\\+\\00001000}{00010001}$
 	<h2>Bits de acarreo o <i>carry</i></h2>
 	<img src="img/si-of8.png" class="plain stretch">
 	</section>
+<aside data-markdown class="notes">
+</aside>
 </section>
 
+---------------->
 
-<section data-background="#3c53b5" data-background-transition="zoom">
+<section class="preguntas"  data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false">
 <h2>Preguntas</h2>
 <ol>
-	<li class="fragment">¿Qué condición sobre los bits de carry permite asegurar que <b>no</b> habrá <i>overflow</i>?</li>
+	<li class="fragment">¿Qué condición sobre los bits de carry permite asegurar que <b>no habrá</b> <i>overflow</i>?</li>
 	<li class="fragment">¿Para qué sistemas de representación numérica usamos la condición de detección de <i>overflow</i>?</li>
 	<li class="fragment">¿Puede existir <i>overflow</i> al sumar dos números de diferente signo?</li>
 	<li class="fragment">¿Qué condición sobre los bits <b>de signo</b> de los operandos permite asegurar que <b>no</b> habrá <i>overflow</i>?</li>
 	<li class="fragment">¿Puede haber casos de <i>overflow</i> al sumar dos números negativos?</li>
 	<li class="fragment">¿Puede haber casos de <i>overflow</i> al restar dos números?</li>
 </ol>
+<aside data-markdown class="notes">
+¿Qué condición sobre los bits de carry permite asegurar que **no habrá** overflow?
+¿Para qué sistemas de representación numérica usamos la condición de detección de overflow?
+¿Puede existir overflow al sumar dos números de diferente signo?
+¿Qué condición sobre los bits **de signo** de los operandos permite asegurar que **no habrá** overflow?
+¿Puede haber casos de overflow al sumar dos números negativos?
+¿Puede haber casos de overflow al restar dos números?
+</aside>
 </section>
 
 
@@ -865,6 +1002,16 @@ $\frac{00001001\\+\\00001000}{00010001}$
 	<li>Negativo &#8680; se completa con unos</li>
     </ul>
     </ul>
+<aside data-markdown class="notes">
+###Extensión de signo en C2
+
+Para poder efectuar una suma de dos números, ambos operandos deben estar representados en el mismo sistema de representación. 
+
+- Una suma de dos operandos donde uno esté, por ejemplo, en SM y el otro en C2, no tiene sentido aritmético. 
+- Además, la cantidad de bits de representación debe ser la misma. 
+
+En una suma en C2, si uno de los operandos estuviera escrito a menos bits que el otro, será necesario convertirlo al sistema del otro (**extenderlo**) y operar con ambos en ese sistema mayor. En el caso en que el operando en el sistema de menor ancho sea positivo, la extensión se realiza simplemente completando con ceros a la izquierda hasta obtener la cantidad de dígitos del otro sistema. Si el operando del menor ancho es negativo, la extensión de signo se hace **agregando unos**.
+</aside>
 </section>
 
 <section>
@@ -886,8 +1033,8 @@ $\frac{00001001\\+\\00001000}{00010001}$
 <section>
 <h2>Notación en exceso o <i>Bias</i></h2>
 <ul>
-<li>Utiliza un sistema sin signo en $n$ bits</li>
-<li>Representa un intervalo $[a, b]$ de $2^n$ enteros</li>
+<li>Utiliza un sistema sin signo en $k$ bits</li>
+<li>Representa un intervalo $[a, b]$ de $2^k$ enteros</li>
 <ul>
 	<li>Este intervalo contiene $b - a + 1$ enteros</li>
 	<li>Para $[-5, 10]$ es $10 - (-5) + 1 = 16$ &#8680;  necesitamos 4 bits</li>
@@ -950,7 +1097,7 @@ $a$ &#8680; $0000$, $a + 1$ &#8680; $0001$, ..., $b$ &#8680; $1111$
 </ul>
 </section>
 
-<section data-background="#3c53b5" data-background-transition="zoom">
+<section class="preguntas" data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false">
 <h2>Preguntas</h2>
 <div align="center">Sobre Notación en Exceso</div>
 <ol>
@@ -960,22 +1107,33 @@ $a$ &#8680; $0000$, $a + 1$ &#8680; $0001$, ..., $b$ &#8680; $1111$
 	<li class="fragment">¿Se puede representar un intervalo que no contenga el cero?</li>
 	<li class="fragment">¿Cómo se comparan dos números en exceso para saber cuál es el mayor?</li>
 </ol>
+<aside data-markdown class="notes">
+**Preguntas sobre Notación en Exceso**
+
+- Dado un valor decimal a representar, ¿cómo calculamos el binario?
+- Dado un binario, ¿cómo calculamos el valor decimal representado?
+- El sistema en exceso ¿destina un bit para representar el signo?
+- ¿Se puede representar un intervalo que no contenga el cero?
+- ¿Cómo se comparan dos números en exceso para saber cuál es el mayor?
+</aside>
 </section>
 	
 
 
-<section data-markdown data-background="#00CCFF" data-background-transition="zoom">
+<section data-markdown data-background="#00CCFF" data-background-transition="zoom" data-coursemod-shown="false">
 ##Representación de datos numéricos
 * Enteros
  * Signo-Magnitud  &#10004;
  * Complemento a 2  &#10004;
- * Exceso a $2^{n-1}$  &#10004;
+ * Notación en exceso  &#10004;
 * Fraccionarios
  * Punto fijo
  * Punto flotante
 </section>
 
-<section class="preguntas">
+<!---------------------------------------------------------------------------
+
+<section>
 <h2>Coma o punto fraccionario</h2>
 <ul>
 <li>En los enteros, está a la derecha de los dígitos y no se escribe</li>
@@ -1103,11 +1261,15 @@ $a$ &#8680; $0000$, $a + 1$ &#8680; $0001$, ..., $b$ &#8680; $1111$
    * Sistemas **embebidos** con procesadores de recursos limitados
    * Matemática financiera
 </section>
+
+--------------------------------------------------------------->
    
 <!-- 
 https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 -->
     
+<!-----------------------------------------------------------
+
 <section>
 <h2>Variables muy diferentes</h2>
 <ul>	
@@ -1155,14 +1317,14 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 	<li>Formato <i>IEEE 754 single precision</i>, 32 bits</li>
 	<ul>
 		<li>1 bit de <strong>signo</strong></li>
-		<li>8 bits para el <strong>exponente</strong> (en exceso 127)</li>
+		<li>8 bits para el <strong>exponente</strong> (en exceso a 127)</li>
 		<li>23 bits para la <strong>mantisa</strong></li>
 	</ul>
 	<span class="fragment">
 	<li>Formato <i>IEEE 754 double precision</i>, 64 bits</li>
 	<ul>
 		<li>1 bit de <strong>signo</strong></li>
-		<li>11 bits para el <strong>exponente</strong> (en exceso 1023)</li>
+		<li>11 bits para el <strong>exponente</strong> (en exceso a 1023)</li>
 		<li>52 bits para la <strong>mantisa</strong></li>
 	</ul>
 	</span>
@@ -1230,6 +1392,7 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 </section>
 </section>
 
+---------------------------------------------------->
 <!--
 <section>
 <h2>Ejemplo de Punto Flotante</h2>
@@ -1243,6 +1406,7 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 </section>
 --> 
 
+<!---------------------------------------------
 <section id="experimento">
 <h2>Ejemplo Punto Flotante $n = -5.5$</h2>
     <ol>	
@@ -1315,6 +1479,9 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
  <img src="img/placa1.png" class="plain stretch">
 </section> 
 
+--------------------------------------------------->
+
+
 <!--
 <section>
 <h2>Cálculo de punto flotante</h2>
@@ -1331,11 +1498,12 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 </section>
 -->
 
+<!------------------------------------------------------
  <section>
  <h2>Cálculo de punto flotante</h2>
  <div class="tangle" id="ieee754Calc">
          <script type="text/javascript" src="ieee754.js"></script>
-         <!--
+         <! --
          {
                  "initialize":"function(container) {
                          var rootElement = document.getElementById('ieee754Calc');
@@ -1374,7 +1542,7 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
                          var tangle=new Tangle(rootElement, model);
                    }"
          }
-         -->
+         -- >
          <table>
                  <tr><td>Decimal</td><td class="TKNumberField" data-var="decimal"></td></tr>
                  <tr><td>Signo</td><td data-var="sign"></td></tr>
@@ -1422,7 +1590,7 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 	<ul>
 		<li>Signo-Magnitud &#10004;</li>
 		<li>Complemento a 2 &#10004;</li>
-		<li>Exceso a $2^{n-1}$ &#10004; </li>
+		<li>Notación en exceso &#10004; </li>
 	</ul>
 	<li class="fragment">Fraccionarios</li>
 	<ul>
@@ -1432,7 +1600,13 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 </ul>
 </section>
 
-<section>
+---------------------------------------------------->
+
+<section data-coursemod-shown="false">
+<h1>Continuará</h1>
+</section>
+
+<section data-coursemod-shown="false">
 <h2>Referencias</h2>
 <ul>
 
@@ -1447,7 +1621,6 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 <!------------------------------------------------------------------>
    </div>
 </div>
-<!--
 <link rel="stylesheet" href="externals/tangle/TangleKit/TangleKit.css" type="text/css">
 <script src="externals/tangle/Tangle.js"></script>
 <script src="externals/tangle/TangleKit/mootools.js"></script>
@@ -1455,7 +1628,6 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 <script src="externals/tangle/TangleKit/BVTouchable.js"></script>
 <script src="externals/tangle/TangleKit/TangleKit.js"></script>
 <script src="externals/svg/dist/svg.min.js"></script>
--->
 <script src="externals/reveal/lib/js/head.min.js"></script>
 <script src="externals/reveal/js/reveal.js"></script>
 <script src="externals/snap/snap.svg-min.js"></script>
@@ -1629,6 +1801,8 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 			90: function() { Recorder.downloadZip(); },     // press 'z' to download zip containing audio files
 			84: function() { Recorder.fetchTTS(); }     // press 't' to fetch TTS audio files
 		},
+
+
 
 		// -------- Dependencies ---------
 		dependencies: [

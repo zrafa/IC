@@ -1,0 +1,13 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Contents\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab TEST 1 NUEVO\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab TEST 2 NUEVO\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplo de suma sin overflow}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Si usamos el sistema de complemento a 2 con {\i k} bits y queremos sumar dos n\u250?meros cuyo resultado quedar\u225? dentro del rango de representaci\u243?n, sabemos que ese resultado ser\u225? v\u225?lido. Del mismo modo, si la suma no puede ser representada en {\i k} bits, habr\u225? desbordamiento u {\i overflow}. Pero las computadoras no tienen forma de saber a priori esta condici\u243?n. Por eso necesitan alguna forma de detectar las situaciones de overflow, y el modo m\u225?s f\u225?cil para ellas es comprobar los dos \u250?ltimos bits de la fila de bits de acarreo o {\i carry}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El \u250?ltimo bit de la fila de carry, el que se posiciona en la \u250?ltima de las {\i k} columnas de la representaci\u243?n, se llama {\i carry-in}. El siguiente bit de carry, el que ya no puede acarrearse sobre ning\u250?n d\u237?gito v\u225?lido porque se han rebasado los {\i k} d\u237?gitos de la representaci\u243?n, se llama el {\i carry-out}. Si, luego de efectuar una suma en C2, los valores de los bits de {\i carry-in} y {\i carry-out} son iguales, entonces la computadora detecta que el resultado no ha desbordado y que la suma es v\u225?lida. La operaci\u243?n de suma se ha efectuado exitosamente.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TEST 1 NUEVO\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 TEST 2 NUEVO\par}
+}

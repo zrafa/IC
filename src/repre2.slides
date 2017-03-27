@@ -1,0 +1,93 @@
+<!-- INCLUDE src/reveal.header -->
+
+
+<section>
+<h2>Overflow o desbordamiento en C2</h2>
+    <ul>		
+	<li>Cuando el resultado de una operación excede la cantidad de dígitos del sistema, el resultado es inválido</li>
+    	<li>Puede ocurrir tanto al sumar dos números positivos como dos negativos</li>
+	<li>Condición sobre los dos últimos bits de <strong>carry</strong> o acarreo</li>
+    <ul>		
+	<li>Diferentes &#8680; hay <i>overflow</i></li>
+	<li>Iguales &#8680; no hay <i>overflow</i></li>
+    </ul>
+    </ul>
+<aside data-markdown class="notes">
+**Ejemplo de suma sin overflow**
+
+Si usamos el sistema de complemento a 2 con $k$ bits y queremos sumar dos números cuyo resultado quedará dentro del rango de representación, sabemos que ese resultado será válido. Del mismo modo, si la suma no puede ser representada en $k$ bits, habrá desbordamiento u *overflow*. Pero las computadoras no tienen forma de saber a priori esta condición. Por eso necesitan alguna forma de detectar las situaciones de overflow, y el modo más fácil para ellas es comprobar los dos últimos bits de la fila de bits de acarreo o *carry*. 
+
+El último bit de la fila de carry, el que se posiciona en la última de las $k$ columnas de la representación, se llama *carry-in*. El siguiente bit de carry, el que ya no puede acarrearse sobre ningún dígito válido porque se han rebasado los $k$ dígitos de la representación, se llama el *carry-out*. Si, luego de efectuar una suma en C2, los valores de los bits de *carry-in* y *carry-out* son iguales, entonces la computadora detecta que el resultado no ha desbordado y que la suma es válida. La operación de suma se ha efectuado exitosamente.
+</aside>
+
+</section>
+
+
+<section>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<div class="snapsvg stretch" width="100" height="100">
+	<svg id="ss1" viewBox="0 0 400 300" width="100%" height="100%"></svg>
+	<script src="src/svgfragments.js"></script>
+	<!-- { 
+		"imgset" : [ "img/no-of0.png", "img/no-of1.png", "img/no-of2.png", "img/no-of3.png", "img/no-of4.png", "img/no-of5.png", "img/no-of6.png", "img/no-of7.png", "img/no-of8.png" ], 
+		"width" : 400,
+		"height" : 300,
+		"svg" : "#ss1",
+		"initialize": "function(container, options) { svgfragments(options); }" 
+	} -->
+</div>
+<aside data-markdown class="notes">
+# TEST 1 NUEVO
+</aside>
+</section>
+
+<!--
+
+
+-->
+
+<section>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
+<div class="snapsvg stretch" width="100" height="100">
+	<svg id="ss2" viewBox="0 0 400 300" width="100%" height="100%"></svg>
+	<!-- { 
+		"imgset" : [ "img/si-of0.png", "img/si-of1.png", "img/si-of2.png", "img/si-of3.png", "img/si-of4.png", "img/si-of5.png", "img/si-of6.png", "img/si-of7.png", "img/si-of8.png" ], 
+		"width" : 400,
+		"height" : 300,
+		"svg" : "#ss2",
+		"initialize": "function(container, options) { svgfragments(options); }" 
+	} -->
+</div>
+<aside data-markdown class="notes">
+# TEST 2 NUEVO
+</aside>
+</section>
+
+
+<section>
+<h2>Referencias</h2>
+<ul>
+
+<li class="fragment"><a href="RepresentaciónDigitalDeDatos-notes.pdf">Notas de esta presentación</li>
+<li class="fragment"><a href="http://pedco.fi.uncoma.edu.ar/mod/resource/view.php?id=145680" target="_blank">Apunte de Cátedra: Representación de Datos Numéricos</a></li>
+<li class="fragment"><a href="https://es.m.wikipedia.org/wiki/Complemento_a_dos" target="_blank">Wikipedia: Complemento a dos</a></li>
+<li><a href="https://es.m.wikipedia.org/wiki/Representaci%C3%B3n_de_n%C3%BAmeros_con_signo" target="_blank">Wikipedia: Representación de números con signo</li>
+<li><a href="http://perso.ens-lyon.fr/jean-michel.muller/goldberg.pdf" target="_blank">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a>, David Goldberg, Xerox PARC, 1991</li>
+</ul>
+</section>
+
+<!-- INCLUDE src/reveal.trailer -->
