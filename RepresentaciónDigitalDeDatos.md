@@ -240,7 +240,16 @@ Diferentes sistemas, entonces, tienen diferentes rangos de representación. Si c
 
 El cuadro comparativo para cuatro bits mostrará que las combinaciones 0000...1111 representan los primeros 16 números no negativos para el sistema sin signo, mientras que esas mismas combinaciones tienen otro significado en los sistemas con signo. En éstos últimos, una misma combinación con el bit más significativo en 1 siempre es negativa, pero el orden en que aparecen esas combinaciones es diferente entre SM y C2. 
 
+Por otro lado, los números positivos quedan representados por combinaciones idénticas en los tres sistemas, hasta donde lo permite el rango de representación de cada uno.
+
 Si descartamos el bit de signo y consideramos sólo las magnitudes, los números negativos en SM aparecen con sus magnitudes crecientes alejándose del 0, mientras que en C2 esas magnitudes comienzan en cero al representar el negativo más pequeño posible y crecen a medida que se acercan al cero.
+
+
+###Aritmética en C2
+
+Una gran ventaja que aporta el sistema en Complemento a 2 es que los diseñadores de hardware no necesitan implementar algoritmos de resta además de los de la suma. Cuando se necesita efectuar una resta, **se complementa el sustraendo** (que queda negativo) y luego se lo **suma** al minuendo. Las computadoras no restan: siempre suman.
+
+Por ejemplo, la operación $9 - 8$ se realiza como $9 + (-8)$, donde (-8) es el complemento a 2 de 8.
 
 
 **Preguntas**
@@ -275,17 +284,18 @@ Siguiendo atentamente la secuencia de bits de carry podemos detectar, igual que 
 
 **Suma con overflow**
 
-En el caso de la operación $123 + 9$ en C2 a 8 bits, el resultado (que es 132) cae fuera del rango de representación, y esto se refleja en los bits de *carry-in* y de *carry-out*, que son diferentes. El resultado no es válido y debe ser descartado.
+En el caso de la operación $123 + 9$ en C2 a 8 bits, el resultado (que es 132) cae fuera del rango de representación. Esto se refleja en los bits de *carry-in* y de *carry-out*, que son diferentes. El resultado no es válido y debe ser descartado.
 
 
 
 
-¿Qué condición sobre los bits de carry permite asegurar que **no habrá** overflow?
-¿Para qué sistemas de representación numérica usamos la condición de detección de overflow?
-¿Puede existir overflow al sumar dos números de diferente signo?
-¿Qué condición sobre los bits **de signo** de los operandos permite asegurar que **no habrá** overflow?
-¿Puede haber casos de overflow al sumar dos números negativos?
-¿Puede haber casos de overflow al restar dos números?
+**Preguntas** 
+- ¿Qué condición sobre los bits de carry permite asegurar que **no habrá** overflow?
+- ¿Para qué sistemas de representación numérica usamos la condición de detección de overflow?
+- ¿Puede existir overflow al sumar dos números de diferente signo?
+- ¿Qué condición sobre los bits **de signo** de los operandos permite asegurar que **no habrá** overflow?
+- ¿Puede haber casos de overflow al sumar dos números negativos?
+- ¿Puede haber casos de overflow al restar dos números?
 
 
 ###Extensión de signo en C2
@@ -295,7 +305,9 @@ Para poder efectuar una suma de dos números, ambos operandos deben estar repres
 - Una suma de dos operandos donde uno esté, por ejemplo, en SM y el otro en C2, no tiene sentido aritmético. 
 - Además, la cantidad de bits de representación debe ser la misma. 
 
-En una suma en C2, si uno de los operandos estuviera escrito a menos bits que el otro, será necesario convertirlo al sistema del otro (**extenderlo**) y operar con ambos en ese sistema mayor. En el caso en que el operando en el sistema de menor ancho sea positivo, la extensión se realiza simplemente completando con ceros a la izquierda hasta obtener la cantidad de dígitos del otro sistema. Si el operando del menor ancho es negativo, la extensión de signo se hace **agregando unos**.
+En una suma en C2, si uno de los operandos estuviera expresado en un sistema con menos bits que el otro, será necesario convertirlo al sistema del otro (**extenderlo**) y operar con ambos en ese sistema de mayor ancho. 
+
+Si el operando en el sistema de menor ancho es positivo, la extensión se realiza simplemente **completando con ceros a la izquierda** hasta obtener la cantidad de dígitos del otro sistema. Si el operando del menor ancho es negativo, la extensión de signo se hace **agregando unos**.
 
 
 **Preguntas sobre Notación en Exceso**

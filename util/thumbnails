@@ -1,0 +1,4 @@
+#!/bin/bash
+mkdir -p temp
+cd temp
+cutycapt --delay=2 --url=http://localhost:8000/$1 --out=aaa.png
