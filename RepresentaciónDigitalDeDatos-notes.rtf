@@ -24,7 +24,9 @@
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Comparando rangos de representaci\u243?n\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Aritm\u233?tica en C2\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Overflow o desbordamiento en C2\par}
-{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Extensi\u243?n de signo en C2\sa180\sa180\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Extensi\u243?n de signo en C2\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Notaci\u243?n en exceso o {\i bias}\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Conversi\u243?n entre exceso y decimal\sa180\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Continuar\u225?\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Representaci\u243?n de datos num\u233?ricos\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Veremos de qu\u233? manera puede ser tratada mediante computadoras la informaci\u243?n correspondiente a n\u250?meros, textos, im\u225?genes y otros datos. Necesitaremos conocer las formas de representaci\u243?n de datos, y comenzaremos por los datos num\u233?ricos.\par}
@@ -243,6 +245,33 @@ Imaginarios
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Adem\u225?s, la cantidad de bits de representaci\u243?n debe ser la misma.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 En una suma en C2, si uno de los operandos estuviera expresado en un sistema con menos bits que el otro, ser\u225? necesario convertirlo al sistema del otro ({\b extenderlo}) y operar con ambos en ese sistema de mayor ancho.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Si el operando en el sistema de menor ancho es positivo, la extensi\u243?n se realiza simplemente {\b completando con ceros a la izquierda} hasta obtener la cantidad de d\u237?gitos del otro sistema. Si el operando del menor ancho es negativo, la extensi\u243?n de signo se hace {\b agregando unos}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplos}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\i A}\u8197?+\u8197?{\i B}\u8196?=\u8196?00101011{\sub (2}\u8197?+\u8197?00101{\sub (2}\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab A est\u225? en {\i C}{\sub 2}{\super 8} y B en {\i C}{\sub 2}{\super 5}\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Se completa B (positivo) como 00000101{\sub (2}\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\i A}\u8197?+\u8197?{\i B}\u8196?=\u8196?1010{\sub (2}\u8197?+\u8197?0110100{\sub (2}\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab A est\u225? en {\i C}{\sub 2}{\super 4} y B en {\i C}{\sub 2}{\super 7}\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Se completa A (negativo) como 1111010{\sub (2}\sa180\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Notaci\u243?n en exceso o {\i bias}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En un sistema de notaci\u243?n en exceso, se elige un intervalo [{\i a},\u8198?{\i b}] de enteros a representar, y todos los valores dentro del intervalo se representan con una secuencia de bits de la misma longitud.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La cantidad de bits deber\u225? ser la necesaria para representar todos los enteros del intervalo, inclusive los l\u237?mites, y por lo tanto estar\u225? en funci\u243?n de la longitud del intervalo. Un intervalo [{\i a},\u8198?{\i b}] de enteros, con sus l\u237?mites incluidos, comprende exactamente {\i n}\u8196?=\u8196?{\i b}\u8197?\u8722?\u8197?{\i a}\u8197?+\u8197?1 valores. Esta longitud del intervalo debe ser cubierta con una cantidad {\i k} de bits suficiente, lo cual obliga a que 2{\super {\i k}}\u8196?\u8805?\u8196?{\i n}. Supongamos que {\i n} sea una potencia de 2 para facilitar las ideas, de forma que 2{\super {\i k}}\u8196?=\u8196?{\i n}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Las 2{\super {\i k}} secuencias de {\i k} bits, ordenadas como de costumbre seg\u250?n su valor aritm\u233?tico, se aplican a los enteros en [{\i a},\u8198?{\i b}], uno por uno. Es decir, si usamos 3 bits, las secuencias ser\u225?n 000, 001, 010, ... hasta 111; y los valores representados ser\u225?n respectivamente:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 000 = {\i a}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 001 = {\i a}\u8197?+\u8197?1\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 010 = {\i a}\u8197?+\u8197?2\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab ...\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 111 = {\i b}\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Notemos que tanto {\i a} como {\i b} pueden ser {\b negativos}. As\u237? podemos representar intervalos de enteros arbitrarios con secuencias de {\i k} bits, lo que nos vuelve a dar un sistema de representaci\u243?n con signo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Con este m\u233?todo no es necesario que el bit de orden m\u225?s alto represente el signo. Tampoco que el intervalo contenga la misma cantidad de n\u250?meros negativos que positivos o cero, aunque para la mayor\u237?a de las aplicaciones es lo m\u225?s razonable.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El sistema en exceso se utiliza como componente de otro sistema de representaci\u243?n m\u225?s complejo, la representaci\u243?n en punto flotante.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Conversi\u243?n entre exceso y decimal\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Una vez establecido un sistema en exceso:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular la secuencia binaria que corresponde a un valor decimal {\i d}, a {\i d} {\b le restamos} {\i a} y luego convertimos el resultado (que es {\b no negativo}) a binario sin signo.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular el valor decimal {\i d} representado por una secuencia binaria, convertimos la secuencia a decimal como en un sistema sin signo, y al resultado ({\b no negativo}) le {\b sumamos} el valor de {\i a}.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplo}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Representemos en sistema en exceso el intervalo [\u8197?\u8722?\u8197?3,\u8198?4] (que contiene 4\u8197?\u8722?\u8197?(\u8197?\u8722?\u8197?3)\u8197?+\u8197?1\u8196?=\u8196?8 enteros). Como necesitamos 8 secuencias binarias, usaremos 3 bits que producir\u225?n las secuencias 000, 001, ..., 111.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular la secuencia que corresponde al n\u250?mero 2, hacemos 2\u8197?\u8722?\u8197?(\u8197?\u8722?\u8197?3)\u8196?=\u8196?5 y el resultado ser\u225? la secuencia {\b 101}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular el valor decimal que est\u225? representando la secuencia {\b 011}, convertimos 011 a decimal, que es 3, y le sumamos -3; el resultado es 0.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 {\b Preguntas sobre Notaci\u243?n en Exceso}\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Dado un valor decimal a representar, \u191?c\u243?mo calculamos el binario?\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Dado un binario, \u191?c\u243?mo calculamos el valor decimal representado?\par}

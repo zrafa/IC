@@ -310,6 +310,54 @@ En una suma en C2, si uno de los operandos estuviera expresado en un sistema con
 Si el operando en el sistema de menor ancho es positivo, la extensión se realiza simplemente **completando con ceros a la izquierda** hasta obtener la cantidad de dígitos del otro sistema. Si el operando del menor ancho es negativo, la extensión de signo se hace **agregando unos**.
 
 
+**Ejemplos**
+
+- $A + B = 00101011_{(2} + 00101_{(2}$
+    - A está en $C^8_2$ y B en $C^5_2$
+    - Se completa B (positivo) como $00000101_{(2}$
+- $A + B = 1010_{(2} + 0110100_{(2}$
+    - A está en $C^4_2$ y B en $C^7_2$
+    - Se completa A (negativo) como $1111010_{(2}$
+
+
+##Notación en exceso o *bias*
+
+En un sistema de notación en exceso, se elige un intervalo $[a, b]$ de enteros a representar, y todos los valores dentro del intervalo se representan con una secuencia de bits de la misma longitud. 
+
+La cantidad de bits deberá ser la necesaria para representar todos los enteros del intervalo, inclusive los límites, y por lo tanto estará en función de la longitud del intervalo. Un intervalo $[a, b]$ de enteros, con sus límites incluidos, comprende exactamente $n = b - a + 1$ valores. Esta longitud del intervalo debe ser cubierta con una cantidad $k$ de bits suficiente, lo cual obliga a que $2^k \geq n$. Supongamos que $n$ sea una potencia de 2 para facilitar las ideas, de forma que $2^k = n$.
+
+Las $2^k$ secuencias de $k$ bits, ordenadas como de costumbre según su valor aritmético, se aplican a los enteros en $[a, b]$, uno por uno. Es decir, si usamos 3 bits, las secuencias serán 000, 001, 010, ... hasta 111; y los valores representados serán respectivamente:
+
+- 000 = $a$
+- 001 = $a + 1$
+- 010 = $a + 2$
+- ...
+- 111 = $b$
+
+Notemos que tanto $a$ como $b$ pueden ser **negativos**. Así podemos representar intervalos de enteros arbitrarios con secuencias de $k$ bits, lo que nos vuelve a dar un sistema de representación con signo. 
+
+Con este método no es necesario que el bit de orden más alto represente el signo. Tampoco que el intervalo contenga la misma cantidad de números negativos que positivos o cero, aunque para la mayoría de las aplicaciones es lo más razonable.
+
+El sistema en exceso se utiliza como componente de otro sistema de representación más complejo, la representación en punto flotante.
+
+
+###Conversión entre exceso y decimal
+
+Una vez establecido un sistema en exceso:
+
+- Para calcular la secuencia binaria que corresponde a un valor decimal $d$, a $d$ **le restamos** $a$ y luego convertimos el resultado (que es **no negativo**) a binario sin signo.
+- Para calcular el valor decimal $d$ representado por una secuencia binaria, convertimos la secuencia a decimal como en un sistema sin signo, y al resultado (**no negativo**) le **sumamos** el valor de $a$. 
+
+**Ejemplo**
+
+Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3) + 1 = 8$ enteros). Como necesitamos 8 secuencias binarias, usaremos 3 bits que producirán las secuencias 000, 001, ..., 111.
+
+- Para calcular la secuencia que corresponde al número 2, hacemos $2 -(-3) = 5$ y el resultado será la secuencia **101**.
+- Para calcular el valor decimal que está representando la secuencia **011**, convertimos 011 a decimal, que es 3, y le sumamos -3; el resultado es $0$.
+
+
+
+
 **Preguntas sobre Notación en Exceso**
 
 - Dado un valor decimal a representar, ¿cómo calculamos el binario?
