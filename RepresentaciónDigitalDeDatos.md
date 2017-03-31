@@ -247,7 +247,7 @@ Si descartamos el bit de signo y consideramos sólo las magnitudes, los números
 
 ###Aritmética en C2
 
-Una gran ventaja que aporta el sistema en Complemento a 2 es que los diseñadores de hardware no necesitan implementar algoritmos de resta además de los de la suma. Cuando se necesita efectuar una resta, **se complementa el sustraendo** (que queda negativo) y luego se lo **suma** al minuendo. Las computadoras no restan: siempre suman.
+Una gran ventaja que aporta el sistema en Complemento a 2 es que los diseñadores de hardware no necesitan implementar algoritmos de resta además de los de la suma. Cuando se necesita efectuar una resta, **se complementa el sustraendo** y luego se lo **suma** al minuendo. Las computadoras no restan: siempre suman.
 
 Por ejemplo, la operación $9 - 8$ se realiza como $9 + (-8)$, donde (-8) es el complemento a 2 de 8.
 
