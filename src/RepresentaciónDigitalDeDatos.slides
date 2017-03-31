@@ -726,7 +726,7 @@ Por ejemplo, la operación $9 - 8$ se realiza como $9 + (-8)$, donde (-8) es el 
 </aside>
 </section>
 
-<section class="preguntas" data-background="#3c53b5" data-background-transition="zoom">
+<section class="preguntas" data-coursemod-shown="false" data-background="#3c53b5" data-background-transition="zoom">
 <h2>Preguntas</h2>
 <ol>
 	<li class="fragment">Un número en complemento a 2, ¿tiene siempre su bit más a la izquierda en 1?</li>
