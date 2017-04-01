@@ -2,6 +2,7 @@ DEPS = src/reveal.header src/reveal.trailer
 DTAPE=/home/oso/IC2016/decktape
 
 all: re so comp pres siste uni repre texto arqui soft demo
+# pandoc -V lang=spanish -V fontfamily=sans -V papersize=A4 -V title="Introducción a la Computación 2017" --toc SistemasDeNumeración.md UnidadesDeInformación.md RepresentaciónDigitalDeDatos.md -o ic2017.pdf
 
 git: 
 	util/github "mm"
