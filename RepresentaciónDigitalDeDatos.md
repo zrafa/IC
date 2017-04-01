@@ -156,9 +156,10 @@ Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
 - La aritmética en SM no es fácil, ya que cada operación debe comenzar por averiguar si los operandos son positivos o negativos, operar con los valores absolutos y ajustar el resultado de acuerdo al signo reconocido anteriormente.
 - El problema aritmético se agrava con la existencia de las dos representaciones del cero: cada vez que un programa quisiera comparar un valor resultado de un cómputo con 0, debería hacer **dos** comparaciones.
 
+Por estos motivos, el sistema de SM dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
+
 ##Sistema de Complemento a 2
 
-Por estos motivos, el sistema de SM dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
 
 
 Para comprender el sistema de complemento a 2 es necesario primero conocer la **operación** de complementar a 2.
@@ -290,6 +291,7 @@ En el caso de la operación $123 + 9$ en C2 a 8 bits, el resultado (que es 132) 
 
 
 **Preguntas** 
+
 - ¿Qué condición sobre los bits de carry permite asegurar que **no habrá** overflow?
 - ¿Para qué sistemas de representación numérica usamos la condición de detección de overflow?
 - ¿Puede existir overflow al sumar dos números de diferente signo?
@@ -343,12 +345,17 @@ El sistema en exceso se utiliza como componente de otro sistema de representaci�
 
 ###Conversión entre exceso y decimal
 
-Una vez establecido un sistema en exceso:
+Una vez establecido un sistema en exceso que representa el intervalo $[a, b]$ en $k$ bits:
 
-- Para calcular la secuencia binaria que corresponde a un valor decimal $d$, a $d$ **le restamos** $a$ y luego convertimos el resultado (que es **no negativo**) a binario sin signo.
-- Para calcular el valor decimal $d$ representado por una secuencia binaria, convertimos la secuencia a decimal como en un sistema sin signo, y al resultado (**no negativo**) le **sumamos** el valor de $a$. 
+- Para calcular la secuencia binaria que corresponde a un valor decimal $d$, a $d$ **le restamos** $a$ y luego convertimos el resultado (que será **no negativo**) a **SS(k)**, es decir, a binario sin signo sobre $k$ bits.
+- Para calcular el valor decimal $d$ representado por una secuencia binaria, convertimos la secuencia a decimal como en **SS(k)**, y al resultado (que será **no negativo**) le **sumamos** el valor de $a$. 
 
-**Ejemplo**
+**Ejemplos**
+
+Representemos en sistema en exceso el intervalo $[10, 25]$ (que contiene $25 - 10 + 1 = 16$ enteros). Como necesitamos 16 secuencias binarias, usaremos 4 bits que producirán las secuencias 0000, 0001, ..., 1111.
+
+- Para calcular la secuencia que corresponde al número 20, hacemos $20 - 10 = 10$ y el resultado será la secuencia **1010**.
+- Para calcular el valor decimal que está representando la secuencia **1011**, convertimos 1011 a decimal, que es 11, y le sumamos 10; el resultado es $21$.
 
 Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3) + 1 = 8$ enteros). Como necesitamos 8 secuencias binarias, usaremos 3 bits que producirán las secuencias 000, 001, ..., 111.
 
