@@ -1,0 +1,18 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Contents\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Conversi\u243?n entre exceso y decimal\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Conversi\u243?n entre exceso y decimal\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Una vez establecido un sistema en exceso que representa el intervalo [{\i a},\u8198?{\i b}] en {\i k} bits:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular la secuencia binaria que corresponde a un valor decimal {\i d}, a {\i d} {\b le restamos} {\i a} y luego convertimos el resultado (que ser\u225? {\b no negativo}) a {\b SS(k)}, es decir, a binario sin signo sobre {\i k} bits.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular el valor decimal {\i d} representado por una secuencia binaria, convertimos la secuencia a decimal como en {\b SS(k)}, y al resultado (que ser\u225? {\b no negativo}) le {\b sumamos} el valor de {\i a}.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplos}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Representemos en sistema en exceso el intervalo [10,\u8198?25] (que contiene 25\u8197?\u8722?\u8197?10\u8197?+\u8197?1\u8196?=\u8196?16 enteros). Como necesitamos 16 secuencias binarias, usaremos 4 bits que producir\u225?n las secuencias 0000, 0001, ..., 1111.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular la secuencia que corresponde al n\u250?mero 20, hacemos 20\u8197?\u8722?\u8197?10\u8196?=\u8196?10 y el resultado ser\u225? la secuencia {\b 1010}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular el valor decimal que est\u225? representando la secuencia {\b 1011}, convertimos 1011 a decimal, que es 11, y le sumamos 10; el resultado es 21.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Representemos en sistema en exceso el intervalo [\u8197?\u8722?\u8197?3,\u8198?4] (que contiene 4\u8197?\u8722?\u8197?(\u8197?\u8722?\u8197?3)\u8197?+\u8197?1\u8196?=\u8196?8 enteros). Como necesitamos 8 secuencias binarias, usaremos 3 bits que producir\u225?n las secuencias 000, 001, ..., 111.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular la secuencia que corresponde al n\u250?mero 2, hacemos 2\u8197?\u8722?\u8197?(\u8197?\u8722?\u8197?3)\u8196?=\u8196?5 y el resultado ser\u225? la secuencia {\b 101}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para calcular el valor decimal que est\u225? representando la secuencia {\b 011}, convertimos 011 a decimal, que es 3, y le sumamos -3; el resultado es 0.\sa180\par}
+}

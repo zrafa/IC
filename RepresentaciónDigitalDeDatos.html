@@ -1065,8 +1065,9 @@ Si el operando en el sistema de menor ancho es positivo, la extensión se realiz
 <li>Representa un intervalo $[a, b]$ de $2^k$ enteros</li>
 <ul>
 	<li>Este intervalo contiene $b - a + 1$ enteros</li>
-	<li>Para $[-5, 10]$ es $10 - (-5) + 1 = 16$ &#8680;  necesitamos 4 bits</li>
-	<li>Para $[-128, 127]$ es $127 - (-128) + 1$ $= 256$ &#8680;  necesitamos 8 bits</li>
+	<li>Necesitamos $k$ de modo que $2^k = b - a + 1$</li>
+	<li>Para $[10, 25]$ es $25 - 10 + 1 = 16$ &rarr; $k$ = 4 bits</li>
+	<li>Para $[-3, 4]$ es $4 - (-3) + 1$ $= 8$ &rarr; $k$ = 3 bits</li>
 </ul>
 <li>Asigna los binarios en orden</li>
 $a$ &#8680; $0000$, $a + 1$ &#8680; $0001$, ..., $b$ &#8680; $1111$ 
@@ -1118,20 +1119,35 @@ El sistema en exceso se utiliza como componente de otro sistema de representaci�
 ------------------------------------------>
 
 
-<section>
+<!------------------------
 <h2>Notación en exceso</h2>
 <span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
 <span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
 <span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
 <span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
 <div class="snapsvg stretch" width="100%" height="100%">
-        <svg id="ss3" viewBox="0 0 500 200" width="100%" height="100%"></svg>
-        <!-- {
+        <svg id="bias" viewBox="0 0 500 200" width="100%" height="100%"></svg>
+        <! -- {
                 "imgset"   : [ "img/newbias-0.png", "img/newbias-1.png", "img/newbias-2.png", "img/newbias-3.png", "img/newbias-4.png" ],
                 "width" : 500,
                 "height": 200,
-                "svg" : "#ss3",
-                "initialize": "function(container, options) { svgfragments(container, options) }"
+                "svg" : "#bias",
+                "initialize": "function(container, options) { Bias(container, options) }"
+        } -- >
+</div>
+------------------------------->
+
+<section>
+<h2>Notación en exceso</h2>
+<span class="post_it fragment"><i>Valor binario = valor decimal - a</i></span>
+<div class="snapsvg stretch" width="100%" height="100%">
+	<script src="src/bias.js"></script>
+        <svg id="bias" viewBox="0 0 100 50" width="100%" height="100%"></svg>
+        <!-- {
+                "width" : 100,
+                "height": 50,
+                "svg" : "#bias",
+                "initialize": "function(container, options) { Bias(container, options) }"
         } -->
 </div>
 <aside data-markdown class="notes">
