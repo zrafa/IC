@@ -44,8 +44,8 @@ function Bias(container, options) {
 		this.inter.t = t;
 
 		this.inter.add (
-			svg.text(traslacion(a),4,"[").attr({id: 'lbrack'}).attr(attrs.inter).transform('S3'),
-			svg.text(traslacion(b),4,"]").attr({id: 'rbrack'}).attr(attrs.inter).transform('S3')
+			svg.text(traslacion(a),4,"[").attr(attrs.inter).transform('S3'),
+			svg.text(traslacion(b),4,"]").attr(attrs.inter).transform('S3')
 		);
 
 		// Binarios
@@ -63,10 +63,10 @@ function Bias(container, options) {
 		Element.prototype.zoom = function() {
 			var bb = this.getBBox();
 			var s = bb.x + ' ' + this.t + ' ' + bb.w + ' ' + bb.h;
-	      		this.paper.animate({viewBox : s}, 1000);
+	      		this.paper.animate({viewBox : s}, 1000, mina.easeout);
 		};
 		Element.prototype.restore = function() {
-    			this.paper.animate({viewBox : '0 0 100 50'}, 1000);
+    			this.paper.animate({viewBox : '0 0 100 50'}, 1000, mina.backout);
 	    	};
 	});
 
