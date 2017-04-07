@@ -200,7 +200,7 @@
 			//{ src: 'externals/reveal/plugin/chart/Chart.min.js'},
 			// { src: 'externals/reveal/plugin/search/search.js', async: true},
 			//{ src: 'externals/reveal-plugin/chart/csv2chart.js'},
-			//{ src: 'externals/asciinema-player/asciinema-player.js' },
+			{ src: 'externals/asciinema-player/asciinema-player.js' },
 			{ src: 'externals/reveal-plugins/anything/anything.js' },
 			{ src: 'externals/reveal-plugins/chalkboard/chalkboard.js' },
 			{ src: 'externals/reveal-plugins/menu/menu.js' },

@@ -494,7 +494,6 @@ Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
 
 Por estos motivos, el sistema de SM dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
 
-##Sistema de Complemento a 2
 
 </aside>
 </section>
@@ -521,6 +520,8 @@ Por estos motivos, el sistema de SM dejó de usarse y se diseñó un sistema que
 	</ul>
 </ul>
 <aside data-markdown class="notes">
+##Sistema de Complemento a 2
+
 Para comprender el sistema de complemento a 2 es necesario primero conocer la **operación** de complementar a 2.
 
 ###Operación de Complemento a 2
@@ -1206,15 +1207,34 @@ Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3)
  * Punto flotante
 </section>
 
-<!---------------------------------------------------------------------------
 
+<!-- -------------------------------------------------------------------------------------------------- -->
 <section>
-<h2>Coma o punto fraccionario</h2>
+<h2>Representación de fraccionarios</h2>
+<ul>
+<li>Racionales &rarr; tienen parte decimal finita o periódica</li>
+<li>Irracionales &rarr; tienen parte decimal infinita</li>
+<li>Coma o punto fraccionario</h2>
 <ul>
 <li>En los enteros, está a la derecha de los dígitos y no se escribe</li>
 <li>Marca el lugar donde los exponentes de la base se hacen negativos</li>
 </ul>
+</ul>
 <div class="post_it" align="center">$3.14 = 3 \times 10^0 + 1 \times  10^{-1} + 4 \times  10^{-2}$</div>
+<aside data-markdown class="notes">
+##Representación de fraccionarios
+
+###Racionales
+Los números fraccionarios son aquellos **racionales** que no son enteros. Se escriben como una razón, fracción o cociente de dos enteros. Por ejemplo, $3/4$ y $-12/5$ son números fraccionarios. El signo de división que usamos para escribir las fracciones tiene precisamente ese significado aritmético: si hacemos la operación de división correspondiente entre numerador y divisor de la fracción, obtenemos la forma decimal del mismo número, con **una parte entera y una parte decimal**. Así, por ejemplo, $3/4$ también puede escribirse como $0.75$, y $-12/5$ como $-2.4$. Estas dos formas son equivalentes. En los racionales, la parte decimal es **finita** o **periódica**.
+
+###Aproximación racional a los irracionales
+Por otro lado, existen números reales que no son racionales, en el sentido de que no existe una razón, fracción o cociente que les sea igual, pero también pueden escribirse como decimales con una parte entera y una parte decimal. Estos son los **irracionales**. Los irracionales pueden expresarse sintéticamente como el resultado de alguna operación (como cuando escribimos $\sqrt 2$) o en su forma decimal. Sin embargo, tienen la característica de que su desarrollo decimal **es infinito** no periódico, por lo cual siempre que escribimos un irracional por su desarrollo decimal, en realidad estamos **truncando** ese desarrollo a alguna porción inicial. Jamás podremos escribir la sucesión completa de decimales. 
+
+De manera que, al escribir irracionales en su forma decimal, en realidad siempre tratamos con **aproximaciones racionales** a esos irracionales. Por ejemplo, $3.14$ y $3.1459$ son aproximaciones racionales al verdadero valor irracional de $\pi$, cuya parte decimal tiene infinitos dígitos. 
+
+###Coma o punto decimal
+Al escribir un número con cifras decimales en nuestro sistema numérico habitual de base 10, usamos una marca especial para separar la parte entera de la decimal: es la **coma o punto decimal**. En el desarrollo decimal, la coma o punto decimal señala el lugar donde los exponentes de la base en el desarrollo de potencias de 10 **se hacen negativos**. Cuando queremos representar números fraccionarios con computadoras, nos vemos en el problema de representar este signo especial.
+</aside>
 </section>
 
 
@@ -1225,6 +1245,18 @@ Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3)
 <p>$1 \times 2^1 + 1 \times 2^0 +$ <span class="fragment"> $1 \times 2^{-1} + 0 \times 2^{-2} + 1 \times 2^{-3} =$</span></p>
 <p class="fragment">$2 + 1 + 0.5 + 0 + 0.125 = $</p>
 <p class="fragment">$3.625$</p>
+<aside data-markdown class="notes">
+Podemos trasladar la idea de coma o punto decimal al sistema binario. Si extendemos la Expresión General con exponentes negativos, podemos escribir números fraccionarios en base 2. 
+
+###Fraccionario en base 2 a decimal
+
+Si encontramos una expresión como `$11.101_{(2}$`, la Expresión General extendida nos dice cómo obtener su valor en base 10: 
+$$11.101_{(2}  = $$ 
+$$1 \times 2^1 + 1 \times 2^0 +$$ 
+$$1 \times 2^{-1} + 0 \times 2^{-2} + 1 \times 2^{-3} =$$ 
+$$2 + 1 + 0.5 + 0 + 0.125 = $$
+$$3.625$$
+</aside>
 </section>
     
 <section>
@@ -1234,15 +1266,48 @@ Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3)
 <p>$1 \times 2^1 + 1 \times 2^0 + 1 \times 2^{-1} + 0 \times 2^{-2} + 1 \times 2^{-3} = $</p>
 <p class="fragment">$\frac{1 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0}{2^3} = $ $\frac{16 + 8 + 4 + 0 + 1}{8} = $</p>
 <p class="fragment">$29 / 8 = 3.625$</p>
+<aside data-markdown class="notes">
+
+**Otra manera**
+
+Otra manera de obtener el valor decimal de un número fraccionario $n$ en base 2 consiste en utilizar el hecho de que cada vez que desplazamos el punto fraccionario un lugar hacia la derecha, estamos multiplicando $n$ por 2, y viceversa, si desplazamos el punto hacia la izquierda, lo dividimos por 2.
+
+El método consiste en:
+
+- Identificar cuántas posiciones fraccionarias tiene $n$ (llamémoslas $k$)
+- Multiplicar $n$ por $2^k$ obteniendo un **entero** en base 2
+- Convertir el entero resultante a base 10, lo cual ya sabemos hacer
+- Dividir el resultado por $2^k$, obteniendo $n$ en base 10
+
+Con este método esencialmente estamos calculando el valor decimal  de $n$ **sin considerar el signo de coma fraccionaria** (es decir, imaginando que $n$ fuera un entero); convirtiendo ese valor a decimal, y luego dividiendo el resultado en base 10 por $2^k$ para recuperar el valor original de $n$, sólo que ahora en base 10.
+
+**Ejemplo**
+
+El número `$n = 11.101_{(2}$` tiene tres cifras decimales ($k = 3$). Lo convertimos en entero dejando `$11101_{(2}$`; averiguamos que este número en base 10 es 29; y finalmente dividimos 29 por $2^3$. Concluimos que `$n = 11.101_{(2} = 29/8 = 3.625$`.
+</aside>
 </section>
     
-<section data-markdown id="decfrac">
-## Decimal fraccionario &rarr; base 2
-* Se separan la parte entera (PE) y la parte fraccionaria (PF)
-* Se convierte la PE a base 2 separadamente
-* La PF se multiplica por 2 y se toma la PE del resultado
- * Este dígito binario se agrega al resultado
-* Se repite el paso anterior hasta llegar a 0, o hasta lograr la precisión deseada
+<section id="decfrac" data-coursemod-shown="false">
+<h2>Decimal fraccionario &rarr; base 2</h2>
+<ul>
+<li>Se separan la parte entera (PE) y la parte fraccionaria (PF)</li>
+<li>Se convierte la PE a base 2 separadamente</li>
+<li>La PF se multiplica por 2 y se toma la PE del resultado</li>
+<ul>
+<li>Este dígito binario se agrega al resultado</li>
+</ul>
+<li>Se repite el paso anterior hasta llegar a 0, o hasta lograr la precisión deseada</li>
+</ul>
+<aside data-markdown class="notes">
+###Decimal fraccionario a base 2
+
+Para convertir un decimal con parte fraccionaria a base 2:
+
+1. Se separan la parte entera (PE) y la parte fraccionaria (PF).
+1. Se convierte la PE a base 2 separadamente.
+1. La PF se multiplica por 2 y se toma la PE del resultado. Este dígito binario se agrega al resultado.
+1. Se repite el paso anterior hasta llegar a 0, o hasta lograr la precisión deseada.
+</aside>
 </section>
 
 <section>
@@ -1252,32 +1317,89 @@ Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3)
 <li class="fragment">$PE = 3_{(10} = 11_{(2}$</li>
 <li class="fragment">$PF = 0.625_{(10}$ <span class="fragment">$= ?_{(2}$</span></li>
 </ul>
+<aside data-markdown class="notes">
+**Ejemplo**
+
+Convirtamos el número $n = 3.625$ a base 2. Primero separamos parte entera (3) y parte fraccionaria (0.625).
+
+**Parte entera**
+
+La parte entera de $n$ se convierte a base 2 como entero sin signo (dando $11_{(2}$).
+
+</aside>
 </section>
 
 
 <section>
-<h2>Decimal fraccionario &rarr; base 2, PF</h2>
+<h2>Decimal fraccionario &rarr; base 2</h2>
 <ul>
-<li>$PF \times 2 = 0.625 \times 2 = 1.25$ <span class="fragment">&#8680; <span class="post_it">$0.25$</span>$ + 1$</span></li>
-<li class="fragment">$PF' \times 2 =$ <span class="post_it">$0.25$</span> $\times 2 = 0.5$ <span class="fragment">&#8680; $0.5 + 0$</span></li>
-<li class="fragment">$PF'' \times 2 = 0.5 \times 2 = 1.0$ <span class="fragment">&#8680; $0.0 + 1$</span></li>
+<li>$PF \times 2 = 0.625 \times 2 = 1.25$ <span class="fragment">&#8680; $1 + $<span class="post_it">$0.25$</span></span></li>
+<li class="fragment">$PF' \times 2 =$ <span class="post_it">$0.25$</span> $\times 2 = 0.5$ <span class="fragment">&#8680; $0 + 0.5$</span></li>
+<li class="fragment">$PF'' \times 2 = 0.5 \times 2 = 1.0$ <span class="fragment">&#8680; $1 + 0.0$</span></li>
 <li class="fragment">$PF''' \times 2 = 0.0 \times 2 = 0.0$ <span class="fragment">&#8680; Fin</span></li>
+<span></hr></span>
+<li class="fragment">Finalmente:</li>
+<ul>
 <li class="fragment">$PF = 0.625$ <span class="fragment">&#8680; $0.101_{(2}$</span></li>
 <li class="fragment">$3.625 = 3 + 0.625 = 11_{(2} + 0.101_{(2} = 11.101_{(2}$</li>
 </ul>
+</ul>
+<aside data-markdown class="notes">
+**Parte fraccionaria**
+
+Para calcular la parte fraccionaria binaria de $n$ seguimos un procedimiento iterativo (es decir, que consta de pasos que se repiten). 
+
+La parte fraccionaria decimal de $n$ se multiplica por 2: $0.625 \times 2 = 1.25$. Separamos este resultado a su vez en parte entera y parte fraccionaria. Guardamos la parte entera del resultado (que es 1) **y repetimos**, es decir, volvemos a multiplicar por 2 la parte fraccionaria recién obtenida (que es 0.25), separamos la parte entera, etc. 
+
+**La sucesión de dígitos aparecidos como partes enteras** durante este procedimiento servirán para **construir la parte fraccionaria** del resultado. Notemos que estos dígitos que aparecen solamente pueden ser ceros y unos, porque son la parte entera de $2\times x$ con $x < 1$.
+
+El procedimiento de separar, guardar, multiplicar, se repite hasta que la parte entera obtenida sea 0 (ya no tiene sentido seguir el procedimiento porque el resultado será siempre 0) o hasta que tengamos suficientes dígitos computados para nuestra aplicación. 
+
+
+El resultado final es la suma, en base 2, de la parte entera de $n$ calculada anteriormente, más una parte fraccionaria construida con los dígitos que fueron apareciendo durante el procedimiento de duplicar la parte fraccionaria.
+
+La conversión a base 2 del número $n = 3.625$ que buscábamos será `$11_{(2} + 0.101_{(2} = 11.101_{(2}$`.
+</aside>
 </section>
 
 
-<section data-markdown>
+<section>
+<h2>Representación de punto fijo</h2>
+<ul>
+<li>Parte entera y fraccionaria son campos de un <i>ancho</i> determinado</li>
+<ul>
+<li>$PF(n,k) = $"Punto fijo en $n$ dígitos binarios con $k$ fraccionarios"</li>
+</ul>
+<ul>
+<li>En $PF(8,3)$, $00011101 \equiv 00011.101_{(2} = 3.625$</li>
+<li>El software opera con enteros de $n$ dígitos</li>
+<li>El punto no se almacena</li>
+<li>Sólo imprime el punto del resultado final</li>
+</ul>
+</ul>
+<aside data-markdown class="notes">
 ##Representación de punto fijo
-* Parte entera y fraccionaria son campos de un *ancho* determinado
-	* $PF(n,k) = $"Punto fijo en $n$ dígitos binarios con $k$ fraccionarios"
-* El punto no se almacena pero se asume
-	* $00011101 \equiv 00011.101_{(2} = 3.625$
-	* El software opera con enteros de $n$ dígitos
-	* Sólo imprime el punto del resultado final
+
+¿Cómo aplicamos el método de conversión visto, de fraccionarios decimales a binarios y viceversa, en las computadoras? El problema es parecido al de almacenar el signo "menos": no podemos guardar en la memoria otra cosa que bits, de forma que habrá que establecer alguna convención para indicar dónde está el punto o coma fraccionaria. 
+
+A veces las computadoras utilizan sistemas **de punto fijo** para representar números con parte fraccionaria. Los sistemas de punto fijo establecen una cantidad de bits o **ancho** total (que llamaremos $n$) y una cantidad fija de bits para la parte fraccionaria (que llamaremos $k$). Todos los datos manipulados por la computadora tienen la misma cantidad $n-k$ de bits de parte entera y la misma cantidad $k$ de bits de parte fraccionaria. Por ejemplo, la notación $PF(8,3)$ denota un **sistema de punto fijo con 8 bits en total, de los cuales 3 son para la parte fraccionaria**.
+
+Esta convención contiene toda la información necesaria. Al ser fijos los anchos de parte entera y fraccionaria, la computadora **puede tratar aritméticamente a todos los números como si fueran enteros**, sin preocuparse por partes enteras ni fraccionarias. Solamente habrá que utilizar la convención al momento de imprimir o comunicar un resultado. La impresora, o la pantalla, deberán mostrar un resultado con coma fraccionaria en el lugar correcto. 
+
+Sin embargo, todas las operaciones intermedias, entre datos expresados en punto fijo, habrán podido llevarse a cabo sin tener en cuenta el lugar de la coma. Dos números en punto fijo se sumarán como si los representados fueran dos enteros.
+
+**Ejemplo**
+
+- Supongamos que queremos computar $3.625 + 1.25$ en un sistema $PF(8,3)$. 
+- Las conversiones de estos sumandos a fraccionarios binarios son, respectivamente, $11.101$ y $1.01$. 
+- Pero en la memoria se almacenarán como **00011101** y **00001010**. Nótese que al ser todas las partes fraccionarias del mismo ancho, quedan automáticamente "encolumnados" los invisibles puntos fraccionarios.
+- La suma se efectuará bit a bit como si se tratara de enteros y será **00100111**.
+- Si pedimos a la computadora que imprima este valor, aplicará la convención $PF(8,3)$ e imprimirá **00100.111**, o su interpretación en decimal, $4.875$, que es efectivamente $3.625 + 1.25$.
+
+</aside>
 </section>
 
+<!--------------------------------------
 <section data-markdown>
 ##Operaciones en punto fijo
 * Los operandos tienen el mismo tamaño de PE y PF
@@ -1285,31 +1407,82 @@ Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3)
 * Los puntos fraccionarios se encolumnan automáticamente
 * El resultado debe conservar el *ancho* de PE y PF
 </section>
+---------------------------------------->
 
-<section data-markdown>
-##Punto fijo con signo
-###Decimal fraccionario &rarr; binario
-* Caso positivo
-  * Se expresan la PE y PF en binario
-  * $2.25 = 00010.010$
-* Caso negativo
-   * Se expresa su valor absoluto como en el caso positivo y se complementa, ignorando la posición del punto
-   * $-2.25 = C2(00010.010) = 11101.110$ 
+<section>
+<h2>Punto fijo con signo</h2>
+<h3>Decimal fraccionario &rarr; binario</h3>
+<ul>
+	<li>Caso positivo</li>
+	<ul>
+		<li>Se expresan la PE y PF en binario, con el ancho adecuado</li>
+		<li>$2.25 = 00010.010$</li>
+
+	</ul>
+	<li>Caso negativo</li>
+	<ul>
+		<li>Se expresa su valor absoluto como en el caso positivo y se complementa a 2, ignorando la posición del punto</li>
+		<li>$-2.25 = C2(00010.010) = 11101.110$ </li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+###Decimal a PF(n,k)
+
+Para representar un decimal fraccionario $a$, positivo o negativo, en notación de punto fijo en $n$ lugares con $k$ fraccionarios ($PF(n,k)$), necesitamos obtener su parte entera y su parte fraccionaria, y expresar cada una de ellas en la cantidad de bits adecuada a la notación. Para esto completaremos la parte entera con ceros a la izquierda hasta obtener $n-k$ dígitos, y completaremos la parte fraccionaria con ceros por la derecha, hasta obtener $k$ dígitos.
+Una vez expresado así, lo tratamos como si en realidad fuera $a \times 2^k$, y por lo tanto, un entero. 
+
+- Si es positivo, calculamos la secuencia de dígitos binarios que expresan su parte entera y su parte fraccionaria, y escribimos ambas sobre la cantidad de bits adecuada.
+- Si es negativo, consideramos su valor absoluto y procedemos como en el punto anterior. Luego complementamos a 2 como si se tratara de un entero.
+
+###Truncamiento
+
+Al escribir la parte fraccionaria de un número $a$ en $k$ bits (porque ésta es la capacidad del sistema de representación de punto fijo con $k$ dígitos fraccionarios), en el caso general estaremos **truncando** el desarrollo fraccionario. El número $a$ podría tener otros dígitos diferentes de cero más allá de la posición $k$. Sin embargo, el sistema no permite representarlos, y esa información se perderá.
+
+La consecuencia del truncamiento es la aparición de un **error de truncamiento** o pérdida de precisión. El número almacenado en el sistema PF(n,k) será una aproximación con $k$ dígitos fraccionarios al número original $a$, y no estará representándolo con todos sus dígitos fraccionarios.
+
+¿Cuál es el valor de este error de truncamiento, es decir, cuál es, cuantitativamente, la diferencia entre $a$ y la representación en PF(n,k)? Si los primeros $k$ dígitos del desarrollo fraccionario real de $a$ se han conservado, entonces la diferencia es menor que $2^{-k}$.
+
+**Ejemplo**
+
+Representemos 3.1459 en notación PF(8,3). Parte entera: 00011. Parte fraccionaria: 001. Representación obtenida: 00011001. 
+Reconvirtiendo 00011001 a decimal, obtenemos parte entera 3 y parte fraccionaria 0.125; de modo que el número representado en PF(8,3) como 00011001 es en realidad **3.125** y no 3.1459.
+
+El error de truncamiento es $3.1459 - 3.1250 = 0.0209$, que es menor que $2^{-3} = 0.125$.
+</aside>
 </section>
 
-<section data-markdown>
-##Punto fijo con signo
-###Binario fraccionario &rarr; decimal
- * Positivo
-	- Se aplica la expresión general con exponentes negativos
-	- O bien, se trata como entero y se divide por $2^k$
- * Negativo
-	- Se complementa y se trata como en el caso positivo
-	- Se restituye el signo $-$
+<section>
+<h2>Punto fijo con signo</h2>
+<h3>Binario fraccionario &rarr; decimal</h3>
+<ul>
+	<li>Caso positivo</li>
+	<ul>
+		<li>Se aplica la Expresión General con exponentes negativos incluidos</li>
+		<li>O bien, se lo trata como entero y se divide por $2^k$</li>
+
+	</ul>
+	<li>Caso negativo</li>
+	<ul>
+		<li>Se complementa a 2 y se lo trata como en el caso positivo</li>
+		<li>Finalmente se restituye el signo $-$</li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+###PF(n,k) a decimal
+
+Para convertir un binario en notación de punto fijo en $n$ lugares con $k$ fraccionarios (PF(n,k)) a decimal:
+
+
+- Si es positivo, aplicamos la Expresión General extendida, utilizando los exponentes negativos para la parte fraccionaria. 
+   - O bien, lo consideramos como un entero, convertimos a decimal y finalmente lo dividimos por $2^k$.
+- Si es negativo, lo complementamos a 2 y terminamos operando como en el caso positivo.
+   - Finalmente agregamos el signo $-$ para expresar que se trata de un número negativo.
+
+</aside>
 </section>
 
 
-<section data-background="#3c53b5" data-background-transition="zoom">
+<section class="preguntas" data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false">
 <h2>Preguntas</h2>
 <ol>
 <li>¿A qué número decimal corresponde...</li>
@@ -1318,32 +1491,60 @@ Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3)
 	<li>$0001.1000$?</li>
 	<li>$0000.1100$?</li>
 	</ol>
-<li>Representación en $PF(8,4)$ de:</li>
+<li>¿Cómo se representan en $PF(8,4)$...</li>
 	<ol>
-	<li>$0.5$</li>
-	<li>$-7.5$</li>
+	<li>$0.5$?</li>
+	<li>$-7.5$?</li>
 	</ol>
-<li>¿Cuál es el RR de $PF(8,1)$? ¿Y de $PF(8,k)$?</li>
+<li>¿Cuál es el RR de $PF(8,3)$? ¿Y de $PF(8,k)$?</li>
 </ol>
+<aside data-markdown class="notes">
+###Preguntas
+
+- ¿A qué número decimal corresponde...
+    - $0011.0000$?
+    - $0001.1000$?
+    - $0000.1100$?
+- ¿Cómo se representan en $PF(8,4)$...
+    - $0.5$?
+    - $-7.5$?
+- ¿Cuál es el RR de $PF(8,3)$? ¿Y de $PF(8,k)$?
+</aside>
 </section>
 
-<section data-markdown>
-##Representación de punto fijo
-* Adecuada para problemas con datos de magnitudes y precisiones similares
-* Aplicada en
-   * Sistemas **de tiempo real** 
-   * Sistemas donde es importante la velocidad de cómputo, como juegos
-   * Sistemas **embebidos** con procesadores de recursos limitados
-   * Matemática financiera
+
+
+<section>
+<h2>Representación de punto fijo</h2>
+<ul>
+<li>Adecuada para problemas con datos de magnitudes y precisiones similares</li>
+<li>Aplicada en</li>
+<ul>
+	<li>Sistemas <strong>de tiempo real</strong></li>
+	<li>Sistemas donde es importante la velocidad de cómputo, como juegos</li>
+	<li>Sistemas <strong>empotrados o embebidos</strong> con procesadores de recursos limitados</li>
+</ul>
+</ul>
+<aside class="notes" data-markdown>
+La representación de punto fijo es adecuada para cierta clase de problemas donde los datos que se manejan son de magnitudes y precisiones comparables. 
+
+- En la situación contraria, cuando las magnitudes de los datos son muy variadas, habrá datos de valor absoluto muy grande, lo que hará que sea necesario elegir una representación de una gran cantidad de bits de ancho. Pero esta cantidad de bits quedará desperdiciada al representar los datos de magnitud pequeña.  
+- Otro tanto ocurre con los bits destinados a la parte fraccionaria. Si los requerimientos de precisión de los diferentes datos son muy altos, será necesario reservar una gran cantidad de bits para la parte fraccionaria. Esto permitirá almacenar los datos con mayor cantidad de dígitos fraccionarios, pero esos bits quedarán desperdiciados al almacenar otros datos.
+
+Las ventajas de la representación en punto fijo provienen, sobre todo, de que permite reutilizar completamente la lógica ya implementada para tratar enteros en complemento a 2, sin introducir nuevos problemas ni necesidad de nuevos recursos. Como la lógica para C2 es sencilla y rápida, la representación de punto fijo es adecuada para sistemas que deben ofrecer una determinada *performance*:
+
+- Los sistemas que deben ofrecer un tiempo de respuesta corto, especialmente aquellos interactivos, como los juegos.
+- Los de tiempo real, donde la respuesta a un cómputo debe estar disponible en un tiempo menor a un plazo límite, generalmente muy corto.
+- Los sistemas empotrados o embebidos, que suelen enfrentar restricciones de espacio de memoria y de potencia de procesamiento.
+
+</aside>
 </section>
 
---------------------------------------------------------------->
    
 <!-- 
 https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 -->
     
-<!-----------------------------------------------------------
 
 <section>
 <h2>Variables muy diferentes</h2>
@@ -1355,6 +1556,13 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 	<li>$v = 300.000\ km/s = 300.000.000\ m/s$</li>
 </ul>
 </ul>
+<aside data-markdown class="notes">
+Por el contrario, algunas clases de programas suelen manipular datos de otra naturaleza. No es raro que aparezcan en el mismo programa, e incluso en la misma instrucción de programa, datos o variables de magnitud o precisión extremadamente diferentes. 
+
+Por ejemplo, si un programa de cómputo científico necesita calcular el **tiempo en que la luz recorre una millonésima de milímetro**, la fórmula a aplicar relacionará la velocidad de la luz en metros por segundo (unos $300.000.000 m/s$) con el tamaño en metros de un nanómetro ($0.000000001 m$). 
+
+Estos dos datos son extremadamente diferentes en magnitud y cantidad de dígitos fraccionarios. La velocidad de la luz es un número astronómicamente grande en comparación a la cantidad de metros en un nanómetro; y la precisión con que necesitamos representar al nanómetro no es para nada necesaria al representar la velocidad de la luz.
+</aside>
 </section>
     
 <section>
@@ -1367,10 +1575,29 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 <li class="fragment">$t = e / v = \frac{(1 \times 10^{-9}\ m)}{(3 \times 10^8\ m/s)}$ <span class="fragment"> $ = \frac{1}{3} \times \frac{10^{-9}\ m}{10^8\ m/s}$</span></li>
 <li class="fragment">$t = 1 / 3 \times 10^{-9-8}\ s \Longrightarrow t = 0.333 \times 10^{-17}\ s$</li>
 </ul>
+<aside data-markdown class="notes">
+###Notación Científica
+
+En Matemática, la respuesta al problema del cálculo con variables tan diferentes existe desde hace mucho tiempo, y es la llamada **Notación Científica**. En Notación Científica, los números se expresan en una forma estandarizada que consiste de un **coeficiente, significando o mantisa** multiplicado por **una potencia de 10**. Es decir, la forma general de la notación es $m \times 10^e$, donde $m$, el coeficiente, **es un número positivo o negativo**, y $e$, el **exponente**, es un entero positivo o negativo.
+
+La notación científica puede representar entonces números muy pequeños y muy grandes, todos en el mismo formato, con economía de signos y permitiendo operar entre ellos con facilidad.  Al operar con cantidades en esta notación podemos aprovechar las reglas del Álgebra para calcular $m$ y $e$ separadamente, y evitar cuentas con muchos dígitos. 
+
+**Ejemplo**
+
+Los números mencionados hace instantes, la velocidad de la luz en metros por segundo, y la longitud en metros de un nanómetro, se representarán en notación científica como $3\times10^8$ y $1\times10^{-9}$, respectivamente.
+
+El tiempo en que la luz recorre una millonésima de milímetro se computará con la fórmula $t = e/v$, con los datos expresados en notación científica, como:
+
+`$$e = 1\times10^{-9}m$$`
+`$$v = 3\times10^{8}m/s$$`
+`$$t = e / v = (1 \times 10^{-9}\ m) / (3 \times 10^8\ m/s) = $$`
+`$$t = 1 / 3 \times 10^{-9-8}\ s =$$`
+`$$t = 0.333 \times 10^{-17}\ s$$`
+</aside>
 </section>
 
 <section>
-<h2>Notación científica</h2>
+<h2>Notación científica normalizada</h2>
 <ul>	
 	<li>$t = 0.333 \times 10^{-17}\ s$</li>
 	<ul>
@@ -1382,7 +1609,37 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 		<li>$1 <= coeficiente < base$</li>
 		<li>$0.333 \times 10^{-17} = 3.33 \times 10^{-18}$</li>
 	</ul>
+	<li class="fragment">Normalización en base 2</li>
+	<ul class="fragment">
+		<li>$1 <= coeficiente < base$</li>
+		<li>$100.111 = 1.00111 \times 2^2$</li>
+		<li>$0.0001101 = 1.101 \times 2^{-4}$</li>
+	</ul>
 </ul>
+
+<aside data-markdown class="notes">
+###Normalización
+
+El resultado que hemos obtenido en el ejemplo anterior debe quedar **normalizado** llevando el coeficiente $m$ a un valor **mayor o igual que 1 y menor que 10**.  Si modificamos el coeficiente al normalizar, para no cambiar el resultado debemos ajustar el exponente.
+
+**Ejemplo**
+
+El resultado que obtuvimos anteriormente al computar `$t = 1 / 3 \times 10^{-9-8}\ s $` fue `$0.333 \times 10^{-17}\ s$`. Este coeficiente $0.333$ no cumple la regla de normalización porque no es **mayor o igual que 1**. 
+
+- Para normalizarlo, lo multiplicamos por 10, convirtiéndolo en $3.33$.
+- Para no cambiar el resultado, dividimos todo por 10 afectando el exponente, que de -17 pasa a ser -18.
+- El resultado queda normalizado como $0.333\times 10^{-18}$.
+
+###Normalización en base 2
+
+Es perfectamente posible definir una notación científica en otras bases. En base 2, podemos escribir números con parte fraccionaria en notación científica normalizada desplazando la coma o punto fraccionario hasta dejar una parte entera **igual a 1** (ya que es el único valor binario que cumple la condición de normalización) y ajustando el exponente de base 2, de manera de no modificar el resultado.
+
+**Ejemplos**
+
+- $100.111_{(2} = 1.00111_{(2} \times 2^2$
+- $0.0001101_{(2} = 1.101_{(2} \times 2^{-4}$
+
+</aside>
 </section>
 
 
@@ -1404,26 +1661,69 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 	</ul>
 	</span>
 </ul>
+
+<aside data-markdown class="notes">
+##Representación en Punto Flotante
+
+La herramienta matemática de la Notación Científica ha sido adaptada al dominio de la computación definiendo métodos de **representación en punto flotante**. Estos métodos resuelven los problemas de los sistemas de punto fijo, abandonando la idea de una cantidad fija de bits para parte entera y parte fraccionaria. En su lugar, inspirándose en la notación científica, los formatos de punto flotante permiten escribir números de un gran rango de magnitudes y precisiones en un campo de tamaño fijo.
+
+Actualmente se utilizan los estándares de cómputo en punto flotante definidos por la organización de estándares **IEEE** (Instituto de Ingeniería Eléctrica y Electrónica, o "I triple E"). 
+
+Estos estándares son dos, llamados **IEEE 754 en precisión simple y en precisión doble**.
+
+- IEEE 754 precisión simple
+    - Se define sobre un campo de 32 bits
+    - Cuenta con **1 bit de signo**
+    - Reserva **8 bits para el exponente**
+    - Reserva **23 bits para la mantisa**
+- IEEE 754 precisión doble
+    - Se define sobre un campo de 64 bits
+    - Cuenta con **1 bit de signo** igual que en precisión simple 
+    - Reserva **11 bits para el exponente**
+    - Reserva **52 bits para la mantisa**
+
+La definición de los formatos está acompañada por la especificación de mecanismos de cálculo para usarlos, manejo de errores y otra información importante.
+</aside>
 </section>
 
 
-<section>
-<h2>Formato <i>IEEE 754 single precision</i></h2>
+<section data-coursemod-shown="false">
+<h2>IEEE 754 single precision</h2>
 <img class="plain stretch" src="img/ieee754.png">
 </section>
 
 
-<section> 
-  <section data-transition="convex" data-transition-speed="slow">
+<section data-transition="convex" data-transition-speed="slow">
   <h2>Decimal a punto flotante</h2>
   <ol>	
-	<li>Separar el signo y escribir el valor absoluto en base 2</li>
+	<li>Separar el <b>signo</b> y escribir el valor absoluto en base 2</li>
 	<li>Convertirlo a notación científica en base 2 <b>normalizada</b></li>
 	<li>Expresar el exponente en notación <b>en exceso</b></li>
 	<li>Guardar el coeficiente <b>sin parte entera</b> en la mantisa</li>
   </ol>
-  </section>
+<aside data-markdown class="notes">
+###Conversión de decimal a punto flotante 
 
+Para convertir manualmente un número decimal $n$ a punto flotante necesitamos calcular los tres elementos del formato de punto flotante: **signo** (que llamaremos $s$), **exponente** (que llamaremos $e$) y **mantisa** (que llamaremos $m$), en la cantidad de bits correcta según el formato de precisión simple o doble que utilicemos.
+
+
+En el curso utilizaremos siempre el formato de precisión simple. Una vez conocidos $s$, $e$ y $m$, sólo resta escribirlos como secuencias de bits de la longitud que especifica el formato.
+
+1. Separar el **signo** y escribir el valor absoluto de $n$ en base 2.
+     - Si $n$ es positivo (respectivamente, negativo), $s$ será 0 (respectivamente, 1). Separado el signo, consideramos únicamente el **valor absoluto** de $n$ y lo representamos en base 2 como se vio al convertir un decimal fraccionario a base 2.
+2. Escribir el valor binario de $n$ en notación científica ** en base 2 normalizada**.
+     - Para convertir $n$ a notación científica lo multiplicamos por una potencia de 2 de modo que la parte entera sea 1 (condición para la normalización). El resto de la expresión binaria se convierte en parte fraccionaria. Para no cambiar el valor de $n$, lo multiplicamos por una potencia de 2 inversa a aquella que utilizamos.
+3. El exponente, positivo o negativo, que aplicamos en el paso anterior debe ser expresado en notación en exceso a 127. 
+     - Al exponente se le suma 127 para representar valores en el intervalo $[-127,128]$ con 8 bits. Esta representación se elige para poder hacer comparables directamente dos números expresados en punto flotante.
+4. El coeficiente calculado se guarda **sin su parte entera** en la parte de mantisa.
+     - Como la normalización obliga a que la parte entera de la mantisa sea 1, no tiene mayor sentido utilizar un bit para guardarlo en el formato de punto flotante: guardarlo no aportaría ninguna información. Por eso basta con almacenar la parte fraccionaria de la mantisa, hasta los 23 bits disponibles (o completando con ceros).
+
+</aside>
+</section>
+
+
+<!----------------------------------------
+<section> 
   <section data-transition="convex" data-transition-speed="slow">
   <h2>Decimal a punto flotante</h2>
   <h3>1. Escribir el valor absoluto en base 2</h3>
@@ -1466,24 +1766,24 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
     </ul>
 </section>
 </section>
+----------------------------------->
 
----------------------------------------------------->
-<!--
+<!---------------------
 <section>
 <h2>Ejemplo de Punto Flotante</h2>
     <div align="center" class="post_it">$n = -5.5$</div>
     <ol>	
 	<li class="fragment"><span class="post_it">$s = 1$</span><span class="fragment">; $|n| = 5.5_{(10} = 101.1_{(2}$</span></li>
-	<li class="fragment">$101.1 = 1.011 \times  2^2$</li>
+	<li class="fragment">$101.1_{(2} = 1.011_{(2} \times  2^2$</li>
 	<li class="fragment post_it">$e = 2 + 127 = 129$</li>
 	<li class="fragment">$1.011 - 1 = .011$ <span class="fragment post_it">&rarr; $m = 011000...$</span></li>
     </ol>
 </section>
---> 
+----------------------------------->
 
-<!---------------------------------------------
 <section id="experimento">
-<h2>Ejemplo Punto Flotante $n = -5.5$</h2>
+<h2>Ejemplo Punto Flotante</h2>
+<h3>$n = -5.5$</h3>
     <ol>	
 	<li>Separar el signo y escribir el valor absoluto en base 2</li>
 	    <ul>	
@@ -1503,9 +1803,23 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 	<li class="fragment">$1.011 - 1 = .011$ <span class="fragment post_it">&rarr; $m = 011000...$</span></li>
 		</ul>
     </ol>
+<aside data-markdown class="notes">
+###Ejemplo de Punto Flotante
+
+Recorramos los pasos para la conversión manual a punto flotante precisión simple, partiendo del decimal $n = -5.5$. Recordemos que necesitamos averiguar $s$, $e$ y $m$.
+
+- $n$ es negativo, luego $s = 1$.
+- $|n| = 5.5$. Convirtiendo el valor absoluto a binario obtenemos $101.1_{(2}$.
+- Normalizando, queda `$101.1_{(2} = 1.011_{(2}\times 2^2$`.
+- Del paso anterior, el exponente 2 se representa en exceso a 127 como $e = 2 + 127 = 129$. En base 2, $129 = 10000001_{(2}$.
+- Del mismo paso anterior extraemos la mantisa quitando la parte entera: $1.011 - 1 = 0.011$. Los bits de $m$ son $011000000...$ con ceros hasta la posición 23.
+- Finalmente, $s, e, m = 1, 10000001, 011000000000...$.
+
+Lo que significa que la representación en punto flotante de $-5.5$ es igual a $1100000010110000000...$ (con ceros hasta completar los 32 bits de ancho total).
+</aside>
 </section>
 
-<section>
+<section data-coursemod-shown="false">
 <h2>Ejemplo de Punto Flotante</h2>
 	<div align="center" class="post_it">$n = -5.5$</div>
 	<div align="center"> s = 1, e = 129, m = 011000... </div>
@@ -1515,6 +1829,15 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 <section>
 <h2>Resultado en hexadecimal</h2>
 	<img class="plain stretch" src="img/ejemploFPhexa.png">
+<aside data-markdown class="notes">
+###Expresión de punto flotante en hexadecimal
+
+Para facilitar la escritura y comprobación de los resultados, es conveniente leer los 32 bits de la representación en punto flotante precisión simple como si se tratara de 8 dígitos hexadecimales. Se aplica la regla, que ya conocemos, de sustituir directamente cada grupo de 4 bits por un dígito hexadecimal.
+
+Así, en el ejemplo anterior, la conversión del decimal $-5.5$ resultó en la secuencia de bits `$11000000101100000...$` (con más ceros). 
+
+Es fácil equivocarse al transcribir este resultado. Pero sustituyendo los bits, de a grupos de 4, por dígitos hexadecimales, obtenemos la secuencia equivalente $C0B00000$, que es más simple de leer y de comunicar.
+</aside>
 </section>
     
     
@@ -1528,6 +1851,41 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 	<li class="fragment">$m = 011000...      \Longrightarrow            1.m = 1.011000...$</li>
 	<li class="fragment">Resulta $n = (-1) \times 2^2 \times 1.011000..._{(2} =$ $(-1) \times 101.1000..._{(2} =$ $(-1) \times 5.5 = -5.5$</li>
 </ul>
+<aside data-markdown class="notes">
+###Conversión de punto flotante a decimal
+
+Teniendo un número expresado en punto flotante precisión simple, queremos saber a qué número decimal equivale. Separamos la representación en sus componentes $s$, $e$ y $m$, que tienen **1, 8 y 23 bits** respectivamente, y "deshacemos" la transformación que llevó a esos datos a ocupar esos lugares. De cada componente obtendremos un factor de la fórmula final.
+
+- Signo
+    - El valor de $s$ nos dice si el decimal es positivo o negativo. 
+    - La fórmula `$(-1)^s$` da -1 si $s=1$, y 1 si $s=0$.
+- Exponente
+    - El exponente está almacenado en la representación IEEE 754 como ocho bits en exceso a 127. Corresponde **restar 127** para volver a obtener el exponente de 2 que afectaba al número originalmente en notación científica normalizada. 
+    - La fórmula `$2^{(e - 127)}$` dice cuál es la potencia de 2 que debemos usar para ajustar la mantisa.
+- Mantisa
+    - La mantisa está almacenada sin su parte entera, que en la notación científica normalizada en base 2 **siempre es 1**. Para recuperar el coeficiente o mantisa original hay que restituir esa parte entera igual a 1. 
+    - La fórmula `$1 + m$` nos da la mantisa binaria original.
+
+Reuniendo las fórmulas aplicadas a los tres elementos de la representación, hacemos el cálculo multiplicando los tres factores:
+
+`$$n = (-1)^s \times 2^{(e-127)}  \times (1+m)$$`
+
+obteniendo finalmente el valor decimal representado.
+
+**Ejemplo**
+
+Para el valor de punto flotante IEEE 754 precisión simple representado por la secuencia hexadecimal $C0B00000$, encontramos que $s=1$, $e=129$, `$m=011000...$`.
+
+- Signo
+    - $(-1)^s = (-1)^1 = -1$
+- Exponente
+    - $e = 129$ &rarr; $2^{(e-127)} = 2^2$
+- Mantisa
+    - $m = 0110000...$ &rarr; $(1 + m) = 1.011000....$
+
+Ajustando la mantisa $1.011000...$ por el factor $2^2$ obtenemos $101.1$. Convirtiendo a decimal obtenemos $5.5$. Aplicando el signo recuperamos finalmente el valor $-5.5$, que es lo que está representando la secuencia $C0B00000$.
+
+</aside>
 </section>
 
 <section>
@@ -1550,11 +1908,19 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 </code></pre>
 </section>
 
-<section data-transition="convex-in convex-out">
- <img src="img/placa1.png" class="plain stretch">
-</section> 
 
---------------------------------------------------->
+<!------------
+<section>
+<h2>Error de aproximación</h2>
+ <div class="asciicast">
+        <! --
+        {
+                "URL": "src/fp.json"
+        }
+        -- >
+  </div>
+</section>
+------------->
 
 
 <!--
@@ -1573,12 +1939,39 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 </section>
 -->
 
-<!------------------------------------------------------
- <section>
+<section>
+<h2>Casos especiales en IEEE 754</h2>
+<table>
+<tr><th>Clase de números</th><th>Exponente</th><th>Mantisa</th><th>Signo</th></tr>
+<tr><td>Ceros</td><td align="center">$0$</td><td align="center">$0$</td><td>$+/-$</td></tr>
+<tr><td>Desnormalizados</td><td align="center">$0$</td><td align="center">$\neq 0$</td><td>$+/-$</td></tr>
+<tr><td>Normalizados</td><td align="center">$\neq 0$</td><td align="center">Cualquiera</td><td>$+/-$</td></tr>
+<tr><td>Infinito</td><td align="center">$1...1$</td><td align="center">$0$</td><td>$+/-$</td></tr>
+<tr><td>NaN (Not a Number)</td><td align="center">$1...1$</td><td align="center">$\neq 0$</td><td>$+/-$</td></tr>
+</table>
+<aside data-markdown class="notes">
+###Casos especiales en punto flotante
+
+En el estándar IEEE 754, no todas las combinaciones de $s$, $e$ y $m$ dan representaciones con sentido, o con el sentido esperable. 
+
+Por ejemplo, con las fórmulas presentadas, no es posible representar el **cero**, ya que toda mantisa normalizada lleva una parte entera igual a 1, y los demás factores nunca pueden ser iguales a 0. Entonces, para representar el 0 en IEEE 754 se recurre a una **convención**, que se ha definido como la combinación de **exponente 0 y mantisa 0**, cualquiera sea el signo.
+
+Los números **normalizados** en IEEE 754 son aquellos que provienen de una expresión en notación científica normalizada con exponente diferente de -127, y son la gran mayoría de los representables. Sin embargo, el estándar permite la representación de una clase de números muy pequeños, con parte entera 0 en la notación científica, que son los llamados **desnormalizados**. 
+
+Otros números especiales son aquellos donde el exponente consiste en ocho **unos** binarios con mantisa 0. Estos casos están reservados para representar los valores **infinito** positivo y negativo (que aparecen cuando una operación arroja un resultado de **overflow** del formato de punto flotante). 
+
+Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0, se está representando un caso de **NaN** (**Not a Number**, "no es un número"). Estos casos patológicos sólo ocurren cuando un proceso de cálculo lleva a una condición de error (por intentar realizar una operación sin sentido en el campo real, como obtener una raíz cuadrada de un real negativo).
+</aside>
+</section>
+
+
+
+
+ <section data-coursemod-shown="false">
  <h2>Cálculo de punto flotante</h2>
  <div class="tangle" id="ieee754Calc">
          <script type="text/javascript" src="ieee754.js"></script>
-         <! --
+         <!--
          {
                  "initialize":"function(container) {
                          var rootElement = document.getElementById('ieee754Calc');
@@ -1617,7 +2010,7 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
                          var tangle=new Tangle(rootElement, model);
                    }"
          }
-         -- >
+         -->
          <table>
                  <tr><td>Decimal</td><td class="TKNumberField" data-var="decimal"></td></tr>
                  <tr><td>Signo</td><td data-var="sign"></td></tr>
@@ -1632,20 +2025,8 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 
  
 
-<section>
-<h2>Punto flotante, casos especiales</h2>
 
-<table>
-<tr><th>Clase de números</th><th>Exponente</th><th>Mantisa</th><th>Signo</th></tr>
-<tr><td>Ceros</td><td align="center">$0$</td><td align="center">$0$</td><td>$+/-$</td></tr>
-<tr><td>Desnormalizados</td><td align="center">$0$</td><td align="center">$\neq 0$</td><td>$+/-$</td></tr>
-<tr><td>Normalizados</td><td align="center">$\neq 0$</td><td align="center">Cualquiera</td><td>$+/-$</td></tr>
-<tr><td>Infinito</td><td align="center">$1...1$</td><td align="center">$0$</td><td>$+/-$</td></tr>
-<tr><td>NaN (Not a Number)</td><td align="center">$1...1$</td><td align="center">$\neq 0$</td><td>$+/-$</td></tr>
-</table>
-</section>
-
-<section data-background="#3c53b5" data-background-transition="zoom">
+<section data-background="#3c53b5" class="preguntas" data-background-transition="zoom" data-coursemod-shown="false">
 <h2>Preguntas</h2>
 <ul>
 	<li>¿Cuál es el RR de IEEE754, precisión simple?</li>
@@ -1658,7 +2039,7 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 </ul>
 </section>
 
-<section data-background="#00CCFF" data-background-transition="zoom">
+<section data-background="#00CCFF" data-background-transition="zoom" data-coursemod-shown="false">
 <h2>Representación de datos numéricos</h2>
 <ul>
 	<li>Enteros</li>
@@ -1675,11 +2056,6 @@ https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
 </ul>
 </section>
 
----------------------------------------------------->
-
-<section data-coursemod-shown="false">
-<h1>Continuará</h1>
-</section>
 
 <section data-coursemod-shown="false">
 <h2>Referencias</h2>
