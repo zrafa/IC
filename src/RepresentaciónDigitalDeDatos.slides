@@ -1636,8 +1636,8 @@ Es perfectamente posible definir una notación científica en otras bases. En ba
 
 **Ejemplos**
 
-- $100.111_{(2} = 1.00111_{(2} \times 2^2$
-- $0.0001101_{(2} = 1.101_{(2} \times 2^{-4}$
+- `$100.111_{(2} = 1.00111_{(2} \times 2^2$`
+- `$0.0001101_{(2} = 1.101_{(2} \times 2^{-4}$`
 
 </aside>
 </section>
