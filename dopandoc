@@ -1,0 +1,18 @@
+#!/bin/bash -x
+
+SOURCE=RepresentaciónDigitalDeDatos
+SLIDES=src/$SOURCE.slides
+MARKDOWN=$SOURCE.md
+PLAIN=$SOURCE-access.plain
+ACCESS=$SOURCE-access.txt
+
+util/asides.pl < "$SLIDES" > "$MARKDOWN"
+
+pandoc  -s \
+	-V lang=spanish \
+	-V fontfamily=sans \
+	-V papersize=A4 \
+	-V title="Introducción a la Computación" \
+	$MARKDOWN -t plain -o $PLAIN
+
+./latex2acces.pl < "$PLAIN" > "$ACCESS"

@@ -1889,7 +1889,7 @@ Ajustando la mantisa $1.011000...$ por el factor $2^2$ obtenemos $101.1$. Convir
 </section>
 
 <section>
-<h2>Error de aproximación</h2>
+<h2>Error de truncamiento</h2>
 <pre><code>
   $ python
   Python 2.7.9 (default, Mar  1 2015, 12:57:24) 
@@ -1906,6 +1906,20 @@ Ajustando la mantisa $1.011000...$ por el factor $2^2$ obtenemos $101.1$. Convir
   0.30000000000000004
 
 </code></pre>
+<aside data-markdown class="notes">
+###Error de truncamiento
+
+Aunque los 23 bits de mantisa del formato de punto flotante en precisión simple son suficientes para la mayoría de las aplicaciones, existen números que no pueden ser representados, ni aun en doble precisión. El caso más evidente es el de aquellos números que por su magnitud caen fuera del rango de representación del sistema. Sin embargo, el formato IEEE 754 también encuentra limitaciones al tratar con números aparentemente tan pequeños como 0.1 o 0.2. ¿Cuál es el problema en este caso?
+
+Si hacemos manualmente el cálculo de la parte fraccionaria binaria de 0.1 (o de 0.2) encontraremos que esta parte fraccionaria es **periódica**. Esto ocurre porque $0.1 = 1/10$, y el denominador 10 contiene factores que no dividen a la base (es decir, el 5, que no divide a 2). Lo mismo ocurre en base 10 cuando computamos $1/3$, que tiene infinitos decimales periódicos porque el denominador 3 no divide a 10, la base.
+
+Cuando un lenguaje de computación reconoce una cadena de caracteres como "0.1", introducida por el programador o el usuario, advierte que se está haciendo referencia a un número con decimales, e intenta representarlo en la memoria como un número en punto flotante. La parte fraccionaria debe ser forzosamente **truncada**, ya sea a los 23 bits, porque se utiliza precisión simple, o a los 52 bits, cuando se utiliza precisión doble. En ambos casos, el número representado es una aproximación al 0.1 original, y esta aproximación será mejor cuantos más bits se utilicen; pero en cualquier caso, esta parte fraccionaria almacenada en la representación en punto flotante es **finita**, de manera que nunca refleja el verdadero valor que le atribuimos al número original.
+
+A partir del momento en que queda representado (aproximadamente) ese número, todos los cómputos realizados con esa representación adolecen de un **error de truncamiento**, que va agravándose a medida que se opera con ese número representado. 
+
+En precisión simple, se considera que tan sólo **los primeros siete decimales** de un número en base 10 son representados en forma correcta. En precisión doble, sólo los primeros quince decimales son correctos.  
+
+</aside>
 </section>
 
 

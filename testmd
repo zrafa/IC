@@ -1,0 +1,11 @@
+Esta suma vale entonces
+
+ x_{k-1}\times 2^{k-1} + ... + x_1\times2^1+x_0\times2^0 = 
+  = 1\times 2^{k-1} + ... + 1\times2^1+1\times2^0 = 
+  = 2^{k-1} + ... + 2^1+2^0 =    = 2^{k}-1 
+
+Usando ambos argumentos hemos llegado a que el número más grande que
+podemos representar con k dígitos binarios es 2^k-1. Por lo tanto, el
+rango de representación de un sistema sin signo a k dígitos, o SS(k), es
+[0, 2^k - 1]. Todos los números representables en esta clase de sistemas
+son positivos o cero.

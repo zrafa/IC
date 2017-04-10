@@ -1,0 +1,12 @@
+#!/usr/bin/perl -n
+
+s/\\pi/PI/g;
+s/\\times/ por /g;
+s/\^/ elevado a la /g;
+s/_{\(([^}]+)}/ en base $1/g;
+s/_{([^}]+)}/ sub $1 /g;
+s/_/ sub /g;
+
+while(/\D*([01][01]+[01]+)\D*/) { $g = join (' ', split //, $1); s/$1/$g/; }
+
+print;

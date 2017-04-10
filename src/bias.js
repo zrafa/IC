@@ -54,8 +54,8 @@ function Bias(container, options) {
 			this.inter.add(svg.text(traslacion(a + i),0,secuencia(i,k)).attr(attrs.text).transform('S0.4'));
 
 		this.g.add(this.inter);
+		//X
 
-		this.g.transform('T0 '+t);
 		return this;
 	}
 
@@ -71,13 +71,16 @@ function Bias(container, options) {
 	});
 
 	var r1 = recta(-5,28,10,25,10,4);
+	r1.g.transform('T0 '+10); // estaba en X
 	var inter1 = r1.g.select('#inter');
 	inter1.click(inter1.zoom);
 	inter1.hover(inter1.restore);
 
 	var r2 = recta(-5,28,-3,4,30,3);
+	r2.g.transform('T0 '+30);
 	var inter2 = r2.g.select('#inter');
 	inter2.click(inter2.zoom);
 	inter2.hover(inter2.restore);
 
 }
+
