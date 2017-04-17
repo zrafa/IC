@@ -105,5 +105,3 @@ En computación se utilizan, en diferentes situaciones, ambos sistemas de unidad
 - Los textos, imágenes, sonido, video, programas, etc., se guardan en **archivos**, que son sucesiones de bytes. Encontramos archivos en el disco de nuestra computadora, y podemos descargar archivos desde las redes. Cuando nos interesa saber cuánto mide un archivo, en términos de bytes, usamos el Sistema Internacional porque el archivo no tiene por qué tener un tamaño que sea potencia de 2. 
 - Por el contrario, los fabricantes de medios de almacenamiento, como memorias, discos rígidos o pendrives, deberían (aunque a veces no lo hacen) utilizar Prefijos Binarios para expresar las capacidades de almacenamiento de esos medios. Así, un *"pendrive de dieciséis gigabytes"*, si tiene una capacidad de $16 \times 2^{30}$ bytes, debería publicitarse en realidad como *"pendrive de dieciséis gibibytes"*.
 
-
-

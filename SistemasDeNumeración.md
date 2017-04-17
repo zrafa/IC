@@ -1,9 +1,6 @@
 
 #Sistemas de Numeración
 
-En este primer tema de la unidad veremos las propiedades de los sistemas de numeración más importantes para el estudio de la arquitectura de computadoras, en especial los sistemas **binario y hexadecimal**.
-
-
 ##Un sistema diferente
 Todos conocemos el método tradicional de contar con los dedos. Como tenemos cinco dedos
 en cada mano, podemos contar hasta diez. Pero también podemos utilizar un método diferente 

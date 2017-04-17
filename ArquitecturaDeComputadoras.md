@@ -19,7 +19,7 @@ Los **dispositivos de Entrada y Salida** son todos aquellos dispositivos que con
 Todos estos componentes, y muchos otros que pueden estar o no presentes, dependiendo de la **arquitectura**, o modo de construcción, de la computadora, están conectados entre sí mediante **buses** o líneas de interconexión. 
 
 
-##Memoria
+###Memoria
 
 La memoria es un componente fundamental de la computadora. Está implementada con circuitos que pueden estar en uno de dos estados eléctricos, y por esto los llamamos **biestables**. 
 
@@ -28,7 +28,7 @@ Cada circuito biestable puede almacenar la información correspondiente a un **b
 Para poder utilizar la memoria es imprescindible conocer el número, o **dirección**, de la posición de memoria donde está el dato o instrucción que se necesita acceder. Con esta dirección podemos **recuperar**, es decir, **leer**, el valor que está alojado en ese byte de la memoria, o escribir sobre ese byte un contenido de ocho bits.
 
 
-##CPU
+###CPU
 
 La CPU está implementada como un circuito sumamente complejo que contiene **registros**. Éstos son lugares de almacenamiento temporario de datos e instrucciones que se utilizan durante el cómputo. 
 
@@ -46,9 +46,9 @@ La CPU está constituida por varios circuitos componentes o unidades funcionales
 * La Unidad Lógico-Aritmética es la que efectivamente realiza los cómputos con los datos.
 
 
-#Arquitectura de Von Neumann
+##Arquitectura de Von Neumann
 
-##Máquina de programa almacenado
+###Máquina de programa almacenado
 
 Por supuesto, además de todos esos componentes que hemos nombrado, hay muchas otras cosas que físicamente forman parte de la computadora; pero la descripción de la computadora que hemos hecho hasta el momento dice, por lo menos en líneas generales, los componentes fundamentales que tiene cualquier computadora actual. Esta descripción puede resumirse diciendo que la computadora es una **máquina de Von Neumann o máquina de programa almacenado**. 
 
@@ -58,7 +58,7 @@ Estas máquinas ejecutan las instrucciones almacenadas en memoria secuencialment
 
 
 
-##CPU y Memoria
+###CPU y Memoria
 
 En una **máquina de Von Neumann**, entonces, aparecen dos componentes básicos fundamentales que son la CPU y la memoria,  
 
@@ -69,7 +69,7 @@ la primera conteniendo una **Unidad de Control, o UC**, para realizar el **ciclo
 y una **Unidad Lógico-Aritmética, o ALU**, para el cómputo. 
 
 
-##Buses
+###Buses
 
 En la máquina existen diferentes clases de buses para interconectar los componentes: **buses internos** de la CPU para comunicar la UC y la ALU,
 
@@ -82,12 +82,12 @@ y otros **buses de Entrada/Salida** para comunicar todo el sistema con los dispo
 ¿En qué momento se utilizará cada clase de bus? Cuando la UC disponga que se debe ejecutar una instrucción, tal como una suma, enviará los datos de partida, y la instrucción, a la ALU a través de un bus interno. Si la ALU necesita más datos, los obtendrá de la memoria a través de un bus de sistema. Si la CPU encuentra instrucciones que ordenan presentar el resultado del cómputo al usuario, usará un bus de Entrada/Salida para emitir ese resultado por pantalla o por impresora.
 
 
-#Modelo Computacional Binario Elemental
+##Modelo Computacional Binario Elemental
 
 Para comprender desde lo más básico cómo opera la computadora, recurrimos al **MCBE o Modelo Computacional Binario Elemental**, que es una máquina teórica. El MCBE es una computadora extremadamente simple, pero que podría ser implementada físicamente, y funcionaría como la mayoría de las computadoras actuales. Bueno, con muchas menos capacidades, claro, pero manteniendo lo esencial de las computadoras de programa almacenado.
 
 
-##Esquema del MCBE
+###Esquema del MCBE
 
 ![Esquema del MCBE][mcbe]
 
@@ -97,14 +97,14 @@ En este esquema del MCBE vemos los tres registros de la CPU: el **PC o contador 
 
 Además se representa **la memoria**, compuesta por 32 bytes de ocho bits. Las direcciones de los bytes van, entonces, **de 0 a 31**. Aquí hemos descompuesto la memoria en trozos solamente para poder representarla completa en el esquema, pero conviene pensar en la memoria como una única sucesión de bytes, numerados de 0 a 31. Es costumbre, al representar los diagramas de memoria, ubicar las posiciones con direcciones menores en la parte inferior del diagrama, y las direcciones mayores arriba; como si la memoria fuera una escalera con posiciones numeradas a partir de 0 y ascendiendo. 
 
-###Estado de la máquina
+**Estado de la máquina**
 
 Cada combinación posible de ceros y unos en los bits de cualquiera de los registros o posiciones de memoria representa un **estado** de la máquina, porque define los valores de la memoria y de los registros en un momento dado. Es decir, el estado de la máquina en cada momento es el conjunto de valores de los tres registros y de los 32 bytes de la memoria. 
 
-El estado de la máquina en cada momento define cuál será el estado siguiente. Ninguna otra cosa interviene en el comportamiento de la máquina. En particular, la máquina no tiene voluntad ni toma decisiones propias: solamente cumple el ciclo de instrucción, que la hace ejecutar las instrucciones del programa que tenga almacenado.
+El estado de la máquina en cada momento define cuál será el estado siguiente. Ninguna otra cosa interviene en el comportamiento de la máquina. En particular, la máquina no tiene voluntad ni toma decisiones propias: solamente cumple el **ciclo de instrucción**, que la hace ejecutar las instrucciones del programa que tenga almacenado.
 
 
-##Memoria del MCBE
+###Memoria del MCBE
 
 Las 32 posiciones de memoria, cada una de 8 bits, son casi todas iguales, con dos excepciones. 
 
@@ -112,7 +112,7 @@ Las 32 posiciones de memoria, cada una de 8 bits, son casi todas iguales, con do
 - La posición 31 es solamente de escritura. Al escribir un dato en la dirección 31, hacemos que el MCBE escriba ese valor por pantalla, y solamente así podemos saber el resultado de un cómputo. 
 
 
-##Registros del MCBE
+###Registros del MCBE
 
 Como hemos dicho, los registros son lugares de almacenamiento temporario para varios usos. Los registros funcionan en forma parecida a la memoria, en el sentido de que se pueden leer o escribir datos en ellos, pero normalmente en una computadora física su velocidad de acceso es mayor. 
 
@@ -123,22 +123,22 @@ Antes de ejecutar cada instrucción, la CPU va a **copiarla** en el registro **I
 El registro **acumulador**, que pertenece a la ALU, es un registro que interviene en casi todas las operaciones del MCBE; sobre todo para las operaciones aritméticas.
 
 
-##CPU del MCBE
+###CPU del MCBE
 Entonces la CPU del MCBE queda definida como el conjunto de **Unidad de Control** con dos registros **PC e IR**, más **Unidad lógico-aritmética** con un registro **acumulador**. 
 
 Esta CPU va a ser muy limitada y solamente va a ejecutar operaciones de suma y resta en complemento a 2, con ocho bits. No va a ejecutar **multiplicaciones**, ni **divisiones**, ni operaciones en **punto flotante**.
 
 
-##Formato de instrucciones del MCBE
+###Formato de instrucciones del MCBE
 
 
-###Código de instrucción
+**Código de instrucción**
 Las instrucciones del MCBE se codifican en ocho bits y por lo tanto pueden ser almacenadas en un byte de la memoria, o en el registro IR. Cada instrucción se divide en dos partes: los tres bits de más a la izquierda se destinan a representar el **código de instrucción**. 
 
-###Argumentos u operandos
+**Argumentos u operandos**
 Los cinco bits restantes representan el **argumento u operando** de esa instrucción, es decir, el dato con el cual tiene que operar esa instrucción. 
 
-###Direcciones y desplazamientos
+**Direcciones y desplazamientos**
 Por otro lado, los operandos pueden ser de dos clases: o bien **direcciones**, o bien **desplazamientos**. Si el operando es una dirección, es porque la CPU necesita conocer la dirección de un dato. Si es un desplazamiento, ese desplazamiento es **una cantidad de posiciones** que hay que trasladarse en la memoria, para encontrar la siguiente instrucción que hay que procesar.
 
 - Cuando el operando es una dirección, los cinco bits del operando representan una cantidad sin signo (porque no pueden existir direcciones negativas). 
@@ -149,7 +149,7 @@ Notemos que al representar las direcciones con cinco bits, sin signo, tenemos un
 Para los desplazamientos, como estamos usando un sistema con signo, tenemos un rango de -16 a 15. Lo que quiere decir que al trasladarnos de un lugar a otro de la memoria, vamos a poder hacerlo en saltos de a lo sumo 16 bytes hacia atrás o 15 bytes hacia adelante.
 
 
-##Conjunto de instrucciones del MCBE
+###Conjunto de instrucciones del MCBE
 
 Las instrucciones del MCBE se dividen en cuatro grupos. 
 
@@ -161,7 +161,7 @@ Las instrucciones del MCBE se dividen en cuatro grupos.
 Notemos que, como tenemos un campo de **tres bits** para definir el código de instrucción, no vamos a poder tener más que **ocho instrucciones**. Precisamente hay dos instrucciones en cada grupo de estos cuatro que hemos definido.
 
 
-###Instrucciones de transferencia de datos
+**Instrucciones de transferencia de datos**
 
 Las instrucciones de transferencia de datos son dos. El código 010 copia un byte de la memoria hacia el acumulador. Para esto se necesita la **dirección** de ese byte, y esa dirección es precisamente el argumento u operando de la instrucción, y por lo tanto esa dirección está codificada en los cinco bits de operando de la instrucción. 
 
@@ -172,21 +172,21 @@ En cualquiera de los dos casos, luego de ejecutarse la instrucción, el valor de
 El efecto sobre el estado de la máquina es exactamente lo que se describe aquí: cambia el valor del acumulador, en el caso de la instrucción 010, o el valor de una posición de memoria, en el caso del código 011, y el valor del PC se incrementa en 1. No ocurre ningún otro cambio en el estado de la máquina, ni en los registros ni en la memoria.
 
 
-###Instrucciones aritméticas
+**Instrucciones aritméticas**
 
 Las instrucciones aritméticas también son dos. Si el código es 100, la CPU va a buscar el valor contenido en la dirección dada por el operando, y lo suma al acumulador. Es decir, se suman el valor que tuviera anteriormente el acumulador, con el valor que proviene de esa posición de memoria. El resultado queda en el acumulador. El valor de la posición de memoria no varía. 
 
 Si el código es 101, la operación es una resta, que como sabemos consiste en complementar a 2 el operando y luego sumar. El resultado, igual que en la instrucción de suma, queda en el acumulador, y la posición de memoria queda sin cambios. Como en las instrucciones de transferencia de datos, el registro PC se incrementa en 1. Decimos que el PC **queda apuntando** a la siguiente instrucción.
 
 
-###Instrucciones de salto
+**Instrucciones de salto**
 
 Las dos instrucciones **de salto, o de transferencia de control**, tienen un efecto diferente. Funcionan modificando exclusivamente el valor del registro PC. En ambos casos, el operando es un valor con signo a cinco bits. En el caso del código 110, ese valor se suma algebraicamente al valor que tuviera hasta el momento el registro PC. Con lo cual el PC queda apuntando a alguna posición de memoria por delante o por detrás de donde estaba antes. Así, el ciclo de instrucción siguiente va a leer la instrucción ubicada en esa nueva dirección que ahora está contenida en el PC. 
 
 El código 110 es una instrucción de salto **incondicional**, es decir, **siempre** provoca un **salto** en la ejecución. En el caso del código 111, el salto es **condicional, y depende del valor del registro acumulador**. Si el acumulador **tiene un valor 0**, se produce el salto, sumando el valor del desplazamiento al registro PC. Pero si el acumulador no vale cero, simplemente se incrementa el PC en 1 como en el resto de las instrucciones; y el control sigue secuencialmente como es normal.  
 
 
-###Otras instrucciones
+**Otras instrucciones**
 
 Hasta el momento no hemos explicado cómo se detiene la máquina. El ciclo de instrucción continuamente va a ejecutar la instrucción siguiente, sin parar nunca. Para terminar la ejecución usamos la instrucción 001. El programa se detiene, y el estado final de la máquina queda con los valores que recibieron por última vez los registros y la memoria. El valor del PC no cambia.
 

@@ -347,7 +347,6 @@ En computación se utilizan, en diferentes situaciones, ambos sistemas de unidad
 <!------------------------------------------------------------------>
    </div>
 </div>
-<!--
 <link rel="stylesheet" href="externals/tangle/TangleKit/TangleKit.css" type="text/css">
 <script src="externals/tangle/Tangle.js"></script>
 <script src="externals/tangle/TangleKit/mootools.js"></script>
@@ -355,7 +354,6 @@ En computación se utilizan, en diferentes situaciones, ambos sistemas de unidad
 <script src="externals/tangle/TangleKit/BVTouchable.js"></script>
 <script src="externals/tangle/TangleKit/TangleKit.js"></script>
 <script src="externals/svg/dist/svg.min.js"></script>
--->
 <script src="externals/reveal/lib/js/head.min.js"></script>
 <script src="externals/reveal/js/reveal.js"></script>
 <script src="externals/snap/snap.svg-min.js"></script>
@@ -530,6 +528,8 @@ En computación se utilizan, en diferentes situaciones, ambos sistemas de unidad
 			84: function() { Recorder.fetchTTS(); }     // press 't' to fetch TTS audio files
 		},
 
+
+
 		// -------- Dependencies ---------
 		dependencies: [
 			{ src: 'externals/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
@@ -546,13 +546,13 @@ En computación se utilizan, en diferentes situaciones, ambos sistemas de unidad
 			//{ src: 'externals/reveal/plugin/chart/Chart.min.js'},
 			// { src: 'externals/reveal/plugin/search/search.js', async: true},
 			//{ src: 'externals/reveal-plugin/chart/csv2chart.js'},
-			//{ src: 'externals/asciinema-player/asciinema-player.js' },
+			{ src: 'externals/asciinema-player/asciinema-player.js' },
 			{ src: 'externals/reveal-plugins/anything/anything.js' },
 			{ src: 'externals/reveal-plugins/chalkboard/chalkboard.js' },
 			{ src: 'externals/reveal-plugins/menu/menu.js' },
 			{ src: 'externals/reveal-plugins/mathsvg/math.js', async: true },
 			//{ src: 'externals/reveal-plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
-			//{ src: 'externals/reveal-plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
+			{ src: 'externals/reveal-plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
 			{ src: 'externals/snap/snap.svg-min.js', async: true },
 			{ src: 'externals/coursemod/coursemod.js', async: true },
 			// ... 
