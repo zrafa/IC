@@ -314,7 +314,7 @@ var RevealMenu = window.RevealMenu || (function(){
 				var title = $(section).data('menu-title') ||
 					$('.menu-title', section).text() ||
 					$(titleSelector, section).text();
-				if (!title) {
+				if (!title || title==="VOID") {
 					if (hideMissingTitles) return '';
 					title = "Slide " + i;
 					type += ' no-title';

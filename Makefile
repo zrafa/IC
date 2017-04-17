@@ -8,6 +8,7 @@ git:
 	util/github "mm"
 
 
+index: index.html
 demo: demo.html
 re: Redes.html
 soft: Software.html
@@ -18,7 +19,7 @@ siste: SistemasDeNumeración.html
 uni: UnidadesDeInformación.html
 repre: RepresentaciónDigitalDeDatos.html
 texto: TextoYMultimedia.html
-arqui: Arquitectura.html
+arqui: ArquitecturaDeComputadoras.html
 
 %.html: src/%.slides $(DEPS) 
 	util/macro $< > $*.html
@@ -52,4 +53,4 @@ arqui: Arquitectura.html
 
 
 clean: 
-	mv Presentación.html Software.html SistemasOperativos.html SistemasDeCómputo.html SistemasDeNumeración.html UnidadesDeInformación.html RepresentaciónDigitalDeDatos.html TextoYMultimedia.html Arquitectura.html attic
+	mv index.html Presentación.html Software.html SistemasOperativos.html SistemasDeCómputo.html SistemasDeNumeración.html UnidadesDeInformación.html RepresentaciónDigitalDeDatos.html TextoYMultimedia.html ArquitecturaDeComputadoras.html attic

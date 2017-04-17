@@ -1,0 +1,182 @@
+<!-- INCLUDE src/reveal.header -->
+
+<!------------------------>
+<section data-background="img/background03.jpg" data-transition="slide-in slide-out">
+<div class="frosted">
+	<h3>Redes de Computadoras I</h3>
+	<h2>Capa de Transporte</h2>
+</div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Capa de Transporte</h2>
+<ul>
+	<li>Ofrece dos modelos de servicio</li>
+	<li>Confiable y No Confiable</li>
+	<li>Comunica dos <b>procesos</b></li>
+	<ul>
+		<li>Partes de una aplicación distribuida</li>
+		<li>Utilizando a la Capa de Red</li>
+		<ul>
+			<li>Que comunica a dos <b>hosts</b></li>
+		</ul>
+	</ul>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Multiplexado y demultiplexado</h2>
+<ul>
+	<li>Cliente/servidor</li>
+	<ul>
+		<li>Servidor siempre en espera</li>
+		<li>Interacción disparada por el cliente</li>
+	</ul>
+	<li>Peer-to-peer</li>
+	<ul>
+		<li>No existe un rol definido</li>
+		<li>Las partes de la aplicación funcionan alternativamente como cliente o servidor</li>
+	</ul>
+	<li>Híbridas</li>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Servicios requeridos</h2>
+<ul>
+	<li>Confiable</li>
+	<ul>
+		<li>Control de flujo</li>
+		<li>Control de congestión</li>
+		<li>Confirmaciones o reconocimientos</li>
+		<li>Retransmisión en caso negativo</li>
+		<li>Si un segmento se pierde, la aplicación recibe notificación</li>
+		<li>Necesita el establecimiento de una conexión previamente al intercambio de datos</li>
+	</ul>
+	<li>No confiable</li>
+	<ul>
+		<li>Nada de lo anterior</li>
+	</ul>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>HTTP</h2>
+<ul>
+<li>Hypertext Transfer Protocol</li>
+	<ul>
+	<li>Usa transporte confiable</li>
+	<li>Request GET</li>
+	<li>Requests PUT, POST</li>
+	<li>Persistente y no persistente</li>
+	</ul>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Caching</h2>
+<ul>
+	<li>Reducir el tiempo de respuesta</li>
+	<li><b>Última milla</b>, con frecuencia cuello de botella</li>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Domain Name Service, DNS</h2>
+<ul>
+	<li>Servicio de traducción de nombres a direcciones IP</li>
+	<ul>
+		<li>Crítico para el funcionamiento de la red pero implementado a nivel de aplicación</li>
+		<li>Sistema de nombres jerárquico</li>
+		<li>Base de datos distribuida</li>
+		<li>Servidores redundantes</li>
+	</ul>
+	<li>Diferentes funciones </li>
+	<ul>
+		<li>Servidor local</li>
+		<li>Servidor raíz</li>
+		<li>Servidor de dominio</li>
+	</ul>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Sockets</h2>
+<ul>
+	<li>Una estructura de datos privada del kernel</li>
+	<li>Accesible a través de la API de Sockets</li>
+	<li>Sockets TCP</li>
+	<ul>
+		<li>Punto extremo de una conexión</li>
+		<li>Se comunica con un único socket remoto interlocutor</li>
+		<li>Transporte confiable</li>
+	</ul>
+	<li>Sockets UDP</li>
+	<ul>
+		<li>Pueden enviar a muchos destinos</li>
+		<li>Pueden recibir desde muchos otros orígenes</li>
+		<li>Transporte no confiable</li>
+	</ul>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Servidor TCP</h2>
+<ul>
+	<li>Servidor</li>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<!------------------------>
+<section data-transition="slide-in slide-out">
+<h2>Cliente TCP</h2>
+<ul>
+	<li>Cliente</li>
+</ul>
+<!-- <img src="img/IMAGEN.png" class="plain stretch"> -->
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+
+<!-- INCLUDE src/reveal.trailer -->

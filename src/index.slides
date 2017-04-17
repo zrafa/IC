@@ -1,12 +1,19 @@
 <!-- INCLUDE src/reveal.header -->
 
 <!------------------------>
-<section data-transition="slide-in slide-out">
-<h2>Redes de Computadoras</h2>
+<section data-coursemod-shown="false" data-background="img/background07.jpg"> 
+<div class="frosted">
+<h2>Introducción a la Computación</h2>
+</div>
+<div class="frosted">
 <ol>
-	<li><a href="https://egrosclaude.github.io/RDCI/Introducción.html">Introducción</a></li>
-	<li><a href="https://egrosclaude.github.io/RDCI/Aplicación.html">Capa de Aplicación</a></li>
+	<li><a href="SistemasDeNumeración.html">Sistemas de Numeración</a></li>
+	<li><a href="UnidadesDeInformación.html">Unidades de Información</a></li>
+	<li><a href="RepresentaciónDigitalDeDatos.html">Representación Digital de Datos</a></li>
+	<li><a href="ArquitecturaDeComputadoras.html">Arquitectura de Computadoras</a></li>
 </ol>
+</div>
 </section>
 <!------------------------>
+
 <!-- INCLUDE src/reveal.trailer -->

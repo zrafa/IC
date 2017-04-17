@@ -5,6 +5,10 @@ BEGIN {
 
 /<h1>([^<]*)<\/h1>/ and push @lines, "\n#$1\n";
 
+if(/^<!--/ ... /-->/) {
+	next;
+}
+
 if(/^<aside/ ... /<\/aside/) {
 	s/`//g;
 	 s/^<aside.*$//;
