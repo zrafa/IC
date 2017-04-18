@@ -255,6 +255,10 @@ body {
 .reveal .controls .navigate-down.fragmented {
   opacity: 0.3; }
 
+.reveal .controls .navigate-down, .reveal .controls .navigate-up {
+    display: none;
+}
+
 /*********************************************
  * PROGRESS BAR
  *********************************************/
