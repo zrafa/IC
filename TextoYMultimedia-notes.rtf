@@ -1,0 +1,19 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Contents\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Codificaci\u243?n de texto\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En esta parte de la unidad veremos la forma de representar otras clases de informaci\u243?n no num\u233?rica, como los textos y las im\u225?genes.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Codificaci\u243?n de texto\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Cuando escribimos texto en nuestra computadora, estamos almacenando temporariamente en la memoria una cierta secuencia de n\u250?meros que corresponden a los {\b caracteres}, o s\u237?mbolos que tipeamos en nuestro teclado.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Estos caracteres tienen una {\b representaci\u243?n gr\u225?fica} en nuestro teclado, en la pantalla o en la impresora, pero mientras est\u225?n en la memoria no pueden ser otra cosa que {\b bytes}, es decir, conjuntos de ocho d\u237?gitos binarios.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para lograr almacenar caracteres de texto necesitamos adoptar una codificaci\u243?n, es decir, una tabla que asigne a cada car\u225?cter un patr\u243?n de bits fijo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Esta codificaci\u243?n debe ser universal: para poder compartir informaci\u243?n entre usuarios, o entre diferentes aplicaciones, se requiere alg\u250?n est\u225?ndar que sea comprendido y respetado por todos los usuarios y las aplicaciones.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Inicialmente se estableci\u243? con este fin el {\b c\u243?digo ASCII}, que durante alg\u250?n tiempo fue una buena soluci\u243?n. El c\u243?digo ASCII relaciona cada secuencia de {\b siete bits} con un car\u225?cter (o {\b grafema}) espec\u237?fico de la {\b Tabla ASCII}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Es decir que hay 2{\super 7}\u8196?=\u8196?128 posibles caracteres codificados por el c\u243?digo ASCII.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sin embargo, el c\u243?digo ASCII es insuficiente para muchas aplicaciones: no contempla las necesidades de diversos idiomas. Por ejemplo, nuestra letra \u209? no figura en la tabla ASCII. Tampoco las vocales acentuadas, ni con di\u233?resis, como tampoco decenas de otros caracteres de varios idiomas europeos. Peor a\u250?n, con solamente 128 posibles patrones de bits, es imposible representar algunos idiomas orientales como el chino, que utilizan miles de ideogramas.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Por este motivo se estableci\u243? m\u225?s tarde una familia de nuevos est\u225?ndares, llamada Unicode. Uno de los est\u225?ndares o esquemas de codificaci\u243?n definidos por Unicode, el m\u225?s utilizado actualmente, se llama {\b UTF-8}. Este est\u225?ndar mantiene la codificaci\u243?n que ya empleaba el c\u243?digo ASCII para su conjunto de caracteres, pero agrega c\u243?digos de dos, tres y cuatro bytes para otros s\u237?mbolos. El resultado es que hoy, con UTF-8, se pueden representar todos los caracteres de cualquier idioma conocido.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Otro est\u225?ndar utilizado, {\b ISO/IEC 8851}, codifica los caracteres de la mayor\u237?a de los idiomas de Europa occidental.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El c\u243?digo ASCII, los diferentes esquemas de Unicode, y el est\u225?ndar ISO/IEC 8851, coinciden en la codificaci\u243?n de las letras del alfabeto ingl\u233?s, que son comunes a la mayor\u237?a de los idiomas occidentales, y en la codificaci\u243?n de s\u237?mbolos usuales como los d\u237?gitos, s\u237?mbolos matem\u225?ticos, y otros. Por este motivo son relativamente compatibles, aunque cuando el texto utiliza otros caracteres aparecen diferencias.\par}
+}

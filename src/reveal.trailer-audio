@@ -1,63 +1,15 @@
-<!doctype html>
-<html lang="es">
-	<head>
-		<meta charset="utf-8">
-		<title>Redes de Computadoras I</title>
-		<meta name="description" content="Redes de Computadoras I">
-		<meta name="author" content="Eduardo Grosclaude">
-
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-		<link rel="stylesheet" href="externals/reveal/css/reveal.css">
-		<link rel="stylesheet" href="externals/css/theme/rdci.css" id="theme">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
-		<link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96">
-		<meta name="theme-color" content="#ffffff">
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="externals/reveal/lib/css/zenburn.css">
- 		<link rel="stylesheet" type="text/css" href="externals/asciinema-player/asciinema-player.css" />
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'externals/reveal/css/print/pdf.css' : 'externals/reveal/css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-		<!--[if lt IE 9]>
-		<script src="reveal.js/lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-	  <div class="reveal">
-		<div class="slides">
-
-<!------------------------------------------------------------------>
-
-
-<!------------------------>
-<section data-transition="slide-in slide-out">
-<h2>Redes de Computadoras</h2>
-<ol>
-	<li><a href="https://egrosclaude.github.io/RDCI/Introducción.html">Introducción</a></li>
-	<li><a href="https://egrosclaude.github.io/RDCI/Aplicación.html">Capa de Aplicación</a></li>
-</ol>
-</section>
-<!------------------------>
 <!------------------------------------------------------------------>
    </div>
 </div>
-
 <link rel="stylesheet" href="externals/tangle/TangleKit/TangleKit.css" type="text/css">
 <script src="externals/tangle/Tangle.js"></script>
 <script src="externals/tangle/TangleKit/mootools.js"></script>
 <script src="externals/tangle/TangleKit/sprintf.js"></script>
 <script src="externals/tangle/TangleKit/BVTouchable.js"></script>
 <script src="externals/tangle/TangleKit/TangleKit.js"></script>
+<script src="externals/svg/dist/svg.min.js"></script>
 <script src="externals/reveal/lib/js/head.min.js"></script>
 <script src="externals/reveal/js/reveal.js"></script>
-<script src="externals/svg/dist/svg.min.js"></script>
 <script src="externals/snap/snap.svg-min.js"></script>
 
 <script>
@@ -72,6 +24,10 @@
 		transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 		// ----------------------------------------------------------------------------
+		coursemod: {
+			enabled: true,
+			shown: true,
+		},
 		chart: {
 			defaults: { 
 				global: { 
@@ -124,7 +80,7 @@
 			custom: [
 				// { title: 'Plugins', icon: '<i class="fa fa-external-link"></i>', src: 'toc.html' },
 				// { title: 'About', icon: '<i class="fa fa-info"></i>', content: '<p>Int Comp</p>' },
-				{ title: 'RDCI', icon: '<i class="fa fa-bookmark"></i>', src: 'src/rdci.html' },
+				{ title: 'IC2017', icon: '<i class="fa fa-bookmark"></i>', src: 'src/ic2017.html' },
 				{ title: 'Imprimir', icon: '<i class="fa fa-print"></i>', src: 'src/print.html' },
 			]
 		},
@@ -182,17 +138,8 @@
                                  initialize: (function(container, options) { asciinema.player.js.CreatePlayer(container, options.URL, options); })
                         },
 			{className: "snapsvg",
-				initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} }) 
-			},
-			{className: "svganimate", 
 				defaults: {width:600, height:400}, 
-				initialize: (function(container, options){ 
-					if(options && options.src) {
-						container.innerHTML = SVG(options.src);
-					} else { 
-						container.innerHTML = SVG(container); 
-					}
-				})
+				initialize: (function(container, options) { if(options && options.initialize) { options.initialize(container, options) }; }) 
 			},
 			{className: "anything",  
 				initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} }) },
@@ -200,12 +147,16 @@
 		],
 		// ----------------------------------------------------------------------------
 
+		audio: {
+			autoplay: true,
+		},
 
 		// -------- Math plugin ----------
 		math: {
-			mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
-			//	mathjax: '../MathJax-master/MathJax.js',
-			config: 'TeX-AMS_HTML-full'
+			//mathjax: 'https://cdn.mathjax.org/mathjax/latest/Ma2YthJax.js',
+			// mathjax: 'externals/mathjax/MathJax.js',
+			mathjax: window.location.search.match( /localversion/g ) ? 'externals/mathjax/MathJax.js' : 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+			config: 'TeX-AMS_HTML-full' 
 		},
 
 
@@ -234,6 +185,8 @@
 			84: function() { Recorder.fetchTTS(); }     // press 't' to fetch TTS audio files
 		},
 
+
+
 		// -------- Dependencies ---------
 		dependencies: [
 			{ src: 'externals/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
@@ -242,7 +195,7 @@
 			{ src: 'externals/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 			{ src: 'externals/reveal/plugin/zoom-js/zoom.js', async: true },
 			// { src: 'plugin/notes/notes.js', async: true },
-			{ src: 'externals/explain/explain.js', async: true },
+			//{ src: 'externals/explain/explain.js', async: true },
 			//{ src: 'externals/reveal/plugin/function-plot/site/js/vendor/jquery-1.11.2.min.js' },
 			//{ src: 'externals/reveal/plugin/function-plot/site/js/vendor/d3.js' },
 			//{ src: 'externals/reveal/plugin/function-plot/dist/function-plot.js' },
@@ -255,9 +208,10 @@
 			{ src: 'externals/reveal-plugins/chalkboard/chalkboard.js' },
 			{ src: 'externals/reveal-plugins/menu/menu.js' },
 			{ src: 'externals/reveal-plugins/mathsvg/math.js', async: true },
-			{ src: 'externals/reveal-plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
+			//{ src: 'externals/reveal-plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
 			{ src: 'externals/reveal-plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
-			{ src: 'externals//snap/snap.svg-min.js', async: true },
+			{ src: 'externals/snap/snap.svg-min.js', async: true },
+			{ src: 'externals/coursemod/coursemod.js', async: true },
 			// ... 
 		]
 	});

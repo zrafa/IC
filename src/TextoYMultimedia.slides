@@ -1,0 +1,848 @@
+<!-- INCLUDE src/reveal.header -->
+
+<section data-markdown data-coursemod-shown="false"> 
+ <script type="text/template">
+##Unidad I 
+###Representación de la Información 
+1. Sistemas de Numeración 
+1. Unidades de Información
+1. Representación Digital de Datos 
+ 1. Datos Numéricos
+ 1. Texto <!-- .element: class="post_it" -->
+ 1. Multimedia <!-- .element: class="post_it" -->
+ </script>
+</section>
+
+
+<section data-background="#00CCFF">
+<h2>Representación de texto y multimedia</h2>
+<aside data-markdown class="notes">
+En esta parte de la unidad veremos la forma de representar otras clases de información no numérica, como los textos y las imágenes.
+</aside>
+</section>
+
+<!--
+<section data-transition="slide-in fade-out">
+<h2>Representando caracteres con bytes</h2>
+<table>
+<tr><td>00110000</td><td>$0$</td></tr>
+<tr><td>00110001</td><td>$1$</td></tr>
+<tr><td>00110010</td><td>$2$</td></tr>
+<tr><td colspan="2" align="center">...</td></tr>
+<tr><td>01000001</td><td>$A$</td></tr>
+<tr><td>01000010</td><td>$B$</td></tr>
+<tr><td>01000011</td><td>$C$</td></tr>
+<tr><td colspan="2" align="center">...</td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+-->
+
+<section data-transition="slide-out fade-in">
+<h2>Representando texto con bytes</h2>
+<table>
+<tr><th>Binario</th><th>Octal</th><th>Dec</th><th>Hexa</th><th>Carácter</th></tr>
+<tr><td>00110000</td><td>060</td><td>48</td><td>30</td><td>$0$</td></tr>
+<tr><td>00110001</td><td>061</td><td>49</td><td>31</td><td>$1$</td></tr>
+<tr><td>00110010</td><td>062</td><td>50</td><td>32</td><td>$2$</td></tr>
+<tr><td colspan="5" align="center">...</td></tr>
+<tr><td>01000001</td><td>101</td><td>65</td><td>41</td><td>$A$</td></tr>
+<tr><td>01000010</td><td>102</td><td>66</td><td>42</td><td>$B$</td></tr>
+<tr><td>01000011</td><td>103</td><td>67</td><td>43</td><td>$C$</td></tr>
+<tr><td colspan="5" align="center">...</td></tr>
+</table>
+<aside data-markdown class="notes">
+##Codificación de texto
+
+Cuando escribimos texto en nuestra computadora, estamos almacenando temporariamente en la
+memoria una cierta secuencia de números que corresponden a los **caracteres**, o símbolos que tipeamos en nuestro teclado.
+
+Estos caracteres tienen una **representación gráfica** en nuestro teclado, en la pantalla o en la
+impresora, pero mientras están en la memoria no pueden ser otra cosa que **bytes**, es decir,
+conjuntos de ocho dígitos binarios. 
+
+Para lograr almacenar caracteres de texto necesitamos adoptar
+una codificación, es decir, una tabla que asigne a cada carácter un patrón de bits fijo.  
+
+Esta codificación debe ser universal: para poder compartir información entre usuarios, o
+entre diferentes aplicaciones, se requiere algún estándar que sea comprendido y respetado 
+por todos los usuarios y las aplicaciones. 
+
+</aside>
+</section>
+
+
+<section>
+<h2>Códigos de caracteres</h2>
+<ul>
+<li><a href="https://es.m.wikipedia.org/wiki/ASCII">ASCII</a></li>
+<li><a href="https://es.m.wikipedia.org/wiki/Unicode">Unicode</a></li>
+<div class="fragment">
+<li>UTF-8</li>
+<ul>
+<li>Codificación de símbolos con longitud de representación variable</li>
+</ul>
+</div>
+<div class="fragment">
+<li>ISO 8859-1</li>
+<ul>
+<li>Símbolos con longitud de representación de un byte</li>
+</ul>
+</div>
+</ul>
+<aside data-markdown class="notes">
+
+Inicialmente se estableció con este fin el **código ASCII**, que durante algún tiempo
+fue una buena solución. El código ASCII relaciona cada secuencia de **siete bits** con un carácter 
+(o **grafema**) específico de la **Tabla ASCII**. 
+
+Es decir que hay $2^7 = 128$ posibles caracteres codificados por el código ASCII.
+
+Sin embargo, el código ASCII es insuficiente para muchas aplicaciones: no contempla las
+necesidades de diversos idiomas. Por ejemplo, nuestra letra Ñ no figura en la tabla ASCII. Tampoco
+las vocales acentuadas, ni con diéresis, como tampoco decenas de otros caracteres de varios idiomas
+europeos. Peor aún, con solamente 128 posibles patrones de bits, es imposible representar algunos
+idiomas orientales como el chino, que utilizan miles de ideogramas.
+
+Por este motivo se estableció más tarde una familia de nuevos estándares, llamada Unicode. 
+Uno de los estándares o esquemas de codificación definidos por Unicode, el más utilizado actualmente, se llama
+**UTF-8**. Este estándar mantiene la codificación que ya empleaba el código ASCII para su conjunto
+de caracteres, pero agrega códigos de dos, tres y cuatro bytes para otros símbolos. El resultado es
+que hoy, con UTF-8, se pueden representar todos los caracteres de cualquier idioma conocido.
+
+Otro estándar utilizado, **ISO/IEC 8851**, codifica los caracteres de la mayoría de los idiomas de 
+Europa occidental. 
+
+El código ASCII, los diferentes esquemas de Unicode, y el estándar ISO/IEC 8851, coinciden en la
+codificación de las letras del alfabeto inglés, que son comunes a la mayoría de los idiomas
+occidentales, y en la codificación de símbolos usuales como los dígitos, símbolos matemáticos, y otros. 
+Por este motivo son relativamente compatibles, aunque cuando el texto utiliza otros caracteres aparecen diferencias.
+</aside>
+</section>
+
+<!--- 
+Tabla ASCII 
+-->
+<section>
+<h2>Tabla de códigos ASCII</h2>
+<table style="border-collapse: collapse; border:1px; width: 100%; font-size: 22px; ">
+<tr>
+<td align="right" style="background-color: #EEEEEE;">32</td><td align="center" style="background-color: #EEEEEE;"> </td> <td align="right" style="background-color: #EEEEEE;">44</td><td align="center" style="background-color: #EEEEEE;">,</td> <td align="right" style="background-color: #00EEFF;">56</td><td align="center" style="background-color: #00EEFF;">8</td> <td align="right" style="background-color: #EEFF00;">68</td><td align="center" style="background-color: #EEFF00;">D</td> <td align="right" style="background-color: #EEFF00;">80</td><td align="center" style="background-color: #EEFF00;">P</td> <td align="right" style="background-color: #EEEEEE;">92</td><td align="center" style="background-color: #EEEEEE;">\</td> <td align="right" style="background-color: #FFCC00;">104</td><td align="center" style="background-color: #FFCC00;">h</td> <td align="right" style="background-color: #FFCC00;">116</td><td align="center" style="background-color: #FFCC00;">t</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">33</td><td align="center" style="background-color: #EEEEEE;">!</td> <td align="right" style="background-color: #EEEEEE;">45</td><td align="center" style="background-color: #EEEEEE;">-</td> <td align="right" style="background-color: #00EEFF;">57</td><td align="center" style="background-color: #00EEFF;">9</td> <td align="right" style="background-color: #EEFF00;">69</td><td align="center" style="background-color: #EEFF00;">E</td> <td align="right" style="background-color: #EEFF00;">81</td><td align="center" style="background-color: #EEFF00;">Q</td> <td align="right" style="background-color: #EEEEEE;">93</td><td align="center" style="background-color: #EEEEEE;">]</td> <td align="right" style="background-color: #FFCC00;">105</td><td align="center" style="background-color: #FFCC00;">i</td> <td align="right" style="background-color: #FFCC00;">117</td><td align="center" style="background-color: #FFCC00;">u</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">34</td><td align="center" style="background-color: #EEEEEE;">"</td> <td align="right" style="background-color: #EEEEEE;">46</td><td align="center" style="background-color: #EEEEEE;">.</td> <td align="right" style="background-color: #EEEEEE;">58</td><td align="center" style="background-color: #EEEEEE;">:</td> <td align="right" style="background-color: #EEFF00;">70</td><td align="center" style="background-color: #EEFF00;">F</td> <td align="right" style="background-color: #EEFF00;">82</td><td align="center" style="background-color: #EEFF00;">R</td> <td align="right" style="background-color: #EEEEEE;">94</td><td align="center" style="background-color: #EEEEEE;">^</td> <td align="right" style="background-color: #FFCC00;">106</td><td align="center" style="background-color: #FFCC00;">j</td> <td align="right" style="background-color: #FFCC00;">118</td><td align="center" style="background-color: #FFCC00;">v</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">35</td><td align="center" style="background-color: #EEEEEE;">#</td> <td align="right" style="background-color: #EEEEEE;">47</td><td align="center" style="background-color: #EEEEEE;">/</td> <td align="right" style="background-color: #EEEEEE;">59</td><td align="center" style="background-color: #EEEEEE;">;</td> <td align="right" style="background-color: #EEFF00;">71</td><td align="center" style="background-color: #EEFF00;">G</td> <td align="right" style="background-color: #EEFF00;">83</td><td align="center" style="background-color: #EEFF00;">S</td> <td align="right" style="background-color: #EEEEEE;">95</td><td align="center" style="background-color: #EEEEEE;">_</td> <td align="right" style="background-color: #FFCC00;">107</td><td align="center" style="background-color: #FFCC00;">k</td> <td align="right" style="background-color: #FFCC00;">119</td><td align="center" style="background-color: #FFCC00;">w</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">36</td><td align="center" style="background-color: #EEEEEE;">$</td> <td align="right" style="background-color: #00EEFF;">48</td><td align="center" style="background-color: #00EEFF;">0</td> <td align="right" style="background-color: #EEEEEE;">60</td><td align="center" style="background-color: #EEEEEE;"><</td> <td align="right" style="background-color: #EEFF00;">72</td><td align="center" style="background-color: #EEFF00;">H</td> <td align="right" style="background-color: #EEFF00;">84</td><td align="center" style="background-color: #EEFF00;">T</td> <td align="right" style="background-color: #EEEEEE;">96</td><td align="center" style="background-color: #EEEEEE;">`</td> <td align="right" style="background-color: #FFCC00;">108</td><td align="center" style="background-color: #FFCC00;">l</td> <td align="right" style="background-color: #FFCC00;">120</td><td align="center" style="background-color: #FFCC00;">x</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">37</td><td align="center" style="background-color: #EEEEEE;">%</td> <td align="right" style="background-color: #00EEFF;">49</td><td align="center" style="background-color: #00EEFF;">1</td> <td align="right" style="background-color: #EEEEEE;">61</td><td align="center" style="background-color: #EEEEEE;">=</td> <td align="right" style="background-color: #EEFF00;">73</td><td align="center" style="background-color: #EEFF00;">I</td> <td align="right" style="background-color: #EEFF00;">85</td><td align="center" style="background-color: #EEFF00;">U</td> <td align="right" style="background-color: #FFCC00;">97</td><td align="center" style="background-color: #FFCC00;">a</td> <td align="right" style="background-color: #FFCC00;">109</td><td align="center" style="background-color: #FFCC00;">m</td> <td align="right" style="background-color: #FFCC00;">121</td><td align="center" style="background-color: #FFCC00;">y</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">38</td><td align="center" style="background-color: #EEEEEE;">&</td> <td align="right" style="background-color: #00EEFF;">50</td><td align="center" style="background-color: #00EEFF;">2</td> <td align="right" style="background-color: #EEEEEE;">62</td><td align="center" style="background-color: #EEEEEE;">></td> <td align="right" style="background-color: #EEFF00;">74</td><td align="center" style="background-color: #EEFF00;">J</td> <td align="right" style="background-color: #EEFF00;">86</td><td align="center" style="background-color: #EEFF00;">V</td> <td align="right" style="background-color: #FFCC00;">98</td><td align="center" style="background-color: #FFCC00;">b</td> <td align="right" style="background-color: #FFCC00;">110</td><td align="center" style="background-color: #FFCC00;">n</td> <td align="right" style="background-color: #FFCC00;">122</td><td align="center" style="background-color: #FFCC00;">z</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">39</td><td align="center" style="background-color: #EEEEEE;">'</td> <td align="right" style="background-color: #00EEFF;">51</td><td align="center" style="background-color: #00EEFF;">3</td> <td align="right" style="background-color: #EEEEEE;">63</td><td align="center" style="background-color: #EEEEEE;">?</td> <td align="right" style="background-color: #EEFF00;">75</td><td align="center" style="background-color: #EEFF00;">K</td> <td align="right" style="background-color: #EEFF00;">87</td><td align="center" style="background-color: #EEFF00;">W</td> <td align="right" style="background-color: #FFCC00;">99</td><td align="center" style="background-color: #FFCC00;">c</td> <td align="right" style="background-color: #FFCC00;">111</td><td align="center" style="background-color: #FFCC00;">o</td> <td align="right" style="background-color: #EEEEEE;">123</td><td align="center" style="background-color: #EEEEEE;">{</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">40</td><td align="center" style="background-color: #EEEEEE;">(</td> <td align="right" style="background-color: #00EEFF;">52</td><td align="center" style="background-color: #00EEFF;">4</td> <td align="right" style="background-color: #EEEEEE;">64</td><td align="center" style="background-color: #EEEEEE;">@</td> <td align="right" style="background-color: #EEFF00;">76</td><td align="center" style="background-color: #EEFF00;">L</td> <td align="right" style="background-color: #EEFF00;">88</td><td align="center" style="background-color: #EEFF00;">X</td> <td align="right" style="background-color: #FFCC00;">100</td><td align="center" style="background-color: #FFCC00;">d</td> <td align="right" style="background-color: #FFCC00;">112</td><td align="center" style="background-color: #FFCC00;">p</td> <td align="right" style="background-color: #EEEEEE;">124</td><td align="center" style="background-color: #EEEEEE;">|</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">41</td><td align="center" style="background-color: #EEEEEE;">)</td> <td align="right" style="background-color: #00EEFF;">53</td><td align="center" style="background-color: #00EEFF;">5</td> <td align="right" style="background-color: #EEFF00;">65</td><td align="center" style="background-color: #EEFF00;">A</td> <td align="right" style="background-color: #EEFF00;">77</td><td align="center" style="background-color: #EEFF00;">M</td> <td align="right" style="background-color: #EEFF00;">89</td><td align="center" style="background-color: #EEFF00;">Y</td> <td align="right" style="background-color: #FFCC00;">101</td><td align="center" style="background-color: #FFCC00;">e</td> <td align="right" style="background-color: #FFCC00;">113</td><td align="center" style="background-color: #FFCC00;">q</td> <td align="right" style="background-color: #EEEEEE;">125</td><td align="center" style="background-color: #EEEEEE;">}</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">42</td><td align="center" style="background-color: #EEEEEE;">*</td> <td align="right" style="background-color: #00EEFF;">54</td><td align="center" style="background-color: #00EEFF;">6</td> <td align="right" style="background-color: #EEFF00;">66</td><td align="center" style="background-color: #EEFF00;">B</td> <td align="right" style="background-color: #EEFF00;">78</td><td align="center" style="background-color: #EEFF00;">N</td> <td align="right" style="background-color: #EEFF00;">90</td><td align="center" style="background-color: #EEFF00;">Z</td> <td align="right" style="background-color: #FFCC00;">102</td><td align="center" style="background-color: #FFCC00;">f</td> <td align="right" style="background-color: #FFCC00;">114</td><td align="center" style="background-color: #FFCC00;">r</td> <td align="right" style="background-color: #EEEEEE;">126</td><td align="center" style="background-color: #EEEEEE;">~</td> </tr>
+
+<tr>
+<td align="right" style="background-color: #EEEEEE;">43</td><td align="center" style="background-color: #EEEEEE;">+</td> <td align="right" style="background-color: #00EEFF;">55</td><td align="center" style="background-color: #00EEFF;">7</td> <td align="right" style="background-color: #EEFF00;">67</td><td align="center" style="background-color: #EEFF00;">C</td> <td align="right" style="background-color: #EEFF00;">79</td><td align="center" style="background-color: #EEFF00;">O</td> <td align="right" style="background-color: #EEEEEE;">91</td><td align="center" style="background-color: #EEEEEE;">[</td> <td align="right" style="background-color: #FFCC00;">103</td><td align="center" style="background-color: #FFCC00;">g</td> <td align="right" style="background-color: #FFCC00;">115</td><td align="center" style="background-color: #FFCC00;">s</td> <td align="right" style="background-color: #EEEEEE;">127</td><td align="center" style="background-color: #EEEEEE;"</td> </tr>
+
+</table>
+<aside data-markdown class="notes">
+##Código ASCII
+
+El código ASCII asigna patrones de siete bits a un conjunto de caracteres
+que incluye:
+
+- Las 25 letras del alfabeto inglés, mayúsculas y minúsculas;
+- Los dígitos del 0 al 9,
+- Varios símbolos matemáticos, de puntuación, etc.,
+- El espacio en blanco,
+- Y 32 caracteres no imprimibles. Estos caracteres no imprimibles son combinaciones de bits
+que no tienen una representación gráfica, sino que sirven para diversas funciones de
+comunicación de las computadoras con otros dispositivos.
+
+En general, prácticamente todos los símbolos que figuran en nuestro teclado tienen un código
+ASCII asignado. Como sólo se usan siete bits, el bit de mayor orden (el de más a la izquierda) de
+cada byte siempre es cero, y por lo tanto los códigos ASCII toman valores de 0 a 127.
+</aside>
+</section>
+
+
+
+
+
+<section data-transition="slide-in fade-out">
+<h2>Este mismo archivo de texto</h2>
+<h3>Vista en caracteres</h3>
+<pre class="stretch"><code>
+$ head -7 TextoYMultimedia.html 
+&lt;!doctype html>
+&lt;html lang="es">
+    &lt;head>
+	<meta charset="utf-8">
+	<title>Introducción a la Computación</title>
+	<meta name="description" content="Introducción a la Computación">
+	<meta name="author" content="Eduardo Grosclaude">
+
+</code></pre>
+<aside data-markdown class="notes">
+Una página HTML servida por un servidor Web es un documento de texto que suele estar codificado en el estándar UTF-8. El contenido de este texto no es exactamente lo que muestra el navegador, sino que el lenguaje HTML en el que está escrito el documento indica cómo debe ser representada gráficamente la página.
+
+Las primeras líneas del documento HTML definen cuestiones relativas a la presentación que hará el navegador, como el idioma en el cual está escrita la página, el conjunto de caracteres que la codifica, el título que debe presentarse en la ventana de visualización, etc. Estas líneas se especifican en el lenguaje especial de la Web, el lenguaje de marcado de hipertexto, o HTML.
+
+**Ejemplo**
+
+Este ejemplo muestra tres vistas del mismo documento, con el objetivo de mostrar que el documento se compone simplemente de una secuencia de bytes. 
+
+1) Con nuestro navegador podemos visualizar el texto de esa página pulsando las teclas CTRL+U. Lo mismo si descargamos la página hacia un archivo y usamos el comando **head**. Lo que se ve es diferente de lo que muestra el navegador: se trata del **código fuente** de la página HTML.
+</aside>
+</section>
+
+
+<section data-transition="fade-out fade-in">
+<h2>Este mismo archivo de texto</h2>
+<h3>Vista en octal</h3>
+<pre class="stretch"><code>
+$ hexdump -bc TextoYMultimedia.html | head -16
+0000000 074 041 144 157 143 164 171 160 145 040 150 164 155 154 076 012
+0000000   <   !   d   o   c   t   y   p   e       h   t   m   l   >  \n
+0000010 074 150 164 155 154 040 154 141 156 147 075 042 145 163 042 076
+0000010   <   h   t   m   l       l   a   n   g   =   "   e   s   "   >
+0000020 012 011 074 150 145 141 144 076 012 011 011 074 155 145 164 141
+0000020  \n  \t   <   h   e   a   d   >  \n  \t  \t   <   m   e   t   a
+0000030 040 143 150 141 162 163 145 164 075 042 165 164 146 055 070 042
+0000030       c   h   a   r   s   e   t   =   "   u   t   f   -   8   "
+0000040 076 012 011 011 074 164 151 164 154 145 076 111 156 164 162 157
+0000040   >  \n  \t  \t   <   t   i   t   l   e   >   I   n   t   r   o
+0000050 144 165 143 143 151 303 263 156 040 141 040 154 141 040 103 157
+0000050   d   u   c   c   i   �   �   n       a       l   a       C   o
+0000060 155 160 165 164 141 143 151 303 263 156 074 057 164 151 164 154
+0000060   m   p   u   t   a   c   i   �   �   n   <   /   t   i   t   l
+0000070 145 076 012 011 011 074 155 145 164 141 040 156 141 155 145 075
+0000070   e   >  \n  \t  \t   <   m   e   t   a       n   a   m   e   =
+</code></pre>
+<aside data-markdown class="notes">
+2) Con diferentes comandos o programas de visualización podemos ver, carácter por carácter, cómo está construido este texto. El comando **hexdump -bc** nos da la lista de los caracteres que componen el texto, con su notación en octal que aparece encima de cada uno de ellos.
+
+Las letras acentuadas se representan con una serie de caracteres UTF-8 especiales, no pertenecientes a la zona visible del ASCII.
+
+Los caracteres de control como el tabulador y el fin de línea no tienen un grafema asociado, sino que se representan por secuencias **\t** y **\n** respectivamente. Estos caracteres desplazan el cursor que escribe los caracteres en pantalla para organizar visualmente la presentación del texto, y también son parte del código fuente de la página.
+</aside>
+</section>
+
+<section data-transition="fade-in slide-out">
+<h2>Este mismo archivo de texto</h2>
+<h3>Vista en hexadecimal</h3>
+<pre class="stretch"><code>
+$ hexdump -C TextoYMultimedia.html | head -8
+00000000  3c 21 64 6f 63 74 79 70  65 20 68 74 6d 6c 3e 0a  |&lt;!doctype html>.|
+00000010  3c 68 74 6d 6c 20 6c 61  6e 67 3d 22 65 73 22 3e  |&lt;html lang="es">|
+00000020  0a 09 3c 68 65 61 64 3e  0a 09 09 3c 6d 65 74 61  |..&lt;head>...&lt;meta|
+00000030  20 63 68 61 72 73 65 74  3d 22 75 74 66 2d 38 22  | charset="utf-8"|
+00000040  3e 0a 09 09 3c 74 69 74  6c 65 3e 49 6e 74 72 6f  |>...&lt;title>Intro|
+00000050  64 75 63 63 69 c3 b3 6e  20 61 20 6c 61 20 43 6f  |ducci..n a la Co|
+00000060  6d 70 75 74 61 63 69 c3  b3 6e 3c 2f 74 69 74 6c  |mputaci..n&lt;/titl|
+00000070  65 3e 0a 09 09 3c 6d 65  74 61 20 6e 61 6d 65 3d  |e>...&lt;meta name=|
+</code></pre>
+<aside data-markdown class="notes">
+3) Del mismo modo, el comando **hexdump -C** muestra cada uno de los grafemas de los caracteres acompañado de su codificación en hexadecimal. Esta vista no muestra los caracteres acentuados ni los de control, reemplazándolos por puntos. 
+</aside>
+</section>
+
+
+<section data-markdown data-background="#00CCFF">
+##Imagen digital
+</section>
+
+
+<section>
+<h2>Imagen digital</h2>
+<ul>
+<li>Discretización</li>
+<ul>
+<li>División de un espacio continuo en partes discretas</li>
+<li>Espacio analógico &rarr; digital</li>
+</ul>
+<li>Discretizar una imagen</li>
+<ul>
+<li>Definir cantidad de puntos &rarr; ancho y alto </li>
+<li>Definir una cantidad de colores &rarr; profundidad de color</li>
+</ul>
+<li>Digitalizar</li>
+<ul>
+<li>Representar una imagen por una sucesión de números</li>
+<li>Indicando dimensiones y color de cada punto</li>
+</ul>
+</ul>
+<aside data-markdown class="notes">
+Otras clases de datos, diferentes del texto, también requieren codificación (porque siempre deben
+ser almacenados en la memoria en forma de bits y bytes), pero su tratamiento es diferente.
+
+Introducir en la computadora, por ejemplo, una imagen analógica (tal como un dibujo o una
+pintura hecha a mano), o un fragmento de sonido tomado del ambiente, requiere un proceso previo
+de **digitalización**. Digitalizar es convertir en digital la información que es analógica, es decir,
+convertir un rango **continuo** de valores (lo que está en la naturaleza) a un conjunto **discreto** de
+valores (que puede ser expresado en forma de números a ser ingresados en la computadora).
+</aside>
+</section>
+
+
+
+
+<section data-transition="fade-in slide-out">
+<h2>Tamaños reales, en pixels</h2>
+<table>
+<tr><td>8x6</td><td><img src="img/t08x06.png" class="plain"></td></tr>
+<tr><td>16x12</td><td><img src="img/t16x12.png" class="plain"></td></tr>
+<tr><td>24x18</td><td><img src="img/t24x18.png" class="plain"></td></tr>
+<tr><td>32x24</td><td><img src="img/t32x24.png" class="plain"></td></tr>
+<tr><td>40x30</td><td><img src="img/t40x30.png" class="plain"></td></tr>
+</table>
+</section>
+
+<section>
+	<section data-transition="slide-in fade-out">
+	<h2>Resolución 8x6</h2>
+	<img src="img/imagen-008x006.jpg" class="plain stretch">
+	</section>
+
+	<section data-transition="fade-in fade-out">
+	<h2>Resolución 16x12</h2>
+	<img src="img/imagen-016x012.jpg" class="plain stretch">
+	</section>
+
+	<section data-transition="fade-in fade-out">
+	<h2>Resolución 24x18</h2>
+	<img src="img/imagen-024x018.jpg" class="plain stretch">
+	</section>
+
+	<section data-transition="fade-in fade-out">
+	<h2>Resolución 32x24</h2>
+	<img src="img/imagen-032x024.jpg" class="plain stretch">
+	</section>
+
+	<section data-transition="fade-in fade-out">
+	<h2>Resolución 40x30</h2>
+	<img src="img/imagen-040x030.jpg" class="plain stretch">
+	</section>
+
+	<section data-transition="fade-in slide-out">
+	<h2>Resolución 720x540</h2>
+	<img src="img/imagen.jpg" class="plain stretch">
+	</section>
+</section>
+
+
+<section data-background="img/rgb.png" data-background-transition="zoom">
+<h2>Color</h2>
+<ul>
+	<li>RGB = Red, Green, Blue</li>
+	<li>Diferentes valores de <span class="post_it">(r,g,b)</span>, componen todos los colores</li>
+	<li>Se define un espacio de valores en [0,255] para cada coordenada</li>
+	<li>Azul: <span class="fragment">(0,0,255)</span></li>
+	<li>Amarillo: <span class="fragment">(255,255,0)</span></li>
+	<li>Blanco: <span class="fragment">(255,255,255)</span></li>
+	<li>Negro: <span class="fragment">(0,0,0)</span></li>
+	<li>Gris: <span class="fragment">($x$,$x$,$x$)</span></li>
+</ul>
+<aside data-markdown class="notes">
+##Color
+
+El color es un componente de información importante de las imágenes. Hay varias maneras de representarlo. Una forma es definir, para cada punto de la imagen, tres coordenadas que describen las intensidades de luz **roja, verde y azul** que conforman cada color. 
+
+Cuando se crea una mezcla de rayos de luz de colores con esas intensidades, usando un proyector o una pantalla como los displays LED, las ondas luminosas individuales del rojo, verde y azul se suman formando otros colores. Este esquema de representación del color se llama **RGB** por las iniciales de los colores rojo, verde y azul en inglés.
+
+Para cada punto, esas tres coordenadas son números en un cierto intervalo. El valor mínimo de una coordenada, el 0, representa la ausencia de ese color. El valor máximo, la intensidad máxima de ese color que se puede reproducir con el dispositivo de salida que lo está visualizando. Cuando las coordenadas se representan en un byte, cada coordenada puede ir entre 0 y 255. 
+
+Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la terna (255, 255, 255) el blanco (valores máximos de los tres colores, sumados), etc.
+</aside>
+</section>
+
+<section data-coursemod-shown="false">
+<h2>Composición de color</h2>
+<div class="tangle" id="colorCalc">
+        <!--
+        {
+                "initialize":"function (container){
+                        var rootElement = document.getElementById('colorCalc');
+                        var model = {
+                                initialize: function() {
+                                        this.r = 100;
+                                        this.g = 100;
+					this.b = 100;
+					this.rgb = '';
+                                },
+                                update: function() {
+					this.rgb = 'rgb(' + this.r + ',' + this.g + ',' + this.b + ')';
+					var cell = document.getElementById('colorCell');
+					cell.style.background = this.rgb;
+                                }
+                        };
+                        var tangle=new Tangle(rootElement, model);
+                }"
+        }
+        -->
+	<table>
+	<tr><td>
+		<table>
+		<tr><td>R:</td><td class="TKAdjustableNumber" data-var="r" data-min="0" data-max="255"></td></tr>
+		<tr><td>G:</td><td class="TKAdjustableNumber" data-var="g" data-min="0" data-max="255"></td></tr>
+		<tr><td>B:</td><td class="TKAdjustableNumber" data-var="b" data-min="0" data-max="255"></td></tr>
+		</table>
+	</td><td id="colorCell"></td></tr>
+	</table>
+        <p class="post_it" data-var="rgb" style="text-align: center;" id="colorFormula"></p>
+</div>
+</section>
+
+<section>
+<h2>Color RGB</h2>
+<img src="img/trucha0.png" class="plain stretch">
+</section>
+
+
+<section data-transition="convex">
+<h2>Paleta de colores</h2>
+<img src="img/paleta.svg" class="plain">
+<span class="fragment">
+<table>
+<tr><td>255,255,255</td><td>&rarr;</td><td>00</td></tr>
+<tr><td>128,0,128</td><td>&rarr;</td><td>01</td></tr>
+<tr><td>207,231,245</td><td>&rarr;</td><td>10</td></tr>
+<tr><td>  0,107,107</td><td>&rarr;</td><td>11</td></tr>
+</table>
+</span>
+</section>
+
+<section data-transition="fade">
+<h2>Paleta de colores</h2>
+<img src="img/paleta-00.svg" class="plain stretch">
+</section>
+
+<section data-transition="fade">
+<h2>Paleta de colores</h2>
+<img src="img/paleta-01.svg" class="plain stretch">
+</section>
+
+<section data-transition="fade">
+<h2>Paleta de colores</h2>
+<img src="img/paleta-10.svg" class="plain stretch">
+</section>
+
+<section data-transition="fade">
+<h2>Paleta de colores</h2>
+<img src="img/paleta-11.svg" class="plain stretch">
+</section>
+
+<section data-transition="slide-in none-out">
+<h2>Datos de la imagen</h2>
+<div class="animate stretch">
+<!-- INJECT src/paleta01.pl -->
+</div>
+<ul>
+<li class="fragment">¿Cómo comunicar esta imagen a otro programa u otra computadora?</li>
+<li class="fragment">¿Qué falta especificar para poder reconstruir esta imagen?</li>
+</ul>
+</section>
+
+<section data-transition="slide-out none-in">
+<h2>Datos de la imagen</h2>
+<div class="animate stretch">
+<!-- INJECT src/paleta02.pl -->
+</div>
+<ul>
+<li class="fragment">¿Cuáles son el ancho y el alto? ¿En cuántos bits se expresa la paleta?</li>
+<li class="fragment">Dimensiones y profundidad de color de la imagen</li>
+</ul>
+</section>
+
+<section>
+<h2>Un formato de imagen</h2>
+<img src="img/formato-grafico.svg" class="plain stretch">
+<p class="fragment"><img src="img/formato-grafico2.svg" class="plain stretch"></p>
+<p class="fragment"><img src="img/formato-grafico3.svg" class="plain stretch"></p>
+<p class="fragment post_it"><b>050502AEBF3...</b></p>
+</section>
+
+<section>
+<h2>Reconstruyendo una imagen</h2>
+	<h3 class="post_it">070401AEBF3...</h3>
+	<!--<p style="display: block; margin: 0 auto;">070401AEBF3...<p>-->
+	<p><img src="img/byn-0.svg" style="display: block; margin: 0 auto;" class="plain fragment"></p>
+	<p><img src="img/byn.svg" style="display: block; margin: 0 auto;" class="plain fragment"></p>
+</section>
+
+
+<section data-markdown data-background="#00CCFF">
+##Sonido digital
+</section>
+
+<section>
+<h2>Parámetros de onda</h2>
+<div class="tangle" id="sinCalc">
+        <!--
+        {
+                "initialize":"function (container){
+                        var rootElement = document.getElementById('sinCalc');
+                        var model = {
+                                initialize: function() {
+                                        this.ampl = 1;
+                                        this.freq = 4;
+					this.nSamples = 4;
+                                        this.math = '$ $';
+                                },
+                                update: function() {
+                                        var plotex = this.ampl + '*sin(' + this.freq + '*x)';
+                                        var options = { target : '#sinplot', data : [{ fn : plotex, nSamples : this.nSamples, graphType : 'scatter' }], width : 800, height : 400};
+                                        functionPlot(options);
+
+
+                                }
+                        };
+                        var tangle=new Tangle(rootElement, model);
+                }"
+        }
+        -->
+        <table>
+        <tr><td>Frecuencia:</td><td class="TKAdjustableNumber" data-var="freq" data-min="1" data-max="100"></td>
+	    <td>Amplitud:</td><td class="TKAdjustableNumber" data-var="ampl" data-min="1" data-max="3"></td>
+	    <td>Muestras:</td><td class="TKAdjustableNumber" data-var="nSamples" data-min="1" data-max="500"></td></tr>
+        </table>
+<!--        <p class="post_it" data-var="math" style="text-align: center;" id="sinFormula">$ $</p> -->
+</div>
+<div class="plot" id="sinplot" style="background-color:#000; width:800px; height:400px; margin:0 auto;"></div>
+<!--
+{ "target":"#sinplot", "data":[{"fn":"sin(x)", "nSamples":4, "graphType":"scatter"}], "width":800, "height":400, }
+-->
+</section>
+
+
+<section data-transition="slide-in fade-out">
+<h2>Ondas sonoras</h2>
+<ul>
+	<li>Ondas fundamentales</li>
+		<ul>
+		<li>Basta con dar amplitud y frecuencia para describirlas</li>
+		</ul>
+	<li>Sonido en la naturaleza</li>
+		<ul>
+		<li>Muchas componentes ("armónicos") de diferente amplitud y frecuencia</li>
+		<li>Definen el <b>timbre</b> del sonido</li>
+		</ul>
+</ul>
+</section>
+
+<section data-transition="fade-in slide-out">
+<h2>Ondas sonoras</h2>
+<img src="img/ondas.png" class="stretch plain">
+</section>
+
+
+<section>
+<h2>Sonido</h2>
+<ul>
+<li>Un micrófono convierte ondas sonoras en un flujo continuo de niveles eléctricos</li>
+<li>Digitalizar el sonido</li>
+<ul>
+	<li>Tomar una cantidad de muestras por segundo &rarr; discretizar el tiempo</li>
+	<li>Registrar una cantidad de niveles &rarr; discretizar la amplitud</li>
+</ul>
+	<img src="img/grid.png" style="height: 180px;" class="plain fragment">
+</section>
+
+<!--
+<section data-transition="slide-in fade-out">
+<h2>Discretizar la amplitud</h2>
+	<img src="img/grid-0.png" class="plain stretch">
+</section>
+
+<section data-transition="fade-in fade-out">
+<h2>Discretizar la amplitud</h2>
+	<img src="img/grid-1.png" class="plain stretch">
+</section>
+
+<section data-transition="fade-in fade-out">
+<h2>Discretizar la amplitud</h2>
+	<img src="img/grid-2.png" class="plain stretch">
+</section>
+
+<section data-transition="fade-in slide-out">
+<h2>Discretizar la amplitud</h2>
+	<img src="img/grid-3.png" class="plain stretch">
+</section>
+-->
+
+<section>
+<h2>Un formato de audio</h2>
+<img src="img/formato-audio.svg" class="plain stretch">
+<!--
+<p class="fragment">
+<img src="img/formato-audio2.svg" class="plain stretch">
+</p>
+<p class="fragment">
+<img src="img/formato-audio3.svg" class="plain stretch">
+</p>
+-->
+<ul>
+	<li>Asumiremos amplitud entre 0 y 10</li>
+	<li>Ese espacio se representará sobre $n$ bits</li>
+</ul>
+</section>
+
+
+<section data-transition="fade">
+<h2>Digitalizando una señal de 3s</h2>
+<div style="text-align: center;">Digitalizar a <b>3 Hz con dos bits de resolución</b></div>
+<img src="img/sound-0.png" class="stretch">
+</section>
+
+
+<section data-transition="fade">
+<h2>Digitalizando una señal</h2>
+<div style="text-align: center;">Tenemos una duración total de 3 s</div>
+<img src="img/sound-1.png" class="stretch">
+</section>
+
+
+<section data-transition="fade">
+<h2>Digitalizando una señal</h2>
+<div style="text-align: center;">La señal tiene diez niveles de voltaje</div>
+<img src="img/sound-2.png" class="stretch">
+</section>
+
+<section data-transition="fade">
+<h2>Digitalizando una señal</h2>
+<div style="text-align: center;">Se nos piden 3 muestras/s (<b>3 Hz</b>)</div>
+<img src="img/sound-3.png" class="stretch">
+</section>
+
+<section data-transition="fade">
+<h2>Digitalizando una señal</h2>
+<div style="text-align: center;">Tomamos los valores de amplitud enteros más próximos</div>
+<img src="img/sound-4.png" class="stretch">
+</section>
+
+<section data-transition="fade">
+<h2>Digitalizando una señal</h2>
+<div style="text-align: center;">Pasamos a resolución de 2 bits</div>
+<img src="img/sound-5.png" class="stretch">
+</section>
+
+<section data-transition="fade">
+<h2>Digitalizando una señal</h2>
+<div style="text-align: center;" class="post_it">00 00 01 01 10 10 01 10 00</div>
+<img src="img/sound-5.png" class="stretch">
+</section>
+
+<section data-transition="fade-in slide-out">
+<h2>Digitalizando una señal</h2>
+<div style="text-align: center;" class="post_it">Datos del audio 00 00 01 01 10 10 01 10 00</div>
+<ul class="fragment">
+<li>Muestras/s = Hz = 3</li>
+<li>Bits/muestra = 2</li> 
+</ul>
+<span class="fragment">
+<img src="img/sound-final.png" class="plain stretch">
+<div style="text-align: center;" class="post_it">030205A60</div>
+</span>
+</section>
+
+<section>
+<h2>Reconstruyendo una señal</h2>
+<div style="text-align: center;" class="post_it">050315A8F4D</div>
+<ul>
+<li class="fragment">¿Cuántas muestras por segundo hay en estos datos?</li>
+<li class="fragment">¿Cuántos bits por muestra?</li> 
+<li class="fragment">¿Cuál es la duración de la señal en segundos?</li> 
+</ul>
+<span class="fragment">
+<img src="img/sound-reconst-1.png" class="plain stretch">
+</span>
+</section>
+
+<section>
+<h2>Reconstruyendo una señal</h2>
+<div style="text-align: center;" class="post_it">050315A8F4D</div>
+<ul>
+<li>Muestras/s = 5, bits/muestra = 3</li> 
+<li>3 b/muestra * 5 muestras/s = 15 b/s</li>
+<li>Tengo 28 bits de datos &rarr; hay 1.86s de señal</li> 
+</ul>
+<img src="img/sound-reconst.png" class="plain stretch">
+</section>
+
+<section>
+<h2>Reconstruyendo una señal</h2>
+<div style="text-align: center;" class="post_it">Datos del audio 00010101 10101000 11110100 1101</div>
+<ul>
+<li>Cada muestra son 3 bits &rarr; tengo 8 niveles discretos</li>
+<li>Muestras 000=0, 101=5, 011=3, 010=2, 100=4, etc.</li> 
+</ul>
+<img src="img/sound-reconst-3.png" class="plain stretch">
+</section>
+
+
+<section data-markdown data-background="#00CCFF">
+##Compresión de datos
+</section>
+
+<section>
+<h2>Compresión</h2>
+<ul>
+	<li>Reducción del tamaño de los datos aplicando operaciones sobre los bits</li>
+		<ul>
+			<li>Ocupar menos espacio de almacenamiento</li>
+			<li>Transferencia más rápida a través de la red</li>
+		</ul>
+	<li>Diferentes algoritmos</li>
+		<ul>
+			<li>Con pérdida</li>
+			<li>Sin pérdida</li>
+		</ul>
+</ul>
+</section>
+
+<section>
+<h2>Compresión sin pérdida</h2>
+<ul>
+<li>Los datos comprimidos tienen la misma cantidad de información, pero están organizados de forma diferente</li>
+<li>Existe un algoritmo inverso</li>
+<li>Los datos originales pueden recuperarse tal cual eran</li>
+<ul>
+<li>Compresor de archivos (Zip, PKZip, 7Zip, RAR)</li>
+<li>Compresión de páginas web (gzip)</li>
+</ul>
+</ul>
+</section>
+
+<section>
+<h2>Compresión con pérdida</h2>
+<ul>
+<li>Los datos comprimidos tienen menos información  que los originales</li>
+<li>No existe un algoritmo inverso</li>
+<li>Los datos originales no pueden ser recuperados a partir de los comprimidos</li>
+<li>Sin embargo los datos comprimidos siguen siendo útiles</li>
+<ul>
+<li>Reducción de resolución y/o de profundidad de color</li>
+<li>Filtrado de frecuencias (teléfono, CD)</li>
+<li>MP3, MP4</li>
+</ul>
+</ul>
+</section>
+
+<section data-transition=slide-in fade-out">
+<h2>Original, 720x540 pixels</h2>
+<img src="img/imagen.jpg" class="plain stretch">
+</section>
+
+<section data-transition=fade-out fade-in">
+<h2>Comprimido, 360x270 pixels</h2>
+<img src="img/imagen2.jpg" class="plain stretch">
+</section>
+
+<section data-transition=slide-out fade-in">
+<h2>Comprimido, 180x135 pixels</h2>
+<img src="img/imagen3.jpg" class="plain stretch">
+</section>
+
+
+<section>
+<h2>Tamaños en bytes</h2>
+<pre><code>
+ $ ls -l imagen*
+ -rw-r--r-- 1 oso oso 55834 Mar 23  2013 imagen.jpg
+ -rw-r--r-- 1 oso oso 18048 Apr  7 11:30 imagen2.jpg
+ -rw-r--r-- 1 oso oso  6042 Apr  7 11:46 imagen3.jpg
+
+</code></pre>
+<img src="img/3images.png" class="plain stretch">
+</section>
+
+
+
+
+
+<section data-transition=slide-in fade-out">
+<h2>Compresión con pérdida</h2>
+<img src="img/comprcp01.svg" class="plain stretch">
+</section>
+
+<section data-transition=slide-out fade-in">
+<h2>Compresión con pérdida</h2>
+<img src="img/comprcp02.svg" class="plain stretch">
+</section>
+
+<section data-transition=slide-out fade-in">
+<h2>Compresión con pérdida</h2>
+<img src="img/ccpdif01.svg" class="plain stretch fragment">
+<img src="img/ccpdif02.svg" class="plain stretch fragment">
+</section>
+
+<section>
+<h2>Compresión sin pérdida</h2>
+<ul>
+	<li>Técnicas de RLE (<i>Run-length-encoding</i>)</li>
+	<ul>
+		<li>Sustituir una sucesión de elementos repetidos por un coeficiente</li>
+	</ul>
+	<li>Códigos de Huffmann</li>
+	<ul>
+		<li>Sustituir los elementos más frecuentes por cadenas de bits más cortas</li>
+	</ul>
+</ul>
+</section>
+
+<section>
+<h2>Compresión sin pérdida</h2>
+<h3>Técnica RLE</h3>
+<img src="img/rle.svg" class="plain stretch">
+</section>
+
+<section>
+<h2>Bestiario</h2>
+<h4 class="fragment"><i>- Indique un caso de compresión con pérdida.</i></h4>
+<span class="fragment">
+<h4><i>- Cuando el archibo llega corrubto</i></h4> 
+<h4><i>y se pierde la informasión.</i></h4> 
+<img src="img/Facepalm-Girl.png" class="plain stretch">
+</span>
+</section>
+
+<section data-coursemod-shown="false">
+<h2>Referencias</h2>
+<ul>
+<li><a href="TextoYMultimedia-notes.pdf">Notas de esta presentación</a></li>
+<!-- <li><a href="http://pedco.uncoma.edu.ar/pluginfile.php/346011/mod_resource/content/1/IC-Codificacion_texto_audio_imagen.pdf">Apunte de cátedra: Codificación de datos</a></li> -->
+<li><a href="https://es.wikipedia.org/wiki/MP3">MP3</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a></li>
+<li><a href="https://es.wikipedia.org/wiki/Conversi%C3%B3n_anal%C3%B3gica-digital">Conversión analógica-digital</a></li>
+</ul>
+</section>
+
+
+<!--
+<section data-background="black">
+<h2>Audacity, un editor de audio</h2>
+<video id="audacity" width="100%" height="100%" class="stretch" preload controls>
+<source data-src="img/audacity.mp4" type='video/mp4'/>
+</section>
+-->
+
+<!-- INCLUDE src/reveal.trailer -->
