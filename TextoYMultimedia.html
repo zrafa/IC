@@ -36,7 +36,7 @@
 <!------------------------------------------------------------------>
 
 
-<section data-markdown data-coursemod-shown="false"> 
+<section data-markdown data-coursemod-shown="false" data-title="Representación de texto y multimedia"> 
  <script type="text/template">
 ##Unidad I 
 ###Representación de la Información 
@@ -89,7 +89,7 @@ En esta parte de la unidad veremos la forma de representar otras clases de infor
 <tr><td colspan="5" align="center">...</td></tr>
 </table>
 <aside data-markdown class="notes">
-##Codificación de texto
+#Codificación de texto
 
 Cuando escribimos texto en nuestra computadora, estamos almacenando temporariamente en la
 memoria una cierta secuencia de números que corresponden a los **caracteres**, o símbolos que tipeamos en nuestro teclado.
@@ -99,11 +99,13 @@ impresora, pero mientras están en la memoria no pueden ser otra cosa que **byte
 conjuntos de ocho dígitos binarios. 
 
 Para lograr almacenar caracteres de texto necesitamos adoptar
-una codificación, es decir, una tabla que asigne a cada carácter un patrón de bits fijo.  
+una **codificación**, es decir, una tabla que asigne a cada carácter un patrón de bits fijo. 
 
 Esta codificación debe ser universal: para poder compartir información entre usuarios, o
 entre diferentes aplicaciones, se requiere algún estándar que sea comprendido y respetado 
-por todos los usuarios y las aplicaciones. 
+por todos los usuarios y las aplicaciones. Hacia la mitad del siglo XX no existía un único estándar,
+y cada fabricante de computadoras definía el suyo propio. La comunicación entre diferentes
+computadoras y sistemas era complicada y llevaba mucho trabajo improductivo.
 
 </aside>
 </section>
@@ -128,24 +130,24 @@ por todos los usuarios y las aplicaciones.
 </div>
 </ul>
 <aside data-markdown class="notes">
+##Códigos de caracteres
 
 Inicialmente se estableció con este fin el **código ASCII**, que durante algún tiempo
 fue una buena solución. El código ASCII relaciona cada secuencia de **siete bits** con un carácter 
-(o **grafema**) específico de la **Tabla ASCII**. 
-
-Es decir que hay $2^7 = 128$ posibles caracteres codificados por el código ASCII.
+(o **grafema**) específico de la **Tabla ASCII**. Es decir que hay $2^7 = 128$ posibles caracteres codificados por el código ASCII.
 
 Sin embargo, el código ASCII es insuficiente para muchas aplicaciones: no contempla las
 necesidades de diversos idiomas. Por ejemplo, nuestra letra Ñ no figura en la tabla ASCII. Tampoco
 las vocales acentuadas, ni con diéresis, como tampoco decenas de otros caracteres de varios idiomas
 europeos. Peor aún, con solamente 128 posibles patrones de bits, es imposible representar algunos
-idiomas orientales como el chino, que utilizan miles de ideogramas.
+idiomas orientales como el chino, que utilizan miles de ideogramas. 
 
 Por este motivo se estableció más tarde una familia de nuevos estándares, llamada Unicode. 
 Uno de los estándares o esquemas de codificación definidos por Unicode, el más utilizado actualmente, se llama
 **UTF-8**. Este estándar mantiene la codificación que ya empleaba el código ASCII para su conjunto
 de caracteres, pero agrega códigos de dos, tres y cuatro bytes para otros símbolos. El resultado es
-que hoy, con UTF-8, se pueden representar todos los caracteres de cualquier idioma conocido.
+que hoy, con UTF-8, se pueden representar todos los caracteres de cualquier idioma conocido. Más aún,
+con UTF-8 pueden codificarse textos multilingües.
 
 Otro estándar utilizado, **ISO/IEC 8851**, codifica los caracteres de la mayoría de los idiomas de 
 Europa occidental. 
@@ -201,7 +203,7 @@ Tabla ASCII
 
 </table>
 <aside data-markdown class="notes">
-##Código ASCII
+##Tabla de códigos ASCII
 
 El código ASCII asigna patrones de siete bits a un conjunto de caracteres
 que incluye:
@@ -239,7 +241,13 @@ $ head -7 TextoYMultimedia.html
 
 </code></pre>
 <aside data-markdown class="notes">
-Una página HTML servida por un servidor Web es un documento de texto que suele estar codificado en el estándar UTF-8. El contenido de este texto no es exactamente lo que muestra el navegador, sino que el lenguaje HTML en el que está escrito el documento indica cómo debe ser representada gráficamente la página.
+##Textos y documentos
+
+Un archivo de texto es una sucesión de caracteres bajo alguna codificación. Puede manipularse con programas básicos como los **editores de texto** u otras herramientas que ofrece el ambiente del sistema operativo. Un archivo de texto es directamente legible por humanos porque contiene únicamente los caracteres que constituyen las palabras. 
+
+Otra clase de archivos, los que son creados y manipulados por **procesadores de texto**, además de esa información tienen una estructura compleja que permite definir características de presentación y organización del texto. Esto inluye los diferentes tipos, tamaños o colores de los caracteres, las dimensiones de la página, la organización en secciones o capítulos, etc. La estructura de los archivos generados por los procesadores de texto es específica de cada programa y convierte al documento en algo que sólo puede ser leído con el procesador de texto correspondiente.
+
+Una página HTML servida por un servidor Web es un documento de texto que suele estar codificado en el estándar UTF-8. El contenido de este texto es directamente legible, pero no es exactamente lo que muestra el navegador, sino que esa representación gráfica está indicada por el lenguaje HTML en el que está escrito el documento.
 
 Las primeras líneas del documento HTML definen cuestiones relativas a la presentación que hará el navegador, como el idioma en el cual está escrita la página, el conjunto de caracteres que la codifica, el título que debe presentarse en la ventana de visualización, etc. Estas líneas se especifican en el lenguaje especial de la Web, el lenguaje de marcado de hipertexto, o HTML.
 
@@ -279,7 +287,7 @@ $ hexdump -bc TextoYMultimedia.html | head -16
 
 Las letras acentuadas se representan con una serie de caracteres UTF-8 especiales, no pertenecientes a la zona visible del ASCII.
 
-Los caracteres de control como el tabulador y el fin de línea no tienen un grafema asociado, sino que se representan por secuencias **\t** y **\n** respectivamente. Estos caracteres desplazan el cursor que escribe los caracteres en pantalla para organizar visualmente la presentación del texto, y también son parte del código fuente de la página.
+Los caracteres de control como el tabulador y el fin de línea no tienen un grafema asociado, sino que se representan por secuencias **\\t** y **\\n** respectivamente. Estos caracteres desplazan el cursor que escribe los caracteres en pantalla para organizar visualmente la presentación del texto, y también son parte del código fuente de la página.
 </aside>
 </section>
 
@@ -299,6 +307,10 @@ $ hexdump -C TextoYMultimedia.html | head -8
 </code></pre>
 <aside data-markdown class="notes">
 3) Del mismo modo, el comando **hexdump -C** muestra cada uno de los grafemas de los caracteres acompañado de su codificación en hexadecimal. Esta vista no muestra los caracteres acentuados ni los de control, reemplazándolos por puntos. 
+
+**Pregunta**
+
+- Estos comandos muestran información legible porque el documento HTML se trata, esencialmente, de un archivo de texto. ¿Qué ocurre si los mismos comandos se aplican a un archivo creado por un procesador de texto?
 </aside>
 </section>
 
@@ -328,6 +340,8 @@ $ hexdump -C TextoYMultimedia.html | head -8
 </ul>
 </ul>
 <aside data-markdown class="notes">
+#Imagen digital
+
 Otras clases de datos, diferentes del texto, también requieren codificación (porque siempre deben
 ser almacenados en la memoria en forma de bits y bytes), pero su tratamiento es diferente.
 
@@ -335,7 +349,7 @@ Introducir en la computadora, por ejemplo, una imagen analógica (tal como un di
 pintura hecha a mano), o un fragmento de sonido tomado del ambiente, requiere un proceso previo
 de **digitalización**. Digitalizar es convertir en digital la información que es analógica, es decir,
 convertir un rango **continuo** de valores (lo que está en la naturaleza) a un conjunto **discreto** de
-valores (que puede ser expresado en forma de números a ser ingresados en la computadora).
+valores numéricos.
 </aside>
 </section>
 
@@ -351,6 +365,29 @@ valores (que puede ser expresado en forma de números a ser ingresados en la com
 <tr><td>32x24</td><td><img src="img/t32x24.png" class="plain"></td></tr>
 <tr><td>40x30</td><td><img src="img/t40x30.png" class="plain"></td></tr>
 </table>
+<aside data-markdown class="notes">
+Si partimos de una imagen analógica, el proceso de digitalización involucra la división de la imagen
+en una fina cuadrícula, donde cada elemento de la cuadrícula abarca un pequeño sector
+cuadrangular de la imagen. A cada elemento de la cuadrícula se le asignan valores
+discretos que codifican el color de la imagen en ese lugar. 
+
+Estos elementos o puntos se llaman **pixels** (del inglés, **picture element**). La imagen queda constituida por una sucesión de valores de color para cada pixel de los que forman la imagen.
+
+En general, mientras más elementos de cuadrícula (más pixels) podamos representar, mejor será la aproximación a nuestra pieza
+de información original. Mientras más fina la cuadrícula (es decir, mientras mayor sea la
+**resolución** de la imagen digitalizada), y mientras más valores discretos usemos para representar los
+colores, más se parecerá nuestra versión digital al original analógico.
+
+Notemos que la digitalización de una imagen implica la discretización de **dos** variables analógicas:
+
+- Por un lado, los infinitos puntos de la imagen analógica, bidimensional, deben reducirse a unos pocos rectángulos discretos. 
+- Por otro lado, los infinitos valores de color deben reducirse a unos pocos valores discretos, en el rango de nuestro
+esquema de codificación. 
+
+Este proceso de digitalización es el que hacen automáticamente una cámara de fotos digital o un celular,
+almacenando luego los bytes que representan la imagen tomada. 
+
+</aside>
 </section>
 
 <section>
@@ -401,13 +438,16 @@ valores (que puede ser expresado en forma de números a ser ingresados en la com
 <aside data-markdown class="notes">
 ##Color
 
-El color es un componente de información importante de las imágenes. Hay varias maneras de representarlo. Una forma es definir, para cada punto de la imagen, tres coordenadas que describen las intensidades de luz **roja, verde y azul** que conforman cada color. 
+Hay varias maneras de representar el color en las imágenes digitales. Una forma es definir, para cada pixel o punto de la imagen, tres coordenadas que describen las intensidades de luz **roja, verde y azul** que conforman cada color. 
 
 Cuando se crea una mezcla de rayos de luz de colores con esas intensidades, usando un proyector o una pantalla como los displays LED, las ondas luminosas individuales del rojo, verde y azul se suman formando otros colores. Este esquema de representación del color se llama **RGB** por las iniciales de los colores rojo, verde y azul en inglés.
 
 Para cada punto, esas tres coordenadas son números en un cierto intervalo. El valor mínimo de una coordenada, el 0, representa la ausencia de ese color. El valor máximo, la intensidad máxima de ese color que se puede reproducir con el dispositivo de salida que lo está visualizando. Cuando las coordenadas se representan en un byte, cada coordenada puede ir entre 0 y 255. 
 
 Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la terna (255, 255, 255) el blanco (valores máximos de los tres colores, sumados), etc.
+
+###Profundidad de color
+Con este esquema de representación de color, cada pixel o elemento de la imagen quedaría representado por tres bytes, o 24 bits. Sin embargo, las cámaras fotográficas digitales modernas utilizan un esquema de codificación con mucha mayor **profundidad de color** (es decir, más bits por cada coordenada de color) que en el ejemplo anterior.
 </aside>
 </section>
 
@@ -448,10 +488,12 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 </div>
 </section>
 
+<!--
 <section>
 <h2>Color RGB</h2>
 <img src="img/trucha0.png" class="plain stretch">
 </section>
+-->
 
 
 <section data-transition="convex">
@@ -465,24 +507,38 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <tr><td>  0,107,107</td><td>&rarr;</td><td>11</td></tr>
 </table>
 </span>
+<aside data-markdown class="notes">
+##Paleta de colores
+
+Lógicamente, para las imágenes con muchos colores (como las escenas de la naturaleza donde hay gradaciones de colores) es conveniente contar con muchos bits de profundidad de color. Sin embargo, cuando una imagen se compone de pocos colores, estos bits se desperdician. En estos casos es útil definir un formato de imagen que represente esos pocos colores utilizando menos bits.
+
+Una forma de hacerlo es definir una **paleta de colores**, que es una lista de los diferentes colores utilizados en la imagen, codificados con la mayor economía de bits posible.
+Si conocemos la cantidad de colores en la imagen, podemos determinar la cantidad mínima de bits que permite codificarlos a todos. 
+
+Así, cada pixel de la imagen, en lugar de quedar representado por una terna de valores, puede representarse por un número de color en la paleta. 
+
+Queda por especificar **cuál color es el que está codificado por cada número de color** de la paleta. Si una imagen tiene dos bits de profundidad de color, los colores serán cuatro, y sus códigos serán **00, 01, 10, 11**. Pero, ¿cuáles exactamente son estos colores? Tal vez, blanco, negro, rojo y azul. Pero tal vez sean cuatro niveles de gris. O cuatro diferentes tonos de verde. 
+
+Para simplificar nuestro trabajo asumiremos que esto no es importante, sino que el problema consiste únicamente en que nuestro formato determine los códigos de colores de cada uno de los pixels. El problema de cuáles son los colores asignados a esos códigos puede resolverse de otras maneras: por ejemplo, suponiendo que existe una hipotética tabla universal de colores y códigos, conocida por todos.
+</aside>
 </section>
 
-<section data-transition="fade">
+<section data-transition="fade" data-coursemod-shown="false">
 <h2>Paleta de colores</h2>
 <img src="img/paleta-00.svg" class="plain stretch">
 </section>
 
-<section data-transition="fade">
+<section data-transition="fade" data-coursemod-shown="false">
 <h2>Paleta de colores</h2>
 <img src="img/paleta-01.svg" class="plain stretch">
 </section>
 
-<section data-transition="fade">
+<section data-transition="fade" data-coursemod-shown="false">
 <h2>Paleta de colores</h2>
 <img src="img/paleta-10.svg" class="plain stretch">
 </section>
 
-<section data-transition="fade">
+<section data-transition="fade" data-coursemod-shown="false">
 <h2>Paleta de colores</h2>
 <img src="img/paleta-11.svg" class="plain stretch">
 </section>
@@ -495,13 +551,13 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <svg height="80" width="240" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<g id="s">
 		<g id="g0" transform="translate(0,0)">
-			<rect height="38" id="b0" style="fill: rgb(207,251,245); stroke: rgb(153,153,153)" width="38" x="0" y="0">
+			<rect height="38" id="b0" style="stroke: rgb(153,153,153); fill: rgb(207,251,245)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step0.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step0.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t0" style="stroke: rgb(0,0,0); font: Lato; fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t0" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step0.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep0" dur="0.1s" fill="freeze" id="step0" repeatCount="1" restart="click" type="translate" values="0,0; 0,250;" />
@@ -514,7 +570,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t1" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t1" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step1.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step0.end" calcMode="linear" class="chained" data-reverse="rstep1" dur="0.1s" fill="freeze" id="step1" repeatCount="1" restart="click" type="translate" values="38,0; 38,250;" />
@@ -527,7 +583,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t2" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t2" style="font: Lato; fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step2.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />11</text>
 			<animateTransform attributeName="transform" begin="step1.end" calcMode="linear" class="chained" data-reverse="rstep2" dur="0.1s" fill="freeze" id="step2" repeatCount="1" restart="click" type="translate" values="76,0; 76,250;" />
@@ -540,46 +596,46 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t3" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t3" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step3.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step2.end" calcMode="linear" class="chained" data-reverse="rstep3" dur="0.1s" fill="freeze" id="step3" repeatCount="1" restart="click" type="translate" values="114,0; 114,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="114, 250" id="rstep3" to="114, 0" type="translate" />
 		</g>
 		<g id="g4" transform="translate(152,0)">
-			<rect height="38" id="b4" style="stroke: rgb(153,153,153); fill: rgb(207,251,245)" width="38" x="0" y="0">
+			<rect height="38" id="b4" style="fill: rgb(207,251,245); stroke: rgb(153,153,153)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step4.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step4.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t4" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t4" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step4.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step3.end" calcMode="linear" class="chained" data-reverse="rstep4" dur="0.1s" fill="freeze" id="step4" repeatCount="1" restart="click" type="translate" values="152,0; 152,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="152, 250" id="rstep4" to="152, 0" type="translate" />
 		</g>
 		<g id="g5" transform="translate(0,38)">
-			<rect height="38" id="b5" style="stroke: rgb(153,153,153); fill: rgb(207,251,245)" width="38" x="0" y="0">
+			<rect height="38" id="b5" style="fill: rgb(207,251,245); stroke: rgb(153,153,153)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step5.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step5.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t5" style="stroke: rgb(0,0,0); font: Lato; font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t5" style="font: Lato; fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step5.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step4.end" calcMode="linear" class="chained" data-reverse="rstep5" dur="0.1s" fill="freeze" id="step5" repeatCount="1" restart="click" type="translate" values="0,38; 190,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="190, 250" id="rstep5" to="0, 38" type="translate" />
 		</g>
 		<g id="g6" transform="translate(38,38)">
-			<rect height="38" id="b6" style="fill: rgb(0,107,107); stroke: rgb(153,153,153)" width="38" x="0" y="0">
+			<rect height="38" id="b6" style="stroke: rgb(153,153,153); fill: rgb(0,107,107)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step6.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step6.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t6" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t6" style="stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step6.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />11</text>
 			<animateTransform attributeName="transform" begin="step5.end" calcMode="linear" class="chained" data-reverse="rstep6" dur="0.1s" fill="freeze" id="step6" repeatCount="1" restart="click" type="translate" values="38,38; 228,250;" />
@@ -592,7 +648,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t7" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t7" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step7.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />11</text>
 			<animateTransform attributeName="transform" begin="step6.end" calcMode="linear" class="chained" data-reverse="rstep7" dur="0.1s" fill="freeze" id="step7" repeatCount="1" restart="click" type="translate" values="76,38; 266,250;" />
@@ -605,20 +661,20 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t8" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t8" style="stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28; font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step8.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />11</text>
 			<animateTransform attributeName="transform" begin="step7.end" calcMode="linear" class="chained" data-reverse="rstep8" dur="0.1s" fill="freeze" id="step8" repeatCount="1" restart="click" type="translate" values="114,38; 304,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="304, 250" id="rstep8" to="114, 38" type="translate" />
 		</g>
 		<g id="g9" transform="translate(152,38)">
-			<rect height="38" id="b9" style="stroke: rgb(153,153,153); fill: rgb(0,107,107)" width="38" x="0" y="0">
+			<rect height="38" id="b9" style="fill: rgb(0,107,107); stroke: rgb(153,153,153)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step9.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step9.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t9" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t9" style="stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28; font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step9.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />11</text>
 			<animateTransform attributeName="transform" begin="step8.end" calcMode="linear" class="chained" data-reverse="rstep9" dur="0.1s" fill="freeze" id="step9" repeatCount="1" restart="click" type="translate" values="152,38; 342,250;" />
@@ -631,7 +687,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t10" style="stroke: rgb(0,0,0); font: Lato; font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t10" style="font: Lato; font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step10.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step9.end" calcMode="linear" class="chained" data-reverse="rstep10" dur="0.1s" fill="freeze" id="step10" repeatCount="1" restart="click" type="translate" values="0,76; 380,250;" />
@@ -644,7 +700,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t11" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t11" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step11.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step10.end" calcMode="linear" class="chained" data-reverse="rstep11" dur="0.1s" fill="freeze" id="step11" repeatCount="1" restart="click" type="translate" values="38,76; 418,250;" />
@@ -657,46 +713,46 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t12" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t12" style="font: Lato; font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step12.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />11</text>
 			<animateTransform attributeName="transform" begin="step11.end" calcMode="linear" class="chained" data-reverse="rstep12" dur="0.1s" fill="freeze" id="step12" repeatCount="1" restart="click" type="translate" values="76,76; 456,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="456, 250" id="rstep12" to="76, 76" type="translate" />
 		</g>
 		<g id="g13" transform="translate(114,76)">
-			<rect height="38" id="b13" style="fill: rgb(207,251,245); stroke: rgb(153,153,153)" width="38" x="0" y="0">
+			<rect height="38" id="b13" style="stroke: rgb(153,153,153); fill: rgb(207,251,245)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step13.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step13.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t13" style="stroke: rgb(0,0,0); font: Lato; fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t13" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step13.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step12.end" calcMode="linear" class="chained" data-reverse="rstep13" dur="0.1s" fill="freeze" id="step13" repeatCount="1" restart="click" type="translate" values="114,76; 494,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="494, 250" id="rstep13" to="114, 76" type="translate" />
 		</g>
 		<g id="g14" transform="translate(152,76)">
-			<rect height="38" id="b14" style="stroke: rgb(153,153,153); fill: rgb(207,251,245)" width="38" x="0" y="0">
+			<rect height="38" id="b14" style="fill: rgb(207,251,245); stroke: rgb(153,153,153)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step14.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step14.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t14" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t14" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step14.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step13.end" calcMode="linear" class="chained" data-reverse="rstep14" dur="0.1s" fill="freeze" id="step14" repeatCount="1" restart="click" type="translate" values="152,76; 532,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="532, 250" id="rstep14" to="152, 76" type="translate" />
 		</g>
 		<g id="g15" transform="translate(0,114)">
-			<rect height="38" id="b15" style="fill: rgb(255,255,255); stroke: rgb(153,153,153)" width="38" x="0" y="0">
+			<rect height="38" id="b15" style="stroke: rgb(153,153,153); fill: rgb(255,255,255)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step15.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step15.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t15" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t15" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step15.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />00</text>
 			<animateTransform attributeName="transform" begin="step14.end" calcMode="linear" class="chained" data-reverse="rstep15" dur="0.1s" fill="freeze" id="step15" repeatCount="1" restart="click" type="translate" values="0,114; 570,250;" />
@@ -709,20 +765,20 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t16" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t16" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step16.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step15.end" calcMode="linear" class="chained" data-reverse="rstep16" dur="0.1s" fill="freeze" id="step16" repeatCount="1" restart="click" type="translate" values="38,114; 608,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="608, 250" id="rstep16" to="38, 114" type="translate" />
 		</g>
 		<g id="g17" transform="translate(76,114)">
-			<rect height="38" id="b17" style="fill: rgb(207,251,245); stroke: rgb(153,153,153)" width="38" x="0" y="0">
+			<rect height="38" id="b17" style="stroke: rgb(153,153,153); fill: rgb(207,251,245)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step17.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step17.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t17" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t17" style="stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step17.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step16.end" calcMode="linear" class="chained" data-reverse="rstep17" dur="0.1s" fill="freeze" id="step17" repeatCount="1" restart="click" type="translate" values="76,114; 646,250;" />
@@ -735,7 +791,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t18" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t18" style="stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step18.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />01</text>
 			<animateTransform attributeName="transform" begin="step17.end" calcMode="linear" class="chained" data-reverse="rstep18" dur="0.1s" fill="freeze" id="step18" repeatCount="1" restart="click" type="translate" values="114,114; 684,250;" />
@@ -748,7 +804,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t19" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t19" style="stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28; font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step19.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step18.end" calcMode="linear" class="chained" data-reverse="rstep19" dur="0.1s" fill="freeze" id="step19" repeatCount="1" restart="click" type="translate" values="152,114; 722,250;" />
@@ -761,7 +817,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t20" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t20" style="font: Lato; fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step20.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />00</text>
 			<animateTransform attributeName="transform" begin="step19.end" calcMode="linear" class="chained" data-reverse="rstep20" dur="0.1s" fill="freeze" id="step20" repeatCount="1" restart="click" type="translate" values="0,152; 760,250;" />
@@ -774,20 +830,20 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t21" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t21" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step21.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />00</text>
 			<animateTransform attributeName="transform" begin="step20.end" calcMode="linear" class="chained" data-reverse="rstep21" dur="0.1s" fill="freeze" id="step21" repeatCount="1" restart="click" type="translate" values="38,152; 798,250;" />
 			<animateTransform attributeName="transform" begin="rstep0.end" dur="0.01s" fill="freeze" from="798, 250" id="rstep21" to="38, 152" type="translate" />
 		</g>
 		<g id="g22" transform="translate(76,152)">
-			<rect height="38" id="b22" style="fill: rgb(207,251,245); stroke: rgb(153,153,153)" width="38" x="0" y="0">
+			<rect height="38" id="b22" style="stroke: rgb(153,153,153); fill: rgb(207,251,245)" width="38" x="0" y="0">
 				<animate attributeName="fill-opacity" begin="step22.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="stroke-opacity" begin="step22.end" dur="2s" fill="freeze" from="1" to="0" />
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t22" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t22" style="font: Lato; fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step22.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step21.end" calcMode="linear" class="chained" data-reverse="rstep22" dur="0.1s" fill="freeze" id="step22" repeatCount="1" restart="click" type="translate" values="76,152; 836,250;" />
@@ -800,7 +856,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t23" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t23" style="font: Lato; font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step23.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step22.end" calcMode="linear" class="chained" data-reverse="rstep23" dur="0.1s" fill="freeze" id="step23" repeatCount="1" restart="click" type="translate" values="114,152; 874,250;" />
@@ -813,7 +869,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 				<animate attributeName="fill-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 				<animate attributeName="stroke-opacity" begin="rstep0.end" dur="1s" fill="freeze" from="0" to="1" />
 			</rect>
-			<text alignment-baseline="middle" id="t24" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">
+			<text alignment-baseline="middle" id="t24" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">
 				<animate attributeName="letter-spacing" begin="step24.end" dur="2s" fill="freeze" from="1" to="2" />
 				<animate attributeName="letter-spacing" begin="rstep0.end" dur="1s" fill="freeze" from="2" to="1" />10</text>
 			<animateTransform attributeName="transform" begin="step23.end" calcMode="linear" class="chained" data-reverse="rstep24" dur="0.1s" fill="freeze" id="step24" repeatCount="1" restart="click" type="translate" values="152,152; 912,250;" />
@@ -830,6 +886,11 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <li class="fragment">¿Cómo comunicar esta imagen a otro programa u otra computadora?</li>
 <li class="fragment">¿Qué falta especificar para poder reconstruir esta imagen?</li>
 </ul>
+<aside data-markdown class="notes">
+La imagen queda entonces representada por una sucesión de bits que codifican los colores de los pixels. Esta sucesión de bits está lista para ser comunicada a otra computadora a través de la red, o un programa puede entregarla a otro para efectuarle algún procesamiento. O bien, esta sucesión de bits puede ser almacenada y recuperada en un momento futuro.
+
+Sin embargo, si sólo se almacena o transfiere esta sucesión de bits, la imagen puede no ser correctamente interpretada.
+</aside>
 </section>
 
 <section data-transition="slide-out none-in">
@@ -840,133 +901,133 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <svg height="80" width="240" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<g id="s">
 		<g id="g0" transform="translate(0,250)">
-			<text alignment-baseline="middle" id="t0" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t0" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep0" dur="0.5s" fill="freeze" id="step0" repeatCount="1" restart="click" type="translate" values="0,250; 686,0;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="686, 0" id="rstep0" repeatCount="1" to="0, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb0" style="fill: rgb(207,231,245); stroke-opacity: 1; fill-opacity: 0; stroke: rgb(153,153,153)" width="57" x="686" y="0" />
+		<rect height="38" id="nb0" style="stroke: rgb(153,153,153); stroke-opacity: 1; fill-opacity: 0; fill: rgb(207,231,245)" width="57" x="686" y="0" />
 		<g id="g1" transform="translate(38,250)">
-			<text alignment-baseline="middle" id="t1" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t1" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep1" dur="0.5s" fill="freeze" id="step1" repeatCount="1" restart="click" type="translate" values="38,250; 724,0;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="724, 0" id="rstep1" repeatCount="1" to="38, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb1" style="stroke: rgb(153,153,153); fill-opacity: 0; stroke-opacity: 1; fill: rgb(207,231,245)" width="57" x="743" y="0" />
+		<rect height="38" id="nb1" style="fill: rgb(207,231,245); fill-opacity: 0; stroke-opacity: 1; stroke: rgb(153,153,153)" width="57" x="743" y="0" />
 		<g id="g2" transform="translate(76,250)">
-			<text alignment-baseline="middle" id="t2" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">11</text>
+			<text alignment-baseline="middle" id="t2" letter-spacing="2" style="stroke: rgb(0,0,0); font: Lato; fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">11</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep2" dur="0.5s" fill="freeze" id="step2" repeatCount="1" restart="click" type="translate" values="76,250; 762,0;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="762, 0" id="rstep2" repeatCount="1" to="76, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb2" style="fill-opacity: 0; stroke: rgb(153,153,153); stroke-opacity: 1; fill: rgb(0,107,107)" width="57" x="686" y="0" />
+		<rect height="38" id="nb2" style="stroke: rgb(153,153,153); stroke-opacity: 1; fill-opacity: 0; fill: rgb(0,107,107)" width="57" x="686" y="0" />
 		<g id="g3" transform="translate(114,250)">
-			<text alignment-baseline="middle" id="t3" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t3" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep3" dur="0.5s" fill="freeze" id="step3" repeatCount="1" restart="click" type="translate" values="114,250; 686,38;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="686, 38" id="rstep3" repeatCount="1" to="114, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb3" style="stroke: rgb(153,153,153); fill-opacity: 0; fill: rgb(207,231,245); stroke-opacity: 1" width="57" x="743" y="38" />
+		<rect height="38" id="nb3" style="stroke: rgb(153,153,153); stroke-opacity: 1; fill-opacity: 0; fill: rgb(207,231,245)" width="57" x="743" y="38" />
 		<g id="g4" transform="translate(152,250)">
-			<text alignment-baseline="middle" id="t4" letter-spacing="2" style="stroke: rgb(0,0,0); font: Lato; font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t4" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep4" dur="0.5s" fill="freeze" id="step4" repeatCount="1" restart="click" type="translate" values="152,250; 724,38;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="724, 38" id="rstep4" repeatCount="1" to="152, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb4" style="fill: rgb(207,231,245); stroke-opacity: 1; stroke: rgb(153,153,153); fill-opacity: 0" width="57" x="686" y="38" />
+		<rect height="38" id="nb4" style="fill: rgb(207,231,245); fill-opacity: 0; stroke-opacity: 1; stroke: rgb(153,153,153)" width="57" x="686" y="38" />
 		<g id="g5" transform="translate(190,250)">
-			<text alignment-baseline="middle" id="t5" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t5" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep5" dur="0.5s" fill="freeze" id="step5" repeatCount="1" restart="click" type="translate" values="190,250; 762,38;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="762, 38" id="rstep5" repeatCount="1" to="190, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb5" style="stroke: rgb(153,153,153); fill-opacity: 0; stroke-opacity: 1; fill: rgb(207,231,245)" width="57" x="743" y="38" />
+		<rect height="38" id="nb5" style="fill-opacity: 0; fill: rgb(207,231,245); stroke: rgb(153,153,153); stroke-opacity: 1" width="57" x="743" y="38" />
 		<g id="g6" transform="translate(228,250)">
-			<text alignment-baseline="middle" id="t6" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">11</text>
+			<text alignment-baseline="middle" id="t6" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">11</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep6" dur="0.5s" fill="freeze" id="step6" repeatCount="1" restart="click" type="translate" values="228,250; 686,76;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="686, 76" id="rstep6" repeatCount="1" to="228, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb6" style="fill: rgb(0,107,107); stroke-opacity: 1; stroke: rgb(153,153,153); fill-opacity: 0" width="57" x="686" y="76" />
+		<rect height="38" id="nb6" style="stroke-opacity: 1; stroke: rgb(153,153,153); fill: rgb(0,107,107); fill-opacity: 0" width="57" x="686" y="76" />
 		<g id="g7" transform="translate(266,250)">
-			<text alignment-baseline="middle" id="t7" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">11</text>
+			<text alignment-baseline="middle" id="t7" letter-spacing="2" style="stroke: rgb(0,0,0); font: Lato; fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">11</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep7" dur="0.5s" fill="freeze" id="step7" repeatCount="1" restart="click" type="translate" values="266,250; 724,76;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="724, 76" id="rstep7" repeatCount="1" to="266, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb7" style="fill-opacity: 0; stroke: rgb(153,153,153); fill: rgb(0,107,107); stroke-opacity: 1" width="57" x="743" y="76" />
+		<rect height="38" id="nb7" style="fill-opacity: 0; fill: rgb(0,107,107); stroke: rgb(153,153,153); stroke-opacity: 1" width="57" x="743" y="76" />
 		<g id="g8" transform="translate(304,250)">
-			<text alignment-baseline="middle" id="t8" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">11</text>
+			<text alignment-baseline="middle" id="t8" letter-spacing="2" style="stroke: rgb(0,0,0); font: Lato; fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">11</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep8" dur="0.5s" fill="freeze" id="step8" repeatCount="1" restart="click" type="translate" values="304,250; 762,76;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="762, 76" id="rstep8" repeatCount="1" to="304, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb8" style="stroke-opacity: 1; fill: rgb(0,107,107); stroke: rgb(153,153,153); fill-opacity: 0" width="57" x="686" y="76" />
+		<rect height="38" id="nb8" style="fill: rgb(0,107,107); fill-opacity: 0; stroke-opacity: 1; stroke: rgb(153,153,153)" width="57" x="686" y="76" />
 		<g id="g9" transform="translate(342,250)">
 			<text alignment-baseline="middle" id="t9" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">11</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep9" dur="0.5s" fill="freeze" id="step9" repeatCount="1" restart="click" type="translate" values="342,250; 686,114;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="686, 114" id="rstep9" repeatCount="1" to="342, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb9" style="fill: rgb(0,107,107); stroke-opacity: 1; stroke: rgb(153,153,153); fill-opacity: 0" width="57" x="743" y="114" />
+		<rect height="38" id="nb9" style="fill: rgb(0,107,107); fill-opacity: 0; stroke-opacity: 1; stroke: rgb(153,153,153)" width="57" x="743" y="114" />
 		<g id="g10" transform="translate(380,250)">
-			<text alignment-baseline="middle" id="t10" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t10" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep10" dur="0.5s" fill="freeze" id="step10" repeatCount="1" restart="click" type="translate" values="380,250; 724,114;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="724, 114" id="rstep10" repeatCount="1" to="380, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb10" style="fill: rgb(207,231,245); stroke-opacity: 1; stroke: rgb(153,153,153); fill-opacity: 0" width="57" x="686" y="114" />
+		<rect height="38" id="nb10" style="stroke-opacity: 1; stroke: rgb(153,153,153); fill: rgb(207,231,245); fill-opacity: 0" width="57" x="686" y="114" />
 		<g id="g11" transform="translate(418,250)">
 			<text alignment-baseline="middle" id="t11" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep11" dur="0.5s" fill="freeze" id="step11" repeatCount="1" restart="click" type="translate" values="418,250; 762,114;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="762, 114" id="rstep11" repeatCount="1" to="418, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb11" style="stroke: rgb(153,153,153); fill-opacity: 0; stroke-opacity: 1; fill: rgb(207,231,245)" width="57" x="743" y="114" />
+		<rect height="38" id="nb11" style="stroke: rgb(153,153,153); stroke-opacity: 1; fill-opacity: 0; fill: rgb(207,231,245)" width="57" x="743" y="114" />
 		<g id="g12" transform="translate(456,250)">
 			<text alignment-baseline="middle" id="t12" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">11</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep12" dur="0.5s" fill="freeze" id="step12" repeatCount="1" restart="click" type="translate" values="456,250; 686,152;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="686, 152" id="rstep12" repeatCount="1" to="456, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb12" style="fill-opacity: 0; stroke: rgb(153,153,153); stroke-opacity: 1; fill: rgb(0,107,107)" width="57" x="686" y="152" />
+		<rect height="38" id="nb12" style="stroke: rgb(153,153,153); stroke-opacity: 1; fill-opacity: 0; fill: rgb(0,107,107)" width="57" x="686" y="152" />
 		<g id="g13" transform="translate(494,250)">
-			<text alignment-baseline="middle" id="t13" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t13" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep13" dur="0.5s" fill="freeze" id="step13" repeatCount="1" restart="click" type="translate" values="494,250; 724,152;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="724, 152" id="rstep13" repeatCount="1" to="494, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb13" style="stroke: rgb(153,153,153); fill-opacity: 0; stroke-opacity: 1; fill: rgb(207,231,245)" width="57" x="743" y="152" />
+		<rect height="38" id="nb13" style="stroke: rgb(153,153,153); stroke-opacity: 1; fill-opacity: 0; fill: rgb(207,231,245)" width="57" x="743" y="152" />
 		<g id="g14" transform="translate(532,250)">
-			<text alignment-baseline="middle" id="t14" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t14" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep14" dur="0.5s" fill="freeze" id="step14" repeatCount="1" restart="click" type="translate" values="532,250; 762,152;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="762, 152" id="rstep14" repeatCount="1" to="532, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb14" style="stroke: rgb(153,153,153); fill-opacity: 0; stroke-opacity: 1; fill: rgb(207,231,245)" width="57" x="686" y="152" />
+		<rect height="38" id="nb14" style="stroke-opacity: 1; stroke: rgb(153,153,153); fill: rgb(207,231,245); fill-opacity: 0" width="57" x="686" y="152" />
 		<g id="g15" transform="translate(570,250)">
-			<text alignment-baseline="middle" id="t15" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">00</text>
+			<text alignment-baseline="middle" id="t15" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">00</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep15" dur="0.5s" fill="freeze" id="step15" repeatCount="1" restart="click" type="translate" values="570,250; 686,190;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="686, 190" id="rstep15" repeatCount="1" to="570, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb15" style="stroke: rgb(153,153,153); fill-opacity: 0; fill: rgb(255,255,255); stroke-opacity: 1" width="57" x="743" y="190" />
+		<rect height="38" id="nb15" style="stroke-opacity: 1; stroke: rgb(153,153,153); fill: rgb(255,255,255); fill-opacity: 0" width="57" x="743" y="190" />
 		<g id="g16" transform="translate(608,250)">
 			<text alignment-baseline="middle" id="t16" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep16" dur="0.5s" fill="freeze" id="step16" repeatCount="1" restart="click" type="translate" values="608,250; 724,190;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="724, 190" id="rstep16" repeatCount="1" to="608, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb16" style="fill: rgb(207,231,245); stroke-opacity: 1; stroke: rgb(153,153,153); fill-opacity: 0" width="57" x="686" y="190" />
+		<rect height="38" id="nb16" style="fill: rgb(207,231,245); fill-opacity: 0; stroke-opacity: 1; stroke: rgb(153,153,153)" width="57" x="686" y="190" />
 		<g id="g17" transform="translate(646,250)">
-			<text alignment-baseline="middle" id="t17" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t17" letter-spacing="2" style="stroke: rgb(0,0,0); font: Lato; font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
 			<animateTransform attributeName="transform" begin="indefinite" calcMode="linear" class="fragment" data-reverse="rstep17" dur="0.5s" fill="freeze" id="step17" repeatCount="1" restart="click" type="translate" values="646,250; 762,190;" />
 			<animateTransform attributeName="transform" begin="indefinite" dur="0.01s" fill="freeze" from="762, 190" id="rstep17" repeatCount="1" to="646, 250" type="translate" />
 		</g>
-		<rect height="38" id="nb17" style="stroke: rgb(153,153,153); fill-opacity: 0; fill: rgb(207,231,245); stroke-opacity: 1" width="57" x="743" y="190" />
+		<rect height="38" id="nb17" style="stroke-opacity: 1; stroke: rgb(153,153,153); fill: rgb(207,231,245); fill-opacity: 0" width="57" x="743" y="190" />
 		<g id="g18" transform="translate(684,250)">
-			<text alignment-baseline="middle" id="t18" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">01</text>
+			<text alignment-baseline="middle" id="t18" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">01</text>
 		</g>
 		<g id="g19" transform="translate(722,250)">
-			<text alignment-baseline="middle" id="t19" letter-spacing="2" style="stroke: rgb(0,0,0); font: Lato; font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t19" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
 		</g>
 		<g id="g20" transform="translate(760,250)">
 			<text alignment-baseline="middle" id="t20" letter-spacing="2" style="stroke: rgb(0,0,0); font: Lato; font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">00</text>
 		</g>
 		<g id="g21" transform="translate(798,250)">
-			<text alignment-baseline="middle" id="t21" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">00</text>
+			<text alignment-baseline="middle" id="t21" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">00</text>
 		</g>
 		<g id="g22" transform="translate(836,250)">
-			<text alignment-baseline="middle" id="t22" letter-spacing="2" style="fill: rgb(0,0,0); font-size: 28; font: Lato; stroke: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t22" letter-spacing="2" style="font-size: 28; fill: rgb(0,0,0); stroke: rgb(0,0,0); font: Lato" text-anchor="middle" type="span" x="19" y="22">10</text>
 		</g>
 		<g id="g23" transform="translate(874,250)">
-			<text alignment-baseline="middle" id="t23" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t23" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
 		</g>
 		<g id="g24" transform="translate(912,250)">
-			<text alignment-baseline="middle" id="t24" letter-spacing="2" style="stroke: rgb(0,0,0); font: Lato; font-size: 28; fill: rgb(0,0,0)" text-anchor="middle" type="span" x="19" y="22">10</text>
+			<text alignment-baseline="middle" id="t24" letter-spacing="2" style="font: Lato; stroke: rgb(0,0,0); fill: rgb(0,0,0); font-size: 28" text-anchor="middle" type="span" x="19" y="22">10</text>
 		</g>
 	</g>
 	<!-- 
@@ -979,6 +1040,11 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <li class="fragment">¿Cuáles son el ancho y el alto? ¿En cuántos bits se expresa la paleta?</li>
 <li class="fragment">Dimensiones y profundidad de color de la imagen</li>
 </ul>
+<aside data-markdown class="notes">
+El programa que reciba esta sucesión de bits debe conocer además cómo se disponen en el espacio los pixels, es decir, cuál es el ancho y el alto de la imagen; y exactamente cuántos bits codifican un pixel. Si esta información no está presente en el archivo que representa la imagen, su reconstrucción puede ser errónea o imposible.
+
+Nuestro formato de imagen digital debe contener información **de dimensiones y de profundidad de color**, para poder ser comunicado efectivamente hacia otros programas o computadoras.
+</aside>
 </section>
 
 <section>
@@ -987,6 +1053,23 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <p class="fragment"><img src="img/formato-grafico2.svg" class="plain stretch"></p>
 <p class="fragment"><img src="img/formato-grafico3.svg" class="plain stretch"></p>
 <p class="fragment post_it"><b>050502AEBF3...</b></p>
+<aside data-markdown class="notes">
+##Un formato de imagen
+
+Teniendo en cuenta todo lo anterior, podemos definir un formato de imagen como sigue. El formato de archivo de imagen tendrá una primera sección o **cabecera** con datos acerca de la imagen, o **metadatos**, y una segunda sección con los bits o datos de la imagen propiamente dichos.
+
+- El primer byte de la cabecera del archivo se reserva para especificar el **ancho** de la imagen, es decir, cuántos pixels hay en cada fila.
+- El segundo byte se reserva para especificar la **altura** o cantidad de filas de pixels de la imagen.
+- El tercer byte especifica la profundidad de color, o cantidad de **bits por pixel**. Esta cantidad de bits por pixel define la cantidad de colores que se pueden codificar en la imagen. Si la imagen tiene $n$ bits por pixel, hay $2^n$ posibilidades para el código de color y por lo tanto $2^n$ colores representables.
+- Finalmente, el resto del archivo contiene los bits que representan a cada uno de los pixels por su color. Éstos son los datos de la imagen propiamente dicha.
+
+**Ejemplo**
+
+Un archivo que define una imagen de **cinco por cinco pixels, a cuatro colores**, comienza con los bytes 00000101, 00000101, 00000010, y sigue con los datos de la imagen.
+
+Como la cantidad de datos binarios de un archivo en este formato es muy grande, para hacerlo más manejable usaremos notación hexadecimal. Entonces el archivo del ejemplo se representa por el hexadecimal 050502... y a continuación siguen en hexadecimal los códigos de color de los pixels. 
+
+</aside>
 </section>
 
 <section>
@@ -995,9 +1078,20 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 	<!--<p style="display: block; margin: 0 auto;">070401AEBF3...<p>-->
 	<p><img src="img/byn-0.svg" style="display: block; margin: 0 auto;" class="plain fragment"></p>
 	<p><img src="img/byn.svg" style="display: block; margin: 0 auto;" class="plain fragment"></p>
+<aside data-markdown class="notes">
+##Reconstruyendo una imagen
+
+Para interpretar qué imagen describe un archivo dado, consideramos primero su cabecera y buscamos cuál es el ancho y el alto (indicados por los primeros dos bytes), y cuántos bits por pixel están codificados en el resto del archivo (indicados por el tercer byte). De esta manera no es difícil dibujar la imagen.
+
+**Ejemplo**
+
+Una imagen dada por la cadena hexadecimal **070401AEBF3...** tendrá $7 \times 4$ pixels, y un solo bit de paleta. Como la paleta se codifica con un solo bit, esta imagen es en blanco y negro (no puede haber más que dos valores de color). Los dígitos hexadecimales a partir de la cadena **AEBF3...** se analizan como grupos de cuatro bits y nos dicen cuáles pixels individuales están en negro (bits en 1) y en blanco (bits en 0).
+</aside>
 </section>
 
 
+
+<!-- --------SONIDO---------------------------------------------------------------------------------
 <section data-markdown data-background="#00CCFF">
 ##Sonido digital
 </section>
@@ -1005,7 +1099,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <section>
 <h2>Parámetros de onda</h2>
 <div class="tangle" id="sinCalc">
-        <!--
+        <! --
         {
                 "initialize":"function (container){
                         var rootElement = document.getElementById('sinCalc');
@@ -1027,18 +1121,18 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
                         var tangle=new Tangle(rootElement, model);
                 }"
         }
-        -->
+        -- >
         <table>
         <tr><td>Frecuencia:</td><td class="TKAdjustableNumber" data-var="freq" data-min="1" data-max="100"></td>
 	    <td>Amplitud:</td><td class="TKAdjustableNumber" data-var="ampl" data-min="1" data-max="3"></td>
 	    <td>Muestras:</td><td class="TKAdjustableNumber" data-var="nSamples" data-min="1" data-max="500"></td></tr>
         </table>
-<!--        <p class="post_it" data-var="math" style="text-align: center;" id="sinFormula">$ $</p> -->
+<! --        <p class="post_it" data-var="math" style="text-align: center;" id="sinFormula">$ $</p> -- >
 </div>
 <div class="plot" id="sinplot" style="background-color:#000; width:800px; height:400px; margin:0 auto;"></div>
-<!--
+<! --
 { "target":"#sinplot", "data":[{"fn":"sin(x)", "nSamples":4, "graphType":"scatter"}], "width":800, "height":400, }
--->
+-- >
 </section>
 
 
@@ -1075,7 +1169,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 	<img src="img/grid.png" style="height: 180px;" class="plain fragment">
 </section>
 
-<!--
+<! --
 <section data-transition="slide-in fade-out">
 <h2>Discretizar la amplitud</h2>
 	<img src="img/grid-0.png" class="plain stretch">
@@ -1095,19 +1189,19 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <h2>Discretizar la amplitud</h2>
 	<img src="img/grid-3.png" class="plain stretch">
 </section>
--->
+-- >
 
 <section>
 <h2>Un formato de audio</h2>
 <img src="img/formato-audio.svg" class="plain stretch">
-<!--
+<! --
 <p class="fragment">
 <img src="img/formato-audio2.svg" class="plain stretch">
 </p>
 <p class="fragment">
 <img src="img/formato-audio3.svg" class="plain stretch">
 </p>
--->
+-- >
 <ul>
 	<li>Asumiremos amplitud entre 0 y 10</li>
 	<li>Ese espacio se representará sobre $n$ bits</li>
@@ -1206,6 +1300,9 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <img src="img/sound-reconst-3.png" class="plain stretch">
 </section>
 
+--------SONIDO------------------------------------------------------------------------------- -->
+
+
 
 <section data-markdown data-background="#00CCFF">
 ##Compresión de datos
@@ -1225,6 +1322,18 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 			<li>Sin pérdida</li>
 		</ul>
 </ul>
+<aside data-markdown class="notes">
+#Compresión de datos
+
+Muchas veces es interesante reducir el tamaño de un archivo, para que ocupe menos espacio de
+almacenamiento o para que su transferencia a través de una red sea más rápida. Al ser todo archivo
+una secuencia de bytes, y por lo tanto de números, disponemos de métodos y herramientas
+matemáticas que permiten, en ciertas condiciones, reducir ese tamaño. La manipulación de los bytes
+de un archivo con este fin se conoce como compresión.
+
+La compresión de un archivo se ejecuta mediante un programa que utiliza un algoritmo especial de
+compresión. Este algoritmo puede ser de compresión sin pérdida, o con pérdida.
+</aside>
 </section>
 
 <section>
@@ -1238,6 +1347,21 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <li>Compresión de páginas web (gzip)</li>
 </ul>
 </ul>
+<aside data-markdown class="notes">
+##Compresión sin pérdida
+
+Decimos que la compresión ha sido sin pérdida cuando, del archivo comprimido, puede extraerse
+exactamente la misma información que antes de la compresión, utilizando otro algoritmo que
+ejecuta el trabajo inverso al de compresión. En otras palabras, la compresión sin pérdida es
+reversible: siempre puede volverse a la información de partida. Esto es un requisito indispensable
+cuando necesitamos recuperar exactamente la secuencia de bytes original, como en el caso de un
+archivo de texto. 
+
+Como usuarios de computadoras, es muy probable que hayamos utilizado más de
+una vez la compresión sin pérdida, al tener que comprimir un documento de texto,
+utilizando un programa utilitario como ZIP, RAR u otros. Si la compresión no fuera
+reversible, no podríamos recuperar el archivo de texto tal cual fue escrito.
+</aside>
 </section>
 
 <section>
@@ -1253,25 +1377,39 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <li>MP3, MP4</li>
 </ul>
 </ul>
+<aside data-markdown class="notes">
+##Compresión con pérdida
+
+En algunos casos, el resultado de la compresión de un archivo es otro archivo del cual ya no puede
+recuperarse la misma información original, pero que de alguna manera sigue sirviendo a los fines
+del usuario. Es el caso de la compresión de imágenes, donde se reduce la calidad de la imagen, ya
+sea utilizando menos colores, o disminuyendo la resolución. También es el caso de la compresión de
+audio, al descartar componentes del sonido con frecuencias muy bajas o muy altas, inaudibles para
+los humanos (como en la tecnología de grabación de CDs), con lo cual la diferencia entre el original
+digital y el comprimido no es perceptible al oído. También es útil, para algunos fines, reducir la
+calidad del audio quitando componentes audibles (lo que hacen, por ejemplo, algunos grabadores
+“de periodista” para lograr archivos más pequeños, con audio de menor fidelidad, pero donde el
+diálogo sigue siendo comprensible).
+</aside>
 </section>
 
-<section data-transition=slide-in fade-out">
+<section data-transition=slide-in fade-out" data-coursemod-shown="false">
 <h2>Original, 720x540 pixels</h2>
 <img src="img/imagen.jpg" class="plain stretch">
 </section>
 
-<section data-transition=fade-out fade-in">
+<section data-transition=fade-out fade-in" data-coursemod-shown="false">
 <h2>Comprimido, 360x270 pixels</h2>
 <img src="img/imagen2.jpg" class="plain stretch">
 </section>
 
-<section data-transition=slide-out fade-in">
+<section data-transition=slide-out fade-in" data-coursemod-shown="false">
 <h2>Comprimido, 180x135 pixels</h2>
 <img src="img/imagen3.jpg" class="plain stretch">
 </section>
 
 
-<section>
+<section data-coursemod-shown="false">
 <h2>Tamaños en bytes</h2>
 <pre><code>
  $ ls -l imagen*
@@ -1290,18 +1428,64 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <section data-transition=slide-in fade-out">
 <h2>Compresión con pérdida</h2>
 <img src="img/comprcp01.svg" class="plain stretch">
+<aside data-markdown class="notes">
+##Reducción de color
+
+Si la imagen tiene $ancho \times alto$ pixels, y la información de color es de $n$ bits por pixel, el archivo sin su cabecera mide $ancho \times alto \times n$ bits. Una forma sencilla de compresión con pérdida, que no modifica la resolución, es la reducción de la profundidad de color de una imagen. Si la imagen puede seguir siendo útil con menos colores, comprimiendo la paleta de colores puede obtenerse un archivo de menor tamaño.
+
+Comprimir la paleta de colores consiste en reescribir la imagen con una cantidad menor de bits por pixel. Cada vez que la cantidad de bits por pixel decrece en uno, la profundidad de color, es decir, la cantidad de colores diferentes, se divide por dos. De esta forma se puede reducir la cantidad de bits utilizados para expresar cada pixel, claro está, al costo de perder información de color de la imagen.
+
+**Ejemplo**
+
+Sea una imagen a cuatro colores; luego la cantidad de bits por pixel es 2. Al reducir la profundidad de color, los colores 00 y 10 pasan a ser el único color 0; y los colores 10 y 11 pasan a ser el único color 1. Todos los pixels quedan expresados por un único bit 0 o 1, reduciendo efectivamente el tamaño de la imagen.
+
+- La información ha sido **comprimida con pérdida** porque el archivo original no puede ser reconstruido a partir de este nuevo archivo. 
+- El nuevo archivo, sin su cabecera, mide $ancho \times alto \times (n - 1)$, o sea, es $ancho \times alto$ bits más corto que el original.
+</aside>
 </section>
 
 <section data-transition=slide-out fade-in">
 <h2>Compresión con pérdida</h2>
 <img src="img/comprcp02.svg" class="plain stretch">
+<aside data-markdown class="notes">
+Un método para reducir a la mitad la profundidad de color puede ser como sigue:
+
+1. Escribir la tabla de códigos de color.
+2. Retirar el bit más alto de cada código de color en la paleta. 
+3. Eliminar de la paleta los códigos duplicados.
+4. Reescribir la cabecera del archivo manteniendo ancho y alto pero con la nueva cantidad de bits por pixel.
+5. Reescribir los datos de la imagen reemplazando el código original de color de cada pixel por el nuevo código, es decir, quitando el bit más alto de cada pixel. 
+
+Dos pixels cuyos códigos de color diferían sólo en el bit de orden más alto ahora tendrán el mismo código, y por lo tanto se "pintarán" del mismo color. El archivo ya no contiene la información necesaria para saber cuál era el color original de cada pixel.
+
+</aside>
 </section>
 
 <section data-transition=slide-out fade-in">
 <h2>Compresión con pérdida</h2>
 <img src="img/ccpdif01.svg" class="plain stretch fragment">
 <img src="img/ccpdif02.svg" class="plain stretch fragment">
+<aside data-markdown class="notes">
+
+
+**Ejemplo**
+
+Si el archivo está dado por la cadena hexadecimal **050502AEAFFAE8A600A8** (ancho: 5, alto: 5, bits por pixel: 2, pixels: 10 10 11 10 10 10 11 11 11 11 10 10 11 10 10 00 10 10 01 10 00 00 10 10 10), los pasos del procedimiento anterior son:
+
+1. La tabla de códigos de color es {00 01 10 11}.
+2. Sin su bit más alto, estos códigos son {0 1 0 1}.
+3. Sin duplicados, quedan los códigos {0 1}.
+4. La cabecera del nuevo archivo es {ancho: 5, alto: 5, bits por pixel: 1}.
+5. Los bits que describen los pixels de la nueva imagen son {0 0 1 0 0 0 1 1 1 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 }.
+
+La imagen comprimida queda como **05050123C82000** (ancho: 5, alto: 5, bits por pixel: 1, pixels: 0 0 1 0 0 0 1 1 1 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0).
+
+**Pregunta**
+
+- Se ha visto cómo reducir la profundidad de color en exactamente 1 bit. ¿Cómo podemos generalizar el método, para reducir la información de color en una cantidad de bits cualquiera?
+</aside>
 </section>
+
 
 <section>
 <h2>Compresión sin pérdida</h2>
@@ -1323,7 +1507,7 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la 
 <img src="img/rle.svg" class="plain stretch">
 </section>
 
-<section>
+<section data-coursemod-shown="false">
 <h2>Bestiario</h2>
 <h4 class="fragment"><i>- Indique un caso de compresión con pérdida.</i></h4>
 <span class="fragment">
