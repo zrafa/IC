@@ -177,8 +177,8 @@ que incluye:
 - Varios símbolos matemáticos, de puntuación, etc.,
 - El espacio en blanco,
 - Y 32 caracteres no imprimibles. Estos caracteres no imprimibles son combinaciones de bits
-que no tienen una representación gráfica, sino que sirven para diversas funciones de
-comunicación de las computadoras con otros dispositivos.
+que no tienen una representación gráfica o grafema, sino que sirven para diversas funciones de
+comunicación de las computadoras con otros dispositivos. Suelen ser llamados **caracteres de control**.
 
 En general, prácticamente todos los símbolos que figuran en nuestro teclado tienen un código
 ASCII asignado. Como sólo se usan siete bits, el bit de mayor orden (el de más a la izquierda) de
@@ -207,19 +207,18 @@ $ head -7 TextoYMultimedia.html
 <aside data-markdown class="notes">
 ##Textos y documentos
 
-Un archivo de texto es una sucesión de caracteres bajo alguna codificación. Puede manipularse con programas básicos como los **editores de texto** u otras herramientas que ofrece el ambiente del sistema operativo. Un archivo de texto es directamente legible por humanos porque contiene únicamente los caracteres que constituyen las palabras. 
+Un archivo de texto es una sucesión de caracteres codificados bajo algún estándar. Puede manipularse con programas básicos como los **editores de texto** u otras herramientas que ofrece el ambiente del sistema operativo. Un archivo de texto es directamente legible por humanos porque contiene únicamente los caracteres que constituyen las palabras, espacios en blanco o saltos de línea.
 
-Otra clase de archivos, los que son creados y manipulados por **procesadores de texto**, además de esa información tienen una estructura compleja que permite definir características de presentación y organización del texto. Esto inluye los diferentes tipos, tamaños o colores de los caracteres, las dimensiones de la página, la organización en secciones o capítulos, etc. La estructura de los archivos generados por los procesadores de texto es específica de cada programa y convierte al documento en algo que sólo puede ser leído con el procesador de texto correspondiente.
+Otra clase de archivos, los que son creados y manipulados por **procesadores de texto**, además de esa información tienen una estructura compleja que permite definir características de presentación y organización del texto. Esto incluye los diferentes tipos, tamaños o colores de los caracteres, las dimensiones de la página, la organización en secciones o capítulos, etc. La estructura de los archivos generados por los procesadores de texto es específica de cada programa y convierte al documento en algo que sólo puede ser leído con el procesador de texto correspondiente.
 
-Una página HTML servida por un servidor Web es un documento de texto que suele estar codificado en el estándar UTF-8. El contenido de este texto es directamente legible, pero no es exactamente lo que muestra el navegador, sino que esa representación gráfica está indicada por el lenguaje HTML en el que está escrito el documento.
+##Archivos de hipertexto
+
+Una página HTML servida por un servidor Web es un archivo de texto que suele estar codificado en el estándar UTF-8. El contenido de este texto es directamente legible, pero no es exactamente lo que muestra el navegador, sino que esa representación gráfica está indicada por el lenguaje HTML en el que está escrito el documento. Las propiedades de navegación del documento también están determinadas por elementos del lenguaje HTML.
 
 Las primeras líneas del documento HTML definen cuestiones relativas a la presentación que hará el navegador, como el idioma en el cual está escrita la página, el conjunto de caracteres que la codifica, el título que debe presentarse en la ventana de visualización, etc. Estas líneas se especifican en el lenguaje especial de la Web, el lenguaje de marcado de hipertexto, o HTML.
 
-**Ejemplo**
+Con el navegador podemos visualizar el texto de esa página pulsando las teclas CTRL+U. Lo mismo si descargamos la página hacia un archivo y usamos el comando **head**. Lo que se ve es diferente de lo que muestra el navegador: se trata del **código fuente** de la página HTML.
 
-Este ejemplo muestra tres vistas del mismo documento, con el objetivo de mostrar que el documento se compone simplemente de una secuencia de bytes. 
-
-1) Con nuestro navegador podemos visualizar el texto de esa página pulsando las teclas CTRL+U. Lo mismo si descargamos la página hacia un archivo y usamos el comando **head**. Lo que se ve es diferente de lo que muestra el navegador: se trata del **código fuente** de la página HTML.
 </aside>
 </section>
 
@@ -247,11 +246,13 @@ $ hexdump -bc TextoYMultimedia.html | head -16
 0000070   e   >  \n  \t  \t   <   m   e   t   a       n   a   m   e   =
 </code></pre>
 <aside data-markdown class="notes">
-2) Con diferentes comandos o programas de visualización podemos ver, carácter por carácter, cómo está construido este texto. El comando **hexdump -bc** nos da la lista de los caracteres que componen el texto, con su notación en octal que aparece encima de cada uno de ellos.
+Presentemos otras vistas del mismo archivo de texto, a fin de mostrar que se compone simplemente de una secuencia de bytes. 
 
-Las letras acentuadas se representan con una serie de caracteres UTF-8 especiales, no pertenecientes a la zona visible del ASCII.
+Con diferentes comandos o programas de visualización podemos ver, carácter por carácter, cómo está construido este texto. El comando **hexdump -bc** nos da la lista de los caracteres que componen el texto, con la notación en octal de su código, que aparece encima de cada uno de ellos.
 
-Los caracteres de control como el tabulador y el fin de línea no tienen un grafema asociado, sino que se representan por secuencias **\\t** y **\\n** respectivamente. Estos caracteres desplazan el cursor que escribe los caracteres en pantalla para organizar visualmente la presentación del texto, y también son parte del código fuente de la página.
+Las letras acentuadas se representan con una serie de caracteres UTF-8 especiales, no pertenecientes a la zona visible del ASCII. El comando separa el carácter en los bytes que lo componen y los muestra individualmente.
+
+Los caracteres de control, como el tabulador y el fin de línea, no tienen un grafema asociado, sino que se representan por las secuencias **\\t** y **\\n** respectivamente. Estos caracteres desplazan el cursor de posición que escribe los caracteres en pantalla (o en una impresora) para organizar visualmente la presentación del texto, y también son parte del código fuente de la página.
 </aside>
 </section>
 
@@ -270,11 +271,11 @@ $ hexdump -C TextoYMultimedia.html | head -8
 00000070  65 3e 0a 09 09 3c 6d 65  74 61 20 6e 61 6d 65 3d  |e>...&lt;meta name=|
 </code></pre>
 <aside data-markdown class="notes">
-3) Del mismo modo, el comando **hexdump -C** muestra cada uno de los grafemas de los caracteres acompañado de su codificación en hexadecimal. Esta vista no muestra los caracteres acentuados ni los de control, reemplazándolos por puntos. 
+Del mismo modo, el comando **hexdump -C** muestra cada uno de los grafemas de los caracteres acompañado de su codificación en hexadecimal. Esta vista no muestra los caracteres acentuados ni los de control, sino que los reemplaza por puntos. 
 
 **Pregunta**
 
-- Estos comandos muestran información legible porque el documento HTML se trata, esencialmente, de un archivo de texto. ¿Qué ocurre si los mismos comandos se aplican a un archivo creado por un procesador de texto?
+- Estos comandos aplicados a un documento HTML muestran información legible porque se trata, esencialmente, de un archivo de texto. ¿Qué ocurre si los mismos comandos se aplican a un archivo creado por un procesador de texto?
 </aside>
 </section>
 
@@ -404,7 +405,7 @@ almacenando luego los bytes que representan la imagen tomada.
 
 Hay varias maneras de representar el color en las imágenes digitales. Una forma es definir, para cada pixel o punto de la imagen, tres coordenadas que describen las intensidades de luz **roja, verde y azul** que conforman cada color. 
 
-Cuando se crea una mezcla de rayos de luz de colores con esas intensidades, usando un proyector o una pantalla como los displays LED, las ondas luminosas individuales del rojo, verde y azul se suman formando otros colores. Este esquema de representación del color se llama **RGB** por las iniciales de los colores rojo, verde y azul en inglés.
+Cuando se crea una mezcla de rayos de luz de colores con diferentes intensidades, usando un proyector o una pantalla como los displays LED, las ondas luminosas individuales del rojo, verde y azul se suman formando otros colores. Este esquema de representación del color se llama **RGB** por las iniciales de los colores rojo, verde y azul en inglés.
 
 Para cada punto, esas tres coordenadas son números en un cierto intervalo. El valor mínimo de una coordenada, el 0, representa la ausencia de ese color. El valor máximo, la intensidad máxima de ese color que se puede reproducir con el dispositivo de salida que lo está visualizando. Cuando las coordenadas se representan en un byte, cada coordenada puede ir entre 0 y 255. 
 
@@ -472,9 +473,9 @@ Con este esquema de representación de color, cada pixel o elemento de la imagen
 </table>
 </span>
 <aside data-markdown class="notes">
-##Paleta de colores
+##Formato de imagen
 
-Lógicamente, para las imágenes con muchos colores (como las escenas de la naturaleza donde hay gradaciones de colores) es conveniente contar con muchos bits de profundidad de color. Sin embargo, cuando una imagen se compone de pocos colores, estos bits se desperdician. En estos casos es útil definir un formato de imagen que represente esos pocos colores utilizando menos bits.
+Lógicamente, para las imágenes con muchos colores (como las escenas de la naturaleza donde hay gradaciones de colores) es conveniente contar con muchos bits de profundidad de color. Sin embargo, cuando una imagen se compone de pocos colores, la imagen digital es innecesariamente grande, costosa de almacenar y de transmitir. En estos casos es útil definir un **formato de imagen** que represente esos pocos colores utilizando menos bits.
 
 Una forma de hacerlo es definir una **paleta de colores**, que es una lista de los diferentes colores utilizados en la imagen, codificados con la mayor economía de bits posible.
 Si conocemos la cantidad de colores en la imagen, podemos determinar la cantidad mínima de bits que permite codificarlos a todos. 

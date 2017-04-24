@@ -1,0 +1,98 @@
+<section>
+<h2>Contando con los dedos</h2>
+<div id="senarycontainer" class="snapsvg stretch" width="100%" height="100%">
+	<svg id="senary" viewBox="0 0 400 200" width="100%" height="100%"></svg>
+	<!-- {
+		"initialize": "function(container, options) { 
+			var svg = Snap('#senary');
+			var conv = [], img = [], dig = [];
+			var num = 0;
+			var txtattr = { fontSize: '20', fontFamily: 'Helvetica', 
+				textAnchor: 'middle', dominantBaseline: 'middle', 
+				alignmentBaseline: 'middle'};
+			var format = 'img/manos/mickey/{h}h{x}.svg';
+
+			function debounce(func, wait, immediate) {
+			  var timeout;
+			  return function() {
+			    var context = this,
+			      args = arguments;
+			    var later = function() {
+			      timeout = null;
+			      if (!immediate) func.apply(context, args);
+			    };
+			    var callNow = immediate && !timeout;
+			    clearTimeout(timeout);
+			    timeout = setTimeout(later, wait);
+			    if (callNow) func.apply(context, args);
+			  };
+};
+
+			var WIDGET; 
+			var widget = function(n, liminf, limsup, callback) {
+				this.n = n;
+				this.down = svg.polyline(1,5, 10,0, 10,10);
+				this.text = svg.text(25,5,n.toString()).attr(txtattr);
+				this.up = svg.polyline(40,0, 40,10, 49,5);
+				this.set = function(n) { 
+					if(this.handled) return;
+					this.handled = true;
+					callback(n); 
+					this.svg[1].node.innerHTML = n; 
+					this.handled = false;
+				}; 
+				this.value = function() { return this.svg[1].node.innerHTML };
+				this.downOnClick = function() { this.attr({fill:'#aaf'}); if(1 * WIDGET.value() > liminf) WIDGET.set(1 * WIDGET.value() - 1); this.animate({fill:'#000'},100); };
+				this.upOnClick   = function() { this.attr({fill:'#aaf'}); if(1 * WIDGET.value() < limsup) WIDGET.set(1 * WIDGET.value() + 1); this.animate({fill:'#000'},100); };
+				this.down.click(debounce(this.downOnClick, 10, false));
+				this.up.click(debounce(this.upOnClick, 10, false));
+				this.svg = svg.g(this.down, this.text, this.up);
+			};
+
+
+			var convb6 = function(n) {
+				for(var i = 0; i < 4; i++) {
+					if(img[i]) img[i].attr({opacity: '0.0'});
+					if(dig[i]) dig[i].attr({opacity: '0.0'});
+				}
+				var i = 3;
+				do {
+					conv[i] = n % 6;
+					var src = Snap.format(format,{ h: ((i % 2 === 1)? 'r' : 'l'), x: conv[i]});
+					img[i] = svg.image(src,70 * i,0,90,90)
+						.attr({opacity: '0.0'})
+						.animate({opacity: '1.0'},50);
+					dig[i] = svg.text(70 * i + 45, 100, conv[i].toString()).attr(txtattr);
+					n = Math.floor(n / 6);
+					i--;
+				} while((n > 0) && (i >= 0));
+			}; 
+
+			WIDGET = new widget(num, 0, 99, convb6);
+			WIDGET.svg.transform('T158 160S3');
+			convb6(num);
+	}"
+	} -->
+
+</div>
+<aside data-markdown class="notes">
+##Un sistema diferente
+Todos conocemos el método tradicional de contar con los dedos. Como tenemos cinco dedos
+en cada mano, podemos contar hasta diez. Pero también podemos utilizar un método diferente 
+del tradicional, que resulta ser muy interesante. 
+
+- Con este método, al llegar a 5 con la mano derecha, representamos el 6 **sólo con un dedo 
+de la izquierda**. Los dedos de la mano derecha **vuelven a 0**, y seguimos contando
+con la derecha. 
+- Cada vez que se agotan los dedos de la mano derecha levantamos un nuevo dedo de la izquierda, y la derecha vuelve a 0.
+- Cada dedo en alto de la mano izquierda significa que **se agotó la secuencia de la mano derecha una vez**.
+
+###Preguntas
+- ¿Hasta qué número se puede representar en este sistema, sólo con dos manos? 
+- Si agregamos una tercera mano, de un amigo, ¿hasta qué número llegamos? 
+- ¿Y cómo se representa el 36? ¿Y el 37?
+- Y con cuatro manos, ¿hasta qué número llegamos? 
+- Y, si el número no se puede representar con dos manos, ¿cómo es el procedimiento para saber qué dedos levantar?
+</aside>
+</section>
+
