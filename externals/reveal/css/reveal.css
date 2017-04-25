@@ -222,7 +222,7 @@ body {
   margin-top: 1px; }
 
 .reveal .controls .navigate-left {
-  top: 42px;
+  top: 68px; /*42*/
   border-right-width: 22px;
   border-right-color: #000; }
 
@@ -231,7 +231,7 @@ body {
 
 .reveal .controls .navigate-right {
   left: 74px;
-  top: 42px;
+  top: 68px; /*42*/
   border-left-width: 22px;
   border-left-color: #000; }
 
@@ -239,7 +239,8 @@ body {
   opacity: 0.3; }
 
 .reveal .controls .navigate-up {
-  left: 42px;
+  left: 42px; /*42*/
+  top: 60px; /**/
   border-bottom-width: 22px;
   border-bottom-color: #000; }
 
@@ -247,17 +248,15 @@ body {
   opacity: 0.3; }
 
 .reveal .controls .navigate-down {
-  left: 42px;
-  top: 74px;
+  left: 42px; /**/
+  top: 68px; /*74*/
   border-top-width: 22px;
   border-top-color: #000; }
 
 .reveal .controls .navigate-down.fragmented {
   opacity: 0.3; }
 
-.reveal .controls .navigate-down, .reveal .controls .navigate-up {
-    display: none;
-}
+/* .reveal .controls .navigate-down, .reveal .controls .navigate-up { display: none; } */
 
 /*********************************************
  * PROGRESS BAR
