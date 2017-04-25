@@ -326,13 +326,13 @@ es difícil dibujar la imagen.
 
 Ejemplo
 
-Una imagen dada por la cadena hexadecimal 070401AEBF3... tendrá
-7  por  4 pixels, y un solo bit de paleta. Como la paleta se codifica
-con un solo bit, esta imagen es en blanco y negro (no puede haber más
-que dos valores de color). Los dígitos hexadecimales a partir de la
-cadena AEBF3... se analizan como grupos de cuatro bits y nos dicen
-cuáles pixels individuales están en negro (bits en 1) y en blanco (bits
-en 0).
+-   Una imagen dada por la cadena hexadecimal 070401AEBF3... tendrá
+    7  por  4 pixels, y un solo bit de paleta.
+-   Como la paleta se codifica con un solo bit, esta imagen es en blanco
+    y negro (no puede haber más que dos valores de color).
+-   Los dígitos hexadecimales a partir de la cadena AEBF3... se analizan
+    como grupos de cuatro bits y nos dicen cuáles pixels individuales
+    están en negro (bits en 1) y en blanco (bits en 0).
 
 Compresión de datos
 ===================
@@ -347,18 +347,20 @@ compresión.
 
 La compresión de un archivo se ejecuta mediante un programa que utiliza
 un algoritmo especial de compresión. Este algoritmo puede ser de
-compresión sin pérdida, o con pérdida.
+compresión sin pérdida, o de compresión con pérdida.
 
 Compresión sin pérdida
 ----------------------
 
-Decimos que la compresión ha sido sin pérdida cuando, del archivo
-comprimido, puede extraerse exactamente la misma información que antes
-de la compresión, utilizando otro algoritmo que ejecuta el trabajo
-inverso al de compresión. En otras palabras, la compresión sin pérdida
-es reversible: siempre puede volverse a la información de partida. Esto
-es un requisito indispensable cuando necesitamos recuperar exactamente
-la secuencia de bytes original, como en el caso de un archivo de texto.
+Decimos que la compresión ha sido sin pérdida cuando puede extraerse del
+archivo comprimido exactamente la misma información que antes de la
+compresión, utilizando otro algoritmo que ejecuta el trabajo inverso al
+de compresión. En otras palabras, la compresión sin pérdida es
+reversible: aplicando el algoritmo inverso, o de descompresión, siempre
+puede volverse a la información de partida. Esto es un requisito
+indispensable cuando necesitamos recuperar exactamente la secuencia de
+bytes original, como en el caso de un archivo de texto, una base de
+datos, una planilla de cálculo.
 
 Como usuarios de computadoras, es muy probable que hayamos utilizado más
 de una vez la compresión sin pérdida, al tener que comprimir un
@@ -366,22 +368,48 @@ documento de texto, utilizando un programa utilitario como ZIP, RAR u
 otros. Si la compresión no fuera reversible, no podríamos recuperar el
 archivo de texto tal cual fue escrito.
 
+También somos usuarios de la compresión, muchas veces sin sospecharlo,
+al consultar páginas de Internet. Muchos sitios populares utilizan
+compresión para acelerar la descarga de sus contenidos. Los navegadores
+cuentan con el conocimiento para identificar cuándo una página está
+comprimida y descomprimirla en forma transparente, es decir, sin que el
+usuario necesite hacer ni saber nada.
+
 Compresión con pérdida
 ----------------------
 
-En algunos casos, el resultado de la compresión de un archivo es otro
-archivo del cual ya no puede recuperarse la misma información original,
-pero que de alguna manera sigue sirviendo a los fines del usuario. Es el
-caso de la compresión de imágenes, donde se reduce la calidad de la
-imagen, ya sea utilizando menos colores, o disminuyendo la resolución.
-También es el caso de la compresión de audio, al descartar componentes
+Cuando la compresión se hace con una técnica con pérdida, no existe un
+algoritmo de descompresión que recupere la información original; es
+decir, no existe un algoritmo inverso.
+
+El resultado de la compresión con pérdida de un archivo es otro archivo
+del cual ya no puede recuperarse la misma información original, pero que
+de alguna manera sigue sirviendo a los fines del usuario. La pérdida de
+información es intencional, y es el usuario quien ha elegido descartar
+esa información porque no es necesaria, o porque es redundante.
+
+En el mundo analógico es frecuente la compresión con pérdida, por
+ejemplo en el caso de la compresión de audio, al descartar componentes
 del sonido con frecuencias muy bajas o muy altas, inaudibles para los
 humanos (como en la tecnología de grabación de CDs), con lo cual la
-diferencia entre el original digital y el comprimido no es perceptible
+diferencia entre el material original y el comprimido no es perceptible
 al oído. También es útil, para algunos fines, reducir la calidad del
-audio quitando componentes audibles (lo que hacen, por ejemplo, algunos
-grabadores “de periodista” para lograr archivos más pequeños, con audio
-de menor fidelidad, pero donde el diálogo sigue siendo comprensible).
+audio quitando algunos componentes audibles (lo que hacen, por ejemplo,
+los sistemas telefónicos, o algunos grabadores “de periodista” para
+lograr archivos más pequeños, con audio de menor fidelidad, pero donde
+el diálogo sigue siendo comprensible).
+
+Al utilizar un servicio de streaming de video o audio, muchas veces se
+nos da la oportunidad de elegir una "calidad" menor del audio o del
+video, lo que quiere decir que el audio o la imagen se representarán con
+menos bits por segundo, y se transferirán a través de la red más
+rápidamente. Estas diferentes "calidades" menores son formas de
+compresión con pérdida.
+
+Los estándares MP3 y MP4 son ejemplos de formatos de archivos digitales
+comprimidos con pérdida. Para comprimir con pérdida imágenes, se reduce
+su calidad, ya sea disminuyendo la resolución o utilizando menos
+colores.
 
 Reducción de color
 ------------------

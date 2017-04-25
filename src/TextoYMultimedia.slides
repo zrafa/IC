@@ -356,32 +356,32 @@ almacenando luego los bytes que representan la imagen tomada.
 </section>
 
 <section>
-	<section data-transition="slide-in fade-out">
+	<section data-transition="slide-in fade-out" data-coursemod-shown="false">
 	<h2>Resolución 8x6</h2>
 	<img src="img/imagen-008x006.jpg" class="plain stretch">
 	</section>
 
-	<section data-transition="fade-in fade-out">
+	<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 	<h2>Resolución 16x12</h2>
 	<img src="img/imagen-016x012.jpg" class="plain stretch">
 	</section>
 
-	<section data-transition="fade-in fade-out">
+	<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 	<h2>Resolución 24x18</h2>
 	<img src="img/imagen-024x018.jpg" class="plain stretch">
 	</section>
 
-	<section data-transition="fade-in fade-out">
+	<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 	<h2>Resolución 32x24</h2>
 	<img src="img/imagen-032x024.jpg" class="plain stretch">
 	</section>
 
-	<section data-transition="fade-in fade-out">
+	<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 	<h2>Resolución 40x30</h2>
 	<img src="img/imagen-040x030.jpg" class="plain stretch">
 	</section>
 
-	<section data-transition="fade-in slide-out">
+	<section data-transition="fade-in slide-out" data-coursemod-shown="false">
 	<h2>Resolución 720x540</h2>
 	<img src="img/imagen.jpg" class="plain stretch">
 	</section>
@@ -578,7 +578,9 @@ Para interpretar qué imagen describe un archivo dado, consideramos primero su c
 
 **Ejemplo**
 
-Una imagen dada por la cadena hexadecimal **070401AEBF3...** tendrá $7 \times 4$ pixels, y un solo bit de paleta. Como la paleta se codifica con un solo bit, esta imagen es en blanco y negro (no puede haber más que dos valores de color). Los dígitos hexadecimales a partir de la cadena **AEBF3...** se analizan como grupos de cuatro bits y nos dicen cuáles pixels individuales están en negro (bits en 1) y en blanco (bits en 0).
+- Una imagen dada por la cadena hexadecimal **070401AEBF3...** tendrá $7 \times 4$ pixels, y un solo bit de paleta. 
+- Como la paleta se codifica con un solo bit, esta imagen es en blanco y negro (no puede haber más que dos valores de color). 
+- Los dígitos hexadecimales a partir de la cadena **AEBF3...** se analizan como grupos de cuatro bits y nos dicen cuáles pixels individuales están en negro (bits en 1) y en blanco (bits en 0).
 </aside>
 </section>
 
@@ -822,10 +824,10 @@ Muchas veces es interesante reducir el tamaño de un archivo, para que ocupe men
 almacenamiento o para que su transferencia a través de una red sea más rápida. Al ser todo archivo
 una secuencia de bytes, y por lo tanto de números, disponemos de métodos y herramientas
 matemáticas que permiten, en ciertas condiciones, reducir ese tamaño. La manipulación de los bytes
-de un archivo con este fin se conoce como compresión.
+de un archivo con este fin se conoce como **compresión**.
 
 La compresión de un archivo se ejecuta mediante un programa que utiliza un algoritmo especial de
-compresión. Este algoritmo puede ser de compresión sin pérdida, o con pérdida.
+compresión. Este algoritmo puede ser de **compresión sin pérdida**, o de **compresión con pérdida**.
 </aside>
 </section>
 
@@ -843,17 +845,24 @@ compresión. Este algoritmo puede ser de compresión sin pérdida, o con pérdid
 <aside data-markdown class="notes">
 ##Compresión sin pérdida
 
-Decimos que la compresión ha sido sin pérdida cuando, del archivo comprimido, puede extraerse
+Decimos que la compresión ha sido sin pérdida cuando puede extraerse del archivo comprimido 
 exactamente la misma información que antes de la compresión, utilizando otro algoritmo que
 ejecuta el trabajo inverso al de compresión. En otras palabras, la compresión sin pérdida es
-reversible: siempre puede volverse a la información de partida. Esto es un requisito indispensable
+reversible: aplicando el algoritmo inverso, o de descompresión, siempre puede volverse a la 
+información de partida. Esto es un requisito indispensable
 cuando necesitamos recuperar exactamente la secuencia de bytes original, como en el caso de un
-archivo de texto. 
+archivo de texto, una base de datos, una planilla de cálculo. 
 
 Como usuarios de computadoras, es muy probable que hayamos utilizado más de
 una vez la compresión sin pérdida, al tener que comprimir un documento de texto,
 utilizando un programa utilitario como ZIP, RAR u otros. Si la compresión no fuera
 reversible, no podríamos recuperar el archivo de texto tal cual fue escrito.
+
+También somos usuarios de la compresión, muchas veces sin sospecharlo, al consultar
+páginas de Internet. Muchos sitios populares utilizan compresión para acelerar 
+la descarga de sus contenidos. Los navegadores cuentan con el conocimiento para
+identificar cuándo una página está comprimida y descomprimirla en forma transparente,
+es decir, sin que el usuario necesite hacer ni saber nada.
 </aside>
 </section>
 
@@ -873,16 +882,29 @@ reversible, no podríamos recuperar el archivo de texto tal cual fue escrito.
 <aside data-markdown class="notes">
 ##Compresión con pérdida
 
-En algunos casos, el resultado de la compresión de un archivo es otro archivo del cual ya no puede
+Cuando la compresión se hace con una técnica **con pérdida**, no existe un algoritmo de 
+descompresión que recupere la información original; es decir, no existe un algoritmo inverso. 
+
+El resultado de la compresión con pérdida de un archivo es otro archivo del cual ya no puede
 recuperarse la misma información original, pero que de alguna manera sigue sirviendo a los fines
-del usuario. Es el caso de la compresión de imágenes, donde se reduce la calidad de la imagen, ya
-sea utilizando menos colores, o disminuyendo la resolución. También es el caso de la compresión de
+del usuario.  La pérdida de información **es intencional**, y es el usuario quien ha elegido descartar 
+esa información porque no es necesaria, o porque es redundante.
+
+En el mundo analógico es frecuente la compresión con pérdida, por ejemplo en el caso de la compresión de
 audio, al descartar componentes del sonido con frecuencias muy bajas o muy altas, inaudibles para
-los humanos (como en la tecnología de grabación de CDs), con lo cual la diferencia entre el original
-digital y el comprimido no es perceptible al oído. También es útil, para algunos fines, reducir la
-calidad del audio quitando componentes audibles (lo que hacen, por ejemplo, algunos grabadores
-“de periodista” para lograr archivos más pequeños, con audio de menor fidelidad, pero donde el
-diálogo sigue siendo comprensible).
+los humanos (como en la tecnología de grabación de CDs), con lo cual la diferencia 
+entre el material original y el comprimido no es perceptible al oído. También es útil, para algunos fines, reducir la
+calidad del audio quitando algunos componentes audibles (lo que hacen, por ejemplo, los sistemas telefónicos, o
+algunos grabadores “de periodista” para lograr archivos más pequeños, con audio de menor fidelidad, pero donde el
+diálogo sigue siendo comprensible). 
+
+Al utilizar un servicio de *streaming* de video o audio, muchas veces se nos da la oportunidad de elegir una
+"calidad" menor del audio o del video, lo que quiere decir que el audio o la imagen se representarán con menos
+bits por segundo, y se transferirán a través de la red más rápidamente. Estas diferentes "calidades" menores son formas de compresión con pérdida.
+
+Los estándares MP3 y MP4 son ejemplos de formatos de archivos digitales comprimidos con pérdida.  Para 
+comprimir con pérdida imágenes, se reduce su calidad, ya sea disminuyendo la resolución 
+o utilizando menos colores.  
 </aside>
 </section>
 
@@ -992,6 +1014,23 @@ La imagen comprimida queda como **05050123C82000** (ancho: 5, alto: 5, bits por 
 		<li>Sustituir los elementos más frecuentes por cadenas de bits más cortas</li>
 	</ul>
 </ul>
+<aside data-markdown class="notes">
+Aunque los algoritmos de compresión sin pérdida que aplican los programas de compresión pueden ser muy sofisticados, hay algunas ideas básicas muy sencillas. 
+
+### Run Length Encoding o RLE
+
+Supongamos tener una imagen en el formato que ya hemos descripto, y supongamos además que los datos de la imagen, es decir, la sucesión de bits que codifican los pixels, presenta largas zonas de bits con el mismo valor (muchos "1" seguidos, y muchos "0" seguidos). Si quisiéramos transmitir esta información por teléfono a alguien más, para que la imagen pudiera ser dibujada del otro lado, tarde o temprano la conversación incluiría frases como "...ahora cinco unos, ahora doce ceros...". Esta forma de descripción es mucho más económica, y menos propensa a errores.
+
+Resulta natural abreviar la descripción de la imagen usando este tipo de expresiones, donde las cantidades funcionan como **coeficientes**. Un método inspirado directamente en esta idea se llama **Run Length Encoding (RLE)** o **Codificación por longitud de secuencia**. Una **secuencia** es una subsucesión de bits del mismo valor. El método RLE identifica secuencias de un mismo valor 0 o 1, computa su longitud, y emite, en lugar de la secuencia, el coeficiente de longitud y el valor binario que corresponde. 
+
+**Ejemplo**
+
+- Si quisiéramos almacenar o transmitir un patrón de 253 "unos" seguidos de 119 "ceros" y luego 87 "unos", sin ninguna compresión, deberíamos tratar con 458 bits. Si nuestra compresión utilizara ocho bits para el "coeficiente" y un bit para el valor repetido, bastaría con la secuencia (11111101, 1, q (253,1,119,0,87,1) que ocuparía 
+
+###Códigos de Huffmann
+
+La compresión sin pérdida por el método de Huffmann consiste en examinar el archivo completo buscando subsecuencias repetidas muchas veces. Obtenido un "ranking" de subsecuencias ordenadas por su frecuencia, 
+</aside>
 </section>
 
 <section>
