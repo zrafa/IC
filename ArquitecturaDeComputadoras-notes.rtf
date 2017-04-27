@@ -119,16 +119,114 @@
 {\pard \ql \f0 \sa0 \li360 \fi-360 4.\tx360\tab Una vez ejecutada la instrucci\u243?n, se vuelve a repetir el ciclo, leyendo la siguiente instrucci\u243?n que haya que ejecutar, que ser\u225? aquella cuya direcci\u243?n est\u233? contenida en el PC.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Programaci\u243?n del MCBE\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \u191?C\u243?mo es, entonces, un programa para esta m\u225?quina te\u243?rica? Es una sucesi\u243?n de bytes, que representan instrucciones y datos, contenidos en la memoria a partir de la direcci\u243?n 0, y donde cada byte va a ser interpretado como instrucci\u243?n o como dato seg\u250?n lo diga el programa. Como el estado inicial de la m\u225?quina es {\b con todos los valores en 0}, lo \u250?nico que puede decirse con seguridad es que {\b la primera posici\u243?n de la memoria contiene una instrucci\u243?n}. Pero a partir de all\u237?, el desarrollo de la ejecuci\u243?n va a ser dado por las instrucciones particulares que contenga el programa.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \f1  | Direcci\u243?n | Contenido |\line
- | 00000     | 01000110  |\line
- | 00001     | 10000111  |\line
- | 00010     | 01101000  |\line
- | 00011     | 00100000  |\line
- | 00100     |           |\line
- | 00101     |           |\line
- | 00110     | 00001100  |\line
- | 00111     | 00000001  |\line
- | 01000     |           |\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 Direcci\u243?n\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 Contenido\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00000\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 01000110\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00001\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 10000111\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00010\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 01101000\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00011\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00100000\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00100\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00101\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00110\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00001100\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00111\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00000001\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 01000\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab En este programa en particular, la primera instrucci\u243?n es 010 00110, que es una instrucci\u243?n de transferencia de datos de la posici\u243?n 6 al acumulador.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La segunda instrucci\u243?n es 100 00111, que es una suma del valor que haya en la posici\u243?n 7 al acumulador.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La tercera instrucci\u243?n es 011 01000, que significa transferir el valor que haya en el acumulador a la posici\u243?n 8.\par}
@@ -141,16 +239,115 @@
 {\pard \ql \f0 \sa180 \li0 \fi0 En la traza solamente escribiremos los elementos del estado {\b que se modifiquen} en cada paso. En la columna de MEMORIA anotaremos cu\u225?ndo hay una operaci\u243?n de escritura en memoria, en la columna de SALIDA anotaremos cuando haya un contenido que se escriba en pantalla, etc.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Este programa en particular presenta la traza que veremos a continuaci\u243?n.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Queda como ejercicio seguir la traza e interpretar qu\u233? est\u225? ocurriendo en cada momento con cada uno de los registros y las posiciones de memoria.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Direcci\u243?n \u8594? Contenido\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 00000 \u8594? 01000110\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 00001 \u8594? 10000111\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 00010 \u8594? 01101000\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 00011 \u8594? 00100000\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 00100 \u8594?\line \par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 00101 \u8594?\line \par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 00110 \u8594? 00001100\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 00111 \u8594? 00000001\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 01000 \u8594? 00001101\sa180\par}
+{
+\trowd \trgaph120
+\clbrdrb\brdrs\cellx4320\clbrdrb\brdrs\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 Direcci\u243?n\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 Contenido\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00000\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 01000110\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00001\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 10000111\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00010\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 01101000\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00011\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00100000\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00100\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00101\par}
+\cell}
+{\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00110\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00001100\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00111\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00000001\par}
+\cell}
+}
+\intbl\row}
+{
+\trowd \trgaph120
+\cellx4320\cellx8640
+\trkeep\intbl
+{
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 01000\par}
+\cell}
+{{\pard\intbl \qc \f0 \sa0 \li0 \fi0 00001101\par}
+\cell}
+}
+\intbl\row}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Ayuda\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 000 No operaci\u243?n\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab 001 Parada\par}

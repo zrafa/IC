@@ -207,16 +207,18 @@ Ahora podemos definir con más rigurosidad lo que se entiende por **ciclo de ins
 
 ¿Cómo es, entonces, un programa para esta máquina teórica? Es una sucesión de bytes, que representan instrucciones y datos, contenidos en la memoria a partir de la dirección 0, y donde cada byte va a ser interpretado como instrucción o como dato según lo diga el programa. Como el estado inicial de la máquina es **con todos los valores en 0**, lo único que puede decirse con seguridad es que **la primera posición de la memoria contiene una instrucción**. Pero a partir de allí, el desarrollo de la ejecución va a ser dado por las instrucciones particulares que contenga el programa.
 
-     | Dirección | Contenido |
-     | 00000     | 01000110  |
-     | 00001     | 10000111  |
-     | 00010     | 01101000  |
-     | 00011     | 00100000  |
-     | 00100     |           |
-     | 00101     |           |
-     | 00110     | 00001100  |
-     | 00111     | 00000001  |
-     | 01000     |           |
+| Dirección | Contenido |
+|:----------:|:--------------:|
+| 00000     | 01000110  |
+| 00001     | 10000111  |
+| 00010     | 01101000  |
+| 00011     | 00100000  |
+| 00100     |           |
+| 00101     |           |
+| 00110     | 00001100  |
+| 00111     | 00000001  |
+| 01000     |           |
+
 
 
 
@@ -241,17 +243,17 @@ Este programa en particular presenta la traza que veremos a continuación.
 
 Queda como ejercicio seguir la traza e interpretar qué está ocurriendo en cada momento con cada uno de los registros y las posiciones de memoria.
 
-Dirección &rarr; Contenido
-
-- 00000 &rarr; 01000110
-- 00001 &rarr; 10000111
-- 00010 &rarr; 01101000
-- 00011 &rarr; 00100000
-- 00100 &rarr;         
-- 00101 &rarr;         
-- 00110 &rarr; 00001100
-- 00111 &rarr; 00000001
-- 01000 &rarr; 00001101
+|Dirección | Contenido |
+|:-------------:|:----------------: |
+|00000 | 01000110 |
+|00001 | 10000111 |
+|00010 | 01101000 |
+|00011 | 00100000 |
+|00100 | |
+|00101 | |
+|00110 | 00001100 |
+|00111 | 00000001 |
+|01000 | 00001101 | 
 
 ### Ayuda
 

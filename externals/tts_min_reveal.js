@@ -5,9 +5,10 @@ tts.Voices = tts.Synth.getVoices(); // get a list of available voices.
 tts.DvIndex = 0; //Used to help identify the default tts voice for Chrome or FF on the users platform.
 tts.DvRate = 0.85; // used to set speech rate between 0 and 2, 1 = 'normal'- there are other seemingly optional parameters like pitch, language, volume.
 tts.On = true; //Set to false to prevent tts production.
-tts.Cancel = true; // Set to true if you want reading to stop with a slide change. Otherwise, all readable text is queued for speech output.
-tts.readFrags = true; //Set to true to read fragment text content as it appears.
+tts.Cancel = false; // Set to true if you want reading to stop with a slide change. Otherwise, all readable text is queued for speech output.
+tts.readFrags = false; //Set to true to read fragment text content as it appears.
 tts.readNotes = true; //set to true to read text content of any <aside class="notes">text content</aside> tag in a slide section
+
 
 tts.ReadText = function(txt){
 	// Use tts to read text. A new speech synthesis utterance instance is required for each tts output for FF.
@@ -16,6 +17,7 @@ tts.ReadText = function(txt){
 	let ttsSpeechChunk = new SpeechSynthesisUtterance(txt);
 	 ttsSpeechChunk.voice = tts.Voices[tts.DvIndex]; //use default voice -- some voice must be assigned for FF to work.
      ttsSpeechChunk.rate = tts.DvRate; 
+     ttsSpeechChunk.lang = "es-US";
      tts.Synth.speak(ttsSpeechChunk);	 
 };
 
@@ -72,7 +74,7 @@ Reveal.addEventListener( 'slidechanged', function( event ) {
 	// Read the innerText for the listed elements of current slide after waiting 1 second to allow transitions to conclude.
 	// The list of elements is read in the order shown. You can use other selectors like a ".readMe" class to simplify things.
 	if (tts.On) {
-		setTimeout(function(){tts.ReadVisElmts(thisSlide,"h1","h2","h3","p","li");}, 1000);
+		//setTimeout(function(){tts.ReadVisElmts(thisSlide,"h1","h2","h3","p","li");}, 1000);
 		if (tts.readNotes) setTimeout(function(){tts.ReadAnyElmts(thisSlide,".notes");}, 1000); // Then, conditionally, read hidden notes class.
 	}
 	} );
@@ -91,6 +93,6 @@ Reveal.configure({
   keyboard: {
     81: function() {tts.Synth.cancel()}, // press q to cancel speaking and clear speech queue.
 	84: function() {tts.ToggleSpeech()}  // press t to toggle speech on/off
-					 
+			 
   }
 });

@@ -407,16 +407,17 @@ memoria contiene una instrucción. Pero a partir de allí, el desarrollo
 de la ejecución va a ser dado por las instrucciones particulares que
 contenga el programa.
 
-     | Dirección | Contenido |
-     | 0 0 0 0 0     | 0 1 0 0 0 1 1 0  |
-     | 0 0 0 0 1     | 1 0 0 0 0 1 1 1  |
-     | 0 0 0 1 0     | 0 1 1 0 1 0 0 0  |
-     | 0 0 0 1 1     | 0 0 1 0 0 0 0 0  |
-     | 0 0 1 0 0     |           |
-     | 0 0 1 0 1     |           |
-     | 0 0 1 1 0     | 0 0 0 0 1 1 0 0  |
-     | 0 0 1 1 1     | 0 0 0 0 0 0 0 1  |
-     | 0 1 0 0 0     |           |
+   Dirección   Contenido
+  ----------- -----------
+     0 0 0 0 0     0 1 0 0 0 1 1 0
+     0 0 0 0 1     1 0 0 0 0 1 1 1
+     0 0 0 1 0     0 1 1 0 1 0 0 0
+     0 0 0 1 1     0 0 1 0 0 0 0 0
+     0 0 1 0 0    
+     0 0 1 0 1    
+     0 0 1 1 0     0 0 0 0 1 1 0 0
+     0 0 1 1 1     0 0 0 0 0 0 0 1
+     0 1 0 0 0    
 
 -   En este programa en particular, la primera instrucción es 0 1 0 0 0 1 1 0,
     que es una instrucción de transferencia de datos de la posición 6 al
@@ -459,17 +460,17 @@ Queda como ejercicio seguir la traza e interpretar qué está ocurriendo
 en cada momento con cada uno de los registros y las posiciones de
 memoria.
 
-Dirección → Contenido
-
--   0 0 0 0 0 → 0 1 0 0 0 1 1 0
--   0 0 0 0 1 → 1 0 0 0 0 1 1 1
--   0 0 0 1 0 → 0 1 1 0 1 0 0 0
--   0 0 0 1 1 → 0 0 1 0 0 0 0 0
--   0 0 1 0 0 →  
--   0 0 1 0 1 →  
--   0 0 1 1 0 → 0 0 0 0 1 1 0 0
--   0 0 1 1 1 → 0 0 0 0 0 0 0 1
--   0 1 0 0 0 → 0 0 0 0 1 1 0 1
+   Dirección   Contenido
+  ----------- -----------
+     0 0 0 0 0     0 1 0 0 0 1 1 0
+     0 0 0 0 1     1 0 0 0 0 1 1 1
+     0 0 0 1 0     0 1 1 0 1 0 0 0
+     0 0 0 1 1     0 0 1 0 0 0 0 0
+     0 0 1 0 0    
+     0 0 1 0 1    
+     0 0 1 1 0     0 0 0 0 1 1 0 0
+     0 0 1 1 1     0 0 0 0 0 0 0 1
+     0 1 0 0 0     0 0 0 0 1 1 0 1
 
 Ayuda
 
