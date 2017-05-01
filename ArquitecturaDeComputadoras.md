@@ -71,15 +71,21 @@ y una **Unidad Lógico-Aritmética, o ALU**, para el cómputo.
 
 ###Buses
 
-En la máquina existen diferentes clases de buses para interconectar los componentes: **buses internos** de la CPU para comunicar la UC y la ALU,
+En la máquina existen diferentes clases de buses para interconectar los componentes: 
+
+- **buses internos** de la CPU para comunicar la UC y la ALU,
 
 
-**buses de sistema** que relacionan la CPU y la memoria, 
+- **buses de sistema** que relacionan la CPU y la memoria, 
 
 
-y otros **buses de Entrada/Salida** para comunicar todo el sistema con los dispositivos de entrada o de salida.
+- y otros **buses de Entrada/Salida** para comunicar todo el sistema con los dispositivos de entrada o de salida.
 
-¿En qué momento se utilizará cada clase de bus? Cuando la UC disponga que se debe ejecutar una instrucción, tal como una suma, enviará los datos de partida, y la instrucción, a la ALU a través de un bus interno. Si la ALU necesita más datos, los obtendrá de la memoria a través de un bus de sistema. Si la CPU encuentra instrucciones que ordenan presentar el resultado del cómputo al usuario, usará un bus de Entrada/Salida para emitir ese resultado por pantalla o por impresora.
+¿En qué momento se utilizará cada clase de bus? 
+
+- Cuando la UC disponga que se debe ejecutar una instrucción, tal como una suma, enviará los datos de partida, y la instrucción, a la ALU a través de un bus interno. 
+- Si la ALU necesita más datos, los obtendrá de la memoria a través de un bus de sistema. 
+- Si la CPU encuentra instrucciones que ordenan presentar el resultado del cómputo al usuario, usará un bus de Entrada/Salida para emitir ese resultado por pantalla o por impresora.
 
 
 ##Modelo Computacional Binario Elemental

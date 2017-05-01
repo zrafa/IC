@@ -6,7 +6,9 @@ all: siste uni repre arqui
 	SistemasDeNumeración.md \
 	UnidadesDeInformación.md \
 	RepresentaciónDigitalDeDatos.md \
+	TextoYMultimedia.md \
 	ArquitecturaDeComputadoras.md \
+	Software.md \
 	-o ic2017.pdf
 
 git: 

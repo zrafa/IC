@@ -2296,6 +2296,7 @@ Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0
 			//background: [ 'rgba(127,127,127,.1)' , 'plugin/chalkboard/img/blackboard.png' ],
 			//pen:  [ 'reveal.js-plugins/chalkboard/img/boardmarker.png', 'reveal.js-plugins/chalkboard/img/chalk.png' ],
 		},
+
 		keyboard: {
 			67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
 			66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
@@ -2304,7 +2305,8 @@ Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0
 			68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
 			82: function() { Recorder.toggleRecording(); }, // press 'r' to start/stop recording
 			90: function() { Recorder.downloadZip(); },     // press 'z' to download zip containing audio files
-			84: function() { Recorder.fetchTTS(); }     // press 't' to fetch TTS audio files
+			84: function() { Recorder.fetchTTS(); },     // press 't' to fetch TTS audio files
+			65: function() { Reveal.getConfig().audioAutoplay = ( ! Reveal.getReveal.getConfig().audioAutoplay); },
 		},
 
 

@@ -55,7 +55,7 @@ En esta parte de la unidad veremos la forma de representar otras clases de infor
 <tr><td colspan="5" align="center">...</td></tr>
 </table>
 <aside data-markdown class="notes">
-#Codificación de texto
+##Codificación de texto
 
 Cuando escribimos texto en nuestra computadora, estamos almacenando temporariamente en la
 memoria una cierta secuencia de números que corresponden a los **caracteres**, o símbolos que tipeamos en nuestro teclado.
@@ -307,7 +307,7 @@ Del mismo modo, el comando **hexdump -C** muestra cada uno de los grafemas de lo
 </ul>
 </ul>
 <aside data-markdown class="notes">
-#Imagen digital
+##Imagen digital
 
 Otras clases de datos, diferentes del texto, también requieren codificación (porque siempre deben
 ser almacenados en la memoria en forma de bits y bytes), pero su tratamiento es diferente.
@@ -820,7 +820,7 @@ Para interpretar qué imagen describe un archivo dado, consideramos primero su c
 		</ul>
 </ul>
 <aside data-markdown class="notes">
-#Compresión de datos
+##Compresión de datos
 
 Muchas veces es interesante reducir el tamaño de un archivo, para que ocupe menos espacio de
 almacenamiento o para que su transferencia a través de una red sea más rápida. Al ser todo archivo

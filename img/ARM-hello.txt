@@ -1,0 +1,15 @@
+.global main  
+main:  
+    @ Guarda la direccion de retorno lr 
+    @ mas 8 bytes para alineacion
+    push    {ip, lr}  
+    @ Carga la direccion de la cadena y llama syscall
+    ldr     r0, =hola
+    bl      printf  
+    @ Retorna 0
+    mov     r0, #0 
+    @ Desapila el registro ip y guarda
+    @ el siguiente valor desapilado en el pc 
+    pop     {ip, pc}  
+hola:  
+    .asciz "Hola, mundo!\n"  

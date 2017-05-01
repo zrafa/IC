@@ -4,7 +4,7 @@
 En esta parte de la unidad veremos la forma de representar otras clases de información no numérica, como los textos y las imágenes.
 
 
-#Codificación de texto
+##Codificación de texto
 
 Cuando escribimos texto en nuestra computadora, estamos almacenando temporariamente en la
 memoria una cierta secuencia de números que corresponden a los **caracteres**, o símbolos que tipeamos en nuestro teclado.
@@ -102,7 +102,7 @@ Del mismo modo, el comando **hexdump -C** muestra cada uno de los grafemas de lo
 - Estos comandos aplicados a un documento HTML muestran información legible porque se trata, esencialmente, de un archivo de texto. ¿Qué ocurre si los mismos comandos se aplican a un archivo creado por un procesador de texto?
 
 
-#Imagen digital
+##Imagen digital
 
 Otras clases de datos, diferentes del texto, también requieren codificación (porque siempre deben
 ser almacenados en la memoria en forma de bits y bytes), pero su tratamiento es diferente.
@@ -198,7 +198,7 @@ Para interpretar qué imagen describe un archivo dado, consideramos primero su c
 - Los dígitos hexadecimales a partir de la cadena **AEBF3...** se analizan como grupos de cuatro bits y nos dicen cuáles pixels individuales están en negro (bits en 1) y en blanco (bits en 0).
 
 
-#Compresión de datos
+##Compresión de datos
 
 Muchas veces es interesante reducir el tamaño de un archivo, para que ocupe menos espacio de
 almacenamiento o para que su transferencia a través de una red sea más rápida. Al ser todo archivo

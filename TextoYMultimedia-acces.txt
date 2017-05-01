@@ -5,7 +5,7 @@ En esta parte de la unidad veremos la forma de representar otras clases
 de información no numérica, como los textos y las imágenes.
 
 Codificación de texto
-=====================
+---------------------
 
 Cuando escribimos texto en nuestra computadora, estamos almacenando
 temporariamente en la memoria una cierta secuencia de números que
@@ -163,7 +163,7 @@ Pregunta
     procesador de texto?
 
 Imagen digital
-==============
+--------------
 
 Otras clases de datos, diferentes del texto, también requieren
 codificación (porque siempre deben ser almacenados en la memoria en
@@ -338,7 +338,7 @@ Ejemplo
     están en negro (bits en 1) y en blanco (bits en 0).
 
 Compresión de datos
-===================
+-------------------
 
 Muchas veces es interesante reducir el tamaño de un archivo, para que
 ocupe menos espacio de almacenamiento o para que su transferencia a

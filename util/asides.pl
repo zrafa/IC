@@ -9,6 +9,10 @@ if(/^<!--/ ... /-->/) {
 	next;
 }
 
+if(/noshow/ ... /<\/aside/) {
+	next;
+}
+
 if(/^<aside/ ... /<\/aside/) {
 	s/`//g;
 	 s/^<aside.*$//;
