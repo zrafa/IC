@@ -122,7 +122,7 @@ tts.ReadAnyElmts = function(){
 		for (let k=0; k < xElmts.length; k++){
 			//console.log('k=',k,'     -->',xElmts[k].textContent);
 			//tts.ReadText(xElmts[k].textContent);
-			chunks = tts.chunker(xElmts[k].textContent, 230);
+			chunks = tts.chunker(xElmts[k].textContent, 220);
 			chunks.forEach(tts.doChunks);
 		}
 	}
