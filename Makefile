@@ -1,7 +1,18 @@
 DEPS = src/reveal.header src/reveal.trailer
 DTAPE=/home/oso/IC2016/decktape
 
-all: siste uni repre texto arqui soft
+index: index.html
+soft: Software.html
+so: SistemasOperativos.html
+comp: SistemasDeCómputo.html
+pres: Presentación.html
+siste: SistemasDeNumeración.html
+uni: UnidadesDeInformación.html
+repre: RepresentaciónDigitalDeDatos.html
+texto: TextoYMultimedia.html
+arqui: ArquitecturaDeComputadoras.html
+
+all: siste uni repre texto arqui soft comp
 	pandoc -V lang=spanish -V fontfamily=sans -V papersize=A4 -V title="Introducción a la Computación 2017" --toc \
 	SistemasDeNumeración.md \
 	UnidadesDeInformación.md \
@@ -16,18 +27,7 @@ git:
 	util/github "mm"
 
 
-index: index.html
-soft: Software.html
-so: SistemasOperativos.html
-comp: SistemasDeCómputo.html
-pres: Presentación.html
-siste: SistemasDeNumeración.html
-uni: UnidadesDeInformación.html
-repre: RepresentaciónDigitalDeDatos.html
-texto: TextoYMultimedia.html
-arqui: ArquitecturaDeComputadoras.html
-
-%.html: src/%.slides $(DEPS) 
+%.html: src/%.slides $(DEPS) %.md
 	util/macro $< > $*.html
 	$(eval TITLE = $(shell perl -ne '/data-title=\"(.+)\">/ and print "$$1"' $<) )
 	util/asides.pl $< > $*.md

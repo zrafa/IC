@@ -1,3 +1,4 @@
+
 <!-- INCLUDE src/reveal.header -->
 
 
@@ -6,7 +7,7 @@
 <img src="img/dog_headphones.jpg" class="plain stretch">
 <div>
 </div>
-<aside data-markdown class="notes noshow" data-coursemod-shown="false">
+<aside data-markdown class="notes" data-coursemod-shown="false">
 ¡Hola!
 
 Esta presentación utiliza audio sintético. 
@@ -17,7 +18,7 @@ Esta presentación utiliza audio sintético.
 
 
 <section data-background="#00CCFF" data-audio-src="audio/Software/01.mp3" data-title="El Software">
-<h2>El Software</h2>
+<h1>El Software</h1>
 <aside data-markdown class="notes">
 #El Software
 

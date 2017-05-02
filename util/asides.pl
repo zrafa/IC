@@ -9,9 +9,9 @@ if(/^<!--/ ... /-->/) {
 	next;
 }
 
-if(/noshow/ ... /<\/aside/) {
-	next;
-}
+#if(/noshow/ ... /<\/aside/) {
+#	print "XXX $_";
+#}
 
 if(/^<aside/ ... /<\/aside/) {
 	s/`//g;
