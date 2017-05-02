@@ -14,7 +14,8 @@ tts.ReadText = function(txt){
 	// Use tts to read text. A new speech synthesis utterance instance is required for each tts output for FF.
 	// Chrome lets you redefine the SpeechSynthesizerUtterance.txt property-
 	// as needed without having to create a new object every time you want speech.
-	let ttsSpeechChunk = new SpeechSynthesisUtterance(txt);
+	//let ttsSpeechChunk = new SpeechSynthesisUtterance(txt);
+	var ttsSpeechChunk = new SpeechSynthesisUtterance(txt);
 	 ttsSpeechChunk.voice = tts.Voices[tts.DvIndex]; //use default voice -- some voice must be assigned for FF to work.
      ttsSpeechChunk.rate = tts.DvRate; 
      ttsSpeechChunk.lang = "es-US";
@@ -25,10 +26,12 @@ tts.ReadText = function(txt){
 tts.ReadVisElmts = function(){
 	// Uses arguments[0] to denote a DOM element . Then read the innerText of the rest of the list of selectors that are contained in the arguments[0] element.
 	// works in Chrome, Opera and FF.
-	let focusElmt = arguments[0];
-	for (let i=1; i < arguments.length; i++) {
-		let xElmts = focusElmt.querySelectorAll(arguments[i]);
-		for (let k=0; k < xElmts.length; k++){
+	//let focusElmt = arguments[0];
+	var focusElmt = arguments[0];
+	
+	for (var i=1; i < arguments.length; i++) {
+		var xElmts = focusElmt.querySelectorAll(arguments[i]);
+		for (var k=0; k < xElmts.length; k++){
 			tts.ReadText(xElmts[k].innerText);
 		}
 	}
@@ -37,7 +40,7 @@ tts.ReadVisElmts = function(){
 
 
 tts.doChunks = function(txt) {
-	let ttsSpeechChunk = new SpeechSynthesisUtterance(txt);
+	var ttsSpeechChunk = new SpeechSynthesisUtterance(txt);
 	ttsSpeechChunk.voice = tts.Voices[tts.DvIndex];
 	ttsSpeechChunk.rate = tts.DvRate; 
 	ttsSpeechChunk.lang = "es-US";
@@ -115,11 +118,11 @@ tts.ReadAnyElmts = function(){
 	// of the rest of the list of selectors, even hidden ones, that are contained in the arguments[0] element.
 	// works in Chrome, Opera and FF.
 
-	let focusElmt = arguments[0];
+	var focusElmt = arguments[0];
 	var chunks = [];
-	for (let i=1; i < arguments.length; i++) {
-		let xElmts = focusElmt.querySelectorAll(arguments[i]);
-		for (let k=0; k < xElmts.length; k++){
+	for (var i=1; i < arguments.length; i++) {
+		var xElmts = focusElmt.querySelectorAll(arguments[i]);
+		for (var k=0; k < xElmts.length; k++){
 			//console.log('k=',k,'     -->',xElmts[k].textContent);
 			//tts.ReadText(xElmts[k].textContent);
 			chunks = tts.chunker(xElmts[k].textContent, 220);
@@ -169,7 +172,7 @@ Reveal.addEventListener( 'fragmentshown', function( event ) {
 // This reads the text content of fragments as they are shown.
 // event.fragment = the fragment element
 	if (tts.readFrags && tts.On){
-		let txt = event.fragment.textContent;
+		var txt = event.fragment.textContent;
 		tts.ReadText(txt);
 	}
 	} );

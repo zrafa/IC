@@ -2269,18 +2269,14 @@ Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0
 		// ----------------------------------------------------------------------------
 
 		audio: {
-			prefix: 'audio',
 			autoplay: false,
-			defaultNotes: true,
-			defaultText: false,
-			playerOpacity: 0.2,
 		},
 
 		// -------- Math plugin ----------
-
 		math: {
 			//mathjax: 'https://cdn.mathjax.org/mathjax/latest/Ma2YthJax.js',
-			// mathjax: 'externals/mathjax/MathJax.js',
+			//mathjax: 'externals/mathjax/MathJax.js',
+			//mathjax: window.location.search.match( /localversion/g ) ? 'externals/mathjax/MathJax.js' : 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
 			mathjax: window.location.search.match( /localversion/g ) ? 'externals/mathjax/MathJax.js' : 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
 			config: 'TeX-AMS_HTML-full' 
 		},
@@ -2308,7 +2304,9 @@ Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0
 			68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
 			82: function() { Recorder.toggleRecording(); }, // press 'r' to start/stop recording
 			90: function() { Recorder.downloadZip(); },     // press 'z' to download zip containing audio files
-			84: function() { Recorder.fetchTTS(); }     // press 't' to fetch TTS audio files
+			//84: function() { Recorder.fetchTTS(); },     // press 't' to fetch TTS audio files
+			81: function() {tts.Synth.cancel()}, // press q to cancel speaking and clear speech queue.
+			84: function() {tts.ToggleSpeech()},  // press t to toggle speech on/off
 		},
 
 
@@ -2334,13 +2332,15 @@ Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0
 			{ src: 'externals/reveal-plugins/chalkboard/chalkboard.js' },
 			{ src: 'externals/reveal-plugins/menu/menu.js' },
 			{ src: 'externals/reveal-plugins/mathsvg/math.js', async: true },
-			{ src: 'externals/reveal-plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
-			{ src: 'externals/reveal-plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
+			//{ src: 'externals/reveal-plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
+			//{ src: 'externals/reveal-plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
 			{ src: 'externals/snap/snap.svg-min.js', async: true },
 			{ src: 'externals/coursemod/coursemod.js', async: true },
+			{ src: 'externals/tts_min_reveal.js', async: false},
 			// ... 
 		]
 	});
+
 </script>
 
 </body>

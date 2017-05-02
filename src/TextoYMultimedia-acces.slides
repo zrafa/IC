@@ -55,7 +55,7 @@ En esta parte de la unidad veremos la forma de representar otras clases de infor
 <tr><td colspan="5" align="center">...</td></tr>
 </table>
 <aside data-markdown class="notes">
-#Codificación de texto
+##Codificación de texto
 
 Cuando escribimos texto en nuestra computadora, estamos almacenando temporariamente en la
 memoria una cierta secuencia de números que corresponden a los **caracteres**, o símbolos que tipeamos en nuestro teclado.
@@ -98,29 +98,15 @@ computadoras y sistemas era complicada y llevaba mucho trabajo improductivo.
 <aside data-markdown class="notes">
 ##Códigos de caracteres
 
-Inicialmente se estableció con este fin el **código ASCII**, que durante algún tiempo
-fue una buena solución. El código ASCII relaciona cada secuencia de **siete bits** con un carácter 
-(o **grafema**) específico de la **Tabla ASCII**. Es decir que hay $2^7 = 128$ posibles caracteres codificados por el código ASCII.
+Inicialmente se estableció con este fin el **código ASCII**, que durante algún tiempo fue una buena solución. El código ASCII relaciona cada secuencia de **siete bits** con un carácter (o **grafema**) específico de la **Tabla ASCII**. Es decir que hay $2^7 = 128$ posibles caracteres codificados por el código ASCII.
 
-Sin embargo, el código ASCII es insuficiente para muchas aplicaciones: no contempla las
-necesidades de diversos idiomas. Por ejemplo, nuestra letra Ñ no figura en la tabla ASCII. Tampoco
-las vocales acentuadas, ni con diéresis, como tampoco decenas de otros caracteres de varios idiomas
-europeos. Peor aún, con solamente 128 posibles patrones de bits, es imposible representar algunos
-idiomas orientales como el chino, que utilizan miles de ideogramas. 
+Sin embargo, el código ASCII es insuficiente para muchas aplicaciones: no contempla las necesidades de diversos idiomas. Por ejemplo, nuestra letra Ñ no figura en la tabla ASCII. Tampoco las vocales acentuadas, ni con diéresis, como tampoco decenas de otros caracteres de varios idiomas europeos. Peor aún, con solamente 128 posibles patrones de bits, es imposible representar algunos idiomas orientales como el chino, que utilizan miles de ideogramas. 
 
-Por este motivo se estableció más tarde una familia de nuevos estándares, llamada Unicode. 
-Uno de los estándares o esquemas de codificación definidos por Unicode, el más utilizado actualmente, se llama
-**UTF-8**. Este estándar mantiene la codificación que ya empleaba el código ASCII para su conjunto
-de caracteres, pero agrega códigos de dos, tres y cuatro bytes para otros símbolos. El resultado es
-que hoy, con UTF-8, se pueden representar todos los caracteres de cualquier idioma conocido. Más aún,
-con UTF-8 pueden codificarse textos multilingües.
+Por este motivo se estableció más tarde una familia de nuevos estándares, llamada Unicode.  Uno de los estándares o esquemas de codificación definidos por Unicode, el más utilizado actualmente, se llama **UTF-8**. Este estándar mantiene la codificación que ya empleaba el código ASCII para su conjunto de caracteres, pero agrega códigos de dos, tres y cuatro bytes para otros símbolos. El resultado es que hoy, con UTF-8, se pueden representar todos los caracteres de cualquier idioma conocido. Más aún, con UTF-8 pueden codificarse textos multilingües.
 
-Otro estándar utilizado, **ISO/IEC 8851**, codifica los caracteres de la mayoría de los idiomas de 
-Europa occidental. 
+Otro estándar utilizado, **ISO/IEC 8851**, codifica los caracteres de la mayoría de los idiomas de Europa occidental. 
 
-El código ASCII, los diferentes esquemas de Unicode, y el estándar ISO/IEC 8851, coinciden en la
-codificación de las letras del alfabeto inglés, que son comunes a la mayoría de los idiomas
-occidentales, y en la codificación de símbolos usuales como los dígitos, símbolos matemáticos, y otros. 
+El código ASCII, los diferentes esquemas de Unicode, y el estándar ISO/IEC 8851, coinciden en la codificación de las letras del alfabeto inglés, que son comunes a la mayoría de los idiomas occidentales, y en la codificación de símbolos usuales como los dígitos, símbolos matemáticos, y otros. 
 Por este motivo son relativamente compatibles, aunque cuando el texto utiliza otros caracteres aparecen diferencias.
 </aside>
 </section>
@@ -307,7 +293,7 @@ Del mismo modo, el comando **hexdump -C** muestra cada uno de los grafemas de lo
 </ul>
 </ul>
 <aside data-markdown class="notes">
-#Imagen digital
+##Imagen digital
 
 Otras clases de datos, diferentes del texto, también requieren codificación (porque siempre deben
 ser almacenados en la memoria en forma de bits y bytes), pero su tratamiento es diferente.
@@ -820,7 +806,7 @@ Para interpretar qué imagen describe un archivo dado, consideramos primero su c
 		</ul>
 </ul>
 <aside data-markdown class="notes">
-#Compresión de datos
+##Compresión de datos
 
 Muchas veces es interesante reducir el tamaño de un archivo, para que ocupe menos espacio de
 almacenamiento o para que su transferencia a través de una red sea más rápida. Al ser todo archivo

@@ -52,7 +52,7 @@ arqui: ArquitecturaDeComputadoras.html
 		-V fontfamily=sans \
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
-		$*.md -t plain | ./plain2acces > $*-acces.txt
+		$*.md -t plain | util/plain2acces > $*-acces.txt
 
 
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf

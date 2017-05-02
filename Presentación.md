@@ -1,4 +1,0 @@
-
-#¿Preguntas?
-
-#¿Más preguntas?
