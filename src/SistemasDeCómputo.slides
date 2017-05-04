@@ -493,7 +493,7 @@ En la tabla adjunta tomamos como referencia un **ciclo de CPU**, es decir, el ca
 | Acceso a memoria RAM    | 120 ns   | 6 min     |
 | Disco de estado sólido  | 150 $\mu$s     | 6 días    |
 | Disco magnético         | 10 ms    | 12 meses  |
-| Internet América $\Longrightarrow$ Europa | 81 ms    | 8 años    |
+| Internet América $\longleftrightarrow$ Europa | 81 ms    | 8 años    |
 | Reboot                  | 5 min    | 32000 años|
 
 ¿Cuánto lleva entonces acceder a un dato, en términos de esta duración básica de un ciclo? Si el dato está en memoria RAM, llevará unos 120 ns (unos cuatrocientos ciclos). Si está en el disco magnético, demorará unos 10 ms en llegar al procesador (unos 33000 ciclos).

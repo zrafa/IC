@@ -469,15 +469,15 @@ llevar uno o varios ciclos para completarse, según la microarquitectura
 de la CPU. Pero la CPU, para ejecutar esa instrucción, necesita tener a
 disposición, en sus registros, los datos sobre los cuales debe operar.
 
-  Evento                                    Latencia   Escalado
-  ----------------------------------------- ---------- ------------
-  Un ciclo de CPU                           0.3 ns     1 s
-  Acceso a memoria cache                    13 ns      40 s
-  Acceso a memoria RAM                      120 ns     6 min
-  Disco de estado sólido                    150 \mus   6 días
-  Disco magnético                           10 ms      12 meses
-  Internet América \Longrightarrow Europa   81 ms      8 años
-  Reboot                                    5 min      320 0 0 años
+  Evento                                        Latencia   Escalado
+  --------------------------------------------- ---------- ------------
+  Un ciclo de CPU                               0.3 ns     1 s
+  Acceso a memoria cache                        13 ns      40 s
+  Acceso a memoria RAM                          120 ns     6 min
+  Disco de estado sólido                        150 \mus   6 días
+  Disco magnético                               10 ms      12 meses
+  Internet América \longleftrightarrow Europa   81 ms      8 años
+  Reboot                                        5 min      320 0 0 años
 
 ¿Cuánto lleva entonces acceder a un dato, en términos de esta duración
 básica de un ciclo? Si el dato está en memoria RAM, llevará unos 120 ns
