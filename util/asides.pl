@@ -1,11 +1,15 @@
 #!/usr/bin/perl -n
 BEGIN {
 	@lines = ();
+	$k = 1;
 }
 
-/<h1>([^<]*)<\/h1>/ and push @lines, "\n#$1\n";
+#/<h1>([^<]*)<\/h1>/ and push @lines, "\n#$1\n";
+
+next if(/^<!--/ && /-->$/);
 
 if(/^<!--/ ... /-->/) {
+#	print $k, $_; $k++;
 	next;
 }
 
@@ -14,6 +18,7 @@ if(/^<!--/ ... /-->/) {
 #}
 
 if(/^<aside/ ... /<\/aside/) {
+	#print $k, $_; $k++;
 	s/`//g;
 	 s/^<aside.*$//;
 	 s/^<\/aside.*$//;

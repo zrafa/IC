@@ -1,5 +1,84 @@
 
+Hola.
+
+Esta presentación utiliza audio sintético. 
+
+
 #El Software
+
+En esta parte de la unidad, **El Software**, nos interesa conocer el proceso de desarrollo de software, desde el punto de vista de la organización de computadoras. Explicaremos cómo se llega desde un programa, en un lenguaje de alto o bajo nivel, a obtener una sucesión de instrucciones de máquina para un procesador. 
+
+
+##Lenguajes de bajo nivel
+
+###Lenguaje de máquina o código máquina
+
+Hemos visto un conjunto de instrucciones y convenciones sobre cómo se utilizan los datos en el MCBE, que es el llamado **lenguaje de máquina** del MCBE. En este lenguaje, las operaciones y los datos se escriben como secuencias de dígitos binarios.
+
+  Por supuesto, escribir un programa para el MCBE y **depurarlo**, es decir, identificar y corregir sus errores, es una tarea muy dificultosa, porque los códigos de operación, las direcciones y los datos, fácilmente terminan confundiéndonos.  Para facilitar la programación, se ha definido un lenguaje alternativo llamado el **ensamblador** del MCBE. 
+
+###Lenguaje ensamblador
+
+Cuando escribimos un programa en el lenguaje **ensamblador** del MCBE, las instrucciones se corresponden una a una con las del programa en lenguaje de máquina. Pero en el lenguaje ensamblador del MCBE: 
+
+* En lugar de códigos de tres bits usamos unas abreviaturas un poco más significativas (llamadas los **mnemónicos** de las instrucciones).
+* En lugar de direcciones de cinco bits para los datos, usamos unos nombres simbólicos (**rótulos o etiquetas**) que hacen referencia a esas direcciones.
+* Para las instrucciones de salto, en lugar de desplazamientos, también usamos rótulos o etiquetas para indicar la instrucción del programa adonde deseamos saltar.
+
+Cada CPU del mundo real tiene su propio lenguaje de máquina, y aunque mucho más poderosos y de instrucciones más complejas, se parecen bastante, en líneas generales, al lenguaje de máquina del MCBE. Igual que ocurre con el lenguaje de máquina, cada CPU del mundo real tiene su propio lenguaje ensamblador, basado en los mismos principios que el que mostramos aquí. 
+
+El lenguaje de máquina de cualquier CPU, y su lenguaje ensamblador (o *Assembler*), son llamados en general **lenguajes de bajo nivel**. 
+
+
+###Mnemónicos
+
+Los **mnemónicos** o nombres simbólicos de las instrucciones se basan en los nombres en inglés de las operaciones correspondientes. Disponemos de los mnemónicos:
+
+* LD para la operación de cargar el Acumulador con un contenido de memoria (código 010), y ST para la operación inversa (código 011).
+* ADD para la operación de suma (código 100) y SUB para la resta (código 101).
+* JMP y JZ para los saltos incondicional y condicional (códigos 110 y 111), respectivamente.
+* HLT para la instrucción de parada (código 001) y NOP para la operación nula o no operación (código 000).
+
+
+###Rótulos
+
+Cuando necesitamos hacer referencia a una dirección, como en las operaciones de transferencia o en las aritméticas, el ensamblador nos permite independizarnos del valor de esa dirección y simplemente indicar un **nombre simbólico o rótulo** para esa dirección. Así, un rótulo equivale en lenguaje ensamblador a la **dirección de un dato**.
+
+Para que el programa quede completo, ese nombre simbólico debe aparecer en algún lugar del programa, al principio de la instrucción, y separado por un carácter ":" del resto de la línea. 
+
+**Ejemplo**
+
+Dirección | Instrucción | Rótulo  | Mnemónico | Argumento
+----------|-------------|--------:|-----------|----------
+00000	|	01000111|	|	LD	| CANT
+00001	|	11100100|SIGUE:	|	JZ	| FIN
+00010	|	01111111|	|	ST	| OUT
+00011	|	10100110|	|	SUB	| UNO
+00100	|	11011101|	|	JMP	| SIGUE
+00101	|	00100000|FIN:	|	HLT	|
+00110	|	00000001|UNO:	|	1	|
+00111	|	00000011|CANT:	|	3	|
+
+
+En este ejemplo, SIGUE, FIN, UNO y CANT son rótulos. El rótulo CANT, por ejemplo, nos permite referirnos en la primera instrucción, LD CANT, a un dato declarado más adelante con ese nombre. Del mismo modo, cuando la instrucción es de salto, podemos hacer referencia a la posición de memoria donde se hará el salto usando un rótulo, como en la quinta instrucción, JMP SIGUE. 
+
+###Rótulos en instrucciones de salto
+
+Es importante recordar que, de todas maneras, en la traducción de ensamblador a lenguaje de máquina **para las instrucciones de salto**, el rótulo se sustituye por un **desplazamiento**, y no por una dirección.
+
+**Ejemplo**
+
+- En el ejemplo existe un rótulo SIGUE que identifica a la instrucción en la posición 1. La instrucción del ejemplo JMP SIGUE, al ser ejecutada, deriva el control a la instrucción 1. Es decir, almacena un 1 en el registro PC, para que la siguiente iteración del ciclo de instrucción ejecute la instrucción en la dirección 1 de la memoria. Sin embargo, el argumento para la instrucción JMP **no vale 1** sino **-3**, como podemos corroborar en la columna "Instrucción" de la tabla.
+
+###Rótulos predefinidos
+
+Los rótulos IN y OUT vienen predefinidos en el lenguaje ensamblador de MCBE y corresponden a las posiciones de memoria 30 (para entrada) y 31 (para salida) respectivamente. 
+
+**Ejemplo**
+
+La instrucción en línea 2, ST OUT, almacena el contenido del acumulador en la posición 31, lo que equivale a escribir ese contenido en la salida del MCBE.
+ 
+
 
 ##Traductores
 
@@ -18,7 +97,7 @@ Esta clase de traductores, que reciben un programa en lenguaje ensamblador y dev
 
 ###Ensamblador x86
 
-Cada CPU tiene su propio lenguaje ensamblador, y existen programas traductores (ensambladores) para cada una de ellas. Por ejemplo, la familia de procesadores de Intel para computadoras personales comparte el mismo ISA, o arquitectura y conjunto de instrucciones. Cualquiera de estos procesadores puede ser programado usando un ensamblador para la familia **x86**.
+Cada CPU tiene su propio lenguaje ensamblador, y existen programas traductores (ensambladores) para cada una de ellas. Por ejemplo, la familia de procesadores de [Intel](https://es.m.wikipedia.org/wiki/Intel_Corporation) para computadoras personales comparte el mismo ISA, o arquitectura y conjunto de instrucciones. Cualquiera de estos procesadores puede ser programado usando un ensamblador para la familia **x86**.
 
 Según la tradición, el primer programa que uno debe intentar escribir cuando comienza a aprender un lenguaje de programación nuevo es "Hola mundo". Es un programa que simplemente escribe esas palabras por pantalla. Aquí mostramos el clásico ejemplo de "Hola mundo" en el lenguaje ensamblador de la familia x86.
 
@@ -50,7 +129,7 @@ Los procesadores de la familia x86 se encuentran en casi todas las computadoras 
 
 Por supuesto, los procesadores de familias diferentes tienen conjuntos de instrucciones diferentes. Así, un lenguaje y un programa ensamblador están ligados a un procesador determinado. El código máquina producido por un ensamblador no puede ser trasladado sin cambios a otro procesador que no sea aquel para el cual fue ensamblado. Las instrucciones de máquina tendrán sentidos completamente diferentes para uno y otro. 
 
-Por eso, el código máquina producido por un ensamblador para x86 no puede ser trasladado directamente a una computadora basada en un procesador como, por ejemplo, ARM; sino que el programa original, en ensamblador, debería ser **portado** o traducido al ensamblador propio de ARM, por un programador, y luego ensamblado con un ensamblador para ARM. 
+Por eso, el código máquina producido por un ensamblador para x86 no puede ser trasladado directamente a una computadora basada en un procesador como, por ejemplo, [ARM](https://es.m.wikipedia.org/wiki/Arquitectura_ARM); sino que el programa original, en ensamblador, debería ser **portado** o traducido al ensamblador propio de ARM, por un programador, y luego ensamblado con un ensamblador para ARM. 
 
 ~~~~
 .global main  
@@ -75,9 +154,9 @@ hola:
 El ARM es un procesador que suele encontrarse en plataformas móviles como *tablets* o teléfonos celulares, porque ha sido diseñado para minimizar el consumo de energía, una característica que lo hace ideal para construir esos productos portátiles. Su arquitectura, y por lo tanto, su conjunto de instrucciones, están basados en esos principios de diseño. 
 
 
-###Ensamblador Power PC
+###Ensamblador PowerPC
 
-Lo mismo ocurre con otras familias de procesadores como el Power PC, un procesador que fue utilizado para algunas generaciones de consolas de juegos, como la PlayStation 3. 
+Lo mismo ocurre con otras familias de procesadores como el [PowerPC](https://es.m.wikipedia.org/wiki/PowerPC), un procesador que fue utilizado para algunas generaciones de consolas de juegos, como la PlayStation 3. 
 
 ~~~~
 .data			  # seccion de variables
@@ -207,14 +286,22 @@ En el ejemplo de programación orientada a objetos en Python, definimos una clas
 
 ##Compiladores e intérpretes 
 
-Los traductores de lenguajes de alto nivel  pueden funcionar de dos maneras: o bien producen una versión en código máquina del programa fuente (**compiladores**) o bien analizan instrucción por instrucción del programa fuente y además de generar una traducción a código máquina de cada línea, la ejecutan (**intérpretes**).
+Los traductores de lenguajes de alto nivel pueden funcionar de dos maneras: o bien producen una versión en código máquina del programa fuente (**compiladores**) o bien analizan instrucción por instrucción del programa fuente, y además de generar una traducción a código máquina de cada línea, la ejecutan (**intérpretes**).
 
 Luego de la compilación, el programa en código máquina obtenido puede ser ejecutado muchas veces. En cambio, el programa interpretado debe ser traducido cada vez que se ejecute.
 
 
-Una ventaja comparativa de la compilación respecto de la interpretación es la mayor velocidad de ejecución. Al separar las fases de traducción y ejecución, un compilador alcanza la máxima velocidad de ejecución posible en un procesador dado. Por el contrario, un intérprete alterna las fases de traducción y ejecución, por lo cual la ejecución completa del mismo programa tardará algo más de tiempo.
 
-Inversamente, el código interpretado presenta la ventaja de ser directamente portable. Dos plataformas diferentes podrán ejecutar el mismo programa interpretable, siempre que cuenten con intérpretes para el mismo lenguaje. Por el contrario, un programa compilado está en código máquina para alguna arquitectura específica, así que no será compatible con otras.
+###Velocidad de ejecución
+
+- Una ventaja comparativa de la compilación respecto de la interpretación es la mayor velocidad de ejecución. Al separar las fases de traducción y ejecución, un compilador alcanza la máxima velocidad de ejecución posible en un procesador dado. 
+- Por el contrario, un intérprete alterna las fases de traducción y ejecución, por lo cual la ejecución completa del mismo programa tardará algo más de tiempo.
+
+
+###Portabilidad
+- El código interpretado presenta la ventaja de ser directamente portable. Dos plataformas diferentes podrán ejecutar el mismo programa interpretable, siempre que cuenten con intérpretes para el mismo lenguaje. 
+- Por el contrario, un programa compilado está en el código de máquina de alguna arquitectura específica, así que no será compatible con otras.
+
 
 
 ##Ciclo de compilación
