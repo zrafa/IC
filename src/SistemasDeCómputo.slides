@@ -1,6 +1,6 @@
 <!-- INCLUDE src/reveal.header -->
 
-<section>
+<section data-coursemod-shown="false">
 <h3>Esta presentación es audiovisual</h3>
 <small>
 <ul>
@@ -13,6 +13,8 @@
 <aside data-markdown class="notes">
 </aside>
 </section>
+
+
 <!--
 <section>
 <h2>Esta presentación contiene notas</h2>
@@ -101,12 +103,18 @@ Más cerca de nuestros días, se crearon artefactos parecidos a las calculadoras
 
 <section data-transition="convex">
 <h2>El Mecanismo de Anticitera</h2>
-<img src="img/anticitera.png" class="plain stretch">
+<img src="img/anticitera.jpg" class="plain stretch">
+<aside data-markdown class="notes">
+Supuestamente construido por científicos griegos, el instrumento conocido como [Mecanismo de Anticitera](https://es.m.wikipedia.org/wiki/Mecanismo_de_Anticitera) data de entre los años 150 a. C. y 100 a. C., o, según una observación reciente, del año 200 a. C.
+</aside>
 </section>
 
 <section data-transition="convex">
 <h2>La Pascalina</h2>
 <img src="img/Pascaline.png" class="plain stretch">
+<aside data-markdown class="notes">
+Inventada en 1642 por el filósofo y matemático francés Blaise Pascal (1623-1662), [la Pascalina](https://es.m.wikipedia.org/wiki/Pascalina) permitía sumar y restar dos números de manera directa y hacer la multiplicación y división por repetición.
+</aside>
 </section>
 
 <section data-transition="convex"
@@ -562,7 +570,7 @@ La consecuencia es que la mayoría de las computadoras actuales son máquinas pa
 </section>
 -->
 
-<section data-markdown>
+<section data-markdown data-coursemod-shown="false">
 ##Referencias
 * [Microarquitectura](https://es.wikipedia.org/wiki/Microarquitectura)
 * [Ley de Moore](https://es.wikipedia.org/wiki/Ley_de_Moore)

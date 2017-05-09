@@ -49,6 +49,14 @@ calculadoras y computadoras actuales, pero con la tecnología disponible
 en esos momentos, lo que lógicamente los hacían incómodos, o pobres en
 resultados, en comparación con las herramientas electrónicas de hoy.
 
+Supuestamente construido por científicos griegos, el instrumento
+conocido como Mecanismo de Anticitera data de entre los años 150 a. C. y
+1 0 0 a. C., o, según una observación reciente, del año 200 a. C.
+
+Inventada en 1642 por el filósofo y matemático francés Blaise Pascal
+(1623-1662), la Pascalina permitía sumar y restar dos números de manera
+directa y hacer la multiplicación y división por repetición.
+
 La Tabuladora de Hollerith
 
 Entre estos proto-sistemas de computación es especialmente notable, por

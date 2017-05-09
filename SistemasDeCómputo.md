@@ -24,6 +24,12 @@ En la antigüedad se crearon los que podríamos llamar sistemas de cómputo prim
 Más cerca de nuestros días, se crearon artefactos parecidos a las calculadoras y computadoras actuales, pero con la tecnología disponible en esos momentos, lo que lógicamente los hacían incómodos, o pobres en resultados, en comparación con las herramientas electrónicas de hoy. 
 
 
+Supuestamente construido por científicos griegos, el instrumento conocido como [Mecanismo de Anticitera](https://es.m.wikipedia.org/wiki/Mecanismo_de_Anticitera) data de entre los años 150 a. C. y 100 a. C., o, según una observación reciente, del año 200 a. C.
+
+
+Inventada en 1642 por el filósofo y matemático francés Blaise Pascal (1623-1662), [la Pascalina](https://es.m.wikipedia.org/wiki/Pascalina) permitía sumar y restar dos números de manera directa y hacer la multiplicación y división por repetición.
+
+
 ###La Tabuladora de Hollerith
 
 Entre estos proto-sistemas de computación es especialmente notable, por varios motivos, la máquina de Hollerith. Herman Hollerith trabajaba para la Oficina de Inmigración de EEUU hacia fines del siglo XIX, en momentos en que se formó una gran corriente inmigratoria desde Europa. La gran cantidad de personas que llegaban a radicarse, nunca vista antes, hizo desbordar el sistema de información nacional. Los responsables del censo poblacional se encontraban con un gran problema.
