@@ -1,0 +1,31 @@
+<!-- INCLUDE src/reveal.header -->
+
+<section>
+<h2>Test</h2>
+<div id="container" class="snapsvg stretch" width="100%" height="100%">
+	<svg id="testsvg" viewBox="0 0 400 200" width="100%" height="100%"></svg>
+	<!-- {
+	"initialize": "function(container, options) { 
+		var svg = Snap('#testsvg');
+
+		var d = svg.rect(20,40,100,50).attr({fill: '#5ADAB5'}).drag();
+		var c = svg.circle(50,50,40).attr({fill: '#BADA55'}).drag();
+
+		d.transitions = {
+			t0 : { fill: '#DABADD', x: 25, y: 45},
+			t1 : { fill: '#DABADD', x: 25, y: 45},
+		};
+		c.transitions = {
+			t0 : { x: 70, y: 90},
+			t1 : { fill: '#FFBB88'},
+		};
+
+
+		
+	}"
+	} -->
+</div>
+</section>
+
+
+<!-- INCLUDE src/reveal.trailer -->
