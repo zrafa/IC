@@ -1052,6 +1052,9 @@ Por ejemplo, el carácter más frecuente será reemplazado por el código 1; el 
 
 - El texto de once caracteres "ABRACADABRA" contiene cinco "A", dos "B", dos "R", una "C" y una "D". Si no utilizamos compresión, se necesitan $11 \times 8 = 88$ bits para representarlo. Si utilizamos compresión por códigos de longitud variable, crearemos un pequeño diccionario de la forma { A &rarr; 1, B &rarr; 01, R &rarr; 001, C &rarr; 0001, D &rarr; 00001 }. Con este diccionario, el texto se podrá representar como "1 01 001 1 0001 1 00001 1 01 001 1", en tan sólo 23 bits.
 
+**Interesante**
+
+[Ley de Zipf](https://es.m.wikipedia.org/wiki/Ley_de_Zipf)
 
 </aside>
 </section>
@@ -1100,9 +1103,9 @@ Si un archivo es comprimido **sin pérdida** y luego transferido a través de la
 <ul>
 <li><a href="TextoYMultimedia-notes.pdf">Notas de esta presentación</a></li>
 <!-- <li><a href="http://pedco.uncoma.edu.ar/pluginfile.php/346011/mod_resource/content/1/IC-Codificacion_texto_audio_imagen.pdf">Apunte de cátedra: Codificación de datos</a></li> -->
-<li><a href="https://es.wikipedia.org/wiki/MP3">MP3</a></li>
-<li><a href="https://es.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a></li>
-<li><a href="https://es.wikipedia.org/wiki/Conversi%C3%B3n_anal%C3%B3gica-digital">Conversión analógica-digital</a></li>
+<li><a href="https://es.m.wikipedia.org/wiki/MP3">MP3</a></li>
+<li><a href="https://es.m.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a></li>
+<li><a href="https://es.m.wikipedia.org/wiki/Conversi%C3%B3n_anal%C3%B3gica-digital">Conversión analógica-digital</a></li>
 </ul>
 </section>
 

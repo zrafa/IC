@@ -165,6 +165,11 @@ Queda por especificar **cuál color es el que está codificado por cada número 
 Para simplificar nuestro trabajo asumiremos que esto no es importante, sino que el problema consiste únicamente en que nuestro formato determine los códigos de colores de cada uno de los pixels. El problema de cuáles son los colores asignados a esos códigos puede resolverse de otras maneras: por ejemplo, suponiendo que existe una hipotética tabla universal de colores y códigos, conocida por todos.
 
 
+La imagen queda entonces representada por una sucesión de bits que codifican los colores de los pixels. Esta sucesión de bits está lista para ser comunicada a otra computadora a través de la red, o un programa puede entregarla a otro para efectuarle algún procesamiento. O bien, esta sucesión de bits puede ser almacenada y recuperada en un momento futuro.
+
+Sin embargo, si sólo se almacena o transfiere esta sucesión de bits, la imagen puede no ser correctamente interpretada.
+
+
 El programa que reciba esta sucesión de bits debe conocer además cómo se disponen en el espacio los pixels, es decir, cuál es el ancho y el alto de la imagen; y exactamente cuántos bits codifican un pixel. Si esta información no está presente en el archivo que representa la imagen, su reconstrucción puede ser errónea o imposible.
 
 Nuestro formato de imagen digital debe contener información **de dimensiones y de profundidad de color**, para poder ser comunicado efectivamente hacia otros programas o computadoras.
@@ -339,6 +344,9 @@ Por ejemplo, el carácter más frecuente será reemplazado por el código 1; el 
 
 - El texto de once caracteres "ABRACADABRA" contiene cinco "A", dos "B", dos "R", una "C" y una "D". Si no utilizamos compresión, se necesitan $11 \times 8 = 88$ bits para representarlo. Si utilizamos compresión por códigos de longitud variable, crearemos un pequeño diccionario de la forma { A &rarr; 1, B &rarr; 01, R &rarr; 001, C &rarr; 0001, D &rarr; 00001 }. Con este diccionario, el texto se podrá representar como "1 01 001 1 0001 1 00001 1 01 001 1", en tan sólo 23 bits.
 
+**Interesante**
+
+[Ley de Zipf](https://es.m.wikipedia.org/wiki/Ley_de_Zipf)
 
 
 

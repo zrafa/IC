@@ -83,6 +83,8 @@
 {\pard \ql \f0 \sa180 \li0 \fi0 As\u237?, cada pixel de la imagen, en lugar de quedar representado por una terna de valores, puede representarse por un n\u250?mero de color en la paleta.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Queda por especificar {\b cu\u225?l color es el que est\u225? codificado por cada n\u250?mero de color} de la paleta. Si una imagen tiene dos bits de profundidad de color, los colores ser\u225?n cuatro, y sus c\u243?digos ser\u225?n {\b 00, 01, 10, 11}. Pero, \u191?cu\u225?les exactamente son estos colores? Tal vez, blanco, negro, rojo y azul. Pero tal vez sean cuatro niveles de gris. O cuatro diferentes tonos de verde.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Para simplificar nuestro trabajo asumiremos que esto no es importante, sino que el problema consiste \u250?nicamente en que nuestro formato determine los c\u243?digos de colores de cada uno de los pixels. El problema de cu\u225?les son los colores asignados a esos c\u243?digos puede resolverse de otras maneras: por ejemplo, suponiendo que existe una hipot\u233?tica tabla universal de colores y c\u243?digos, conocida por todos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La imagen queda entonces representada por una sucesi\u243?n de bits que codifican los colores de los pixels. Esta sucesi\u243?n de bits est\u225? lista para ser comunicada a otra computadora a trav\u233?s de la red, o un programa puede entregarla a otro para efectuarle alg\u250?n procesamiento. O bien, esta sucesi\u243?n de bits puede ser almacenada y recuperada en un momento futuro.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sin embargo, si s\u243?lo se almacena o transfiere esta sucesi\u243?n de bits, la imagen puede no ser correctamente interpretada.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El programa que reciba esta sucesi\u243?n de bits debe conocer adem\u225?s c\u243?mo se disponen en el espacio los pixels, es decir, cu\u225?l es el ancho y el alto de la imagen; y exactamente cu\u225?ntos bits codifican un pixel. Si esta informaci\u243?n no est\u225? presente en el archivo que representa la imagen, su reconstrucci\u243?n puede ser err\u243?nea o imposible.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Nuestro formato de imagen digital debe contener informaci\u243?n {\b de dimensiones y de profundidad de color}, para poder ser comunicado efectivamente hacia otros programas o computadoras.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Un formato de imagen\par}
@@ -156,6 +158,11 @@ c\u243?digo instant\u225?neo
 {\pard \ql \f0 \sa180 \li0 \fi0 Por ejemplo, el car\u225?cter m\u225?s frecuente ser\u225? reemplazado por el c\u243?digo 1; el siguiente en frecuencia, por el c\u243?digo 01; el siguiente, por 001; etc. As\u237?, los caracteres que aparecen m\u225?s veces ser\u225?n codificados por patrones de bits m\u225?s cortos. De esta forma el archivo comprimido ocupar\u225? menos espacio que con un c\u243?digo de longitud uniforme.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplo}\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El texto de once caracteres "ABRACADABRA" contiene cinco "A", dos "B", dos "R", una "C" y una "D". Si no utilizamos compresi\u243?n, se necesitan 11\u8197?\u215?\u8197?8\u8196?=\u8196?88 bits para representarlo. Si utilizamos compresi\u243?n por c\u243?digos de longitud variable, crearemos un peque\u241?o diccionario de la forma \{ A \u8594? 1, B \u8594? 01, R \u8594? 001, C \u8594? 0001, D \u8594? 00001 \}. Con este diccionario, el texto se podr\u225? representar como "1 01 001 1 0001 1 00001 1 01 001 1", en tan s\u243?lo 23 bits.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Interesante}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "https://es.m.wikipedia.org/wiki/Ley_de_Zipf"}}{\fldrslt{\ul
+Ley de Zipf
+}}}
+\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Compresi\u243?n de im\u225?genes con RLE\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Fijada la cantidad de bits para coeficientes, la imagen se comprime indicando, para cada secuencia de pixels iguales, qu\u233? factor de repetici\u243?n corresponde y qu\u233? valor de color llevan los pixels repetidos.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplo}\par}

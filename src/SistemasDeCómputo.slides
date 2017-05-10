@@ -5,7 +5,6 @@
 <small>
 <ul>
 <li>Para controlar el sonido utilice la barra de control de audio al pie de la pantalla</li>
-<li>Para acceder a las notas de la presentación pulse la tecla "s"</li>
 </ul>
 </small>
 <img src="img/dog_headphones.jpg" class="plain stretch">
@@ -579,4 +578,4 @@ La consecuencia es que la mayoría de las computadoras actuales son máquinas pa
 * [Más sobre Clementina](http://cda.gob.ar/serie/294/clementina)
 </section>
 
-<!-- INCLUDE src/reveal.trailer -->
+<!-- INCLUDE src/reveal.trailer-audio -->
