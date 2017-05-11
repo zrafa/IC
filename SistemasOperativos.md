@@ -160,13 +160,47 @@ Es interesante seguir el rastro de lo que ocurrió con algunos sistemas importan
 ##Servicios del SO
 Después de conocer estas cuestiones generales sobre los sistemas operativos, veremos con un poco más de detalle los diferentes **servicios** provistos por los principales subsistemas de un SO:
 
-- Ejecución de programas
+- Ejecución de procesos
 - Gestión de archivos
 - Operaciones de Entrada/Salida
 - Gestión de memoria
 - Protección
 
 Si bien la discusión que sigue es suficientemente general para comprender básicamente el funcionamiento de cualquier sistema operativo moderno, nos referiremos sobre todo a la manera como se implementan estos subsistemas y servicios en la familia de sistemas **Unix**, que, como hemos dicho, es el modelo de referencia académico para la mayoría de la investigación y desarrollo de sistemas operativos.
+
+
+
+
+##Ejecución de procesos
+
+¿Cómo se inicia la ejecución de un proceso? Todo proceso es **hijo** de algún otro proceso que lo crea. 
+
+###Creación de procesos
+Inicialmente, el SO crea una cantidad de procesos de sistema. Uno de ellos es una **interfaz de usuario o shell**. Este proceso sirve para que el usuario pueda comunicarse con el SO y solicitarle la ejecución de otros procesos.
+
+El *shell* puede ser gráfico, con una interfaz de ventanas, o de texto, con un intérprete de comandos. En cualquiera de los dos casos, de una forma u otra el usuario selecciona **programas** que están residiendo en algún medio de almacenamiento como los discos, y pide al SO que ejecute esos programas.
+
+En respuesta, el SO carga esos programas en memoria y pone a la CPU a ejecutar el código de esos programas. Una vez en ejecución, decimos que tenemos un nuevo **proceso** en el sistema. Este nuevo proceso es un hijo del shell, y a su vez puede crear nuevos procesos hijos si es necesario.
+
+###Estados de los procesos
+Durante su vida, el proceso atravesará diferentes **estados**. Un proceso puede no estar siempre en estado de ejecución (utilizando la CPU), sino que en un momento dado puede pasar a otro estado, quedando transitoriamente suspendido, para dejar que otro proceso utilice la CPU.
+
+###Scheduler o planificador
+El ciclo de cambios de estado de los procesos es administrado por un componente esencial del SO, el **scheduler** o **planificador**, que lleva el control de qué proceso debe ser el próximo en ejecutarse. El planificador elige qué proceso pasar a estado de ejecutando, siguiendo una estrategia que permita obtener el máximo rendimiento posible de la CPU. Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose cambia de estado hasta que vuelva a tocarle el uso de la CPU.
+
+**Planificación de tiempo compartido**
+
+Como el planificador de los SO **de tiempo compartido** es capaz de hacer estos cambios de estado con mucha velocidad, normalmente el resultado es que sus usuarios no perciben estos cambios de estado. Los sistemas de tiempo compartido fueron creados para ser **interactivos**, y tienen la misión de hacer creer a cada usuario que el sistema de cómputo está dedicado exclusivamente a sus procesos.
+
+Sin embargo, normalmente existen muchísimos procesos vivos simultáneamente en un SO de propósito general. 
+
+###Concurrencia y paralelismo
+Si el sistema de tiempo compartido dispone de **una sola unidad de ejecución o CPU**, habrá solamente **un proceso ejecutándose** en cada momento dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo, alternándose en el uso de esa CPU. 
+
+- Cuando los procesos viven en el sistema simultáneamente pero se alternan en el uso de **una única CPU** decimos que esos procesos son **concurrentes**. Todos coexisten en el sistema durante un período de tiempo dado; sin embargo, no hay dos procesos en estado de ejecución en el mismo momento, por lo cual no podemos decir que se ejecutan "simultáneamente".
+- Cuando el sistema de cómputo tiene más de una CPU, entonces podemos tener dos o más procesos en estado de ejecución **simultáneamente**, y entonces decimos que esos procesos son **paralelos**. Para tener paralelismo, además de concurrencia debemos tener **redundancia de hardware** (es decir, más de una CPU).
+
+
 
 
 
