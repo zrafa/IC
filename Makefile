@@ -12,22 +12,8 @@ repre: RepresentaciónDigitalDeDatos.html
 texto: TextoYMultimedia.html
 arqui: ArquitecturaDeComputadoras.html
 
-all: siste uni repre texto arqui soft comp
-	pandoc -V lang=spanish -V fontfamily=sans -V papersize=A4 -V title="Introducción a la Computación 2017" --toc \
-	SistemasDeNumeración.md \
-	UnidadesDeInformación.md \
-	RepresentaciónDigitalDeDatos.md \
-	TextoYMultimedia.md \
-	ArquitecturaDeComputadoras.md \
-	Software.md \
-	SistemasDeCómputo.md \
-	-o IC2017-notes.pdf
 
-git: 
-	util/github "mm"
-
-
-%.html: src/%.slides $(DEPS) %.md
+%.html: src/%.slides $(DEPS) 
 	util/macro $< > $*.html
 	$(eval TITLE = $(shell perl -ne '/data-title=\"(.+)\">/ and print "$$1"' $<) )
 	util/asides.pl $< > $*.md
@@ -44,7 +30,6 @@ git:
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
 		$*.md --toc -o $*-notes.rtf
-	#Acces
 	pandoc \
 		-s \
 		-V lang=spanish \
@@ -56,6 +41,20 @@ git:
 
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
 
+
+all: siste uni repre texto arqui soft comp
+	pandoc -V lang=spanish -V fontfamily=sans -V papersize=A4 -V title="Introducción a la Computación 2017" --toc \
+	SistemasDeNumeración.md \
+	UnidadesDeInformación.md \
+	RepresentaciónDigitalDeDatos.md \
+	TextoYMultimedia.md \
+	ArquitecturaDeComputadoras.md \
+	Software.md \
+	SistemasDeCómputo.md \
+	-o IC2017-notes.pdf
+
+git: 
+	util/github "mm"
 
 
 clean: 

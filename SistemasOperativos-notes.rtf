@@ -1,0 +1,129 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Contents\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Open Shop\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sistemas Batch\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sistemas Multiprogramados\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sistemas de Tiempo Compartido\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Computac\u237?on personal\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Componentes del SO\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Sistemas empotrados o embebidos\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Aplicaciones\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Kernel\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Recursos\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Procesos\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Llamadas al sistema o system calls\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Modo privilegiado\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Modo dual de operaci\u243?n\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ejecuci\u243?n de aplicaciones\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Una cronolog\u237?a de los SO\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Servicios del SO\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Hemos visto la evoluci\u243?n de los sistemas de c\u243?mputo desde el punto de vista del hardware, y c\u243?mo llegaron a soportar varios usuarios corriendo varias aplicaciones, todo sobre un mismo equipamiento.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Ahora veremos de qu\u233? manera evolucion\u243? el software asociado a esos sistemas de c\u243?mputo para permitir que esos diferentes usuarios y esas diferentes aplicaciones pudieran compartir el hardware sin ocasionarse problemas unos a otros, y obteniendo el m\u225?ximo rendimiento posible del equipamiento.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La pieza que falta en este complejo mecanismo es el sistema operativo, un software b\u225?sico cuya funci\u243?n principal es la de ser intermediario entre los usuarios y el hardware del sistema de c\u243?mputo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Open Shop\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Las primeras computadoras estaban dedicadas a una \u250?nica tarea, perteneciente a un \u250?nico usuario. Pod\u237?an ser utilizadas por diferentes usuarios, pero cada uno deb\u237?a esperar su turno para reprogramarlas manualmente, lo cual era laborioso y se llevaba gran parte del tiempo por el cual esos usuarios pagaban.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Sistemas Batch\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Una vez que se popularizaron las m\u225?quinas de programa almacenado, se pudo minimizar el tiempo ocioso adoptando {\b esquemas de carga autom\u225?tica} de trabajos. Un trabajo t\u237?pico consist\u237?a en la compilaci\u243?n y ejecuci\u243?n de un programa, o la carga de un programa compilado m\u225?s un lote de datos de entrada, y la impresi\u243?n de un cierto resultado de salida del programa. Estos trabajos estaban definidos por conjuntos o lotes de tarjetas perforadas, de ah\u237? su nombre de trabajos {\b por lotes} o, en ingl\u233?s, {\i batch}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Sistemas Multiprogramados\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 M\u225?s adelante, conforme las tecnolog\u237?as permit\u237?an ir aumentando la velocidad de procesamiento, se not\u243? que los procesadores quedaban desaprovechados gran parte del tiempo debido a la inevitable {\b actividad de entrada/salida}. As\u237? se idearon sistemas que optimizaban la utilizaci\u243?n de la CPU, al poderse cargar m\u225?s de un programa en la memoria y poder conmutar el uso del procesador entre ellos. \u201?stos fueron los primeros {\b sistemas multiprogramados}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Sistemas de Tiempo Compartido\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Una vez que lleg\u243? la posibilidad de tener varios programas coexistiendo simult\u225?neamente en la memoria, se busc\u243? que la conmutaci\u243?n del uso del procesador entre ellos fuera tan r\u225?pida, que pareciera que cada programa funcionaba sin interrupciones. Aunque el sistema era de {\b tiempo compartido}, el usuario utilizaba la computadora como si estuviera dedicada exclusivamente a correr su programa. As\u237? los sistemas multiprogramados se volvieron {\b interactivos}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Computac\u237?on personal\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Todas \u233?stas fueron innovaciones de software, y fueron estableciendo principios y t\u233?cnicas que ser\u237?an adoptadas en lo sucesivo. Con la llegada de la computaci\u243?n personal, los sistemas de c\u243?mputo eran de capacidades modestas. Los {\b sistemas operativos} que permit\u237?an la ejecuci\u243?n de aplicaciones de los usuarios en estos sistemas de c\u243?mputo comenzaron pudiendo correr una sola aplicaci\u243?n por vez y de un solo usuario; es decir, se trataba de sistemas {\b monotarea} y {\b monousuario}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sin embargo, con la industria de las computadoras personales y la del software para computadoras personales traccion\u225?ndose una a la otra, aparecieron sistemas operativos {\b multiusuario} y {\b multitarea}, sumamente complejos, que se convirtieron en un nuevo terreno para ensayar y mejorar las tecnolog\u237?as de software y hardware.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Componentes del SO\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los modernos sistemas operativos tienen varios componentes bien diferenciados. Los sistemas operativos de prop\u243?sito general normalmente se presentan en una {\b distribuci\u243?n} que contiene e integra al menos tres componentes.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab {\b Kernel}\par}
+{\pard \ql \f0 \sa180 \li360 \fi0 El componente que constituye el sistema operativo propiamente dicho es el llamado {\b n\u250?cleo} o {\b kernel}.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab {\b Software de sistema}\par}
+{\pard \ql \f0 \sa180 \li360 \fi0 Junto al kernel es habitual encontrar un conjunto de {\b programas utilitarios o software de sistema}, que no es parte del sistema operativo, estrictamente hablando, pero que en general es indispensable para la administraci\u243?n y mantenimiento del sistema.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab {\b Interfaz de usuario}\par}
+{\pard \ql \f0 \sa180 \li360 \fi0 Tambi\u233?n se encuentra junto a este software del sistema alguna forma de {\b interfaz de usuario}, que puede ser gr\u225?fica o de caracteres. Esta interfaz de usuario se llama en general {\b shell}, especialmente cuando la interfaz es un procesador de comandos, basado en caracteres, y los comandos se tipean.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Sistemas empotrados o embebidos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Hay algunas excepciones a esta estructura de componentes, por ejemplo, en los sistemas operativos {\b empotrados} o {\b embebidos} ({\i embedded systems}), que est\u225?n ligados a un dispositivo especial y muy espec\u237?fico, como es el caso de algunos robots, instrumental m\u233?dico, routers, electrodom\u233?sticos avanzados, etc.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Estos sistemas operativos constan de un kernel que tiene la misi\u243?n de hacer funcionar cierto hardware especial, pero no necesariamente incluyen una interfaz de usuario (porque el usuario no necesita en realidad comunicarse directamente con ellos) o no incluyen software de sistema porque sus usuarios no son quienes se encargan de su mantenimiento.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Aplicaciones\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Un t\u237?pico sistema operativo multiprop\u243?sito, actual, debe dar soporte entonces a la actividad de una gran variedad de aplicaciones. No solamente a la interfaz de usuario o procesador de comandos, m\u225?s el software de sistema incluido, sino tambi\u233?n a toda la gama de aplicaciones que desee ejecutar el usuario, como programas de comunicaciones (navegadores, programas de transferencia de archivos, de mensajer\u237?a); aplicaciones de desarrollo de programas (compiladores, int\u233?rpretes de diferentes lenguajes).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Kernel\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El {\b kernel} o n\u250?cleo es esencialmente un conjunto de rutinas que permanecen siempre residentes en memoria mientras la computadora est\u225? operando. Estas rutinas intervienen en todas las acciones que tengan que ver con la operaci\u243?n del hardware.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Recursos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El kernel funciona no solamente como un mecanismo de administraci\u243?n y control del hardware o conjunto de {\b recursos f\u237?sicos}, sino tambi\u233?n de ciertos recursos del sistema que son {\b l\u243?gicos}, como los archivos. Adem\u225?s tiene la capacidad de poner en ejecuci\u243?n a los programas que se encuentran en el sistema.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Procesos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Cuando un programa est\u225? en ejecuci\u243?n, lo llamamos un {\b proceso}. El sistema operativo controla la creaci\u243?n, ejecuci\u243?n y finalizaci\u243?n de los procesos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Llamadas al sistema o system calls\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El kernel ofrece su capacidad de control de todos los recursos a los procesos o programas en ejecuci\u243?n, quienes le solicitan determinadas operaciones sobre esos recursos. Por ejemplo, un proceso que necesita utilizar un dispositivo de entrada/salida, o un recurso l\u243?gico como un archivo, hace una {\b petici\u243?n o llamada al sistema} solicitando un servicio al sistema operativo. El servicio puede tratarse de una operaci\u243?n de lectura, escritura, creaci\u243?n, borrado, etc. El sistema operativo centraliza y coordina estas peticiones de forma que los procesos no interfieran entre s\u237?.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Modo privilegiado\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Si los procesos de usuario pudieran utilizar los recursos en cualquier momento y sin coordinaci\u243?n, los resultados podr\u237?an ser desastrosos. Por ejemplo, si dos o m\u225?s programas quisieran usar la impresora al mismo tiempo, en el papel impreso se ver\u237?a una mezcla de las salidas de los programas que no servir\u237?a a ninguno de ellos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Como el sistema operativo debe coordinar el acceso de los diferentes procesos a esos recursos, resulta necesario que cuente con alguna forma de imponer conductas y l\u237?mites a esos usuarios y programas, para evitar que ellos tomen control del sistema en perjuicio de los dem\u225?s. Para garantizarle este poder por sobre los usuarios, el sistema operativo requiere apoyo del hardware: su c\u243?digo se ejecuta en un modo especial de operaci\u243?n del hardware, el {\b modo privilegiado} del procesador.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Modo dual de operaci\u243?n\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los modernos procesadores funcionan en lo que llamamos {\b modo dual} de ejecuci\u243?n, donde el ISA se divide en dos grupos de instrucciones.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ciertas instrucciones que controlan el modo de operaci\u243?n de la CPU, el acceso a memoria, o a las unidades de Entrada/Salida, pertenecen al grupo de instrucciones del {\b modo privilegiado}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Un programa de usuario que se est\u225? ejecutando funciona en modo {\b no privilegiado}, donde tiene acceso a la mayor\u237?a de las instrucciones del ISA, pero no a las instrucciones del modo privilegiado.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El procesador ejecutar\u225? instrucciones del programa en ejecuci\u243?n en modo no privilegiado hasta que \u233?ste necesite un servicio del sistema operativo, tal como el acceso a un recurso f\u237?sico o l\u243?gico.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para requerir este servicio, el proceso ejecuta una instrucci\u243?n de {\b llamada al sistema} o {\b system call}, que es la \u250?nica instrucci\u243?n del conjunto no privilegiado que permite a la CPU conmutar al modo privilegiado.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La llamada al sistema conmuta el modo de la CPU a modo privilegiado {\b y adem\u225?s} fuerza el salto a una cierta direcci\u243?n fija de memoria donde existe c\u243?digo del kernel. En esa direcci\u243?n de memoria existe una rutina de atenci\u243?n de llamadas al sistema, que determina, por el contenido de los registros de la CPU, qu\u233? es lo que est\u225? solicitando el proceso.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 Con estos datos, esa rutina de atenci\u243?n de llamadas al sistema dirigir\u225? el pedido al subsistema del kernel correspondiente, ejecutando siempre en modo privilegiado, y por lo tanto, con completo acceso a los recursos.\par}
+{\pard \ql \f0 \sa0 \li0 \fi0 Modo de ejecuci\u243?n dual\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El subsistema que corresponda har\u225? las verificaciones necesarias para cumplir el servicio:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El usuario due\u241?o del proceso, \u191?tiene los permisos necesarios?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El recurso, \u191?est\u225? disponible o est\u225? siendo usado por otro proceso?, etc.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Si se cumplen todos los requisitos, se ejecutar\u225? el servicio pedido y luego se volver\u225? a modo usuario, a continuar con la ejecuci\u243?n del proceso.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Ejecuci\u243?n de aplicaciones\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Al ejecutar procesos de usuario o de sistema se pone en juego una jerarqu\u237?a de piezas de software que ocupa varios niveles.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Normalmente, cualquier aplicaci\u243?n que funcione en el sistema, ya sean las del sistema o las generadas por el usuario, competir\u225? con las dem\u225?s por los recursos en igualdad de condiciones.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Todas las aplicaciones, en alg\u250?n momento, requieren funciones que ya est\u225?n preparadas para su uso y almacenadas en {\b bibliotecas} especializadas en alg\u250?n \u225?rea.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Algunas aplicaciones pueden requerir funciones matem\u225?ticas; otras, de gr\u225?ficos; algunas, de comunicaciones. Todas ellas requerir\u225?n, sin duda, funciones de entrada/salida. Cada grupo de estas funciones est\u225? encapsulado en una o varias bibliotecas que forman parte del sistema.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La {\b vinculaci\u243?n} de los programas de usuario con las bibliotecas puede hacerse al tiempo de compilaci\u243?n o, cuando las bibliotecas son {\b de carga din\u225?mica}, al tiempo de ejecuci\u243?n.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Al ejecutarse los procesos, normalmente las bibliotecas necesitan recurrir a servicios del kernel para completar su funcionamiento. Los diferentes subsistemas del kernel se ocupan de cada clase de servicios y de manejar diferentes clases de recursos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Por ejemplo:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si un proceso necesita solicitar m\u225?s memoria durante la ejecuci\u243?n, la pedir\u225? al subsistema de {\b gesti\u243?n de memoria}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Cada vez que un proceso escriba datos en un archivo, estar\u225? comunic\u225?ndose, a trav\u233?s de una biblioteca, con el subsistema de {\b gesti\u243?n de archivos}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si un proceso necesita enviar o recibir datos a trav\u233?s de la red, el kernel pondr\u225? en funcionamiento el {\b driver} de la interfaz de red, la pieza de software que sabe comunicarse con ese hardware.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La comunicaci\u243?n entre los procesos de usuario y sus bibliotecas, por un lado, y el kernel y sus subsistemas, por otro, se produce cuando ocurre una llamada al sistema o system call. Es en este momento cuando se cruza el l\u237?mite entre modo usuario y modo privilegiado, o espacio de usuario y espacio del kernel.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Una cronolog\u237?a de los SO\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Entre la d\u233?cada de 1960 y principios del siglo XXI surgieron gran cantidad de innovaciones tecnol\u243?gicas en el \u225?rea de sistemas operativos. Muchas de ellas han tenido \u233?xito m\u225?s all\u225? de los fines experimentales y han sido adoptadas por sistemas operativos con gran cantidad de usuarios. Diferentes sistemas operativos han influido en el dise\u241?o de otros posteriores, cre\u225?ndose as\u237? l\u237?neas geneal\u243?gicas de sistemas operativos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Es interesante seguir el rastro de lo que ocurri\u243? con algunos sistemas importantes a lo largo del tiempo, y ver c\u243?mo han ido reconvirti\u233?ndose unos sistemas en otros.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Por ejemplo, el sistema de archivos dise\u241?ado para el sistema operativo CP/M de la empresa Digital, en los a\u241?os 70, fue adaptado para el MS-DOS de Microsoft, cuya evoluci\u243?n final fue {\b Windows}.\par}
+{\pard \ql \f0 \sa180 \li360 \fi0 Los dise\u241?adores de Windows NT fueron los mismos que construyeron el sistema operativo VMS de los equipos VAX, tambi\u233?n de Digital, y aportaron su experiencia. De hecho, muchas caracter\u237?sticas de la gesti\u243?n de procesos y de entrada/salida de ambos sistemas son id\u233?nticas.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Otra importante l\u237?nea geneal\u243?gica es la que relaciona el antiguo Multics, por un lado, con {\b Unix} y con Linux; y m\u225?s recientemente, con el sistema para plataformas m\u243?viles Android.\par}
+{\pard \ql \f0 \sa180 \li360 \fi0 Unix fue el primer sistema operativo escrito casi totalmente en un lenguaje de alto nivel, el {\b C}, lo cual permiti\u243? portarlo a diferentes arquitecturas. Esto le dio un gran impulso y la comunidad cient\u237?fica lo adopt\u243? como el modelo de referencia de los sistemas operativos de tiempo compartido.\par}
+{\pard \ql \f0 \sa180 \li360 \fi0 En 1991 {\b Linus Torvalds} lanz\u243? un proyecto de c\u243?digo abierto dedicado a la construcci\u243?n de un sistema operativo compatible con Unix pero sin hacer uso de ning\u250?n c\u243?digo anteriormente escrito, lo que le permiti\u243? liberarlo bajo una {\field{\*\fldinst{HYPERLINK "https://es.m.wikipedia.org/wiki/Software_libre"}}{\fldrslt{\ul
+licencia libre
+}}}
+. La consecuencia es que Linux, su sistema operativo, r\u225?pidamente atrajo la atenci\u243?n de centenares de desarrolladores de todo el mundo, que sumaron sus esfuerzos para crear un sistema que fuera completo y disponible libremente.\par}
+{\pard \ql \f0 \sa180 \li360 \fi0 Linux puede ser estudiado a fondo porque su c\u243?digo fuente no es secreto, como en el caso de los sistemas operativos propietarios. Esto lo hace ideal, entre otras cosas, para la ense\u241?anza de las Ciencias de la Computaci\u243?n. Esta cualidad de sistema abierto permiti\u243? que otras compa\u241?\u237?as lo emplearan en muchos otros proyectos.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Otra empresa de productos de computaci\u243?n de notable trayectoria, {\b Apple}, produjo un sistema operativo para su l\u237?nea de computadoras personales Macintosh. Su sistema MacOS estaba influenciado por desarrollos de interfaces de usuario gr\u225?ficas realizadas por otra compa\u241?\u237?a, Xerox, y tambi\u233?n deriv\u243? en la creaci\u243?n de un sistema operativo para dispositivos m\u243?viles.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Otros sistemas operativos han cumplido un ciclo con alguna clase de final, al no superar la etapa experimental, haberse transformado definitivamente en otros sistemas, desaparecer del mercado o quedar confinados a cierto nicho de aplicaciones. Algunos, por sus objetivos de dise\u241?o, son menos visibles, porque est\u225?n destinados a un uso que no es masivo, como es el caso del {\b sistema de tiempo real} QNX.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Servicios del SO\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Despu\u233?s de conocer estas cuestiones generales sobre los sistemas operativos, veremos con un poco m\u225?s de detalle los diferentes {\b servicios} provistos por los principales subsistemas de un SO:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ejecuci\u243?n de programas\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Gesti\u243?n de archivos\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Operaciones de Entrada/Salida\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Gesti\u243?n de memoria\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Protecci\u243?n\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Si bien la discusi\u243?n que sigue es suficientemente general para comprender b\u225?sicamente el funcionamiento de cualquier sistema operativo moderno, nos referiremos sobre todo a la manera como se implementan estos subsistemas y servicios en la familia de sistemas {\b Unix}, que, como hemos dicho, es el modelo de referencia acad\u233?mico para la mayor\u237?a de la investigaci\u243?n y desarrollo de sistemas operativos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Supongamos un sistema donde existen dos procesos activos, con algunas p\u225?ginas en memoria principal, y una zona de intercambio en disco.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El proceso P1 tiene asignadas cuatro p\u225?ginas (de las cuales s\u243?lo la p\u225?gina 2 est\u225? presente en memoria principal), y P2, dos p\u225?ginas (ambas presentes). Hay tres marcos libres (M4, M6 y M7) y la zona de intercambio est\u225? vac\u237?a.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 P1 recibe la CPU y en alg\u250?n momento ejecuta una instrucci\u243?n que hace una referencia a una posici\u243?n dentro de su p\u225?gina 3 (que no est\u225? en memoria).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Ocurre una falta de p\u225?gina que trae del almacenamiento la p\u225?gina 3 de P1 a un marco libre. La p\u225?gina 3 se marca como presente en la tabla de p\u225?ginas de P1.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Enseguida ingresa P3 al sistema y comienza haciendo una referencia a su p\u225?gina 2.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Como antes, ocurre una falta de p\u225?gina, se trae la p\u225?gina 2 de P3 del disco, y se copia en un marco libre. Se marca la p\u225?gina 2 como presente y P3 contin\u250?a su ejecuci\u243?n haciendo una referencia a una direcci\u243?n que queda dentro de su p\u225?gina 3.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Se resuelve como siempre la falta de p\u225?gina para la p\u225?gina 3 y P3 hace una nueva referencia a memoria, ahora a la p\u225?gina 4.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Pero ahora la memoria principal ya no tiene marcos libres. Es el momento de elegir una p\u225?gina v\u237?ctima para desalojarla de la memoria. Si la p\u225?gina menos recientemente usada es la p\u225?gina 2 de P1, es una buena candidata. En caso de que se encuentre modificada desde que fue cargada en memoria, se la copia en la zona de intercambio para no perder esas modificaciones, y se declara libre el marco M2 que ocupaba.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Se marca como no presente la p\u225?gina que acaba de salir de la memoria principal.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Se copia la p\u225?gina que solicit\u243? P3 en el nuevo marco libre, se la marca como presente en la tabla de p\u225?ginas de P3, y el sistema contin\u250?a su operaci\u243?n normalmente.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Este emulador de PC construido en Javascript nos permite practicar los comandos del shell dentro de una {\i m\u225?quina virtual} Linux y desde el navegador, sin necesidad de una instalaci\u243?n completa en nuestro equipo.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para retroceder en el terminal\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Teclas Ctrl-Up, Ctrl-Down, Ctrl-PageUp y Ctrl-PageDown.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para copiar datos a la m\u225?quina virtual\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Copiar el texto a la caja o {\b clipboard} a la derecha.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab En el shell de la m\u225?quina virtual escribir: cat < /dev/clipboard > /tmp/archivo\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ahora tenemos ese mismo texto en el archivo /tmp/archivo.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para extraer datos de la m\u225?quina virtual\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Invertir el procedimiento anterior: cat mi_archivo > /dev/clipboard\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Seleccionar el texto en la caja {\b clipboard} y copiarlo a alguna otra aplicaci\u243?n en nuestro equipo, tal como un editor.\sa180\par}
+}
