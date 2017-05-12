@@ -1,4 +1,5 @@
 
+##Sistemas de cómputo
 Hemos visto la evolución de los sistemas de cómputo desde el punto de vista del hardware, y cómo llegaron a soportar varios usuarios corriendo varias aplicaciones, todo sobre un mismo equipamiento.
 
 
@@ -6,6 +7,8 @@ Ahora veremos de qué manera evolucionó el software asociado a esos sistemas de
 
 La pieza que falta en este complejo mecanismo es el <b>sistema operativo</b>, un software básico cuya función principal es la de ser intermediario entre los usuarios y el hardware del sistema de cómputo.
 
+
+##Evolución del software de base
 
 ###Open Shop
 
@@ -95,6 +98,7 @@ La llamada al sistema conmuta el modo de la CPU a modo privilegiado **y además*
 
 Con estos datos, esa rutina de atención de llamadas al sistema dirigirá el pedido al subsistema del kernel correspondiente, ejecutando siempre en modo privilegiado, y por lo tanto, con completo acceso a los recursos.
 </section>
+
 <section data-transition="fade-in slide-out">
 <h2>Modo de ejecución dual</h2>
 <img src="img/modos-3.png" class="stretch plain">
@@ -201,18 +205,39 @@ Si el sistema de tiempo compartido dispone de **una sola unidad de ejecución o 
 - Cuando el sistema de cómputo tiene más de una CPU, entonces podemos tener dos o más procesos en estado de ejecución **simultáneamente**, y entonces decimos que esos procesos son **paralelos**. Para tener paralelismo, además de concurrencia debemos tener **redundancia de hardware** (es decir, más de una CPU).
 
 
+##Ciclo de estados 
+
+###En un sistema multiprogramado
+En un sistema **multiprogramado**, varios procesos pueden estar presentes en la memoria del sistema de cómputo. Durante su vida en el sistema, cada proceso atravesará un ciclo de estados.
+
+- Cuando recién se crea un proceso, su estado es **listo**, porque está preparado para recibir la CPU cuando el planificador o scheduler lo disponga.
+
+
+- En algún momento recibirá la CPU y pasará a estado **ejecutando**. 
+- En algún momento, el proceso ejecutará la última de sus instrucciones y finalizará. Es posible que su trabajo sea realmente muy breve y que finalice pronto.
+
+
+- Sin embargo, es mucho más probable que, durante su vida, el proceso requiera servicios del SO (por ejemplo, para operaciones de entrada/salida, como imprimir resultados o recibir datos por el teclado o la red, etc.).
+
+    Durante estas operaciones de entrada/salida, el proceso no utilizará la CPU para realizar cómputos, sino que deberá esperar el final de este servicio del SO. Como la operación de entrada/salida potencialmente puede demorarse mucho, el sistema le quita la CPU y lo pone en estado de **espera** hasta que finalice la operación de entrada/salida. 
+
+    Mientras tanto, como la CPU ha quedado libre, el SO aprovecha el momento para darle CPU a algún otro proceso que esté en estado **listo**.
+
+    Cuando finalice una operación de entrada/salida requerida por un proceso, éste volverá al estado de **listo** y esperará que algún otro proceso libere la CPU para volver a **ejecutando**.
+
+    Al volver desde el estado de **listo** al estado de **ejecutando**, el proceso retomará la ejecución desde la instrucción inmediatamente posterior a la que solicitó el servicio del SO.
 
 
 
+###En un sistema de tiempo compartido
+En un sistema **de tiempo compartido**, el ciclo es similar pero con una importante diferencia.
 
+- El sistema de tiempo compartido tiene la capacidad de **desalojar** a un proceso de la CPU, sin necesidad de esperar a que el proceso solicite un servicio del SO.
+- Para esto, el SO define un **quantum** o tiempo máximo de ejecución (típicamente de algunos milisegundos), al cabo del cual el proceso obligatoriamente deberá liberar la CPU.
+- Al agotarse el quantum, el SO **interrumpirá** al proceso y le impondrá el estado de **listo**. Al quedar libre la CPU, podrá planificar otro proceso para entrar en estado de ejecución.
+- Sin embargo, si el proceso decide solicitar un servicio del SO antes de que se agote su quantum, el ciclo continuará de la misma manera que en el sistema multiprogramado, pasando a estado **en espera** hasta que finalice el servicio.
 
-
-
-
-
-
-
-
+Notemos que los diagramas de estados del **sistema multiprogramado** y del sistema **de tiempo compartido** se diferencian sólo en una transición: la que lleva del estado de **ejecutando** al de **listo** en este último sistema.
 
 
 
