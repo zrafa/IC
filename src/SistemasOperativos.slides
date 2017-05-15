@@ -53,7 +53,7 @@ Más adelante, conforme las tecnologías permitían ir aumentando la velocidad d
 
 Una vez que llegó la posibilidad de tener varios programas coexistiendo simultáneamente en la memoria, se buscó que la conmutación del uso del procesador entre ellos fuera tan rápida, que pareciera que cada programa funcionaba sin interrupciones. Aunque el sistema era de **tiempo compartido**, el usuario utilizaba la computadora como si estuviera dedicada exclusivamente a correr su programa. Así los sistemas multiprogramados se volvieron **interactivos**.
 
-###Computacíon personal
+###Computación personal
 Todas éstas fueron innovaciones de software, y fueron estableciendo principios y técnicas que serían adoptadas en lo sucesivo. Con la llegada de la computación personal, los sistemas de cómputo eran de capacidades modestas. Los **sistemas operativos** que permitían la ejecución de aplicaciones de los usuarios en estos sistemas de cómputo comenzaron pudiendo correr una sola aplicación por vez y de un solo usuario; es decir, se trataba de sistemas **monotarea** y **monousuario**. 
 
 Sin embargo, con la industria de las computadoras personales y la del software para computadoras personales traccionándose una a la otra, aparecieron sistemas operativos **multiusuario** y **multitarea**, sumamente complejos, que se convirtieron en un nuevo terreno para ensayar y mejorar las tecnologías de software y hardware.
@@ -341,24 +341,31 @@ Si bien la discusión que sigue es suficientemente general para comprender bási
 <aside data-markdown class="notes">
 ##Ejecución de procesos
 
-¿Cómo se inicia la ejecución de un proceso? Todo proceso es **hijo** de algún otro proceso que lo crea. 
 
 ###Creación de procesos
-Inicialmente, el SO crea una cantidad de procesos de sistema. Uno de ellos es una **interfaz de usuario o shell**. Este proceso sirve para que el usuario pueda comunicarse con el SO y solicitarle la ejecución de otros procesos.
+¿Cómo se inicia la ejecución de un proceso? Todo proceso es **hijo** de algún otro proceso que lo crea. 
 
-El *shell* puede ser gráfico, con una interfaz de ventanas, o de texto, con un intérprete de comandos. En cualquiera de los dos casos, de una forma u otra el usuario selecciona **programas** que están residiendo en algún medio de almacenamiento como los discos, y pide al SO que ejecute esos programas.
+Inicialmente, el SO crea una cantidad de procesos de sistema. Uno de ellos es un **shell** o interfaz de usuario. Este proceso sirve para que el usuario pueda comunicarse con el SO y solicitarle la ejecución de otros procesos.
 
-En respuesta, el SO carga esos programas en memoria y pone a la CPU a ejecutar el código de esos programas. Una vez en ejecución, decimos que tenemos un nuevo **proceso** en el sistema. Este nuevo proceso es un hijo del shell, y a su vez puede crear nuevos procesos hijos si es necesario.
+El *shell* puede ser **gráfico**, con una interfaz de ventanas; o **de texto**, con un **intérprete de comandos**. En cualquiera de los dos casos, de una forma u otra, usando el shell el usuario selecciona algún **programa**, que está residiendo en algún medio de almacenamiento como los discos, y pide al SO que lo ejecute. 
+
+En respuesta a la petición del usuario, el SO carga ese programa en memoria y pone a la CPU a **ejecutar el código** de ese programa. 
+
+Una vez que el programa está en ejecución, decimos que tenemos un nuevo **proceso** en el sistema. Este nuevo proceso es un **hijo** del shell, y a su vez puede crear nuevos procesos hijos si es necesario.
 
 ###Estados de los procesos
 Durante su vida, el proceso atravesará diferentes **estados**. Un proceso puede no estar siempre en estado de ejecución (utilizando la CPU), sino que en un momento dado puede pasar a otro estado, quedando transitoriamente suspendido, para dejar que otro proceso utilice la CPU.
 
 ###Scheduler o planificador
-El ciclo de cambios de estado de los procesos es administrado por un componente esencial del SO, el **scheduler** o **planificador**, que lleva el control de qué proceso debe ser el próximo en ejecutarse. El planificador elige qué proceso pasar a estado de ejecutando, siguiendo una estrategia que permita obtener el máximo rendimiento posible de la CPU. Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose cambia de estado hasta que vuelva a tocarle el uso de la CPU.
+El ciclo de cambios de estado de los procesos es administrado por un componente esencial del SO, el **scheduler** o **planificador**, que lleva el control de qué proceso debe ser el próximo en ejecutarse. El planificador seguirá una estrategia que permita obtener el máximo rendimiento posible de la CPU. 
+
+El scheduler o planificador mantiene una cola de procesos que están esperando por la CPU, y elige qué proceso pasar a estado de ejecutando. Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose cambia de estado hasta que vuelva a tocarle el uso de la CPU.
 
 **Planificación de tiempo compartido**
 
-Como el planificador de los SO **de tiempo compartido** es capaz de hacer estos cambios de estado con mucha velocidad, normalmente el resultado es que sus usuarios no perciben estos cambios de estado. Los sistemas de tiempo compartido fueron creados para ser **interactivos**, y tienen la misión de hacer creer a cada usuario que el sistema de cómputo está dedicado exclusivamente a sus procesos.
+Los sistemas **de tiempo compartido** están diseñados para ser **interactivos**, y tienen la misión de hacer creer a cada usuario que el sistema de cómputo está dedicado exclusivamente a sus procesos.  
+
+Para lograr esto el planificador de estos SO debe ser capaz de hacer los cambios de estado con mucha velocidad. El resultado es que los usuarios prácticamente no perciben estos cambios de estado. 
 
 Sin embargo, normalmente existen muchísimos procesos vivos simultáneamente en un SO de propósito general. 
 
@@ -366,7 +373,7 @@ Sin embargo, normalmente existen muchísimos procesos vivos simultáneamente en 
 Si el sistema de tiempo compartido dispone de **una sola unidad de ejecución o CPU**, habrá solamente **un proceso ejecutándose** en cada momento dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo, alternándose en el uso de esa CPU. 
 
 - Cuando los procesos viven en el sistema simultáneamente pero se alternan en el uso de **una única CPU** decimos que esos procesos son **concurrentes**. Todos coexisten en el sistema durante un período de tiempo dado; sin embargo, no hay dos procesos en estado de ejecución en el mismo momento, por lo cual no podemos decir que se ejecutan "simultáneamente".
-- Cuando el sistema de cómputo tiene más de una CPU, entonces podemos tener dos o más procesos en estado de ejecución **simultáneamente**, y entonces decimos que esos procesos son **paralelos**. Para tener paralelismo, además de concurrencia debemos tener **redundancia de hardware** (es decir, más de una CPU).
+- Cuando el sistema de cómputo tiene **más de una CPU**, entonces podemos tener dos o más procesos en estado de ejecución **simultáneamente**, y entonces decimos que esos procesos son **paralelos**. Para tener paralelismo, además de concurrencia debemos tener **redundancia de hardware** (es decir, más de una CPU).
 </aside>
 </section>
 
@@ -380,7 +387,7 @@ Si el sistema de tiempo compartido dispone de **una sola unidad de ejecución o 
 <aside data-markdown class="notes">
 ##Ciclo de estados 
 
-###En un sistema multiprogramado
+###Ciclo en un sistema multiprogramado
 En un sistema **multiprogramado**, varios procesos pueden estar presentes en la memoria del sistema de cómputo. Durante su vida en el sistema, cada proceso atravesará un ciclo de estados.
 
 - Cuando recién se crea un proceso, su estado es **listo**, porque está preparado para recibir la CPU cuando el planificador o scheduler lo disponga.
@@ -402,13 +409,13 @@ En un sistema **multiprogramado**, varios procesos pueden estar presentes en la 
 <h3>Sistema multiprogramado</h3>
 <img src="img/procesos-2.png" class="plain stretch">
 <aside data-markdown class="notes">
-- Sin embargo, es mucho más probable que, durante su vida, el proceso requiera servicios del SO (por ejemplo, para operaciones de entrada/salida, como imprimir resultados o recibir datos por el teclado o la red, etc.).
+- Sin embargo, es mucho más probable que, durante su vida, el proceso requiera servicios del SO (por ejemplo, para operaciones de entrada/salida, como recibir datos por el teclado o por la red, imprimir resultados, etc.).
 
-    Durante estas operaciones de entrada/salida, el proceso no utilizará la CPU para realizar cómputos, sino que deberá esperar el final de este servicio del SO. Como la operación de entrada/salida potencialmente puede demorarse mucho, el sistema le quita la CPU y lo pone en estado de **espera** hasta que finalice la operación de entrada/salida. 
+    Durante estas operaciones de entrada/salida, el proceso no utilizará la CPU para realizar cómputos, sino que deberá esperar el final de este servicio del SO. Como la operación de entrada/salida potencialmente puede demorarse mucho, el sistema lo pone en estado de **espera** hasta que finalice la operación de entrada/salida. 
 
-    Mientras tanto, como la CPU ha quedado libre, el SO aprovecha el momento para darle CPU a algún otro proceso que esté en estado **listo**.
+    Mientras tanto, como la CPU ha quedado libre, el SO aprovecha la oportunidad de darle la CPU a algún otro proceso que esté en estado **listo**.
 
-    Cuando finalice una operación de entrada/salida requerida por un proceso, éste volverá al estado de **listo** y esperará que algún otro proceso libere la CPU para volver a **ejecutando**.
+    Cuando finalice una operación de entrada/salida que ha sido requerida por un proceso, este proceso volverá al estado de **listo** y esperará que algún otro proceso libere la CPU para volver a **ejecutando**.
 
     Al volver desde el estado de **listo** al estado de **ejecutando**, el proceso retomará la ejecución desde la instrucción inmediatamente posterior a la que solicitó el servicio del SO.
 </aside>
@@ -419,55 +426,59 @@ En un sistema **multiprogramado**, varios procesos pueden estar presentes en la 
 <img src="img/procesos-3.png" class="plain stretch">
 <aside data-markdown class="notes">
 
-###En un sistema de tiempo compartido
+###Ciclo en un sistema de tiempo compartido
 En un sistema **de tiempo compartido**, el ciclo es similar pero con una importante diferencia.
 
 - El sistema de tiempo compartido tiene la capacidad de **desalojar** a un proceso de la CPU, sin necesidad de esperar a que el proceso solicite un servicio del SO.
 - Para esto, el SO define un **quantum** o tiempo máximo de ejecución (típicamente de algunos milisegundos), al cabo del cual el proceso obligatoriamente deberá liberar la CPU.
+- Al entregar la CPU a un proceso que pasa de listo a ejecutando, el SO pone en marcha un reloj para medir un quantum de tiempo que pasará ejecutando el proceso.
 - Al agotarse el quantum, el SO **interrumpirá** al proceso y le impondrá el estado de **listo**. Al quedar libre la CPU, podrá planificar otro proceso para entrar en estado de ejecución.
 - Sin embargo, si el proceso decide solicitar un servicio del SO antes de que se agote su quantum, el ciclo continuará de la misma manera que en el sistema multiprogramado, pasando a estado **en espera** hasta que finalice el servicio.
 
 Notemos que los diagramas de estados del **sistema multiprogramado** y del sistema **de tiempo compartido** se diferencian sólo en una transición: la que lleva del estado de **ejecutando** al de **listo** en este último sistema.
+
+- En un sistema multiprogramado, un proceso sólo abandona la CPU cuando ejecuta una petición de servicio al SO. 
+- En un sistema de tiempo compartido, un proceso abandona la CPU cuando ejecuta una petición de servicio al SO **o bien** cuando se agota su quantum.
 </aside>
 </section>
 
-<section data-transition="convex-in fade-out">
+<section data-transition="convex-in fade-out" data-coursemod-shown="false">
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-0.png" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<section data-transition="fade-in fade-out">
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-1.png" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<section data-transition="fade-in fade-out">
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-2.png" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<section data-transition="fade-in fade-out">
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-3.png" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<section data-transition="fade-in fade-out">
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-4.png" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<section data-transition="fade-in fade-out">
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-5.png" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<section data-transition="fade-in fade-out">
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-6.png" class="plain stretch">
 <aside data-markdown class="notes">
@@ -476,14 +487,14 @@ Notemos que los diagramas de estados del **sistema multiprogramado** y del siste
 
 
 <!-- -------------- -->
-<section data-transition="convex-in convex-out">
+<section data-transition="convex-in convex-out" data-coursemod-shown="false">
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-anim.gif" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
 
-<section data-transition="convex">
+<section data-transition="convex" data-coursemod-shown="false">
 <h2>Procesos paralelos</h2>
 <img src="img/estados-ts-anim.gif" class="plain stretch">
 <aside data-markdown class="notes">
@@ -494,15 +505,58 @@ Notemos que los diagramas de estados del **sistema multiprogramado** y del siste
 <section data-transition="fade-out slide-in">
 <h2>Procesos</h2>
 <img src="img/top.png" class="stretch plain">
+<aside data-markdown class="notes">
+###Monitorización de procesos
+Los sistemas operativos suelen ofrecer herramientas para monitorizar o controlar los procesos del sistema. 
+
+###Comando top
+En Linux, el comando **`top`** ofrece una vista de los procesos, información acerca de los recursos que están ocupando, y algunas estadísticas globales del sistema.
+
+Es conveniente consultar el manual del comando (`man top`) para investigar a fondo los significados de cada uno de los datos presentados en pantalla.
+
+**Estadísticas globales**
+
+En el cuadro superior, **top** muestra:
+
+- El **tiempo** de funcionamiento desde el inicio del sistema
+- La cantidad de usuarios activos
+- La **carga promedio** (longitud de la cola de procesos listos) medida en tres intervalos de tiempo diferentes
+- La cantidad de procesos o tareas en actividad y en diferentes estados
+- Las estadísticas de uso de la CPU, contabilizando los tiempos:
+  - **De usuario**
+  - **De sistema**
+  - **De nice**
+  - **Ocioso**
+  - **De espera**
+  - Tiempos imputables a **interrupciones**
+- Estadísticas de memoria RAM total, usada y libre, y ocupada por buffers de entrada/salida
+- Estadísticas de espacio de intercambio o **swap** total, usado y libre.
+
+**Estadísticas de procesos**
+
+Para cada proceso, el programa top muestra:
+
+- El **PID** o identificación de proceso
+- El **usuario dueño** del proceso
+- La **prioridad** a la cual está ejecutando y el **valor de nice**
+- El tamaño del **espacio virtual** del proceso y los tamaños del **conjunto residente** y **regiones compartidas** 
+- El **porcentaje de CPU** recibido durante el ciclo de `top`
+- El **porcentaje de memoria del sistema** ocupada
+- El **tiempo** de ejecución que lleva el proceso desde su inicio
+- El **comando** u orden con la que fue creado el proceso.
+</aside>
 </section>
 <section data-transition="fade-in slide-out">
 <h2>Procesos</h2>
 <img src="img/top2.png" class="stretch plain">
+<aside data-markdown class="notes">
+El comando `top` tiene muchas opciones y comandos interactivos. Uno de ellos muestra los datos de sistema desglosados por CPU o unidad de ejecución.
+</aside>
 </section>
 
 
 <!------------------------>
-<section data-transition="convex-in convex-out" data-audio-src="audio/PRESENT/xx.mp3">
+<section data-transition="convex-in convex-out" data-audio-src="audio/PRESENT/xx.mp3" data-coursemod-shown="false">
 <h2>Comando top</h2>
 <div class="asciicast"><!-- { "URL": "src/top.json" } --></div>
 <aside data-markdown class="notes">
@@ -519,6 +573,14 @@ Notemos que los diagramas de estados del **sistema multiprogramado** y del siste
 <tr><td>kill</td><td></td><td>Envía una señal</td></tr>
 </table>
 <aside data-markdown class="notes">
+##Comandos de procesos
+
+En los sistemas operativos de la familia de Unix encontramos un rico conjunto de comandos de usuario destinados al control de procesos. Algunos interesantes son:
+
+- `ps` y `pstree` listan los procesos activos en el sistema
+- `nice` cambia la prioridad de un proceso
+- `kill` envía una señal a un proceso
+
 </aside>
 </section>
 <!------------------------>

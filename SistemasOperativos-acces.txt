@@ -57,7 +57,7 @@ compartido, el usuario utilizaba la computadora como si estuviera
 dedicada exclusivamente a correr su programa. Así los sistemas
 multiprogramados se volvieron interactivos.
 
-Computacíon personal
+Computación personal
 
 Todas éstas fueron innovaciones de software, y fueron estableciendo
 principios y técnicas que serían adoptadas en lo sucesivo. Con la
@@ -355,26 +355,28 @@ investigación y desarrollo de sistemas operativos.
 Ejecución de procesos
 ---------------------
 
+Creación de procesos
+
 ¿Cómo se inicia la ejecución de un proceso? Todo proceso es hijo de
 algún otro proceso que lo crea.
 
-Creación de procesos
-
 Inicialmente, el SO crea una cantidad de procesos de sistema. Uno de
-ellos es una interfaz de usuario o shell. Este proceso sirve para que el
+ellos es un shell o interfaz de usuario. Este proceso sirve para que el
 usuario pueda comunicarse con el SO y solicitarle la ejecución de otros
 procesos.
 
-El shell puede ser gráfico, con una interfaz de ventanas, o de texto,
+El shell puede ser gráfico, con una interfaz de ventanas; o de texto,
 con un intérprete de comandos. En cualquiera de los dos casos, de una
-forma u otra el usuario selecciona programas que están residiendo en
-algún medio de almacenamiento como los discos, y pide al SO que ejecute
-esos programas.
+forma u otra, usando el shell el usuario selecciona algún programa, que
+está residiendo en algún medio de almacenamiento como los discos, y pide
+al SO que lo ejecute.
 
-En respuesta, el SO carga esos programas en memoria y pone a la CPU a
-ejecutar el código de esos programas. Una vez en ejecución, decimos que
-tenemos un nuevo proceso en el sistema. Este nuevo proceso es un hijo
-del shell, y a su vez puede crear nuevos procesos hijos si es necesario.
+En respuesta a la petición del usuario, el SO carga ese programa en
+memoria y pone a la CPU a ejecutar el código de ese programa.
+
+Una vez que el programa está en ejecución, decimos que tenemos un nuevo
+proceso en el sistema. Este nuevo proceso es un hijo del shell, y a su
+vez puede crear nuevos procesos hijos si es necesario.
 
 Estados de los procesos
 
@@ -388,20 +390,23 @@ Scheduler o planificador
 El ciclo de cambios de estado de los procesos es administrado por un
 componente esencial del SO, el scheduler o planificador, que lleva el
 control de qué proceso debe ser el próximo en ejecutarse. El
-planificador elige qué proceso pasar a estado de ejecutando, siguiendo
-una estrategia que permita obtener el máximo rendimiento posible de la
-CPU. Al elegir un nuevo proceso para ejecutar, el que estaba
-ejecutándose cambia de estado hasta que vuelva a tocarle el uso de la
-CPU.
+planificador seguirá una estrategia que permita obtener el máximo
+rendimiento posible de la CPU.
+
+El scheduler o planificador mantiene una cola de procesos que están
+esperando por la CPU, y elige qué proceso pasar a estado de ejecutando.
+Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose
+cambia de estado hasta que vuelva a tocarle el uso de la CPU.
 
 Planificación de tiempo compartido
 
-Como el planificador de los SO de tiempo compartido es capaz de hacer
-estos cambios de estado con mucha velocidad, normalmente el resultado es
-que sus usuarios no perciben estos cambios de estado. Los sistemas de
-tiempo compartido fueron creados para ser interactivos, y tienen la
-misión de hacer creer a cada usuario que el sistema de cómputo está
-dedicado exclusivamente a sus procesos.
+Los sistemas de tiempo compartido están diseñados para ser interactivos,
+y tienen la misión de hacer creer a cada usuario que el sistema de
+cómputo está dedicado exclusivamente a sus procesos.
+
+Para lograr esto el planificador de estos SO debe ser capaz de hacer los
+cambios de estado con mucha velocidad. El resultado es que los usuarios
+prácticamente no perciben estos cambios de estado.
 
 Sin embargo, normalmente existen muchísimos procesos vivos
 simultáneamente en un SO de propósito general.
@@ -428,7 +433,7 @@ alternándose en el uso de esa CPU.
 Ciclo de estados
 ----------------
 
-En un sistema multiprogramado
+Ciclo en un sistema multiprogramado
 
 En un sistema multiprogramado, varios procesos pueden estar presentes en
 la memoria del sistema de cómputo. Durante su vida en el sistema, cada
@@ -445,29 +450,29 @@ proceso atravesará un ciclo de estados.
 
 -   Sin embargo, es mucho más probable que, durante su vida, el proceso
     requiera servicios del SO (por ejemplo, para operaciones de
-    entrada/salida, como imprimir resultados o recibir datos por el
-    teclado o la red, etc.).
+    entrada/salida, como recibir datos por el teclado o por la red,
+    imprimir resultados, etc.).
 
     Durante estas operaciones de entrada/salida, el proceso no utilizará
     la CPU para realizar cómputos, sino que deberá esperar el final de
     este servicio del SO. Como la operación de entrada/salida
-    potencialmente puede demorarse mucho, el sistema le quita la CPU y
-    lo pone en estado de espera hasta que finalice la operación de
-    entrada/salida.
+    potencialmente puede demorarse mucho, el sistema lo pone en estado
+    de espera hasta que finalice la operación de entrada/salida.
 
-    Mientras tanto, como la CPU ha quedado libre, el SO aprovecha el
-    momento para darle CPU a algún otro proceso que esté en estado
+    Mientras tanto, como la CPU ha quedado libre, el SO aprovecha la
+    oportunidad de darle la CPU a algún otro proceso que esté en estado
     listo.
 
-    Cuando finalice una operación de entrada/salida requerida por un
-    proceso, éste volverá al estado de listo y esperará que algún otro
-    proceso libere la CPU para volver a ejecutando.
+    Cuando finalice una operación de entrada/salida que ha sido
+    requerida por un proceso, este proceso volverá al estado de listo y
+    esperará que algún otro proceso libere la CPU para volver a
+    ejecutando.
 
     Al volver desde el estado de listo al estado de ejecutando, el
     proceso retomará la ejecución desde la instrucción inmediatamente
     posterior a la que solicitó el servicio del SO.
 
-En un sistema de tiempo compartido
+Ciclo en un sistema de tiempo compartido
 
 En un sistema de tiempo compartido, el ciclo es similar pero con una
 importante diferencia.
@@ -478,6 +483,9 @@ importante diferencia.
 -   Para esto, el SO define un quantum o tiempo máximo de ejecución
     (típicamente de algunos milisegundos), al cabo del cual el proceso
     obligatoriamente deberá liberar la CPU.
+-   Al entregar la CPU a un proceso que pasa de listo a ejecutando, el
+    SO pone en marcha un reloj para medir un quantum de tiempo que
+    pasará ejecutando el proceso.
 -   Al agotarse el quantum, el SO interrumpirá al proceso y le impondrá
     el estado de listo. Al quedar libre la CPU, podrá planificar otro
     proceso para entrar en estado de ejecución.
@@ -489,6 +497,77 @@ importante diferencia.
 Notemos que los diagramas de estados del sistema multiprogramado y del
 sistema de tiempo compartido se diferencian sólo en una transición: la
 que lleva del estado de ejecutando al de listo en este último sistema.
+
+-   En un sistema multiprogramado, un proceso sólo abandona la CPU
+    cuando ejecuta una petición de servicio al SO.
+-   En un sistema de tiempo compartido, un proceso abandona la CPU
+    cuando ejecuta una petición de servicio al SO o bien cuando se agota
+    su quantum.
+
+Monitorización de procesos
+
+Los sistemas operativos suelen ofrecer herramientas para monitorizar o
+controlar los procesos del sistema.
+
+Comando top
+
+En Linux, el comando top ofrece una vista de los procesos, información
+acerca de los recursos que están ocupando, y algunas estadísticas
+globales del sistema.
+
+Es conveniente consultar el manual del comando (man top) para investigar
+a fondo los significados de cada uno de los datos presentados en
+pantalla.
+
+Estadísticas globales
+
+En el cuadro superior, top muestra:
+
+-   El tiempo de funcionamiento desde el inicio del sistema
+-   La cantidad de usuarios activos
+-   La carga promedio (longitud de la cola de procesos listos) medida en
+    tres intervalos de tiempo diferentes
+-   La cantidad de procesos o tareas en actividad y en diferentes
+    estados
+-   Las estadísticas de uso de la CPU, contabilizando los tiempos:
+-   De usuario
+-   De sistema
+-   De nice
+-   Ocioso
+-   De espera
+-   Tiempos imputables a interrupciones
+-   Estadísticas de memoria RAM total, usada y libre, y ocupada por
+    buffers de entrada/salida
+-   Estadísticas de espacio de intercambio o swap total, usado y libre.
+
+Estadísticas de procesos
+
+Para cada proceso, el programa top muestra:
+
+-   El PID o identificación de proceso
+-   El usuario dueño del proceso
+-   La prioridad a la cual está ejecutando y el valor de nice
+-   El tamaño del espacio virtual del proceso y los tamaños del conjunto
+    residente y regiones compartidas
+-   El porcentaje de CPU recibido durante el ciclo de top
+-   El porcentaje de memoria del sistema ocupada
+-   El tiempo de ejecución que lleva el proceso desde su inicio
+-   El comando u orden con la que fue creado el proceso.
+
+El comando top tiene muchas opciones y comandos interactivos. Uno de
+ellos muestra los datos de sistema desglosados por CPU o unidad de
+ejecución.
+
+Comandos de procesos
+--------------------
+
+En los sistemas operativos de la familia de Unix encontramos un rico
+conjunto de comandos de usuario destinados al control de procesos.
+Algunos interesantes son:
+
+-   ps y pstree listan los procesos activos en el sistema
+-   nice cambia la prioridad de un proceso
+-   kill envía una señal a un proceso
 
 Supongamos un sistema donde existen dos procesos activos, con algunas
 páginas en memoria principal, y una zona de intercambio en disco.
