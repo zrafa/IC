@@ -26,11 +26,11 @@
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ejecuci\u243?n de procesos\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Creaci\u243?n de procesos\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Estados de los procesos\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Scheduler o planificador\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Concurrencia y paralelismo\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Scheduler o planificador\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ciclo de estados\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Ciclo en un sistema multiprogramado\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Ciclo en un sistema de tiempo compartido\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Concurrencia y paralelismo\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Monitorizaci\u243?n de procesos\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Comando top\sa180\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Comandos de procesos\sa180\par}
@@ -128,20 +128,14 @@ licencia libre
 {\pard \ql \f0 \sa180 \li0 \fi0 Inicialmente, el SO crea una cantidad de procesos de sistema. Uno de ellos es un {\b shell} o interfaz de usuario. Este proceso sirve para que el usuario pueda comunicarse con el SO y solicitarle la ejecuci\u243?n de otros procesos.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El {\i shell} puede ser {\b gr\u225?fico}, con una interfaz de ventanas; o {\b de texto}, con un {\b int\u233?rprete de comandos}. En cualquiera de los dos casos, de una forma u otra, usando el shell el usuario selecciona alg\u250?n {\b programa}, que est\u225? residiendo en alg\u250?n medio de almacenamiento como los discos, y pide al SO que lo ejecute.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 En respuesta a la petici\u243?n del usuario, el SO carga ese programa en memoria y pone a la CPU a {\b ejecutar el c\u243?digo} de ese programa.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Una vez que el programa est\u225? en ejecuci\u243?n, decimos que tenemos un nuevo {\b proceso} en el sistema. Este nuevo proceso es un {\b hijo} del shell, y a su vez puede crear nuevos procesos hijos si es necesario.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Una vez que el programa est\u225? en ejecuci\u243?n, decimos que tenemos un nuevo {\b proceso} activo en el sistema. Este nuevo proceso es un {\b hijo} del shell, y a su vez puede crear nuevos procesos hijos si es necesario.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Estados de los procesos\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Durante su vida, el proceso atravesar\u225? diferentes {\b estados}. Un proceso puede no estar siempre en estado de ejecuci\u243?n (utilizando la CPU), sino que en un momento dado puede pasar a otro estado, quedando transitoriamente suspendido, para dejar que otro proceso utilice la CPU.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Scheduler o planificador\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El ciclo de cambios de estado de los procesos es administrado por un componente esencial del SO, el {\b scheduler} o {\b planificador}, que lleva el control de qu\u233? proceso debe ser el pr\u243?ximo en ejecutarse. El planificador seguir\u225? una estrategia que permita obtener el m\u225?ximo rendimiento posible de la CPU.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El scheduler o planificador mantiene una cola de procesos que est\u225?n esperando por la CPU, y elige qu\u233? proceso pasar a estado de ejecutando. Al elegir un nuevo proceso para ejecutar, el que estaba ejecut\u225?ndose cambia de estado hasta que vuelva a tocarle el uso de la CPU.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\b Planificaci\u243?n de tiempo compartido}\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Los sistemas {\b de tiempo compartido} est\u225?n dise\u241?ados para ser {\b interactivos}, y tienen la misi\u243?n de hacer creer a cada usuario que el sistema de c\u243?mputo est\u225? dedicado exclusivamente a sus procesos.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Para lograr esto el planificador de estos SO debe ser capaz de hacer los cambios de estado con mucha velocidad. El resultado es que los usuarios pr\u225?cticamente no perciben estos cambios de estado.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Sin embargo, normalmente existen much\u237?simos procesos vivos simult\u225?neamente en un SO de prop\u243?sito general.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Concurrencia y paralelismo\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Si el sistema de tiempo compartido dispone de {\b una sola unidad de ejecuci\u243?n o CPU}, habr\u225? solamente {\b un proceso ejecut\u225?ndose} en cada momento dado, pero muchos procesos podr\u225?n desarrollar su vida al mismo tiempo, altern\u225?ndose en el uso de esa CPU.\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Cuando los procesos viven en el sistema simult\u225?neamente pero se alternan en el uso de {\b una \u250?nica CPU} decimos que esos procesos son {\b concurrentes}. Todos coexisten en el sistema durante un per\u237?odo de tiempo dado; sin embargo, no hay dos procesos en estado de ejecuci\u243?n en el mismo momento, por lo cual no podemos decir que se ejecutan "simult\u225?neamente".\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Cuando el sistema de c\u243?mputo tiene {\b m\u225?s de una CPU}, entonces podemos tener dos o m\u225?s procesos en estado de ejecuci\u243?n {\b simult\u225?neamente}, y entonces decimos que esos procesos son {\b paralelos}. Para tener paralelismo, adem\u225?s de concurrencia debemos tener {\b redundancia de hardware} (es decir, m\u225?s de una CPU).\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Cuando en el sistema coexisten varios procesos activos durante un espacio de tiempo, decimos que esos procesos son {\b concurrentes}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Cuando, adem\u225?s, puede haber m\u225?s de uno en ejecuci\u243?n en el mismo instante, decimos que son {\b paralelos} o que su ejecuci\u243?n es paralela.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Ciclo de estados\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Ciclo en un sistema multiprogramado\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 En un sistema {\b multiprogramado}, varios procesos pueden estar presentes en la memoria del sistema de c\u243?mputo. Durante su vida en el sistema, cada proceso atravesar\u225? un ciclo de estados.\par}
@@ -149,20 +143,26 @@ licencia libre
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab En alg\u250?n momento recibir\u225? la CPU y pasar\u225? a estado {\b ejecutando}.\par}
 {\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab En alg\u250?n momento, el proceso ejecutar\u225? la \u250?ltima de sus instrucciones y finalizar\u225?. Es posible que su trabajo sea realmente muy breve y que finalice pronto.\par}
 {\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Sin embargo, es mucho m\u225?s probable que, durante su vida, el proceso requiera servicios del SO (por ejemplo, para operaciones de entrada/salida, como recibir datos por el teclado o por la red, imprimir resultados, etc.).\par}
-{\pard \ql \f0 \sa180 \li360 \fi0 Durante estas operaciones de entrada/salida, el proceso no utilizar\u225? la CPU para realizar c\u243?mputos, sino que deber\u225? esperar el final de este servicio del SO. Como la operaci\u243?n de entrada/salida potencialmente puede demorarse mucho, el sistema lo pone en estado de {\b espera} hasta que finalice la operaci\u243?n de entrada/salida.\par}
-{\pard \ql \f0 \sa180 \li360 \fi0 Mientras tanto, como la CPU ha quedado libre, el SO aprovecha la oportunidad de darle la CPU a alg\u250?n otro proceso que est\u233? en estado {\b listo}.\par}
-{\pard \ql \f0 \sa180 \li360 \fi0 Cuando finalice una operaci\u243?n de entrada/salida que ha sido requerida por un proceso, este proceso volver\u225? al estado de {\b listo} y esperar\u225? que alg\u250?n otro proceso libere la CPU para volver a {\b ejecutando}.\par}
-{\pard \ql \f0 \sa180 \li360 \fi0 Al volver desde el estado de {\b listo} al estado de {\b ejecutando}, el proceso retomar\u225? la ejecuci\u243?n desde la instrucci\u243?n inmediatamente posterior a la que solicit\u243? el servicio del SO.\sa180\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Durante estas operaciones de entrada/salida, el proceso no utilizar\u225? la CPU para realizar c\u243?mputos, sino que deber\u225? esperar el final de este servicio del SO. Como la operaci\u243?n de entrada/salida potencialmente puede demorarse mucho, el sistema lo pone en estado de {\b espera} hasta que finalice la operaci\u243?n de entrada/salida.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Mientras tanto, como la CPU ha quedado libre, el SO aprovecha la oportunidad de darle la CPU a alg\u250?n otro proceso que est\u233? en estado {\b listo}.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Cuando finalice una operaci\u243?n de entrada/salida que ha sido requerida por un proceso, este proceso volver\u225? al estado de {\b listo} y esperar\u225? que alg\u250?n otro proceso libere la CPU para volver a {\b ejecutando}.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Al volver desde el estado de {\b listo} al estado de {\b ejecutando}, el proceso retomar\u225? la ejecuci\u243?n desde la instrucci\u243?n inmediatamente posterior a la que solicit\u243? el servicio del SO.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Ciclo en un sistema de tiempo compartido\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 En un sistema {\b de tiempo compartido}, el ciclo es similar pero con una importante diferencia.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los sistemas {\b de tiempo compartido} est\u225?n dise\u241?ados para ser {\b interactivos}, y tienen la misi\u243?n de hacer creer a cada usuario que el sistema de c\u243?mputo est\u225? dedicado exclusivamente a sus procesos. Sin embargo, normalmente existen much\u237?simos procesos activos simult\u225?neamente en un SO de prop\u243?sito general.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para lograr esto el planificador de estos SO debe ser capaz de hacer los cambios de estado con mucha velocidad. El resultado es que los usuarios pr\u225?cticamente no perciben estos cambios de estado.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En un sistema {\b de tiempo compartido}, el ciclo de estados de los procesos es similar al del sistema multiprogramado, pero con una importante diferencia.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El sistema de tiempo compartido tiene la capacidad de {\b desalojar} a un proceso de la CPU, sin necesidad de esperar a que el proceso solicite un servicio del SO.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Para esto, el SO define un {\b quantum} o tiempo m\u225?ximo de ejecuci\u243?n (t\u237?picamente de algunos milisegundos), al cabo del cual el proceso obligatoriamente deber\u225? liberar la CPU.\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Al entregar la CPU a un proceso que pasa de listo a ejecutando, el SO pone en marcha un reloj para medir un quantum de tiempo que pasar\u225? ejecutando el proceso.\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Al agotarse el quantum, el SO {\b interrumpir\u225?} al proceso y le impondr\u225? el estado de {\b listo}. Al quedar libre la CPU, podr\u225? planificar otro proceso para entrar en estado de ejecuci\u243?n.\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sin embargo, si el proceso decide solicitar un servicio del SO antes de que se agote su quantum, el ciclo continuar\u225? de la misma manera que en el sistema multiprogramado, pasando a estado {\b en espera} hasta que finalice el servicio.\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El SO, al entregar la CPU a un proceso que pasa de listo a ejecutando, pone en marcha un reloj para medir un quantum de tiempo que pasar\u225? ejecutando el proceso.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Al agotarse el quantum, el SO {\b interrumpir\u225?} al proceso y le impondr\u225? el estado de {\b listo}. Al quedar libre la CPU, el siguiente proceso planificado entrar\u225? en estado de ejecuci\u243?n.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sin embargo, si un proceso decide solicitar un servicio del SO antes de que se agote su quantum, el ciclo continuar\u225? de la misma manera que en el sistema multiprogramado, pasando a estado {\b en espera} hasta que finalice el servicio.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Notemos que los diagramas de estados del {\b sistema multiprogramado} y del sistema {\b de tiempo compartido} se diferencian s\u243?lo en una transici\u243?n: la que lleva del estado de {\b ejecutando} al de {\b listo} en este \u250?ltimo sistema.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab En un sistema multiprogramado, un proceso s\u243?lo abandona la CPU cuando ejecuta una petici\u243?n de servicio al SO.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab En un sistema de tiempo compartido, un proceso abandona la CPU cuando ejecuta una petici\u243?n de servicio al SO {\b o bien} cuando se agota su quantum.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Concurrencia y paralelismo\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Si el sistema de tiempo compartido dispone de {\b una sola unidad de ejecuci\u243?n o CPU}, habr\u225? solamente {\b un proceso ejecut\u225?ndose} en cada momento dado, pero muchos procesos podr\u225?n desarrollar su vida al mismo tiempo, altern\u225?ndose en el uso de esa CPU.\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Cuando los procesos viven en el sistema simult\u225?neamente pero se alternan en el uso de {\b una \u250?nica CPU} decimos que esos procesos son {\b concurrentes}. Todos coexisten en el sistema durante un per\u237?odo de tiempo dado; sin embargo, no hay dos procesos en estado de ejecuci\u243?n en el mismo momento, por lo cual no podemos decir que se ejecutan "simult\u225?neamente".\par}
+{\pard \ql \f0 \sa180 \li360 \fi-360 \bullet \tx360\tab Cuando el sistema de c\u243?mputo tiene {\b m\u225?s de una CPU}, entonces podemos tener dos o m\u225?s procesos en estado de ejecuci\u243?n {\b simult\u225?neamente}, y entonces decimos que esos procesos son {\b paralelos}. Para tener paralelismo, adem\u225?s de concurrencia debemos tener {\b redundancia de hardware} (es decir, m\u225?s de una CPU).\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Monitorizaci\u243?n de procesos\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Los sistemas operativos suelen ofrecer herramientas para monitorizar o controlar los procesos del sistema.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Comando top\par}
@@ -177,7 +177,7 @@ licencia libre
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Las estad\u237?sticas de uso de la CPU, contabilizando los tiempos:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b De usuario}\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b De sistema}\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b De nice}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b De nice} o "de cortes\u237?a"\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b Ocioso}\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\b De espera}\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Tiempos imputables a {\b interrupciones}\par}
@@ -187,7 +187,7 @@ licencia libre
 {\pard \ql \f0 \sa180 \li0 \fi0 Para cada proceso, el programa top muestra:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El {\b PID} o identificaci\u243?n de proceso\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El {\b usuario due\u241?o} del proceso\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La {\b prioridad} a la cual est\u225? ejecutando y el {\b valor de nice}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La {\b prioridad} a la cual est\u225? ejecutando y el {\b valor de nice} o de cortes\u237?a\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El tama\u241?o del {\b espacio virtual} del proceso y los tama\u241?os del {\b conjunto residente} y {\b regiones compartidas}\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El {\b porcentaje de CPU} recibido durante el ciclo de top\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El {\b porcentaje de memoria del sistema} ocupada\par}
@@ -199,6 +199,15 @@ licencia libre
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab ps y pstree listan los procesos activos en el sistema\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab nice cambia la prioridad de un proceso\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab kill env\u237?a una se\u241?al a un proceso\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Interesante}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "https://www.ibm.com/developerworks/ssa/linux/library/l-lpic1-v3-103-5/"}}{\fldrslt{\ul
+Administraci\u243?n de procesos
+}}}
+\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "https://www.ibm.com/developerworks/ssa/linux/library/l-lpic1-v3-103-6"}}{\fldrslt{\ul
+Prioridades de ejecuci\u243?n de procesos
+}}}
+\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Supongamos un sistema donde existen dos procesos activos, con algunas p\u225?ginas en memoria principal, y una zona de intercambio en disco.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El proceso P1 tiene asignadas cuatro p\u225?ginas (de las cuales s\u243?lo la p\u225?gina 2 est\u225? presente en memoria principal), y P2, dos p\u225?ginas (ambas presentes). Hay tres marcos libres (M4, M6 y M7) y la zona de intercambio est\u225? vac\u237?a.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 P1 recibe la CPU y en alg\u250?n momento ejecuta una instrucci\u243?n que hace una referencia a una posici\u243?n dentro de su p\u225?gina 3 (que no est\u225? en memoria).\par}

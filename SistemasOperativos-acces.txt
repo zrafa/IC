@@ -375,8 +375,8 @@ En respuesta a la petición del usuario, el SO carga ese programa en
 memoria y pone a la CPU a ejecutar el código de ese programa.
 
 Una vez que el programa está en ejecución, decimos que tenemos un nuevo
-proceso en el sistema. Este nuevo proceso es un hijo del shell, y a su
-vez puede crear nuevos procesos hijos si es necesario.
+proceso activo en el sistema. Este nuevo proceso es un hijo del shell, y
+a su vez puede crear nuevos procesos hijos si es necesario.
 
 Estados de los procesos
 
@@ -398,37 +398,10 @@ esperando por la CPU, y elige qué proceso pasar a estado de ejecutando.
 Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose
 cambia de estado hasta que vuelva a tocarle el uso de la CPU.
 
-Planificación de tiempo compartido
-
-Los sistemas de tiempo compartido están diseñados para ser interactivos,
-y tienen la misión de hacer creer a cada usuario que el sistema de
-cómputo está dedicado exclusivamente a sus procesos.
-
-Para lograr esto el planificador de estos SO debe ser capaz de hacer los
-cambios de estado con mucha velocidad. El resultado es que los usuarios
-prácticamente no perciben estos cambios de estado.
-
-Sin embargo, normalmente existen muchísimos procesos vivos
-simultáneamente en un SO de propósito general.
-
-Concurrencia y paralelismo
-
-Si el sistema de tiempo compartido dispone de una sola unidad de
-ejecución o CPU, habrá solamente un proceso ejecutándose en cada momento
-dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo,
-alternándose en el uso de esa CPU.
-
--   Cuando los procesos viven en el sistema simultáneamente pero se
-    alternan en el uso de una única CPU decimos que esos procesos son
-    concurrentes. Todos coexisten en el sistema durante un período de
-    tiempo dado; sin embargo, no hay dos procesos en estado de ejecución
-    en el mismo momento, por lo cual no podemos decir que se ejecutan
-    "simultáneamente".
--   Cuando el sistema de cómputo tiene más de una CPU, entonces podemos
-    tener dos o más procesos en estado de ejecución simultáneamente, y
-    entonces decimos que esos procesos son paralelos. Para tener
-    paralelismo, además de concurrencia debemos tener redundancia de
-    hardware (es decir, más de una CPU).
+-   Cuando en el sistema coexisten varios procesos activos durante un
+    espacio de tiempo, decimos que esos procesos son concurrentes.
+-   Cuando, además, puede haber más de uno en ejecución en el mismo
+    instante, decimos que son paralelos o que su ejecución es paralela.
 
 Ciclo de estados
 ----------------
@@ -453,29 +426,40 @@ proceso atravesará un ciclo de estados.
     entrada/salida, como recibir datos por el teclado o por la red,
     imprimir resultados, etc.).
 
-    Durante estas operaciones de entrada/salida, el proceso no utilizará
+-   Durante estas operaciones de entrada/salida, el proceso no utilizará
     la CPU para realizar cómputos, sino que deberá esperar el final de
     este servicio del SO. Como la operación de entrada/salida
     potencialmente puede demorarse mucho, el sistema lo pone en estado
     de espera hasta que finalice la operación de entrada/salida.
 
-    Mientras tanto, como la CPU ha quedado libre, el SO aprovecha la
+-   Mientras tanto, como la CPU ha quedado libre, el SO aprovecha la
     oportunidad de darle la CPU a algún otro proceso que esté en estado
     listo.
 
-    Cuando finalice una operación de entrada/salida que ha sido
+-   Cuando finalice una operación de entrada/salida que ha sido
     requerida por un proceso, este proceso volverá al estado de listo y
     esperará que algún otro proceso libere la CPU para volver a
     ejecutando.
 
-    Al volver desde el estado de listo al estado de ejecutando, el
+-   Al volver desde el estado de listo al estado de ejecutando, el
     proceso retomará la ejecución desde la instrucción inmediatamente
     posterior a la que solicitó el servicio del SO.
 
 Ciclo en un sistema de tiempo compartido
 
-En un sistema de tiempo compartido, el ciclo es similar pero con una
-importante diferencia.
+Los sistemas de tiempo compartido están diseñados para ser interactivos,
+y tienen la misión de hacer creer a cada usuario que el sistema de
+cómputo está dedicado exclusivamente a sus procesos. Sin embargo,
+normalmente existen muchísimos procesos activos simultáneamente en un SO
+de propósito general.
+
+Para lograr esto el planificador de estos SO debe ser capaz de hacer los
+cambios de estado con mucha velocidad. El resultado es que los usuarios
+prácticamente no perciben estos cambios de estado.
+
+En un sistema de tiempo compartido, el ciclo de estados de los procesos
+es similar al del sistema multiprogramado, pero con una importante
+diferencia.
 
 -   El sistema de tiempo compartido tiene la capacidad de desalojar a un
     proceso de la CPU, sin necesidad de esperar a que el proceso
@@ -483,13 +467,13 @@ importante diferencia.
 -   Para esto, el SO define un quantum o tiempo máximo de ejecución
     (típicamente de algunos milisegundos), al cabo del cual el proceso
     obligatoriamente deberá liberar la CPU.
--   Al entregar la CPU a un proceso que pasa de listo a ejecutando, el
-    SO pone en marcha un reloj para medir un quantum de tiempo que
-    pasará ejecutando el proceso.
+-   El SO, al entregar la CPU a un proceso que pasa de listo a
+    ejecutando, pone en marcha un reloj para medir un quantum de tiempo
+    que pasará ejecutando el proceso.
 -   Al agotarse el quantum, el SO interrumpirá al proceso y le impondrá
-    el estado de listo. Al quedar libre la CPU, podrá planificar otro
-    proceso para entrar en estado de ejecución.
--   Sin embargo, si el proceso decide solicitar un servicio del SO antes
+    el estado de listo. Al quedar libre la CPU, el siguiente proceso
+    planificado entrará en estado de ejecución.
+-   Sin embargo, si un proceso decide solicitar un servicio del SO antes
     de que se agote su quantum, el ciclo continuará de la misma manera
     que en el sistema multiprogramado, pasando a estado en espera hasta
     que finalice el servicio.
@@ -503,6 +487,26 @@ que lleva del estado de ejecutando al de listo en este último sistema.
 -   En un sistema de tiempo compartido, un proceso abandona la CPU
     cuando ejecuta una petición de servicio al SO o bien cuando se agota
     su quantum.
+
+Concurrencia y paralelismo
+
+Si el sistema de tiempo compartido dispone de una sola unidad de
+ejecución o CPU, habrá solamente un proceso ejecutándose en cada momento
+dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo,
+alternándose en el uso de esa CPU.
+
+-   Cuando los procesos viven en el sistema simultáneamente pero se
+    alternan en el uso de una única CPU decimos que esos procesos son
+    concurrentes. Todos coexisten en el sistema durante un período de
+    tiempo dado; sin embargo, no hay dos procesos en estado de ejecución
+    en el mismo momento, por lo cual no podemos decir que se ejecutan
+    "simultáneamente".
+
+-   Cuando el sistema de cómputo tiene más de una CPU, entonces podemos
+    tener dos o más procesos en estado de ejecución simultáneamente, y
+    entonces decimos que esos procesos son paralelos. Para tener
+    paralelismo, además de concurrencia debemos tener redundancia de
+    hardware (es decir, más de una CPU).
 
 Monitorización de procesos
 
@@ -532,7 +536,7 @@ En el cuadro superior, top muestra:
 -   Las estadísticas de uso de la CPU, contabilizando los tiempos:
 -   De usuario
 -   De sistema
--   De nice
+-   De nice o "de cortesía"
 -   Ocioso
 -   De espera
 -   Tiempos imputables a interrupciones
@@ -546,7 +550,8 @@ Para cada proceso, el programa top muestra:
 
 -   El PID o identificación de proceso
 -   El usuario dueño del proceso
--   La prioridad a la cual está ejecutando y el valor de nice
+-   La prioridad a la cual está ejecutando y el valor de nice o de
+    cortesía
 -   El tamaño del espacio virtual del proceso y los tamaños del conjunto
     residente y regiones compartidas
 -   El porcentaje de CPU recibido durante el ciclo de top
@@ -568,6 +573,12 @@ Algunos interesantes son:
 -   ps y pstree listan los procesos activos en el sistema
 -   nice cambia la prioridad de un proceso
 -   kill envía una señal a un proceso
+
+Interesante
+
+Administración de procesos
+
+Prioridades de ejecución de procesos
 
 Supongamos un sistema donde existen dos procesos activos, con algunas
 páginas en memoria principal, y una zona de intercambio en disco.
