@@ -162,23 +162,21 @@ lectura, escritura, creación, borrado, etc. El sistema operativo
 centraliza y coordina estas peticiones de forma que los procesos no
 interfieran entre sí.
 
-Modo privilegiado
+Modo dual de operación
 
-Si los procesos de usuario pudieran utilizar los recursos en cualquier
-momento y sin coordinación, los resultados podrían ser desastrosos. Por
-ejemplo, si dos o más programas quisieran usar la impresora al mismo
-tiempo, en el papel impreso se vería una mezcla de las salidas de los
-programas que no serviría a ninguno de ellos.
+Si los procesos de usuario pudieran utilizar directamente los recursos
+en cualquier momento y sin coordinación, los resultados podrían ser
+desastrosos. Por ejemplo, si dos o más programas quisieran usar la
+impresora al mismo tiempo, en el papel impreso se vería una mezcla de
+las salidas de los programas que no serviría a ninguno de ellos.
 
 Como el sistema operativo debe coordinar el acceso de los diferentes
 procesos a esos recursos, resulta necesario que cuente con alguna forma
 de imponer conductas y límites a esos usuarios y programas, para evitar
-que ellos tomen control del sistema en perjuicio de los demás. Para
-garantizarle este poder por sobre los usuarios, el sistema operativo
-requiere apoyo del hardware: su código se ejecuta en un modo especial de
-operación del hardware, el modo privilegiado del procesador.
-
-Modo dual de operación
+que alguno de ellos tome control del sistema en perjuicio de los demás.
+Para garantizarle este poder por sobre los usuarios, el sistema
+operativo requiere apoyo del hardware: su código se ejecuta en un modo
+especial de operación del hardware, el modo privilegiado del procesador.
 
 Los modernos procesadores funcionan en lo que llamamos modo dual de
 ejecución, donde el ISA se divide en dos grupos de instrucciones.
@@ -189,6 +187,9 @@ ejecución, donde el ISA se divide en dos grupos de instrucciones.
 -   Un programa de usuario que se está ejecutando funciona en modo no
     privilegiado, donde tiene acceso a la mayoría de las instrucciones
     del ISA, pero no a las instrucciones del modo privilegiado.
+
+LLamadas al sistema
+-------------------
 
 El procesador ejecutará instrucciones del programa en ejecución en modo
 no privilegiado hasta que éste necesite un servicio del sistema
@@ -209,7 +210,7 @@ Con estos datos, esa rutina de atención de llamadas al sistema dirigirá
 el pedido al subsistema del kernel correspondiente, ejecutando siempre
 en modo privilegiado, y por lo tanto, con completo acceso a los
 recursos.
-Modo de ejecución dual
+Llamadas al sistema
 
 El subsistema que corresponda hará las verificaciones necesarias para
 cumplir el servicio:
