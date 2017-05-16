@@ -188,7 +188,7 @@ ejecución, donde el ISA se divide en dos grupos de instrucciones.
     privilegiado, donde tiene acceso a la mayoría de las instrucciones
     del ISA, pero no a las instrucciones del modo privilegiado.
 
-LLamadas al sistema
+Llamadas al sistema
 -------------------
 
 El procesador ejecutará instrucciones del programa en ejecución en modo

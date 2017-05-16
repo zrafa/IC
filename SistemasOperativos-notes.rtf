@@ -19,7 +19,7 @@
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Procesos\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Llamadas al sistema o system calls\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Modo dual de operaci\u243?n\sa180\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab LLamadas al sistema\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Llamadas al sistema\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ejecuci\u243?n de aplicaciones\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Una cronolog\u237?a de los SO\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Servicios del SO\par}
@@ -77,7 +77,7 @@
 {\pard \ql \f0 \sa180 \li0 \fi0 Los modernos procesadores funcionan en lo que llamamos {\b modo dual} de ejecuci\u243?n, donde el ISA se divide en dos grupos de instrucciones.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Ciertas instrucciones que controlan el modo de operaci\u243?n de la CPU, el acceso a memoria, o a las unidades de Entrada/Salida, pertenecen al grupo de instrucciones del {\b modo privilegiado}.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Un programa de usuario que se est\u225? ejecutando funciona en modo {\b no privilegiado}, donde tiene acceso a la mayor\u237?a de las instrucciones del ISA, pero no a las instrucciones del modo privilegiado.\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 LLamadas al sistema\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Llamadas al sistema\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El procesador ejecutar\u225? instrucciones del programa en ejecuci\u243?n en modo no privilegiado hasta que \u233?ste necesite un servicio del sistema operativo, tal como el acceso a un recurso f\u237?sico o l\u243?gico.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Para requerir este servicio, el proceso ejecuta una instrucci\u243?n de {\b llamada al sistema} o {\b system call}, que es la \u250?nica instrucci\u243?n del conjunto no privilegiado que permite a la CPU conmutar al modo privilegiado.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 La llamada al sistema conmuta el modo de la CPU a modo privilegiado {\b y adem\u225?s} fuerza el salto a una cierta direcci\u243?n fija de memoria donde existe c\u243?digo del kernel. En esa direcci\u243?n de memoria existe una rutina de atenci\u243?n de llamadas al sistema, que determina, por el contenido de los registros de la CPU, qu\u233? es lo que est\u225? solicitando el proceso.\par}

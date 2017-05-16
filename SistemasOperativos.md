@@ -85,7 +85,7 @@ Los modernos procesadores funcionan en lo que llamamos **modo dual** de ejecuci�
 - Un programa de usuario que se está ejecutando funciona en modo **no privilegiado**, donde tiene acceso a la mayoría de las instrucciones del ISA, pero no a las instrucciones del modo privilegiado. 
 
 
-##LLamadas al sistema
+##Llamadas al sistema
 El procesador ejecutará instrucciones del programa en ejecución en modo no privilegiado hasta que éste necesite un servicio del sistema operativo, tal como el acceso a un recurso físico o lógico.
 
 

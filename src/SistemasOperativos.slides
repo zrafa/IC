@@ -202,7 +202,7 @@ El subsistema que corresponda hará las verificaciones necesarias para cumplir e
 * El usuario dueño del proceso, ¿tiene los permisos necesarios?
 * El recurso, ¿está disponible o está siendo usado por otro proceso?, etc.
 
-Si se cumplen todos los requisitos, se ejecutará el servicio pedido y luego se volverá a modo usuario, a continuar con la ejecución del proceso.  
+Si se cumplen todos los requisitos, se ejecutará el servicio pedido y luego se volverá a modo no privilegiado, a continuar con la ejecución del proceso.  
 </aside>
 </section>
 
