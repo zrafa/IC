@@ -889,6 +889,22 @@ Si tampoco son suficientes los punteros directos y los indirectos, el inodo del 
 
 Esta estrategia de las tres clases de punteros permite tener un inodo de tamaño reducido pero con la capacidad de direccionar una gran cantidad de bloques. Así, el file system clásico de Unix puede contener archivos de tamaño considerablemente grande, y al mismo tiempo conservar el espacio en el superblock.
 
+**Preguntas**
+
+Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio de almacenamiento, y que el tamaño de un bloque de disco sea de 4 MiB. 
+
+1. ¿Qué cantidad **B** de bloques habrá en el disco?
+2. ¿Con cuántos bits **b** representaremos cada dirección de bloque? Dicho de otra manera, ¿qué cantidad de bits serán necesarios para un puntero a bloque?
+3. ¿Cuántos punteros a bloque **p** caben en un bloque indirecto?
+4. ¿Y en un doble-indirecto (**d**)?
+5. Si el inodo tiene 10 punteros directos, 2 indirectos y uno doble-indirecto, ¿cuánto espacio (**tp**) ocupa la tabla de punteros dentro del inodo?
+6. Si sabemos que el tamaño promedio de un archivo de datos será de 512 MiB, ¿cuántos archivos (**a**) podrá haber en el disco?
+7. ¿Cuántos inodos (**i**) deberá haber en el superblock entonces? 
+8. ¿Cuánto espacio ocupará la lista de inodos (**li**) en el superblock?
+8. ¿Cuánto espacio ocupará la lista de bloques libres (**lb**) en el superblock?
+8. ¿Cuánto espacio ocupará el superblock (**ts**) en el disco?
+8. ¿Cuál es el tamaño máximo **tm** de un archivo?
+
 </aside>
 </section>
 
