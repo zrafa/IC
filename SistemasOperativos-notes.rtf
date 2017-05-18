@@ -313,6 +313,20 @@ Prioridades de ejecuci\u243?n de procesos
 {\pard \ql \f0 \sa180 \li0 \fi0 {\b Punteros doble-indirectos}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Si tampoco son suficientes los punteros directos y los indirectos, el inodo del file system cl\u225?sico de Unix contiene un puntero {\b doble-indirecto}. Es un puntero a un bloque {\b que a su vez contiene punteros indirectos}.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Esta estrategia de las tres clases de punteros permite tener un inodo de tama\u241?o reducido pero con la capacidad de direccionar una gran cantidad de bloques. As\u237?, el file system cl\u225?sico de Unix puede contener archivos de tama\u241?o considerablemente grande, y al mismo tiempo conservar el espacio en el superblock.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Preguntas}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio de almacenamiento, y que el tama\u241?o de un bloque de disco sea de 4 MiB. Propongamos las f\u243?rmulas necesarias para responder las siguientes preguntas.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 1.\tx360\tab \u191?Qu\u233? cantidad {\b B} de bloques habr\u225? en el disco?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 2.\tx360\tab \u191?Con cu\u225?ntos bits {\b b} representaremos cada direcci\u243?n de bloque? Dicho de otra manera, \u191?qu\u233? cantidad de bits ser\u225?n necesarios para un puntero a bloque?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 3.\tx360\tab \u191?Qu\u233? tama\u241?o m\u225?ximo de archivo se puede representar con tres punteros directos a bloque?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 4.\tx360\tab \u191?Cu\u225?ntos punteros a bloque {\b p} caben en un bloque indirecto?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 5.\tx360\tab \u191?Y en un doble-indirecto ({\b d})? 1r. \u191?Qu\u233? tama\u241?o m\u225?ximo de archivo se puede representar con tres punteros directos a bloque y uno indirecto?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 6.\tx360\tab Si el inodo tiene 10 punteros directos, 2 indirectos y uno doble-indirecto, \u191?cu\u225?nto espacio ({\b tp}) ocupa la tabla de punteros dentro del inodo?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 7.\tx360\tab \u191?Cu\u225?l es el tama\u241?o m\u225?ximo {\b tm} de un archivo seg\u250?n esta configuraci\u243?n del inodo?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 8.\tx360\tab Si sabemos que el tama\u241?o promedio de un archivo de datos ser\u225? de 512 MiB, \u191?cu\u225?ntos archivos ({\b a}) podr\u225? haber en el disco?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 9.\tx360\tab \u191?Cu\u225?ntos inodos ({\b i}) deber\u225? haber en el superblock entonces?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 10.\tx360\tab \u191?Cu\u225?nto espacio ocupar\u225? la lista de inodos ({\b li}) en el superblock?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 11.\tx360\tab \u191?Cu\u225?nto espacio ocupar\u225? la lista de bloques libres ({\b lb}) en el superblock?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 12.\tx360\tab \u191?Cu\u225?nto espacio ocupar\u225? el superblock ({\b ts}) en el disco?\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Supongamos un sistema donde existen dos procesos activos, con algunas p\u225?ginas en memoria principal, y una zona de intercambio en disco.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El proceso P1 tiene asignadas cuatro p\u225?ginas (de las cuales s\u243?lo la p\u225?gina 2 est\u225? presente en memoria principal), y P2, dos p\u225?ginas (ambas presentes). Hay tres marcos libres (M4, M6 y M7) y la zona de intercambio est\u225? vac\u237?a.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 P1 recibe la CPU y en alg\u250?n momento ejecuta una instrucci\u243?n que hace una referencia a una posici\u243?n dentro de su p\u225?gina 3 (que no est\u225? en memoria).\par}

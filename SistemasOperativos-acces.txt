@@ -849,6 +849,36 @@ de bloques. Así, el file system clásico de Unix puede contener archivos
 de tamaño considerablemente grande, y al mismo tiempo conservar el
 espacio en el superblock.
 
+Preguntas
+
+Supongamos que un disco ha sido formateado de modo de contener 1 TiB de
+espacio de almacenamiento, y que el tamaño de un bloque de disco sea de
+4 MiB. Propongamos las fórmulas necesarias para responder las siguientes
+preguntas.
+
+1.  ¿Qué cantidad B de bloques habrá en el disco?
+2.  ¿Con cuántos bits b representaremos cada dirección de bloque? Dicho
+    de otra manera, ¿qué cantidad de bits serán necesarios para un
+    puntero a bloque?
+3.  ¿Qué tamaño máximo de archivo se puede representar con tres punteros
+    directos a bloque?
+4.  ¿Cuántos punteros a bloque p caben en un bloque indirecto?
+5.  ¿Y en un doble-indirecto (d)? 1r. ¿Qué tamaño máximo de archivo se
+    puede representar con tres punteros directos a bloque y uno
+    indirecto?
+6.  Si el inodo tiene 10 punteros directos, 2 indirectos y uno
+    doble-indirecto, ¿cuánto espacio (tp) ocupa la tabla de punteros
+    dentro del inodo?
+7.  ¿Cuál es el tamaño máximo tm de un archivo según esta configuración
+    del inodo?
+8.  Si sabemos que el tamaño promedio de un archivo de datos será de 512
+    MiB, ¿cuántos archivos (a) podrá haber en el disco?
+9.  ¿Cuántos inodos (i) deberá haber en el superblock entonces?
+10. ¿Cuánto espacio ocupará la lista de inodos (li) en el superblock?
+11. ¿Cuánto espacio ocupará la lista de bloques libres (lb) en el
+    superblock?
+12. ¿Cuánto espacio ocupará el superblock (ts) en el disco?
+
 Supongamos un sistema donde existen dos procesos activos, con algunas
 páginas en memoria principal, y una zona de intercambio en disco.
 
