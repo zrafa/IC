@@ -153,17 +153,19 @@ ver con la operación del hardware.
 
 Recursos
 
-El kernel funciona no solamente como un mecanismo de administración y
-control del hardware o conjunto de recursos físicos, sino también de
-ciertos recursos del sistema que son lógicos, como los archivos. Además
-tiene la capacidad de poner en ejecución a los programas que se
-encuentran en el sistema.
+Los recursos físicos del sistema son todos los elementos de hardware que
+pueden ser de utilidad para el software, como la CPU, la memoria, los
+discos, los dispositivos de entrada/salida, etc. El kernel funciona no
+solamente como un mecanismo de administración y control del hardware o
+conjunto de recursos físicos, sino también de ciertos recursos del
+sistema que son lógicos, como los archivos.
 
 Procesos
 
-Cuando un programa está en ejecución, lo llamamos un proceso. El sistema
-operativo controla la creación, ejecución y finalización de los
-procesos.
+El kernel tiene la capacidad de poner en ejecución a los programas que
+se encuentran almacenados en el sistema. Cuando un programa está en
+ejecución, lo llamamos un proceso. El sistema operativo controla la
+creación, ejecución y finalización de los procesos.
 
 Llamadas al sistema o system calls
 
@@ -171,11 +173,11 @@ El kernel ofrece su capacidad de control de todos los recursos a los
 procesos o programas en ejecución, quienes le solicitan determinadas
 operaciones sobre esos recursos. Por ejemplo, un proceso que necesita
 utilizar un dispositivo de entrada/salida, o un recurso lógico como un
-archivo, hace una petición o llamada al sistema solicitando un servicio
-al sistema operativo. El servicio puede tratarse de una operación de
-lectura, escritura, creación, borrado, etc. El sistema operativo
-centraliza y coordina estas peticiones de forma que los procesos no
-interfieran entre sí.
+archivo, hace una petición de servicio, llamada al sistema, o system
+call, solicitando un servicio al sistema operativo. El servicio puede
+tratarse de una operación de lectura, escritura, creación, borrado, etc.
+El sistema operativo centraliza y coordina estas peticiones de forma que
+los procesos no interfieran entre sí en el uso de los recursos.
 
 Modo dual de operación
 
@@ -225,7 +227,6 @@ Con estos datos, esa rutina de atención de llamadas al sistema dirigirá
 el pedido al subsistema del kernel correspondiente, ejecutando siempre
 en modo privilegiado, y por lo tanto, con completo acceso a los
 recursos.
-Llamadas al sistema
 
 El subsistema que corresponda hará las verificaciones necesarias para
 cumplir el servicio:
@@ -525,12 +526,12 @@ ejecución o CPU, habrá solamente un proceso ejecutándose en cada momento
 dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo,
 alternándose en el uso de esa CPU.
 
--   Cuando los procesos viven en el sistema simultáneamente pero se
+-   Cuando los procesos coexisten en el sistema simultáneamente pero se
     alternan en el uso de una única CPU decimos que esos procesos son
-    concurrentes. Todos coexisten en el sistema durante un período de
-    tiempo dado; sin embargo, no hay dos procesos en estado de ejecución
-    en el mismo momento, por lo cual no podemos decir que se ejecutan
-    "simultáneamente".
+    concurrentes. Todos están activos en el sistema durante un período
+    de tiempo dado; sin embargo, no hay dos procesos en estado de
+    ejecución en el mismo momento, por lo cual no podemos decir que se
+    ejecutan "simultáneamente".
 
 -   Cuando el sistema de cómputo tiene más de una CPU, entonces podemos
     tener dos o más procesos en estado de ejecución simultáneamente, y
@@ -629,11 +630,15 @@ El componente del SO responsable de los servicios relacionados con
 archivos es el llamado sistema de archivos o file system.
 
 En general, el file system no se ocupa de cuál es el contenido de los
-archivos, o de qué sentido tienen los datos que contienen. En cambio,
-mantiene información acerca de los archivos: cuál es su nombre, en qué
-bloques del disco están almacenados, qué tamaño tienen, cuándo fueron
-creados, modificados o accedidos por última vez, qué usuarios tienen
-permisos para ejecutar qué acciones con cada uno de ellos, etc.
+archivos, o de qué sentido tienen los datos que contienen. Son las
+aplicaciones quienes tienen conocimiento de cómo interpretar y procesar
+los datos contenidos en los archivos.
+
+En cambio, el file system mantiene información acerca de los archivos:
+cuál es su nombre, en qué bloques del disco están almacenados, qué
+tamaño tienen, cuándo fueron creados, modificados o accedidos por última
+vez, qué usuarios tienen permisos para ejecutar qué acciones con cada
+uno de ellos, etc.
 
 Metadatos
 

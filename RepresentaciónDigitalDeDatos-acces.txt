@@ -1,6 +1,3 @@
-Representación de datos numéricos
-=================================
-
 Veremos de qué manera puede ser tratada mediante computadoras la
 información correspondiente a números, textos, imágenes y otros datos.
 Necesitaremos conocer las formas de representación de datos, y
@@ -611,6 +608,188 @@ Preguntas sobre Notación en Exceso
 -   El sistema en exceso ¿destina un bit para representar el signo?
 -   ¿Se puede representar un intervalo que no contenga el cero?
 -   ¿Cómo se comparan dos números en exceso para saber cuál es el mayor?
+
+Representación de fraccionarios
+-------------------------------
+
+Racionales
+
+Los números fraccionarios son aquellos racionales que no son enteros. Se
+escriben como una razón, fracción o cociente de dos enteros. Por
+ejemplo, 3/4 y -12/5 son números fraccionarios. El signo de división que
+usamos para escribir las fracciones tiene precisamente ese significado
+aritmético: si hacemos la operación de división correspondiente entre
+numerador y divisor de la fracción, obtenemos la forma decimal del mismo
+número, con una parte entera y una parte decimal. Así, por ejemplo, 3/4
+también puede escribirse como 0.75, y -12/5 como -2.4. Estas dos formas
+son equivalentes. En los racionales, la parte decimal es finita o
+periódica.
+
+Aproximación racional a los irracionales
+
+Por otro lado, existen números reales que no son racionales, en el
+sentido de que no existe una razón, fracción o cociente que les sea
+igual, pero también pueden escribirse como decimales con una parte
+entera y una parte decimal. Estos son los irracionales. Los irracionales
+pueden expresarse sintéticamente como el resultado de alguna operación
+(como cuando escribimos \sqrt 2) o en su forma decimal. Sin embargo,
+tienen la característica de que su desarrollo decimal es infinito no
+periódico, por lo cual siempre que escribimos un irracional por su
+desarrollo decimal, en realidad estamos truncando ese desarrollo a
+alguna porción inicial. Jamás podremos escribir la sucesión completa de
+decimales.
+
+De manera que, al escribir irracionales en su forma decimal, en realidad
+siempre tratamos con aproximaciones racionales a esos irracionales. Por
+ejemplo, 3.14 y 3.1459 son aproximaciones racionales al verdadero valor
+irracional de PI, cuya parte decimal tiene infinitos dígitos.
+
+Coma o punto decimal
+
+Al escribir un número con cifras decimales en nuestro sistema numérico
+habitual de base 10, usamos una marca especial para separar la parte
+entera de la decimal: es la coma o punto decimal. En el desarrollo
+decimal, la coma o punto decimal señala el lugar donde los exponentes de
+la base en el desarrollo de potencias de 10 se hacen negativos. Cuando
+queremos representar números fraccionarios con computadoras, nos vemos
+en el problema de representar este signo especial.
+
+Podemos trasladar la idea de coma o punto decimal al sistema binario. Si
+extendemos la Expresión General con exponentes negativos, podemos
+escribir números fraccionarios en base 2.
+
+Fraccionario en base 2 a decimal
+
+Si encontramos una expresión como 11.1 0 1 en base 2, la Expresión General
+extendida nos dice cómo obtener su valor en base 10: 11.1 0 1 en base 2  = 
+1  por  2 elevado a la 1 + 1  por  2 elevado a la 0 +
+1  por  2 elevado a la {-1} + 0  por  2 elevado a la {-2} + 1  por  2 elevado a la {-3} =
+2 + 1 + 0.5 + 0 + 0.125 =  3.625
+
+Otra manera
+
+Otra manera de obtener el valor decimal de un número fraccionario n en
+base 2 consiste en utilizar el hecho de que cada vez que desplazamos el
+punto fraccionario un lugar hacia la derecha, estamos multiplicando n
+por 2, y viceversa, si desplazamos el punto hacia la izquierda, lo
+dividimos por 2.
+
+El método consiste en:
+
+-   Identificar cuántas posiciones fraccionarias tiene n (llamémoslas k)
+-   Multiplicar n por 2 elevado a la k obteniendo un entero en base 2
+-   Convertir el entero resultante a base 10, lo cual ya sabemos hacer
+-   Dividir el resultado por 2 elevado a la k, obteniendo n en base 10
+
+Con este método esencialmente estamos calculando el valor decimal de n
+sin considerar el signo de coma fraccionaria (es decir, imaginando que n
+fuera un entero); convirtiendo ese valor a decimal, y luego dividiendo
+el resultado en base 10 por 2 elevado a la k para recuperar el valor original de n,
+sólo que ahora en base 10.
+
+Ejemplo
+
+El número n = 11.1 0 1 en base 2 tiene tres cifras decimales (k = 3). Lo
+convertimos en entero dejando 1 1 1 0 1 en base 2; averiguamos que este número en
+base 10 es 29; y finalmente dividimos 29 por 2 elevado a la 3. Concluimos que
+n = 11.1 0 1 en base 2 = 29/8 = 3.625.
+
+Decimal fraccionario a base 2
+
+Para convertir un decimal con parte fraccionaria a base 2:
+
+1.  Se separan la parte entera (PE) y la parte fraccionaria (PF).
+2.  Se convierte la PE a base 2 separadamente.
+3.  La PF se multiplica por 2 y se toma la PE del resultado. Este dígito
+    binario se agrega al resultado.
+4.  Se repite el paso anterior hasta llegar a 0, o hasta lograr la
+    precisión deseada.
+
+Ejemplo
+
+Convirtamos el número n = 3.625 a base 2. Primero separamos parte entera
+(3) y parte fraccionaria (0.625).
+
+Parte entera
+
+La parte entera de n se convierte a base 2 como entero sin signo (dando
+11 en base 2).
+
+Parte fraccionaria
+
+Para calcular la parte fraccionaria binaria de n seguimos un
+procedimiento iterativo (es decir, que consta de pasos que se repiten).
+
+La parte fraccionaria decimal de n se multiplica por 2:
+0.625  por  2 = 1.25. Separamos este resultado a su vez en parte entera
+y parte fraccionaria. Guardamos la parte entera del resultado (que es 1)
+y repetimos, es decir, volvemos a multiplicar por 2 la parte
+fraccionaria recién obtenida (que es 0.25), separamos la parte entera,
+etc.
+
+La sucesión de dígitos aparecidos como partes enteras durante este
+procedimiento servirán para construir la parte fraccionaria del
+resultado. Notemos que estos dígitos que aparecen solamente pueden ser
+ceros y unos, porque son la parte entera de 2 por  x con x < 1.
+
+El procedimiento de separar, guardar, multiplicar, se repite hasta que
+la parte entera obtenida sea 0 (ya no tiene sentido seguir el
+procedimiento porque el resultado será siempre 0) o hasta que tengamos
+suficientes dígitos computados para nuestra aplicación.
+
+El resultado final es la suma, en base 2, de la parte entera de n
+calculada anteriormente, más una parte fraccionaria construida con los
+dígitos que fueron apareciendo durante el procedimiento de duplicar la
+parte fraccionaria.
+
+La conversión a base 2 del número n = 3.625 que buscábamos será
+11 en base 2 + 0.1 0 1 en base 2 = 11.1 0 1 en base 2.
+
+Representación de punto fijo
+----------------------------
+
+¿Cómo aplicamos el método de conversión visto, de fraccionarios
+decimales a binarios y viceversa, en las computadoras? El problema es
+parecido al de almacenar el signo "menos": no podemos guardar en la
+memoria otra cosa que bits, de forma que habrá que establecer alguna
+convención para indicar dónde está el punto o coma fraccionaria.
+
+A veces las computadoras utilizan sistemas de punto fijo para
+representar números con parte fraccionaria. Los sistemas de punto fijo
+establecen una cantidad de bits o ancho total (que llamaremos n) y una
+cantidad fija de bits para la parte fraccionaria (que llamaremos k).
+Todos los datos manipulados por la computadora tienen la misma cantidad
+n-k de bits de parte entera y la misma cantidad k de bits de parte
+fraccionaria. Por ejemplo, la notación PF(8,3) denota un sistema de
+punto fijo con 8 bits en total, de los cuales 3 son para la parte
+fraccionaria.
+
+Esta convención contiene toda la información necesaria. Al ser fijos los
+anchos de parte entera y fraccionaria, la computadora puede tratar
+aritméticamente a todos los números como si fueran enteros, sin
+preocuparse por partes enteras ni fraccionarias. Solamente habrá que
+utilizar la convención al momento de imprimir o comunicar un resultado.
+La impresora, o la pantalla, deberán mostrar un resultado con coma
+fraccionaria en el lugar correcto.
+
+Sin embargo, todas las operaciones intermedias, entre datos expresados
+en punto fijo, habrán podido llevarse a cabo sin tener en cuenta el
+lugar de la coma. Dos números en punto fijo se sumarán como si los
+representados fueran dos enteros.
+
+Ejemplo
+
+-   Supongamos que queremos computar 3.625 + 1.25 en un sistema PF(8,3).
+-   Las conversiones de estos sumandos a fraccionarios binarios son,
+    respectivamente, 11.1 0 1 y 1.01.
+-   Pero en la memoria se almacenarán como 0 0 0 1 1 1 0 1 y 0 0 0 0 1 0 1 0. Nótese
+    que al ser todas las partes fraccionarias del mismo ancho, quedan
+    automáticamente "encolumnados" los invisibles puntos fraccionarios.
+-   La suma se efectuará bit a bit como si se tratara de enteros y será
+    0 0 1 0 0 1 1 1.
+-   Si pedimos a la computadora que imprima este valor, aplicará la
+    convención PF(8,3) e imprimirá 0 0 1 0 0.1 1 1, o su interpretación en
+    decimal, 4.875, que es efectivamente 3.625 + 1.25.
 
 Decimal a PF(n,k)
 

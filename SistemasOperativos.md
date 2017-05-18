@@ -77,13 +77,14 @@ Un típico sistema operativo multipropósito, actual, debe dar soporte entonces 
 El **kernel** o núcleo es esencialmente un conjunto de rutinas que permanecen siempre residentes en memoria mientras la computadora está operando. Estas rutinas intervienen en todas las acciones que tengan que ver con la operación del hardware. 
 
 ###Recursos
-El kernel funciona no solamente como un mecanismo de administración y control del hardware o conjunto de **recursos físicos**, sino también de ciertos recursos del sistema que son **lógicos**, como los archivos. Además tiene la capacidad de poner en ejecución a los programas que se encuentran en el sistema. 
+Los **recursos físicos** del sistema son todos los elementos de hardware que pueden ser de utilidad para el software, como la CPU, la memoria, los discos, los dispositivos de entrada/salida, etc. El kernel funciona no solamente como un mecanismo de administración y control del hardware o conjunto de recursos físicos, sino también de ciertos recursos del sistema que son **lógicos**, como los archivos. 
+
 
 ###Procesos
-Cuando un programa está en ejecución, lo llamamos un **proceso**. El sistema operativo controla la creación, ejecución y finalización de los procesos.
+El kernel tiene la capacidad de poner en ejecución a los programas que se encuentran almacenados en el sistema. Cuando un programa está en ejecución, lo llamamos un **proceso**. El sistema operativo controla la creación, ejecución y finalización de los procesos.
 
 ###Llamadas al sistema o system calls
-El kernel ofrece su capacidad de control de todos los recursos a los procesos o programas en ejecución, quienes le solicitan determinadas operaciones sobre esos recursos. Por ejemplo, un proceso que necesita utilizar un dispositivo de entrada/salida, o un recurso lógico como un archivo, hace una **petición o llamada al sistema** solicitando un servicio al sistema operativo. El servicio puede tratarse de una operación de lectura, escritura, creación, borrado, etc. El sistema operativo centraliza y coordina estas peticiones de forma que los procesos no interfieran entre sí.
+El kernel ofrece su capacidad de control de todos los recursos a los procesos o programas en ejecución, quienes le solicitan determinadas operaciones sobre esos recursos. Por ejemplo, un proceso que necesita utilizar un dispositivo de entrada/salida, o un recurso lógico como un archivo, hace una **petición de servicio, llamada al sistema, o system call**, solicitando un servicio al sistema operativo. El servicio puede tratarse de una operación de lectura, escritura, creación, borrado, etc. El sistema operativo centraliza y coordina estas peticiones de forma que los procesos no interfieran entre sí en el uso de los recursos.
 
 ###Modo dual de operación
 Si los procesos de usuario pudieran utilizar directamente los recursos en cualquier momento y sin coordinación, los resultados podrían ser desastrosos. Por ejemplo, si dos o más programas quisieran usar la impresora al mismo tiempo, en el papel impreso se vería una mezcla de las salidas de los programas que no serviría a ninguno de ellos.
@@ -106,11 +107,7 @@ Para requerir este servicio, el proceso ejecuta una instrucción de **llamada al
 La llamada al sistema conmuta el modo de la CPU a modo privilegiado **y además** fuerza el salto a una cierta dirección fija de memoria donde existe código del kernel. En esa dirección de memoria existe una rutina de atención de llamadas al sistema, que determina, por el contenido de los registros de la CPU, qué es lo que está solicitando el proceso. 
 
 Con estos datos, esa rutina de atención de llamadas al sistema dirigirá el pedido al subsistema del kernel correspondiente, ejecutando siempre en modo privilegiado, y por lo tanto, con completo acceso a los recursos.
-</section>
 
-<section data-transition="fade-in slide-out">
-<h2>Llamadas al sistema</h2>
-<img src="img/modos-3.png" class="stretch plain">
 
 El subsistema que corresponda hará las verificaciones necesarias para cumplir el servicio: 
 
@@ -279,7 +276,7 @@ Notemos que los diagramas de estados del **sistema multiprogramado** y del siste
 ###Concurrencia y paralelismo
 Si el sistema de tiempo compartido dispone de **una sola unidad de ejecución o CPU**, habrá solamente **un proceso ejecutándose** en cada momento dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo, alternándose en el uso de esa CPU. 
 
-- Cuando los procesos viven en el sistema simultáneamente pero se alternan en el uso de **una única CPU** decimos que esos procesos son **concurrentes**. Todos coexisten en el sistema durante un período de tiempo dado; sin embargo, no hay dos procesos en estado de ejecución en el mismo momento, por lo cual no podemos decir que se ejecutan "simultáneamente".
+- Cuando los procesos coexisten en el sistema simultáneamente pero se alternan en el uso de **una única CPU** decimos que esos procesos son **concurrentes**. Todos están activos en el sistema durante un período de tiempo dado; sin embargo, no hay dos procesos en estado de ejecución en el mismo momento, por lo cual no podemos decir que se ejecutan "simultáneamente".
 
 
 - Cuando el sistema de cómputo tiene **más de una CPU**, entonces podemos tener dos o más procesos en estado de ejecución **simultáneamente**, y entonces decimos que esos procesos son **paralelos**. Para tener paralelismo, además de concurrencia debemos tener **redundancia de hardware** (es decir, más de una CPU).
@@ -360,7 +357,9 @@ Cualquier pieza de información que sea tratable mediante las computadoras puede
 ###Sistema de archivos
 El componente del SO responsable de los servicios relacionados con archivos es el llamado **sistema de archivos** o **file system**.
 
-En general, el file system no se ocupa de cuál es el contenido de los archivos, o de qué sentido tienen los datos que contienen. En cambio, mantiene información **acerca** de los archivos: cuál es su nombre, en qué bloques del disco están almacenados, qué tamaño tienen, cuándo fueron creados, modificados o accedidos por última vez, qué usuarios tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
+En general, el file system no se ocupa de cuál es el contenido de los archivos, o de qué sentido tienen los datos que contienen. Son las aplicaciones quienes tienen conocimiento de cómo interpretar y procesar los datos contenidos en los archivos.
+
+En cambio, el file system mantiene información **acerca** de los archivos: cuál es su nombre, en qué bloques del disco están almacenados, qué tamaño tienen, cuándo fueron creados, modificados o accedidos por última vez, qué usuarios tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
 
 ###Metadatos
 Como todos estos datos son **acerca de los archivos**, y no tienen nada que ver con los datos **contenidos en** los archivos, son llamados **metadatos**. El sistema de archivos o file system mantiene tablas y listas de metadatos que describen los archivos contenidos en un medio de almacenamiento. 
