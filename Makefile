@@ -42,7 +42,7 @@ arqui: ArquitecturaDeComputadoras.html
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
 
 
-all: siste uni repre texto arqui soft comp
+all: siste uni repre texto arqui soft comp so
 	pandoc -V lang=spanish -V fontfamily=sans -V papersize=A4 -V title="Introducción a la Computación 2017" --toc \
 	SistemasDeNumeración.md \
 	UnidadesDeInformación.md \
@@ -51,6 +51,7 @@ all: siste uni repre texto arqui soft comp
 	ArquitecturaDeComputadoras.md \
 	Software.md \
 	SistemasDeCómputo.md \
+	SistemasOperativos.md \
 	-o IC2017-notes.pdf
 
 git: 

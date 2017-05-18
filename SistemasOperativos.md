@@ -1,4 +1,7 @@
 
+#Sistemas Operativos
+
+
 ##Sistemas de cómputo
 Hemos visto la evolución de los sistemas de cómputo desde el punto de vista del hardware, y cómo llegaron a soportar varios usuarios corriendo varias aplicaciones, todo sobre un mismo equipamiento.
 
@@ -495,18 +498,18 @@ Esta estrategia de las tres clases de punteros permite tener un inodo de tamaño
 
 Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio de almacenamiento, y que el tamaño de un bloque de disco sea de 4 MiB. Propongamos las fórmulas necesarias para responder las siguientes preguntas.
 
-1. ¿Qué cantidad **B** de bloques habrá en el disco?
-1. ¿Con cuántos bits **b** representaremos cada dirección de bloque? Dicho de otra manera, ¿qué cantidad de bits serán necesarios para un puntero a bloque?
+1. ¿Qué cantidad **cB** de bloques habrá en el disco?
+1. ¿Con cuántos bits **cb** representaremos cada dirección de bloque? Dicho de otra manera, ¿qué cantidad de bits serán necesarios para un puntero a bloque?
 1. ¿Qué tamaño máximo de archivo se puede representar con tres punteros directos a bloque?
-1. ¿Cuántos punteros a bloque **p** caben en un bloque indirecto? 
-1. ¿Y en un doble-indirecto (**d**)?
-1r. ¿Qué tamaño máximo de archivo se puede representar con tres punteros directos a bloque y uno indirecto?
+1. ¿Cuántos punteros a bloque **cp** caben en un bloque indirecto? 
+1. ¿Y en un doble-indirecto (**cd**)?
+1. ¿Qué tamaño máximo de archivo se puede representar con tres punteros directos a bloque y uno indirecto?
 1. Si el inodo tiene 10 punteros directos, 2 indirectos y uno doble-indirecto, ¿cuánto espacio (**tp**) ocupa la tabla de punteros dentro del inodo?
 1. ¿Cuál es el tamaño máximo **tm** de un archivo según esta configuración del inodo?
-1. Si sabemos que el tamaño promedio de un archivo de datos será de 512 MiB, ¿cuántos archivos (**a**) podrá haber en el disco?
-1. ¿Cuántos inodos (**i**) deberá haber en el superblock entonces? 
-1. ¿Cuánto espacio ocupará la lista de inodos (**li**) en el superblock?
-1. ¿Cuánto espacio ocupará la lista de bloques libres (**lb**) en el superblock?
+1. Si sabemos que el tamaño promedio de un archivo de datos será de 512 MiB, ¿cuántos archivos (**ca**) podrá haber en el disco?
+1. ¿Cuántos inodos (**ci**) deberá haber en el superblock entonces? 
+1. ¿Cuánto espacio ocupará la lista de inodos (**ti**) en el superblock?
+1. ¿Cuánto espacio ocupará la lista de bloques libres (**tl**) en el superblock?
 1. ¿Cuánto espacio ocupará el superblock (**ts**) en el disco?
 
 
