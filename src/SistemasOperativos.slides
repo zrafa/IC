@@ -918,7 +918,7 @@ El SO ve los discos como un vector de bloques o espacios de tamaño fijo. Cada b
 - Si la operación es de lectura, además indica una dirección de memoria donde desea recibir los datos que el controlador del disco leerá. 
 - Si la operación es de escritura, indica una dirección de memoria donde están los datos que desea escribir.
 
-Cada vez que un proceso solicita la grabación de datos nuevos en un archivo, el file system entrega un bloque de su lista de bloques libres. Para agregar los datos al archivo, el file system quita la dirección del bloque de la lista de libres, la añade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.
+Cada vez que un proceso solicita la grabación de datos nuevos en un archivo, el file system selecciona un bloque de su lista de bloques libres. Para agregar los datos al archivo, el file system quita la dirección del bloque de la lista de libres, la añade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.
 
 Recorrer un archivo (para leerlo o para hacer cualquier clase de procesamiento de sus contenidos) implica acceder a todos sus bloques de disco, en el orden en que han sido almacenados esos contenidos. La información para saber qué bloques componen un archivo, y en qué orden, está en el **inodo** del archivo. 
 
