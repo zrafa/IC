@@ -556,6 +556,36 @@ Notemos que los diagramas de estados del **sistema multiprogramado** y del siste
 </aside>
 </section>
 
+<!--   TEST -->
+<!-------------------------------------
+<section data-transition="convex-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top">
+<img src="img/estados-0.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-1.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-2.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-3.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-4.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-5.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-6.png" class="plain stretch">
+</div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+------------------------------------->
+
 
 <!-- -------------- -->
 <section data-transition="convex-in convex-out">
@@ -690,13 +720,7 @@ Este emulador de PC construido en Javascript nos permite practicar los comandos 
 </aside>
 </section>
 
-<section data-background="#00CCFF" data-coursemod-shown="false">
-<h2>Continuará</h2>
-<aside data-markdown class="notes">
-</aside>
-</section>
 
-<!----------------------------------------------------------------
 <section data-background="#00CCFF" data-coursemod-shown="false">
 <h2>Gestión de archivos</h2>
 <aside data-markdown class="notes">
@@ -733,7 +757,7 @@ El componente del SO responsable de los servicios relacionados con archivos es e
 
 En general, el file system no se ocupa de cuál es el contenido de los archivos, o de qué sentido tienen los datos que contienen. Son las aplicaciones quienes tienen conocimiento de cómo interpretar y procesar los datos contenidos en los archivos.
 
-En cambio, el file system mantiene información **acerca** de los archivos: cuál es su nombre, en qué bloques del disco están almacenados, qué tamaño tienen, cuándo fueron creados, modificados o accedidos por última vez, qué usuarios tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
+En cambio, el file system mantiene información **acerca** de los archivos: en qué bloques del disco están almacenados, qué tamaño tienen, cuándo fueron creados, modificados o accedidos por última vez, qué usuarios tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
 
 ###Metadatos
 Como todos estos datos son **acerca de los archivos**, y no tienen nada que ver con los datos **contenidos en** los archivos, son llamados **metadatos**. El sistema de archivos o file system mantiene tablas y listas de metadatos que describen los archivos contenidos en un medio de almacenamiento. 
@@ -752,7 +776,7 @@ El file system es el subsistema o conjunto de rutinas del kernel responsable de 
 
 **Un conjunto de metadatos**
 
-Pero, por otro lado, también hablamos del file system como el conjunto de metadatos acerca de los archivos grabados en un medio de almacenamiento. El file system en este sentido, es **información** que describe unos archivos y reside en el mismo medio de almacenamiento que ellos.
+Pero, por otro lado, también hablamos del file system como el conjunto de metadatos acerca de los archivos grabados en un medio de almacenamiento. El file system en este sentido, es la **información** que describe unos archivos y reside en el mismo medio de almacenamiento que ellos.
 
 **Un conjunto de características**
 
@@ -760,7 +784,8 @@ Además, cuando se diseña un sistema de archivos, se lo dota de ciertas capacid
 
 
 - Algunos sistemas de archivos específicos tienen ciertas restricciones en la forma de los nombres de los archivos, y otros no. 
-- Algunos sistemas de archivos permiten la atribución de permisos o identidades de usuario a los archivos, y otros no. 
+- Algunos permiten la atribución de permisos o identidades de usuario a los archivos, y otros no. 
+- Algunos ofrecen servicios como encriptación, compresión, o versionado de archivos.
 
 
 Al referirnos al file system, podemos estar hablando del **conjunto de características ofrecidas** por alguna implementación en particular de un sistema de archivos. 
@@ -776,11 +801,31 @@ Al referirnos al file system, podemos estar hablando del **conjunto de caracter�
 En los file systems de tipo Unix, la organización de los directorios es jerárquica y recuerda a un árbol con **raíz** y ramas. Algunos directorios cumplen una función especial en el sistema porque contienen archivos especiales, y por eso tienen nombres establecidos. 
 
 - Por ejemplo, el directorio raíz, donde se origina toda la jerarquía de directorios, tiene el nombre especial "/". 
-- El directorio `lib` (abreviatura de **library** o bilioteca) contiene bibliotecas de software. 
+- El directorio `lib` (abreviatura de **library** o biblioteca) contiene bibliotecas de software. 
 - Los directorios `bin`, `sbin`. `/usr/bin`, etc., contienen archivos ejecutables (a veces llamados **binarios**).
 
-###Nombres de archivo
-Los nombres completos, o **absolutos**, de los archivos y directorios se dan indicando cuál es el camino que hay que recorrer, para encontrarlos, desde la raíz del sistema de archivos. Así, el archivo `texto.txt` ubicado en el directorio `juan`, que está dentro del directorio `home`, que está dentro del directorio raíz, tiene un nombre absoluto como `/home/juan/texto.txt`. 
+###Nombres de archivo y referencias
+Los nombres completos, o **referencias absolutas**, de los archivos y directorios se dan indicando cuál es el camino que hay que recorrer, para encontrarlos, **desde la raíz** del sistema de archivos. 
+
+**Ejemplo**
+
+La referencia absoluta para el archivo `texto.txt` ubicado en el directorio `juan`, que está dentro del directorio `home`, que está dentro del directorio raíz, es `/home/juan/texto.txt`. 
+
+Una **referencia relativa**, por otro lado, es una forma de mencionar a un archivo que depende de dónde está situado el proceso o usuario que quiere utilizarlo. Todo proceso, al ejecutarse, tiene una noción de lugar del file system donde se encuentra. 
+
+- Por ejemplo, el shell de cada usuario funciona dentro del directorio **home** o espacio privado del usuario.  
+- Éste es el **directorio actual** del proceso shell.
+- Puede ser cambiado utilizando el comando `cd`.
+- El comando `pwd` dice cuál es el directorio actual de un shell.
+
+La referencia relativa de un archivo indica cuál es el camino que hay que recorrer para encontrarlo **desde el directorio actual** del proceso.
+
+**Ejemplo**
+
+Para el mismo archivo del ejemplo anterior, si el directorio activo del shell es `/home/juan`, la referencia relativa será simplemente `texto.txt`.
+
+La referencia es relativa porque, si el proceso cambia de directorio activo, ya no servirá como referencia para ese mismo archivo.
+
 </aside>
 </section>
 
@@ -920,7 +965,7 @@ Como el inodo es una estructura de datos de tamaño fijo, esta lista de punteros
 - Si se define en el inodo un espacio demasiado pequeño para guardar la lista de punteros a bloques, cada inodo representará archivos con pocos bloques, y así el file system no podrá contener archivos grandes.
 - Si, al contrario, el espacio en el inodo reservado para guardar la lista es grande, se podrán almacenar archivos de muchos bloques; pero si la mayoría de los archivos del sistema fueran pequeños, se estaría desperdiciando espacio en el superblock.
 
-Para administrar mejor el espacio en el superblock, y para mantener el inodo de un tamaño razonable, esos punteros a bloques se dividen en tres clases.
+Para administrar mejor el espacio en el superblock, y para mantener el inodo de un tamaño razonable, esos punteros a bloques se dividen en tres clases: punteros **directos, indirectos y doble-indirectos**.
 
 **Punteros directos**
 
@@ -951,7 +996,7 @@ Esta estrategia de las tres clases de punteros permite tener un inodo de tamaño
 
 **Preguntas**
 
-Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio de almacenamiento, y que el tamaño de un bloque de disco sea de 4 MiB. Propongamos las fórmulas necesarias para responder las siguientes preguntas.
+Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio de almacenamiento, y que el tamaño de un bloque de disco sea de 4 KiB. Propongamos las fórmulas necesarias para responder las siguientes preguntas.
 
 1. ¿Qué cantidad **cB** de bloques habrá en el disco?
 1. ¿Con cuántos bits **cb** representaremos cada dirección de bloque? Dicho de otra manera, ¿qué cantidad de bits serán necesarios para un puntero a bloque?
@@ -972,9 +1017,13 @@ Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio 
 
 
 <section data-transition="slide-in slide-out">
-<h2>Directorio</h2>
+<h2>Directorios</h2>
 <img src="img/directorio.svg" class="plain stretch">
 <aside data-markdown class="notes">
+##Directorios
+Notemos que en ningún momento hemos mencionado el **nombre** de los archivos entre los metadatos. En el file system de Unix, el nombre de un archivo se encuentra en un archivo de datos, y no en el superblock. Otros sistemas de archivos adoptan otras estrategias. 
+
+En Unix, un archivo especial, de tipo **directorio**, contiene una lista de entradas conteniendo **nombres de archivo** e **inodos** que los representan. Un directorio es simplemente un conjunto de bloques de datos, como los archivos regulares, pero juega un papel especial en el comportamiento del sistema de archivos y sus contenidos tienen un formato especial y fijo.
 </aside>
 </section>
 <section data-transition="slide-in fade-out">
@@ -984,6 +1033,12 @@ Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio 
 </div>
 <img src="img/busq-root.svg" class="plain stretch">
 <aside data-markdown class="notes">
+###Búsqueda de un archivo en el file system
+Supongamos que un proceso necesita leer los bloques de datos del archivo `/etc/group`. Deberá entregarle al file system el nombre de este archivo para que pueda localizarlo y devolverle esos datos. 
+
+Supongamos además que especifica el nombre mediante una referencia absoluta. El file system analizará la referencia absoluta recibida del proceso, descomponiéndola en sus partes componentes y usándola como mapa para llegar al archivo, desde el directorio raíz.
+
+Para encontrar el archivo, el filesystem lee el inodo 0, que corresponde al **directorio raíz**, y recoge de allí los bloques de datos del directorio raíz. 
 </aside>
 </section>
 <section data-transition="fade-in fade-out">
@@ -993,6 +1048,7 @@ Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio 
 </div>
 <img src="img/busq-0.svg" class="plain stretch">
 <aside data-markdown class="notes">
+Esos bloques de datos contienen nombres de otros archivos y directorios, junto al inodo que los representa. De aquí puede extraer el file system el número de inodo que representa al directorio `/etc`. Este inodo apunta a los bloques que contienen a ese directorio.
 </aside>
 </section>
 <section data-transition="fade-in fade-out">
@@ -1002,6 +1058,7 @@ Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio 
 </div>
 <img src="img/busq-1.svg" class="plain stretch">
 <aside data-markdown class="notes">
+Como `/etc` es un directorio, contendrá una tabla de nombres de archivo y números de inodos. Aquí podrá encontrarse el número inodo que corresponde a `/etc/group`.
 </aside>
 </section>
 <section data-transition="fade-in slide-out">
@@ -1011,6 +1068,7 @@ Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio 
 </div>
 <img src="img/busq-2.svg" class="plain stretch">
 <aside data-markdown class="notes">
+Finalmente, leyendo este inodo, el file system recorrerá los punteros a bloques devolviendo el contenido del archivo `/etc/group`.
 </aside>
 </section>
 <section data-transition="slide-in slide-out">
@@ -1039,8 +1097,14 @@ Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio 
 </aside>
 </section>
 
+<section data-background="#00CCFF" data-coursemod-shown="false">
+<h2>Continuará</h2>
+<aside data-markdown class="notes">
+</aside>
+</section>
 
 
+<!----------------------------------------------------------------
 <section>
 <h2>Operaciones de Entrada/Salida</h2>
 <ul>
@@ -1460,6 +1524,7 @@ main()
 </aside>
 </section>
 
+------------------------>
 
 
 
@@ -1477,7 +1542,6 @@ main()
 <aside data-markdown class="notes">
 </aside>
 </section>
------------------------->
 
 
 <!------------------------------------------------------------------>

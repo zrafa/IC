@@ -37,7 +37,24 @@
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Concurrencia y paralelismo\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Monitorizaci\u243?n de procesos\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Comando top\sa180\par}
-{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Comandos de procesos\sa180\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Comandos de procesos\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Gesti\u243?n de archivos\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Archivos\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Sistema de archivos\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Metadatos\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Directorios\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Varios significados\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab \u193?rbol de directorios\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Nombres de archivo y referencias\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Elementos del sistema de archivos\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Particiones\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Bloques\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Inodos\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Superblock\sa180\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Inodos\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Bloques de disco\par}
+{\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Directorios\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab B\u250?squeda de un archivo en el file system\sa180\sa180\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Sistemas Operativos\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Sistemas de c\u243?mputo\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Hemos visto la evoluci\u243?n de los sistemas de c\u243?mputo desde el punto de vista del hardware, y c\u243?mo llegaron a soportar varios usuarios corriendo varias aplicaciones, todo sobre un mismo equipamiento.\par}
@@ -224,4 +241,116 @@ Administraci\u243?n de procesos
 Prioridades de ejecuci\u243?n de procesos
 }}}
 \par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Gesti\u243?n de archivos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Archivos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La informaci\u243?n que se guarda en medios de almacenamiento permanente, como los {\b discos}, se organiza en {\b archivos}, que son secuencias de bytes. Estos bytes pueden estar codificando cualquier clase de informaci\u243?n: texto, c\u243?digo fuente de programas, c\u243?digo ejecutable, multimedia, etc.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Cualquier pieza de informaci\u243?n que sea tratable mediante las computadoras puede ser almacenada y comunicada en forma de archivos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Sistema de archivos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El componente del SO responsable de los servicios relacionados con archivos es el llamado {\b sistema de archivos} o {\b file system}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En general, el file system no se ocupa de cu\u225?l es el contenido de los archivos, o de qu\u233? sentido tienen los datos que contienen. Son las aplicaciones quienes tienen conocimiento de c\u243?mo interpretar y procesar los datos contenidos en los archivos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En cambio, el file system mantiene informaci\u243?n {\b acerca} de los archivos: en qu\u233? bloques del disco est\u225?n almacenados, qu\u233? tama\u241?o tienen, cu\u225?ndo fueron creados, modificados o accedidos por \u250?ltima vez, qu\u233? usuarios tienen permisos para ejecutar qu\u233? acciones con cada uno de ellos, etc.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Metadatos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Como todos estos datos son {\b acerca de los archivos}, y no tienen nada que ver con los datos {\b contenidos en} los archivos, son llamados {\b metadatos}. El sistema de archivos o file system mantiene tablas y listas de metadatos que describen los archivos contenidos en un medio de almacenamiento.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Directorios\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Una caracter\u237?stica compartida por la mayor\u237?a de los sistemas de archivos es la organizaci\u243?n jer\u225?rquica de los archivos en estructura de {\b directorios}. Los directorios son contenedores de archivos (y de otros directorios).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los directorios han sido llamados, en la met\u225?fora de las interfaces visuales de usuario, {\b carpetas}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Varios significados\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En rigor de verdad, el nombre de sistema de archivos o file system designa varias cosas, relacionadas pero diferentes:\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Una pieza de software}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El file system es el subsistema o conjunto de rutinas del kernel responsable de la organizaci\u243?n de los archivos del sistema. Es un componente de software o m\u243?dulo del kernel, y como tal, es {\b c\u243?digo} ejecutable.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Un conjunto de metadatos}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Pero, por otro lado, tambi\u233?n hablamos del file system como el conjunto de metadatos acerca de los archivos grabados en un medio de almacenamiento. El file system en este sentido, es la {\b informaci\u243?n} que describe unos archivos y reside en el mismo medio de almacenamiento que ellos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Un conjunto de caracter\u237?sticas}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Adem\u225?s, cuando se dise\u241?a un sistema de archivos, se lo dota de ciertas capacidades distintivas.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Algunos sistemas de archivos espec\u237?ficos tienen ciertas restricciones en la forma de los nombres de los archivos, y otros no.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Algunos permiten la atribuci\u243?n de permisos o identidades de usuario a los archivos, y otros no.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Algunos ofrecen servicios como encriptaci\u243?n, compresi\u243?n, o versionado de archivos.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Al referirnos al file system, podemos estar hablando del {\b conjunto de caracter\u237?sticas ofrecidas} por alguna implementaci\u243?n en particular de un sistema de archivos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 \u193?rbol de directorios\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En los file systems de tipo Unix, la organizaci\u243?n de los directorios es jer\u225?rquica y recuerda a un \u225?rbol con {\b ra\u237?z} y ramas. Algunos directorios cumplen una funci\u243?n especial en el sistema porque contienen archivos especiales, y por eso tienen nombres establecidos.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Por ejemplo, el directorio ra\u237?z, donde se origina toda la jerarqu\u237?a de directorios, tiene el nombre especial "/".\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El directorio lib (abreviatura de {\b library} o biblioteca) contiene bibliotecas de software.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Los directorios bin, sbin. /usr/bin, etc., contienen archivos ejecutables (a veces llamados {\b binarios}).\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Nombres de archivo y referencias\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los nombres completos, o {\b referencias absolutas}, de los archivos y directorios se dan indicando cu\u225?l es el camino que hay que recorrer, para encontrarlos, {\b desde la ra\u237?z} del sistema de archivos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplo}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La referencia absoluta para el archivo texto.txt ubicado en el directorio juan, que est\u225? dentro del directorio home, que est\u225? dentro del directorio ra\u237?z, es /home/juan/texto.txt.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Una {\b referencia relativa}, por otro lado, es una forma de mencionar a un archivo que depende de d\u243?nde est\u225? situado el proceso o usuario que quiere utilizarlo. Todo proceso, al ejecutarse, tiene una noci\u243?n de lugar del file system donde se encuentra.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Por ejemplo, el shell de cada usuario funciona dentro del directorio {\b home} o espacio privado del usuario.\line \par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \u201?ste es el {\b directorio actual} del proceso shell.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Puede ser cambiado utilizando el comando cd.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El comando pwd dice cu\u225?l es el directorio actual de un shell.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La referencia relativa de un archivo indica cu\u225?l es el camino que hay que recorrer para encontrarlo {\b desde el directorio actual} del proceso.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplo}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para el mismo archivo del ejemplo anterior, si el directorio activo del shell es /home/juan, la referencia relativa ser\u225? simplemente texto.txt.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La referencia es relativa porque, si el proceso cambia de directorio activo, ya no servir\u225? como referencia para ese mismo archivo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Elementos del sistema de archivos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Particiones\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los medios de almacenamiento se dividen en {\b particiones} o zonas de almacenamiento. Cada partici\u243?n puede contener un sistema de archivos, con sus archivos y metadatos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Bloques\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los {\b bloques} son las unidades m\u237?nimas de almacenamiento que ofrecen los diferentes dispositivos, como los discos. Un {\b bloque} es como un contenedor de datos que se asigna a un archivo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los archivos quedan almacenados, en los discos y en otros medios, como una sucesi\u243?n de bloques de datos. El file system tiene la responsabilidad de mantener la lista de referencias a esos bloques, para poder manipular los archivos como un todo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Inodos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los {\b nodos \u237?ndice} o {\b inodos} son estructuras de datos que describen, cada una, un archivo. Los inodos contienen los principales metadatos de cada archivo, excepto el nombre.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En los sistemas de archivos del tipo de Unix, los nombres y los inodos de los archivos est\u225?n separados. Como consecuencia, un archivo puede tener m\u225?s de un nombre.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Superblock\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El {\b superblock} grabado en una partici\u243?n es una estructura de datos compleja donde se mantienen los datos del sistema de archivos. El superblock contiene una lista de bloques libres y una lista de inodos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Inodos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Cada {\b inodo} describe a un archivo de datos en un file system. El inodo contiene metadatos como:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El tama\u241?o en bytes del archivo\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La identidad del usuario due\u241?o del archivo y del grupo al cual pertenece el archivo\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El tipo de archivo\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Puede tratarse de un archivo regular (de datos) o de un directorio\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Puede ser un pseudoarchivo, o dispositivo de caracteres o de bloques\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Puede ser un dispositivo de comunicaciones entre procesos, como un {\b socket}, un {\b pipe} o tuber\u237?a, u otros\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Los permisos o modo de acceso\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Los archivos en Unix pueden tener permisos de lectura, de escritura/modificaci\u243?n, o de ejecuci\u243?n\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Esos permisos se especifican en relaci\u243?n al due\u241?o del archivo, al grupo del archivo, o al resto de los usuarios\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La fecha y hora de creaci\u243?n, de \u250?ltima modificaci\u243?n y de \u250?ltimo acceso\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La cuenta de {\i links}, o cantidad de nombres que tiene el archivo\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Los n\u250?meros de bloque que almacenan los datos, o {\b punteros} a bloques\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Bloques de disco\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El SO ve los discos como un vector de bloques o espacios de tama\u241?o fijo. Cada bloque se identifica por su n\u250?mero de posici\u243?n en el vector, o {\b direcci\u243?n de bloque}. Esta direcci\u243?n es utilizada para todas las operaciones de lectura o escritura en el disco.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Cuando el SO necesita acceder a un bloque para escribir o leer sus contenidos, env\u237?a un mensaje al controlador del disco especificando su direcci\u243?n.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si la operaci\u243?n es de lectura, adem\u225?s indica una direcci\u243?n de memoria donde desea recibir los datos que el controlador del disco leer\u225?.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si la operaci\u243?n es de escritura, indica una direcci\u243?n de memoria donde est\u225?n los datos que desea escribir.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Cada vez que un proceso solicita la grabaci\u243?n de datos nuevos en un archivo, el file system entrega un bloque de su lista de bloques libres. Para agregar los datos al archivo, el file system quita la direcci\u243?n del bloque de la lista de libres, la a\u241?ade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Recorrer un archivo (para leerlo o para hacer cualquier clase de procesamiento de sus contenidos) implica acceder a todos sus bloques de disco, en el orden en que han sido almacenados esos contenidos. La informaci\u243?n para saber qu\u233? bloques componen un archivo, y en qu\u233? orden, est\u225? en el {\b inodo} del archivo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El inodo contiene entre sus metadatos una lista de las direcciones de todos los bloques que contienen la informaci\u243?n del archivo. Cada una de estas direcciones de bloques se llama un apuntador o {\b puntero} a bloque.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Como el inodo es una estructura de datos de tama\u241?o fijo, esta lista de punteros tendr\u225? un tama\u241?o m\u225?ximo. Como, adem\u225?s, los archivos tienen tama\u241?os muy diferentes, se impone un dise\u241?o cuidadoso de esta lista de bloques.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si se define en el inodo un espacio demasiado peque\u241?o para guardar la lista de punteros a bloques, cada inodo representar\u225? archivos con pocos bloques, y as\u237? el file system no podr\u225? contener archivos grandes.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si, al contrario, el espacio en el inodo reservado para guardar la lista es grande, se podr\u225?n almacenar archivos de muchos bloques; pero si la mayor\u237?a de los archivos del sistema fueran peque\u241?os, se estar\u237?a desperdiciando espacio en el superblock.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para administrar mejor el espacio en el superblock, y para mantener el inodo de un tama\u241?o razonable, esos punteros a bloques se dividen en tres clases: punteros {\b directos, indirectos y doble-indirectos}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Punteros directos}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los punteros {\b directos} son simplemente direcciones de bloques de datos. El file system cl\u225?sico de Unix tiene una cantidad fija de diez punteros directos en el inodo. Si un archivo tiene una cantidad de bytes igual o menor a diez bloques de disco, los punteros directos permiten recorrer el archivo completo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Punteros indirectos}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Si el archivo es m\u225?s grande, y los diez punteros directos no alcanzan para enumerar los bloques que lo componen, se utilizan {\b punteros indirectos}. Un puntero indirecto contiene la direcci\u243?n de un bloque {\b que a su vez contiene punteros directos}. Hay dos punteros indirectos en el inodo del file system Unix cl\u225?sico.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Punteros doble-indirectos}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Si tampoco son suficientes los punteros directos y los indirectos, el inodo del file system cl\u225?sico de Unix contiene un puntero {\b doble-indirecto}. Es un puntero a un bloque {\b que a su vez contiene punteros indirectos}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Esta estrategia de las tres clases de punteros permite tener un inodo de tama\u241?o reducido pero con la capacidad de direccionar una gran cantidad de bloques. As\u237?, el file system cl\u225?sico de Unix puede contener archivos de tama\u241?o considerablemente grande, y al mismo tiempo conservar el espacio en el superblock.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Preguntas}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio de almacenamiento, y que el tama\u241?o de un bloque de disco sea de 4 KiB. Propongamos las f\u243?rmulas necesarias para responder las siguientes preguntas.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 1.\tx360\tab \u191?Qu\u233? cantidad {\b cB} de bloques habr\u225? en el disco?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 2.\tx360\tab \u191?Con cu\u225?ntos bits {\b cb} representaremos cada direcci\u243?n de bloque? Dicho de otra manera, \u191?qu\u233? cantidad de bits ser\u225?n necesarios para un puntero a bloque?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 3.\tx360\tab \u191?Qu\u233? tama\u241?o m\u225?ximo de archivo se puede representar con tres punteros directos a bloque?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 4.\tx360\tab \u191?Cu\u225?ntos punteros a bloque {\b cp} caben en un bloque indirecto?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 5.\tx360\tab \u191?Y en un doble-indirecto ({\b cd})?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 6.\tx360\tab \u191?Qu\u233? tama\u241?o m\u225?ximo de archivo se puede representar con tres punteros directos a bloque y uno indirecto?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 7.\tx360\tab Si el inodo tiene 10 punteros directos, 2 indirectos y uno doble-indirecto, \u191?cu\u225?nto espacio ({\b tp}) ocupa la tabla de punteros dentro del inodo?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 8.\tx360\tab \u191?Cu\u225?l es el tama\u241?o m\u225?ximo {\b tm} de un archivo seg\u250?n esta configuraci\u243?n del inodo?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 9.\tx360\tab Si sabemos que el tama\u241?o promedio de un archivo de datos ser\u225? de 512 MiB, \u191?cu\u225?ntos archivos ({\b ca}) podr\u225? haber en el disco?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 10.\tx360\tab \u191?Cu\u225?ntos inodos ({\b ci}) deber\u225? haber en el superblock entonces?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 11.\tx360\tab \u191?Cu\u225?nto espacio ocupar\u225? la lista de inodos ({\b ti}) en el superblock?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 12.\tx360\tab \u191?Cu\u225?nto espacio ocupar\u225? la lista de bloques libres ({\b tl}) en el superblock?\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 13.\tx360\tab \u191?Cu\u225?nto espacio ocupar\u225? el superblock ({\b ts}) en el disco?\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Directorios\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Notemos que en ning\u250?n momento hemos mencionado el {\b nombre} de los archivos entre los metadatos. En el file system de Unix, el nombre de un archivo se encuentra en un archivo de datos, y no en el superblock. Otros sistemas de archivos adoptan otras estrategias.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 En Unix, un archivo especial, de tipo {\b directorio}, contiene una lista de entradas conteniendo {\b nombres de archivo} e {\b inodos} que los representan. Un directorio es simplemente un conjunto de bloques de datos, como los archivos regulares, pero juega un papel especial en el comportamiento del sistema de archivos y sus contenidos tienen un formato especial y fijo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 B\u250?squeda de un archivo en el file system\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Supongamos que un proceso necesita leer los bloques de datos del archivo /etc/group. Deber\u225? entregarle al file system el nombre de este archivo para que pueda localizarlo y devolverle esos datos.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Supongamos adem\u225?s que especifica el nombre mediante una referencia absoluta. El file system analizar\u225? la referencia absoluta recibida del proceso, descomponi\u233?ndola en sus partes componentes y us\u225?ndola como mapa para llegar al archivo, desde el directorio ra\u237?z.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Para encontrar el archivo, el filesystem lee el inodo 0, que corresponde al {\b directorio ra\u237?z}, y recoge de all\u237? los bloques de datos del directorio ra\u237?z.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Esos bloques de datos contienen nombres de otros archivos y directorios, junto al inodo que los representa. De aqu\u237? puede extraer el file system el n\u250?mero de inodo que representa al directorio /etc. Este inodo apunta a los bloques que contienen a ese directorio.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Como /etc es un directorio, contendr\u225? una tabla de nombres de archivo y n\u250?meros de inodos. Aqu\u237? podr\u225? encontrarse el n\u250?mero inodo que corresponde a /etc/group.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Finalmente, leyendo este inodo, el file system recorrer\u225? los punteros a bloques devolviendo el contenido del archivo /etc/group.\par}
 }
