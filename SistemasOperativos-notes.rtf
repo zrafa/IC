@@ -52,6 +52,7 @@
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Inodos\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Superblock\sa180\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Inodos\par}
+{\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab Metadatos\sa180\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Bloques de disco\par}
 {\pard \ql \f0 \sa0 \li720 \fi-360 \endash \tx360\tab Directorios\par}
 {\pard \ql \f0 \sa0 \li1080 \fi-360 \bullet \tx360\tab B\u250?squeda de un archivo en el file system\sa180\sa180\sa180\par}
@@ -276,7 +277,7 @@ Prioridades de ejecuci\u243?n de procesos
 {\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplo}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 La referencia absoluta para el archivo texto.txt ubicado en el directorio juan, que est\u225? dentro del directorio home, que est\u225? dentro del directorio ra\u237?z, es /home/juan/texto.txt.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Una {\b referencia relativa}, por otro lado, es una forma de mencionar a un archivo que depende de d\u243?nde est\u225? situado el proceso o usuario que quiere utilizarlo. Todo proceso, al ejecutarse, tiene una noci\u243?n de lugar del file system donde se encuentra.\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Por ejemplo, el shell de cada usuario funciona dentro del directorio {\b home} o espacio privado del usuario.\line \par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Por ejemplo, el shell de cada usuario funciona dentro del directorio {\b home} o espacio privado del usuario.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab \u201?ste es el {\b directorio actual} del proceso shell.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Puede ser cambiado utilizando el comando cd.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab El comando pwd dice cu\u225?l es el directorio actual de un shell.\sa180\par}
@@ -309,12 +310,41 @@ Prioridades de ejecuci\u243?n de procesos
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La fecha y hora de creaci\u243?n, de \u250?ltima modificaci\u243?n y de \u250?ltimo acceso\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab La cuenta de {\i links}, o cantidad de nombres que tiene el archivo\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Los n\u250?meros de bloque que almacenan los datos, o {\b punteros} a bloques\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Metadatos\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los metadatos de cada archivo, contenidos en su inodo, pueden ser consultados y modificados con comandos de usuario.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Ejemplo}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El comando ls -l muestra los nombres de los archivos contenidos en un directorio, y para cada archivo consulta el inodo correspondiente. De cada inodo extrae los metadatos del archivo, los que presenta en un listado.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El listado se compone de varios elementos por cada fila, separados por espacios.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 $ ls -l util\line
+total 60\line
+-rwxr-xr-x 1 oso oso   40 Apr 18 16:54 github\line
+-rw-r--r-- 1 oso oso 1337 May  4 12:11 howto.txt\line
+-rwxrwxr-x 1 oso oso  458 Feb  9 16:28 macro\line
+drwxr-xr-x 2 oso oso 4096 May 26 18:14 prueba\line
+-rwxr-xr-x 1 oso oso   30 Feb  9 16:28 server\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Tipo de archivo}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El primer elemento de cada fila contiene un car\u225?cter que indica el tipo del archivo, y los siguientes caracteres indican los permisos asignados al archivo. El tipo indicado por el {\b gui\u243?n} es {\b archivo regular}, y el indicado por la letra {\b d} es {\b directorio}. En el ejemplo, todos los archivos son regulares salvo {\b prueba}, que es un directorio. Otros tipos de archivo tienen otros caracteres indicadores.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Permisos}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Los permisos de cada archivo est\u225?n indicados por los nueve caracteres siguientes hasta el espacio. Para interpretarlos, se separan en tres grupos de tres caracteres. Los primeros tres caracteres indican los permisos que tiene el usuario {\b due\u241?o} del archivo; los siguientes tres, los permisos para el {\b grupo} al cual pertenece el archivo; y los \u250?ltimos tres, los permisos que tienen {\b otros usuarios}.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Cada grupo de permisos indica si se permite la {\b lectura}, {\b escritura}, o {\b ejecuci\u243?n} del archivo. Una letra {\b r} en el primer lugar del grupo indica que el archivo puede ser escrito. Una {\b w} en el segundo lugar, que puede ser escrito o modificado. Una {\b x} en el tercer lugar, que puede ser ejecutado. Cuando no existen estos permisos, aparece un car\u225?cter {\b gui\u243?n}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab As\u237?, el archivo github del ejemplo tiene permisos {\b rwxr-xr-x}, que se separan en permisos {\b rwx} para el due\u241?o (el due\u241?o puede leerlo, escribirlo o modificarlo, y ejecutarlo), {\b r-x} para el grupo (cualquier usuario del grupo puede leerlo y ejecutarlo), y lo mismo para el resto de los usuarios.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Por el contrario, el archivo howto.txt tiene permisos {\b rw-r--r--}, que se separan en permisos {\b rw-} para el due\u241?o (el due\u241?o puede leerlo, escribirlo o modificarlo, pero no ejecutarlo), {\b r--} para el grupo (cualquier usuario del grupo puede leerlo, pero no modificarlo ni ejecutarlo), y lo mismo para el resto de los usuarios.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Cuenta de links}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 La cuenta de links es la cantidad de {\b nombres} que tiene un archivo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Due\u241?o y grupo}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Las columnas tercera y cuarta indican el usuario y grupo de usuarios al cual pertenece el archivo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Tama\u241?o}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Aparece el tama\u241?o en bytes de los archivos regulares.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Fecha y hora}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Aparecen la fecha y hora de \u250?ltima modificaci\u243?n de cada archivo.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Nombre}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 El \u250?ltimo dato de cada l\u237?nea es el nombre del archivo.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs32 Bloques de disco\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El SO ve los discos como un vector de bloques o espacios de tama\u241?o fijo. Cada bloque se identifica por su n\u250?mero de posici\u243?n en el vector, o {\b direcci\u243?n de bloque}. Esta direcci\u243?n es utilizada para todas las operaciones de lectura o escritura en el disco.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Cuando el SO necesita acceder a un bloque para escribir o leer sus contenidos, env\u237?a un mensaje al controlador del disco especificando su direcci\u243?n.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si la operaci\u243?n es de lectura, adem\u225?s indica una direcci\u243?n de memoria donde desea recibir los datos que el controlador del disco leer\u225?.\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Si la operaci\u243?n es de escritura, indica una direcci\u243?n de memoria donde est\u225?n los datos que desea escribir.\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Cada vez que un proceso solicita la grabaci\u243?n de datos nuevos en un archivo, el file system entrega un bloque de su lista de bloques libres. Para agregar los datos al archivo, el file system quita la direcci\u243?n del bloque de la lista de libres, la a\u241?ade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Cada vez que un proceso solicita la grabaci\u243?n de datos nuevos en un archivo, el file system selecciona un bloque de su lista de bloques libres. Para agregar los datos al archivo, el file system quita la direcci\u243?n del bloque de la lista de libres, la a\u241?ade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Recorrer un archivo (para leerlo o para hacer cualquier clase de procesamiento de sus contenidos) implica acceder a todos sus bloques de disco, en el orden en que han sido almacenados esos contenidos. La informaci\u243?n para saber qu\u233? bloques componen un archivo, y en qu\u233? orden, est\u225? en el {\b inodo} del archivo.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 El inodo contiene entre sus metadatos una lista de las direcciones de todos los bloques que contienen la informaci\u243?n del archivo. Cada una de estas direcciones de bloques se llama un apuntador o {\b puntero} a bloque.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Como el inodo es una estructura de datos de tama\u241?o fijo, esta lista de punteros tendr\u225? un tama\u241?o m\u225?ximo. Como, adem\u225?s, los archivos tienen tama\u241?os muy diferentes, se impone un dise\u241?o cuidadoso de esta lista de bloques.\par}
@@ -351,6 +381,6 @@ Prioridades de ejecuci\u243?n de procesos
 {\pard \ql \f0 \sa180 \li0 \fi0 Supongamos adem\u225?s que especifica el nombre mediante una referencia absoluta. El file system analizar\u225? la referencia absoluta recibida del proceso, descomponi\u233?ndola en sus partes componentes y us\u225?ndola como mapa para llegar al archivo, desde el directorio ra\u237?z.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Para encontrar el archivo, el filesystem lee el inodo 0, que corresponde al {\b directorio ra\u237?z}, y recoge de all\u237? los bloques de datos del directorio ra\u237?z.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Esos bloques de datos contienen nombres de otros archivos y directorios, junto al inodo que los representa. De aqu\u237? puede extraer el file system el n\u250?mero de inodo que representa al directorio /etc. Este inodo apunta a los bloques que contienen a ese directorio.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Como /etc es un directorio, contendr\u225? una tabla de nombres de archivo y n\u250?meros de inodos. Aqu\u237? podr\u225? encontrarse el n\u250?mero inodo que corresponde a /etc/group.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Como /etc es un directorio, contendr\u225? una tabla de nombres de archivo y n\u250?meros de inodos. Aqu\u237? podr\u225? encontrarse el n\u250?mero de inodo que corresponde a /etc/group.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Finalmente, leyendo este inodo, el file system recorrer\u225? los punteros a bloques devolviendo el contenido del archivo /etc/group.\par}
 }

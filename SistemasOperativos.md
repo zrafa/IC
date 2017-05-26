@@ -409,7 +409,7 @@ La referencia absoluta para el archivo texto.txt ubicado en el directorio juan, 
 
 Una **referencia relativa**, por otro lado, es una forma de mencionar a un archivo que depende de dónde está situado el proceso o usuario que quiere utilizarlo. Todo proceso, al ejecutarse, tiene una noción de lugar del file system donde se encuentra. 
 
-- Por ejemplo, el shell de cada usuario funciona dentro del directorio **home** o espacio privado del usuario.  
+- Por ejemplo, el shell de cada usuario funciona dentro del directorio **home** o espacio privado del usuario. 
 - Éste es el **directorio actual** del proceso shell.
 - Puede ser cambiado utilizando el comando cd.
 - El comando pwd dice cuál es el directorio actual de un shell.
@@ -474,6 +474,60 @@ Cada **inodo** describe a un archivo de datos en un file system. El inodo contie
 
 
 
+###Metadatos
+Los metadatos de cada archivo, contenidos en su inodo, pueden ser consultados y modificados con comandos de usuario. 
+
+**Ejemplo**
+
+El comando ls -l muestra los nombres de los archivos contenidos en un directorio, y para cada archivo consulta el inodo correspondiente. De cada inodo extrae los metadatos del archivo, los que presenta en un listado.
+
+El listado se compone de varios elementos por cada fila, separados por espacios. 
+
+~~~~
+$ ls -l util
+total 60
+-rwxr-xr-x 1 oso oso   40 Apr 18 16:54 github
+-rw-r--r-- 1 oso oso 1337 May  4 12:11 howto.txt
+-rwxrwxr-x 1 oso oso  458 Feb  9 16:28 macro
+drwxr-xr-x 2 oso oso 4096 May 26 18:14 prueba
+-rwxr-xr-x 1 oso oso   30 Feb  9 16:28 server
+~~~~
+
+**Tipo de archivo**
+
+El primer elemento de cada fila contiene un carácter que indica el tipo del archivo, y los siguientes caracteres indican los permisos asignados al archivo. El tipo indicado por el **guión** es **archivo regular**, y el indicado por la letra **d** es **directorio**. En el ejemplo, todos los archivos son regulares salvo **prueba**, que es un directorio. Otros tipos de archivo tienen otros caracteres indicadores.
+
+**Permisos**
+
+Los permisos de cada archivo están indicados por los nueve caracteres siguientes hasta el espacio. Para interpretarlos, se separan en tres grupos de tres caracteres. Los primeros tres caracteres indican los permisos que tiene el usuario **dueño** del archivo; los siguientes tres, los permisos para el **grupo** al cual pertenece el archivo; y los últimos tres, los permisos que tienen **otros usuarios**.
+
+Cada grupo de permisos indica si se permite la **lectura**, **escritura**, o **ejecución** del archivo. Una letra **r** en el primer lugar del grupo indica que el archivo puede ser escrito. Una **w** en el segundo lugar, que puede ser escrito o modificado. Una **x** en el tercer lugar, que puede ser ejecutado. Cuando no existen estos permisos, aparece un carácter **guión**.
+
+- Así, el archivo github del ejemplo tiene permisos **rwxr-xr-x**, que se separan en permisos **rwx** para el dueño (el dueño puede leerlo, escribirlo o modificarlo, y ejecutarlo), **r-x** para el grupo (cualquier usuario del grupo puede leerlo y ejecutarlo), y lo mismo para el resto de los usuarios.
+- Por el contrario, el archivo howto.txt tiene permisos **rw-r--r--**, que se separan en permisos **rw-** para el dueño (el dueño puede leerlo, escribirlo o modificarlo, pero no ejecutarlo), **r--** para el grupo (cualquier usuario del grupo puede leerlo, pero no modificarlo ni ejecutarlo), y lo mismo para el resto de los usuarios.
+
+**Cuenta de links**
+
+La cuenta de links es la cantidad de **nombres** que tiene un archivo. 
+
+**Dueño y grupo**
+
+Las columnas tercera y cuarta indican el usuario y grupo de usuarios al cual pertenece el archivo.
+
+**Tamaño**
+
+Aparece el tamaño en bytes de los archivos regulares.
+
+**Fecha y hora**
+
+Aparecen la fecha y hora de última modificación de cada archivo.
+
+**Nombre**
+
+El último dato de cada línea es el nombre del archivo.
+
+
+
 ##Bloques de disco
 
 El SO ve los discos como un vector de bloques o espacios de tamaño fijo. Cada bloque se identifica por su número de posición en el vector, o **dirección de bloque**. Esta dirección es utilizada para todas las operaciones de lectura o escritura en el disco. 
@@ -482,7 +536,7 @@ El SO ve los discos como un vector de bloques o espacios de tamaño fijo. Cada b
 - Si la operación es de lectura, además indica una dirección de memoria donde desea recibir los datos que el controlador del disco leerá. 
 - Si la operación es de escritura, indica una dirección de memoria donde están los datos que desea escribir.
 
-Cada vez que un proceso solicita la grabación de datos nuevos en un archivo, el file system entrega un bloque de su lista de bloques libres. Para agregar los datos al archivo, el file system quita la dirección del bloque de la lista de libres, la añade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.
+Cada vez que un proceso solicita la grabación de datos nuevos en un archivo, el file system selecciona un bloque de su lista de bloques libres. Para agregar los datos al archivo, el file system quita la dirección del bloque de la lista de libres, la añade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.
 
 Recorrer un archivo (para leerlo o para hacer cualquier clase de procesamiento de sus contenidos) implica acceder a todos sus bloques de disco, en el orden en que han sido almacenados esos contenidos. La información para saber qué bloques componen un archivo, y en qué orden, está en el **inodo** del archivo. 
 
@@ -551,7 +605,7 @@ Para encontrar el archivo, el filesystem lee el inodo 0, que corresponde al **di
 Esos bloques de datos contienen nombres de otros archivos y directorios, junto al inodo que los representa. De aquí puede extraer el file system el número de inodo que representa al directorio /etc. Este inodo apunta a los bloques que contienen a ese directorio.
 
 
-Como /etc es un directorio, contendrá una tabla de nombres de archivo y números de inodos. Aquí podrá encontrarse el número inodo que corresponde a /etc/group.
+Como /etc es un directorio, contendrá una tabla de nombres de archivo y números de inodos. Aquí podrá encontrarse el número de inodo que corresponde a /etc/group.
 
 
 Finalmente, leyendo este inodo, el file system recorrerá los punteros a bloques devolviendo el contenido del archivo /etc/group.
