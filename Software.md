@@ -1,9 +1,4 @@
 
-Hola.
-
-Esta presentación utiliza audio sintético. 
-
-
 #El Software
 
 En esta parte de la unidad, **El Software**, nos interesa conocer el proceso de desarrollo de software, desde el punto de vista de la organización de computadoras. Explicaremos cómo se llega desde un programa, en un lenguaje de alto o bajo nivel, a obtener una sucesión de instrucciones de máquina para un procesador. 

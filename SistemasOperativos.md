@@ -345,19 +345,4 @@ En los sistemas operativos de la familia de Unix encontramos un rico conjunto de
 [Prioridades de ejecución de procesos](https://www.ibm.com/developerworks/ssa/linux/library/l-lpic1-v3-103-6)
 
 
-Este emulador de PC construido en Javascript nos permite practicar los comandos del shell dentro de una *máquina virtual* Linux y desde el navegador, sin necesidad de una instalación completa en nuestro equipo.
-
-* Para retroceder en el terminal
-  - Teclas Ctrl-Up, Ctrl-Down, Ctrl-PageUp y Ctrl-PageDown.
-* Para copiar datos a la máquina virtual
-  - Copiar el texto a la caja o **clipboard** a la derecha.
-  - En el shell de la máquina virtual escribir:
-        cat < /dev/clipboard > /tmp/archivo
-  - Ahora tenemos ese mismo texto en el archivo /tmp/archivo.
-* Para extraer datos de la máquina virtual
-  - Invertir el procedimiento anterior: 
-        cat mi_archivo > /dev/clipboard
-  - Seleccionar el texto en la caja **clipboard** y copiarlo a alguna otra aplicación en nuestro equipo, tal como un editor.
-
-
 

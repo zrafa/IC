@@ -13,9 +13,9 @@ if(/^<!--/ ... /-->/) {
 	next;
 }
 
-#if(/noshow/ ... /<\/aside/) {
-#	print "XXX $_";
-#}
+if(/noshow/ ... /<\/aside/) {
+	next;
+}
 
 if(/^<aside/ ... /<\/aside/) {
 	#print $k, $_; $k++;

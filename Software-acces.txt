@@ -1,7 +1,3 @@
-Hola.
-
-Esta presentación utiliza audio sintético.
-
 El Software
 ===========
 
