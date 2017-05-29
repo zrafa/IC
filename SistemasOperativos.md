@@ -355,14 +355,14 @@ La información que se guarda en medios de almacenamiento permanente, como los *
 Cualquier pieza de información que sea tratable mediante las computadoras puede ser almacenada y comunicada en forma de archivos.
 
 ###Sistema de archivos
-El componente del SO responsable de los servicios relacionados con archivos es el llamado **sistema de archivos** o **file system**.
+El componente del SO responsable de los servicios relacionados con archivos es el llamado **sistema de archivos** o **filesystem**.
 
-En general, el file system no se ocupa de cuál es el contenido de los archivos, o de qué sentido tienen los datos que contienen. Son las aplicaciones quienes tienen conocimiento de cómo interpretar y procesar los datos contenidos en los archivos.
+En general, el filesystem no se ocupa de cuál es el contenido de los archivos, o de qué sentido tienen los datos que contienen. Son las aplicaciones quienes tienen conocimiento de cómo interpretar y procesar los datos contenidos en los archivos.
 
-En cambio, el file system mantiene información **acerca** de los archivos: en qué bloques del disco están almacenados, qué tamaño tienen, cuándo fueron creados, modificados o accedidos por última vez, qué usuarios tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
+En cambio, el filesystem mantiene información **acerca** de los archivos: en qué bloques del disco están almacenados, qué tamaño tienen, cuándo fueron creados, modificados o accedidos por última vez, qué usuarios tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
 
 ###Metadatos
-Como todos estos datos son **acerca de los archivos**, y no tienen nada que ver con los datos **contenidos en** los archivos, son llamados **metadatos**. El sistema de archivos o file system mantiene tablas y listas de metadatos que describen los archivos contenidos en un medio de almacenamiento. 
+Como todos estos datos son **acerca de los archivos**, y no tienen nada que ver con los datos **contenidos en** los archivos, son llamados **metadatos**. El sistema de archivos o filesystem mantiene tablas y listas de metadatos que describen los archivos contenidos en un medio de almacenamiento. 
 
 ###Directorios
 Una característica compartida por la mayoría de los sistemas de archivos es la organización jerárquica de los archivos en estructura de **directorios**. Los directorios son contenedores de archivos (y de otros directorios). 
@@ -370,31 +370,28 @@ Una característica compartida por la mayoría de los sistemas de archivos es la
 Los directorios han sido llamados, en la metáfora de las interfaces visuales de usuario, **carpetas**.
 
 ###Varios significados
-En rigor de verdad, el nombre de sistema de archivos o file system designa varias cosas, relacionadas pero diferentes:
- 
-**Una pieza de software**
+En rigor de verdad, el nombre de sistema de archivos o filesystem designa varias cosas, relacionadas pero diferentes:
 
-El file system es el subsistema o conjunto de rutinas del kernel responsable de la organización de los archivos del sistema. Es un componente de software o módulo del kernel, y como tal, es **código** ejecutable.
+* **Una pieza de software**
 
-**Un conjunto de metadatos**
+    El filesystem es el subsistema o conjunto de rutinas del kernel responsable de la organización de los archivos del sistema. Es un componente de software o módulo del kernel, y como tal, es **código** ejecutable.
 
-Pero, por otro lado, también hablamos del file system como el conjunto de metadatos acerca de los archivos grabados en un medio de almacenamiento. El file system en este sentido, es la **información** que describe unos archivos y reside en el mismo medio de almacenamiento que ellos.
+* **Un conjunto de metadatos**
 
-**Un conjunto de características**
+    Pero, por otro lado, también hablamos del filesystem como el conjunto de metadatos acerca de los archivos grabados en un medio de almacenamiento. El filesystem en este sentido, es la **información** que describe unos archivos y reside en el mismo medio de almacenamiento que ellos.
 
-Además, cuando se diseña un sistema de archivos, se lo dota de ciertas capacidades distintivas. 
+* **Un conjunto de características**
 
+    Además, cuando se diseña un sistema de archivos, se lo dota de ciertas capacidades distintivas. Al referirnos al filesystem, podemos estar hablando del **conjunto de características ofrecidas** por alguna implementación en particular de un sistema de archivos. 
 
-- Algunos sistemas de archivos específicos tienen ciertas restricciones en la forma de los nombres de los archivos, y otros no. 
-- Algunos permiten la atribución de permisos o identidades de usuario a los archivos, y otros no. 
-- Algunos ofrecen servicios como encriptación, compresión, o versionado de archivos.
+    - Algunos sistemas de archivos específicos tienen ciertas restricciones en la forma de los nombres de los archivos, y otros no. 
+    - Algunos permiten la atribución de permisos o identidades de usuario a los archivos, y otros no. 
+    - Algunos ofrecen servicios como encriptación, compresión, o versionado de archivos.
 
-
-Al referirnos al file system, podemos estar hablando del **conjunto de características ofrecidas** por alguna implementación en particular de un sistema de archivos. 
 
 
 ##Árbol de directorios
-En los file systems de tipo Unix, la organización de los directorios es jerárquica y recuerda a un árbol con **raíz** y ramas. Algunos directorios cumplen una función especial en el sistema porque contienen archivos especiales, y por eso tienen nombres establecidos. 
+En los filesystems de tipo Unix, la organización de los directorios es jerárquica y recuerda a un árbol con **raíz** y ramas. Algunos directorios cumplen una función especial en el sistema porque contienen archivos especiales, y por eso tienen nombres establecidos. 
 
 - Por ejemplo, el directorio raíz, donde se origina toda la jerarquía de directorios, tiene el nombre especial "/". 
 - El directorio lib (abreviatura de **library** o biblioteca) contiene bibliotecas de software. 
@@ -407,7 +404,7 @@ Los nombres completos, o **referencias absolutas**, de los archivos y directorio
 
 La referencia absoluta para el archivo texto.txt ubicado en el directorio juan, que está dentro del directorio home, que está dentro del directorio raíz, es /home/juan/texto.txt. 
 
-Una **referencia relativa**, por otro lado, es una forma de mencionar a un archivo que depende de dónde está situado el proceso o usuario que quiere utilizarlo. Todo proceso, al ejecutarse, tiene una noción de lugar del file system donde se encuentra. 
+Una **referencia relativa**, por otro lado, es una forma de mencionar a un archivo que depende de dónde está situado el proceso o usuario que quiere utilizarlo. Todo proceso, al ejecutarse, tiene una noción de lugar del filesystem donde se encuentra. 
 
 - Por ejemplo, el shell de cada usuario funciona dentro del directorio **home** o espacio privado del usuario. 
 - Éste es el **directorio actual** del proceso shell.
@@ -432,7 +429,7 @@ Los medios de almacenamiento se dividen en **particiones** o zonas de almacenami
 ###Bloques
 Los **bloques** son las unidades mínimas de almacenamiento que ofrecen los diferentes dispositivos, como los discos. Un **bloque** es como un contenedor de datos que se asigna a un archivo. 
 
-Los archivos quedan almacenados, en los discos y en otros medios, como una sucesión de bloques de datos. El file system tiene la responsabilidad de mantener la lista de referencias a esos bloques, para poder manipular los archivos como un todo.
+Los archivos quedan almacenados, en los discos y en otros medios, como una sucesión de bloques de datos. El filesystem tiene la responsabilidad de mantener la lista de referencias a esos bloques, para poder manipular los archivos como un todo.
 
 ###Inodos
 Los **nodos índice** o **inodos** son estructuras de datos que describen, cada una, un archivo. Los inodos contienen los principales metadatos de cada archivo, excepto el nombre.
@@ -457,7 +454,7 @@ El **superblock** grabado en una partición es una estructura de datos compleja 
 
 ##Inodos
 
-Cada **inodo** describe a un archivo de datos en un file system. El inodo contiene metadatos como:
+Cada **inodo** describe a un archivo de datos en un filesystem. El inodo contiene metadatos como:
 
 - El tamaño en bytes del archivo
 - La identidad del usuario dueño del archivo y del grupo al cual pertenece el archivo
@@ -479,7 +476,7 @@ Los metadatos de cada archivo, contenidos en su inodo, pueden ser consultados y 
 
 **Ejemplo**
 
-El comando ls -l muestra los nombres de los archivos contenidos en un directorio, y para cada archivo consulta el inodo correspondiente. De cada inodo extrae los metadatos del archivo, los que presenta en un listado.
+El comando ls -l muestra los nombres de los archivos contenidos en un directorio. Para cada archivo, consulta el inodo correspondiente, extrae de él los metadatos del archivo, y los presenta en un listado.
 
 El listado se compone de varios elementos por cada fila, separados por espacios. 
 
@@ -536,7 +533,7 @@ El SO ve los discos como un vector de bloques o espacios de tamaño fijo. Cada b
 - Si la operación es de lectura, además indica una dirección de memoria donde desea recibir los datos que el controlador del disco leerá. 
 - Si la operación es de escritura, indica una dirección de memoria donde están los datos que desea escribir.
 
-Cada vez que un proceso solicita la grabación de datos nuevos en un archivo, el file system selecciona un bloque de su lista de bloques libres. Para agregar los datos al archivo, el file system quita la dirección del bloque de la lista de libres, la añade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.
+Cada vez que un proceso solicita la grabación de datos nuevos en un archivo, el filesystem selecciona un bloque de su lista de bloques libres. Para agregar los datos al archivo, el filesystem quita la dirección del bloque de la lista de libres, la añade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.
 
 Recorrer un archivo (para leerlo o para hacer cualquier clase de procesamiento de sus contenidos) implica acceder a todos sus bloques de disco, en el orden en que han sido almacenados esos contenidos. La información para saber qué bloques componen un archivo, y en qué orden, está en el **inodo** del archivo. 
 
@@ -544,29 +541,29 @@ El inodo contiene entre sus metadatos una lista de las direcciones de todos los 
 
 Como el inodo es una estructura de datos de tamaño fijo, esta lista de punteros tendrá un tamaño máximo. Como, además, los archivos tienen tamaños muy diferentes, se impone un diseño cuidadoso de esta lista de bloques. 
 
-- Si se define en el inodo un espacio demasiado pequeño para guardar la lista de punteros a bloques, cada inodo representará archivos con pocos bloques, y así el file system no podrá contener archivos grandes.
+- Si se define en el inodo un espacio demasiado pequeño para guardar la lista de punteros a bloques, cada inodo representará archivos con pocos bloques, y así el filesystem no podrá contener archivos grandes.
 - Si, al contrario, el espacio en el inodo reservado para guardar la lista es grande, se podrán almacenar archivos de muchos bloques; pero si la mayoría de los archivos del sistema fueran pequeños, se estaría desperdiciando espacio en el superblock.
 
 Para administrar mejor el espacio en el superblock, y para mantener el inodo de un tamaño razonable, esos punteros a bloques se dividen en tres clases: punteros **directos, indirectos y doble-indirectos**.
 
 **Punteros directos**
 
-Los punteros **directos** son simplemente direcciones de bloques de datos. El file system clásico de Unix tiene una cantidad fija de diez punteros directos en el inodo. Si un archivo tiene una cantidad de bytes igual o menor a diez bloques de disco, los punteros directos permiten recorrer el archivo completo.
+Los punteros **directos** son simplemente direcciones de bloques de datos. El filesystem clásico de Unix tiene una cantidad fija de diez punteros directos en el inodo. Si un archivo tiene una cantidad de bytes igual o menor a diez bloques de disco, los punteros directos permiten recorrer el archivo completo.
 
 
 
 
 **Punteros indirectos**
 
-Si el archivo es más grande, y los diez punteros directos no alcanzan para enumerar los bloques que lo componen, se utilizan **punteros indirectos**. Un puntero indirecto contiene la dirección de un bloque **que a su vez contiene punteros directos**. Hay dos punteros indirectos en el inodo del file system Unix clásico.
+Si el archivo es más grande, y los diez punteros directos no alcanzan para enumerar los bloques que lo componen, se utilizan **punteros indirectos**. Un puntero indirecto contiene la dirección de un bloque **que a su vez contiene punteros directos**. Hay dos punteros indirectos en el inodo del filesystem Unix clásico.
 
 
 
 **Punteros doble-indirectos**
 
-Si tampoco son suficientes los punteros directos y los indirectos, el inodo del file system clásico de Unix contiene un puntero **doble-indirecto**. Es un puntero a un bloque **que a su vez contiene punteros indirectos**.
+Si tampoco son suficientes los punteros directos y los indirectos, el inodo del filesystem clásico de Unix contiene un puntero **doble-indirecto**. Es un puntero a un bloque **que a su vez contiene punteros indirectos**.
 
-Esta estrategia de las tres clases de punteros permite tener un inodo de tamaño reducido pero con la capacidad de direccionar una gran cantidad de bloques. Así, el file system clásico de Unix puede contener archivos de tamaño considerablemente grande, y al mismo tiempo conservar el espacio en el superblock.
+Esta estrategia de las tres clases de punteros permite que los inodos sean de tamaño reducido pero tengan la capacidad de direccionar una gran cantidad de bloques. Así, el filesystem puede contener archivos de tamaño considerablemente grande y al mismo tiempo conservar el espacio en el superblock.
 
 **Preguntas**
 
@@ -589,26 +586,38 @@ Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio 
 
 
 ##Directorios
-Notemos que en ningún momento hemos mencionado el **nombre** de los archivos entre los metadatos. En el file system de Unix, el nombre de un archivo se encuentra en un archivo de datos, y no en el superblock. Otros sistemas de archivos adoptan otras estrategias. 
+Notemos que en ningún momento hemos mencionado el **nombre** de los archivos entre los metadatos. En el filesystem de Unix, los nombres de archivo no se encuentran en el superblock, sino en los directorios. Otros sistemas de archivos adoptan otras estrategias. 
 
-En Unix, un archivo especial, de tipo **directorio**, contiene una lista de entradas conteniendo **nombres de archivo** e **inodos** que los representan. Un directorio es simplemente un conjunto de bloques de datos, como los archivos regulares, pero juega un papel especial en el comportamiento del sistema de archivos y sus contenidos tienen un formato especial y fijo.
+En Unix, un directorio es simplemente un conjunto de bloques de datos, como los archivos regulares, pero juega un papel especial en el funcionamiento del sistema de archivos, y sus contenidos tienen un formato especial. Los archivos especiales de tipo directorio son archivos de datos que podemos pensar organizados como una tabla de dos columnas. Contienen una lista de entradas con **nombres de archivo** (o **links**) y números de **inodos** que los representan. 
 
+###Links o nombres de archivo
 
-###Búsqueda de un archivo en el file system
-Supongamos que un proceso necesita leer los bloques de datos del archivo /etc/group. Deberá entregarle al file system el nombre de este archivo para que pueda localizarlo y devolverle esos datos. 
+Al separar el archivo (representado por el inodo), de su nombre **o link** (contenido en el directorio), el filesystem permite que un archivo pueda tener **más de un nombre**. 
 
-Supongamos además que especifica el nombre mediante una referencia absoluta. El file system analizará la referencia absoluta recibida del proceso, descomponiéndola en sus partes componentes y usándola como mapa para llegar al archivo, desde el directorio raíz.
+- En un mismo directorio puede haber dos entradas con nombres diferentes, que apunten al mismo inodo.
+- En dos directorios pueden existir sendas entradas con el mismo o diferente nombre, que apunten al mismo inodo.
 
-Para encontrar el archivo, el filesystem lee el inodo 0, que corresponde al **directorio raíz**, y recoge de allí los bloques de datos del directorio raíz. 
+En estos casos, el archivo podrá ser accedido por cualquiera de esos nombres. Ninguno de ellos es privilegiado o especial. 
 
-
-Esos bloques de datos contienen nombres de otros archivos y directorios, junto al inodo que los representa. De aquí puede extraer el file system el número de inodo que representa al directorio /etc. Este inodo apunta a los bloques que contienen a ese directorio.
-
-
-Como /etc es un directorio, contendrá una tabla de nombres de archivo y números de inodos. Aquí podrá encontrarse el número de inodo que corresponde a /etc/group.
+Si un proceso intenta borrar un archivo, en realidad estará borrando **uno de sus nombres**. La cuenta de links en el inodo se decrementará en 1. Sólo cuando la cuenta de links, o nombres, llegue a cero, se liberarán los bloques de datos del archivo y se devolverán a la lista de bloques libres en el superblock.
 
 
-Finalmente, leyendo este inodo, el file system recorrerá los punteros a bloques devolviendo el contenido del archivo /etc/group.
+
+###Búsqueda de un archivo en el filesystem
+Supongamos que un proceso necesita leer los bloques de datos del archivo /etc/group. Deberá entregarle al filesystem el nombre de este archivo para que pueda localizarlo y devolverle esos datos.  
+
+Supongamos además que especifica el nombre mediante una referencia absoluta.  El filesystem analizará la referencia absoluta que le ha entregado el proceso, descomponiéndola en sus partes componentes y usándola como mapa para llegar al archivo, desde el directorio raíz.
+
+* Para encontrar el archivo, el filesystem lee el inodo 0, que corresponde al **directorio raíz**, y recoge de allí los bloques de datos del directorio raíz. 
+
+
+* Esos bloques de datos contienen nombres de otros archivos y directorios, junto al número del inodo que los representa. De aquí puede extraer el filesystem el número de inodo que representa al directorio /etc. Leerá este inodo de la tabla de inodos, en el superblock, y recuperará del disco los bloques que contienen a ese directorio. Los números de estos bloques están en la tabla de punteros a bloques del inodo.
+
+
+* Como /etc es un directorio, contendrá una tabla de nombres de archivo y números de inodos. Aquí podrá encontrarse el número de inodo que corresponde a /etc/group.
+
+
+* Finalmente, leyendo este inodo, el filesystem recorrerá los punteros a bloques devolviendo el contenido del archivo /etc/group.
 
 
 
