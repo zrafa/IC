@@ -7,6 +7,96 @@ En un sistema multiprogramado, la memoria debe ser dividida de alguna forma entr
 </aside>
 </section>
 
+<section data-transition="slide-in slide-out">
+<h2>Mapa de memoria</h2>
+<img src="img/mm.png" class="plain stretch">
+<aside data-markdown class="notes">
+###Mapa de memoria
+Un proceso activo en el sistema se compone, como mínimo, de:
+
+- Las instrucciones para el procesador (**código** o **texto** del programa).
+- Los **datos** con los que operarán esas instrucciones.
+
+Para que el proceso pueda funcionar, tanto instrucciones como datos deben estar almacenados en posiciones de **memoria principal**. Solamente de allí pueden ser leídos por el procesador.  
+
+Además, los procesos requieren otros espacios de memoria para varios otros usos. 
+
+- Por ejemplo, al llamar a una función o rutina, es necesario guardar temporariamente la **dirección de retorno**, que es la dirección de la instrucción a la cual se debe volver, una vez terminada la rutina, a seguir ejecutando el programa. Estas direcciones se guardan en una zona denominada la **pila** o **stack** del proceso.
+- El proceso puede necesitar crear dinámicamente **estructuras de datos** que no existían al momento de carga del programa en memoria. Estos componentes también necesitan ser almacenados en memoria, típicamente en una zona denominada el **heap**.
+
+Todos estos componentes forman lo que a veces se llama **mapa de memoria** del proceso y requieren memoria física.
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out">
+<h2>Espacios de direcciones</h2>
+<ul>
+<li>Espacio físico de direcciones</li>
+<ul>
+	<li class="fragment">Cada posición de la memoria principal tiene su número de posición o <b>dirección física</b></li>
+</ul>
+<li>Espacio virtual de direcciones</li>
+<ul>
+	<li class="fragment">El conjunto de todas las direcciones referenciadas por un proceso es su <b>espacio virtual</b> de direcciones</li>
+</ul>
+</ul>
+<aside data-markdown class="notes">
+##Espacios de direcciones
+
+###Espacio físico de direcciones
+
+La memoria física del sistema se ve como un vector o secuencia ordenada de celdas o posiciones de almacenamiento. Cada posición tiene una **dirección** que es el número con el que se la puede acceder para leer o escribir sus contenidos. En un sistema de cómputo, el conjunto de direcciones de la memoria física es un **espacio físico de direcciones**.
+
+###Espacio virtual de direcciones
+
+Las instrucciones ejecutadas por el proceso referenciarán a los objetos del mapa de memoria mediante su dirección. El conjunto de todas las direcciones de estos objetos forma el **espacio virtual de direcciones** del proceso. 
+
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out">
+<h2>Traducción de direcciones</h2>
+<ul>
+<li>El programador trabaja en términos del espacio virtual</li>
+<li>Ambos espacios pueden no coincidir</li>
+<li>El sistema utiliza alguna forma de <b>traducción de direcciones</b></li>
+</ul>
+<img src="img/trad.svg" class="plain stretch">
+<aside data-markdown class="notes">
+##Traducción de direcciones
+
+En un sistema multiprogramado, los programas son cargados en diferentes posiciones del espacio físico de memoria. Esto hace que los espacios de direcciones **virtual y físico** de un proceso, en general, no coincidan. 
+
+Para que las referencias a direcciones **virtuales** conserven el sentido deseado por el programador, el sistema utiliza alguna forma de **traducción de direcciones**. Las referencias a direcciones generadas por el procesador pertenecerán al espacio virtual del proceso; pero el mecanismo de traducción de direcciones **mapeará** esas direcciones virtuales a las direcciones físicas asignadas. 
+
+Esta traducción tiene lugar, automáticamente, en el momento en que el procesador emite una dirección hacia el sistema de memoria, y está a cargo de una **circuitería especial del hardware**.
+
+- El sistema de memoria recibe únicamente las direcciones, **físicas**, traducidas, y "no sabe" que el procesador ha solicitado acceder a una dirección **virtual** diferente.
+- Por su parte, el procesador "no sabe" que la dirección física accedida es diferente de la virtual cuyo acceso ha solicitado.
+
+Si el sistema no ofreciera un mecanismo automático de traducción de direcciones, el programador necesitaría saber de antemano en qué dirección va a ser cargado su programa, y debería preparar las referencias a las direcciones de modo de que ambos espacios coincidieran. 
+
+**Ejemplo**
+
+El siguiente sencillo programa en ensamblador de MCBE hace referencias a algunas direcciones.
+
+~~~~
+00000        LD   DATO
+00001        ADD  CANT
+00010        ST   SUMA
+00011        HLT
+00100  DATO: 10
+00101  CANT: 1
+00110  SUMA: 0
+~~~~
+
+En este ejemplo, DATO, CANT y SUMA son las posiciones de memoria 4, 5 y 6. Si este programa se carga en la posición **cero** de la memoria física, los espacios físico y virtual coincidirán. Sin embargo, en un sistema multiprogramado, es posible que el proceso reciba otras posiciones de memoria física. 
+
+Por ejemplo, el programa podría haber sido cargado a partir de la dirección 20 de la memoria. En este caso, el sistema **deberá sumar 20 a todas las referencias a memoria generadas por el proceso** para mantener el funcionamiento deseado. **Sin** traducción de direcciones, la instrucción ST SUMA almacenará el resultado en la posición 4... ¡que pertenece a otro proceso!
+</aside>
+</section>
+
+
 <section>
 <h2>Asignación de memoria contigua</h2>
 <ul>
@@ -20,7 +110,7 @@ En un sistema multiprogramado, la memoria debe ser dividida de alguna forma entr
 <aside data-markdown class="notes">
 ###Asignación de memoria contigua
 
-Uno de los primeros esquemas de asignación de memoria es muy simple: se trata de asignar una región de memoria **contigua** (un conjunto de posiciones de memoria sin interrupciones) a cada proceso.
+Uno de los esquemas de asignación de memoria más simples consiste en asignar una región de memoria **contigua** (un conjunto de posiciones de memoria sin interrupciones) a cada proceso.
 
 El SO que utiliza este esquema de asignación de memoria establece **particiones** de la memoria, de un tamaño adecuado a los requerimientos de cada proceso. Cuando un proceso termina, su región de memoria se libera y puede ser asignada a un nuevo proceso.
 
@@ -49,7 +139,6 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 </aside>
 </section>
 
-
 <section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3" data-coursemod-shown="false">
 <h2>Fragmentación externa</h2>
 <img src="img/fragext-1.svg" class="plain stretch">
@@ -65,7 +154,7 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 </aside>
 </section>
 
-
+<!----------------------
 
 <section data-transition="slide-in slide-out">
 <h2>Segmentación</h2>
@@ -136,14 +225,11 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 </aside>
 </section>
 
-
-
-
-
+----------------->
 <section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
 <h2>Paginación</h2>
 <ul>
-	<li>División en trozos de igual tamaño</li>
+	<li>División en regiones o trozos de igual tamaño</li>
 	<ul>
 		<li>La memoria se divide en <b>marcos</b></li>
 		<li>Cada proceso se divide en <b>páginas</b></li>
@@ -153,6 +239,11 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 	</ul>
 </ul>
 <aside data-markdown class="notes">
+##Paginación
+El esquema de asignación de memoria conocido como **paginación** considera la memoria dividida en regiones del mismo tamaño (**marcos** de memoria), y el espacio virtual de los procesos dividido en regiones (**páginas**) de igual tamaño que los marcos. Las páginas de los procesos se asignan individualmente a los marcos, una página por vez.
+
+###Fragmentación interna
+Bajo este esquema no hay fragmentación externa, porque, si existe espacio libre, siempre será suficiente para alojar al menos una página. Sin embargo, en general, el tamaño del espacio virtual del proceso no es exactamente divisible por el tamaño de la página; por lo tanto, puede haber algún espacio desaprovechado en las páginas asignadas. Esta condición se llama **fragmentación interna**. 
 </aside>
 </section>
 
@@ -163,6 +254,14 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 <h2>Paginación</h2>
 <img src="img/mem-paginada.svg" class="plain stretch">
 <aside data-markdown class="notes">
+Al contrario que en un sistema de particiones, en un sistema con paginación de memoria los procesos reciben más de una región de memoria o marco. Los marcos asignados a un proceso pueden no ser contiguos. 
+
+La asignación por paginación tiene una propiedad muy interesante: no es necesario que todas las páginas de un proceso estén en memoria física para poder ejecutarse. Esto permite la creación de sistemas con **paginación por demanda**, donde las páginas se cargan en memoria a medida que se necesitan. 
+
+Con paginación por demanda:
+- Podemos ejecutar **más procesos** de los que realmente caben en memoria física.
+- Los procesos pueden ser **más grandes** de lo que permite el tamaño de la memoria física.
+
 </aside>
 </section>
 
@@ -170,8 +269,19 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 
 <section data-transition="fade-out slide-in" data-audio-src="audio/PRESENT/xx.mp3">
 <h2>Tabla de páginas de un proceso</h2>
-<img src="img/tabla-paginas.svg" class="plain stretch">
+<img src="img/paginacion-0.svg" class="plain stretch">
 <aside data-markdown class="notes">
+###Tabla de páginas
+Para poder mantener la correspondencia entre marcos de memoria y páginas de los procesos, el SO mantiene una **tabla de páginas** por cada proceso. 
+- La tabla de páginas de cada proceso dice, para cada página del proceso, qué marco le ha sido asignado. 
+</aside>
+</section>
+<section data-transition="fade-out fade-in" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Tabla de páginas de un proceso</h2>
+<img src="img/paginacion-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- La tabla de páginas  puede contener referencias a marcos compartidos con otros procesos. Esto hace posible la creación de regiones de memoria compartida entre procesos. 
+- En particular, los marcos de memoria ocupados permanentemente por el kernel pueden aparecer en el mapa de memoria de todos los procesos.
 </aside>
 </section>
 
@@ -188,8 +298,10 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 	</table>
 <div class="stretch"></div>
 <aside data-markdown class="notes">
+La tabla de páginas, además de los números de página y de marco asociados, mantiene datos sobre la condición de cada página. 
 </aside>
 </section>
+
 <section data-transition="fade-in slide-out">
 <h2>Tabla de páginas de un proceso</h2>
 	<table>
@@ -211,7 +323,7 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 <section data-transition="slide-in slide-out">
 <h2>Traducción de direcciones</h2>
 <ul>
-	<li>La MMU traduce la dirección lógica <b>P,D</b> (página, desplazamiento) a <b>marco(P)+D</b></li>
+	<li>La MMU traduce la dirección virtual <b>P,D</b> (página, desplazamiento) a <b>marco(P)+D</b></li>
 	<li><span style="color:blue;">010</span>0101 &rarr; <span style="color:blue;">100</span>0101</li>
 </ul>
 	<table>
@@ -225,6 +337,7 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 </aside>
 </section>
 
+<!-------------------------
 <section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
 <h2>Espacio virtual de un proceso</h2>
 <ul>
@@ -243,6 +356,8 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 <aside data-markdown class="notes">
 </aside>
 </section>
+
+--------------------------------->
 
 <section data-transition="slide-in slide-out">
 <h2>Memoria virtual</h2>
@@ -263,7 +378,7 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 </section>
 
 
-
+<!--------------------------
 <section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
 <h2>Memoria virtual</h2>
 <img src="img/paginacion-0.svg" class="plain stretch">
@@ -284,7 +399,7 @@ Esta clase de cargas extra en tareas administrativas, que quitan capacidad al si
 <aside data-markdown class="notes">
 </aside>
 </section>
-
+------------------------------------->
 
 <section data-transition="fade-out slide-in" data-audio-src="audio/PRESENT/xx.mp3">
 <h2>Swapping o intercambio</h2>

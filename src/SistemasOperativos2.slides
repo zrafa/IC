@@ -1,0 +1,1178 @@
+<!-- INCLUDE src/reveal.header -->
+
+<section data-background="#00CCFF" data-coursemod-shown="false" data-title="Sistemas Operativos">
+<h1>Sistemas Operativos</h1>
+<aside data-markdown class="notes">
+#Sistemas Operativos
+</aside>
+</section>
+
+<section data-transition="slide-in fade-out">
+<h2>Sistemas de cómputo</h2>
+<img src="img/sistcomp-0.png" class="stretch plain">
+<aside data-markdown class="notes">
+##Sistemas de cómputo
+Hemos visto la evolución de los sistemas de cómputo desde el punto de vista del hardware, y cómo llegaron a soportar varios usuarios corriendo varias aplicaciones, todo sobre un mismo equipamiento.
+</aside>
+</section>
+
+<section data-transition="slide-out fade-in">
+<h2>Sistemas de cómputo</h2>
+<img src="img/sistcomp-1.png" class="stretch plain">
+<aside data-markdown class="notes">
+Ahora veremos de qué manera evolucionó el software asociado a esos sistemas de cómputo para permitir que esos diferentes usuarios y esas diferentes aplicaciones pudieran compartir el hardware sin ocasionarse problemas unos a otros, y obteniendo el máximo rendimiento posible del equipamiento. 
+
+La pieza que falta en este complejo mecanismo es el **sistema operativo**, un software básico cuya función principal es la de ser intermediario entre los usuarios y el hardware del sistema de cómputo.
+</aside>
+</section>
+
+<section>
+<h2>Evolución del software de base</h2>
+<table>
+<tr class="fragment"><td><i>Open Shop</i></td><td>Carga manual de una aplicación</td></tr>
+<tr class="fragment"><td>Procesamiento <i>batch</i></td><td>Automatización de trabajos en lotes</td></tr>
+<tr class="fragment"><td>Multiprogramación</td><td>Programas que compiten por recursos</td></tr>
+<tr class="fragment"><td>Tiempo compartido</td><td>Sistema multiusuario interactivo</td></tr>
+<tr class="fragment"><td>Computación personal</td><td>Inicialmente sencillo pero en evolución</td></tr>
+</table>
+<aside data-markdown class="notes">
+##Evolución del software de base
+
+###Open Shop
+
+Las primeras computadoras estaban dedicadas a una única tarea, perteneciente a un único usuario. Podían ser utilizadas por diferentes usuarios, pero cada uno debía esperar su turno para reprogramarlas manualmente, lo cual era laborioso y se llevaba gran parte del tiempo por el cual esos usuarios pagaban.
+
+###Sistemas Batch
+
+Una vez que se popularizaron las máquinas de programa almacenado, se pudo minimizar el tiempo ocioso adoptando **esquemas de carga automática** de trabajos. 
+Un trabajo típico consistía en la compilación y ejecución de un programa, o la carga de un programa compilado más un lote de datos de entrada, y la impresión de un cierto resultado de salida del programa. 
+Estos trabajos estaban definidos por conjuntos o lotes de tarjetas perforadas, de ahí su nombre de trabajos **por lotes** o, en inglés, *batch*. 
+
+###Sistemas Multiprogramados
+
+Más adelante, conforme las tecnologías permitían ir aumentando la velocidad de procesamiento, se notó que los procesadores quedaban desaprovechados gran parte del tiempo debido a la inevitable **actividad de entrada/salida**. Así se idearon sistemas que optimizaban la utilización de la CPU, al poderse cargar más de un programa en la memoria y poder conmutar el uso del procesador entre ellos. Éstos fueron los primeros **sistemas multiprogramados**.
+
+###Sistemas de Tiempo Compartido
+
+Una vez que llegó la posibilidad de tener varios programas coexistiendo simultáneamente en la memoria, se buscó que la conmutación del uso del procesador entre ellos fuera tan rápida, que pareciera que cada programa funcionaba sin interrupciones. Aunque el sistema era de **tiempo compartido**, el usuario utilizaba la computadora como si estuviera dedicada exclusivamente a correr su programa. Así los sistemas multiprogramados se volvieron **interactivos**.
+
+###Computación personal
+Todas éstas fueron innovaciones de software, y fueron estableciendo principios y técnicas que serían adoptadas en lo sucesivo. Con la llegada de la computación personal, los sistemas de cómputo eran de capacidades modestas. Los **sistemas operativos** que permitían la ejecución de aplicaciones de los usuarios en estos sistemas de cómputo comenzaron pudiendo correr una sola aplicación por vez y de un solo usuario; es decir, se trataba de sistemas **monotarea** y **monousuario**. 
+
+Sin embargo, con la industria de las computadoras personales y la del software para computadoras personales traccionándose una a la otra, aparecieron sistemas operativos **multiusuario** y **multitarea**, sumamente complejos, que se convirtieron en un nuevo terreno para ensayar y mejorar las tecnologías de software y hardware.
+</aside>
+</section>
+
+<section data-background="#3c53b5" class="preguntas" data-coursemod-shown="false">
+<h2>Preguntas</h2>
+<ul>
+<li>¿Cuáles son los cinco momentos evolutivos del software de base que reconocemos?</li>
+<li>¿A qué se llama un trabajo <b>batch</b> o lote de trabajo? ¿Qué es un <b>archivo batch</b> en el mundo de la computación personal?</li>
+<li>¿Cuál fue la necesidad que impulsó la creación de sistemas <b>batch</b>?</li>
+<li>¿Cuál fue la necesidad que impulsó la creación de sistemas multiprogramados?</li>
+<li>¿Cuál fue la necesidad que impulsó la creación de sistemas de tiempo compartido?</li>
+</ul>
+<aside data-markdown class="notes">
+###Preguntas
+- ¿Cuáles son los cinco momentos evolutivos del software de base que reconocemos?
+- ¿A qué se llama un **trabajo batch** o lote de trabajo? ¿Qué es un **archivo batch** en el mundo de la computación personal?
+- ¿Cuál fue la necesidad que impulsó la creación de sistemas *batch*?
+- ¿Cuál fue la necesidad que impulsó la creación de sistemas multiprogramados?
+- ¿Cuál fue la necesidad que impulsó la creación de sistemas de tiempo compartido?
+</aside>
+</section>
+
+<section>
+<h2>Componentes del SO</h2>
+<ul>
+	<li><b>Kernel</b> o <b>núcleo</b></li>
+	<li>Programas utilitarios o <b>software de sistema</b></li>
+	<li><b>Shell</b>, interfaz de usuario o procesador de comandos</li>
+	<li>Sistemas multipropósito y sistemas empotrados o embebidos</li>
+</ul>
+<img src="img/shell.png" class="stretch plain">
+<aside data-markdown class="notes">
+##Componentes del SO
+Los modernos sistemas operativos tienen varios componentes bien diferenciados. 
+Los sistemas operativos **de propósito general** normalmente se presentan en una **distribución** que contiene e integra al menos tres componentes.
+
+- **Kernel** 
+
+    El componente que constituye el sistema operativo propiamente dicho es el llamado **núcleo** o **kernel**. 
+
+- **Software de sistema**
+
+    Junto al kernel es habitual encontrar un conjunto de **programas utilitarios o software de sistema**, que no es parte del sistema operativo, estrictamente hablando, pero que en general es indispensable para la administración y mantenimiento del sistema. 
+
+- **Interfaz de usuario** 
+
+    También se encuentra junto a este software del sistema alguna forma de **interfaz de usuario**, que puede ser gráfica o de caracteres. Esta interfaz de usuario se llama en general **shell**, especialmente cuando la interfaz es un procesador de comandos, basado en caracteres, y los comandos se tipean.
+
+###Sistemas empotrados o embebidos
+
+Hay algunas excepciones a esta estructura de componentes, por ejemplo, en los sistemas operativos **empotrados** o **embebidos** (*embedded systems*), que están ligados a un dispositivo especial y muy específico, como es el caso de algunos robots, instrumental médico, routers, electrodomésticos avanzados, etc.
+ 
+Estos sistemas operativos constan de un kernel que tiene la misión de hacer funcionar cierto hardware especial, pero no necesariamente incluyen una interfaz de usuario (porque el usuario no necesita en realidad comunicarse directamente con ellos) o no incluyen software de sistema porque sus usuarios no son quienes se encargan de su mantenimiento.
+</aside>
+</section>
+
+
+<section>
+<h2>Software involucrado</h2>
+<div class="double">
+<div>
+<ul>	
+	<li>Interfaces de usuario</li>
+	<ul>
+		<li><b>Shell</b> o procesador de comandos</li>
+		<li>Opcionalmente, entorno gráfico</li>
+	</ul>
+	<li>Programas de administración</li>
+	<li>Editores, navegador de archivos</li>
+	<li>Monitores de sistema, registros de eventos</li>
+</ul>
+</div>
+<div>
+<ul>
+	<li>Programas de comunicaciones</li>
+	<ul>
+		<li>Navegador, transferencia de archivos, mail, mensajería</li>
+	</ul>
+	<li>Soporte de programación</li>
+	<ul>
+		<li>Compiladores, intérpretes, bibliotecas</li>
+	</ul>
+</ul>
+</div>
+<aside data-markdown class="notes">
+##Aplicaciones
+
+Un típico sistema operativo multipropósito, actual, debe dar soporte entonces a la actividad de una gran variedad de aplicaciones. No solamente a la interfaz de usuario o procesador de comandos, más el software de sistema incluido, sino también a toda la gama de aplicaciones que desee ejecutar el usuario, como programas de comunicaciones (navegadores, programas de transferencia de archivos, de mensajería); aplicaciones de desarrollo de programas (compiladores, intérpretes de diferentes lenguajes).
+</aside>
+</section>
+
+<section>
+<h2>Kernel o núcleo</h2>
+<ul>
+	<li>Componente fundamental del sistema operativo</li>
+	<li>Conjunto de rutinas residentes en memoria</li>
+	<li>Controla los <b>recursos</b></li>
+<ul>
+	<li>El <b>hardware</b> y los <b>recursos lógicos</b></li>
+</ul>
+	<li>Ofrece los servicios a los <b>procesos</b> mediante <b>llamadas al sistema o system calls</b></li>
+	<li>Corre en <b>modo privilegiado</b> del procesador</li>
+</ul>
+<aside data-markdown class="notes">
+##Kernel
+El **kernel** o núcleo es esencialmente un conjunto de rutinas que permanecen siempre residentes en memoria mientras la computadora está operando. Estas rutinas intervienen en todas las acciones que tengan que ver con la operación del hardware. 
+
+###Recursos
+Los **recursos físicos** del sistema son todos los elementos de hardware que pueden ser de utilidad para el software, como la CPU, la memoria, los discos, los dispositivos de entrada/salida, etc. El kernel funciona no solamente como un mecanismo de administración y control del hardware o conjunto de recursos físicos, sino también de ciertos recursos del sistema que son **lógicos**, como los archivos. 
+
+
+###Procesos
+El kernel tiene la capacidad de poner en ejecución a los programas que se encuentran almacenados en el sistema. Cuando un programa está en ejecución, lo llamamos un **proceso**. El sistema operativo controla la creación, ejecución y finalización de los procesos.
+
+###Llamadas al sistema o system calls
+El kernel ofrece su capacidad de control de todos los recursos a los procesos o programas en ejecución, quienes le solicitan determinadas operaciones sobre esos recursos. Por ejemplo, un proceso que necesita utilizar un dispositivo de entrada/salida, o un recurso lógico como un archivo, hace una **petición de servicio, llamada al sistema, o system call**, solicitando un servicio al sistema operativo. El servicio puede tratarse de una operación de lectura, escritura, creación, borrado, etc. El sistema operativo centraliza y coordina estas peticiones de forma que los procesos no interfieran entre sí en el uso de los recursos.
+
+###Modo dual de operación
+Si los procesos de usuario pudieran utilizar directamente los recursos en cualquier momento y sin coordinación, los resultados podrían ser desastrosos. Por ejemplo, si dos o más programas quisieran usar la impresora al mismo tiempo, en el papel impreso se vería una mezcla de las salidas de los programas que no serviría a ninguno de ellos.
+
+Como el sistema operativo debe coordinar el acceso de los diferentes procesos a esos recursos, resulta necesario que cuente con alguna forma de imponer conductas y límites a esos usuarios y programas, para evitar que alguno de ellos tome control del sistema en perjuicio de los demás. Para garantizarle este poder por sobre los usuarios, el sistema operativo requiere apoyo del hardware: su código se ejecuta en un modo especial de operación del hardware, el **modo privilegiado** del procesador.
+
+Los modernos procesadores funcionan en lo que llamamos **modo dual** de ejecución, donde el ISA se divide en dos grupos de instrucciones. 
+
+- Ciertas instrucciones que controlan el modo de operación de la CPU, el acceso a memoria, o a las unidades de Entrada/Salida, pertenecen al grupo de instrucciones del **modo privilegiado**. 
+- Un programa de usuario que se está ejecutando funciona en modo **no privilegiado**, donde tiene acceso a la mayoría de las instrucciones del ISA, pero no a las instrucciones del modo privilegiado. 
+</aside>
+</section>
+
+<section data-transition="slide-in fade-out">
+<h2>Llamadas al sistema</h2>
+<img src="img/modos-0.png" class="stretch plain">
+<aside data-markdown class="notes">
+##Llamadas al sistema
+El procesador ejecutará instrucciones del programa en ejecución en modo no privilegiado hasta que éste necesite un servicio del sistema operativo, tal como el acceso a un recurso físico o lógico.
+</aside>
+</section>
+
+
+<section data-transition="fade-in fade-out">
+<h2>Llamadas al sistema</h2>
+<img src="img/modos-1.png" class="stretch plain">
+<aside data-markdown class="notes">
+Para requerir este servicio, el proceso ejecuta una instrucción de **llamada al sistema** o **system call**, que es la única instrucción del conjunto no privilegiado que permite a la CPU conmutar al modo privilegiado.
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out">
+<h2>Llamadas al sistema</h2>
+<img src="img/modos-2.png" class="stretch plain">
+<aside data-markdown class="notes">
+La llamada al sistema conmuta el modo de la CPU a modo privilegiado **y además** fuerza el salto a una cierta dirección fija de memoria donde existe código del kernel. En esa dirección de memoria existe una rutina de atención de llamadas al sistema, que determina, por el contenido de los registros de la CPU, qué es lo que está solicitando el proceso. 
+
+Con estos datos, esa rutina de atención de llamadas al sistema dirigirá el pedido al subsistema del kernel correspondiente, ejecutando siempre en modo privilegiado, y por lo tanto, con completo acceso a los recursos.
+</aside>
+</section>
+
+<section data-transition="fade-in slide-out">
+<h2>Llamadas al sistema</h2>
+<img src="img/modos-3.png" class="stretch plain">
+<aside data-markdown class="notes">
+El subsistema que corresponda hará las verificaciones necesarias para cumplir el servicio: 
+
+* El usuario dueño del proceso, ¿tiene los permisos necesarios?
+* El recurso, ¿está disponible o está siendo usado por otro proceso?
+* Los argumentos proporcionados por el proceso, ¿son razonables para el servicio que se pide?, etc.
+
+Si se cumplen todos los requisitos, se ejecutará el servicio pedido y luego se volverá a modo no privilegiado, a continuar con la ejecución del proceso.  
+</aside>
+</section>
+
+<section data-transition="slide-in fade-out">
+<h2>Aplicaciones</h2>
+<img src="img/so-0.png" class="stretch plain">
+<aside data-markdown class="notes">
+##Ejecución de aplicaciones
+Al ejecutar procesos de usuario o de sistema se pone en juego una jerarquía de piezas de software que ocupa varios niveles. 
+
+Normalmente, cualquier aplicación que funcione en el sistema, ya sean las del sistema o las generadas por el usuario, competirá con las demás por los recursos en igualdad de condiciones.
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out">
+<h2>Bibliotecas</h2>
+<img src="img/so-1.png" class="stretch plain">
+<aside data-markdown class="notes">
+Todas las aplicaciones, en algún momento, requieren funciones que ya están preparadas para su uso y almacenadas en **bibliotecas** especializadas en algún área.
+
+Algunas aplicaciones pueden requerir funciones matemáticas; otras, de gráficos; algunas, de comunicaciones. Todas ellas requerirán, sin duda, funciones de entrada/salida. Cada grupo de estas funciones está encapsulado en una o varias bibliotecas que forman parte del sistema. 
+
+La **vinculación** de los programas de usuario con las bibliotecas puede hacerse al tiempo de compilación o, cuando las bibliotecas son **de carga dinámica**, al tiempo de ejecución.
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out">
+<h2>Kernel</h2>
+<img src="img/so-2.png" class="stretch plain">
+<aside data-markdown class="notes">
+Al ejecutarse los procesos, normalmente las bibliotecas necesitan recurrir a servicios del kernel para completar su funcionamiento. Los diferentes subsistemas del kernel se ocupan de cada clase de servicios y de manejar diferentes clases de recursos. 
+
+Por ejemplo:
+
+- Si un proceso necesita solicitar más memoria durante la ejecución, la pedirá al subsistema de **gestión de memoria**. 
+- Cada vez que un proceso escriba datos en un archivo, estará comunicándose,  a través de una biblioteca, con el subsistema de **gestión de archivos**.
+- Si un proceso necesita enviar o recibir datos a través de la red, el kernel pondrá en funcionamiento el **driver** de la interfaz de red, la pieza de software que sabe comunicarse con ese hardware.
+</aside>
+</section>
+<section data-transition="fade-in slide-out">
+<h2>Llamadas al sistema</h2>
+<img src="img/so-3.png" class="stretch plain">
+<aside data-markdown class="notes">
+La comunicación entre los procesos de usuario y sus bibliotecas, por un lado, y el kernel y sus subsistemas, por otro, se produce cuando ocurre una llamada al sistema o system call. Es en este momento cuando se cruza el límite entre modo usuario y modo privilegiado, o espacio de usuario y espacio del kernel.
+</aside>
+</section>
+
+<section data-transition="slide-in fade-out">
+<h2>Cronología</h2>
+<img src="img/so-crono-0.png" class="stretch plain">
+<aside data-markdown class="notes">
+##Una cronología de los SO
+Entre la década de 1960 y principios del siglo XXI surgieron gran cantidad de innovaciones tecnológicas en el área de sistemas operativos. Muchas de ellas han tenido éxito más allá de los fines experimentales y han sido adoptadas por sistemas operativos con gran cantidad de usuarios. Diferentes sistemas operativos han influido en el diseño de otros posteriores, creándose así líneas genealógicas de sistemas operativos.
+
+Es interesante seguir el rastro de lo que ocurrió con algunos sistemas importantes a lo largo del tiempo, y ver cómo han ido reconvirtiéndose unos sistemas en otros. 
+</aside>
+</section>
+<section data-transition="fade-in fade-out">
+<h2>Cronología</h2>
+<img src="img/so-crono-1.png" class="stretch plain">
+<aside data-markdown class="notes">
+- Por ejemplo, el sistema de archivos diseñado para el sistema operativo CP/M de la empresa Digital, en los años 70, fue adaptado para el MS-DOS de Microsoft, cuya evolución final fue **Windows**. 
+
+    Los diseñadores de Windows NT fueron los mismos que construyeron el sistema operativo VMS de los equipos VAX, también de Digital, y aportaron su experiencia. De hecho, muchas características de la gestión de procesos y de entrada/salida de ambos sistemas son idénticas.
+</aside>
+</section>
+<section data-transition="fade-in fade-out">
+<h2>Cronología</h2>
+<img src="img/so-crono-2.png" class="stretch plain">
+<aside data-markdown class="notes">
+- Otra importante línea genealógica es la que relaciona el antiguo Multics, por un lado, con **Unix** y con Linux; y más recientemente, con el sistema para plataformas móviles Android. 
+
+    Unix fue el primer sistema operativo escrito casi totalmente en un lenguaje de alto nivel, el **C**, lo cual permitió portarlo a diferentes arquitecturas. Esto le dio un gran impulso y la comunidad científica lo adoptó como el modelo de referencia de los sistemas operativos de tiempo compartido.
+
+    En 1991 **Linus Torvalds** lanzó un proyecto de código abierto dedicado a la construcción de un sistema operativo compatible con Unix pero sin hacer uso de ningún código anteriormente escrito, lo que le permitió liberarlo bajo una [licencia libre](https://es.m.wikipedia.org/wiki/Software_libre). La consecuencia es que Linux, su sistema operativo, rápidamente atrajo la atención de centenares de desarrolladores de todo el mundo, que sumaron sus esfuerzos para crear un sistema que fuera completo y disponible libremente. 
+
+    Linux puede ser estudiado a fondo porque su código fuente no es secreto, como en el caso de los sistemas operativos propietarios. Esto lo hace ideal, entre otras cosas, para la enseñanza de las Ciencias de la Computación. Esta cualidad de sistema abierto permitió que otras compañías lo emplearan en muchos otros proyectos.
+</aside>
+</section>
+<section data-transition="fade-in slide-out">
+<h2>Cronología</h2>
+<img src="img/so-crono-3.png" class="stretch plain">
+<aside data-markdown class="notes">
+- Otra empresa de productos de computación de notable trayectoria, **Apple**, produjo un sistema operativo para su línea de computadoras personales Macintosh. Su sistema MacOS estaba influenciado por desarrollos de interfaces de usuario gráficas realizadas por otra compañía, Xerox, y también derivó en la creación de un sistema operativo para dispositivos móviles. 
+
+- Otros sistemas operativos han cumplido un ciclo con alguna clase de final, al no superar la etapa experimental, haberse transformado definitivamente en otros sistemas, desaparecer del mercado o quedar confinados a cierto nicho de aplicaciones. Algunos, por sus objetivos de diseño, son menos visibles, porque están destinados a un uso que no es masivo, como es el caso del **sistema de tiempo real** QNX. 
+</aside>
+</section>
+
+<section>
+<h2>Servicios del SO</h2>
+<ul>
+	<li>Múltiples usuarios y tareas</li>
+	<ul>
+		<li>Ejecución de procesos</li>
+		<li>Gestión de archivos</li>
+		<li>Operaciones de Entrada/Salida</li>
+		<li>Gestión de memoria</li>
+		<li>Protección</li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+##Servicios del SO
+Después de conocer estas cuestiones generales sobre los sistemas operativos, veremos con un poco más de detalle los diferentes **servicios** provistos por los principales subsistemas de un SO:
+
+- Ejecución de procesos
+- Gestión de archivos
+- Operaciones de Entrada/Salida
+- Gestión de memoria
+- Protección
+
+Si bien la discusión que sigue es suficientemente general para comprender básicamente el funcionamiento de cualquier sistema operativo moderno, nos referiremos sobre todo a la manera como se implementan estos subsistemas y servicios en la familia de sistemas **Unix**, que, como hemos dicho, es el modelo de referencia académico para la mayoría de la investigación y desarrollo de sistemas operativos.
+</aside>
+</section>
+
+<section data-background="#00CCFF" data-coursemod-shown="false">
+<h2>Ejecución de procesos</h2>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section>
+<h2>Ejecución de procesos</h2>
+<ul>
+	<li>Interfaz de usuario o <b>shell</b></li>
+	<li><b>Proceso</b></li>
+	<ul>
+		<li>Un programa en ejecución</i></li>
+		<li>Hijo de algún otro proceso</i></li>
+	</ul>
+	<li><b>Estados</b> de los procesos</li>
+	<li>Planificación, o <b>scheduling</b></li>
+	<li><b>Concurrencia</b> y <b>paralelismo</b></li>
+</ul>
+<aside data-markdown class="notes">
+##Ejecución de procesos
+
+
+###Creación de procesos
+¿Cómo se inicia la ejecución de un proceso? Todo proceso es **hijo** de algún otro proceso que lo crea. 
+
+Inicialmente, el SO crea una cantidad de procesos de sistema. Uno de ellos es un **shell** o interfaz de usuario. Este proceso sirve para que el usuario pueda comunicarse con el SO y solicitarle la ejecución de otros procesos.
+
+El *shell* puede ser **gráfico**, con una interfaz de ventanas; o **de texto**, con un **intérprete de comandos**. En cualquiera de los dos casos, de una forma u otra, usando el shell el usuario selecciona algún **programa**, que está residiendo en algún medio de almacenamiento como los discos, y pide al SO que lo ejecute. 
+
+En respuesta a la petición del usuario, el SO carga ese programa en memoria y pone a la CPU a **ejecutar el código** de ese programa. 
+
+Una vez que el programa está en ejecución, decimos que tenemos un nuevo **proceso** activo en el sistema. Este nuevo proceso es un **hijo** del shell, y a su vez puede crear nuevos procesos hijos si es necesario.
+
+###Estados de los procesos
+Durante su vida, el proceso atravesará diferentes **estados**. Un proceso puede no estar siempre en estado de ejecución (utilizando la CPU), sino que en un momento dado puede pasar a otro estado, quedando transitoriamente suspendido, para dejar que otro proceso utilice la CPU.
+
+###Scheduler o planificador
+El ciclo de cambios de estado de los procesos es administrado por un componente esencial del SO, el **scheduler** o **planificador**, que lleva el control de qué proceso debe ser el próximo en ejecutarse. El planificador seguirá una estrategia que permita obtener el máximo rendimiento posible de la CPU. 
+
+El scheduler o planificador mantiene una cola de procesos que están esperando por la CPU, y elige qué proceso pasar a estado de ejecutando. Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose cambia de estado hasta que vuelva a tocarle el uso de la CPU.
+
+- Cuando en el sistema coexisten varios procesos activos durante un espacio de tiempo, decimos que esos procesos son **concurrentes**. 
+- Cuando, además, puede haber más de uno en ejecución en el mismo instante, decimos que son **paralelos** o que su ejecución es paralela. 
+</aside>
+</section>
+
+
+
+
+<section data-transition="slide-in fade-out">
+<h2>Estados de los procesos</h2>
+<h3>Sistema multiprogramado</h3>
+<img src="img/procesos-0.png" class="plain stretch">
+<aside data-markdown class="notes">
+##Ciclo de estados 
+
+###Ciclo de estados en un sistema multiprogramado
+En un sistema **multiprogramado**, varios procesos pueden estar presentes en la memoria del sistema de cómputo. Durante su vida en el sistema, cada proceso atravesará un ciclo de estados.
+
+- Cuando recién se crea un proceso, su estado es **listo**, porque está preparado para recibir la CPU cuando el planificador o scheduler lo disponga.
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out">
+<h2>Estados de los procesos</h2>
+<h3>Sistema multiprogramado</h3>
+<img src="img/procesos-1.png" class="plain stretch">
+<aside data-markdown class="notes">
+- En algún momento recibirá la CPU y pasará a estado **ejecutando**. 
+- En algún momento, el proceso ejecutará la última de sus instrucciones y finalizará. Es posible que su trabajo sea realmente muy breve y que finalice pronto.
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out">
+<h2>Estados de los procesos</h2>
+<h3>Sistema multiprogramado</h3>
+<img src="img/procesos-2.png" class="plain stretch">
+<aside data-markdown class="notes">
+- Sin embargo, es mucho más probable que, durante su vida, el proceso requiera servicios del SO (por ejemplo, para operaciones de entrada/salida, como recibir datos por el teclado o por la red, imprimir resultados, etc.).
+
+- Durante estas operaciones de entrada/salida, el proceso no utilizará la CPU para realizar cómputos, sino que deberá esperar el final de este servicio del SO. Como la operación de entrada/salida potencialmente puede demorarse mucho, el sistema lo pone en estado de **espera** hasta que finalice la operación de entrada/salida. 
+
+- Mientras tanto, como la CPU ha quedado libre, el SO aprovecha la oportunidad de darle la CPU a algún otro proceso que esté en estado **listo**.
+
+- Cuando finalice una operación de entrada/salida que ha sido requerida por un proceso, este proceso volverá al estado de **listo** y esperará que algún otro proceso libere la CPU para volver a **ejecutando**.
+
+- Al volver desde el estado de **listo** al estado de **ejecutando**, el proceso retomará la ejecución desde la instrucción inmediatamente posterior a la que solicitó el servicio del SO.
+</aside>
+</section>
+<section data-transition="slide-out fade-in">
+<h2>Estados de los procesos</h2>
+<h3>Tiempo compartido o <i>time sharing</i></h3>
+<img src="img/procesos-3.png" class="plain stretch">
+<aside data-markdown class="notes">
+
+###Ciclo de estados en un sistema de tiempo compartido
+Los sistemas **de tiempo compartido** están diseñados para ser **interactivos**, y tienen la misión de hacer creer a cada usuario que el sistema de cómputo está dedicado exclusivamente a sus procesos. Sin embargo, normalmente existen muchísimos procesos activos simultáneamente en un SO de propósito general. 
+
+Para lograr esto el planificador de estos SO debe ser capaz de hacer los cambios de estado con mucha velocidad. El resultado es que los usuarios prácticamente no perciben estos cambios de estado. 
+
+En un sistema **de tiempo compartido**, el ciclo de estados de los procesos es similar al del sistema multiprogramado, pero con una importante diferencia.
+
+- El sistema de tiempo compartido tiene la capacidad de **desalojar** a un proceso de la CPU, sin necesidad de esperar a que el proceso solicite un servicio del SO.
+- Para esto, el SO define un **quantum** o tiempo máximo de ejecución (típicamente de algunos milisegundos), al cabo del cual el proceso obligatoriamente deberá liberar la CPU.
+- El SO, al entregar la CPU a un proceso que pasa de listo a ejecutando, pone en marcha un reloj para medir un quantum de tiempo que pasará ejecutando el proceso.
+- Al agotarse el quantum, el SO **interrumpirá** al proceso y le impondrá el estado de **listo**. Al quedar libre la CPU, el siguiente proceso planificado entrará en estado de ejecución.
+- Sin embargo, si un proceso decide solicitar un servicio del SO antes de que se agote su quantum, el ciclo continuará de la misma manera que en el sistema multiprogramado, pasando a estado **en espera** hasta que finalice el servicio.
+
+###Comparando multiprogramación y *time sharing*
+Notemos que los diagramas de estados del **sistema multiprogramado** y del sistema **de tiempo compartido** se diferencian sólo en una transición: la que lleva del estado de **ejecutando** al de **listo** en este último sistema.
+
+- En un sistema multiprogramado, un proceso sólo abandona la CPU cuando ejecuta una petición de servicio al SO. 
+- En un sistema de tiempo compartido, un proceso abandona la CPU cuando ejecuta una petición de servicio al SO **o bien** cuando se agota su quantum.
+</aside>
+</section>
+
+<section data-background="#3c53b5" class="preguntas" data-coursemod-shown="false">
+<h2>Preguntas</h2>
+<ul>
+<li>¿Por qué un proceso que ejecuta una solicitud de entrada/salida no pasa directamente al estado de <b>listo</b>?</li>
+<li>¿En qué radica la diferencia entre el scheduling de un sistema multiprogramado y el de un sistema de tiempo compartido?</li>
+<li>Si en un sistema multiprogramado se ejecuta un programa escrito de forma que <b>nunca</b> ejecuta una operación de entrada/salida, ¿liberará alguna vez la CPU durante su vida?</li>
+<li>¿Y en un sistema de tiempo compartido?</li>
+</ul>
+<aside data-markdown class="notes">
+###Preguntas
+- ¿Por qué un proceso que ejecuta una solicitud de entrada/salida no pasa directamente al estado de **listo**?
+- ¿En qué radica la diferencia entre el scheduling de un sistema multiprogramado y el de un sistema de tiempo compartido?
+- Si en un sistema multiprogramado se ejecuta un programa escrito de forma que **nunca** ejecuta una operación de entrada/salida, ¿liberará alguna vez la CPU durante su vida?
+- ¿Y en un sistema de tiempo compartido?
+</aside>
+</section>
+
+<section data-transition="convex-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<img src="img/estados-0.png" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<img src="img/estados-1.png" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<img src="img/estados-2.png" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<img src="img/estados-3.png" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<img src="img/estados-4.png" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<img src="img/estados-5.png" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<img src="img/estados-6.png" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<!--   TEST -->
+<!-------------------------------------
+<section data-transition="convex-in fade-out" data-coursemod-shown="false">
+<h2>Procesos concurrentes</h2>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top">
+<img src="img/estados-0.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-1.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-2.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-3.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-4.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-5.png" class="plain stretch">
+</div>
+<div style="display: inline-block; position:absolute;top:0;left:0;vertical-align: top" class="fragment current-visible">
+<img src="img/estados-6.png" class="plain stretch">
+</div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+------------------------------------->
+
+
+<!-- -------------- -->
+<section data-transition="convex-in convex-out">
+<h2>Procesos concurrentes</h2>
+<img src="img/estados-anim.gif" class="plain stretch">
+<aside data-markdown class="notes">
+###Concurrencia y paralelismo
+Si el sistema de tiempo compartido dispone de **una sola unidad de ejecución o CPU**, habrá solamente **un proceso ejecutándose** en cada momento dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo, alternándose en el uso de esa CPU. 
+
+- Cuando los procesos coexisten en el sistema simultáneamente pero se alternan en el uso de **una única CPU** decimos que esos procesos son **concurrentes**. Todos están activos en el sistema durante un período de tiempo dado; sin embargo, no hay dos procesos en estado de ejecución en el mismo momento, por lo cual no podemos decir que se ejecutan "simultáneamente".
+</aside>
+</section>
+
+<section data-transition="convex">
+<h2>Procesos paralelos</h2>
+<img src="img/estados-ts-anim.gif" class="plain stretch">
+<aside data-markdown class="notes">
+- Cuando el sistema de cómputo tiene **más de una CPU**, entonces podemos tener dos o más procesos en estado de ejecución **simultáneamente**, y entonces decimos que esos procesos son **paralelos**. Para tener paralelismo, además de concurrencia debemos tener **redundancia de hardware** (es decir, más de una CPU).
+</aside>
+</section>
+
+<!------------------------>
+<section data-transition="fade-out slide-in">
+<h2>Procesos</h2>
+<img src="img/top.png" class="stretch plain">
+<aside data-markdown class="notes">
+###Monitorización de procesos
+Los sistemas operativos suelen ofrecer herramientas para monitorizar o controlar los procesos del sistema. 
+
+###Comando top
+En Linux, el comando **`top`** ofrece una vista de los procesos, información acerca de los recursos que están ocupando, y algunas estadísticas globales del sistema.
+
+Es conveniente consultar el manual del comando (`man top`) para investigar a fondo los significados de cada uno de los datos presentados en pantalla.
+
+**Estadísticas globales**
+
+En el cuadro superior, **top** muestra:
+
+- El **tiempo** de funcionamiento desde el inicio del sistema
+- La cantidad de usuarios activos
+- La **carga promedio** (longitud de la cola de procesos listos) medida en tres intervalos de tiempo diferentes
+- La cantidad de procesos o tareas en actividad y en diferentes estados
+- Las estadísticas de uso de la CPU, contabilizando los tiempos:
+  - **De usuario**
+  - **De sistema**
+  - **De nice** o "de cortesía"
+  - **Ocioso**
+  - **De espera**
+  - Tiempos imputables a **interrupciones**
+- Estadísticas de memoria RAM total, usada y libre, y ocupada por buffers de entrada/salida
+- Estadísticas de espacio de intercambio o **swap** total, usado y libre.
+
+
+**Estadísticas de procesos**
+
+Para cada proceso, el programa top muestra:
+
+- El **PID** o identificación de proceso
+- El **usuario dueño** del proceso
+- La **prioridad** a la cual está ejecutando y el **valor de nice** o de cortesía
+- El tamaño del **espacio virtual** del proceso y los tamaños del **conjunto residente** y **regiones compartidas** 
+- El **porcentaje de CPU** recibido durante el ciclo de `top`
+- El **porcentaje de memoria del sistema** ocupada
+- El **tiempo** de ejecución que lleva el proceso desde su inicio
+- El **comando** u orden con la que fue creado el proceso.
+
+
+</aside>
+</section>
+<section data-transition="fade-in slide-out">
+<h2>Procesos</h2>
+<img src="img/top2.png" class="stretch plain">
+<aside data-markdown class="notes">
+El comando `top` tiene muchas opciones y comandos interactivos. Uno de ellos muestra los datos de sistema desglosados por CPU o unidad de ejecución.
+</aside>
+</section>
+
+
+<!------------------------>
+<section data-transition="convex-in convex-out" data-audio-src="audio/PRESENT/xx.mp3" data-coursemod-shown="false">
+<h2>Comando top</h2>
+<div class="asciicast"><!-- { "URL": "src/top.json" } --></div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out">
+<h2>Comandos de procesos</h2>
+<table>
+<tr><td>ps</td><td>-f, -a, -x</td><td>Lista procesos</td></tr>
+<tr><td>pstree</td><td></td><td>Jerarquía de procesos</td></tr>
+<tr><td>top</td><td></td><td>Monitor de procesos</td></tr>
+<tr><td>nice</td><td></td><td>Cambia prioridad</td></tr>
+<tr><td>kill</td><td></td><td>Envía una señal</td></tr>
+</table>
+<aside data-markdown class="notes">
+##Comandos de procesos
+
+En los sistemas operativos de la familia de Unix encontramos un rico conjunto de comandos de usuario destinados al control de procesos. Algunos interesantes son:
+
+- `ps` y `pstree` listan los procesos activos en el sistema
+- `nice` cambia la prioridad de un proceso
+- `kill` envía una señal a un proceso
+
+**Interesante**
+
+[Administración de procesos](https://www.ibm.com/developerworks/ssa/linux/library/l-lpic1-v3-103-5/)
+
+[Prioridades de ejecución de procesos](https://www.ibm.com/developerworks/ssa/linux/library/l-lpic1-v3-103-6)
+</aside>
+</section>
+<!------------------------>
+
+
+<section>
+<h3>Usando Linux</h3>
+<a href="https://bellard.org/jslinux/index.html">Un emulador de PC en Javascript, corriendo Linux</a>
+<aside data-markdown class="notes" noshow>
+Este emulador de PC construido en Javascript nos permite practicar los comandos del shell dentro de una *máquina virtual* Linux y desde el navegador, sin necesidad de una instalación completa en nuestro equipo.
+
+* Para retroceder en el terminal
+  - Teclas Ctrl-Up, Ctrl-Down, Ctrl-PageUp y Ctrl-PageDown.
+* Para copiar datos a la máquina virtual
+  - Copiar el texto a la caja o **clipboard** a la derecha.
+  - En el shell de la máquina virtual escribir:
+        cat < /dev/clipboard > /tmp/archivo
+  - Ahora tenemos ese mismo texto en el archivo /tmp/archivo.
+* Para extraer datos de la máquina virtual
+  - Invertir el procedimiento anterior: 
+        cat mi_archivo > /dev/clipboard
+  - Seleccionar el texto en la caja **clipboard** y copiarlo a alguna otra aplicación en nuestro equipo, tal como un editor.
+</aside>
+</section>
+
+
+<section data-background="#00CCFF" data-coursemod-shown="false">
+<h2>Gestión de archivos</h2>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section>
+<h2>Gestión de archivos</h2>
+<ul>
+	<li><b>Archivos</b></li>
+	<ul>
+		<li>Datos almacenados en un medio persistente</li>
+	</ul>
+	<li><b>Sistema de archivos</b> o <b>filesystem</b></li>
+	<ul>
+		<li>Un componente del kernel que organiza los archivos</li>
+	</ul>
+	<li><b>Metadatos</b></li>
+	<ul>
+		<li>Datos acerca de los datos (tamaño del archivo, fecha de creación, atributos, permisos)</li>
+	</ul>
+	<li>Estructura jerárquica de <b>directorios</b></li>
+</ul>
+<aside data-markdown class="notes">
+##Gestión de archivos
+
+###Archivos
+La información que se guarda en medios de almacenamiento permanente, como los **discos**, se organiza en **archivos**, que son secuencias de bytes. Estos bytes pueden estar codificando cualquier clase de información: texto, código fuente de programas, código ejecutable, multimedia, etc. 
+
+Cualquier pieza de información que sea tratable mediante las computadoras puede ser almacenada y comunicada en forma de archivos.
+
+###Sistema de archivos
+El componente del SO responsable de los servicios relacionados con archivos es el llamado **sistema de archivos** o **filesystem**.
+
+En general, el filesystem no se ocupa de cuál es el contenido de los archivos, o de qué sentido tienen los datos que contienen. Son las aplicaciones quienes tienen conocimiento de cómo interpretar y procesar los datos contenidos en los archivos.
+
+En cambio, el filesystem mantiene información **acerca** de los archivos: en qué bloques del disco están almacenados, qué tamaño tienen, cuándo fueron creados, modificados o accedidos por última vez, qué usuarios tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
+
+###Metadatos
+Como todos estos datos son **acerca de los archivos**, y no tienen nada que ver con los datos **contenidos en** los archivos, son llamados **metadatos**. El sistema de archivos o filesystem mantiene tablas y listas de metadatos que describen los archivos contenidos en un medio de almacenamiento. 
+
+###Directorios
+Una característica compartida por la mayoría de los sistemas de archivos es la organización jerárquica de los archivos en estructura de **directorios**. Los directorios son contenedores de archivos (y de otros directorios). 
+
+Los directorios han sido llamados, en la metáfora de las interfaces visuales de usuario, **carpetas**.
+
+###Varios significados
+En rigor de verdad, el nombre de sistema de archivos o filesystem designa varias cosas, relacionadas pero diferentes:
+
+* **Una pieza de software**
+
+    El filesystem es el subsistema o conjunto de rutinas del kernel responsable de la organización de los archivos del sistema. Es un componente de software o módulo del kernel, y como tal, es **código** ejecutable.
+
+* **Un conjunto de metadatos**
+
+    Pero, por otro lado, también hablamos del filesystem como el conjunto de metadatos acerca de los archivos grabados en un medio de almacenamiento. El filesystem en este sentido, es la **información** que describe unos archivos y reside en el mismo medio de almacenamiento que ellos.
+
+* **Un conjunto de características**
+
+    Además, cuando se diseña un sistema de archivos, se lo dota de ciertas capacidades distintivas. Al referirnos al filesystem, podemos estar hablando del **conjunto de características ofrecidas** por alguna implementación en particular de un sistema de archivos. 
+
+    - Algunos sistemas de archivos específicos tienen ciertas restricciones en la forma de los nombres de los archivos, y otros no. 
+    - Algunos permiten la atribución de permisos o identidades de usuario a los archivos, y otros no. 
+    - Algunos ofrecen servicios como encriptación, compresión, o versionado de archivos.
+
+</aside>
+</section>
+
+
+<section data-transition="slide-in slide-out">
+<h2>Árbol de directorios</h2>
+<img src="img/tree.png" class="plain stretch">
+<aside data-markdown class="notes">
+##Árbol de directorios
+En los filesystems de tipo Unix, la organización de los directorios es jerárquica y recuerda a un árbol con **raíz** y ramas. Algunos directorios cumplen una función especial en el sistema porque contienen archivos especiales, y por eso tienen nombres establecidos. 
+
+- Por ejemplo, el directorio raíz, donde se origina toda la jerarquía de directorios, tiene el nombre especial "/". 
+- El directorio `lib` (abreviatura de **library** o biblioteca) contiene bibliotecas de software. 
+- Los directorios `bin`, `sbin`. `/usr/bin`, etc., contienen archivos ejecutables (a veces llamados **binarios**).
+
+###Nombres de archivo y referencias
+Los nombres completos, o **referencias absolutas**, de los archivos y directorios se dan indicando cuál es el camino que hay que recorrer, para encontrarlos, **desde la raíz** del sistema de archivos. 
+
+**Ejemplo**
+
+La referencia absoluta para el archivo `texto.txt` ubicado en el directorio `juan`, que está dentro del directorio `home`, que está dentro del directorio raíz, es `/home/juan/texto.txt`. 
+
+Una **referencia relativa**, por otro lado, es una forma de mencionar a un archivo que depende de dónde está situado el proceso o usuario que quiere utilizarlo. Todo proceso, al ejecutarse, tiene una noción de lugar del filesystem donde se encuentra. 
+
+- Por ejemplo, el shell de cada usuario funciona dentro del directorio **home** o espacio privado del usuario. 
+- Éste es el **directorio actual** del proceso shell.
+- Puede ser cambiado utilizando el comando `cd`.
+- El comando `pwd` dice cuál es el directorio actual de un shell.
+
+La referencia relativa de un archivo indica cuál es el camino que hay que recorrer para encontrarlo **desde el directorio actual** del proceso.
+
+**Ejemplo**
+
+Para el mismo archivo del ejemplo anterior, si el directorio activo del shell es `/home/juan`, la referencia relativa será simplemente `texto.txt`.
+
+La referencia es relativa porque, si el proceso cambia de directorio activo, ya no servirá como referencia para ese mismo archivo.
+
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out">
+<h2>Sistema de archivos</h2>
+<ul>
+	<li>Particiones</li>
+	<li>Bloques</li>
+	<li>Inodos</li>
+	<li>Superblock</li>
+</ul>
+<aside data-markdown class="notes">
+##Elementos del sistema de archivos
+
+###Particiones
+Los medios de almacenamiento se dividen en **particiones** o zonas de almacenamiento. Cada partición puede contener un sistema de archivos, con sus archivos y metadatos.
+
+###Bloques
+Los **bloques** son las unidades mínimas de almacenamiento que ofrecen los diferentes dispositivos, como los discos. Un **bloque** es como un contenedor de datos que se asigna a un archivo. 
+
+Los archivos quedan almacenados, en los discos y en otros medios, como una sucesión de bloques de datos. El filesystem tiene la responsabilidad de mantener la lista de referencias a esos bloques, para poder manipular los archivos como un todo.
+
+###Inodos
+Los **nodos índice** o **inodos** son estructuras de datos que describen, cada una, un archivo. Los inodos contienen los principales metadatos de cada archivo, excepto el nombre.
+
+En los sistemas de archivos del tipo de Unix, los nombres y los inodos de los archivos están separados. Como consecuencia, un archivo puede tener más de un nombre.
+
+###Superblock
+El **superblock** grabado en una partición es una estructura de datos compleja donde se mantienen los datos del sistema de archivos. El superblock contiene una lista de bloques libres y una lista de inodos.
+</aside>
+</section>
+
+<section data-transition="slide-in fade-out" data-coursemod-shown="false">
+<h2>Sistema de archivos</h2>
+<div style="text-align: left">Particiones</div>
+<img src="img/disk-layout-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-transition-speed="slow" data-coursemod-shown="false">
+<h2>Sistema de archivos</h2>
+<div style="text-align: left">Bloques</div>
+<img src="img/disk-layout-0b.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
+<h2>Sistema de archivos</h2>
+<div style="text-align: left">Superblock</div>
+<img src="img/disk-layout-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-coursemod-shown="false">
+<h2>Sistema de archivos</h2>
+<div style="text-align: left">Tabla de inodos</div>
+<img src="img/disk-layout-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-out fade-in" data-coursemod-shown="false">
+<h2>Sistema de archivos</h2>
+<div style="text-align: left">Metadatos</div>
+<img src="img/disk-layout-3.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="slide-out fade-in" data-coursemod-shown="false">
+<h2>Sistema de archivos</h2>
+<div style="text-align: left">Bloques de datos</div>
+<img src="img/disk-layout-4.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out">
+<h2>Inodos</h2>
+<ul>
+	<li>Tamaño del archivo</li>
+	<li>Dueño, grupo</li>
+	<li>Tipo de archivo</li>
+	<ul><small>
+		<li>Archivo regular, directorio</li>
+		<li>Dispositivo de caracteres o de bloques</li>
+		<li>Socket, tubería, otros</li>
+	</ul></small>
+	<li>Modo o permisos de acceso</li>
+	<ul><small>
+		<li>Lectura, escritura, ejecución</li>
+		<li>Dueño, grupo, resto del mundo</li>
+	</ul></small>
+	<li>Tiempos de creación, modificación y acceso</li>
+	<li>Cuenta de <i>links</i></li>
+	<li>Punteros a bloques</li>
+</ul>
+<aside data-markdown class="notes">
+##Inodos
+
+Cada **inodo** describe a un archivo de datos en un filesystem. El inodo contiene metadatos como:
+
+- El tamaño en bytes del archivo
+- La identidad del usuario dueño del archivo y del grupo al cual pertenece el archivo
+- El tipo de archivo
+   + Puede tratarse de un archivo regular (de datos) o de un directorio
+   + Puede ser un pseudoarchivo, o dispositivo de caracteres o de bloques
+   + Puede ser un dispositivo de comunicaciones entre procesos, como un **socket**, un **pipe** o tubería, u otros
+- Los permisos o modo de acceso
+   + Los archivos en Unix pueden tener permisos de lectura, de escritura/modificación, o de ejecución
+   + Esos permisos se especifican en relación al dueño del archivo, al grupo del archivo, o al resto de los usuarios
+- La fecha y hora de creación, de última modificación y de último acceso
+- La cuenta de *links*, o cantidad de nombres que tiene el archivo
+- Los números de bloque que almacenan los datos, o **punteros** a bloques
+
+</aside>
+</section>
+
+<section>
+<h2>Metadatos</h2>
+<pre><code>
+$ ls -l util
+total 60
+-rwxr-xr-x 1 oso oso   40 Apr 18 16:54 github
+-rw-r--r-- 1 oso oso 1337 May  4 12:11 howto.txt
+-rwxr-xr-x 1 oso oso  458 Feb  9 16:28 macro
+drwxr-xr-x 2 oso oso 4096 May 26 18:14 prueba
+-rwxr-xr-x 1 oso oso   30 Feb  9 16:28 server
+
+</code></pre>
+
+<h3>Permisos</h3>
+<table>
+<tr><td>Dueño</td><td>Grupo</td><td>Otros</td></tr>
+<tr>
+<td class="fragment highlight-red">rwx</td>
+<td class="fragment highlight-green">rwx</td>
+<td class="fragment highlight-blue">rwx</td>
+</tr>
+</table>
+<aside data-markdown class="notes">
+###Metadatos
+Los metadatos de cada archivo, contenidos en su inodo, pueden ser consultados y modificados con comandos de usuario. 
+
+**Ejemplo**
+
+El comando `ls -l` muestra los nombres de los archivos contenidos en un directorio. Para cada archivo, consulta el inodo correspondiente, extrae de él los metadatos del archivo, y los presenta en un listado.
+
+El listado se compone de varios elementos por cada fila, separados por espacios. 
+
+~~~~
+$ ls -l util
+total 60
+-rwxr-xr-x 1 oso oso   40 Apr 18 16:54 github
+-rw-r--r-- 1 oso oso 1337 May  4 12:11 howto.txt
+-rwxrwxr-x 1 oso oso  458 Feb  9 16:28 macro
+drwxr-xr-x 2 oso oso 4096 May 26 18:14 prueba
+-rwxr-xr-x 1 oso oso   30 Feb  9 16:28 server
+~~~~
+
+**Tipo de archivo**
+
+El primer elemento de cada fila contiene un carácter que indica el tipo del archivo, y los siguientes caracteres indican los permisos asignados al archivo. El tipo indicado por el **guión** es **archivo regular**, y el indicado por la letra **d** es **directorio**. En el ejemplo, todos los archivos son regulares salvo **prueba**, que es un directorio. Otros tipos de archivo tienen otros caracteres indicadores.
+
+**Permisos**
+
+Los permisos de cada archivo están indicados por los nueve caracteres siguientes hasta el espacio. Para interpretarlos, se separan en tres grupos de tres caracteres. Los primeros tres caracteres indican los permisos que tiene el usuario **dueño** del archivo; los siguientes tres, los permisos para el **grupo** al cual pertenece el archivo; y los últimos tres, los permisos que tienen **otros usuarios**.
+
+Cada grupo de permisos indica si se permite la **lectura**, **escritura**, o **ejecución** del archivo. Una letra **r** en el primer lugar del grupo indica que el archivo puede ser escrito. Una **w** en el segundo lugar, que puede ser escrito o modificado. Una **x** en el tercer lugar, que puede ser ejecutado. Cuando no existen estos permisos, aparece un carácter **guión**.
+
+- Así, el archivo `github` del ejemplo tiene permisos **rwxr-xr-x**, que se separan en permisos **rwx** para el dueño (el dueño puede leerlo, escribirlo o modificarlo, y ejecutarlo), **r-x** para el grupo (cualquier usuario del grupo puede leerlo y ejecutarlo), y lo mismo para el resto de los usuarios.
+- Por el contrario, el archivo `howto.txt` tiene permisos **rw-r--r--**, que se separan en permisos **rw-** para el dueño (el dueño puede leerlo, escribirlo o modificarlo, pero no ejecutarlo), **r--** para el grupo (cualquier usuario del grupo puede leerlo, pero no modificarlo ni ejecutarlo), y lo mismo para el resto de los usuarios.
+
+**Cuenta de links**
+
+La cuenta de links es la cantidad de **nombres** que tiene un archivo. 
+
+**Dueño y grupo**
+
+Las columnas tercera y cuarta indican el usuario y grupo de usuarios al cual pertenece el archivo.
+
+**Tamaño**
+
+Aparece el tamaño en bytes de los archivos regulares.
+
+**Fecha y hora**
+
+Aparecen la fecha y hora de última modificación de cada archivo.
+
+**Nombre**
+
+El último dato de cada línea es el nombre del archivo.
+
+</aside>
+</section>
+
+
+<section data-transition="slide-in fade-out">
+<h2>Punteros directos a bloques</h2>
+<img src="img/inodos-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+##Bloques de disco
+
+El SO ve los discos como un vector de bloques o espacios de tamaño fijo. Cada bloque se identifica por su número de posición en el vector, o **dirección de bloque**. Esta dirección es utilizada para todas las operaciones de lectura o escritura en el disco. 
+
+- Cuando el SO necesita acceder a un bloque para escribir o leer sus contenidos, envía un mensaje al controlador del disco especificando su dirección. 
+- Si la operación es de lectura, además indica una dirección de memoria donde desea recibir los datos que el controlador del disco leerá. 
+- Si la operación es de escritura, indica una dirección de memoria donde están los datos que desea escribir.
+
+Cada vez que un proceso solicita la grabación de datos nuevos en un archivo, el filesystem selecciona un bloque de su lista de bloques libres. Para agregar los datos al archivo, el filesystem quita la dirección del bloque de la lista de libres, la añade al conjunto de bloques ocupados del archivo, y finalmente escribe en ese bloque los contenidos entregados por el proceso.
+
+Recorrer un archivo (para leerlo o para hacer cualquier clase de procesamiento de sus contenidos) implica acceder a todos sus bloques de disco, en el orden en que han sido almacenados esos contenidos. La información para saber qué bloques componen un archivo, y en qué orden, está en el **inodo** del archivo. 
+
+El inodo contiene entre sus metadatos una lista de las direcciones de todos los bloques que contienen la información del archivo. Cada una de estas direcciones de bloques se llama un apuntador o **puntero** a bloque.
+
+Como el inodo es una estructura de datos de tamaño fijo, esta lista de punteros tendrá un tamaño máximo. Como, además, los archivos tienen tamaños muy diferentes, se impone un diseño cuidadoso de esta lista de bloques. 
+
+- Si se define en el inodo un espacio demasiado pequeño para guardar la lista de punteros a bloques, cada inodo representará archivos con pocos bloques, y así el filesystem no podrá contener archivos grandes.
+- Si, al contrario, el espacio en el inodo reservado para guardar la lista es grande, se podrán almacenar archivos de muchos bloques; pero si la mayoría de los archivos del sistema fueran pequeños, se estaría desperdiciando espacio en el superblock.
+
+Para administrar mejor el espacio en el superblock, y para mantener el inodo de un tamaño razonable, esos punteros a bloques se dividen en tres clases: punteros **directos, indirectos y doble-indirectos**.
+
+**Punteros directos**
+
+Los punteros **directos** son simplemente direcciones de bloques de datos. El filesystem clásico de Unix tiene una cantidad fija de diez punteros directos en el inodo. Si un archivo tiene una cantidad de bytes igual o menor a diez bloques de disco, los punteros directos permiten recorrer el archivo completo.
+
+
+</aside>
+</section>
+<section data-transition="fade-in fade-out">
+<h2>Punteros indirectos</h2>
+<img src="img/inodos-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+**Punteros indirectos**
+
+Si el archivo es más grande, y los diez punteros directos no alcanzan para enumerar los bloques que lo componen, se utilizan **punteros indirectos**. Un puntero indirecto contiene la dirección de un bloque **que a su vez contiene punteros directos**. Hay dos punteros indirectos en el inodo del filesystem Unix clásico.
+
+</aside>
+</section>
+<section data-transition="fade-in slide-out">
+<h2>Punteros doble-indirectos</h2>
+<img src="img/inodos-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+**Punteros doble-indirectos**
+
+Si tampoco son suficientes los punteros directos y los indirectos, el inodo del filesystem clásico de Unix contiene un puntero **doble-indirecto**. Es un puntero a un bloque **que a su vez contiene punteros indirectos**.
+
+Esta estrategia de las tres clases de punteros permite que los inodos sean de tamaño reducido pero tengan la capacidad de direccionar una gran cantidad de bloques. Así, el filesystem puede contener archivos de tamaño considerablemente grande y al mismo tiempo conservar el espacio en el superblock.
+
+**Preguntas**
+
+Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio de almacenamiento, y que el tamaño de un bloque de disco sea de 4 KiB. Propongamos las fórmulas necesarias para responder las siguientes preguntas.
+
+1. ¿Qué cantidad **cB** de bloques habrá en el disco?
+1. ¿Con cuántos bits **cb** representaremos cada dirección de bloque? Dicho de otra manera, ¿qué cantidad de bits serán necesarios para un puntero a bloque?
+1. ¿Qué tamaño máximo de archivo se puede representar con tres punteros directos a bloque?
+1. ¿Cuántos punteros a bloque **cp** caben en un bloque indirecto? 
+1. ¿Y en un doble-indirecto (**cd**)?
+1. ¿Qué tamaño máximo de archivo se puede representar con tres punteros directos a bloque y uno indirecto?
+1. Si el inodo tiene 10 punteros directos, 2 indirectos y uno doble-indirecto, ¿cuánto espacio (**tp**) ocupa la tabla de punteros dentro del inodo?
+1. ¿Cuál es el tamaño máximo **tm** de un archivo según esta configuración del inodo?
+1. Si sabemos que el tamaño promedio de un archivo de datos será de 512 MiB, ¿cuántos archivos (**ca**) podrá haber en el disco?
+1. ¿Cuántos inodos (**ci**) deberá haber en el superblock entonces? 
+1. ¿Cuánto espacio ocupará la lista de inodos (**ti**) en el superblock?
+1. ¿Cuánto espacio ocupará la lista de bloques libres (**tl**) en el superblock?
+1. ¿Cuánto espacio ocupará el superblock (**ts**) en el disco?
+
+</aside>
+</section>
+
+
+<section data-transition="slide-in slide-out">
+<h2>Directorios</h2>
+<img src="img/directorio.svg" class="plain stretch">
+<aside data-markdown class="notes">
+##Directorios
+Notemos que en ningún momento hemos mencionado el **nombre** de los archivos entre los metadatos. En el filesystem de Unix, los nombres de archivo no se encuentran en el superblock, sino en los directorios. Otros sistemas de archivos adoptan otras estrategias. 
+
+En Unix, un directorio es simplemente un conjunto de bloques de datos, como los archivos regulares, pero juega un papel especial en el funcionamiento del sistema de archivos, y sus contenidos tienen un formato especial. Los archivos especiales de tipo directorio son archivos de datos que podemos pensar organizados como una tabla de dos columnas. Contienen una lista de entradas con **nombres de archivo** (o **links**) y números de **inodos** que los representan. 
+
+###Links o nombres de archivo
+
+Al separar el archivo (representado por el inodo), de su nombre **o link** (contenido en el directorio), el filesystem permite que un archivo pueda tener **más de un nombre**. 
+
+- En un mismo directorio puede haber dos entradas con nombres diferentes, que apunten al mismo inodo.
+- En dos directorios pueden existir sendas entradas con el mismo o diferente nombre, que apunten al mismo inodo.
+
+En estos casos, el archivo podrá ser accedido por cualquiera de esos nombres. Ninguno de ellos es privilegiado o especial. 
+
+Si un proceso intenta borrar un archivo, en realidad estará borrando **uno de sus nombres**. La cuenta de links en el inodo se decrementará en 1. Sólo cuando la cuenta de links, o nombres, llegue a cero, se liberarán los bloques de datos del archivo y se devolverán a la lista de bloques libres en el superblock.
+
+</aside>
+</section>
+<section data-transition="slide-in fade-out">
+<h2>Búsqueda de un archivo</h2>
+<div>
+<ul><li><code>cat /etc/group</code></li></ul>
+</div>
+<img src="img/busq-root.svg" class="plain stretch">
+<aside data-markdown class="notes">
+###Búsqueda de un archivo en el filesystem
+Supongamos que un proceso necesita leer los bloques de datos del archivo `/etc/group`. Deberá entregarle al filesystem el nombre de este archivo para que pueda localizarlo y devolverle esos datos.  
+
+Supongamos además que especifica el nombre mediante una referencia absoluta.  El filesystem analizará la referencia absoluta que le ha entregado el proceso, descomponiéndola en sus partes componentes y usándola como mapa para llegar al archivo, desde el directorio raíz.
+
+* Para encontrar el archivo, el filesystem lee el inodo 0, que corresponde al **directorio raíz**, y recoge de allí los bloques de datos del directorio raíz. 
+</aside>
+</section>
+<section data-transition="fade-in fade-out">
+<h2>Búsqueda de un archivo</h2>
+<div>
+<ul><li><code>cat /etc/group</code></li></ul>
+</div>
+<img src="img/busq-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+* Esos bloques de datos contienen nombres de otros archivos y directorios, junto al número del inodo que los representa. De aquí puede extraer el filesystem el número de inodo que representa al directorio `/etc`. Leerá este inodo de la tabla de inodos, en el superblock, y recuperará del disco los bloques que contienen a ese directorio. Los números de estos bloques están en la tabla de punteros a bloques del inodo.
+</aside>
+</section>
+<section data-transition="fade-in fade-out">
+<h2>Búsqueda de un archivo</h2>
+<div>
+<ul><li><code>cat /etc/group</code></li></ul>
+</div>
+<img src="img/busq-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+* Como `/etc` es un directorio, contendrá una tabla de nombres de archivo y números de inodos. Aquí podrá encontrarse el número de inodo que corresponde a `/etc/group`.
+</aside>
+</section>
+<section data-transition="fade-in slide-out">
+<h2>Búsqueda de un archivo</h2>
+<div>
+<ul><li><code>cat /etc/group</code></li></ul>
+</div>
+<img src="img/busq-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+* Finalmente, leyendo este inodo, el filesystem recorrerá los punteros a bloques devolviendo el contenido del archivo `/etc/group`.
+</aside>
+</section>
+<section data-transition="slide-in slide-out" data-coursemod-shown="false">
+<h2>Comandos de archivos</h2>
+<table>
+<tr><td>ls</td><td>-a, -l, -R, -t</td><td>Lista archivos</td></tr>
+<tr><td>cat</td><td></td><td>Muestra contenido</td></tr>
+<tr><td>cp</td><td></td><td>Copia</td></tr>
+<tr><td>mv</td><td></td><td>Renombra o mueve</td></tr>
+<tr><td>rm</td><td></td><td>Borra</td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out" data-coursemod-shown="false">
+<h2>Comandos de directorios</h2>
+<table>
+<tr><td>ls</td><td>-a, -l, -R, -t</td><td>Lista archivos</td></tr>
+<tr><td>mkdir</td><td></td><td>Crea</td></tr>
+<tr><td>rmdir</td><td></td><td>Borra</td></tr>
+<tr><td>mv</td><td></td><td>Renombra o mueve</td></tr>
+<tr><td>cd</td><td></td><td>Cambia al directorio</td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-background="#00CCFF" data-coursemod-shown="false">
+<h2>Continuará</h2>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<!-- INCLUDE src/memoria.slides -->
+
+<section data-transition="slide-in slide-out" data-coursemod-shown="false">
+<h2>Referencias</h2>
+<ul>
+	<li><a href="SistemasOperativos-notes.pdf">Notas de esta presentación</a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Unix">Unix</a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Proceso_(informática)">Procesos</a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">Jerarquía del sistema de archivos en Linux</a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Unidad_de_gestión_de_memoria">Unidad de Gestión de Memoria (MMU)</a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Paginación_de_memoria">Paginación de memoria</a></li>
+<!--	<li><a href="https://www.akkadia.org/drepper/cpumemory.pdf">What Every Programmer Should Know About Memory (Ulrich Drepper, 2007)</a></li> -->
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<!-- INCLUDE src/reveal.trailer -->
+

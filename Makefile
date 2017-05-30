@@ -3,7 +3,7 @@ DTAPE=/home/oso/IC2016/decktape
 
 index: index.html
 soft: Software.html
-so: SistemasOperativos.html
+so: SistemasOperativos.html 
 comp: SistemasDeCómputo.html
 pres: Presentación.html
 siste: SistemasDeNumeración.html
@@ -23,13 +23,6 @@ arqui: ArquitecturaDeComputadoras.html
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
 		$*.md --toc -o $*-notes.pdf
-	pandoc \
-		-s \
-		-V lang=spanish \
-		-V fontfamily=sans \
-		-V papersize=A4 \
-		-V title="$(TITLE)" \
-		$*.md --toc -o $*-notes.rtf
 	pandoc \
 		-s \
 		-V lang=spanish \
