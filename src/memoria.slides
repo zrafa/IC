@@ -61,7 +61,9 @@ Las instrucciones ejecutadas por el proceso referenciarán a los objetos del map
 <li>Ambos espacios pueden no coincidir</li>
 <li>El sistema utiliza alguna forma de <b>traducción de direcciones</b></li>
 </ul>
-<img src="img/trad.svg" class="plain stretch">
+<div class="stretch">
+<img src="img/trad.svg" class="plain">
+</div>
 <aside data-markdown class="notes">
 ##Traducción de direcciones
 
@@ -256,6 +258,7 @@ Bajo este esquema no hay fragmentación externa, porque, si existe espacio libre
 <aside data-markdown class="notes">
 Al contrario que en un sistema de particiones, en un sistema con paginación de memoria los procesos reciben más de una región de memoria o marco. Los marcos asignados a un proceso pueden no ser contiguos. 
 
+###Paginación por demanda
 La asignación por paginación tiene una propiedad muy interesante: no es necesario que todas las páginas de un proceso estén en memoria física para poder ejecutarse. Esto permite la creación de sistemas con **paginación por demanda**, donde las páginas se cargan en memoria a medida que se necesitan. 
 
 Con paginación por demanda:
