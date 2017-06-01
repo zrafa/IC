@@ -16,7 +16,7 @@ arqui: ArquitecturaDeComputadoras.html
 %.html: src/%.slides $(DEPS) 
 	util/macro $< > $*.html
 	$(eval TITLE = $(shell perl -ne '/data-title=\"(.+)\">/ and print "$$1"' $<) )
-	util/asides.pl $< > $*.md
+	util/asides.pl $*.html > $*.md
 	pandoc \
 		-V lang=spanish \
 		-V fontfamily=sans\

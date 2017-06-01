@@ -1149,14 +1149,16 @@ Supongamos además que especifica el nombre mediante una referencia absoluta.  E
 </aside>
 </section>
 
+<!----------
 <section data-background="#00CCFF" data-coursemod-shown="false">
 <h2>Continuará</h2>
 <aside data-markdown class="notes">
 </aside>
 </section>
+----------->
 
 
-<!-- EXCLUDE src/memoria.slides -->
+<!-- INCLUDE src/memoria.slides -->
 
 <section data-transition="slide-in slide-out" data-coursemod-shown="false">
 <h2>Referencias</h2>

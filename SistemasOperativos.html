@@ -1185,14 +1185,642 @@ Supongamos además que especifica el nombre mediante una referencia absoluta.  E
 </aside>
 </section>
 
+<!----------
 <section data-background="#00CCFF" data-coursemod-shown="false">
 <h2>Continuará</h2>
 <aside data-markdown class="notes">
 </aside>
 </section>
+----------->
 
 
-<!-- EXCLUDE src/memoria.slides -->
+
+<section data-background="#00CCFF">
+<h2>Gestión de memoria</h2>
+<aside data-markdown class="notes">
+##Gestión de memoria
+En un sistema multiprogramado, la memoria debe ser dividida de alguna forma entre los procesos que existen simultáneamente en el sistema. La tarea de controlar qué proceso recibe qué región de memoria, o **gestión de memoria**, es un problema con varias soluciones.
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out">
+<h2>Mapa de memoria</h2>
+<img src="img/mm.png" class="plain stretch">
+<aside data-markdown class="notes">
+###Mapa de memoria
+Un programa se compone, como mínimo, de:
+
+- Las instrucciones para el procesador (**código** o **texto** del programa).
+- Los **datos** con los que operarán esas instrucciones.
+
+Para que este programa pueda convertirse en un proceso, tanto instrucciones como datos deben estar almacenados en posiciones de **memoria principal**. Solamente de allí pueden ser leídos por el procesador.  
+
+Además, los procesos requieren otros espacios de memoria para varios otros usos. 
+
+- Por ejemplo, al llamar a una función o rutina, es necesario guardar temporariamente la **dirección de retorno**, que es la dirección de la instrucción a la cual se debe volver una vez terminada la rutina. Estas direcciones se guardan en una zona denominada la **pila** o **stack** del proceso.
+- El proceso puede necesitar crear dinámicamente **estructuras de datos** que no existían al momento de carga del programa en memoria. Estos componentes también necesitan ser almacenados en memoria, típicamente en una zona denominada el **heap**.
+
+Todos estos componentes forman lo que a veces se llama **mapa de memoria** de cada proceso, y requieren memoria física.
+</aside>
+</section>
+
+<section data-transition="slide-in fade-out">
+<h2>Espacios de direcciones</h2>
+<ul>
+<li>Espacio de direcciones físicas</li>
+<ul>
+	<li class="fragment">Cada posición de la memoria principal tiene su número de posición o <b>dirección física</b></li>
+</ul>
+<li>Espacio de direcciones virtuales</li>
+<ul>
+	<li class="fragment">El conjunto de todas las direcciones referenciadas por un proceso es su espacio de <b>direcciones virtuales</b></li>
+</ul>
+</ul>
+<div class="stretch">
+<img src="img/trad-0.png" class="plain">
+</div>
+<aside data-markdown class="notes">
+##Espacios de direcciones
+
+###Espacio de direcciones físicas
+
+La memoria física del sistema se ve como un arreglo, vector o secuencia ordenada de celdas o posiciones de almacenamiento. Cada posición tiene una **dirección** que es el número con el que se la puede acceder para leer o escribir sus contenidos. En un sistema de cómputo, el conjunto de direcciones de la memoria física es un **espacio de direcciones físicas**.
+
+###Espacio de direcciones virtuales
+
+Al ejecutarse un proceso, las instrucciones que va ejecutando la CPU **referenciarán** a los objetos del mapa de memoria mediante su dirección. Cada vez que la CPU necesite cargar una instrucción para decodificarla, hará una referencia a la dirección donde reside esa instrucción. Cada vez que una instrucción necesite acceder a un dato en memoria, la CPU hará una referencia a su dirección. El conjunto de todas las direcciones de estos objetos forma el **espacio de direcciones virtuales** del proceso. 
+
+**Ejemplo**
+
+En nuestro modelo MCBE, los espacios físico y virtual coinciden. Como sabemos, una instrucción como **01000111** indica que se debe cargar en el acumulador el contenido de la dirección 7. 
+
+- Al ejecutarse esta instrucción, el procesador envía el número 7 al sistema de memoria para que éste le entregue el contenido de esa posición. El procesador hace una **referencia** a la dirección 7. Por lo tanto, la dirección 7 pertenece al espacio virtual del programa.
+- Además, el sistema de memoria utiliza directamente el número 7 recibido de la CPU como la dirección de memoria que debe devolver. La posición física consultada por el sistema de memoria es exactamente la número 7.
+
+</aside>
+</section>
+
+<section data-transition="fade-in slide-out">
+<h2>Traducción de direcciones</h2>
+<ul>
+<li>El programador trabaja en términos del espacio de direcciones virtuales</li>
+<li>En un sistema multiprogramado, ambos espacios pueden no coincidir</li>
+<li>El sistema utiliza alguna forma de <b>traducción de direcciones</b></li>
+</ul>
+<div class="stretch">
+<img src="img/trad-1.png" class="plain">
+</div>
+<aside data-markdown class="notes">
+##Traducción de direcciones
+
+En un sistema multiprogramado, los programas son cargados en diferentes posiciones del espacio de memoria física. Esto hace que los espacios **virtual y físico** de direcciones de un proceso, en general, no coincidan. 
+
+Para que las referencias a direcciones **virtuales** conserven el sentido deseado por el programador, el sistema utiliza alguna forma de **traducción de direcciones**. Las referencias a direcciones generadas por el procesador pertenecerán al espacio virtual del proceso; pero el mecanismo de traducción de direcciones **mapeará** esas direcciones virtuales a las direcciones físicas asignadas. 
+
+###Unidad de gestión de memoria o MMU
+Esta traducción tiene lugar, automáticamente, en el momento en que el procesador emite una dirección hacia el sistema de memoria, y está a cargo de un **componente especial del hardware**. Este componente se llama la **unidad de gestión de memoria** (**MMU, Memory Management Unit**).
+
+- El sistema de memoria recibe únicamente las direcciones **físicas**, traducidas, y "no sabe" que el procesador ha solicitado acceder a una dirección **virtual** diferente.
+- Por su parte, el procesador "no sabe" que la dirección física accedida es diferente de la virtual cuyo acceso ha solicitado.
+
+Si el sistema no ofreciera un mecanismo automático de traducción de direcciones, el programador necesitaría saber de antemano en qué dirección va a ser cargado su programa, y debería preparar las referencias a las direcciones de modo de que ambos espacios coincidieran. 
+
+**Ejemplo**
+
+El siguiente programa sencillo en lenguaje ensamblador de MCBE hace referencias a algunas direcciones.
+
+~~~~
+00000        LD   DATO
+00001        ADD  CANT
+00010        ST   SUMA
+00011        HLT
+00100  DATO: 10
+00101  CANT: 1
+00110  SUMA: 0
+~~~~
+
+En este ejemplo, DATO, CANT y SUMA son las posiciones de memoria 4, 5 y 6. Si este programa se carga en la posición **cero** de la memoria física, los espacios físico y virtual coincidirán. Sin embargo, en un sistema multiprogramado, es posible que el proceso reciba otras posiciones de memoria física. 
+
+Por ejemplo, el programa podría haber sido cargado a partir de la dirección 20 de la memoria. Entonces, la posición de memoria física donde residirá el valor SUMA no es la posición 6, sino la 26.
+
+El mecanismo de traducción de direcciones del sistema **deberá sumar el valor base de la memoria** (en este caso, 20) **a todas las referencias a memoria generadas por el procesador** para mantener el funcionamiento deseado. **Sin** traducción de direcciones, la instrucción ST SUMA almacenará el resultado en la posición cuya dirección física es 6... ¡que pertenece a otro proceso!
+</aside>
+</section>
+
+
+<section>
+<h2>Asignación de memoria contigua</h2>
+<img src="img/mem-contigua.svg" class="plain stretch">
+<aside data-markdown class="notes">
+###Asignación de memoria contigua
+
+Uno de los esquemas de asignación de memoria más simples consiste en asignar una región de memoria **contigua** (un conjunto de posiciones de memoria sin interrupciones) a cada proceso.
+
+Si un SO utiliza este esquema de asignación de memoria, establece **particiones** de la memoria, de un tamaño adecuado a los requerimientos de cada proceso. Cuando un proceso termina, su región de memoria se libera y puede ser asignada a un nuevo proceso.
+
+</aside>
+</section>
+
+<section data-transition="slide-in fade-out"> 
+<h2>Memoria contigua</h2>
+<ul>
+	<li>Un proceso &rarr; una región de memoria</li>
+	<li>Particiones de tamaño variable</li>
+	<ul>
+		<li><b>Fragmentación externa</b></li>
+		<li>Compactación &rarr; Sobrecarga</li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+####Fragmentación externa
+El problema de este esquema es que, a medida que el sistema opere, las regiones que queden libres pueden ser tan pequeñas que un proceso nuevo no pueda obtener una región de tamaño suficiente, **a pesar de que exista memoria libre en cantidad suficiente** en el sistema. Este fenómeno se llama **fragmentación externa**. 
+
+Un remedio para la fragmentación externa es la **compactación** de la memoria, es decir, reubicar los procesos que estén ocupando memoria, de manera de que sus regiones sean contiguas entre sí. De esta forma los "huecos" en la memoria se unen y se crean regiones libres contiguas grandes. 
+
+El problema con esta solución es que la reubicación de los procesos es muy costosa en tiempo. Mientras el sistema esté compactando la memoria, los procesos que estén siendo reubicados no podrán realizar otra tarea, y el sistema perderá productividad. 
+
+Esta clase de cargas extra en tareas administrativas, que quitan capacidad al sistema para atender el trabajo genuino, se llama **sobrecarga** u **overhead**.
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3" data-coursemod-shown="false">
+<h2>Fragmentación externa</h2>
+<img src="img/fragext-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3" data-coursemod-shown="false">
+<h2>Fragmentación externa</h2>
+<img src="img/fragext-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<section data-transition="slide-out fade-in" data-audio-src="audio/PRESENT/xx.mp3" data-coursemod-shown="false">
+<h2>Fragmentación externa</h2>
+<img src="img/fragext-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out">
+<h2>Segmentación</h2>
+<img src="img/mem-segmentos.svg" class="plain stretch">
+<aside data-markdown class="notes">
+##Segmentación
+Un esquema de asignación que reduce la fragmentación externa es el de **segmentación**. Con este esquema, el mapa de memoria del proceso se divide en trozos de diferentes tamaños, llamados **segmentos**, conteniendo cada uno un conjunto de instrucciones o de datos. 
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out">
+<h2>Segmentación</h2>
+<ul>
+	<li>Un proceso &rarr; un conjunto de segmentos</li>
+	<li>Modelo de programación segmentado</li>
+	<li>Segmentos de código, de datos, de pila</li>
+	<ul>
+		<li>Dirección base y límite</li>
+		<li>Traducción de direcciones y protección</li>
+	</ul>
+	<li>Se reduce la fragmentación externa</li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+Durante la compilación de un programa fuente, el compilador distribuye los trozos de código y las estructuras de datos en distintos segmentos. Cada segmento tiene un tamaño o **límite**, calculado y especificado por el compilador, y grabado en la cabecera del archivo ejecutable resultante de la compilación. 
+
+Al cargar un programa en memoria, el SO destina cada segmento a una determinada **dirección base** física. La dirección base de cada segmento es utilizada por el mecanismo de traducción de direcciones. El dato de tamaño o límite de cada segmento es utilizado para la **protección**, asegurando que las referencias a memoria generadas por la CPU no rebasen los límites de cada segmento. De esta forma, un proceso no puede corromper el espacio de otros.
+
+Este esquema de asignación de memoria reduce, aunque no elimina, la fragmentación externa, ya que los segmentos son más pequeños y reubicables dinámicamente. 
+</aside>
+</section>
+
+
+<!-----------------------
+
+<section data-transition="slide-in slide-out">
+<h2>MMU, Memory Management Unit</h2>
+<ul>
+	<li>Tabla de segmentos por cada proceso</li>
+	<div class="fragment">
+	<li>Traduce direcciones lógicas a físicas</li>
+	<ul>
+		<li>Direcciones lógicas <b>segmento:desplazamiento</b></li>
+		<li>0010:0100 &rarr; 000010100</li>
+	</ul>
+	</div class="fragment">
+</ul>
+	<table>
+	<tr><td>N° segmento</td><td>Límite</td><td>Base</td></tr>
+	<tr><td>0000</td><td>0100</td><td>000011000</td></tr>
+	<tr><td>0001</td><td>1010</td><td>000000000</td></tr>
+	<tr><td>0010</td><td>0111</td><td>000010000</td></tr>
+	</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+
+<section data-transition="slide-in slide-out">
+<h2>Traducción de direcciones</h2>
+<ul>
+	<li class="fragment">Una instrucción de CPU hace una referencia a la dirección lógica <b>S:D</b> (segmento:desplazamiento)</li>
+	<li class="fragment">Usando S, la MMU consulta la tabla de segmentos del proceso</li>
+	<li class="fragment">Si D es mayor que el límite de ese segmento, provoca una condición que interrumpe el proceso </li>
+	<li class="fragment">Lo mismo si la forma del acceso no corresponde a los permisos del proceso para ese segmento</li>
+	<li class="fragment">En otro caso, traduce <b>S:D</b> a <b>Base(S)+D</b></li>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+----------------->
+
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Paginación</h2>
+<img src="img/mem-paginada.svg" class="plain stretch">
+<aside data-markdown class="notes">
+##Paginación
+El esquema de asignación de memoria conocido como **paginación** considera la memoria dividida en regiones del mismo tamaño (**marcos** de memoria), y el espacio virtual de los procesos dividido en regiones (**páginas**) de igual tamaño que los marcos. Las páginas de los procesos se asignan individualmente a los marcos, una página por vez.
+
+Al contrario que en un sistema de particiones, en un sistema con paginación de memoria los procesos reciben más de una región de memoria o marco. Los marcos asignados a un proceso pueden no ser contiguos. 
+
+</aside>
+</section>
+
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Paginación</h2>
+<ul>
+	<li>División en regiones o trozos de igual tamaño</li>
+	<ul>
+		<li>La memoria se divide en <b>marcos</b></li>
+		<li>Cada proceso se divide en <b>páginas</b></li>
+		<li>A cada página del proceso se le asigna un marco de memoria</li>
+		<li>No existe fragmentación externa</li>
+		<li>Existe poca <b>fragmentación interna</b></li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+###Fragmentación interna
+Bajo este esquema no hay fragmentación externa, porque, si existe espacio libre, siempre será suficiente para alojar al menos una página. Sin embargo, en general, el tamaño del espacio virtual del proceso no es exactamente divisible por el tamaño de la página; por lo tanto, puede haber algún espacio desaprovechado en las páginas asignadas. Esta condición se llama **fragmentación interna**. 
+</aside>
+</section>
+
+
+
+
+
+<section data-transition="fade-out slide-in" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Tabla de páginas de un proceso</h2>
+<img src="img/paginacion-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+###Tabla de páginas
+Para poder mantener la correspondencia entre marcos de memoria y páginas de los procesos, el SO mantiene una **tabla de páginas** por cada proceso. 
+- La tabla de páginas de cada proceso dice, para cada página del proceso, qué marco le ha sido asignado, además de otra información de control. 
+</aside>
+</section>
+<section data-transition="fade-out fade-in" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Tabla de páginas de un proceso</h2>
+<img src="img/paginacion-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- La tabla de páginas puede contener referencias a marcos compartidos con otros procesos. Esto hace posible la creación de regiones de memoria compartida entre procesos. 
+- En particular, los marcos de memoria ocupados permanentemente por el kernel pueden aparecer en el mapa de memoria de todos los procesos.
+
+###Paginación por demanda
+La asignación por paginación tiene una propiedad muy interesante: no es necesario que todas las páginas de un proceso estén en memoria física para que pueda ser ejecutado. Esto permite la creación de sistemas con **paginación por demanda**, donde las páginas se cargan en memoria a medida que se necesitan. Cada proceso **demanda** al SO la carga de una página de su espacio virtual al espacio físico en el momento en que referencia algún objeto perteneciente a esa página.
+
+Con paginación por demanda:
+
+- Podemos comenzar a ejecutar un proceso **más rápidamente** que si necesitáramos cargarlo todo en memoria.
+- Podemos ejecutar **más procesos** de los que cabrían en memoria física si debiéramos asignar todo el espacio lógico de una vez.
+- Los procesos pueden tener un tamaño de espacio lógico **más grande** de lo que permite el tamaño de la memoria física.
+
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out">
+<h2>Tabla de páginas de un proceso</h2>
+	<table>
+	<tr><td>N° página</td><td>Válida</td><td>Modificada</td><td>Nº marco</td></tr>
+	<tr><td>000</td><td>1</td><td>0</td><td>000</td></tr>
+	<tr><td>001</td><td>1</td><td>0</td><td>001</td></tr>
+	<tr><td>010</td><td>1</td><td>1</td><td>100</td></tr>
+	<tr><td>011</td><td>0</td><td>0</td><td>101</td></tr>
+	<tr><td>100</td><td>0</td><td>0</td><td>011</td></tr>
+	<tr><td>101</td><td>1</td><td>1</td><td>010</td></tr>
+	</table>
+<div class="stretch"></div>
+<aside data-markdown class="notes">
+##Memoria virtual
+
+Utilizando **paginación por demanda**, contando con un espacio de almacenamiento extra en disco para **intercambio de páginas**, y agregando algunas características al mecanismo de **traducción de direcciones**, se puede implementar un sistema de **memoria virtual**. 
+
+
+La mayoría de los SO multipropósito para hardware con MMU utiliza esta técnica. 
+
+En un sistema de memoria virtual, la tabla de páginas mantiene, además de los números de página y de marco asociados, datos de estado sobre la condición de cada página. 
+
+- **Bit de validez**
+
+    Indica si la página del proceso tiene memoria física asignada.
+
+- **Bit de modificación**
+
+    Indica si la página ha sido modificada desde que se le asignó memoria física.
+
+El bit de validez de cada página indica si la página tiene o no asignado un marco, y es crucial para el funcionamiento del sistema de memoria virtual. 
+
+Cuando la CPU genera una referencia a una página no válida, la condición que se produce se llama un **fallo de página (page fault)** y se resuelve asignando un marco, luego de lo cual el proceso puede continuar.
+
+</aside>
+</section>
+
+<!------------
+<section data-transition="fade-in slide-out">
+<h2>Tabla de páginas de un proceso</h2>
+	<table>
+	<tr><td>N° página</td><td>Presente</td><td>Modificada</td><td>Marco</td></tr>
+	<tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+	<tr><td>2</td><td>1</td><td>1</td><td>4</td></tr>
+	<tr><td>3</td><td>0</td><td>0</td><td>5</td></tr>
+	<tr><td>4</td><td>0</td><td>0</td><td>3</td></tr>
+	<tr><td>5</td><td>1</td><td>1</td><td>2</td></tr>
+	</table>
+<div class="stretch"></div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+--------------->
+
+
+<section data-transition="slide-in slide-out">
+<h2>Memoria Virtual</h2>
+<ul>
+	<li>La MMU traduce la dirección virtual <b>P,D</b> (página, desplazamiento) a <b>marco(P),D</b></li>
+	<li>Dirección virtual <span style="color:blue;">010</span>0101 &rarr; dirección física <span style="color:blue;">100</span>0101</li>
+</ul>
+	<table>
+	<tr><td>N° página</td><td>Válida</td><td>Modificada</td><td>Marco</td></tr>
+	<tr><td>000</td><td>1</td><td>0</td><td>000</td></tr>
+	<tr><td>001</td><td>1</td><td>0</td><td>001</td></tr>
+	<tr><td>010</td><td>1</td><td>1</td><td>100</td></tr>
+	<tr><td colspan="4">...</td></tr>
+	</table>
+<aside data-markdown class="notes">
+
+El mecanismo de memoria virtual funciona de la siguiente manera:
+
+- Cada dirección virtual tiene un cierto conjunto de bits que determinan el número de página. Los bits restantes determinan el desplazamiento dentro de la página.
+- Cuando un proceso emite una referencia a una dirección virtual, la MMU extrae el número de página de la dirección y consulta la entrada correspondiente en la tabla de páginas.
+- Si la información de control de la tabla de páginas dice que este acceso no es permitido, la MMU provoca una condición de error que interrumpe el proceso.
+- Si el acceso es permitido, la MMU computa la dirección física reemplazando los bits de página por los bits de marco.
+- Si el bit de validez está activo, la página ya está en memoria física.
+- Si el bit de validez no está activo, se debe asignar un marco. Se elige un marco de una lista de marcos libres, se lo marca como utilizado y se completa la entrada en la tabla de páginas. Los contenidos de la página se traerán del disco.
+- La MMU entrega la dirección física requerida al sistema de memoria.
+- Si la operación era de escritura, se marca la página como **modificada**.
+
+
+
+###Reemplazo de páginas
+
+Cuando no existan más marcos libres en memoria para asignar, el SO elegirá una página **víctima** del mismo u otro proceso y la desalojará de la memoria. Aquí es donde se utiliza el bit de **modificación** de la tabla de páginas.
+
+- Si la página víctima no está modificada, simplemente se marca como **no válida** y se reutiliza el marco que ocupaba.
+- Si la página víctima está modificada, además de marcarla como no válida, sus contenidos deben guardarse en el **espacio de intercambio o swap**. 
+
+Posteriormente, en algún otro momento, el proceso dueño de esta página querrá accederla. La MMU verificará que la página no es válida y disparará una condición de **fallo de página**. La página será traída del espacio de intercambio, en el estado en que se encontraba al ser desalojada, y el proceso podrá proseguir su ejecución.
+
+</aside>
+</section>
+
+<!-------------------------
+<section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Espacio virtual de un proceso</h2>
+<ul>
+	<li>El proceso solicita una cierta porción de su espacio virtual...</li>
+</ul>
+<img src="img/espacio-virtual.svg" class="plain">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="slide-out fade-in" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Espacio virtual de un proceso</h2>
+<ul>
+	<li>... que, aunque esté asignada, no necesita estar completa en memoria</li>
+</ul>
+<img src="img/espacio-virtual-1.svg" class="plain">
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<section data-transition="slide-in slide-out">
+<h2>Memoria virtual</h2>
+<ul>
+	<li>Si la página no está asignada al proceso, o si la forma del acceso no corresponde a los permisos del proceso para esa página</li>
+	<ul>
+		<li>Se provoca una condición que interrumpe el proceso</li>
+	</ul>
+	<li>Si la página está asignada pero no está en memoria</li>
+	<ul>
+		<li>Se produce un <b>fallo de página</b> y se trae esa página desde el almacenamiento secundario a un marco libre</li>
+		<li>Si no hay marcos libres &rarr; se elige una <b>página víctima</b> de algún proceso</li>
+		<li>Si la página víctima está modificada &rarr; se la guarda en el <b>área de intercambio</b> o <b>espacio de swap</b>, liberando el marco</li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+--------------------------------->
+
+<!--------------------------
+<section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Memoria virtual</h2>
+<img src="img/paginacion-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Memoria virtual</h2>
+<img src="img/paginacion-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Memoria virtual</h2>
+<img src="img/paginacion-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+------------------------------------->
+
+<section data-transition="fade-out slide-in" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+**Ejemplo**
+
+Supongamos un sistema donde existen dos procesos activos, con algunas páginas en memoria principal, y una zona de intercambio en disco.
+
+- El proceso P1 tiene asignadas cuatro páginas (de las cuales sólo la página 2 está presente en memoria principal), y P2, dos páginas (ambas presentes). Hay tres marcos libres (M4, M6 y M7) y la zona de intercambio está vacía.
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- P1 recibe la CPU y en algún momento ejecuta una instrucción que hace una referencia a una posición dentro de su página 3 (que no está en memoria). 
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- Ocurre un fallo de página que trae del almacenamiento la página 3 de P1 a un marco libre. La página 3 se marca como válida en la tabla de páginas de P1.
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-3.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- Enseguida ingresa P3 al sistema y comienza haciendo una referencia a su página 2. 
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-4.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- Como antes, ocurre un fallo de página, se trae la página 2 de P3 del disco, y se copia en un marco libre. Se marca la página 2 como válida y P3 continúa su ejecución haciendo una referencia a una dirección que queda dentro de su página 3.
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-5.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- Se resuelve como siempre el fallo de página para la página 3 y P3 hace una nueva referencia a memoria, ahora a la página 4.
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-6.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- Pero ahora la memoria principal ya no tiene marcos libres. Es el momento de elegir una página víctima para desalojarla de la memoria. Si la página menos recientemente usada es la página 2 de P1, es una buena candidata. En caso de que se encuentre modificada desde que fue cargada en memoria, se la copia en la zona de intercambio para no perder esas modificaciones, y se declara libre el marco M2 que ocupaba.
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-7.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- Se marca como <b>no válida</b> la página que acaba de salir de la memoria principal. La próxima referencia a esta página que haga P1 provocará un nuevo fallo de página.
+</aside>
+</section>
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Swapping o intercambio</h2>
+<img src="img/swapping-8.svg" class="plain stretch">
+<aside data-markdown class="notes">
+- Se copia la página que solicitó P3 en el nuevo marco libre, se la marca como válida en la tabla de páginas de P3, y el sistema continúa su operación normalmente.
+</aside>
+</section>
+
+
+<section data-background="#3c53b5" data-background-transition="zoom" class="preguntas" data-coursemod-shown="false">
+<h2>Preguntas</h2>
+<ol>
+<li>La cantidad de bits de página y la cantidad de bits de marco, ¿deben ser iguales? ¿Qué posibilidades hay, y qué consecuencias tiene cada una?</li>
+<li>¿Cuántos marcos tiene el espacio físico de un sistema de cómputo que utiliza memoria virtual, cuyas direcciones físicas codifican el número de marco en cuatro bits?</li>
+<li>¿Cuántas páginas tiene el espacio de direcciones lógicas de un proceso si las direcciones codifican el número de página en tres bits?</li>
+<li>¿Cuántos procesos como el anterior pueden estar activos en un sistema de cómputo como el anterior?</li>
+</ol>
+<aside data-markdown class="notes">
+**Preguntas**
+
+1. La cantidad de bits de página y la cantidad de bits de marco, ¿deben ser iguales? ¿Qué posibilidades hay, y qué consecuencias tiene cada una?
+1. ¿Cuántos marcos tiene el espacio físico de un sistema de cómputo que utiliza memoria virtual, cuyas direcciones físicas codifican el número de marco en cuatro bits?
+1. ¿Cuántas páginas tiene el espacio de direcciones lógicas de un proceso si las direcciones codifican el número de página en tres bits?
+1. ¿Cuántos procesos como el anterior pueden estar activos en un sistema de cómputo como el anterior?
+</aside>
+</section>
+
+
+<!------------------
+
+<section data-transition="slide-in fade-out">
+<h2>Memoria y protección</h2>
+<pre class="stretch"><code data-noescape>
+#include &lt;stdio.h&gt;
+main()
+{
+	int *p;			// puntero a entero
+	int a = 2;
+
+	p = &a;			// p apunta a la variable a
+	printf("%p\n",&a);	// la dirección de a
+	printf("%p\n",p);	// el contenido de p
+
+	*p = 3;			// un 3 en la dirección apuntada por p
+	printf("%d\n",a);	// imprimir el valor de a
+
+}
+</code></pre>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<section data-transition="fade-in convex-out">
+<h2>Memoria y protección</h2>
+<pre class="stretch"><code data-noescape>
+#include &lt;stdio.h&gt;
+main()
+{
+	int *p;
+	int a = 2;
+
+	p = 0;			// ahora p apunta al byte 0 de la memoria
+	printf("%p\n",&a);
+	printf("%p\n",p);
+
+	*p = 3;
+	printf("%d\n",a);
+
+}
+</code></pre>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="convex-in convex-out">
+<h2>Memoria y protección</h2>
+<pre class="stretch"><code data-noescape>
+#include &lt;stdio.h&gt;
+main()
+{
+	char *m = "Hola mundo!";
+
+	puts(m);		// imprime el mensaje
+    	*m = 'B';		// primer caracter del mensaje
+	puts(m);
+}
+</code></pre>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<section data-transition="convex-in convex-out">
+<h2>Memoria y protección</h2>
+<div class="asciicast"><! -- { "URL": "src/stack.json" } - -></div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+--------------------->
 
 <section data-transition="slide-in slide-out" data-coursemod-shown="false">
 <h2>Referencias</h2>
