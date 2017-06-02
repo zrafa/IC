@@ -1099,7 +1099,7 @@ Espacio de direcciones físicas
 La memoria física del sistema se ve como un arreglo, vector o secuencia
 ordenada de celdas o posiciones de almacenamiento. Cada posición tiene
 una dirección que es el número con el que se la puede acceder para leer
-o escribir sus contenidos. En un sistema de cómputo, el conjunto de
+o escribir su contenido. En un sistema de cómputo, el conjunto de
 direcciones de la memoria física es un espacio de direcciones físicas.
 
 Espacio de direcciones virtuales
@@ -1291,18 +1291,13 @@ La asignación por paginación tiene una propiedad muy interesante: no es
 necesario que todas las páginas de un proceso estén en memoria física
 para que pueda ser ejecutado. Esto permite la creación de sistemas con
 paginación por demanda, donde las páginas se cargan en memoria a medida
-que se necesitan. Cada proceso demanda al SO la carga de una página de
-su espacio virtual al espacio físico en el momento en que referencia
-algún objeto perteneciente a esa página.
+que se necesitan.
 
-Con paginación por demanda:
-
--   Podemos comenzar a ejecutar un proceso más rápidamente que si
-    necesitáramos cargarlo todo en memoria.
--   Podemos ejecutar más procesos de los que cabrían en memoria física
-    si debiéramos asignar todo el espacio lógico de una vez.
--   Los procesos pueden tener un tamaño de espacio lógico más grande de
-    lo que permite el tamaño de la memoria física.
+Cada proceso demanda al SO la carga de una página de su espacio virtual
+al espacio físico en el momento en que referencia algún objeto
+perteneciente a esa página. De esta manera la actividad de
+entrada/salida desde el disco a la memoria se reduce al mínimo
+necesario.
 
 Memoria virtual
 ---------------
@@ -1311,6 +1306,17 @@ Utilizando paginación por demanda, contando con un espacio de
 almacenamiento extra en disco para intercambio de páginas, y agregando
 algunas características al mecanismo de traducción de direcciones, se
 puede implementar un sistema de memoria virtual.
+
+Con memoria virtual, el espacio de direcciones lógicas y el espacio
+físico se independizan completamente. El espacio lógico puede tener un
+tamaño completamente diferente del espacio físico. La cantidad de
+páginas de un proceso ya no se ve limitada por la cantidad de marcos de
+la memoria física.
+
+-   Podemos ejecutar más procesos de los que cabrían en memoria física
+    si debiéramos asignar todo el espacio lógico de una vez.
+-   Los procesos pueden tener un tamaño de espacio lógico más grande de
+    lo que permite el tamaño de la memoria física.
 
 La mayoría de los SO multipropósito para hardware con MMU utiliza esta
 técnica.
