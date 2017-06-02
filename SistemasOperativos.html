@@ -1489,9 +1489,11 @@ Para poder mantener la correspondencia entre marcos de memoria y páginas de los
 - En particular, los marcos de memoria ocupados permanentemente por el kernel pueden aparecer en el mapa de memoria de todos los procesos.
 
 ###Paginación por demanda
-La asignación por paginación tiene una propiedad muy interesante: no es necesario que todas las páginas de un proceso estén en memoria física para que pueda ser ejecutado. Esto permite la creación de sistemas con **paginación por demanda**, donde las páginas se cargan en memoria a medida que se necesitan. 
+Debido a que los programas no utilizan sino una pequeña parte de su espacio lógico en cada momento, la asignación por paginación tiene una propiedad muy interesante: no es necesario que todas las páginas de un proceso estén en memoria física para que pueda ser ejecutado. 
 
-Cada proceso **demanda** al SO la carga de una página de su espacio virtual al espacio físico en el momento en que referencia algún objeto perteneciente a esa página. De esta manera la actividad de entrada/salida  desde el disco a la memoria se reduce al mínimo necesario.
+Esto permite la creación de sistemas con **paginación por demanda**, donde las páginas se cargan en memoria a medida que se necesitan. Un proceso puede empezar a ejecutarse apenas esté cargada la primera de sus páginas en memoria, sin necesidad de esperar a que todo su espacio lógico tenga memoria física asignada.
+
+Cada proceso **demanda** al SO la carga de una página de su espacio virtual al espacio físico en el momento en que referencia algún objeto perteneciente a esa página. De esta manera la actividad de entrada/salida  desde el disco a la memoria se reduce al mínimo necesario. 
 </aside>
 </section>
 
@@ -1510,14 +1512,13 @@ Cada proceso **demanda** al SO la carga de una página de su espacio virtual al 
 <aside data-markdown class="notes">
 ##Memoria virtual
 
-Utilizando **paginación por demanda**, contando con un espacio de almacenamiento extra en disco para **intercambio de páginas**, y agregando algunas características al mecanismo de **traducción de direcciones**, se puede implementar un sistema de **memoria virtual**. 
+Utilizando 1) **paginación por demanda**, 2) agregando algunas características al mecanismo de **traducción de direcciones**, y 3) contando con un espacio de almacenamiento extra en disco para **intercambio de páginas** o **swapping**, se puede implementar un sistema de **memoria virtual**. La mayoría de los SO multipropósito para hardware con MMU utiliza esta técnica. 
 
-Con memoria virtual, el espacio de direcciones lógicas y el espacio físico se independizan completamente. El espacio lógico puede tener un tamaño completamente diferente del espacio físico. La cantidad de páginas de un proceso ya no se ve limitada por la cantidad de marcos de la memoria física.
+Con memoria virtual, el espacio de direcciones lógicas y el espacio físico se independizan completamente. El espacio lógico puede tener un tamaño completamente diferente del espacio físico. La cantidad de páginas de un proceso ya no se ve limitada por la cantidad de marcos de la memoria física. 
 
 - Podemos ejecutar **más procesos** de los que cabrían en memoria física si debiéramos asignar todo el espacio lógico de una vez.
 - Los procesos pueden tener un tamaño de espacio lógico **más grande** de lo que permite el tamaño de la memoria física.
 
-La mayoría de los SO multipropósito para hardware con MMU utiliza esta técnica. 
 
 En un sistema de memoria virtual, la tabla de páginas mantiene, además de los números de página y de marco asociados, datos de estado sobre la condición de cada página. 
 
@@ -1724,6 +1725,12 @@ Supongamos un sistema donde existen dos procesos activos, con algunas páginas e
 <img src="img/swapping-8.svg" class="plain stretch">
 <aside data-markdown class="notes">
 - Se copia la página que solicitó P3 en el nuevo marco libre, se la marca como válida en la tabla de páginas de P3, y el sistema continúa su operación normalmente.
+
+Notemos que en este ejemplo existen tres procesos cuyos tamaños de espacio lógico miden **4, 5 y 6 páginas**, dando un total de **15 páginas**. Sin embargo, el sistema de cómputo sólo tiene **ocho marcos**. 
+
+Sin paginación por demanda y memoria virtual, solamente podría entrar en el sistema uno de los tres procesos. Durante las operaciones de entrada/salida de ese proceso, la CPU quedaría desaprovechada. Además, si alguno de los procesos tuviera un espacio lógico de más de ocho páginas, no podría ser ejecutado.
+
+Con la técnica de memoria virtual, los tres procesos pueden estar activos simultáneamente en el sistema, aumentando la utilización de CPU.  Y, si alguno de esos procesos tuviera un espacio lógico de **más de 8 páginas**, el sistema seguiría funcionando del mismo modo.
 </aside>
 </section>
 
