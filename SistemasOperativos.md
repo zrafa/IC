@@ -650,30 +650,30 @@ Todos estos componentes forman lo que a veces se llama **mapa de memoria** de ca
 
 La memoria física del sistema se ve como un arreglo, vector o secuencia ordenada de celdas o posiciones de almacenamiento. Cada posición tiene una **dirección** que es el número con el que se la puede acceder para leer o escribir su contenido. En un sistema de cómputo, el conjunto de direcciones de la memoria física es un **espacio de direcciones físicas**.
 
-###Espacio de direcciones virtuales
+###Espacio de direcciones lógicas
 
-Al ejecutarse un proceso, las instrucciones que va ejecutando la CPU **referenciarán** a los objetos del mapa de memoria mediante su dirección. Cada vez que la CPU necesite cargar una instrucción para decodificarla, hará una referencia a la dirección donde reside esa instrucción. Cada vez que una instrucción necesite acceder a un dato en memoria, la CPU hará una referencia a su dirección. El conjunto de todas las direcciones de estos objetos forma el **espacio de direcciones virtuales** del proceso. 
+Al ejecutarse un proceso, las instrucciones que va ejecutando la CPU **referenciarán** a los objetos del mapa de memoria mediante su dirección. Cada vez que la CPU necesite cargar una instrucción para decodificarla, hará una referencia a la dirección donde reside esa instrucción. Cada vez que una instrucción necesite acceder a un dato en memoria, la CPU hará una referencia a su dirección. El conjunto de todas las direcciones de estos objetos forma el **espacio de direcciones lógicas** del proceso. 
 
 **Ejemplo**
 
-En nuestro modelo MCBE, los espacios físico y virtual coinciden. Como sabemos, una instrucción como **01000111** indica que se debe cargar en el acumulador el contenido de la dirección 7. 
+En nuestro modelo MCBE, los espacios físico y lógico coinciden. Como sabemos, una instrucción como **01000111** indica que se debe cargar en el acumulador el contenido de la dirección 7. 
 
-- Al ejecutarse esta instrucción, el procesador envía el número 7 al sistema de memoria para que éste le entregue el contenido de esa posición. El procesador hace una **referencia** a la dirección 7. Por lo tanto, la dirección 7 pertenece al espacio virtual del programa.
+- Al ejecutarse esta instrucción, el procesador envía el número 7 al sistema de memoria para que éste le entregue el contenido de esa posición. El procesador hace una **referencia** a la dirección 7. Por lo tanto, la dirección 7 pertenece al espacio lógico del programa.
 - Además, el sistema de memoria utiliza directamente el número 7 recibido de la CPU como la dirección de memoria que debe devolver. La posición física consultada por el sistema de memoria es exactamente la número 7.
 
 
 
 ##Traducción de direcciones
 
-En un sistema multiprogramado, los programas son cargados en diferentes posiciones del espacio de memoria física. Esto hace que los espacios **virtual y físico** de direcciones de un proceso, en general, no coincidan. 
+En un sistema multiprogramado, los programas son cargados en diferentes posiciones del espacio de memoria física. Esto hace que los espacios **lógico y físico** de direcciones de un proceso, en general, no coincidan. 
 
-Para que las referencias a direcciones **virtuales** conserven el sentido deseado por el programador, el sistema utiliza alguna forma de **traducción de direcciones**. Las referencias a direcciones generadas por el procesador pertenecerán al espacio virtual del proceso; pero el mecanismo de traducción de direcciones **mapeará** esas direcciones virtuales a las direcciones físicas asignadas. 
+Para que las referencias a direcciones **lógicas** conserven el sentido deseado por el programador, el sistema utiliza alguna forma de **traducción de direcciones**. Las referencias a direcciones generadas por el procesador pertenecerán al espacio lógico del proceso; pero el mecanismo de traducción de direcciones **mapeará** esas direcciones lógicas a las direcciones físicas asignadas. 
 
 ###Unidad de gestión de memoria o MMU
 Esta traducción tiene lugar, automáticamente, en el momento en que el procesador emite una dirección hacia el sistema de memoria, y está a cargo de un **componente especial del hardware**. Este componente se llama la **unidad de gestión de memoria** (**MMU, Memory Management Unit**).
 
-- El sistema de memoria recibe únicamente las direcciones **físicas**, traducidas, y "no sabe" que el procesador ha solicitado acceder a una dirección **virtual** diferente.
-- Por su parte, el procesador "no sabe" que la dirección física accedida es diferente de la virtual cuyo acceso ha solicitado.
+- El sistema de memoria recibe únicamente las direcciones **físicas**, traducidas, y "no sabe" que el procesador ha solicitado acceder a una dirección **lógica** diferente.
+- Por su parte, el procesador "no sabe" que la dirección física accedida es diferente de la dirección lógica cuyo acceso ha solicitado.
 
 Si el sistema no ofreciera un mecanismo automático de traducción de direcciones, el programador necesitaría saber de antemano en qué dirección va a ser cargado su programa, y debería preparar las referencias a las direcciones de modo de que ambos espacios coincidieran. 
 
@@ -691,7 +691,7 @@ El siguiente programa sencillo en lenguaje ensamblador de MCBE hace referencias 
 00110  SUMA: 0
 ~~~~
 
-En este ejemplo, DATO, CANT y SUMA son las posiciones de memoria 4, 5 y 6. Si este programa se carga en la posición **cero** de la memoria física, los espacios físico y virtual coincidirán. Sin embargo, en un sistema multiprogramado, es posible que el proceso reciba otras posiciones de memoria física. 
+En este ejemplo, DATO, CANT y SUMA son las posiciones de memoria 4, 5 y 6. Si este programa se carga en la posición **cero** de la memoria física, los espacios físico y lógico coincidirán. Sin embargo, en un sistema multiprogramado, es posible que el proceso reciba otras posiciones de memoria física. 
 
 Por ejemplo, el programa podría haber sido cargado a partir de la dirección 20 de la memoria. Entonces, la posición de memoria física donde residirá el valor SUMA no es la posición 6, sino la 26.
 
@@ -734,14 +734,14 @@ Este esquema de asignación de memoria reduce, aunque no elimina, la fragmentaci
 
 
 ##Paginación
-El esquema de asignación de memoria conocido como **paginación** considera la memoria dividida en regiones del mismo tamaño (**marcos** de memoria), y el espacio virtual de los procesos dividido en regiones (**páginas**) de igual tamaño que los marcos. Las páginas de los procesos se asignan individualmente a los marcos, una página por vez.
+El esquema de asignación de memoria conocido como **paginación** considera la memoria dividida en regiones del mismo tamaño (**marcos** de memoria), y el espacio lógico de los procesos dividido en regiones (**páginas**) de igual tamaño que los marcos. Las páginas de los procesos se asignan individualmente a los marcos, una página por vez.
 
 Al contrario que en un sistema de particiones, en un sistema con paginación de memoria los procesos reciben más de una región de memoria o marco. Los marcos asignados a un proceso pueden no ser contiguos. 
 
 
 
 ###Fragmentación interna
-Bajo este esquema no hay fragmentación externa, porque, si existe espacio libre, siempre será suficiente para alojar al menos una página. Sin embargo, en general, el tamaño del espacio virtual del proceso no es exactamente divisible por el tamaño de la página; por lo tanto, puede haber algún espacio desaprovechado en las páginas asignadas. Esta condición se llama **fragmentación interna**. 
+Bajo este esquema no hay fragmentación externa, porque, si existe espacio libre, siempre será suficiente para alojar al menos una página. Sin embargo, en general, el tamaño del espacio lógico del proceso no es exactamente divisible por el tamaño de la página; por lo tanto, puede haber algún espacio desaprovechado en las páginas asignadas. Esta condición se llama **fragmentación interna**. 
 
 
 ###Tabla de páginas
@@ -752,23 +752,24 @@ Para poder mantener la correspondencia entre marcos de memoria y páginas de los
 - La tabla de páginas puede contener referencias a marcos compartidos con otros procesos. Esto hace posible la creación de regiones de memoria compartida entre procesos. 
 - En particular, los marcos de memoria ocupados permanentemente por el kernel pueden aparecer en el mapa de memoria de todos los procesos.
 
+
+
 ###Paginación por demanda
-Debido a que los programas no utilizan sino una pequeña parte de su espacio lógico en cada momento, la asignación por paginación tiene una propiedad muy interesante: no es necesario que todas las páginas de un proceso estén en memoria física para que pueda ser ejecutado. 
+Debido a que los programas no utilizan sino una pequeña parte de su espacio lógico en cada momento (fenómeno llamado **localidad de referencias**), la asignación por paginación tiene una propiedad muy interesante: no es necesario que todas las páginas de un proceso estén en memoria física para que pueda ser ejecutado. 
 
 Esto permite la creación de sistemas con **paginación por demanda**, donde las páginas se cargan en memoria a medida que se necesitan. Un proceso puede empezar a ejecutarse apenas esté cargada la primera de sus páginas en memoria, sin necesidad de esperar a que todo su espacio lógico tenga memoria física asignada.
 
-Cada proceso **demanda** al SO la carga de una página de su espacio virtual al espacio físico en el momento en que referencia algún objeto perteneciente a esa página. De esta manera la actividad de entrada/salida  desde el disco a la memoria se reduce al mínimo necesario. 
+Cada proceso **demanda** al SO la carga de una página de su espacio lógico al espacio físico en el momento en que referencia algún objeto perteneciente a esa página. De esta manera la actividad de entrada/salida  desde el disco a la memoria se reduce al mínimo necesario. 
+
+Utilizando 1) **paginación por demanda**, 2) agregando algunas características al mecanismo de **traducción de direcciones**, y 3) contando con un espacio de almacenamiento extra en disco para **intercambio de páginas** o **swapping**, se puede implementar un sistema de **memoria virtual**. La mayoría de los SO multipropósito para hardware con MMU utiliza esta técnica. 
 
 
 ##Memoria virtual
-
-Utilizando 1) **paginación por demanda**, 2) agregando algunas características al mecanismo de **traducción de direcciones**, y 3) contando con un espacio de almacenamiento extra en disco para **intercambio de páginas** o **swapping**, se puede implementar un sistema de **memoria virtual**. La mayoría de los SO multipropósito para hardware con MMU utiliza esta técnica. 
 
 Con memoria virtual, el espacio de direcciones lógicas y el espacio físico se independizan completamente. El espacio lógico puede tener un tamaño completamente diferente del espacio físico. La cantidad de páginas de un proceso ya no se ve limitada por la cantidad de marcos de la memoria física. 
 
 - Podemos ejecutar **más procesos** de los que cabrían en memoria física si debiéramos asignar todo el espacio lógico de una vez.
 - Los procesos pueden tener un tamaño de espacio lógico **más grande** de lo que permite el tamaño de la memoria física.
-
 
 En un sistema de memoria virtual, la tabla de páginas mantiene, además de los números de página y de marco asociados, datos de estado sobre la condición de cada página. 
 
@@ -780,10 +781,9 @@ En un sistema de memoria virtual, la tabla de páginas mantiene, además de los 
 
     Indica si la página ha sido modificada desde que se le asignó memoria física.
 
-El bit de validez de cada página indica si la página tiene o no asignado un marco, y es crucial para el funcionamiento del sistema de memoria virtual. 
+El bit de validez de cada página indica si la página tiene o no asignado un marco, y es crucial para el funcionamiento del sistema de memoria virtual. Cuando la CPU genera una referencia a una página no válida, la condición que se produce se llama un **fallo de página (page fault)** y se resuelve asignando un marco, luego de lo cual el proceso puede continuar.
 
-Cuando la CPU genera una referencia a una página no válida, la condición que se produce se llama un **fallo de página (page fault)** y se resuelve asignando un marco, luego de lo cual el proceso puede continuar.
-
+Además de estos bits de validez y modificación, la tabla de páginas contiene datos sobre los <b>permisos</b> asociados con cada página.
 
 
 
@@ -794,7 +794,7 @@ El mecanismo de memoria virtual funciona de la siguiente manera:
 - Si la información de control de la tabla de páginas dice que este acceso no es permitido, la MMU provoca una condición de error que interrumpe el proceso.
 - Si el acceso es permitido, la MMU computa la dirección física reemplazando los bits de página por los bits de marco.
 - Si el bit de validez está activo, la página ya está en memoria física.
-- Si el bit de validez no está activo, se debe asignar un marco. Se elige un marco de una lista de marcos libres, se lo marca como utilizado y se completa la entrada en la tabla de páginas. Los contenidos de la página se traerán del disco.
+- Si el bit de validez no está activo, ocurre un fallo de página, y se debe asignar un marco. Se elige un marco de una lista de marcos libres, se lo marca como utilizado y se completa la entrada en la tabla de páginas. Los contenidos de la página se traerán del disco.
 - La MMU entrega la dirección física requerida al sistema de memoria.
 - Si la operación era de escritura, se marca la página como **modificada**.
 
@@ -804,7 +804,7 @@ El mecanismo de memoria virtual funciona de la siguiente manera:
 
 Cuando no existan más marcos libres en memoria para asignar, el SO elegirá una página **víctima** del mismo u otro proceso y la desalojará de la memoria. Aquí es donde se utiliza el bit de **modificación** de la tabla de páginas.
 
-- Si la página víctima no está modificada, simplemente se marca como **no válida** y se reutiliza el marco que ocupaba.
+- Si la página víctima no está modificada, simplemente se marca como **no válida** y se reutiliza el marco que ocupaba. 
 - Si la página víctima está modificada, además de marcarla como no válida, sus contenidos deben guardarse en el **espacio de intercambio o swap**. 
 
 Posteriormente, en algún otro momento, el proceso dueño de esta página querrá accederla. La MMU verificará que la página no es válida y disparará una condición de **fallo de página**. La página será traída del espacio de intercambio, en el estado en que se encontraba al ser desalojada, y el proceso podrá proseguir su ejecución.
