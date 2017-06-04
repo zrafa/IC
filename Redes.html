@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Introducción a la Computación</title>
+		<meta name="description" content="Introducción a la Computación">
+		<meta name="author" content="Eduardo Grosclaude">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="externals/reveal/css/reveal.css">
+		<link rel="stylesheet" href="externals/css/theme/rdci.css" id="theme">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> 
+		<link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96">
+		<meta name="theme-color" content="#ffffff">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="externals/reveal/lib/css/zenburn.css">
+ 		<link rel="stylesheet" type="text/css" href="externals/asciinema-player/asciinema-player.css" />
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'externals/reveal/css/print/pdf.css' : 'externals/reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+	  <div class="reveal">
+		<div class="slides">
+
+<!------------------------------------------------------------------>
+
+
+
+<section data-background="#00CCFF" data-coursemod-shown="false">
+<h2>Introducción a Redes</h2>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<!------------------------>
+<section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3" data-background="img/enlaces.svg" data-background-size="50%" class="transparent_bg">
+<h2>Redes de computadoras</h2>
+<ul>
+	<li class="fragment">Nodos terminales o <b>hosts</b></li>
+	<div class="fragment">
+	<li>Enlaces</li>
+	<ul>
+		<li>Compartidos</li>
+		<li>Punto a punto</li>
+	</ul>
+	</div>
+	<li class="fragment">Nodos intermedios</li>
+	<div class="fragment">
+	<li>Software de red</li>
+	<ul>
+		<li>Aplicaciones</li>
+		<li>Protocolos</li>
+	</ul>
+	<div class="fragment">
+	<li>Una clasificación</li>
+	<ul>
+		<li>LAN (Local Area Network)</li>
+		<li>MAN (Metropolitan Area Network)</li>
+		<li>WAN (Wide Area Network)</li>
+	</ul>
+	</div>
+</ul>
+<aside data-markdown class="notes">
+#Redes de computadoras
+
+Un conjunto de computadoras conectadas para compartir información u otros recursos es una **red** de computadoras. En cualquier red se distinguen por lo menos tres elementos de hardware:
+
+- Las computadoras conectadas se llaman **hosts** o nodos terminales.
+- Los **enlaces** que conectan las computadoras. Los enlaces suelen llamarse **punto a punto** cuando conectan únicamente dos nodos, o **compartidos** cuando al mismo enlace se conectan más de dos nodos.
+- Otros **nodos intermedios**, los **routers**, que sirven para encaminar el tráfico de información entre los nodos terminales.
+
+Para utilizar la red, todos los nodos que están conectados a ella, ya sean terminales o intermedios, corren software de red como **protocolos** y **aplicaciones de red**. Los protocolos son, por un lado, convenciones que establecen con todo detalle cómo se realiza una comunicación, y por otro lado, los componentes de software que implementan esa forma de comunicación. 
+
+Las aplicaciones de red son aplicaciones **distribuidas**, es decir, se componen de al menos dos partes, preparadas para comunicarse unas con otras, y esas partes funcionan en nodos terminales de la red diferentes. Cada aplicación de red utiliza un protocolo, porque la interacción entre las partes debe estar perfectamente determinada para que los nodos se entiendan sin errores ni ambigüedades. Un protocolo puede ser utilizado por varias aplicaciones.
+
+Hoy, la mayoría de las redes están interconectadas por una única red global llamada **Internet**. Para conectarse a Internet, todos los nodos, terminales e intermedios, ejecutan un protocolo básico llamado **IP (Internet Protocol)**, y se puede decir que, desde el punto de vista del software, constituyen una sola red. 
+
+Sin embargo, desde el punto de vista de la administración, dentro de Internet existen numerosas redes. Cada red es propiedad de una persona u organización que tiene el control sobre los nodos y enlaces de esa red, decide qué nodos pertenecen o no pertenecen a ella, y qué protocolos y aplicaciones utilizan. 
+
+Estas diferentes redes se pueden clasificar por su tamaño. 
+
+- Una red cuyos límites (o **diámetro**) son pequeños, se llama una **red de área local o LAN (Local Area Network)**. Típicamente, una LAN está contenida en una oficina, piso o edificio.
+- Una red que abarca el área de una ciudad (y por lo tanto, cuyos enlaces utilizan espacios públicos) suele llamarse **red metropolitana o MAN (Metropolitan Area Network)**.
+- Una red mayor, que cubre distancias entre ciudades, países o continentes, se llama una **red de área extensa o WAN (Wide Area Network)**. Las redes de los **proveedores de servicios de Internet (ISPs)** suelen clasificarse como WANs.
+</aside>
+</section>
+
+
+<!------------------------>
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3" data-background="img/enlaces.svg" data-background-size="50%" data-coursemod-shown="false">
+</section>
+
+
+<section data-transition="slide-in none-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Switches</h2>
+<img src="img/switch.jpg" class="plain stretch">
+<aside data-markdown class="notes">
+##Switches 
+En las redes de área local, o LAN, encontramos enlaces compartidos. El cableado de una oficina, un aula o un edificio suele ser un único medio de comunicación compartido por todos los nodos de la red. El cableado se concentra en un punto de conmutación llamado **switch** o, justamente, conmutador, que distribuye el tráfico entre los nodos conectados. Un switch tiene muchas **interfaces** donde se conectan cables punto a punto hacia los nodos de la LAN. 
+
+Es posible conectar switches entre sí para mejor distribución del tráfico, formando una **topología** de estrella o de árbol. Todo el conjunto de switches y enlaces de la LAN constituye un enlace compartido, ya que todos los nodos de la LAN pueden comunicarse a través de él.
+
+Los switches y los nodos de las redes de área local ejecutan un protocolo de enlace definido por la norma **IEEE 802.3**. Este protocolo deriva de uno anterior, llamado **Ethernet**. Aunque el diseño original de Ethernet era diferente del de 802.3, y el hardware sobre el que funcionaba Ethernet era muy diferente del de los switches actuales, este nombre de Ethernet sigue usándose informalmente para las redes construidas con switches 802.3.
+
+Un switch 802.3 conduce unas unidades de tráfico básicas, los **frames o tramas** 802.3, entre los nodos de la red de área local, conectados al enlace compartido formado por todos los switches y cableado de la LAN. La misión de este protocolo de enlace termina donde termina la red de área local. Los frames o tramas jamás salen fuera de la LAN. Por eso decimos que la función de **nivel de enlace** de una red es entregar el tráfico **entre nodos adyacentes**. Es decir, los que se encuentran sobre el mismo enlace.
+
+</aside>
+</section>
+
+<section data-audio-src="audio/PRESENT/xx.mp3" data-transition="slide-in fade-out"> 
+<h2>Routers</h2>
+<img src="img/mini-end-router.jpg" class="plain stretch">
+<aside data-markdown class="notes">
+##Routers
+Suele definirse a Internet como "red de redes". 
+Las redes mayores, y en particular Internet, se componen interconectando redes a través de enlaces, a veces de gran longitud. 
+Entre cada dos de estas redes siempre existe un **router**.  
+
+El router presta el servicio que no alcanza a prestar el nivel de enlace, que es el de enviar el tráfico fuera de la red de origen. El nivel al que pertenecen los routers se llama **nivel de red**.
+
+Los routers son los elementos que toman las decisiones de **enrutamiento** o ruteo, al determinar por cuál de sus interfaces, a veces muchas, debe ser enviada la información que reciben. Esta tarea de enrutar la información se cumple mediante software de enrutamiento. 
+
+El hardware y el sistema operativo de los routers pueden estar altamente especializados en la tarea de ruteo, pero también es perfectamente posible construir un router a partir de una computadora corriente de escritorio y un sistema operativo multipropósito. Es decir que los routers no son sino computadoras, con un sistema operativo y un hardware similares a los que encontramos en muchas otras computadoras, pero dedicadas a la tarea del enrutamiento. 
+
+Dependiendo del ambiente donde deben trabajar y de la cantidad de tráfico que deben procesar, los routers pueden adoptar muchas formas físicas y tamaños.
+
+- Los routers pueden ser pequeños y baratos, para uso doméstico. 
+</aside>
+</section>
+<section data-audio-src="audio/PRESENT/xx.mp3" data-transition="fade-in fade-out">
+<h2>Routers</h2>
+<img src="img/low-end-router.jpg" class="plain stretch">
+<aside data-markdown class="notes">
+- Algunos pueden dar servicio a muchos nodos terminales al incluir múltiples dispositivos de nivel de enlace, como un switch 802.3 de varias interfaces, y un **punto de acceso** para una **red inalámbrica** secundaria basada en tecnología de radio.
+</aside>
+</section>
+
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Routers</h2>
+<img src="img/high-end-router.jpg" class="plain stretch">
+<div><a href="img/high-end-router.jpg" target="_blank"><small>Detalle</small></a></div>
+<aside data-markdown class="notes">
+- Algunos, de muy altas prestaciones, usados por los proveedores de servicios de Internet, son **modulares** y pueden ser configurados a medida de las necesidades. Cada módulo contiene **interfaces** especializadas en alguna tecnología de enlace, lo que les permite conectar redes de tecnologías completamente diferentes.
+
+</aside>
+</section>
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Interfaces</h2>
+<img src="img/network_card.png" class="plain stretch">
+<aside data-markdown class="notes">
+##Interfaces
+
+La interfaz es el punto de conexión entre un enlace y un nodo de la red. Es la pieza de hardware que convierte bits a señales capaces de viajar por la red, y viceversa. Cuando un nodo debe comunicar algo a otro, prepara su mensaje, de una cantidad dada de bytes, en una zona de la memoria, y entrega esos contenidos a la interfaz a través de un bus de comunicación. 
+
+La interfaz contiene el hardware necesario para traducir ese **tren de bits** a señales eléctricas (cuando los enlaces son cableados), de radio (cuando el enlace es inalámbrico), o luminosas (cuando el enlace es de fibra óptica). 
+
+Las modernas interfaces de red pueden funcionar a **velocidades de transmisión** de muchos bits por segundo. Una LAN cableada actual funciona comúnmente en velocidades de 1 a 10 Gbps (gigabits por segundo). Una LAN inalámbrica suele funcionar a una velocidad de transmisión mucho menor.
+
+El tren de bits viaja en forma de señales físicas por el enlace hasta llegar a la interfaz del nodo destino dentro de la red de área local. La interfaz receptora decodifica las señales, recuperando los bits originales y comunicándolos al software que espera los datos. Ambas partes de la aplicación distribuida se han comunicado un mensaje.
+</aside>
+</section>
+<!------------------------>
+
+<section data-transition="slide-in none-out" data-audio-src="audio/PRESENT/xx.mp3" data-background="img/enlaces.svg" data-background-size="50%" class="transparent_bg">
+<h2>Enlaces</h2>
+<ul>
+	<li>Cobre</li>
+	<ul>
+		<li>Pares trenzados</li>
+		<li>Coaxial</li>
+	</ul>
+	<li>Fibra óptica</li>
+	<ul>
+		<li>Man</li>
+		<li>Wan</li>
+	</ul>
+	<li>Inalámbricos</li>
+	<ul>
+		<li>Satelitales</li>
+		<li>Microondas</li>
+		<li>802.11 (WiFi)</li>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+##Enlaces
+Las tecnologías de construcción de los enlaces son muchas. 
+
+- Cuando las señales se codifican mediante impulsos eléctricos, como en las redes de cables de **par trenzado** o **coaxial**, el medio es un conductor como el cobre.  
+- Para distancias mayores (como las transoceánicas) o para ambientes donde existe mucho **ruido** o interferencia electromagnética (como en fábricas), se utiliza **fibra óptica**.
+- Cuando no es posible, o práctico, tender un cable, no queda más solución que utilizar emisiones de **radio**. Ejemplos de tecnologías de radio son los enlaces satelitales, los de microondas, y las LAN inalámbricas bajo norma **802.11** conocidas popularmente como **WiFi**.
+</aside>
+</section>
+
+<section data-transition="slide-in none-out" data-audio-src="audio/PRESENT/xx.mp3" data-background="img/enlaces.svg" data-background-size="50%" class="transparent_bg">
+<h2>Enlaces</h2>
+<img src="img/worldcables.png" class="plain stretch">
+<aside data-markdown class="notes">
+Las principales compañías de conectividad del mundo tienden enlaces de fibra óptica transoceánicos. Como la instalación de estos cables es una maniobra muy compleja y tiene un costo altísimo, se aseguran de instalar capacidad de transmisión en abundancia. Por ejemplo, uno de estos enlaces tiene una capacidad de 3.2 Tbps, lo que permitiría transmitir el contenido completo de un disco rígido de 1 TB en menos de tres segundos. Esta capacidad es compartida entre varios proveedores de Internet que compran el servicio de transporte.
+</aside>
+</section>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Enlace satelital</h2>
+<img src="img/enlace-satelital.png" class="plain stretch">
+<aside data-markdown class="notes">
+En el pasado también se usaron los enlaces satelitales para resolver el problema de cubrir grandes distancias. Los satélites son repetidores de radio colocados en órbita. Reciben emisiones de una estación terrena y la comunican a otra, distante, superando el problema de la curvatura terrestre que no permitiría la propagación en línea recta de la emisión de radio. 
+
+Su principal inconveniente es la alta latencia o retardo en la llegada de la señal desde un punto a otro, debido a las grandes distancias que la señal debe recorrer. Paulatinamente van siendo abandonados en favor de la fibra óptica para comunicación de datos. Sin embargo, siguen siendo una buena solución para atravesar áreas continentales, o para distribuir tráfico hacia muchos puntos simultáneos de bajada, como los medios de comunicación televisivos (aplicación llamada **broadcasting**).
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Enlaces</h2>
+<ul>
+	<li>Velocidad de transmisión $V_{transm}$</li>
+	<span class="fragment">
+	<ul>
+		<li>Cantidad de bits por segundo que una interfaz puede escribir o leer de un enlace</li>
+		<li>Unidades b/s, kb/s, Mb/s, Tb/s</li>
+	</ul>
+	</span>
+	<li>Velocidad de propagación $V_{prop}$</li>
+	<span class="fragment">
+	<ul>
+		<li>Velocidad con la que viaja una señal por un enlace</li>
+		<li>Típicamente cercana a la velocidad de la luz, <i>c</i></li>
+		<li>$c = 3 \times 10^{8}$ m/s</li>
+	</ul>
+	</span>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Tiempo de transferencia</h2>
+<ul>
+	<span class="fragment">
+	<li>Tiempo de transmisión de $L$ bits</li>
+	<ul>
+		<li>$T_{transm} = L / V_{transm}$</li>
+	</ul>
+	</span>
+	<span class="fragment">
+	<li>Tiempo de propagación por un enlace de $D$ m</li>
+	<ul>
+		<li>$T_{prop} = D / V_{prop}$</li>
+	</ul>
+	</span>
+	<span class="fragment">
+	<li>Tiempo total de transferencia de $L$ bits por un enlace de $D$ m</li>
+	<ul>
+		<li>$T_{tot} = T_{transm} + T_{prop}$</li>
+	</ul>
+	</span>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Transmisión y propagación</h2>
+<img src="img/enlaces-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Transmisión y propagación</h2>
+<img src="img/enlaces-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Transmisión y propagación</h2>
+<img src="img/enlaces-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Protocolos</h2>
+<ul>
+	<li class="fragment">Definición del <b>formato</b> y el <b>orden</b> de los <b>mensajes</b> intercambiados entre las <b>entidades</b> que se comunican</li>
+	<li class="fragment">Definición de las <b>acciones</b> que debe tomar cada entidad frente a un <b>evento</b> como la recepción de un mensaje u otro suceso</li>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Un protocolo</h2>
+<table>
+<tr><th>Cliente</th><th>Panadero</th></tr>
+<tr class="fragment"><td>Creo que me toca a mí.</td><td>¿Qué número tiene?</td></tr>
+<tr class="fragment"><td>El 22.</td><td>Así es, ¿en qué puedo servirlo?</td></tr>
+<tr class="fragment"><td>Un kilo de pan, por favor.</td><td>Sírvase. ¿Algo más?</td></tr>
+<tr class="fragment"><td>Seis pastelitos.</td><td>Aquí tiene. ¿Algo más?</td></tr>
+<tr class="fragment"><td>Nada más.</td><td>Son cien pesos.</td></tr>
+<tr class="fragment"><td>Sírvase. <span class="fragment"><i>(Ladrón...)</i></span></td><td>Gracias, hasta pronto. <span class="fragment"><i>(Bobo...)</i></span></td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Autómata del cliente</h2>
+<img src="img/protocolo-cliente.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Autómata del servidor</h2>
+<img src="img/protocolo-servidor.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Direcciones de red</h2>
+<ul>
+	<li>El nombre con que se distinguen las interfaces en la red</li>
+	<li>Un nodo terminal o un router con $n$ interfaces recibe $n$ direcciones</li>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Direcciones IPv4</h2>
+<ul>
+	<li>Números de 32 bits para identificar cada interfaz</li>
+	<ul>
+		<li>11000000101010000000000100000001</li>
+	</ul>
+<span class="fragment">
+	<li>Pueden verse como cuatro bytes</li>
+	<ul>
+		<li>11000000 10101000 00000001 00000001</li>
+	</ul>
+</span>
+<span class="fragment">
+	<li>Pueden escribirse como cuatro números decimales entre 0 y 255, separados por puntos</li>
+	<ul>
+		<li>192.168.1.1</li>
+	</ul>
+</span>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Paquetes IP</h2>
+<ul>
+	<li>Un flujo de datos entre dos nodos se divide en partes de un tamaño máximo</li>
+</ul>
+<img src="img/paquetes-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Paquetes IP</h2>
+<ul>
+	<li>La entidad emisora construye con cada parte un paquete, conteniendo los datos más un encabezado</li>
+</ul>
+<img src="img/paquetes-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Paquetes IP</h2>
+<ul>
+	<li>El encabezado incluye la dirección <b>origen</b> y la dirección <b>destino</b></li>
+</ul>
+<img src="img/paquetes-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Ruteo IP</h2>
+<ul>
+	<li>Ruteo, encaminamiento, enrutamiento, o <b>routing</b></li>
+	<ul>
+		<li>Los paquetes son recibidos por un enlace de un router y <b>reenviados</b> por otro</li>
+	</ul>
+</ul>
+<img src="img/paquetes-3.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Ruteo IP</h2>
+<ul>
+	<li>Ruteo, encaminamiento, enrutamiento, o <b>routing</b></li>
+	<ul>
+		<li>Cada router ejecuta los reenvíos basándose en una <b>tabla de reenvío o tabla de ruteo</b></li>
+	</ul>
+	</ul>
+<img src="img/paquetes-4.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Tabla de ruteo</h2>
+<ul>
+	<li>Contiene reglas llamadas rutas</li>
+	<ul>
+	<li>Especifican qué dirección destino se alcanza a través de qué interfaz</li>
+	</ul>
+	<li class="fragment highlight-red">Pero esta tabla está <b>incompleta</b></i>
+</ul>
+<table>
+<tr><th>Dirección destino</th><th>Interfaz de salida</th></tr>
+<tr><td>00000</td><td>0</td></tr>
+<tr><td>00001</td><td>2</td></tr>
+<tr><td>00010</td><td>0</td></tr>
+<tr><td>00100</td><td>1</td></tr>
+<tr><td>00101</td><td>3</td></tr>
+<tr><td>00110</td><td>1</td></tr>
+</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Ruteo</h2>
+<ul>
+	<li>Las direcciones IPv4 son de 32 bits &rarr; $2^{32} = 2^2 \times 2^{30} = $ 4 Gi direcciones posibles</li>
+	<li class="fragment">Una tabla de ruteo con una ruta por cada dirección tendría $\approx$ 4000000000 de entradas</li>
+	<li class="fragment">Y ocuparía 16 GiB de memoria</li>
+	<li class="fragment">Solución: agrupar las direcciones en grupos o <b>subredes</b> y mantener una ruta por cada subred</li>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Máscara de subred</h2>
+<ul>
+	<li>Una subred es un conjunto de direcciones que comparten un prefijo de una cierta longitud</li>
+	<li class="fragment">La longitud de los prefijos se especifica utilizando una <b>máscara</b></li>
+	<span class="fragment">
+	<li>¿Qué significa <b>192.168.1.1/24</b>, o <b>192.168.1.1 con máscara 255.255.255.0</b>?</li>
+	<ul>
+		<li>11000000 10101000 00000001 00000001 con máscara 11111111&nbsp;11111111&nbsp;11111111&nbsp;00000000 </li>
+	</span>
+	<span class="fragment">
+		<li><span style="color: blue">11000000 10101000 00000001</span> 00000000</li>
+	</span>
+	</ul>
+	<span class="fragment">
+	<li>192.168.1.1/24 &rarr; dirección de subred <b>192.168.1.0</b></li>
+	</span>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Ruteo por prefijos</h2>
+<ul>
+	<li>La tabla de ruteo se completa con una máscara para cada ruta</li>
+	<ul>
+		<li>La máscara indica cuántos bits de la dirección destino de un paquete deben coincidir para aceptar la ruta</li>
+	</ul>
+</ul>
+	<table>
+	<tr><th>Dirección de subred</th><th>Máscara</th><th>Interfaz de salida</th></tr>
+	<tr><td>00000</td><td>11100</td><td>0</td></tr>
+	<tr><td>00100</td><td>11100</td><td>1</td></tr>
+	<tr><td>00010</td><td>11110</td><td>2</td></tr>
+	</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+ 
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Ruta por defecto o <i>default</i></h2>
+<ul>
+	<li>Es una ruta con máscara de longitud 0</li>
+	<ul>
+		<li>Se consulta en último lugar y siempre coincide</li>
+	</ul>
+</ul>
+	<table>
+	<tr><th>Dirección de subred</th><th>Máscara</th><th>Interfaz de salida</th></tr>
+	<tr><td>00000</td><td>11100</td><td>0</td></tr>
+	<tr><td>00100</td><td>11100</td><td>1</td></tr>
+	<tr><td>00010</td><td>11110</td><td>2</td></tr>
+	<tr><td>00000</td><td>00000</td><td>3</td></tr>
+	</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+ 
+
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Algoritmo de ruteo</h2>
+<ul>
+	<span class="fragment">
+	<li>Para cada regla en la tabla de ruteo</li>
+	<ul>
+		<li>Subred destino del paquete = Dirección destino del paquete <b>AND</b> Máscara de la ruta</li>
+		<li>Si subred destino del paquete = subred de la ruta, reenviar el paquete por la interfaz de salida de esa ruta</li>
+	</ul>
+	</span>
+	<span class="fragment">
+	<li>Si se agotó la tabla pero hay una ruta default</li>
+	<ul>
+		<li>Reenviar el paquete por la ruta default</li>
+	</ul>
+	</span>
+	<span class="fragment">
+	<li>Si se agotó la tabla sin éxito</li>
+	<ul>
+		<li>Devolver error de <b>red inalcanzable</b></li>
+	</ul>
+	</span>
+	<span class="fragment">
+	<li>Si hay más de una coincidencia, se elige la ruta más específica (con máscara más larga)</li>
+	</span>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Selección de ruta</h2>
+<ul>
+	<li>Dirección destino del paquete &rarr; interfaz</li>
+	<ul>
+	<li><b><span class="fragment highlight-blue">000</span>01</b> &rarr; <span class="fragment">interfaz 0</span></li>
+	<li><b><span class="fragment highlight-blue">0001</span>1</b> &rarr; <span class="fragment">interfaz 2 (¿por qué?)</span></li>
+	<li><b>01001</b> &rarr; <span class="fragment">interfaz 2 (ruta default)</span></li>
+	</ul>
+</ul>
+	<table>
+	<tr><th>Dirección de subred</th><th>Máscara</th><th>Interfaz de salida</th></tr>
+	<tr><td>00000</td><td>11100</td><td>0</td></tr>
+	<tr><td>00100</td><td>11100</td><td>1</td></tr>
+	<tr><td>00010</td><td>11110</td><td>2</td></tr>
+	<tr><td>00000</td><td>00000</td><td>2</td></tr>
+	</table>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+
+<!------------------------>
+<section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<!--<h2>Ruteo</h2>-->
+<img src="img/routing-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<!--<h2>Ruteo</h2>-->
+<img src="img/routing-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<!--<h2>Ruteo</h2>-->
+<img src="img/routing-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<!--<h2>Ruteo</h2>-->
+<img src="img/routing-3.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<!--<h2>Ruteo</h2>-->
+<img src="img/routing-4.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------>
+<section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Nombres de dominio</h2>
+<ul>
+	<li>Es más fácil recordar nombres simbólicos que direcciones de red</li>
+	<ul>
+		<li><b>pedco.uncoma.edu.ar</b> &rarr; <b>170.210.81.250</b></li>
+	</ul>
+	<li>DNS, Domain Name System</li>
+	<ul>
+		<li>Servidor <b>local</b></li>
+		<li>Servidores <b>raíz</b></li>
+		<li>Servidores <b>TLD</b> &rarr; Top-Level Domain o dominio de máximo nivel</li>
+			<ul>
+				<li>Dominios .com, .edu, .org, .mil, .net...</li>
+				<li>Dominios de países: .ar, .cl, .uy, .fr, .uk...</li>
+			</ul>
+		<li>Servidores de cada <b>dominio y subdominio</b></li>
+			<ul>
+				<li>Subdominios .edu.ar, .com.fr...</li>
+			</ul>
+	</ul>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+ 
+
+<!------------------------>
+<section data-transition="slide-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>DNS</h2>
+<img src="img/dns-0.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>DNS</h2>
+<img src="img/dns-1.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>DNS</h2>
+<img src="img/dns-2.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in fade-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>DNS</h2>
+<img src="img/dns-3.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<section data-transition="fade-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>DNS</h2>
+<img src="img/dns-4.svg" class="plain stretch">
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+
+
+<!------------------------>
+<section 
+	data-transition="convex-in convex-out" 
+	data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Comando ping</h2>
+  <div class="asciicast"><!-- { "URL": "src/ping.json" } --></div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+<section data-transition="convex-in convex-out" data-audio-src="audio/PRESENT/xx.mp3">
+<h2>Comando traceroute</h2>
+  <div class="asciicast"><!-- { "URL": "src/traceroute.json" } --></div>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+
+<section data-background="#00CCFF">
+<h2>Referencias</h2>
+<ul>
+	<li><a href="https://pedco.uncoma.edu.ar/pluginfile.php/371865/mod_resource/content/1/IC%20-%20Redes.pdf">Apunte de cátedra: Redes</a></li>
+	<li><a href="https://es.m.wikipedia.org/wiki/Ethernet">Ethernet</a></li>
+</ul>
+<aside data-markdown class="notes">
+</aside>
+</section>
+
+<!------------------------>
+<section
+        data-transition="slide-in slide-out"
+        data-audio-src="audio/PRESENT/xx.mp3"
+        data-background="img/sleepy.gif"
+        data-background-size="70%"
+>
+<h2>Diapositiva 559</h2>
+<h1>Fin de la teoría</h1>
+<aside data-markdown class="notes">
+</aside>
+</section>
+<!------------------------>
+
+<!------------------------------------------------------------------>
+   </div>
+</div>
+<link rel="stylesheet" href="externals/tangle/TangleKit/TangleKit.css" type="text/css">
+<script src="externals/tangle/Tangle.js"></script>
+<script src="externals/tangle/TangleKit/mootools.js"></script>
+<script src="externals/tangle/TangleKit/sprintf.js"></script>
+<script src="externals/tangle/TangleKit/BVTouchable.js"></script>
+<script src="externals/tangle/TangleKit/TangleKit.js"></script>
+<script src="externals/svg/dist/svg.min.js"></script>
+<script src="externals/reveal/lib/js/head.min.js"></script>
+<script src="externals/reveal/js/reveal.js"></script>
+<script src="externals/snap/snap.svg-min.js"></script>
+
+<script>
+
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: false,
+		previewLinks: true,
+		theme: 'rdci',
+		transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+		// ----------------------------------------------------------------------------
+		coursemod: {
+			enabled: true,
+			shown: true,
+		},
+		chart: {
+			defaults: { 
+				global: { 
+					title: { fontColor: "#222" }, 
+					legend: {
+						position: "bottom",
+						labels: { fontColor: "#000", size: "14px" },
+					},
+					tooltips: {
+						labels: { fontColor: "#022", size: "14px" },
+					},
+				}, 
+				scale: { 
+					scaleLabel: { fontColor: "#022" }, 
+					gridLines: { color: "#444", zeroLineColor: "#444" }, 
+					ticks: { fontColor: "#022" }, 
+				} 
+			},
+			line: { borderColor: [ 
+				"rgba(20,220,220,.8)" , 
+				"rgba(220,120,120,.8)", 
+				"rgba(20,120,220,.8)",
+				"rgba(220,20,120,.8)",
+				"rgba(20,20,220,.8)" ]
+			}, 
+			bar: { backgroundColor: [ 
+				"rgba(20,220,220,.8)" , 
+				"rgba(20,120,220,.8)",
+				"rgba(20,20,220,.8)",
+				"rgba(120,20,220,.8)",
+				"rgba(220,120,20,.8)", 
+				"rgba(220,20,20,.8)",
+			 ]
+			}, 
+			pie: { backgroundColor: [ 
+				["rgba(0,0,0,.8)" , 
+				"rgba(220,20,20,.8)", 
+				"rgba(20,220,20,.8)", 
+				"rgba(220,220,20,.8)", 
+				"rgba(20,20,220,.8)"] 
+			]},
+			radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+		},
+		// ----------------------------------------------------------------------------
+		menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+			themes: false,
+			transitions: false,
+			markers: true,
+			hideMissingTitles: true,
+			custom: [
+				// { title: 'Plugins', icon: '<i class="fa fa-external-link"></i>', src: 'toc.html' },
+				// { title: 'About', icon: '<i class="fa fa-info"></i>', content: '<p>Int Comp</p>' },
+				{ title: 'IC2017', icon: '<i class="fa fa-bookmark"></i>', src: 'src/ic2017.html' },
+				{ title: 'Imprimir', icon: '<i class="fa fa-print"></i>', src: 'src/print.html' },
+			]
+		},
+		// ----------------------------------------------------------------------------
+		anything: [ 
+			{className: "rand",  defaults: {min: 0, max: 9}, 
+				initialize: (function(container, options){ 
+					container.innerHTML = Math.trunc( options.min + Math.random()*(options.max-options.min + 1) ); 
+			}) },
+			{className: "chart",  
+				initialize: (function(container, options){ 
+					container.chart = new Chart(container.getContext("2d"), options);  
+				}) 
+			},
+			{className: "animate",  
+				initialize: (function(container, options){ 
+				Reveal.addEventListener( 'fragmentshown', function( event ) {
+					if (typeof event.fragment.beginElement === "function" ) { 
+						event.fragment.beginElement(); 	
+					}
+				});
+				Reveal.addEventListener( 'fragmenthidden', function( event ) {
+					if (event.fragment.hasAttribute('data-reverse') ) { 
+						var reverse = event.fragment.parentElement.querySelector('[id=\"' + event.fragment.getAttribute('data-reverse') + '\"]');
+						if ( reverse && typeof reverse.beginElement === "function" ) { 
+							reverse.beginElement(); 	
+						}										 	
+					}
+				});
+				if ( container.getAttribute("data-svg-src") ) { 
+					var xhr = new XMLHttpRequest(); 
+					xhr.onload = function() { 
+						if (xhr.readyState === 4) { 
+							var svg = container.querySelector('svg');
+							container.removeChild( svg );
+							container.innerHTML = xhr.responseText + container.innerHTML;
+							if ( svg ) {
+								container.querySelector('svg').innerHTML = container.querySelector('svg').innerHTML + svg.innerHTML;
+							}
+						} 
+						else { 
+							console.warn( "Failed to get file. ReadyState: " + xhr.readyState + ", Status: " + xhr.status); 
+						}
+					}; 
+					xhr.open( 'GET', container.getAttribute("data-svg-src"), true ); 
+					xhr.send();
+				}
+			}) },
+			{className: "tangle", 
+				initialize: (function(container, options) { if(options && options.initialize) {options.initialize(container)} }) },
+			{className: "plot",  defaults: {width:800, height: 400, grid:true}, 
+				initialize: (function(container, options){ options.target = "#"+container.id; functionPlot(options) }) },
+			{className: "asciicast",
+                                 defaults: { theme: 'monokai', fontSize: '15px' },
+                                 initialize: (function(container, options) { asciinema.player.js.CreatePlayer(container, options.URL, options); })
+                        },
+			{className: "snapsvg",
+				defaults: {width:600, height:400}, 
+				initialize: (function(container, options) { if(options && options.initialize) { options.initialize(container, options) }; }) 
+			},
+			{className: "anything",  
+				initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} }) },
+
+		],
+		// ----------------------------------------------------------------------------
+
+		audio: {
+			autoplay: false,
+		},
+
+		// -------- Math plugin ----------
+		math: {
+			//mathjax: 'https://cdn.mathjax.org/mathjax/latest/Ma2YthJax.js',
+			// mathjax: 'externals/mathjax/MathJax.js',
+			//mathjax: window.location.search.match( /localversion/g ) ? 'externals/mathjax/MathJax.js' : 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+			mathjax: window.location.search.match( /localversion/g ) ? 'externals/mathjax/MathJax.js' : 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+			config: 'TeX-AMS_HTML-full' 
+		},
+
+
+		// -------- Chalkboard -----------
+		chalkboard: { 
+			// optionally load pre-recorded chalkboard drawing from file
+			// src: "chalkboard.json",
+			//readOnly: undefined, 
+			toggleChalkboardButton: { left: "80px" },
+			toggleNotesButton: { left: "130px" },
+			//transition: 800,
+			//theme: "whiteboard",
+			// configuration options for notes canvas and chalkboard
+			//color: [ 'rgba(0,0,255,1)', 'rgba(255,255,255,0.5)' ],
+			//background: [ 'rgba(127,127,127,.1)' , 'plugin/chalkboard/img/blackboard.png' ],
+			//pen:  [ 'reveal.js-plugins/chalkboard/img/boardmarker.png', 'reveal.js-plugins/chalkboard/img/chalk.png' ],
+		},
+
+		keyboard: {
+			67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+			66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+			46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+			 8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+			68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+			82: function() { Recorder.toggleRecording(); }, // press 'r' to start/stop recording
+			90: function() { Recorder.downloadZip(); },     // press 'z' to download zip containing audio files
+			84: function() { Recorder.fetchTTS(); },     // press 't' to fetch TTS audio files
+			65: function() { Reveal.getConfig().audioAutoplay = ( ! Reveal.getReveal.getConfig().audioAutoplay); },
+		},
+
+
+
+		// -------- Dependencies ---------
+		dependencies: [
+			{ src: 'externals/reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: 'externals/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'externals/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'externals/reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: 'externals/reveal/plugin/zoom-js/zoom.js', async: true },
+			// { src: 'plugin/notes/notes.js', async: true },
+			//{ src: 'externals/explain/explain.js', async: true },
+			//{ src: 'externals/reveal/plugin/function-plot/site/js/vendor/jquery-1.11.2.min.js' },
+			//{ src: 'externals/reveal/plugin/function-plot/site/js/vendor/d3.js' },
+			//{ src: 'externals/reveal/plugin/function-plot/dist/function-plot.js' },
+			//{ src: 'externals/reveal/plugin/chart/Moment.js'},
+			//{ src: 'externals/reveal/plugin/chart/Chart.min.js'},
+			// { src: 'externals/reveal/plugin/search/search.js', async: true},
+			//{ src: 'externals/reveal-plugin/chart/csv2chart.js'},
+			{ src: 'externals/asciinema-player/asciinema-player.js' },
+			{ src: 'externals/reveal-plugins/anything/anything.js' },
+			{ src: 'externals/reveal-plugins/chalkboard/chalkboard.js' },
+			{ src: 'externals/reveal-plugins/menu/menu.js' },
+			{ src: 'externals/reveal-plugins/mathsvg/math.js', async: true },
+			//{ src: 'externals/reveal-plugins/audio-slideshow/slideshow-recorder.js', condition: function( ) { return !!document.body.classList; } },
+			//{ src: 'externals/reveal-plugins/audio-slideshow/audio-slideshow.js', condition: function( ) { return !!document.body.classList; } },
+			{ src: 'externals/snap/snap.svg-min.js', async: true },
+			{ src: 'externals/coursemod/coursemod.js', async: true },
+			// ... 
+		]
+	});
+</script>
+
+</body>
+</html>

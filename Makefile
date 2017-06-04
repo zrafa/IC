@@ -11,6 +11,7 @@ uni: UnidadesDeInformación.html
 repre: RepresentaciónDigitalDeDatos.html
 texto: TextoYMultimedia.html
 arqui: ArquitecturaDeComputadoras.html
+redes: Redes.html
 
 
 %.html: src/%.slides $(DEPS) 
