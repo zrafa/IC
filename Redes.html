@@ -209,6 +209,10 @@ Las tecnologías de construcción de los enlaces son muchas.
 <img src="img/worldcables.png" class="plain stretch">
 <aside data-markdown class="notes">
 Las principales compañías de conectividad del mundo tienden enlaces de fibra óptica transoceánicos. Como la instalación de estos cables es una maniobra muy compleja y tiene un costo altísimo, se aseguran de instalar capacidad de transmisión en abundancia. Por ejemplo, uno de estos enlaces tiene una capacidad de 3.2 Tbps, lo que permitiría transmitir el contenido completo de un disco rígido de 1 TB en menos de tres segundos. Esta capacidad es compartida entre varios proveedores de Internet que compran el servicio de transporte.
+
+**Interesante**
+
+[Submarine Cable Map](http://www.submarinecablemap.com/#/landing-point/las-toninas-argentina)
 </aside>
 </section>
 
@@ -218,9 +222,11 @@ Las principales compañías de conectividad del mundo tienden enlaces de fibra �
 <h2>Enlace satelital</h2>
 <img src="img/enlace-satelital.png" class="plain stretch">
 <aside data-markdown class="notes">
-En el pasado también se usaron los enlaces satelitales para resolver el problema de cubrir grandes distancias. Los satélites son repetidores de radio colocados en órbita. Reciben emisiones de una estación terrena y la comunican a otra, distante, superando el problema de la curvatura terrestre que no permitiría la propagación en línea recta de la emisión de radio. 
+En el pasado también se usaron los enlaces satelitales para resolver el problema de cubrir grandes distancias. Los satélites son repetidores de radio colocados en órbita. Reciben emisiones de una estación terrena y la comunican a otra distante, superando el problema de la curvatura terrestre, que no permitiría la propagación en línea recta de la emisión de radio. 
 
-Su principal inconveniente es la alta latencia o retardo en la llegada de la señal desde un punto a otro, debido a las grandes distancias que la señal debe recorrer. Paulatinamente van siendo abandonados en favor de la fibra óptica para comunicación de datos. Sin embargo, siguen siendo una buena solución para atravesar áreas continentales, o para distribuir tráfico hacia muchos puntos simultáneos de bajada, como los medios de comunicación televisivos (aplicación llamada **broadcasting**).
+Su principal inconveniente es la alta **latencia o retardo** en la llegada de la señal desde un punto a otro, debido a las grandes distancias que se deben enlazar. Los satélites **geoestacionarios** o de órbita alta (**GEO**) permanecen a una altura de alrededor de 35700 km. Al ubicarlos a esta altura se logra un equilibrio entre la fuerza de gravedad terrestre y la fuerza centrífuga del satélite, lo que garantiza que cubrirán siempre la misma región del planeta. Pero la órbita alta implica una gran distancia a recorrer para las señales, lo que introduce demoras de alrededor de un cuarto de segundo entre estaciones terrestres. Estas demoras son tolerables para algunas aplicaciones de tráfico de datos, pero perjudiciales para las comunicaciones interactivas.
+
+Paulatinamente van siendo abandonados en favor de la fibra óptica para comunicación de datos. Sin embargo, siguen siendo una buena solución para atravesar áreas continentales, o para distribuir tráfico hacia muchos puntos simultáneos de bajada, como los medios de comunicación televisivos (aplicación llamada **broadcasting**).
 </aside>
 </section>
 <!------------------------>
@@ -285,6 +291,12 @@ Su principal inconveniente es la alta latencia o retardo en la llegada de la se�
 <h2>Transmisión y propagación</h2>
 <img src="img/enlaces-0.svg" class="plain stretch">
 <aside data-markdown class="notes">
+Es habitual ver en la bibliografía de Redes los diagramas de flujo de mensajes, que muestran qué ocurre en cada nodo a medida que transcurre el tiempo. En estos diagramas, el tiempo avanza hacia abajo, y los nodos emisor y receptor están representados por columnas. 
+
+En el emisor, a la izquierda, un trazo vertical de línea gruesa encima del nodo indica el tiempo de transmisión de un mensaje. Donde comienza el trazo, comienza la transmisión del primer bit del mensaje. Donde finaliza el trazo vertical y comienza una línea oblicua, finaliza la transmisión del último bit. Mientras más largo este trazo vertical, mayor el tiempo de transmisión y, por lo tanto, menor la velocidad de transmisión de la interfaz.
+
+La línea oblicua, proyectada sobre la columna del emisor, indica el tiempo invertido en atravesar el enlace desde el emisor hasta el receptor. El ángulo formado por la oblicua con la vertical se relaciona con el tiempo de propagación. Mientras más tienda la oblicua a la horizontal, menor será el tiempo de propagación, lo que indica un enlace de menor longitud.
+
 </aside>
 </section>
 <!------------------------>
@@ -292,6 +304,13 @@ Su principal inconveniente es la alta latencia o retardo en la llegada de la se�
 <h2>Transmisión y propagación</h2>
 <img src="img/enlaces-1.svg" class="plain stretch">
 <aside data-markdown class="notes">
+Comparemos ambos tiempos de transmisión y propagación. Podemos tener un **enlace 1** (línea azul) de baja velocidad de transmisión respecto del **enlace 2** (línea verde). Como las líneas de propagación tienen el mismo ángulo, inferimos que los enlaces son de la misma longitud.
+
+![Comparando enlaces de la misma longitud][enlaces1]
+
+[enlaces1]: img/enlaces-1.png "Comparando enlaces"
+
+En este diagrama, el tiempo total mayor corresponde al enlace 1, que es el que tiene el mayor tiempo de transmisión.
 </aside>
 </section>
 <!------------------------>
@@ -299,6 +318,11 @@ Su principal inconveniente es la alta latencia o retardo en la llegada de la se�
 <h2>Transmisión y propagación</h2>
 <img src="img/enlaces-2.svg" class="plain stretch">
 <aside data-markdown class="notes">
+Sin embargo, el tiempo de transmisión no es lo único que determina un mayor tiempo de transferencia. Si los enlaces fueran de diferente longitud, la situación podría invertirse. Un enlace de mayor velocidad de transmisión (línea azul) podría seguir siendo el de mayor tiempo de transferencia si fuera de longitud suficientemente mayor que el otro.
+
+![Comparando enlaces de longitudes diferentes][enlaces2]
+
+[enlaces2]: img/enlaces-2.png "Comparando enlaces"
 </aside>
 </section>
 <!------------------------>
@@ -311,16 +335,34 @@ Su principal inconveniente es la alta latencia o retardo en la llegada de la se�
 	<li class="fragment">Definición de las <b>acciones</b> que debe tomar cada entidad frente a un <b>evento</b> como la recepción de un mensaje u otro suceso</li>
 </ul>
 <aside data-markdown class="notes">
+##Entidades de red
+Llamamos **entidades** a las piezas de software o de hardware que funcionan como componentes de los nodos dentro de una red. Las entidades pueden ubicarse a cualquier nivel: pueden ser dos routers, dos interfaces de red, o las partes de una aplicación distribuida. 
+
+Las entidades de nodos diferentes que van a comunicarse estarán siempre al mismo nivel.
+
+##Eventos de red
+Llamamos **eventos** a cualquier suceso de interés que ocurre dentro de la red, especialmente si se trata de una interacción entre entidades. Por ejemplo, la llegada de un mensaje.
+
+##Protocolos
+Los **protocolos** son conjuntos de reglas que definen la interacción entre dos entidades de la red. 
+
+Para comunicarse, las entidades de cualquier nivel deben compartir un protocolo. Los protocolos especifican:
+
+- Cuál es el **formato** de los mensajes que pueden intercambiar las entidades;
+- Qué tipo de **acciones** o respuestas debe dar cada entidad al recibir cada mensaje.
+
 </aside>
+
 </section>
 <!------------------------>
 
 
 <!------------------------>
 <section data-transition="slide-in slide-out" data-audio-src="audio/PRESENT/xx.mp3">
-<h2>Un protocolo</h2>
+<h2>Un protocolo Cliente-Servidor</h2>
 <table>
 <tr><th>Cliente</th><th>Panadero</th></tr>
+<tr class="fragment"><td>Buenos días.</td><td>Buenos días.</td></tr>
 <tr class="fragment"><td>Creo que me toca a mí.</td><td>¿Qué número tiene?</td></tr>
 <tr class="fragment"><td>El 22.</td><td>Así es, ¿en qué puedo servirlo?</td></tr>
 <tr class="fragment"><td>Un kilo de pan, por favor.</td><td>Sírvase. ¿Algo más?</td></tr>
@@ -329,6 +371,23 @@ Su principal inconveniente es la alta latencia o retardo en la llegada de la se�
 <tr class="fragment"><td>Sírvase. <span class="fragment"><i>(Ladrón...)</i></span></td><td>Gracias, hasta pronto. <span class="fragment"><i>(Bobo...)</i></span></td></tr>
 </table>
 <aside data-markdown class="notes">
+Puede ser útil comparar los protocolos de red con protocolos sencillos de la vida cotidiana. Muchas interacciones entre las personas están gobernadas por protocolos, a veces poco evidentes. Por ejemplo, comprar un artículo cualquiera en un comercio sigue unas pautas bastante definidas. 
+
+Aunque los contenidos específicos de los mensajes pueden variar, es habitual que existan fases en la interacción entre las personas, como el **inicio de sesión, la autentificación, la autorización, las peticiones o requerimientos (*request*), las respuestas (*response*), y el cierre de sesión**. 
+
+Todas éstas son fases habituales en la comunicación entre los humanos, pero también en los protocolos de las redes.
+
+###Modelo cliente-servidor
+Estas fases habituales aparecen en los protocolos que definen relaciones de **cliente y servidor** entre entidades. En el modelo cliente-servidor:
+
+- El nodo cliente es el que inicia una interacción, con un **request** o requerimiento hacia el servidor. 
+- El nodo servidor contesta con una respuesta o **response**. 
+- El ciclo puede repetirse indefinidamente. 
+
+La mayoría de las aplicaciones de Internet siguen este **modelo cliente-servidor** de interacción. El protocolo **HTTP**, motor de la **WWW**, es un ejemplo claro.
+
+El modelo cliente-servidor es asimétrico: los roles de cliente y de servidor están bien diferenciados. Un modelo alternativo, diferente, es el llamado **peer-to-peer**, donde no existe un nodo servidor propiamente dicho, sino que todos los nodos que comparten el protocolo son, a la vez, clientes y servidores, en igualdad de condiciones.
+
 </aside>
 </section>
 <!------------------------>
@@ -339,6 +398,26 @@ Su principal inconveniente es la alta latencia o retardo en la llegada de la se�
 <h2>Autómata del cliente</h2>
 <img src="img/protocolo-cliente.svg" class="plain stretch">
 <aside data-markdown class="notes">
+###Autómatas
+
+Una herramienta formal muy útil para describir detalladamente los protocolos son los **autómatas**. Un autómata es la especificación de los **estados** en los que puede encontrarse una entidad y los **eventos** que disparan los cambios de estado o **transiciones**. El autómata puede tomar la forma de un diagrama como el que se adjunta.
+
+![Autómata del cliente][cliente]
+
+[cliente]: img/protocolo-cliente.png "Autómata del cliente"
+
+- En un diagrama de autómata, las burbujas representan **estados**.
+- Las flechas representan **transiciones**.
+- Las flechas llevan **rótulos** que describen qué **evento** es necesario para disparar la transición, y qué **acción** debe ejecutar la entidad como respuesta al evento. 
+
+    - Cuando un estado es el inicial, y no se requiere un evento para entrar en él, el evento es vacío (que se denota "-").
+    - Cuando se envía un mensaje de respuesta para confirmar recepción correcta de un mensaje anterior, se llama un **reconocimiento o acknowledgement (ACK)**. Si el mensaje de respuesta indica la **recepción incorrecta**, se llama un **acknowledgement negativo** o **NAK**.
+
+
+En el ejemplo, 
+
+
+
 </aside>
 </section>
 <!------------------------>
