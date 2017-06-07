@@ -30,20 +30,25 @@ Las redes pueden estudiarse y comprenderse mediante modelos jerárquicos compues
 
 Cada capa corresponde a un conjunto de problemas relacionados, y a las soluciones posibles. Para funcionar, cada capa se apoya en las soluciones provistas por la capa inmediatamente inferior.
 
-###Aplicación
-En la capa de Aplicación se encuentran los protocolos sobre los cuales se basan directamente las aplicaciones distribuidas.
+* Aplicación
 
-###Transporte
-La capa de Transporte soluciona el problema de la entrega de datos entre procesos de nodos diferentes.
+   En la capa de Aplicación se encuentran los protocolos sobre los cuales se basan directamente las aplicaciones distribuidas.
 
-###Red
-La capa de Red soluciona el problema de la entrega de datos entre nodos de diferentes redes.
+* Transporte
 
-###Enlace 
-La capa de Enlace soluciona el problema de la entrega de datos entre nodos de la misma red.
+    La capa de Transporte soluciona el problema de la entrega de datos entre **procesos** de nodos diferentes.
 
-###Física
-La capa Física define la forma como se codifican y transmiten las señales que representan la información.
+* Red
+
+    La capa de Red soluciona el problema de la entrega de datos entre **nodos** de diferentes redes.
+
+* Enlace 
+
+    La capa de Enlace soluciona el problema de la entrega de datos entre **nodos de la misma red**.
+
+* Física
+
+    La capa Física define la forma como se codifican y transmiten las señales que representan la información.
 
 
 ##Switches 
@@ -234,7 +239,7 @@ En el ejemplo, el cliente ingresa al estado de **Abriendo conexión** presentand
 
 
 ###Autómata del servidor
-Por su parte, el servidor presenta un autómata complementario. La mayor parte del tiempo, el servidor estará en el estado **Esperando conexión** hasta que reciba unas credenciales de un cliente. Si las reconoce, pasa al estado **En servicio** donde acepta solicitudes y emite respuestas. Cuando el cliente decide poner fin a la interacción, vuelve al estado de esperar conexión de un nuevo cliente.
+Por su parte, el servidor presenta un autómata complementario al del cliente. La mayor parte del tiempo, el servidor estará en el estado **Esperando conexión** hasta que reciba unas credenciales de un cliente. Si las reconoce, pasa al estado **En servicio** donde acepta solicitudes y emite respuestas. Cuando el cliente decide poner fin a la interacción, vuelve al estado de esperar conexión de un nuevo cliente.
 
 ![Autómata del servidor][servidor]
 
@@ -245,7 +250,7 @@ Por su parte, el servidor presenta un autómata complementario. La mayor parte d
 
 Muchos protocolos requieren que una entidad reciba la confirmación de un mensaje anterior antes de poder enviar el siguiente mensaje. Cuando esto ocurre, decimos que el protocolo es del tipo de **parada y espera (*stop and wait*)**.  Cuando el enlace entre dos entidades es de longitud muy grande, un protocolo de parada y espera puede tener una eficiencia muy reducida. 
 
-Si la aplicación que desea usar este protocolo de parada y espera es interactiva, y el enlace es muy largo, la experiencia de usuario será frustrante. El usuario deberá soportar las demoras correspondientes al tiempo de propagación de cada mensaje más su confirmación.  Durante ese lapso, no se puede seguir transmitiendo datos porque aún no ha llegado la confirmación o **ACK** del mensaje anterior. Las demoras pueden hacer que la aplicación directamente no sea viable. 
+Si la aplicación que desea usar este protocolo de parada y espera es interactiva, y el enlace es muy largo, la experiencia de usuario será frustrante. El usuario deberá soportar las demoras correspondientes al tiempo de propagación de cada mensaje más el de su confirmación.  Durante ese lapso, no se puede seguir transmitiendo datos porque aún no ha llegado la confirmación o **ACK** del mensaje anterior. Las demoras pueden hacer que la aplicación directamente no sea viable. 
 
 El punto crucial aquí es que este problema **no se resuelve aumentando el ancho de banda de los enlaces**, porque, como hemos dicho, el retardo de propagación no tiene nada que ver con la velocidad de transmisión de las interfaces.
 
