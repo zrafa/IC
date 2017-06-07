@@ -521,3 +521,62 @@ marciano. Se necesita una velocidad de respuesta mucho mayor.
 
 Elevar el ancho de banda digital del enlace, de 1Gbps a 10Gbps, ¿sería
 una solución?
+
+Direcciones de red
+------------------
+
+Para poder dirigir los mensajes entre nodos, es necesario identificarlos
+de alguna forma, asignándoles direcciones o identificadores de red.
+
+En Internet, las direcciones son asignadas a las interfaces, y no a los
+nodos. De esta manera, si un nodo tiene más de una interfaz, recibirá
+más de una dirección. El caso típico de un nodo con más de una interfaz
+son los routers, que tienen una interfaz perteneciente a cada una de las
+redes que conectan.
+
+El protocolo IPv4 define las direcciones de red como números de 32 bits
+que se asignan a cada interfaz de los nodos. Estas direcciones de 32
+bits suelen escribirse como cuatro valores decimales, entre 0 y 255,
+separados por puntos.
+
+Ejemplo
+
+-   La dirección IPv4 1 1 0 0 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 se puede escribir
+    en notación decimal con punto como 192.168.1.1.
+
+Paquetes IP
+-----------
+
+Internet es una red del tipo de conmutación por paquetes, lo que
+significa que los flujos de datos que van de un nodo emisor a un
+receptor son fraccionados en paquetes o trozos de datos, de un cierto
+tamaño máximo, y que los nodos intermedios tratan a cada paquete
+individualmente para encaminarlos a su destino.
+
+En una red conmutada por paquetes, los nodos intermedios no necesitan
+conocer todo el camino que debe atravesar cada uno de los paquetes. En
+cambio, un router sólo necesita saber a cuál de los nodos intermedios
+adyacentes encaminarlos, basándose en información que transporta el
+mismo paquete. Cada nodo intermedio o router en un camino entre emisor y
+receptor toma una nueva decisión de ruteo ante cada uno de los paquetes
+que llegan a él.
+
+Para que los paquetes puedan ser encaminados, el emisor completa los
+datos que constituyen el paquete con un encabezado conteniendo la
+dirección del nodo emisor, o dirección origen, y la dirección del nodo
+destino, o dirección destino.
+
+Ruteo o encaminamiento
+----------------------
+
+Cuando un paquete llega a un router, lo hace por un enlace. El router
+debe aplicar alguna regla para saber hacia qué otro enlace reenviar el
+paquete. Esta decisión de cuál será ese otro enlace es una acción de
+ruteo o encaminamiento.
+
+Tabla de reenvío o de ruteo
+
+La decisión de ruteo es tomada por los routers usando la información de
+destino que llevan consigo los paquetes, más información de ruteo
+contenida en una tabla de reenvío o tabla de ruteo, almacenada en la
+memoria del router.
