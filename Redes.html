@@ -104,20 +104,14 @@ Estas diferentes redes se pueden clasificar por su tamaño.
 
 <section data-transition="fade-in slide-out">
 <h2>Modelo de Internet</h2>
-<div class="double">
-<div>
-<ul>
-<li>Capa o nivel de Aplicación</li>
-<li>Transporte</li>
-<li>Red</li>
-<li>Enlace</li>
-<li>Físico</li>
-</ul>
-</div>
-<div>
-<img src="img/enlaces.svg" class="plain">
-</div>
-</div>
+<table>
+<tr><th>Capa</th><th>Elementos</th><th>Comunica</th></tr>
+<tr class="fragment" data-fragment-index="5"><td>Aplicación</td><td>Aplicaciones distribuidas</td><td>Usuarios</td></tr>
+<tr class="fragment" data-fragment-index="4"><td>Transporte</td><td>Conexiones, segmentos</td><td>Procesos</td></tr>
+<tr class="fragment" data-fragment-index="3"><td>Red</td><td>Routers, paquetes</td><td>Nodos</td></tr>
+<tr class="fragment" data-fragment-index="2"><td>Enlace</td><td>Switches, tramas</td><td>Nodos adyacentes</td></tr>
+<tr class="fragment" data-fragment-index="1"><td>Física</td><td>Interfaces, cables, señales</td><td>Interfaces</td></tr>
+</table>
 <aside data-markdown class="notes">
 ##Modelo de Internet
 
@@ -534,10 +528,15 @@ Elevar el ancho de banda digital del enlace, de 1Gbps a 10Gbps, ¿sería una sol
 </section>
 <!------------------------>
 
+<section data-background="#00CCFF" data-coursemod-shown="false">
+<h2>Continuará</h2>
+<aside data-markdown class="notes">
+</aside>
+</section>
 
 
+<!----------
 
-<!------------------------>
 <section data-transition="slide-in slide-out" >
 <h2>Direcciones de red</h2>
 <ul>
@@ -552,11 +551,9 @@ Para poder dirigir los mensajes entre nodos, es necesario identificarlos de algu
 En Internet, las direcciones son asignadas a las interfaces, y no a los nodos. De esta manera, si un nodo tiene más de una interfaz, recibirá más de una dirección. El caso típico de un nodo con más de una interfaz son los routers, que tienen una interfaz perteneciente a cada una de las redes que conectan.
 </aside>
 </section>
-<!------------------------>
 
 
 
-<!------------------------>
 <section data-transition="slide-in slide-out" >
 <h2>Direcciones IPv4</h2>
 <ul>
@@ -585,10 +582,8 @@ El protocolo IPv4 define las direcciones de red como números de 32 bits que se 
 - La dirección IPv4 **11000000101010000000000100000001** se puede escribir en notación decimal con punto como **192.168.1.1**.
 </aside>
 </section>
-<!------------------------>
 
 
-<!------------------------>
 <section data-transition="slide-in fade-out" >
 <h2>Paquetes IP</h2>
 <ul>
@@ -602,7 +597,7 @@ Internet es una red del tipo de **conmutación por paquetes**, lo que significa 
 
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="fade-in fade-out" >
 <h2>Paquetes IP</h2>
 <ul>
@@ -614,7 +609,7 @@ En una red conmutada por paquetes, los nodos intermedios no necesitan conocer to
 
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="fade-in fade-out" >
 <h2>Paquetes IP</h2>
 <ul>
@@ -625,7 +620,7 @@ En una red conmutada por paquetes, los nodos intermedios no necesitan conocer to
 Para que los paquetes puedan ser encaminados, el emisor completa los datos que constituyen el paquete con un **encabezado** conteniendo la dirección del nodo emisor, o **dirección origen**, y la dirección del nodo destino, o **dirección destino**.
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="fade-in fade-out" >
 <h2>Ruteo IP</h2>
 <ul>
@@ -640,7 +635,7 @@ Para que los paquetes puedan ser encaminados, el emisor completa los datos que c
 Cuando un paquete llega a un router, lo hace por un enlace. El router debe aplicar alguna regla para saber hacia qué otro enlace **reenviar** el paquete. Esta decisión de cuál será ese otro enlace es una acción de **ruteo** o **encaminamiento**.
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="fade-in slide-out" >
 <h2>Ruteo IP</h2>
 <ul>
@@ -655,12 +650,12 @@ Cuando un paquete llega a un router, lo hace por un enlace. El router debe aplic
 La decisión de ruteo es tomada por los routers usando la información de destino que llevan consigo los paquetes, más información de ruteo contenida en una **tabla de reenvío** o tabla de ruteo, almacenada en la memoria del router.
 </aside>
 </section>
-<!------------------------>
 
 
 
-<!------------------------>
-<section data-transition="slide-in slide-out" >
+
+
+<section data-transition="slide-in slide-out">
 <h2>Tabla de ruteo</h2>
 <ul>
 <li>Contiene reglas llamadas <b>rutas</b></li>
@@ -675,12 +670,17 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 <tr><td>00110</td><td>1</td></tr>
 </table>
 <aside data-markdown class="notes">
+La tabla de ruteo contiene reglas para la decisión de encamiento de los paquetes. Cada regla se llama una **ruta** e indica cuál será la interfaz de salida de los paquetes cuya dirección destino coincida con la dirección destino de la ruta. 
+
+En líneas generales, el algoritmo de ruteo es como sigue: sl llegar un paquete, el router examinará la dirección destino **del paquete** y la comparará con la dirección destino **de cada ruta**. Cuando encuentre una coincidencia, utilizará la información en la columna de **interfaz de salida**, reenviando el paquete por esa interfaz.
+
+Sin embargo, ésta es una simplificación. La verdadera forma de la tabla de ruteo es algo diferente.
 </aside>
 </section>
-<!------------------------>
 
 
-<!------------------------>
+
+
 <section data-transition="slide-in slide-out" >
 <h2>Ruteo</h2>
 <ul>
@@ -692,7 +692,7 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="slide-in slide-out" >
 <h2>Máscara de subred</h2>
 <ul>
@@ -714,7 +714,7 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+
 
 <section data-transition="slide-in slide-out" >
 <h2>Ruteo por prefijos</h2>
@@ -755,7 +755,7 @@ La decisión de ruteo es tomada por los routers usando la información de destin
  
 
 
-<!------------------------>
+
 <section data-transition="slide-in slide-out" >
 <h2>Algoritmo de ruteo</h2>
 <ul>
@@ -785,9 +785,9 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
 
-<!------------------------>
+
+
 <section data-transition="slide-in slide-out" >
 <h2>Selección de ruta</h2>
 <ul>
@@ -811,44 +811,38 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 
 
 
-<!------------------------>
 <section data-transition="slide-in fade-out" >
-<!--<h2>Ruteo</h2>-->
 <img src="img/routing-0.svg" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="fade-in fade-out" >
-<!--<h2>Ruteo</h2>-->
 <img src="img/routing-1.svg" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="fade-in fade-out" >
-<!--<h2>Ruteo</h2>-->
 <img src="img/routing-2.svg" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="fade-in fade-out" >
-<!--<h2>Ruteo</h2>-->
 <img src="img/routing-3.svg" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="fade-in slide-out" >
-<!--<h2>Ruteo</h2>-->
 <img src="img/routing-4.svg" class="plain stretch">
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
 
-<!------------------------>
+
+
 <section data-transition="slide-in slide-out" >
 <h2>Nombres de dominio</h2>
 <ul>
@@ -874,10 +868,10 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+
  
 
-<!------------------------>
+
 <section data-transition="slide-in fade-out" >
 <h2>DNS</h2>
 <img src="img/dns-0.svg" class="plain stretch">
@@ -908,23 +902,21 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
 
 
 
-<!------------------------>
-<section 
-	data-transition="convex-in convex-out" 
-	>
+
+
+<section data-transition="convex-in convex-out">
 <h2>Comando ping</h2>
-  <div class="asciicast"><!-- { "URL": "src/ping.json" } --></div>
+  <div class="asciicast">< !-- { "URL": "src/ping.json" } -- ></div>
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+
 <section data-transition="convex-in convex-out" >
 <h2>Comando traceroute</h2>
-  <div class="asciicast"><!-- { "URL": "src/traceroute.json" } --></div>
+  <div class="asciicast">< !-- { "URL": "src/traceroute.json" } -- ></div>
 <aside data-markdown class="notes">
 </aside>
 </section>
@@ -934,15 +926,12 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 <h2>Referencias</h2>
 <ul>
 	<li><a href="Redes-notes.pdf">Notas de esta presentación</a></li>
-	<!-- <li><a href="https://pedco.uncoma.edu.ar/pluginfile.php/371865/mod_resource/content/1/IC%20-%20Redes.pdf">Apunte de cátedra: Redes</a></li>-->
-
 	<li><a href="https://es.m.wikipedia.org/wiki/Ethernet">Ethernet</a></li>
 </ul>
 <aside data-markdown class="notes">
 </aside>
 </section>
 
-<!------------------------>
 <section
         data-transition="slide-in slide-out"
         data-background="img/sleepy.gif"
@@ -953,7 +942,7 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 <aside data-markdown class="notes">
 </aside>
 </section>
-<!------------------------>
+------------------------>
 
 <!------------------------------------------------------------------>
    </div>
