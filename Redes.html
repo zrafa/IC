@@ -534,8 +534,8 @@ Elevar el ancho de banda digital del enlace, de 1Gbps a 10Gbps, ¿sería una sol
 </aside>
 </section>
 
+<!-----------------
 
-<!----------
 
 <section data-transition="slide-in slide-out" >
 <h2>Direcciones de red</h2>
@@ -605,8 +605,9 @@ Internet es una red del tipo de **conmutación por paquetes**, lo que significa 
 </ul>
 <img src="img/paquetes-1.svg" class="plain stretch">
 <aside data-markdown class="notes">
-En una red conmutada por paquetes, los nodos intermedios no necesitan conocer todo el camino que debe atravesar cada uno de los paquetes. En cambio, un router sólo necesita saber a cuál de los nodos intermedios adyacentes encaminarlos, basándose en información que transporta el mismo paquete. Cada nodo intermedio o router en un camino entre emisor y receptor toma una nueva decisión de ruteo ante cada uno de los paquetes que llegan a él.
+En una red conmutada por paquetes, los nodos intermedios no necesitan conocer todo el camino que debe atravesar cada uno de los paquetes. En cambio, un router sólo necesita saber a cuál de los **nodos intermedios adyacentes** encaminarlo, basándose en información transportada por el mismo paquete. 
 
+Cada nodo intermedio o router en el camino entre el emisor y el receptor toma una nueva decisión de ruteo ante cada uno de los paquetes que llegan a él.
 </aside>
 </section>
 
@@ -617,7 +618,7 @@ En una red conmutada por paquetes, los nodos intermedios no necesitan conocer to
 </ul>
 <img src="img/paquetes-2.svg" class="plain stretch">
 <aside data-markdown class="notes">
-Para que los paquetes puedan ser encaminados, el emisor completa los datos que constituyen el paquete con un **encabezado** conteniendo la dirección del nodo emisor, o **dirección origen**, y la dirección del nodo destino, o **dirección destino**.
+Al generar un paquete, para que pueda ser encaminado, el emisor completa los datos con un **encabezado** conteniendo la dirección IP del nodo emisor, o **dirección origen**, y la dirección IP del nodo destino, o **dirección destino**.
 </aside>
 </section>
 
@@ -632,7 +633,9 @@ Para que los paquetes puedan ser encaminados, el emisor completa los datos que c
 <img src="img/paquetes-3.svg" class="plain stretch">
 <aside data-markdown class="notes">
 ##Ruteo o encaminamiento
-Cuando un paquete llega a un router, lo hace por un enlace. El router debe aplicar alguna regla para saber hacia qué otro enlace **reenviar** el paquete. Esta decisión de cuál será ese otro enlace es una acción de **ruteo** o **encaminamiento**.
+Cuando un paquete llega a un router, lo hace por algún enlace. La tarea del router es **reenviar** este paquete por otro de sus enlaces, de modo que se aproxime a su destino.
+
+El router debe aplicar alguna regla lógica para decidir hacia qué otro enlace **reenviar** el paquete. Esta decisión de cuál será ese otro enlace es una acción de **ruteo** o **encaminamiento**.
 </aside>
 </section>
 
@@ -663,18 +666,21 @@ La decisión de ruteo es tomada por los routers usando la información de destin
 </ul>
 <table class="stretch">
 <tr><th>Dirección destino</th><th>Interfaz de salida</th></tr>
-<tr><td>00000</td><td>0</td></tr>
-<tr><td>00001</td><td>2</td></tr>
-<tr><td>00010</td><td>0</td></tr>
-<tr><td>00100</td><td>1</td></tr>
-<tr><td>00110</td><td>1</td></tr>
+<tr><td>00000000000000000000000000000000</td><td>0</td></tr>
+<tr><td>00000000000000000000000000000001</td><td>0</td></tr>
+<tr><td>00000000000000000000000000000010</td><td>2</td></tr>
+<tr><td>00000000000000000000000000000011</td><td>1</td></tr>
+<tr><td>00000000000000000000000000000100</td><td>1</td></tr>
 </table>
 <aside data-markdown class="notes">
-La tabla de ruteo contiene reglas para la decisión de encamiento de los paquetes. Cada regla se llama una **ruta** e indica cuál será la interfaz de salida de los paquetes cuya dirección destino coincida con la dirección destino de la ruta. 
+La tabla de ruteo contiene reglas para la decisión de encaminamiento de los paquetes. Cada regla se llama una **ruta** e indica cuál será la interfaz de salida de los paquetes cuya dirección destino coincida con la dirección destino de la ruta. 
 
-En líneas generales, el algoritmo de ruteo es como sigue: sl llegar un paquete, el router examinará la dirección destino **del paquete** y la comparará con la dirección destino **de cada ruta**. Cuando encuentre una coincidencia, utilizará la información en la columna de **interfaz de salida**, reenviando el paquete por esa interfaz.
+En líneas generales, el algoritmo de ruteo es como sigue: 
 
-Sin embargo, ésta es una simplificación. La verdadera forma de la tabla de ruteo es algo diferente.
+- Al llegar un paquete, el router examinará la dirección destino **del paquete** y la comparará con la dirección destino **de cada ruta**. 
+- Al encontrar una coincidencia de dirección destino entre el paquete y la ruta, utilizará la información en la columna de **interfaz de salida** de esa ruta, reenviando el paquete por esa interfaz.
+
+Sin embargo, ésta es una simplificación. La verdadera forma de la tabla de ruteo es algo diferente. ¿Por qué?
 </aside>
 </section>
 
@@ -684,34 +690,66 @@ Sin embargo, ésta es una simplificación. La verdadera forma de la tabla de rut
 <section data-transition="slide-in slide-out" >
 <h2>Ruteo</h2>
 <ul>
-	<li>Las direcciones IPv4 son de 32 bits &rarr; $2^{32} = 2^2 \times 2^{30} = $ 4 Gi direcciones posibles</li>
-	<li class="fragment">Una tabla de ruteo con una ruta por cada dirección tendría $\approx$ 4000000000 de entradas</li>
+	<li>Las direcciones IPv4 son de 32 bits 
+<ul>
+<li>$2^{32} = 2^2 \times 2^{30} = $ 4 Gi direcciones posibles</li>
+</ul>
+	<li class="fragment">Una tabla de ruteo con <b>una ruta por cada dirección destino</b> tendría $\approx$ 4000000000 de entradas</li>
 	<li class="fragment">Y ocuparía 16 GiB de memoria</li>
-	<li class="fragment">Solución: agrupar las direcciones en grupos o <b>subredes</b> y mantener una ruta por cada subred</li>
+	<li class="fragment">Solución: agrupar las direcciones en conjuntos o <b>subredes</b> y mantener <b>una ruta por cada subred</b></li>
+	<li class="fragment">Las subredes son direcciones con un mismo <b>prefijo</b> o secuencia inicial de bits</b></li>
 </ul>
 <aside data-markdown class="notes">
+Notemos que existen más de **cuatro mil millones** de direcciones IPv4 posibles, ya que las direcciones IP se escriben usando 32 bits. El tamaño de una tabla de ruteo completa, como la hemos descrito, sería enorme, y el costo del equipamiento de ruteo, muy grande.
+
+Las tablas de ruteo verdaderas, entonces, no contienen una ruta por cada dirección destino, sino que las rutas corresponden a conjuntos o agrupaciones de direcciones, llamadas **subredes**. 
+
+Un paquete cuya dirección destino esté en una subred utilizará la ruta de dicha subred. Cualquier otra dirección destino que pertenezca a la misma subred recibirá la misma decisión de ruteo.
+
+¿Cómo agrupar estas direcciones para construir las subredes? Todas las direcciones con el mismo **prefijo** de una cierta longitud formarán una subred.
 </aside>
 </section>
 
 <section data-transition="slide-in slide-out" >
 <h2>Máscara de subred</h2>
 <ul>
-	<li>Una subred es un conjunto de direcciones que comparten un prefijo de una cierta longitud</li>
-	<li class="fragment">La longitud de los prefijos se especifica utilizando una <b>máscara</b></li>
+	<li class="fragment">La longitud de un prefijo se indica utilizando una <b>máscara</b></li>
+	<li class="fragment">32 dígitos binarios, primeros $n$ <b>unos</b> y restantes <b>ceros</b></li>
 	<span class="fragment">
-	<li>¿Qué significa <b>192.168.1.1/24</b>, o <b>192.168.1.1 con máscara 255.255.255.0</b>?</li>
+	<li><b>192.168.1.1 con máscara 255.255.255.0</b></li>
+	<li><b>192.168.1.1/24</b></li>
+	<li class="fragment">Prefijo y dirección de subred</li>
 	<ul>
-		<li>11000000 10101000 00000001 00000001 con máscara 11111111&nbsp;11111111&nbsp;11111111&nbsp;00000000 </li>
+		<li class="fragment">11000000 10101000 00000001 00000001</li>
+		<li class="fragment">11111111&nbsp;11111111&nbsp;11111111&nbsp;00000000</li>
 	</span>
 	<span class="fragment">
 		<li><span style="color: blue">11000000 10101000 00000001</span> 00000000</li>
 	</span>
+	<li class="fragment">Dirección de subred <b>192.168.1.0</b></li>
 	</ul>
-	<span class="fragment">
-	<li>192.168.1.1/24 &rarr; dirección de subred <b>192.168.1.0</b></li>
 	</span>
 </ul>
 <aside data-markdown class="notes">
+Cuando se especifique una ruta para todas estas direcciones en una tabla de ruteo, la dirección destino de la ruta será una **dirección de subred**. 
+
+Una dirección de subred se calcula utilizando una **máscara de subred**, que es una sucesión de 32 dígitos binarios. Los primeros $n$ dígitos de la máscara son **unos**, y los restantes **ceros**. 
+
+Estos primeros $n$ dígitos definen cuál será el prefijo compartido por todas las direcciones IP que pertenecen a la subred. Los restantes bits de esas direcciones pueden tomar cualquier valor.
+
+
+**Ejemplo**
+
+- Una máscara de **24 bits** de longitud puede expresarse como **11111111 11111111 11111111 00000000**, que en la misma notación decimal de las direcciones IP suele escribirse **255.255.255.0**. 
+- Una máscara de **26 bits** de longitud puede expresarse como **11111111 11111111 11111111 11000000**, o **255.255.255.192**.
+
+
+
+Para calcular la dirección de subred a la cual pertenece una dirección IP, superponemos la dirección y su máscara de modo de encolumnar todos los dígitos y efectuamos una operación AND bit a bit. El operador AND es el que devuelve 1 solamente si ambos operandos son 1, y en otro caso devuelve 0.
+
+El efecto de este AND es **copiar** en las primeras $n$ columnas del resultado los bits tal cual figuran en la dirección IP, y completar con ceros hasta el final del resultado. Este resultado es la dirección de subred a la cual pertenece la dirección IP original.
+
+Una máscara de subred con $n$ bits suele escribirse como "$/n$". Así, la dirección de red de 192.168.1.1 con máscara 255.255.255.0 puede expresarse también como **192.168.1.1/24**.
 </aside>
 </section>
 
@@ -731,6 +769,9 @@ Sin embargo, ésta es una simplificación. La verdadera forma de la tabla de rut
 	<tr><td>00010</td><td>11110</td><td>2</td></tr>
 	</table>
 <aside data-markdown class="notes">
+Sabiendo calcular direcciones de subred, ya podemos rediseñar la tabla de ruteo. Habrá que especificar **direcciones de subred** en lugar de direcciones de hosts, y para cada ruta en la tabla, agregar cuál es la **máscara** que define el prefijo de la ruta.
+
+Para simplificar los ejemplos siguientes, utilizaremos direcciones y máscaras de cinco bits. 
 </aside>
 </section>
  
@@ -942,8 +983,8 @@ Sin embargo, ésta es una simplificación. La verdadera forma de la tabla de rut
 <aside data-markdown class="notes">
 </aside>
 </section>
------------------------->
 
+--------------------->
 <!------------------------------------------------------------------>
    </div>
 </div>
