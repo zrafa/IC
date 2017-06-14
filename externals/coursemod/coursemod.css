@@ -23,9 +23,9 @@ reveal.coursemod__presentation {
     border-left: 2px solid lightgray;
     box-sizing: border-box;
     display: none;
-    font-family: "Helvetica", sans-serif;
-    font-size: 1em;
-    /*font-size: 1.1vw;*/
+    font-family: sans-serif, "Helvetica";
+    /*font-size: 1em;*/
+    font-size: 1.2vw;
     height: 100%;
     line-height: 1.3;
     overflow-y: scroll;
