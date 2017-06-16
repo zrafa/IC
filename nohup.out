@@ -789,3 +789,6 @@ socket.error: [Errno 98] Address already in use
 127.0.0.1 - - [16/Jun/2017 10:07:37] "GET /Redes.html HTTP/1.1" 200 -
 127.0.0.1 - - [16/Jun/2017 10:07:37] "GET /img/favicon-96x96.png HTTP/1.1" 200 -
 127.0.0.1 - - [16/Jun/2017 10:08:34] "GET /img/sleepy.gif HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2017 10:27:14] "GET /Redes.html HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2017 10:28:09] "GET /Redes.html HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2017 10:28:09] "GET /img/favicon-96x96.png HTTP/1.1" 200 -
