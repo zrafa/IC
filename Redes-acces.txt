@@ -704,16 +704,16 @@ Ejemplo
 
 Notación alternativa
 
-Una máscara de subred con n bits suele escribirse como "/n". Así, la
-dirección IP 192.168.1.1 con máscara 255.255.255.0 puede expresarse
-también como 192.168.1.1/24.
+Una máscara de subred con n bits suele expresarse también como "/n".
+Así, la dirección IP 192.168.1.1 con máscara 255.255.255.0 puede
+escribirse más sencillamente como 192.168.1.1/24.
 
 Sabiendo calcular direcciones de subred, ya podemos rediseñar la tabla
 de ruteo. Habrá que especificar direcciones de subred en lugar de
 direcciones de hosts, y para cada ruta en la tabla, agregar cuál es la
 máscara que define el prefijo de la ruta.
 
-** Nota**
+Nota
 
 Para simplificar los ejemplos siguientes, utilizaremos direcciones y
 máscaras de cinco bits. Sin embargo, el mecanismo para el algoritmo de
