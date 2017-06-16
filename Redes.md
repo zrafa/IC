@@ -266,4 +266,229 @@ Elevar el ancho de banda digital del enlace, de 1Gbps a 10Gbps, ¿sería una sol
 
 
 
+##Direcciones de red
+
+Para poder dirigir los mensajes entre nodos, es necesario identificarlos de alguna forma, asignándoles **direcciones** o identificadores de red. 
+
+En Internet, las direcciones son asignadas a las interfaces, y no a los nodos. De esta manera, si un nodo tiene más de una interfaz, recibirá más de una dirección. El caso típico de un nodo con más de una interfaz son los routers, que tienen una interfaz perteneciente a cada una de las redes que conectan.
+
+
+El protocolo IPv4 define las direcciones de red como números de 32 bits que se asignan a cada interfaz de los nodos. Estas direcciones de 32 bits suelen escribirse como cuatro valores decimales, entre 0 y 255, separados por puntos.
+
+**Ejemplo**
+
+- La dirección IPv4 **11000000101010000000000100000001** se puede escribir en notación decimal con punto como **192.168.1.1**.
+
+
+##Paquetes IP
+
+Internet es una red del tipo de **conmutación por paquetes**, lo que significa que los flujos de datos que van de un nodo emisor a un receptor son fraccionados en **paquetes** o trozos de datos, de un cierto tamaño máximo, y que los nodos intermedios tratan a cada paquete individualmente para encaminarlos a su destino.
+
+
+
+En una red conmutada por paquetes, los nodos intermedios, o routers, no necesitan conocer todo el camino que debe atravesar cada uno de los paquetes. En cambio, un router sólo necesita saber a cuál de los **nodos intermedios adyacentes** encaminarlo, basándose en información transportada por el mismo paquete. 
+
+Cada nodo intermedio o router en el camino entre el emisor y el receptor tomará una nueva decisión de ruteo ante cada uno de los paquetes que llegan a él.
+
+
+Al generar un paquete, para que pueda ser encaminado, el emisor completa los datos con un **encabezado** conteniendo la dirección IP del nodo emisor, o **dirección origen**, y la dirección IP del nodo destino, o **dirección destino**.
+
+
+##Ruteo o encaminamiento
+Cuando un paquete llega a un router, lo hace por algún enlace. La tarea del router es **reenviar** este paquete por otro de sus enlaces, de modo que se aproxime a su destino.
+
+El router debe aplicar alguna regla lógica para decidir hacia qué otro enlace **reenviar** el paquete. Esta decisión de cuál será ese otro enlace es una acción de **ruteo** o **encaminamiento**.
+
+
+###Tabla de reenvío o de ruteo
+La decisión de ruteo es tomada por los routers usando la información de destino que llevan consigo los paquetes, más información de ruteo contenida en una **tabla de reenvío** o tabla de ruteo, almacenada en la memoria del router.
+
+
+La tabla de ruteo contiene reglas para la decisión de encaminamiento de los paquetes. Cada regla se llama una **ruta** e indica cuál será la interfaz de salida de los paquetes cuya dirección destino coincida con la dirección destino de la ruta. 
+
+En líneas generales, el algoritmo de ruteo es como sigue: 
+
+- Al recibir un paquete, el router examinará la dirección destino **del paquete** y la comparará con la dirección destino **de cada ruta**. 
+- Al encontrar una coincidencia de dirección destino entre el paquete y la ruta, utilizará la información en la columna de **interfaz de salida** de esa ruta, reenviando el paquete por esa interfaz.
+
+Sin embargo, ésta es una simplificación. La verdadera forma de la tabla de ruteo es algo diferente. ¿Por qué?
+
+
+###Subredes
+Notemos que, ya que las direcciones IP se escriben usando 32 bits, existen más de **cuatro mil millones** de direcciones IPv4 posibles. Una tabla de ruteo completa, con una ruta por cada dirección destino, tal como la hemos descrito, tendría enormes requerimientos de memoria, y el equipamiento de ruteo sería muy costoso.
+
+Las tablas de ruteo verdaderas, entonces, no contienen una ruta por cada dirección destino, sino que las rutas corresponden a conjuntos o agrupaciones de direcciones, llamadas **subredes**. 
+
+Un paquete cuya dirección destino pertenezca a una subred utilizará la ruta de dicha subred. Cualquier otra dirección destino que pertenezca a la misma subred recibirá la misma decisión de ruteo. 
+
+Si las subredes son agrupaciones suficientemente grandes, la cantidad de reglas de ruteo o rutas disminuirá convenientemente.
+
+
+###Prefijo de subred
+
+¿Cómo agrupar estas direcciones para definir las subredes? 
+
+*Todas las direcciones con el mismo **prefijo** de una cierta longitud formarán una subred.*
+
+**Ejemplo**
+
+- Las direcciones IP 130.240.10.17 y 130.240.11.15 pertenecen a una subred con prefijo común 130.240 de 16 bits. Todas las direcciones pertenecientes a esta subred se escriben como 130.240.XXX.XXX.
+- Sin embargo, notemos que, si escribimos las direcciones IP anteriores en su forma binaria, encontraremos que en realidad existe un prefijo común aún más largo. En efecto, 
+    
+    130.240.10.17 = **10000010.11110000.0000101**0.00010001
+    130.240.11.15 = **10000010.11110000.0000101**1.00001111
+
+    Los primeros **23 bits** de ambas direcciones son iguales, luego comparten un prefijo común de longitud 23. Es imposible escribirlo en notación decimal a menos que adoptemos la convención de completar con ceros la parte no común:
+
+    130.240.10.0 = 10000010.11110000.00001010.00000000
+
+    Esta convención no es otra cosa que lo que llamamos la dirección de la subred.
+
+###Dirección de subred y máscara de subred
+
+Cuando en una tabla de ruteo se especifique una ruta para todas las direcciones con un mismo prefijo, la dirección destino de la ruta será una **dirección de subred**. 
+
+Una dirección de subred se calcula utilizando una **máscara de subred**, que es una sucesión de 32 dígitos binarios. Los primeros $n$ dígitos de la máscara son **unos**, y los restantes **ceros**. 
+
+Estos primeros $n$ dígitos "unos" definen cuál será el prefijo compartido por todas las direcciones IP que pertenecen a la subred. La cantidad de dígitos "uno" dicen cuál es la longitud del prefijo compartido. Los restantes bits de esas direcciones pueden tomar cualquier valor.
+
+
+**Ejemplo**
+
+- Una máscara de **24 bits** de longitud puede expresarse como **11111111 11111111 11111111 00000000**, que en la misma notación decimal de las direcciones IP suele escribirse **255.255.255.0**. 
+- Una máscara de **26 bits** de longitud puede expresarse como **11111111 11111111 11111111 11000000**, o **255.255.255.192**.
+
+
+###Cálculo de la dirección de subred
+
+Para calcular la dirección de subred a la cual pertenece una dirección IP, superponemos la dirección y su máscara de modo de encolumnar todos los dígitos y efectuamos una operación AND bit a bit. El operador AND es el que devuelve 1 solamente si ambos operandos son 1, y en otro caso devuelve 0.
+
+El efecto de este AND es **copiar** en las primeras $n$ columnas del resultado los bits tal cual figuran en la dirección IP, y **completar con ceros** hasta el final del resultado. Este resultado es la dirección de subred a la cual pertenece la dirección IP original.
+
+
+**Ejemplo**
+
+- ¿Cuál es la dirección de subred de la dirección IP **170.210.80.129** con máscara 255.255.255.0? 
+
+	Aplicando la máscara de 24 bits de longitud, la operación AND devuelve la dirección de subred **170.210.80.0**.
+
+- ¿Cuál es la dirección de subred de la dirección IP **170.210.80.129** con máscara 255.255.255.128? 
+
+    Si escribimos esta máscara en forma binaria, vemos que contiene **25 unos**. La operación AND que copia los primeros 25 bits de la dirección IP y deja los restantes en 0 da la dirección de subred **170.210.80.128**.
+
+**Notación alternativa**
+
+Una máscara de subred con $n$ bits suele escribirse como "$/n$". Así, la dirección IP **192.168.1.1 con máscara 255.255.255.0** puede expresarse también como **192.168.1.1/24**.
+
+
+Sabiendo calcular direcciones de subred, ya podemos rediseñar la tabla de ruteo. Habrá que especificar **direcciones de subred** en lugar de direcciones de hosts, y para cada ruta en la tabla, agregar cuál es la **máscara** que define el prefijo de la ruta.
+
+** Nota** 
+
+Para simplificar los ejemplos siguientes, utilizaremos direcciones y máscaras de cinco bits. Sin embargo, el mecanismo para el algoritmo de reenvío será básicamente el mismo que con las direcciones reales IPv4 de 32 bits.
+
+**Ejemplo**
+
+Sea una tabla de ruteo con la siguiente información:
+
+Dirección de subred | Máscara | Interfaz de salida
+:------------:|:-------:|:------------:
+00000 | 11100 | 0
+00100 | 11100 | 1
+00010 | 11110 | 2
+
+Esta tabla de ruteo dice que:
+
+- La subred 00000 con máscara 11100 se alcanza mediante la interfaz de salida 0. Es decir, que si los primeros tres bits de la dirección destino de un paquete son 000, el paquete debe ser reenviado por la interfaz 0.
+- La subred 00100 con máscara 11100 se alcanza mediante la interfaz de salida 1. Es decir, que si los primeros tres bits de la dirección destino de un paquete son 001, el paquete debe ser reenviado por la interfaz 1.
+- La subred 00010 con máscara 11110 se alcanza mediante la interfaz de salida 1. Es decir, que si los primeros **cuatro** bits de la dirección destino de un paquete son 0001, el paquete debe ser reenviado por la interfaz 2.
+
+
+**Pregunta**
+
+- En el ejemplo anterior, ¿puede darse un caso donde quepa la duda de si aplicar la primera o la segunda regla?
+
+
+###Ruta por defecto o ruta *default*
+
+Aun con la estrategia de ruteo por prefijos, los routers no pueden conocer **todas** las rutas a todos los destinos. Siempre se apoyan en que alguno de sus routers vecinos que esté más próximo al destino tenga más información que ellos. 
+
+Cuando un router no sabe cómo encaminar un paquete, lo envía por una interfaz predefinida, en la esperanza de que un router situado sobre ese enlace, que reciba el paquete, tenga mejor información.
+
+Para definir una ruta default agregamos una regla a la tabla de ruteo con **dirección de subred = 00000 y máscara de red = 00000**. Como la máscara tiene **cero unos**, cualquier dirección IP destino da una coincidencia. Por eso, la regla default se consulta en último lugar, y como último recurso. De lo contrario, la interfaz de la ruta default absorbería todo el tráfico y nunca se reenviaría tráfico a otros enlaces.
+
+En Internet, tiene sentido que la interfaz de la ruta default en cada router sea la que "mira" al centro de la Internet, en la dirección donde hay más nodos. Allí es más probable que existan routers con una configuración mejor.
+
+###Rutas más específicas y máscaras más largas
+
+El caso de la ruta default nos permite ver que la ruta más genérica, la menos específica, es la que tiene la máscara más corta. Representa a cualquier subred, o al conjunto de todas las subredes.
+
+Lo inverso también es cierto: si una máscara es más larga, la ruta es más específica. Una máscara más larga representa una subred de **menor** tamaño. 
+
+Una máscara larga puede servir para indicar una excepción a una regla más general. Por eso, las máscaras más largas **tienen preferencia** en el proceso de ruteo de un paquete. 
+
+Cada vez que un router se encuentre con más de una ruta posible, elegirá aquella cuya máscara de subred sea más larga (es decir, la ruta más específica).
+
+
+##Algoritmo de reenvío
+
+Finalmente podemos presentar el algoritmo de reenvío tal cual lo ejecutan los routers de Internet. 
+
+* Para cada regla en la tabla de ruteo, ordenadas descendentemente por longitud de prefijo
+    * Subred destino del paquete = Dirección destino del paquete AND Máscara de la ruta
+    * Si subred destino del paquete = subred de la ruta, reenviar el paquete por la interfaz de salida de esa ruta
+* Si se agotó la tabla pero hay una ruta default
+    * Reenviar el paquete por la ruta default
+* Si se agotó la tabla sin éxito
+    * Devolver error de red inalcanzable
+
+Como las reglas están ordenadas descendentemente por longitud de prefijos, las rutas más específicas se encuentran primero, y tienen preferencia sobre las menos específicas.
+
+
+**Ejemplo**
+
+Volvamos a la tabla de ruteo de un ejemplo anterior, sólo que agregándole una ruta default por la interfaz 2:
+
+Regla | Dirección de subred | Máscara | Interfaz de salida
+:--:| :------------:|:-------:|:------------:
+1 | 00000 | 11100 | 0
+2 | 00100 | 11100 | 1
+3 | 00010 | 11110 | 2
+4 | 00000 | 00000 | 2
+
+¿Qué camino tomarán los paquetes con la siguiente dirección destino?
+
+- 00001 &rarr; Interfaz 0, por la regla 1
+- 00011 &rarr; Interfaz 2, por la regla 2, ya que, a pesar de que la dirección destino coincide también con la regla 1, la regla 2 es más específica.
+- 01001 &rarr; Interfaz 2, por la regla default, ya que las anteriores no han resultado en coincidencias.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
