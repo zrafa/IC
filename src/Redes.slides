@@ -1064,6 +1064,7 @@ Regla | Dirección de subred | Máscara | Interfaz de salida
 <section
         data-transition="zoom-in slide-out"
         data-background="img/sleepy.gif"
+        data-background-transition="zoom"
         data-background-size="70%"
 	data-coursemod-shown="false"
 >
