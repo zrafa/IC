@@ -798,7 +798,7 @@ Algoritmo de reenvío
 Finalmente podemos presentar el algoritmo de reenvío tal cual lo
 ejecutan los routers de Internet.
 
--   Para cada regla en la tabla de ruteo, ordenadas descendentemente por
+-   Para cada regla en la tabla de ruteo, en orden descendente por
     longitud de prefijo
     -   Subred destino del paquete = Dirección destino del paquete AND
         Máscara de la ruta
@@ -809,8 +809,8 @@ ejecutan los routers de Internet.
 -   Si se agotó la tabla sin éxito
     -   Devolver error de red inalcanzable
 
-Como las reglas están ordenadas descendentemente por longitud de
-prefijos, las rutas más específicas se encuentran primero, y tienen
+Como las reglas se consultan en orden de prefijos más largos a prefijos
+más cortos, las rutas más específicas se encuentran primero, y tienen
 preferencia sobre las menos específicas.
 
 Ejemplo

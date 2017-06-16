@@ -434,7 +434,7 @@ Cada vez que un router se encuentre con más de una ruta posible, elegirá aquel
 
 Finalmente podemos presentar el algoritmo de reenvío tal cual lo ejecutan los routers de Internet. 
 
-* Para cada regla en la tabla de ruteo, ordenadas descendentemente por longitud de prefijo
+* Para cada regla en la tabla de ruteo, en orden descendente por longitud de prefijo
     * Subred destino del paquete = Dirección destino del paquete AND Máscara de la ruta
     * Si subred destino del paquete = subred de la ruta, reenviar el paquete por la interfaz de salida de esa ruta
 * Si se agotó la tabla pero hay una ruta default
@@ -442,7 +442,7 @@ Finalmente podemos presentar el algoritmo de reenvío tal cual lo ejecutan los r
 * Si se agotó la tabla sin éxito
     * Devolver error de red inalcanzable
 
-Como las reglas están ordenadas descendentemente por longitud de prefijos, las rutas más específicas se encuentran primero, y tienen preferencia sobre las menos específicas.
+Como las reglas se consultan en orden de prefijos más largos a prefijos más cortos, las rutas más específicas se encuentran primero, y tienen preferencia sobre las menos específicas.
 
 
 **Ejemplo**
