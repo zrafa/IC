@@ -473,20 +473,79 @@ Regla | Dirección de subred | Máscara | Interfaz de salida
 
 
 
+##Servicio de Nombres de Dominio (DNS)
+
+Como hemos visto, el funcionamiento de Internet se basa en la existencia de **direcciones**, que permiten enviar y encaminar el tráfico entre los diferentes puntos de la red. Sin embargo, las direcciones IP de 32 bits, o su equivalente de cuatro decimales con puntos, son incómodas de manejar para los humanos. El **servicio de nombres de dominio**, o Domain Name Service (**DNS**) es un servicio agregado a la Internet para comodidad de los usuarios. 
+
+El servicio DNS permite a los usuarios referirse a los nodos de Internet mediante nombres simbólicos en lugar de direcciones, y entra en acción cada vez que se menciona el **nombre** de un nodo para hacer contacto con él. Un nodo que necesita enviar un mensaje cualquiera a otro nodo necesita conocer su dirección IP. Si únicamente conoce su nombre, pedirá una **traducción de nombre** a algún **servidor DNS**.
+
+Técnicamente, Internet podría funcionar perfectamente (y, de hecho, lo hizo durante algún tiempo) **sin** la existencia del servicio DNS, pero la costumbre lo ha convertido en una parte indispensable de la red. 
+
+###Jerarquía de nombres de dominio
+
+Estos nombres simbólicos tienen una cierta estructura jerárquica, es decir, organizada por niveles. Un nombre consta de varias partes, separadas por puntos. En cada nombre, las partes más a la derecha designan conjuntos mayores de nodos, y las partes más a la izquierda, conjuntos más pequeños, contenidos en aquellos conjuntos mayores. 
+
+**Ejemplo**
+
+- El nombre **pedco.uncoma.edu.ar** designa al nodo **pedco**, que pertenece al conjunto **uncoma**, contenido en el conjunto **edu** contenido en el conjunto **ar**.
+- El nombre **pedco.uncoma.edu.ar** equivale, gracias al servicio DNS, a la **dirección IP 170.210.81.41**.
+
+Estos conjuntos de nombres se llaman **dominios**. Los dominios que aparecen más a la derecha son los más generales. Inicialmente fueron siete de propósito general (**org, mil, gov, edu, com, net, int**), más los pertenecientes a los países (**ar** para Argentina, **cl** para Chile, **uy** para Uruguay...), pero luego se agregaron otros. Por ser los más generales, están al tope de la jerarquía, y se llaman dominios de nivel superior o **TLD (Top-Level Domains)**.
+
+Los dominios de nivel superior contienen otros espacios de nombres, llamados a su vez dominios, y éstos, otros llamados subdominios. En el ejemplo anterior, el TLD es **ar**, el dominio es **edu.ar** (educación, Argentina), el subdominio es **uncoma.edu.ar** (Universidad del Comahue, educación, Argentina) y finalmente **pedco.uncoma.edu.ar** es el nombre de un nodo perteneciente a la Universidad del Comahue, educación, Argentina.
 
 
 
 
+###Resolución de nombres
+
+Los servidores DNS se clasifican por el tipo de función que cumplen. Cada uno interviene de una manera especial en el mecanismo de traducción de nombres a direcciones. Este mecanismo de traducción se llama **resolución** de nombres.
+
+- Cada nodo de Internet lleva una configuración que le dice cuál es la dirección de su **servidor DNS local**. El servidor local es quien responde efectivamente una consulta DNS. Normalmente, el servidor local se encuentra "cerca" del cliente en términos de redes. Posiblemente, en la misma red local, o en la del proveedor de acceso a Internet.
+
+
+- Al ser consultado por un nombre, un servidor local usará la estrategia de analizar ese nombre **de derecha a izquierda**. Utilizará los componentes del nombre en ese orden, es decir, yendo de lo general a lo particular. En primer lugar utilizará el TLD o nombre de nivel superior para averiguar información sobre ese conjunto de nombres.
+
+    Los servidores locales no conocen todas las posibles traducciones de nombre a dirección IP, por lo cual necesitan el servicio de los **servidores raíz**. Estos son alrededor de una veintena de servidores distribuidos en diferentes lugares del planeta, y todos tienen la misma información, replicada: las direcciones de los servidores de los TLD. 
+
+    Así, un servidor local obtendrá, de un servidor raíz, el dato de dónde ubicar al servidor del TLD **ar**.
 
 
 
+- Conociendo la dirección IP del servidor del TLD, el servidor local lo interrogará entonces acerca del siguiente componente del nombre. 
+
+    Los servidores de los TLD tampoco conocen todas las posibles traducciones, sino que conocen las direcciones de los servidores DNS de los dominios por debajo de ellos. Así, el servidor del TLD **ar** puede decirle al servidor local dónde ubicar al servidor del dominio **edu.ar**.
+
+    Otra información que este servidor del dominio TLD **ar** podría darle al servidor local, si la pidiera, serían las direcciones de los servidores de los dominios **com.ar**, **org.ar**, etc. 
+
+
+-  Ahora el servidor local puede consultar al servidor del dominio **edu.ar**, que es quien puede informarle la dirección del servidor del subdominio **uncoma.edu.ar**.
+
+
+- Finalmente, el servidor local consulta al servidor del subdominio **uncoma.edu.ar** por la traducción del nombre de nodo **www.uncoma.edu.ar**. Este servidor tiene en sus tablas la información que dice cuál es la dirección IP asignada a ese nombre. Ahora el servidor local puede devolver esa información al cliente que originalmente hizo la consulta.
+
+Todo este complejo mecanismo debería tener lugar cada vez que un cliente de la red consulta por un nombre. Sin embargo, como este mecanismo es costoso en tiempo y en ancho de banda de las redes, se adopta un esquema de **cache** o reserva de información. Como es muy probable que esa información vuelva a ser solicitada, los pares (nombre, dirección) que han sido resueltos quedan guardados en una memoria temporaria o **cache** del servidor local. De esta manera las próximas consultas podrán responderse sin necesidad de volver a generar tráfico hacia el resto de la Internet.
+
+
+##Administración de redes
+
+Existen herramientas de software que permiten diagnosticar las condiciones en que se realiza el ruteo, o encaminamiento, de los paquetes IP. El administrador de redes las utiliza para investigar el origen de los problemas en la red.
+
+###Comando ping
+
+El comando **ping** emite paquetes hacia un nodo destino. Si los paquetes logran atravesar la Internet, el nodo destino emitirá una respuesta. El comando ping muestra los paquetes de respuesta que llegan o se pierden, y el tiempo que demora cada respuesta en llegar. 
+
+Cuando los usuarios tienen problemas con alguna aplicación de red, el comando ping es útil como herramienta de diagnóstico porque permite saber si la red es capaz de hacer llegar paquetes de un nodo a otro. Si el diagnóstico de ping es positivo, el administrador de red no se preocupa en comprobar cuestiones asociadas con los niveles inferiores a la capa de red: la comunicación a nivel físico, de enlace y de red entre ambos nodos es operativa. Si existe alguna condición de error, se deberá a problemas relacionados con las aplicaciones, que habrá que investigar.
 
 
 
+###Comando traceroute
 
+El comando **traceroute** permite investigar cuál es la cadena particular de routers que debe atravesar un paquete para llegar a un destino dado. Además, da información sobre la demora en atravesar cada enlace, lo que puede dar una idea de si existe una condición de **congestión** en el camino de los paquetes, y en qué lugar de Internet.
 
+Una condición de congestión es aquella que aparece cuando los nodos intentan utilizar un enlace más allá de su capacidad. Si un enlace es capaz de transmitir una cantidad de bits por segundo, y las demandas de los nodos de la red superan esa capacidad, el router comienza a acumular o encolar paquetes hasta que no tiene más espacio en su memoria para almacenarlos. A partir de este momento, si llegan nuevos paquetes, simplemente los descarta. El programa traceroute hace evidentes las pérdidas de paquetes, y dice en cuál de los enlaces ocurren.
 
-
+El programa traceroute también permite detectar anomalías de ruteo como los lazos o ciclos de ruteo, que se producen cuando los paquetes toman caminos circulares de los cuales no pueden salir. 
 
 
 
