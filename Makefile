@@ -55,4 +55,4 @@ git:
 
 
 clean: 
-	mv index.html Presentación.html Software.html SistemasOperativos.html SistemasDeCómputo.html SistemasDeNumeración.html UnidadesDeInformación.html RepresentaciónDigitalDeDatos.html TextoYMultimedia.html ArquitecturaDeComputadoras.html attic
+	mv Presentación.html Software.html SistemasOperativos.html SistemasDeCómputo.html SistemasDeNumeración.html UnidadesDeInformación.html RepresentaciónDigitalDeDatos.html TextoYMultimedia.html ArquitecturaDeComputadoras.html Redes.html attic
