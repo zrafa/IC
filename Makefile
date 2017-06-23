@@ -17,6 +17,7 @@ redes: Redes.html
 %.html: src/%.slides $(DEPS) 
 	util/macro $< > $*.html
 	$(eval TITLE = $(shell perl -ne '/data-title=\"(.+)\">/ and print "$$1"' $<) )
+	echo DATA-TITLE ${TITLE}
 	util/asides.pl $*.html > $*.md
 	pandoc \
 		-V lang=spanish \
