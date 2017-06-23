@@ -1018,3 +1018,176 @@ socket.error: [Errno 98] Address already in use
 127.0.0.1 - - [23/Jun/2017 10:38:53] "GET /audio/SistemasDeC%C3%B3mputo/01.mp3 HTTP/1.1" 200 -
 127.0.0.1 - - [23/Jun/2017 10:38:59] "GET /audio/SistemasDeC%C3%B3mputo/02.mp3 HTTP/1.1" 200 -
 127.0.0.1 - - [23/Jun/2017 10:39:01] "GET /Software.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:40:31] "GET /Software.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:40:31] "GET /src/ic2017.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:40:32] "GET /img/favicon-96x96.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:22] "GET /Software-notes.pdf HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /ArquitecturaDeComputadoras.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/vn-0.svg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/vn-1.svg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/vn-2.svg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/vn-3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/vn-4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/vn-5.svg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/MCBE.svg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/formatoMCBE.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:33] "GET /img/MCBE.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/0.0.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.0.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.1.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.2.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.3.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.4.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.5.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.6.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.7.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.8.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.9.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.10.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.11.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.12.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.13.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.14.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.15.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.16.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.17.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.18.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.19.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.20.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.21.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.22.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.23.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.24.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.25.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.26.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.27.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.28.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.29.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.30.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/26.0.31.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/27.0.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] code 404, message File not found
+127.0.0.1 - - [23/Jun/2017 10:41:34] "HEAD /audio/29.0.ogg HTTP/1.1" 404 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] "GET /audio/Arquitectura/1-%20componentes%20de%20una%20computadora%20simple.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:34] "GET /src/ic2017.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:35] "GET /audio/Arquitectura/2-%20Memoria%20principal.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:36] "GET /audio/Arquitectura/3-%20Cpu.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:38] "GET /audio/Arquitectura/4-%20Dispositivos.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:39] "GET /audio/Arquitectura/Audio%205.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:39] "GET /audio/Arquitectura/5-%20Memoria.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:40] "GET /audio/Arquitectura/6-%20M1.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:41] "GET /audio/Arquitectura/7-%20M2.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:42] "GET /audio/Arquitectura/8-%20Cpu.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:42] "GET /audio/Arquitectura/9-%20cpu.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:43] "GET /audio/Arquitectura/10-%20cpu.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:44] "GET /audio/Arquitectura/11-%20maquina%20de%20vonneuman.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:44] "GET /audio/Arquitectura/12-%20maq.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:45] "GET /audio/Arquitectura/13-%20maq.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:46] "GET /audio/Arquitectura/14-dele%20con%20el%20von.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:47] "GET /audio/Arquitectura/15-%20unidad%20ed%20control.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:48] "GET /audio/Arquitectura/16-%20ALU.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:48] "GET /audio/Arquitectura/17-%20buses.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:49] "GET /audio/Arquitectura/18-%20buses%20de%20sistema.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:50] "GET /audio/Arquitectura/19-%20buses%20de%20sistema.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:51] "GET /audio/Arquitectura/20-%20modelo%20computacional%20binario%20elemental%20watson.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:51] "GET /audio/Arquitectura/21-%20MCBE.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:53] "GET /audio/Arquitectura/22-Las%2032%20posiciones.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:41:59] "GET /audio/Arquitectura/23-La%20posicion%2030.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:00] "GET /audio/Arquitectura/24-La%20posicion%2031.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:00] "GET /audio/Arquitectura/25-Como%20hemos%20dicho.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:01] "GET /audio/Arquitectura/26-Los%20registros%20del%20MCBE.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:02] "GET /audio/Arquitectura/27-Antes%20de%20ejecutar.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:02] "GET /audio/Arquitectura/28-El%20registro%20acumulador.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:03] "GET /audio/Arquitectura/29-Entonces%20la%20CPU%20del%20MCBE.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:04] "GET /audio/Arquitectura/30-Esta%20CPU%20va%20a%20ser.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:04] "GET /audio/Arquitectura/31-Las%20instrucciones%20del%20MCBE.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:05] "GET /audio/Arquitectura/32-Los%20cinco%20bits%20restantes.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:06] "GET /audio/Arquitectura/33-Por%20otro%20lado%20los%20operandos.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:07] "GET /audio/Arquitectura/34-Cuando%20el%20operando%20es%20una%20direccion.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:09] "GET /audio/Arquitectura/35-Cuando%20es%20un%20desplazamiento.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:09] "GET /audio/Arquitectura/36-Notemos%20que%20con%205%20bits.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:10] "GET /audio/Arquitectura/37-Para%20los%20desplazamientos.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:11] "GET /audio/Arquitectura/38-Las%20instrucciones%20del%20MCBE.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:15] "GET /audio/Arquitectura/39-Las%20aritmeticas%20son%20las%20que%20operan.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:16] "GET /audio/Arquitectura/40-Las%20de%20salto%20o%20transferencia.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:17] "GET /audio/Arquitectura/41-Y%20las%20de%20control.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:18] "GET /audio/Arquitectura/42-Las%20instrucciones%20de%20transferencia%20de%20datos.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:18] "GET /audio/Arquitectura/43-El%20codigo%20011.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:20] "GET /audio/Arquitectura/44-Las%20instrucciones%20aritmeticas.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:21] "GET /audio/Arquitectura/45-Si%20el%20codigo%20es%20101.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:22] "GET /audio/Arquitectura/46-Las%20dos%20instrucciones%20de%20salto.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:24] "GET /audio/Arquitectura/47-El%20codigo%20110.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:24] "GET /audio/Arquitectura/48-Hasta%20el%20momento.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:26] "GET /audio/Arquitectura/49-La%20operacion%20000.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:27] "GET /audio/Arquitectura/50-Ahora%20podemos%20definir.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:29] "GET /audio/Arquitectura/51-Uno-%20copia%20en%20el%20registro%20IR.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:30] "GET /audio/Arquitectura/52-Dos-%20decodifica%20la%20instruccion.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:31] "GET /audio/Arquitectura/53-Tres-%20se%20ejecuta%20la%20instruccion.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:32] "GET /audio/Arquitectura/54-Cuatro-%20una%20vez%20ejecutada.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:34] "GET /audio/Arquitectura/55-Como%20es%20entonces%20un%20programa.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:37] "GET /audio/Arquitectura/56-En%20este%20programa%20en%20particular.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:40] "GET /audio/Arquitectura/57-La%20segunda%20instruccion%20es.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:40] "GET /audio/Arquitectura/58-La%20tercera%20instruccion%20es.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:40] "GET /audio/Arquitectura/59-Y%20la%20cuarta%20instruccion.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:40] "GET /audio/Arquitectura/60-Todas%20estas%20eran.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:41] "GET /audio/Arquitectura/61-Que%20es%20realmente%20lo%20que%20hace.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:42:41] "GET /audio/Arquitectura/61-Este%20programa%20en%20particular.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:00] "GET /audio/Arquitectura/62-Proponemos%20como%20ejercicio.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:02] "GET /audio/Arquitectura/63-El%20primer%20paso%20del%20ciclo.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:03] "GET /audio/Arquitectura/64-Lo%20que%20hacen%20las%20instruc.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:04] "GET /audio/Arquitectura/65-Las%20instrucciones%20de%20salto.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:04] "GET /audio/Arquitectura/66-La%20instruccion%20de%20salto.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:05] "GET /audio/Arquitectura/67-Las%20instrucciones%20de%20salto.mp3 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /SistemasDeNumeraci%C3%B3n.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /src/bingame.js HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /img/contando.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /img/equivalencias.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /img/equivalencias-octal.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /img/equivalencias-hexa.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /img/background01.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /img/manos/mickey/rh0.svg HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:31] "GET /img/finger-1.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:43:32] "GET /src/ic2017.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:48:22] "GET /SistemasDeNumeraci%C3%B3n.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:48:22] "GET /src/ic2017.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:48:23] "GET /img/favicon-96x96.png HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:48:46] "GET /src/ic2017.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:48:56] "GET /TextoYMultimedia.html HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:49:08] "GET /IC2017-notes.pdf HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:49:18] "GET /TextoYMultimedia.html?print-pdf HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:49:18] "GET /externals/reveal/css/print/pdf.css HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2017 10:49:19] "GET /src/ic2017.html HTTP/1.1" 200 -
