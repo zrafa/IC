@@ -706,7 +706,8 @@ Si un SO utiliza este esquema de asignación de memoria, establece **particiones
 
 
 
-####Fragmentación externa
+###Fragmentación externa
+
 El problema de este esquema es que, a medida que el sistema opere, las regiones que queden libres pueden ser tan pequeñas que un proceso nuevo no pueda obtener una región de tamaño suficiente, **a pesar de que exista memoria libre en cantidad suficiente** en el sistema. Este fenómeno se llama **fragmentación externa**. 
 
 Un remedio para la fragmentación externa es la **compactación** de la memoria, es decir, reubicar los procesos que estén ocupando memoria, de manera de que sus regiones sean contiguas entre sí. De esta forma los "huecos" en la memoria se unen y se crean regiones libres contiguas grandes. 
@@ -746,6 +747,7 @@ Bajo este esquema no hay fragmentación externa, porque, si existe espacio libre
 
 ###Tabla de páginas
 Para poder mantener la correspondencia entre marcos de memoria y páginas de los procesos, el SO mantiene una **tabla de páginas** por cada proceso. 
+
 - La tabla de páginas de cada proceso dice, para cada página del proceso, qué marco le ha sido asignado, además de otra información de control. 
 
 

@@ -1276,9 +1276,11 @@ condición se llama fragmentación interna.
 Tabla de páginas
 
 Para poder mantener la correspondencia entre marcos de memoria y páginas
-de los procesos, el SO mantiene una tabla de páginas por cada proceso. -
-La tabla de páginas de cada proceso dice, para cada página del proceso,
-qué marco le ha sido asignado, además de otra información de control.
+de los procesos, el SO mantiene una tabla de páginas por cada proceso.
+
+-   La tabla de páginas de cada proceso dice, para cada página del
+    proceso, qué marco le ha sido asignado, además de otra información
+    de control.
 
 -   La tabla de páginas puede contener referencias a marcos compartidos
     con otros procesos. Esto hace posible la creación de regiones de
