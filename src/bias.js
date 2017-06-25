@@ -31,19 +31,21 @@ function Bias(container, options) {
 				svg.g( svg.line(x,2,x,7).attr(attrs.line), svg.text(x,9, num.toString()).attr(attrs.text)) : 
 				svg.g( svg.line(x,4,x,6).attr(attrs.line), svg.text(x,9, num.toString()).attr(attrs.text))
 		};
-		var step = ls - li + 1; 
-		var traslacion = function(x) { return options.width * (x - li) / step + 2 };
+		var traslacion = function(x) { 
+			var step = ls - li + 1; 
+			return options.width * (x - li) / step + 2 
+		};
 
 		for(var i=li; i<=ls; i++) {
 			this.g.add(marquita(traslacion(i), i));
 		}
 	
 		// Intervalo
-		this.inter = svg.g();
-		this.inter.attr({id: 'inter'});
-		this.inter.t = t;
+		var inter = svg.g();
+		inter.attr({id: 'inter'});
+		inter.t = t;
 
-		this.inter.add (
+		inter.add (
 			svg.text(traslacion(a),4,"[").attr(attrs.inter).transform('S3'),
 			svg.text(traslacion(b),4,"]").attr(attrs.inter).transform('S3')
 		);
@@ -51,9 +53,9 @@ function Bias(container, options) {
 		// Binarios
 		var secuencia = function(n, k) { return ("000000000000000" + n.toString(2)).substr(-k); };
 		for(var i=0; i<b-a+1; i++) 
-			this.inter.add(svg.text(traslacion(a + i),0,secuencia(i,k)).attr(attrs.text).transform('S0.4'));
+			inter.add(svg.text(traslacion(a + i),0,secuencia(i,k)).attr(attrs.text).transform('S0.4'));
 
-		this.g.add(this.inter);
+		this.g.add(inter);
 		//X
 
 		return this;
@@ -82,5 +84,6 @@ function Bias(container, options) {
 	inter2.click(inter2.zoom);
 	inter2.hover(inter2.restore);
 
+	console.log(svg.toString());
 }
 

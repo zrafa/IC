@@ -525,10 +525,10 @@ es negativo, la extensión de signo se hace agregando unos.
 Ejemplos
 
 -   A + B = 0 0 1 0 1 0 1 1 en base 2 + 0 0 1 0 1 en base 2
-    -   A está en C elevado a la 8 sub 2 y B en C elevado a la 5 sub 2
+    -   A está en C elevado a la 8 sub 2 y B en C elevado a la 5 sub 2 → llevar ambos a C elevado a la 8 sub 2
     -   Se completa B (positivo) como 0 0 0 0 0 1 0 1 en base 2
 -   A + B = 1 0 1 0 en base 2 + 0 1 1 0 1 0 0 en base 2
-    -   A está en C elevado a la 4 sub 2 y B en C elevado a la 7 sub 2
+    -   A está en C elevado a la 4 sub 2 y B en C elevado a la 7 sub 2 → llevar ambos a C elevado a la 7 sub 2
     -   Se completa A (negativo) como 1 1 1 1 0 1 0 en base 2
 
 Notación en exceso o bias

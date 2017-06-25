@@ -1002,14 +1002,14 @@ Si el operando en el sistema de menor ancho es positivo, la extensión se realiz
   <div class="fragment">
 	<li>$A + B = 00101011_{(2} + 00101_{(2}$</li>
     <ul>		
-	<li>A está en $C^8_2$ y B en $C^5_2$</li>
+	<li>A está en $C^8_2$ y B en $C^5_2$ &rarr; ambos a $C^8_2$</li>
     	<li>Se completa B (positivo) como $00000101_{(2}$</li>
     </ul>
   </div>
   <div class="fragment">
 	<li>$A + B = 1010_{(2} + 0110100_{(2}$</li>
     <ul>		
-	<li>A está en $C^4_2$ y B en $C^7_2$</li>
+	<li>A está en $C^4_2$ y B en $C^7_2$ &rarr; ambos a $C^7_2$</li>
 	<li>Se completa A (negativo) como $1111010_{(2}$</li>
     </ul>
   </div>
@@ -1018,10 +1018,10 @@ Si el operando en el sistema de menor ancho es positivo, la extensión se realiz
 **Ejemplos**
 
 - `$A + B = 00101011_{(2} + 00101_{(2}$`
-    - A está en $C^8_2$ y B en $C^5_2$
+    - A está en $C^8_2$ y B en $C^5_2$ &rarr; llevar ambos a $C^8_2$
     - Se completa B (positivo) como $00000101_{(2}$
 - `$A + B = 1010_{(2} + 0110100_{(2}$`
-    - A está en $C^4_2$ y B en $C^7_2$
+    - A está en $C^4_2$ y B en $C^7_2$ &rarr; llevar ambos a $C^7_2$
     - Se completa A (negativo) como $1111010_{(2}$
 </aside>
 </section>
@@ -1108,15 +1108,32 @@ El sistema en exceso se utiliza como componente de otro sistema de representaci�
 <section>
 <h2>Notación en exceso</h2>
 <span class="post_it fragment"><i>Valor binario = valor decimal - a</i></span>
+<!------------------------
 <div class="snapsvg stretch" width="100%" height="100%">
 	<script src="src/bias.js"></script>
         <svg id="bias" viewBox="0 0 100 50" width="100%" height="100%"></svg>
-        <!-- {
+        <! -- {
                 "width" : 100,
                 "height": 50,
                 "svg" : "#bias",
                 "initialize": "function(container, options) { Bias(container, options) }"
-        } -->
+        } -- >
+</div>
+------------------------>
+<!------------------------
+<div class="snapsvg stretch" width="100%" height="100%">
+<span class="fragment" data-fragmentshown="inter1" data-fragmenthidden="inter1"></span>
+<span class="fragment" data-fragmentshown="inter2" data-fragmenthidden="inter2"></span>
+        <svg id="biascontainer" viewBox="0 0 100 50" width="100%" height="100%"></svg>
+	<script src="src/zoombias.js"></script>
+        <! --{
+                "svg" : "#biascontainer",
+                "initialize": "function(container, options) { ZoomBias(container, options) }"
+        }-- >
+</div>
+------------------------>
+<div class="stretch" width="100%" height="100%">
+<img class="plain" src="img/bias.svg"></img>
 </div>
 <aside data-markdown class="notes">
 ###Conversión entre exceso y decimal

@@ -315,10 +315,10 @@ Si el operando en el sistema de menor ancho es positivo, la extensión se realiz
 **Ejemplos**
 
 - $A + B = 00101011_{(2} + 00101_{(2}$
-    - A está en $C^8_2$ y B en $C^5_2$
+    - A está en $C^8_2$ y B en $C^5_2$ &rarr; llevar ambos a $C^8_2$
     - Se completa B (positivo) como $00000101_{(2}$
 - $A + B = 1010_{(2} + 0110100_{(2}$
-    - A está en $C^4_2$ y B en $C^7_2$
+    - A está en $C^4_2$ y B en $C^7_2$ &rarr; llevar ambos a $C^7_2$
     - Se completa A (negativo) como $1111010_{(2}$
 
 
