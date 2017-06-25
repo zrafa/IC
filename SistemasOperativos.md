@@ -2,7 +2,7 @@
 #Sistemas Operativos
 
 
-##Sistemas de cómputo
+##Del hardware al software
 Hemos visto la evolución de los sistemas de cómputo desde el punto de vista del hardware, y cómo llegaron a soportar varios usuarios corriendo varias aplicaciones, todo sobre un mismo equipamiento.
 
 

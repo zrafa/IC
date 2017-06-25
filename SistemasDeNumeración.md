@@ -1,4 +1,7 @@
 
+#Sistemas de Numeración
+
+
 En este primer tema de la unidad veremos las propiedades de los sistemas de numeración más importantes para el estudio de la arquitectura de computadoras, en especial los sistemas **binario y hexadecimal**.
 
 

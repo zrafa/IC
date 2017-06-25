@@ -1,8 +1,11 @@
 
+#Representación de la Información
+
+
 Veremos de qué manera puede ser tratada mediante computadoras la información correspondiente a números, textos, imágenes y otros datos. Necesitaremos conocer las formas de representación de datos, y comenzaremos por los datos numéricos.
 
 
-###Representación de datos numéricos
+##Representación de datos numéricos
 
 Hemos visto ejemplos de sistemas de numeración: en base 6, en base 10, o decimal, en base 2, o binario, en base 16, o hexadecimal, y en base 8, u octal; y sabemos convertir la representación de un número en cada una de estas bases, a los sistemas en las demás bases. Sin embargo, aún nos falta considerar la representación numérica de varios casos importantes:  
 
@@ -13,7 +16,7 @@ Hemos visto ejemplos de sistemas de numeración: en base 6, en base 10, o decima
 En esta parte de la unidad mostraremos sistemas de representación utilizados en computación que permiten tratar estos problemas.
 
 
-##Clasificación de los números
+###Clasificación de los números
 Es conveniente repasar la clasificación de los diferentes conjuntos de números y conocer las diferencias importantes entre éstos. Los títulos en el cuadro (tomado de Wikipedia) son referencias a los artículos enciclopédicos sobre cada uno de esos conjuntos.
 
 - [Números complejos](https://es.m.wikipedia.org/wiki/N%C3%BAmero_complejo)
