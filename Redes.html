@@ -121,7 +121,7 @@ Cada capa corresponde a un conjunto de problemas relacionados, y a las solucione
 
 * Aplicación
 
-   En la capa de Aplicación se encuentran los protocolos sobre los cuales se basan directamente las aplicaciones distribuidas.
+    En la capa de Aplicación se encuentran los protocolos sobre los cuales se basan directamente las aplicaciones distribuidas.
 
 * Transporte
 
@@ -341,8 +341,9 @@ Supongamos que:
 - El mensaje es de $L$ bits.
 - La velocidad de transmisión es $V_{transm}$.
 - La velocidad de propagación es $V_{prop}$.
+- La distancia entre interfaces, o longitud del enlace, es $D$. 
 
-Y que además, llamamos $D$ a la distancia entre interfaces o longitud del enlace. Entonces:
+Entonces:
 
 - El **tiempo de transmisión** para los $L$ bits será `$T_{transm} = L / V_{transm}$`.
 - El **tiempo de propagación** para el enlace de $D$ m será `$T_{prop} = D / V_{prop}$`.
@@ -749,6 +750,7 @@ Si las subredes son agrupaciones suficientemente grandes, la cantidad de reglas 
 - Sin embargo, notemos que, si escribimos las direcciones IP anteriores en su forma binaria, encontraremos que en realidad existe un prefijo común aún más largo. En efecto, 
     
     130.240.10.17 = **10000010.11110000.0000101**0.00010001
+
     130.240.11.15 = **10000010.11110000.0000101**1.00001111
 
     Los primeros **23 bits** de ambas direcciones son iguales, luego comparten un prefijo común de longitud 23. Es imposible escribirlo en notación decimal a menos que adoptemos la convención de completar con ceros la parte no común:
@@ -819,10 +821,8 @@ Para simplificar los ejemplos siguientes, utilizaremos direcciones y máscaras d
 
 **Ejemplo**
 
-Sea una tabla de ruteo con la siguiente información:
-
 Dirección de subred | Máscara | Interfaz de salida
-:------------:|:-------:|:------------:
+:------------------:|:-------:|:------------------:
 00000 | 11100 | 0
 00100 | 11100 | 1
 00010 | 11110 | 2
@@ -834,9 +834,10 @@ Esta tabla de ruteo dice que:
 - La subred 00010 con máscara 11110 se alcanza mediante la interfaz de salida 1. Es decir, que si los primeros **cuatro** bits de la dirección destino de un paquete son 0001, el paquete debe ser reenviado por la interfaz 2.
 
 
-**Pregunta**
+**Preguntas**
 
 - En el ejemplo anterior, ¿puede darse un caso donde quepa la duda de si aplicar la primera o la segunda regla?
+- ¿Puede darse un caso donde quepa la duda de si aplicar la primera o la tercera regla?
 </aside>
 </section>
  

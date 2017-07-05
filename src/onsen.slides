@@ -18,8 +18,7 @@
 <section>
 <h2>Carousel</h2>
 <div class="stretch">
-<ons-page>
-<ons-carousel fullscreen swipeable auto-scroll id="car">
+<ons-carousel fullscreen style="height: 50 % width: 90%" swipeable auto-scroll id="car">
 <ons-carousel-item>
 <img src="img/vn-0.svg" class="plain">
 </ons-carousel-item>
@@ -30,11 +29,12 @@
 <img src="img/vn-2.svg" class="plain">
 </ons-carousel-item>
 </ons-carousel>
-</ons-page>
 </div>
 
 <aside data-markdown class="notes">
 Swipeable images carousel
+
+No muestra título :(
 </aside>
 </section>
 
