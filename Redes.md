@@ -133,13 +133,13 @@ La velocidad de **transmisión** puede mejorarse si se mejoran las tecnologías 
 ##Tiempo de transferencia de un mensaje
 Conocer las velocidades de transmisión y de propagación nos permite definir un modelo para el **tiempo de transferencia** de un mensaje a través de un enlace. 
 
-Este modelo dependerá de otras dos variables: por un lado, como es lógico, del tamaño del mensaje que se quiere transmitir; y por otro lado, de la **distancia** que separa las interfaces.
+Este modelo dependerá de otras dos variables: por un lado, como es lógico, del **tamaño** del mensaje que se quiere transmitir; y por otro lado, de la **distancia** que separa las interfaces.
 
 Supongamos que:
 
+- La velocidad de transmisión de la interfaz es $V_{transm}$.
+- La velocidad de propagación del medio es $V_{prop}$.
 - El mensaje es de $L$ bits.
-- La velocidad de transmisión es $V_{transm}$.
-- La velocidad de propagación es $V_{prop}$.
 - La distancia entre interfaces, o longitud del enlace, es $D$. 
 
 Entonces:
@@ -302,7 +302,7 @@ El router debe aplicar alguna regla lógica para decidir hacia qué otro enlace 
 
 
 ###Tabla de reenvío o de ruteo
-La decisión de ruteo es tomada por los routers usando la información de destino que llevan consigo los paquetes, más información de ruteo contenida en una **tabla de reenvío** o tabla de ruteo, almacenada en la memoria del router.
+La decisión de ruteo es tomada por los routers usando la información de **destino** que llevan consigo los paquetes, más información de ruteo contenida en una **tabla de reenvío** o tabla de ruteo, almacenada en la memoria del router.
 
 
 La tabla de ruteo contiene reglas para la decisión de encaminamiento de los paquetes. Cada regla se llama una **ruta** e indica cuál será la interfaz de salida de los paquetes cuya dirección destino coincida con la dirección destino de la ruta. 
@@ -340,7 +340,7 @@ Si las subredes son agrupaciones suficientemente grandes, la cantidad de reglas 
 
     130.240.11.15 = **10000010.11110000.0000101**1.00001111
 
-    Los primeros **23 bits** de ambas direcciones son iguales, luego comparten un prefijo común de longitud 23. Es imposible escribirlo en notación decimal a menos que adoptemos la convención de completar con ceros la parte no común:
+    Los primeros **23 bits** de ambas direcciones son iguales, luego comparten un prefijo común de longitud 23. Para escribirlo en notación decimal, adoptemos la convención de completar con ceros la parte no común:
 
     130.240.10.0 = 10000010.11110000.00001010.00000000
 
@@ -352,7 +352,7 @@ Cuando en una tabla de ruteo se especifique una ruta para todas las direcciones 
 
 Una dirección de subred se calcula utilizando una **máscara de subred**, que es una sucesión de 32 dígitos binarios. Los primeros $n$ dígitos de la máscara son **unos**, y los restantes **ceros**. 
 
-Estos primeros $n$ dígitos "unos" definen cuál será el prefijo compartido por todas las direcciones IP que pertenecen a la subred. La cantidad de dígitos "uno" dicen cuál es la longitud del prefijo compartido. Los restantes bits de esas direcciones pueden tomar cualquier valor.
+La cantidad de dígitos "uno" dice cuál es la longitud del prefijo compartido. Estos primeros $n$ dígitos "unos" definen cuál será el prefijo compartido por todas las direcciones IP que pertenecen a la subred. 
 
 
 **Ejemplo**
@@ -383,7 +383,7 @@ El efecto de este AND es **copiar** en las primeras $n$ columnas del resultado l
 Una máscara de subred con $n$ bits suele expresarse también como "$/n$". Así, la dirección IP **192.168.1.1 con máscara 255.255.255.0** puede escribirse más sencillamente como **192.168.1.1/24**.
 
 
-Sabiendo calcular direcciones de subred, ya podemos rediseñar la tabla de ruteo. Habrá que especificar **direcciones de subred** en lugar de direcciones de hosts, y para cada ruta en la tabla, agregar cuál es la **máscara** que define el prefijo de la ruta.
+Con los conceptos de direcciones de subred y máscaras, ya podemos rediseñar la tabla de ruteo. Habrá que especificar **direcciones de subred** en lugar de direcciones de hosts, y para cada ruta en la tabla, agregar cuál es la **máscara** que define el prefijo de la ruta.
 
 **Nota** 
 
@@ -414,9 +414,10 @@ Esta tabla de ruteo dice que:
 
 Aun con la estrategia de ruteo por prefijos, los routers no pueden conocer **todas** las rutas a todos los destinos. Siempre se apoyan en que alguno de sus routers vecinos que esté más próximo al destino tenga más información que ellos. 
 
-Cuando un router no sabe cómo encaminar un paquete, lo envía por una interfaz predefinida, en la esperanza de que un router situado sobre ese enlace, que reciba el paquete, tenga mejor información.
+Cuando un router no sabe cómo encaminar un paquete, lo envía por una interfaz predefinida, en la esperanza de que un router situado sobre ese enlace, que reciba el paquete, tenga mejor información. A este router se lo llama **router por defecto** o **gateway default**, y la ruta que le corresponde es la **ruta por defecto o default route**.
 
-Para definir una ruta default agregamos una regla a la tabla de ruteo con **dirección de subred = 00000 y máscara de red = 00000**. Como la máscara tiene **cero unos**, cualquier dirección IP destino da una coincidencia. Por eso, la regla default se consulta en último lugar, y como último recurso. De lo contrario, la interfaz de la ruta default absorbería todo el tráfico y nunca se reenviaría tráfico a otros enlaces.
+Para definir una ruta por defecto agregamos una regla a la tabla de ruteo con **dirección de subred = 00000 y máscara de red = 00000**. Como la máscara tiene **cero unos**, cualquier dirección IP destino da una coincidencia. Por eso, la regla por defecto se consulta en último lugar, y como último recurso. De lo contrario, la interfaz de la ruta por defecto absorbería todo el tráfico y nunca se reenviaría tráfico a otros enlaces.
+
 
 En Internet, tiene sentido que la interfaz de la ruta default en cada router sea la que "mira" al centro de la Internet, en la dirección donde hay más nodos. Allí es más probable que existan routers con una configuración mejor.
 
@@ -428,7 +429,18 @@ Lo inverso también es cierto: si una máscara es más larga, la ruta es más es
 
 Una máscara larga puede servir para indicar una excepción a una regla más general. Por eso, las máscaras más largas **tienen preferencia** en el proceso de ruteo de un paquete. 
 
-Cada vez que un router se encuentre con más de una ruta posible, elegirá aquella cuya máscara de subred sea más larga (es decir, la ruta más específica).
+Cada vez que un router se encuentre con más de una ruta posible, elegirá aquella cuya máscara de subred sea más larga (es decir, **la ruta más específica**).
+
+**Ejemplo**
+
+Dirección de subred | Máscara | Interfaz de salida
+:------------------:|:-------:|:------------------:
+00000 | 11100 | 0
+00100 | 11100 | 1
+00010 | 11110 | 2
+
+La primera regla indica que todo destino con sus primeros tres bits iguales a cero se alcanza mediante la interfaz 0. Sin embargo, hay excepciones. Los destinos que cumplan lo anterior pero tengan su **cuarto bit** igual a 1 deben alcanzarse mediante la interfaz 2. La tercera regla es una excepción a la primera porque trata un conjunto más específico de direcciones. 
+
 
 
 ##Algoritmo de reenvío
