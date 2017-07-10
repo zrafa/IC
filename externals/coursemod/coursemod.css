@@ -1,45 +1,101 @@
-reveal.coursemod__presentation {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-}
+@media screen and (orientation: landscape) {
+	 reveal.coursemod__presentation {
+	    display: inline-block;
+	    position: relative;
+	    width: 100%;
+	}
 
-.coursemod__presentation--coursemod-active {
-    width: 66.66%;
-}
+	.coursemod__presentation--coursemod-active {
+	    width: 66.66%;
+	}
 
 /*
     make sure the controls and everything else stays inside the presentation view
 */
-.reveal.coursemod__presentation .controls,
-.reveal.coursemod__presentation .audio-controls,
-.reveal.coursemod__presentation .recorder,
-.reveal.coursemod__presentation .slide-number {
-    position: absolute !important;
+	.reveal.coursemod__presentation .controls,
+	.reveal.coursemod__presentation .audio-controls,
+	.reveal.coursemod__presentation .recorder,
+	.reveal.coursemod__presentation .slide-number {
+	    position: absolute !important;
+	}
+
+	.coursemod__course-view {
+	    background-color: #f0f0f0;
+	    border-left: 2px solid lightgray;
+	    box-sizing: border-box;
+    	display: none;
+   		font-family: sans-serif, "Helvetica";
+	    font-size: 0.8em;
+	    /*font-size: 1.3vw;*/
+	    height: 100%;
+	    line-height: 1.3;
+	    overflow-y: scroll;
+	    padding: 0 20px;
+	    position: fixed;
+	    right: 0;
+	    top: 0;
+	    width: 33%;
+	}
+	
+	.coursemod__presentation.coursemod--active {
+	    width: 66.66%;
+	}
+	
+	.coursemod__course-view.coursemod--active {
+	    display: inline-block;
+	}
 }
 
-.coursemod__course-view {
-    background-color: #f0f0f0;
-    border-left: 2px solid lightgray;
-    box-sizing: border-box;
-    display: none;
-    font-family: sans-serif, "Helvetica";
-    /*font-size: 1em;*/
-    font-size: 1.0vw;
-    height: 100%;
-    line-height: 1.3;
-    overflow-y: scroll;
-    padding: 0 20px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 33%;
-}
+@media screen and (orientation: portrait) {
+	 reveal.coursemod__presentation {
+	    display: inline-block;
+	    position: relative;
+	    width: 100%;
+		height: 50% !important;
+	    right: 0;
+	    top: 0;
+	}
 
-.coursemod__presentation.coursemod--active {
-    width: 66.66%;
-}
+	.coursemod__presentation--coursemod-active {
+	    width: 100%;
+		height: 50%;
+	}
 
-.coursemod__course-view.coursemod--active {
-    display: inline-block;
+/*
+    make sure the controls and everything else stays inside the presentation view
+*/
+	.reveal.coursemod__presentation .controls,
+	.reveal.coursemod__presentation .audio-controls,
+	.reveal.coursemod__presentation .recorder,
+	.reveal.coursemod__presentation .slide-number, 
+	.reveal.coursemod__presentation .slide-menu-button {
+	    position: absolute !important;
+	}
+
+	.coursemod__course-view {
+	    background-color: #f0f0f0;
+	    border-top: 2px solid lightgray;
+	    box-sizing: border-box;
+    	display: none;
+   		font-family: sans-serif, "Helvetica";
+	    font-size: 0.8em;
+	    /*font-size: 1.6vw;*/
+	    line-height: 1.3;
+	    overflow-y: scroll;
+	    padding: 0 20px;
+	    position: fixed;
+	    right: 0;
+	    top: 50%;
+	    width: 100%;
+		height: 50%;
+	}
+	
+	.coursemod__presentation.coursemod--active {
+	    width: 100%;
+		height: 50% !important;
+	}
+	
+	.coursemod__course-view.coursemod--active {
+	    display: inline-block;
+	}
 }
