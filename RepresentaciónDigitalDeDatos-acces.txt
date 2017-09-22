@@ -1014,6 +1014,8 @@ La definición de los formatos está acompañada por la especificación de
 mecanismos de cálculo para usarlos, manejo de errores y otra información
 importante.
 
+En el curso utilizaremos siempre el formato de precisión simple.
+
 Conversión de decimal a punto flotante
 
 Para convertir manualmente un número decimal n a punto flotante
@@ -1022,9 +1024,8 @@ signo (que llamaremos s), exponente (que llamaremos e) y mantisa (que
 llamaremos m), en la cantidad de bits correcta según el formato de
 precisión simple o doble que utilicemos.
 
-En el curso utilizaremos siempre el formato de precisión simple. Una vez
-conocidos s, e y m, sólo resta escribirlos como secuencias de bits de la
-longitud que especifica el formato.
+Una vez conocidos s, e y m, sólo resta escribirlos como secuencias de
+bits de la longitud que especifica el formato.
 
 1.  Separar el signo y escribir el valor absoluto de n en base 2.
     -   Si n es positivo (respectivamente, negativo), s será 0
@@ -1032,8 +1033,8 @@ longitud que especifica el formato.
         el valor absoluto de n y lo representamos en base 2 como se vio
         al convertir un decimal fraccionario a base 2.
 
-2.  Escribir el valor binario de n en notación científica ** en base 2
-    normalizada**.
+2.  Escribir el valor binario de n en notación científica en base 2
+    normalizada.
     -   Para convertir n a notación científica lo multiplicamos por una
         potencia de 2 de modo que la parte entera sea 1 (condición para
         la normalización). El resto de la expresión binaria se convierte

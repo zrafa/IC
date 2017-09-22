@@ -1739,6 +1739,8 @@ Estos estándares son dos, llamados **IEEE 754 en precisión simple y en precisi
     - Reserva **52 bits para la mantisa**
 
 La definición de los formatos está acompañada por la especificación de mecanismos de cálculo para usarlos, manejo de errores y otra información importante.
+
+En el curso utilizaremos siempre el formato de precisión simple. 
 </aside>
 </section>
 
@@ -1763,11 +1765,11 @@ La definición de los formatos está acompañada por la especificación de mecan
 Para convertir manualmente un número decimal $n$ a punto flotante necesitamos calcular los tres elementos del formato de punto flotante: **signo** (que llamaremos $s$), **exponente** (que llamaremos $e$) y **mantisa** (que llamaremos $m$), en la cantidad de bits correcta según el formato de precisión simple o doble que utilicemos.
 
 
-En el curso utilizaremos siempre el formato de precisión simple. Una vez conocidos $s$, $e$ y $m$, sólo resta escribirlos como secuencias de bits de la longitud que especifica el formato.
+Una vez conocidos $s$, $e$ y $m$, sólo resta escribirlos como secuencias de bits de la longitud que especifica el formato.
 
 1. Separar el **signo** y escribir el valor absoluto de $n$ en base 2.
      - Si $n$ es positivo (respectivamente, negativo), $s$ será 0 (respectivamente, 1). Separado el signo, consideramos únicamente el **valor absoluto** de $n$ y lo representamos en base 2 como se vio al convertir un decimal fraccionario a base 2.
-2. Escribir el valor binario de $n$ en notación científica ** en base 2 normalizada**.
+2. Escribir el valor binario de $n$ en notación científica **en base 2 normalizada**.
      - Para convertir $n$ a notación científica lo multiplicamos por una potencia de 2 de modo que la parte entera sea 1 (condición para la normalización). El resto de la expresión binaria se convierte en parte fraccionaria. Para no cambiar el valor de $n$, lo multiplicamos por una potencia de 2 inversa a aquella que utilizamos.
 3. El exponente, positivo o negativo, que aplicamos en el paso anterior debe ser expresado en notación en exceso a 127. 
      - Al exponente se le suma 127 para representar valores en el intervalo $[-127,128]$ con 8 bits. Esta representación se elige para poder hacer comparables directamente dos números expresados en punto flotante.

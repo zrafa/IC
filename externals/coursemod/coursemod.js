@@ -58,6 +58,7 @@
             holders.presentation.classList.remove('coursemod--active')
             holders.courseView.classList.remove('coursemod--active')
         }
+	Reveal.layout();
     }
 
     function updateNotes(currentSlide) {
@@ -102,6 +103,5 @@
             toggleCourseView(config.coursemod.shown);
         }
         updateNotes(currentSlide);
-	Reveal.layout();
     } );
 }).call(this);
