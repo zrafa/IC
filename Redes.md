@@ -99,7 +99,7 @@ El tren de bits viaja en forma de señales físicas por el enlace hasta llegar a
 ##Medios y enlaces
 El material que atraviesan las señales transmitidas sobre un enlace se llama el **medio** del enlace. Las tecnologías de construcción de los enlaces son muchas. 
 
-- Cuando las señales se codifican mediante impulsos eléctricos, como en las redes de cables de **par trenzado** o **coaxial**, el medio es un conductor, como el cobre.  
+- Cuando las señales se codifican mediante impulsos eléctricos, como en las redes de cables de **par trenzado** o **coaxial**, el medio es un conductor, como el cobre.
 - Para distancias mayores (como las transoceánicas) o para ambientes donde existe mucho **ruido** o interferencia electromagnética (como en fábricas), se utiliza **fibra óptica**.
 - Cuando no es posible, o práctico, tender un cable, no queda más solución que utilizar emisiones de **radio**. Ejemplos de tecnologías de radio son los enlaces satelitales, los de microondas, y las LAN inalámbricas bajo norma **802.11** conocidas popularmente como **WiFi**. Estas tecnologías utilizan como medio el **espacio**.
 

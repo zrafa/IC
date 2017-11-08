@@ -199,7 +199,7 @@ enlaces son muchas.
 
 -   Cuando las señales se codifican mediante impulsos eléctricos, como
     en las redes de cables de par trenzado o coaxial, el medio es un
-    conductor, como el cobre.  
+    conductor, como el cobre.
 -   Para distancias mayores (como las transoceánicas) o para ambientes
     donde existe mucho ruido o interferencia electromagnética (como en
     fábricas), se utiliza fibra óptica.
@@ -296,17 +296,17 @@ lado, de la distancia que separa las interfaces.
 
 Supongamos que:
 
--   La velocidad de transmisión de la interfaz es V sub transm .
--   La velocidad de propagación del medio es V sub prop .
+-   La velocidad de transmisión de la interfaz es V$ sub transm $.
+-   La velocidad de propagación del medio es V$ sub prop $.
 -   El mensaje es de L bits.
 -   La distancia entre interfaces, o longitud del enlace, es D.
 
 Entonces:
 
 -   El tiempo de transmisión para los L bits será
-    T sub transm  = L / V sub transm .
+    T$ sub transm $ = L / V$ sub transm $.
 -   El tiempo de propagación para el enlace de D m será
-    T sub prop  = D / V sub prop .
+    T$ sub prop $ = D / V$ sub prop $.
 
 Notemos una vez más que el tiempo de transmisión es dependiente de la
 velocidad de transmisión de las interfaces, y no de la longitud del
@@ -316,7 +316,7 @@ del enlace, y no de la velocidad de transmisión de las interfaces.
 El tiempo de transferencia que demorarán en llegar los L bits a destino,
 será la suma de ambos tiempos:
 
-T sub tot  = T sub transm  + T sub prop .
+T$ sub tot $ = T$ sub transm $ + T$ sub prop $.
 
 Es habitual ver en la bibliografía de Redes los diagramas de flujo de
 mensajes, que muestran qué ocurre en cada nodo a medida que transcurre

@@ -1038,14 +1038,14 @@ Si el operando en el sistema de menor ancho es positivo, la extensión se realiz
   <div class="fragment">
 	<li>$A + B = 00101011_{(2} + 00101_{(2}$</li>
     <ul>		
-	<li>A está en $C^8_2$ y B en $C^5_2$</li>
+	<li>A está en $C^8_2$ y B en $C^5_2$ &rarr; ambos a $C^8_2$</li>
     	<li>Se completa B (positivo) como $00000101_{(2}$</li>
     </ul>
   </div>
   <div class="fragment">
 	<li>$A + B = 1010_{(2} + 0110100_{(2}$</li>
     <ul>		
-	<li>A está en $C^4_2$ y B en $C^7_2$</li>
+	<li>A está en $C^4_2$ y B en $C^7_2$ &rarr; ambos a $C^7_2$</li>
 	<li>Se completa A (negativo) como $1111010_{(2}$</li>
     </ul>
   </div>
@@ -1054,10 +1054,10 @@ Si el operando en el sistema de menor ancho es positivo, la extensión se realiz
 **Ejemplos**
 
 - `$A + B = 00101011_{(2} + 00101_{(2}$`
-    - A está en $C^8_2$ y B en $C^5_2$
+    - A está en $C^8_2$ y B en $C^5_2$ &rarr; llevar ambos a $C^8_2$
     - Se completa B (positivo) como $00000101_{(2}$
 - `$A + B = 1010_{(2} + 0110100_{(2}$`
-    - A está en $C^4_2$ y B en $C^7_2$
+    - A está en $C^4_2$ y B en $C^7_2$ &rarr; llevar ambos a $C^7_2$
     - Se completa A (negativo) como $1111010_{(2}$
 </aside>
 </section>
@@ -1144,15 +1144,32 @@ El sistema en exceso se utiliza como componente de otro sistema de representaci�
 <section>
 <h2>Notación en exceso</h2>
 <span class="post_it fragment"><i>Valor binario = valor decimal - a</i></span>
+<!------------------------
 <div class="snapsvg stretch" width="100%" height="100%">
 	<script src="src/bias.js"></script>
         <svg id="bias" viewBox="0 0 100 50" width="100%" height="100%"></svg>
-        <!-- {
+        <! -- {
                 "width" : 100,
                 "height": 50,
                 "svg" : "#bias",
                 "initialize": "function(container, options) { Bias(container, options) }"
-        } -->
+        } -- >
+</div>
+------------------------>
+<!------------------------
+<div class="snapsvg stretch" width="100%" height="100%">
+<span class="fragment" data-fragmentshown="inter1" data-fragmenthidden="inter1"></span>
+<span class="fragment" data-fragmentshown="inter2" data-fragmenthidden="inter2"></span>
+        <svg id="biascontainer" viewBox="0 0 100 50" width="100%" height="100%"></svg>
+	<script src="src/zoombias.js"></script>
+        <! --{
+                "svg" : "#biascontainer",
+                "initialize": "function(container, options) { ZoomBias(container, options) }"
+        }-- >
+</div>
+------------------------>
+<div class="stretch" width="100%" height="100%">
+<img class="plain" src="img/bias.svg"></img>
 </div>
 <aside data-markdown class="notes">
 ###Conversión entre exceso y decimal
@@ -1722,6 +1739,8 @@ Estos estándares son dos, llamados **IEEE 754 en precisión simple y en precisi
     - Reserva **52 bits para la mantisa**
 
 La definición de los formatos está acompañada por la especificación de mecanismos de cálculo para usarlos, manejo de errores y otra información importante.
+
+En el curso utilizaremos siempre el formato de precisión simple. 
 </aside>
 </section>
 
@@ -1746,11 +1765,11 @@ La definición de los formatos está acompañada por la especificación de mecan
 Para convertir manualmente un número decimal $n$ a punto flotante necesitamos calcular los tres elementos del formato de punto flotante: **signo** (que llamaremos $s$), **exponente** (que llamaremos $e$) y **mantisa** (que llamaremos $m$), en la cantidad de bits correcta según el formato de precisión simple o doble que utilicemos.
 
 
-En el curso utilizaremos siempre el formato de precisión simple. Una vez conocidos $s$, $e$ y $m$, sólo resta escribirlos como secuencias de bits de la longitud que especifica el formato.
+Una vez conocidos $s$, $e$ y $m$, sólo resta escribirlos como secuencias de bits de la longitud que especifica el formato.
 
 1. Separar el **signo** y escribir el valor absoluto de $n$ en base 2.
      - Si $n$ es positivo (respectivamente, negativo), $s$ será 0 (respectivamente, 1). Separado el signo, consideramos únicamente el **valor absoluto** de $n$ y lo representamos en base 2 como se vio al convertir un decimal fraccionario a base 2.
-2. Escribir el valor binario de $n$ en notación científica ** en base 2 normalizada**.
+2. Escribir el valor binario de $n$ en notación científica **en base 2 normalizada**.
      - Para convertir $n$ a notación científica lo multiplicamos por una potencia de 2 de modo que la parte entera sea 1 (condición para la normalización). El resto de la expresión binaria se convierte en parte fraccionaria. Para no cambiar el valor de $n$, lo multiplicamos por una potencia de 2 inversa a aquella que utilizamos.
 3. El exponente, positivo o negativo, que aplicamos en el paso anterior debe ser expresado en notación en exceso a 127. 
      - Al exponente se le suma 127 para representar valores en el intervalo $[-127,128]$ con 8 bits. Esta representación se elige para poder hacer comparables directamente dos números expresados en punto flotante.
@@ -1961,6 +1980,10 @@ En precisión simple, se considera que tan sólo **los primeros siete decimales*
 </aside>
 </section>
 
+<section data-coursemod-shown="false">
+<h2>Humor para nerds</h2>
+<img class="stretch plain" src="img/robot.png"></img>
+</section>
 
 <!------------
 <section>
