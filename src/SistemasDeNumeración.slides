@@ -624,8 +624,8 @@ Esa base, ¿puede ser...
 	</ul>
 	<li>Casos especiales</li>
 	<ul>
-		<li>Binario (base 2) &#11012 hexadecimal (base 16)</li>
-		<li>Binario &#11012 octal (base 8)</li>
+		<li>Binario (base 2) &#11012; hexadecimal (base 16)</li>
+		<li>Binario &#11012; octal (base 8)</li>
 	</ul>
 </ul>
 <aside data-markdown class="notes">
