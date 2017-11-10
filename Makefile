@@ -32,6 +32,13 @@ redes: Redes.html
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
 		$*.md -t plain | util/plain2acces > $*-acces.txt
+	pandoc \
+		-s \
+		-V lang=spanish \
+		-V fontfamily=sans \
+		-V papersize=A4 \
+		-V title="$(TITLE)" \
+		$*.md -t latex | util/plain2acces > $*-acces.tex
 
 
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf

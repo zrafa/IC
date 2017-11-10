@@ -1,0 +1,579 @@
+\documentclass[spanish,A4,]{article}
+\usepackage{sans}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+\ifxetex
+  \usepackage{polyglossia}
+  \setmainlanguage{spanish}
+\else
+  \usepackage[spanish]{babel}
+\fi
+
+\title{Sistemas de Numeración}
+
+\begin{document}
+\maketitle
+
+\section{Sistemas de Numeración}\label{sistemas-de-numeraciuxf3n}
+
+En este primer tema de la unidad veremos las propiedades de los sistemas
+de numeración más importantes para el estudio de la arquitectura de
+computadoras, en especial los sistemas \textbf{binario y hexadecimal}.
+
+\subsection{Un sistema diferente}\label{un-sistema-diferente}
+
+Todos conocemos el método tradicional de contar con los dedos. Como
+tenemos cinco dedos en cada mano, podemos contar hasta diez. Pero
+también podemos utilizar un método diferente del tradicional, que
+resulta ser muy interesante.
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Con este método, al llegar a 5 con la mano derecha, representamos el 6
+  \textbf{sólo con un dedo de la izquierda}. Los dedos de la mano
+  derecha \textbf{vuelven a 0}, y seguimos contando con la derecha.
+\item
+  Cada vez que se agotan los dedos de la mano derecha levantamos un
+  nuevo dedo de la izquierda, y la derecha vuelve a 0.
+\item
+  Cada dedo en alto de la mano izquierda significa que \textbf{se agotó
+  la secuencia de la mano derecha una vez}.
+\end{itemize}
+
+\subsubsection{Preguntas}\label{preguntas}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  ¿Hasta qué número se puede representar en este sistema, sólo con dos
+  manos?
+\item
+  Si agregamos una tercera mano, de un amigo, ¿hasta qué número
+  llegamos?
+\item
+  ¿Y cómo se representa el 36? ¿Y el 37?
+\item
+  Y con cuatro manos, ¿hasta qué número llegamos?
+\item
+  Y, si el número no se puede representar con dos manos, ¿cómo es el
+  procedimiento para saber qué dedos levantar?
+\end{itemize}
+
+Notemos que este método tiene mayor capacidad que el tradicional, ya que
+podemos contar hasta diez y todavía nos queda mucho por contar con los
+dedos de ambas manos.
+
+\subsection{Sistema posicional}\label{sistema-posicional}
+
+Notemos además que esta ventaja se debe a que el método asigna
+\textbf{valores diferentes} a ambas manos. La derecha vale la cantidad
+de dedos que muestre, pero la izquierda vale \textbf{seis por su
+cantidad de dedos}. Esto se abrevia diciendo que se trata de un
+\textbf{sistema de numeración posicional}.
+
+Al tratarse de un sistema posicional, podemos representar números
+relativamente grandes con pocos dígitos. En este sistema, disponemos
+únicamente de \textbf{6 dígitos (0, 1, 2, 3, 4, 5)} porque ésos son los
+que podemos representar con cada mano, es decir, \textbf{en cada
+posición}. Pero los números representables solamente dependen de cuántas
+manos (o, mejor dicho, de cuántas \textbf{posiciones}) podamos utilizar.
+
+\subsubsection{Calculando cada
+posición}\label{calculando-cada-posiciuxf3n}
+
+En este sistema, dado un número no negativo que se pueda representar con
+dos manos, podemos saber qué dedos levantar en cada mano haciendo una
+sencilla cuenta de división entera (sin decimales): dividimos el número
+por 6 y tomamos el cociente y el resto. \textbf{El cociente es el número
+de la izquierda, y el resto, el de la derecha}.
+
+Tomemos por ejemplo el número 15. Al dividir 15 por 6, el cociente es 2
+y el resto es 3. En este sistema, escribimos el 15 como \textbf{dos
+dedos en la izquierda, y tres dedos en la derecha}, lo que podemos
+abreviar como \textbf{(2,3)} o directamente \textbf{23} (que se
+pronuncia \textbf{dos tres} porque \textbf{no quiere decir veintitrés},
+sino \textbf{quince}, sólo que escrito en este sistema). Como el dígito
+2 de la izquierda vale por 6, si hacemos la operación de sumar
+\textbf{$2  por  6 + 3$} obtenemos, efectivamente, 15.
+
+\subsubsection{Base de un sistema de
+numeración}\label{base-de-un-sistema-de-numeraciuxf3n}
+
+La \textbf{base} de un sistema es la cantidad de dígitos de que dispone,
+o sea que el sistema decimal habitual es de base 10, mientras que el de
+los deditos es de base 6.
+
+\subsubsection{Número y numeral}\label{nuxfamero-y-numeral}
+
+Notemos que un mismo número puede escribirse de muchas maneras: en
+prácticamente cualquier base que se nos ocurra, sin necesidad de contar
+con los dedos; y que la forma habitual, en base 10, no es más importante
+o mejor que las otras (salvo, claro, que ya estamos acostumbrados a
+ella). Otras culturas han desarrollado otros sistemas de numeración y
+escriben los números de otra manera.
+
+Esto muestra que hay una \textbf{diferencia entre número y numeral},
+diferencia que es algo difícil de ver debido a la costumbre de
+identificar a los números con su representación en decimal.
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  El \textbf{numeral} es lo que escribimos ($15$, \textbf{$15 en base 10$} o
+  \textbf{$23 en base 6$}).
+\item
+  El \textbf{número} es la cantidad de la cual estamos hablando (la
+  misma en los tres casos).
+\end{itemize}
+
+\subsubsection{Indicando la base}\label{indicando-la-base}
+
+Anteriormente escribíamos \textbf{15} en el sistema de base 6 como
+\textbf{23}. Sin embargo, necesitamos evitar la confusión entre ambos
+significados de \textbf{23}. Para esto usamos índices subscriptos que
+indican la base. Así,
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \textbf{Quince} es \textbf{$15 en base 10$} porque está en base diez (la
+  del sistema decimal, habitual), y
+\item
+  \textbf{$23 en base 10$} es \textbf{veintitrés},
+\item
+  pero \textbf{$23 en base 6$} es \textbf{dos tres en base 6}, y por lo tanto
+  vale \textbf{quince}.
+\end{itemize}
+
+Como 10 es nuestra base habitual, cuando no usemos índice subscripto
+estaremos sobreentendiendo que hablamos \textbf{en base 10}. Es decir,
+\textbf{$15 en base 10$} se puede escribir, simplemente, \textbf{$15$}.
+
+Cuando queremos pasar un número escrito en una base a un sistema con
+otra cantidad de dígitos, el procedimiento de averiguar los dígitos que
+van en cada posición se llama \textbf{conversión de base}. Más adelante
+veremos procedimientos de conversión de base para cualquier caso que
+aparezca.
+
+\subsection{Sistema decimal}\label{sistema-decimal}
+
+Si reflexionamos sobre el sistema decimal, de diez dígitos, encontramos
+que también forma un sistema posicional, sólo que con 10 dígitos en
+lugar de los seis del sistema anterior.
+
+Cuando escribimos \textbf{15} en el sistema decimal, esta expresión
+equivale a decir ``para saber de qué cantidad estoy hablando, tome el 1
+y multiplíquelo por 10, y luego sume el 5''.
+
+Si el número (o, mejor dicho, el \textbf{numeral}) tiene más dígitos,
+esos dígitos van multiplicados por \textbf{potencias de 10} que van
+creciendo hacia la izquierda. La cifra de las unidades está multiplicada
+por la potencia de 10 de exponente 0 (es decir, por $10 elevado a la 0$, que es igual
+a 1).
+
+Esto se cumple para todos los sistemas posicionales, sólo que con
+potencias \textbf{de la base correspondiente}.
+
+\subsection{Sistema binario}\label{sistema-binario}
+
+Comprender y manejar la notación en sistema binario es sumamente
+importante para el estudio de la computación. El sistema binario
+comprende únicamente dos dígitos, \textbf{0 y 1}.
+
+Igual que ocurre con el sistema decimal, los numerales se escriben como
+suma de dígitos del sistema multiplicados por potencias de la base. En
+este sistema, cada 1 en una posición indica que sumamos una potencia de
+2. Esa potencia de 2 es $2 elevado a la n$, donde $n$ es la posición, y las
+posiciones se cuentan desde 0.
+
+Por ejemplo,
+
+\[10 = 1 por 8 + 0 por 4 + 1 por 2 + 0 por 1 = 1 0 1 0 en base 2\]
+
+y
+
+\[15 = 1 por 8 + 1 por 4 + 1 por 2 + 1 por 1 = 1 1 1 1 en base 2\]
+
+\subsubsection{Trucos para conversión
+rápida}\label{trucos-para-conversiuxf3n-ruxe1pida}
+
+Las computadoras digitales, tal como las conocemos hoy, almacenan todos
+sus datos en forma de números binarios. Es \textbf{muy recomendable},
+para la práctica de esta materia, adquirir velocidad y seguridad en la
+conversión de y a sistema binario.
+
+Una manera de facilitar esto es memorizar los valores de algunas
+potencias iniciales de la base 2:
+
+\[2 elevado a la 0 = 1\] \[2 elevado a la 1 = 2\] \[2 elevado a la 2 = 4\] \[2 elevado a la 3 = 8\] \[2 elevado a la 4 = 16\]
+\[2 elevado a la 5 = 32\] \[2 elevado a la 6 = 64\] \[2 elevado a la 7 = 128\]
+
+¿Qué utilidad tiene memorizar esta tabla? Que nos permite convertir
+mentalmente algunos casos simples de números en sistema decimal, a base
+2. Por ejemplo, el número \textbf{40} equivale a \textbf{32 + 8}, que
+son ambas potencias de 2. Luego, la expresión de 40 en sistema binario
+será \textbf{1 0 1 0 0 0}.
+
+Otro truco interesante consiste en ver que si un numeral está en base 2,
+\textbf{multiplicarlo por 2 equivale a desplazar un lugar a la izquierda
+todos sus dígitos, completando con un 0 al final}. Así, si sabemos que
+$40 en base 10 = 1 0 1 0 0 0 en base 2$, ¿cómo escribimos rápidamente \textbf{80}, que
+es $40 por 2$? Tomamos la expresión de 40 en base 2 y la desplazamos a
+la izquierda agregando un 0: $1 0 1 0 0 0 0 en base 2 = 80 en base 10$.
+
+De todas maneras, estos no son más que trucos que pueden servir en no
+todos los casos. Más adelante veremos el procedimiento de conversión
+general correcto.
+
+\textbf{Preguntas}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  ¿Cuál es el truco para calcular rápidamente la expresión binaria de
+  20, si conocemos la de 40?
+\item
+  ¿Cómo calculamos la de 40, si conocemos la de 10?
+\item
+  ¿Cómo podemos expresar estas reglas en forma general?
+\end{itemize}
+
+\subsection{Sistema hexadecimal}\label{sistema-hexadecimal}
+
+Otro sistema de numeración importante es el hexadecimal o de base 16. En
+este sistema tenemos \textbf{más dígitos} que en el decimal, por lo cual
+tenemos que recurrir a ``dígitos'' nuevos, tomados del alfabeto. Así, A
+representa el 10, B el 11, etc.
+
+El sistema hexadecimal nos resultará útil porque con él podremos
+expresar fácilmente números que llevarían muchos dígitos en sistema
+binario.
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  La conversión entre binarios y hexadecimales es sumamente directa.
+\item
+  Al ser un sistema con más dígitos que el binario, la expresión de
+  cualquier número será más corta.
+\end{itemize}
+
+\subsection{Una expresión general}\label{una-expresiuxf3n-general}
+
+Como hemos visto intuitivamente en el sistema de contar con los dedos, y
+como hemos confirmado repasando los sistemas decimal, binario y
+hexadecimal, los sistemas posicionales tienen una cosa muy importante en
+común: las cifras de un \textbf{numeral} escrito en cualquier base no
+son otra cosa que los \textbf{factores por los cuales hay que
+multiplicar las sucesivas potencias de la base} para saber a qué
+\textbf{número} nos estamos refiriendo.
+
+Por ejemplo, el numeral \textbf{2017} escrito en base 10 no es otra cosa
+que la suma de:
+
+\[2  por  1 0 0 0 + 0  por  1 0 0 + 1  por  10 + 7  por  1 = \]
+\[2  por  10 elevado a la 3 + 0  por  10 elevado a la 2 + 1  por  10 elevado a la 1 + 7  por  10 elevado a la 0\]
+
+Los dígitos 2, 0, 1 y 7 multiplican, respectivamente, a $10 elevado a la 3$, $10 elevado a la 2$,
+$10 elevado a la 1$ y $10 elevado a la 0$, que son potencias de la base 10. Este \textbf{numeral}
+designa al \textbf{número} 2017 porque esta cuenta, efectivamente, da
+\textbf{2017}.
+
+Sin embargo, si el número está expresado en otra base, la cuenta debe
+hacerse con potencias de esa otra base. Si hablamos de $2017 en base 8$,
+entonces las cifras 2, 0, 1 y 7 multiplican a $8 elevado a la 3$, $8 elevado a la 2$, $8 elevado a la 1$ y
+$8 elevado a la 0$. Este \textbf{numeral} designa al \textbf{número} 1039 porque esta
+cuenta, efectivamente, da \textbf{1039}.
+
+Este análisis permite enunciar una ley o expresión general que indica
+cómo se escribe un número $n$ cualquiera, no negativo, en una base $b$:
+\[n = x sub k   por  b elevado a la k + \ldots + x sub 2   por  b elevado a la {2} + x sub 1  por  b elevado a la 1 +x sub 0   por  b elevado a la 0\]
+
+Esta ecuación puede escribirse más sintéticamente en notación de
+sumatoria como:
+
+\[n = \sum sub i=0  elevado a la {k}{x sub i  por  b elevado a la i}\]
+
+En estas ecuaciones (que son equivalentes):
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Los números $x sub i$ son las cifras del numeral.
+\item
+  Los números $b elevado a la i$ son potencias de la base, cuyos exponentes crecen de
+  derecha a izquierda y comienzan por 0.
+\item
+  Las potencias están \textbf{ordenadas y completas}, y son tantas como
+  las cifras del numeral.
+\item
+  Los números $x sub i$ son necesariamente \textbf{menores que $b$}, ya que
+  son dígitos en un sistema de numeración que tiene $b$ dígitos.
+\end{itemize}
+
+\subsection{Conversión de base}\label{conversiuxf3n-de-base}
+
+Veremos algunos casos interesantes de conversiones de base. Serán
+especialmente importantes los casos donde el número de origen o de
+destino de la conversión esté en base 10, nuestro sistema habitual, pero
+también nos dedicaremos a algunas conversiones de base donde ninguna de
+ellas sea 10.
+
+\subsubsection{Conversión de base 10 a otras
+bases}\label{conversiuxf3n-de-base-10-a-otras-bases}
+
+El procedimiento para convertir un número escrito en base 10 a cualquier
+otra base (llamémosla \textbf{base destino}) es siempre el mismo y se
+basa en la división entera (sin decimales):
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Dividir el número original por la base destino, anotando cociente y
+  resto
+\item
+  Mientras se pueda seguir dividiendo:
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    Volver al paso anterior reemplazando el número original por el nuevo
+    cociente
+  \end{itemize}
+\item
+  Finalmente escribimos los dígitos de nuestro número convertido usando
+  \textbf{el último cociente y todos los restos en orden inverso a como
+  aparecieron}.
+\end{itemize}
+
+Ésta es la expresión de nuestro número original en la base destino.
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Notemos que cada uno de los restos obtenidos es con toda seguridad
+  \textbf{menor que la base destino}, ya que, en otro caso, podríamos
+  haber seguido adelante con la división entera.
+\item
+  Notemos también que el último cociente es también \textbf{menor que la
+  base destino}, por el mismo motivo de antes (podríamos haber
+  proseguido la división).
+\item
+  Lo que acabamos de decir garantiza que tanto el último cociente, como
+  todos los restos aparecidos en el proceso, \textbf{pueden ser dígitos
+  de un sistema en la base destino} al ser todos menores que ella.
+\end{itemize}
+
+\textbf{Pregunta}
+
+¿Cómo podemos usar la Expresión General para explicar por qué este
+procedimiento es correcto, al menos para el caso de convertir \textbf{61
+a base 3}?
+
+\subsubsection{Conversión de otras bases a base
+10}\label{conversiuxf3n-de-otras-bases-a-base-10}
+
+La conversión en el sentido opuesto, de una base $b$ cualquiera a base
+10, se realiza simplemente aplicando la Expresión General. Cada uno de
+los dígitos del número original (ahora en base $b$ arbitraria) es el
+coeficiente de alguna potencia de la base original. Esta potencia
+depende de la posición de dicho dígito. Una vez que escribimos todos los
+productos de los dígitos originales por las potencias de la base,
+hacemos la suma y nos queda el resultado: el número original convertido
+a base 10.
+
+Es de la mayor importancia cuidar de que las potencias de la base que
+intervienen en el cálculo estén \textbf{ordenadas y completas}. Es fácil
+si escribimos estas potencias a partir de la derecha, comenzando por la
+que tiene exponente 0, y vamos completando los términos de derecha a
+izquierda hasta agotar las posiciones del número original.
+
+\subsection{Preguntas}\label{preguntas-1}
+
+¿Cómo sería un sistema de \textbf{contar con los dedos en base 2}? Dedo
+arriba = 1, dedo abajo = 0\ldots{}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  ¿Cómo hacemos el 1, el 2, el 3\ldots{}?
+\item
+  ¿Hasta qué número podemos contar con una mano? ¿Y con dos manos?
+\item
+  ¿Y cómo se indica el \textbf{4} en este sistema?
+\end{itemize}
+
+\subsection{Conversión entre bases
+arbitrarias}\label{conversiuxf3n-entre-bases-arbitrarias}
+
+Hemos visto los casos de conversión entre base 10 y otras bases, en
+ambos sentidos. Ahora veamos los casos donde ninguna de las bases origen
+o destino son la base 10.
+
+La buena noticia es que, en general, \textbf{esto ya sabemos hacerlo}.
+Si tenemos dos bases $b sub 1$ y $b sub 2$ cualesquiera, ninguna de las cuales
+es 10, sabiendo hacer las conversiones anteriores podemos hacer la
+conversión de $b sub 1$ a $b sub 2$ sencillamente haciendo \textbf{dos
+conversiones pasando por la base 10}. Si queremos convertir de $b sub 1$ a
+$b sub 2$, convertimos primero \textbf{de $b sub 1$ a base 10}, aplicando el
+procedimiento ya visto, y luego \textbf{de base 10 a $b sub 2$}. Eso es
+todo.
+
+Pero en algunos casos especiales podemos aprovechar cierta relación
+existente entre las bases a convertir: por ejemplo, cuando son \textbf{2
+y 16}, o \textbf{2 y 8}. La base 2 es la del sistema \textbf{binario}, y
+las bases 16 y 8 son las del sistema \textbf{hexadecimal} y del sistema
+\textbf{octal} respectivamente.
+
+En estos casos, como 16 y 8 son potencias de 2 (la otra base), podemos
+aplicar un truco matemático para hacer la conversión en un solo paso y
+con muchísima facilidad. Por fortuna son estos casos especiales los que
+se presentan con mayor frecuencia en nuestra disciplina.
+
+\subsection{Equivalencias entre
+sistemas}\label{equivalencias-entre-sistemas}
+
+Para poder aplicar este truco se necesita la tabla de equivalencias
+entre los dígitos de los diferentes sistemas. Si no logramos
+memorizarla, conviene al menos saber reproducirla, asegurándose de saber
+\textbf{contar} en las bases 2, 8 y 16 para reconstruir la tabla si es
+necesario. Pero con la práctica, se logra memorizarla fácilmente.
+
+Notemos que:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  El sistema octal tiene ocho dígitos \textbf{(0 \ldots{} 7)} y cada uno
+  de ellos se puede representar con \textbf{tres dígitos binarios}:
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    0 0 0
+  \item
+    0 0 1
+  \item
+    0 1 0
+  \item
+    0 1 1
+  \item
+    1 0 0
+  \item
+    1 0 1
+  \item
+    1 1 0
+  \item
+    1 1 1
+  \end{itemize}
+\end{itemize}
+
+Notemos que:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  El sistema hexadecimal tiene dieciséis dígitos \textbf{(0 \ldots{} F)}
+  y cada uno de ellos se puede representar con \textbf{cuatro dígitos
+  binarios}:
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    0 0 0 0
+  \item
+    0 0 0 1
+  \item
+    0 0 1 0
+  \item
+    0 0 1 1
+  \item
+    0 1 0 0
+  \item
+    0 1 0 1
+  \item
+    0 1 1 0
+  \item
+    0 1 1 1
+  \item
+    1 0 0 0
+  \item
+    1 0 0 1
+  \item
+    1 0 1 0
+  \item
+    1 0 1 1
+  \item
+    1 1 0 0
+  \item
+    1 1 0 1
+  \item
+    1 1 1 0
+  \item
+    1 1 1 1
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Conversión entre sistemas binario y
+hexadecimal}\label{conversiuxf3n-entre-sistemas-binario-y-hexadecimal}
+
+El truco para convertir de base 2 a base 16 consiste simplemente en
+agrupar los dígitos binarios de a cuatro, y reemplazar cada grupo de
+cuatro dígitos por su equivalente en base 16 según la tabla anterior.
+
+Si hace falta completar un grupo de cuatro dígitos binarios, se completa
+con ceros a la izquierda.
+
+Si el problema es convertir, inversamente, de base 16 a base 2, de igual
+forma reemplazamos cada dígito hexadecimal por los cuatro dígitos
+binarios que lo representan.
+
+\subsubsection{Conversión entre sistemas binario y
+octal}\label{conversiuxf3n-entre-sistemas-binario-y-octal}
+
+El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta
+con reemplazar cada grupo de \textbf{tres} dígitos binarios (completando
+con ceros a la izquierda si hace falta) por el dígito octal equivalente.
+Lo mismo si la conversión es en el otro sentido.
+
+\end{document}

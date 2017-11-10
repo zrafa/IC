@@ -125,7 +125,8 @@ tts.ReadAnyElmts = function(){
 		for (var k=0; k < xElmts.length; k++){
 			//console.log('k=',k,'     -->',xElmts[k].textContent);
 			//tts.ReadText(xElmts[k].textContent);
-			chunks = tts.chunker(xElmts[k].textContent, 220);
+			
+			chunks = tts.chunker(tts.sanitize(xElmts[k].textContent), 220);
 			chunks.forEach(tts.doChunks);
 		}
 	}
@@ -133,17 +134,48 @@ tts.ReadAnyElmts = function(){
 	
 };
 
-tts.ToggleSpeech = function(){
+tts.sanitize = function(t) {
+/*
+	s/\\pi/PI/g;
+	s/\\times/ por /g;
+	s/\^/ elevado a la /g;
+	s/_{\(([^}]+)}/ en base $1/g;
+	s/_{([^}]+)}/ sub $1 /g;
+	s/_/ sub /g;
+
+	//while(/\D*([01][01]+[01]+)\D* /) { $g = join (' ', split //, $1); s/$1/$g/; }
+*/
+
+	t = t.replace(/\\pi/g, " PI ");
+	t = t.replace(/\^/g, " elevado a la ");
+	t = t.replace(/\\times/g, " por ");
+	t = t.replace(/\$/g, "");
+	t = t.replace(/-/g, " menos ");
+	t = t.replace(/_{\(([^}]+)}/g, " en base $1 ");
+	t = t.replace(/_{([^}]+)}/, " sub $1 ");
+	t = t.replace(/_/g, " sub ");
+	t = t.replace(/\[/g, " .abre corchetes ");
+	t = t.replace(/\]/g, " .cierra corchetes ");
+	t = t.replace(/:/g, " ");
+	t = t.replace(/\.\.\./g, " puntos suspensivos ");
+	t = t.replace(/(\S+)\.(\S+)/g, " $1 punto $2 ");
+	return t;
+
+};
+
+tts.toggle = function(){
 	// turn tts on/off with status announced
 	tts.On = !(tts.On);
-	//console.log("TTS=",tts.On);
+	console.log("TTS=",tts.On);
 	if (tts.On) {
 		tts.ReadText("Audio activado")
 	} else {
-		tts.Synth.cancel();
+		tts.cancel();
 		tts.ReadText("Audio desactivado")
 	};
 };
+
+tts.cancel = function(){ tts.Synth.cancel(); };
 
 
 
@@ -158,7 +190,8 @@ for (var ix = 0; ix < tts.Voices.length; ix++) {
 Reveal.addEventListener( 'slidechanged', function( event ) {
 	var thisSlide = Reveal.getCurrentSlide();
 
-	if (tts.Cancel) tts.Synth.cancel(); //Stop reading anything still in the speech queue, if tts.Cancel.
+	if (tts.Cancel) 
+		tts.Synth.cancel(); //Stop reading anything still in the speech queue, if tts.Cancel.
 
 	// Read the innerText for the listed elements of current slide after waiting 1 second to allow transitions to conclude.
 	// The list of elements is read in the order shown. You can use other selectors like a ".readMe" class to simplify things.
@@ -180,13 +213,16 @@ Reveal.addEventListener( 'fragmentshown', function( event ) {
 	
 Reveal.addEventListener( 'ready', function( event ) {
 	// event.currentSlide, event.indexh, event.indexv
-	Reveal.configure({
+	/*Reveal.configure({
 	  keyboard: {
-		81: function() {tts.Synth.cancel()}, // press q to cancel speaking and clear speech queue.
-		84: function() {tts.ToggleSpeech()}  // press t to toggle speech on/off
+		81: function() {tts.cancel()}, // press q to cancel speaking and clear speech queue.
+		84: function() {tts.toggle()}  // press t to toggle speech on/off
 				 
 	  }
 	});
+	*/
+	console.log(Reveal.getConfig().keyboard);
+
 	var thisSlide = Reveal.getCurrentSlide();
 	if (tts.On) {
 		if (tts.readNotes) setTimeout(function(){tts.ReadAnyElmts(thisSlide,".notes");}, 1000);
