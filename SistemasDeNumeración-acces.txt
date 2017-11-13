@@ -86,7 +86,7 @@ Esto muestra que hay una diferencia entre número y numeral, diferencia
 que es algo difícil de ver debido a la costumbre de identificar a los
 números con su representación en decimal.
 
--   El numeral es lo que escribimos (15, 15 en base 10 o 23 en base 6).
+-   El numeral es lo que escribimos (15, 15$ en base 10 $ o 23$ en base 6 $).
 -   El número es la cantidad de la cual estamos hablando (la misma en
     los tres casos).
 
@@ -96,13 +96,13 @@ Anteriormente escribíamos 15 en el sistema de base 6 como 23. Sin
 embargo, necesitamos evitar la confusión entre ambos significados de 23.
 Para esto usamos índices subscriptos que indican la base. Así,
 
--   Quince es 15 en base 10 porque está en base diez (la del sistema decimal,
+-   Quince es 15$ en base 10 $ porque está en base diez (la del sistema decimal,
     habitual), y
--   23 en base 10 es veintitrés,
--   pero 23 en base 6 es dos tres en base 6, y por lo tanto vale quince.
+-   23$ en base 10 $ es veintitrés,
+-   pero 23$ en base 6 $ es dos tres en base 6, y por lo tanto vale quince.
 
 Como 10 es nuestra base habitual, cuando no usemos índice subscripto
-estaremos sobreentendiendo que hablamos en base 10. Es decir, 15 en base 10
+estaremos sobreentendiendo que hablamos en base 10. Es decir, 15$ en base 10 $
 se puede escribir, simplemente, 15.
 
 Cuando queremos pasar un número escrito en una base a un sistema con
@@ -144,11 +144,11 @@ cuentan desde 0.
 
 Por ejemplo,
 
-10 = 1 por 8 + 0 por 4 + 1 por 2 + 0 por 1 = 1 0 1 0 en base 2
+10 = 1 por 8 + 0 por 4 + 1 por 2 + 0 por 1 = 1 0 1 0$ en base 2 $
 
 y
 
-15 = 1 por 8 + 1 por 4 + 1 por 2 + 1 por 1 = 1 1 1 1 en base 2
+15 = 1 por 8 + 1 por 4 + 1 por 2 + 1 por 1 = 1 1 1 1$ en base 2 $
 
 Trucos para conversión rápida
 
@@ -170,9 +170,9 @@ de 2. Luego, la expresión de 40 en sistema binario será 1 0 1 0 0 0.
 Otro truco interesante consiste en ver que si un numeral está en base 2,
 multiplicarlo por 2 equivale a desplazar un lugar a la izquierda todos
 sus dígitos, completando con un 0 al final. Así, si sabemos que
-40 en base 10 = 1 0 1 0 0 0 en base 2, ¿cómo escribimos rápidamente 80, que es
+40$ en base 10 $ = 1 0 1 0 0 0$ en base 2 $, ¿cómo escribimos rápidamente 80, que es
 40 por 2? Tomamos la expresión de 40 en base 2 y la desplazamos a la
-izquierda agregando un 0: 1 0 1 0 0 0 0 en base 2 = 80 en base 10.
+izquierda agregando un 0: 1 0 1 0 0 0 0$ en base 2 $ = 80$ en base 10 $.
 
 De todas maneras, estos no son más que trucos que pueden servir en no
 todos los casos. Más adelante veremos el procedimiento de conversión
@@ -222,28 +222,28 @@ y 10 elevado a la 0, que son potencias de la base 10. Este numeral designa al n�
 2017 porque esta cuenta, efectivamente, da 2017.
 
 Sin embargo, si el número está expresado en otra base, la cuenta debe
-hacerse con potencias de esa otra base. Si hablamos de 2017 en base 8,
+hacerse con potencias de esa otra base. Si hablamos de 2017$ en base 8 $,
 entonces las cifras 2, 0, 1 y 7 multiplican a 8 elevado a la 3, 8 elevado a la 2, 8 elevado a la 1 y 8 elevado a la 0. Este
 numeral designa al número 1039 porque esta cuenta, efectivamente, da
 1039.
 
 Este análisis permite enunciar una ley o expresión general que indica
 cómo se escribe un número n cualquiera, no negativo, en una base b:
-n = x sub k   por  b elevado a la k + \ldots + x sub 2   por  b elevado a la {2} + x sub 1  por  b elevado a la 1 +x sub 0   por  b elevado a la 0
+n = x$ sub k $  por  b elevado a la k + \ldots + x$ sub 2 $  por  b elevado a la {2} + x$ sub $1  por  b elevado a la 1 +x$ sub 0 $  por  b elevado a la 0
 
 Esta ecuación puede escribirse más sintéticamente en notación de
 sumatoria como:
 
-n = \sum sub i=0  elevado a la {k}{x sub i  por  b elevado a la i}
+n = \sum$ sub i=0 $ elevado a la {k}{x$ sub $i  por  b elevado a la i}
 
 En estas ecuaciones (que son equivalentes):
 
--   Los números x sub i son las cifras del numeral.
+-   Los números x$ sub $i son las cifras del numeral.
 -   Los números b elevado a la i son potencias de la base, cuyos exponentes crecen de
     derecha a izquierda y comienzan por 0.
 -   Las potencias están ordenadas y completas, y son tantas como las
     cifras del numeral.
--   Los números x sub i son necesariamente menores que b, ya que son dígitos
+-   Los números x$ sub $i son necesariamente menores que b, ya que son dígitos
     en un sistema de numeración que tiene b dígitos.
 
 Conversión de base
@@ -323,11 +323,11 @@ ambos sentidos. Ahora veamos los casos donde ninguna de las bases origen
 o destino son la base 10.
 
 La buena noticia es que, en general, esto ya sabemos hacerlo. Si tenemos
-dos bases b sub 1 y b sub 2 cualesquiera, ninguna de las cuales es 10, sabiendo
-hacer las conversiones anteriores podemos hacer la conversión de b sub 1 a
-b sub 2 sencillamente haciendo dos conversiones pasando por la base 10. Si
-queremos convertir de b sub 1 a b sub 2, convertimos primero de b sub 1 a base 10,
-aplicando el procedimiento ya visto, y luego de base 10 a b sub 2. Eso es
+dos bases b$ sub $1 y b$ sub $2 cualesquiera, ninguna de las cuales es 10, sabiendo
+hacer las conversiones anteriores podemos hacer la conversión de b$ sub $1 a
+b$ sub $2 sencillamente haciendo dos conversiones pasando por la base 10. Si
+queremos convertir de b$ sub $1 a b$ sub $2, convertimos primero de b$ sub $1 a base 10,
+aplicando el procedimiento ya visto, y luego de base 10 a b$ sub $2. Eso es
 todo.
 
 Pero en algunos casos especiales podemos aprovechar cierta relación

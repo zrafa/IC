@@ -157,14 +157,14 @@ El número más grande que podemos representar en un sistema sin signo a k
 dígitos es, seguramente, aquel donde todos los k dígitos valen 1. La
 Expresión General que hemos visto nos dice que si un número n está
 escrito en base 2, con k dígitos, entonces
-n = x sub k-1  por  2 elevado a la {k-1} + ... + x sub 1 por 2 elevado a la 1+x sub 0 por 2 elevado a la 0 y, si
-queremos escribir el más grande de todos, deberán ser todos los x sub i
+n = x$ sub k-1 $ por  2 elevado a la {k-1} + ... + x$ sub $1 por 2 elevado a la 1+x$ sub $0 por 2 elevado a la 0 y, si
+queremos escribir el más grande de todos, deberán ser todos los x$ sub $i
 iguales a 1. (Pregunta: ¿Por qué si el número n tiene k dígitos
 binarios, el índice del más significativo es k-1 y no k?)
 
 Esta suma vale entonces
 
- x sub k-1  por  2 elevado a la {k-1} + ... + x sub 1 por 2 elevado a la 1+x sub 0 por 2 elevado a la 0 = 
+ x$ sub k-1 $ por  2 elevado a la {k-1} + ... + x$ sub $1 por 2 elevado a la 1+x$ sub $0 por 2 elevado a la 0 = 
   = 1 por  2 elevado a la {k-1} + ... + 1 por 2 elevado a la 1+1 por 2 elevado a la 0 = 
   = 2 elevado a la {k-1} + ... + 2 elevado a la 1+2 elevado a la 0 =    = 2 elevado a la {k}-1 
 
@@ -228,8 +228,8 @@ valor absoluto del número en cuestión.
 
 Ejemplos
 
--   7 en base 10 = 0 0 0 0 0 1 1 1 en base 2
--   -7 en base 10 = 1 0 0 0 0 1 1 1 en base 2
+-   7$ en base 10 $ = 0 0 0 0 0 1 1 1$ en base 2 $
+-   -7$ en base 10 $ = 1 0 0 0 0 1 1 1$ en base 2 $
 
 Como estamos reservando un bit para expresar el signo, ese bit ya no se
 puede usar para representar magnitud; y como el sistema tiene una
@@ -365,11 +365,11 @@ enseguida.
 Ejemplos
 
 -   Convertir a decimal n = 0 0 0 1 0 0 0 1. Es positivo, luego, aplicamos la
-    Expresión General dando 17 en base 10.
+    Expresión General dando 17$ en base 10 $.
 -   Convertir a decimal n = 1 1 1 0 1 1 1 1. Es negativo; luego, lo
     complementamos a 2 obteniendo 0 0 0 1 0 0 0 1. Aplicamos la Expresión
-    General obteniendo 17 en base 10. Como n era negativo, agregamos el signo
-    menos y obtenemos el resultado final -17 en base 10.
+    General obteniendo 17$ en base 10 $. Como n era negativo, agregamos el signo
+    menos y obtenemos el resultado final -17$ en base 10 $.
 
 RR de C2 con k bits
 
@@ -524,12 +524,12 @@ es negativo, la extensión de signo se hace agregando unos.
 
 Ejemplos
 
--   A + B = 0 0 1 0 1 0 1 1 en base 2 + 0 0 1 0 1 en base 2
-    -   A está en C elevado a la 8 sub 2 y B en C elevado a la 5 sub 2 → llevar ambos a C elevado a la 8 sub 2
-    -   Se completa B (positivo) como 0 0 0 0 0 1 0 1 en base 2
--   A + B = 1 0 1 0 en base 2 + 0 1 1 0 1 0 0 en base 2
-    -   A está en C elevado a la 4 sub 2 y B en C elevado a la 7 sub 2 → llevar ambos a C elevado a la 7 sub 2
-    -   Se completa A (negativo) como 1 1 1 1 0 1 0 en base 2
+-   A + B = 0 0 1 0 1 0 1 1$ en base 2 $ + 0 0 1 0 1$ en base 2 $
+    -   A está en C elevado a la 8$ sub $2 y B en C elevado a la 5$ sub $2 → llevar ambos a C elevado a la 8$ sub $2
+    -   Se completa B (positivo) como 0 0 0 0 0 1 0 1$ en base 2 $
+-   A + B = 1 0 1 0$ en base 2 $ + 0 1 1 0 1 0 0$ en base 2 $
+    -   A está en C elevado a la 4$ sub $2 y B en C elevado a la 7$ sub $2 → llevar ambos a C elevado a la 7$ sub $2
+    -   Se completa A (negativo) como 1 1 1 1 0 1 0$ en base 2 $
 
 Notación en exceso o bias
 -------------------------
@@ -663,8 +663,8 @@ escribir números fraccionarios en base 2.
 
 Fraccionario en base 2 a decimal
 
-Si encontramos una expresión como 11.1 0 1 en base 2, la Expresión General
-extendida nos dice cómo obtener su valor en base 10: 11.1 0 1 en base 2  = 
+Si encontramos una expresión como 11.1 0 1$ en base 2 $, la Expresión General
+extendida nos dice cómo obtener su valor en base 10: 11.1 0 1$ en base 2 $  = 
 1  por  2 elevado a la 1 + 1  por  2 elevado a la 0 +
 1  por  2 elevado a la {-1} + 0  por  2 elevado a la {-2} + 1  por  2 elevado a la {-3} =
 2 + 1 + 0.5 + 0 + 0.125 =  3.625
@@ -692,10 +692,10 @@ sólo que ahora en base 10.
 
 Ejemplo
 
-El número n = 11.1 0 1 en base 2 tiene tres cifras decimales (k = 3). Lo
-convertimos en entero dejando 1 1 1 0 1 en base 2; averiguamos que este número en
+El número n = 11.1 0 1$ en base 2 $ tiene tres cifras decimales (k = 3). Lo
+convertimos en entero dejando 1 1 1 0 1$ en base 2 $; averiguamos que este número en
 base 10 es 29; y finalmente dividimos 29 por 2 elevado a la 3. Concluimos que
-n = 11.1 0 1 en base 2 = 29/8 = 3.625.
+n = 11.1 0 1$ en base 2 $ = 29/8 = 3.625.
 
 Decimal fraccionario a base 2
 
@@ -716,7 +716,7 @@ Convirtamos el número n = 3.625 a base 2. Primero separamos parte entera
 Parte entera
 
 La parte entera de n se convierte a base 2 como entero sin signo (dando
-11 en base 2).
+11$ en base 2 $).
 
 Parte fraccionaria
 
@@ -746,7 +746,7 @@ dígitos que fueron apareciendo durante el procedimiento de duplicar la
 parte fraccionaria.
 
 La conversión a base 2 del número n = 3.625 que buscábamos será
-11 en base 2 + 0.1 0 1 en base 2 = 11.1 0 1 en base 2.
+11$ en base 2 $ + 0.1 0 1$ en base 2 $ = 11.1 0 1$ en base 2 $.
 
 Representación de punto fijo
 ----------------------------
@@ -978,8 +978,8 @@ cumple la condición de normalización) y ajustando el exponente de base
 
 Ejemplos
 
--   1 0 0.1 1 1 en base 2 = 1.0 0 1 1 1 en base 2  por  2 elevado a la 2
--   0.0 0 0 1 1 0 1 en base 2 = 1.1 0 1 en base 2  por  2 elevado a la {-4}
+-   1 0 0.1 1 1$ en base 2 $ = 1.0 0 1 1 1$ en base 2 $  por  2 elevado a la 2
+-   0.0 0 0 1 1 0 1$ en base 2 $ = 1.1 0 1$ en base 2 $  por  2 elevado a la {-4}
 
 Representación en Punto Flotante
 --------------------------------
@@ -1066,10 +1066,10 @@ necesitamos averiguar s, e y m.
 
 -   n es negativo, luego s = 1.
 -   |n| = 5.5. Convirtiendo el valor absoluto a binario obtenemos
-    1 0 1.1 en base 2.
--   Normalizando, queda 1 0 1.1 en base 2 = 1.0 1 1 en base 2 por  2 elevado a la 2.
+    1 0 1.1$ en base 2 $.
+-   Normalizando, queda 1 0 1.1$ en base 2 $ = 1.0 1 1$ en base 2 $ por  2 elevado a la 2.
 -   Del paso anterior, el exponente 2 se representa en exceso a 127 como
-    e = 2 + 127 = 129. En base 2, 129 = 1 0 0 0 0 0 0 1 en base 2.
+    e = 2 + 127 = 129. En base 2, 129 = 1 0 0 0 0 0 0 1$ en base 2 $.
 -   Del mismo paso anterior extraemos la mantisa quitando la parte
     entera: 1.0 1 1 - 1 = 0.0 1 1. Los bits de m son 0 1 1 0 0 0 0 0 0... con ceros
     hasta la posición 23.

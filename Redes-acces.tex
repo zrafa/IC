@@ -346,7 +346,7 @@ Cada interfaz funciona a una determinada \textbf{velocidad de
 transmisión}, que es la cantidad de bits por segundo que es capaz de
 escribir en el enlace, o leer del enlace. Las unidades utilizadas para
 expresar la velocidad de transmisión son las del sistema decimal. Así,
-una medida habitual es el Gbps o gigabit por segundo ($10 elevado a la 9 b/s$). La
+una medida habitual es el Gbps o gigabit por segundo ($10^9 b/s$). La
 velocidad de transmisión suele ser llamada también \textbf{ancho de
 banda digital}.
 
@@ -356,7 +356,7 @@ interfaz del otro extremo del enlace. Ese viaje, aunque se realiza a
 velocidades cercanas a la de la luz, \textbf{no es instantáneo}.
 Dependiendo del medio, la \textbf{velocidad de propagación} de un bit
 puede ser de alrededor de un 60\% a 90\% de la velocidad de la luz, que
-es de unos 300.0 0 0 km/s, o $3 por  10 elevado a la 8 m/s$.
+es de unos 300.000 km/s, o $3\times 10^8 m/s$.
 
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
@@ -393,9 +393,9 @@ Supongamos que:
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
-  La velocidad de transmisión de la interfaz es $V$ sub transm $$.
+  La velocidad de transmisión de la interfaz es $V_{transm}$.
 \item
-  La velocidad de propagación del medio es $V$ sub prop $$.
+  La velocidad de propagación del medio es $V_{prop}$.
 \item
   El mensaje es de $L$ bits.
 \item
@@ -408,10 +408,10 @@ Entonces:
 \itemsep1pt\parskip0pt\parsep0pt
 \item
   El \textbf{tiempo de transmisión} para los $L$ bits será
-  $T$ sub transm $ = L / V$ sub transm $$.
+  $T_{transm} = L / V_{transm}$.
 \item
   El \textbf{tiempo de propagación} para el enlace de $D$ m será
-  $T$ sub prop $ = D / V$ sub prop $$.
+  $T_{prop} = D / V_{prop}$.
 \end{itemize}
 
 Notemos una vez más que el \textbf{tiempo de transmisión es dependiente
@@ -423,7 +423,7 @@ interfaces.
 El \textbf{tiempo de transferencia} que demorarán en llegar los $L$ bits
 a destino, será la suma de ambos tiempos:
 
-\[T$ sub tot $ = T$ sub transm $ + T$ sub prop $\].
+\[T_{tot} = T_{transm} + T_{prop}\].
 
 Es habitual ver en la bibliografía de Redes los diagramas de flujo de
 mensajes, que muestran qué ocurre en cada nodo a medida que transcurre
@@ -661,7 +661,7 @@ parada y espera. Los mensajes de este protocolo son comandos de la forma
 \textbf{derecha}, etc.
 
 La distancia teórica mínima al planeta Marte es de unos
-$54  por  10 elevado a la 6 km$. Esto se traduce en unos 3 minutos de retardo de
+$54 \times 10^6 km$. Esto se traduce en unos 3 minutos de retardo de
 propagación. Quiere decir que cada comando enviado desde la Tierra a
 Marte demorará, en el mejor caso, unos 6 minutos en ser confirmado. Esto
 ocasiona problemas para controlar el vehículo, porque una mala maniobra
@@ -693,7 +693,7 @@ separados por puntos.
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
-  La dirección IPv4 \textbf{1 1 0 0 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1} se puede
+  La dirección IPv4 \textbf{11000000101010000000000100000001} se puede
   escribir en notación decimal con punto como \textbf{192.168.1.1}.
 \end{itemize}
 
@@ -798,16 +798,16 @@ longitud formarán una subred.}
   en su forma binaria, encontraremos que en realidad existe un prefijo
   común aún más largo. En efecto,
 
-  130.240.10.17 = \textbf{1 0 0 0 0 0 1 0.1 1 1 1 0 0 0 0.0 0 0 0 1 0 1}0.0 0 0 1 0 0 0 1
+  130.240.10.17 = \textbf{10000010.11110000.0000101}0.00010001
 
-  130.240.11.15 = \textbf{1 0 0 0 0 0 1 0.1 1 1 1 0 0 0 0.0 0 0 0 1 0 1}1.0 0 0 0 1 1 1 1
+  130.240.11.15 = \textbf{10000010.11110000.0000101}1.00001111
 
   Los primeros \textbf{23 bits} de ambas direcciones son iguales, luego
   comparten un prefijo común de longitud 23. Para escribirlo en notación
   decimal, adoptemos la convención de completar con ceros la parte no
   común:
 
-  130.240.10.0 = 1 0 0 0 0 0 1 0.1 1 1 1 0 0 0 0.0 0 0 0 1 0 1 0.0 0 0 0 0 0 0 0
+  130.240.10.0 = 10000010.11110000.00001010.00000000
 
   Esta convención no es otra cosa que lo que llamamos la dirección de la
   subred.
@@ -835,11 +835,11 @@ subred.
 \itemsep1pt\parskip0pt\parsep0pt
 \item
   Una máscara de \textbf{24 bits} de longitud puede expresarse como
-  \textbf{1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0}, que en la misma notación
+  \textbf{11111111 11111111 11111111 00000000}, que en la misma notación
   decimal de las direcciones IP suele escribirse \textbf{255.255.255.0}.
 \item
   Una máscara de \textbf{26 bits} de longitud puede expresarse como
-  \textbf{1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0}, o
+  \textbf{11111111 11111111 11111111 11000000}, o
   \textbf{255.255.255.192}.
 \end{itemize}
 
@@ -904,11 +904,11 @@ reenvío será básicamente el mismo que con las direcciones reales IPv4 de
 Dirección de subred & Máscara & Interfaz de salida
 \\\addlinespace
 \midrule\endhead
-0 0 0 0 0 & 1 1 1 0 0 & 0
+00000 & 11100 & 0
 \\\addlinespace
-0 0 1 0 0 & 1 1 1 0 0 & 1
+00100 & 11100 & 1
 \\\addlinespace
-0 0 0 1 0 & 1 1 1 1 0 & 2
+00010 & 11110 & 2
 \\\addlinespace
 \bottomrule
 \end{longtable}
@@ -918,19 +918,19 @@ Esta tabla de ruteo dice que:
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
-  La subred 0 0 0 0 0 con máscara 1 1 1 0 0 se alcanza mediante la interfaz de
+  La subred 00000 con máscara 11100 se alcanza mediante la interfaz de
   salida 0. Es decir, que si los primeros tres bits de la dirección
-  destino de un paquete son 0 0 0, el paquete debe ser reenviado por la
+  destino de un paquete son 000, el paquete debe ser reenviado por la
   interfaz 0.
 \item
-  La subred 0 0 1 0 0 con máscara 1 1 1 0 0 se alcanza mediante la interfaz de
+  La subred 00100 con máscara 11100 se alcanza mediante la interfaz de
   salida 1. Es decir, que si los primeros tres bits de la dirección
-  destino de un paquete son 0 0 1, el paquete debe ser reenviado por la
+  destino de un paquete son 001, el paquete debe ser reenviado por la
   interfaz 1.
 \item
-  La subred 0 0 0 1 0 con máscara 1 1 1 1 0 se alcanza mediante la interfaz de
+  La subred 00010 con máscara 11110 se alcanza mediante la interfaz de
   salida 1. Es decir, que si los primeros \textbf{cuatro} bits de la
-  dirección destino de un paquete son 0 0 0 1, el paquete debe ser
+  dirección destino de un paquete son 0001, el paquete debe ser
   reenviado por la interfaz 2.
 \end{itemize}
 
@@ -961,7 +961,7 @@ lo llama \textbf{router por defecto} o \textbf{gateway default}, y la
 ruta que le corresponde es la \textbf{ruta por defecto o default route}.
 
 Para definir una ruta por defecto agregamos una regla a la tabla de
-ruteo con \textbf{dirección de subred = 0 0 0 0 0 y máscara de red = 0 0 0 0 0}.
+ruteo con \textbf{dirección de subred = 00000 y máscara de red = 00000}.
 Como la máscara tiene \textbf{cero unos}, cualquier dirección IP destino
 da una coincidencia. Por eso, la regla por defecto se consulta en último
 lugar, y como último recurso. De lo contrario, la interfaz de la ruta
@@ -999,11 +999,11 @@ más específica}).
 Dirección de subred & Máscara & Interfaz de salida
 \\\addlinespace
 \midrule\endhead
-0 0 0 0 0 & 1 1 1 0 0 & 0
+00000 & 11100 & 0
 \\\addlinespace
-0 0 1 0 0 & 1 1 1 0 0 & 1
+00100 & 11100 & 1
 \\\addlinespace
-0 0 0 1 0 & 1 1 1 1 0 & 2
+00010 & 11110 & 2
 \\\addlinespace
 \bottomrule
 \end{longtable}
@@ -1067,13 +1067,13 @@ agregándole una ruta default por la interfaz 2:
 Regla & Dirección de subred & Máscara & Interfaz de salida
 \\\addlinespace
 \midrule\endhead
-1 & 0 0 0 0 0 & 1 1 1 0 0 & 0
+1 & 00000 & 11100 & 0
 \\\addlinespace
-2 & 0 0 1 0 0 & 1 1 1 0 0 & 1
+2 & 00100 & 11100 & 1
 \\\addlinespace
-3 & 0 0 0 1 0 & 1 1 1 1 0 & 2
+3 & 00010 & 11110 & 2
 \\\addlinespace
-4 & 0 0 0 0 0 & 0 0 0 0 0 & 2
+4 & 00000 & 00000 & 2
 \\\addlinespace
 \bottomrule
 \end{longtable}
@@ -1083,13 +1083,13 @@ Regla & Dirección de subred & Máscara & Interfaz de salida
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
-  0 0 0 0 1 → Interfaz 0, por la regla 1
+  00001 → Interfaz 0, por la regla 1
 \item
-  0 0 0 1 1 → Interfaz 2, por la regla 2, ya que, a pesar de que la
+  00011 → Interfaz 2, por la regla 2, ya que, a pesar de que la
   dirección destino coincide también con la regla 1, la regla 2 es más
   específica.
 \item
-  0 1 0 0 1 → Interfaz 2, por la regla default, ya que las anteriores no han
+  01001 → Interfaz 2, por la regla default, ya que las anteriores no han
   resultado en coincidencias.
 \end{itemize}
 

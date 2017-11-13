@@ -38,7 +38,7 @@ redes: Redes.html
 		-V fontfamily=sans \
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
-		$*.md -t latex | util/plain2acces > $*-acces.tex
+		$*.md -t latex > tex/$*-acces.tex
 
 
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
@@ -63,3 +63,4 @@ git:
 
 clean: 
 	mv Presentación.html Software.html SistemasOperativos.html SistemasDeCómputo.html SistemasDeNumeración.html UnidadesDeInformación.html RepresentaciónDigitalDeDatos.html TextoYMultimedia.html ArquitecturaDeComputadoras.html Redes.html attic
+	rm *.tex *.aux *.log *.out
