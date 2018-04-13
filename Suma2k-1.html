@@ -1,0 +1,29 @@
+<h2 id="por-qué-2k-1-...-21-20-2k---1">¿Por qué <span class="math">2<sup><em>k</em> − 1</sup> + ... + 2<sup>1</sup> + 2<sup>0</sup> = 2<sup><em>k</em></sup> − 1</span>?</h2>
+<h3 id="razonamiento-1">Razonamiento 1</h3>
+<p>Si escribimos k &quot;unos&quot;, éste es el número más grande que podemos escribir con esa cantidad de dígitos.</p>
+<p>Al sumarle 1 a este número máximo de k dígitos, obtenemos un número que tiene un dígito más (<span class="math"><em>k</em> + 1</span> dígitos). Ese número, como es el primero de todos los que podemos escribir con exactamente k+1 dígitos, es un uno seguido de k ceros.</p>
+<p>Por ejemplo, si k fuera 4, el máximo binario a 4 dígitos es 1111. Sumándole 1 obtengo 10000 que está escrito con 5 dígitos.</p>
+<p>Pero este número de la forma 10000 no es otro que <span class="math">2<sup><em>k</em></sup></span>. Entonces resulta que <span class="math">1111 + 1 = 2<sup>4</sup></span>, y despejando <span class="math">1111 = 2<sup>4</sup> − 1</span>.</p>
+<p>El mismo argumento vale para cualquier otro k que consideremos.</p>
+<h3 id="razonamiento-2">Razonamiento 2</h3>
+<p>¿Cómo se deduce que <span class="math">2<sup><em>k</em> − 1</sup> + ... + 2<sup>1</sup> + 2<sup>0</sup> = 2<sup><em>k</em></sup> − 1</span>?</p>
+<p>Esta es una identidad conocida que se suele usar en Álgebra. Una demostración podría ser así:</p>
+<p>Llamemos 'a' al primer miembro de la igualdad para simplificar un poco:</p>
+<p><span class="math"><em>a</em> = 2<sup><em>k</em> − 1</sup> + 2<sup><em>k</em> − 2</sup> + ... + 2<sup>1</sup> + 2<sup>0</sup></span></p>
+<p>Y ahora multipliquemos ambos miembros por 2. Si dos expresiones son iguales, al multiplicar <em>ambas</em> por 2 van a seguir siendo iguales.</p>
+<p><span class="math">2<em>a</em> = 2 × [2<sup><em>k</em> − 1</sup> + 2<sup><em>k</em> − 2</sup> + ... + 2<sup>1</sup> + 2<sup>0</sup>]</span></p>
+<p>Operemos en el segundo miembro, distribuyendo el factor 2:</p>
+<p><span class="math">2<em>a</em> = 2<sup><em>k</em></sup> + 2<sup><em>k</em> − 1</sup> + ... + 2<sup>2</sup> + 2<sup>1</sup></span></p>
+<p>Ahora sumemos y restemos 1 al segundo miembro, con lo cual no cambiamos su valor:</p>
+<p><span class="math">2<em>a</em> = 2<sup><em>k</em></sup> + 2<sup><em>k</em> − 1</sup> + ... + 2<sup>2</sup> + 2<sup>1</sup> + 1 − 1</span></p>
+<p>Y reescribamos un 1 como <span class="math">2<sup>0</sup></span>:</p>
+<p><span class="math">2<em>a</em> = 2<sup><em>k</em></sup> + 2<sup><em>k</em> − 1</sup> + ... + 2<sup>2</sup> + 2<sup>1</sup> + 2<sup>0</sup> − 1</span></p>
+<p>Pero ahora, en el centro de esta expresión de varios sumandos aparece de vuelta 'a' (lo que ponemos entre corchetes):</p>
+<p><span class="math">2<em>a</em> = 2<sup><em>k</em></sup> + [2<sup><em>k</em> − 1</sup> + ... + 2<sup>2</sup> + 2<sup>1</sup> + 2<sup>0</sup>] − 1</span></p>
+<p>Luego <span class="math">2<em>a</em> = 2<sup><em>k</em></sup> + <em>a</em> − 1</span></p>
+<p>Ahora despejamos llevando el 'a' del segundo miembro al primero:</p>
+<p><span class="math">2<em>a</em> − <em>a</em> = 2<sup><em>k</em></sup> − 1</span></p>
+<p><span class="math"><em>a</em> = 2<sup><em>k</em></sup> − 1</span></p>
+<p>Pero ¿quién era 'a'? Reemplacemos:</p>
+<p><span class="math">2<sup><em>k</em> − 1</sup> + 2<sup><em>k</em> − 2</sup> + ... + 2<sup>1</sup> + 2<sup>0</sup> = 2<sup><em>k</em></sup> − 1</span></p>
+<p>Que era lo que queríamos demostrar.</p>

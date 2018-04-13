@@ -3,7 +3,7 @@
 ### Razonamiento 1
 Si escribimos k "unos", éste es el número más grande que podemos escribir con esa cantidad de dígitos.
 
-Al sumarle 1 a  a este número máximo de k dígitos, obtenemos un número que tiene un dígito más ($k+1$ dígitos). Ese número, como es el primero de todos los que podemos escribir con exactamente k+1 dígitos, es un uno seguido de k ceros.
+Al sumarle 1 a este número máximo de k dígitos, obtenemos un número que tiene un dígito más ($k+1$ dígitos). Ese número, como es el primero de todos los que podemos escribir con exactamente k+1 dígitos, es un uno seguido de k ceros.
 
 Por ejemplo, si k fuera 4, el máximo binario a 4 dígitos es 1111. Sumándole 1 obtengo 10000 que está escrito con 5 dígitos.
 
