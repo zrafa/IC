@@ -248,6 +248,13 @@ Por otro lado, los números positivos quedan representados por combinaciones id�
 Si descartamos el bit de signo y consideramos sólo las magnitudes, los números negativos en SM aparecen con sus magnitudes crecientes alejándose del 0, mientras que en C2 esas magnitudes comienzan en cero al representar el negativo más pequeño posible y crecen a medida que se acercan al cero.
 
 
+###Complementar a 2 y representar en C2
+
+Un error frecuente es confundir la **operación de complementar a 2** y la **representación en complemento a 2**. ¡No son lo mismo!
+
+Al representar en complemento a 2, la operación de complementar a 2 **únicamente se aplica cuando queremos obtener el opuesto** de un número. Por ejemplo, cuando queremos representar un número negativo, complementando a 2 su valor absoluto que es positivo.
+
+
 ###Aritmética en C2
 
 Una gran ventaja que aporta el sistema en Complemento a 2 es que los diseñadores de hardware no necesitan implementar algoritmos de resta además de los de la suma. Cuando se necesita efectuar una resta, **se complementa el sustraendo** y luego se lo **suma** al minuendo. Las computadoras no restan: siempre suman.

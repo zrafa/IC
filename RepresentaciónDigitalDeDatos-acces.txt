@@ -417,6 +417,16 @@ alejándose del 0, mientras que en C2 esas magnitudes comienzan en cero
 al representar el negativo más pequeño posible y crecen a medida que se
 acercan al cero.
 
+Complementar a 2 y representar en C2
+
+Un error frecuente es confundir la operación de complementar a 2 y la
+representación en complemento a 2. ¡No son lo mismo!
+
+Al representar en complemento a 2, la operación de complementar a 2
+únicamente se aplica cuando queremos obtener el opuesto de un número.
+Por ejemplo, cuando queremos representar un número negativo,
+complementando a 2 su valor absoluto que es positivo.
+
 Aritmética en C2
 
 Una gran ventaja que aporta el sistema en Complemento a 2 es que los
