@@ -168,6 +168,8 @@ Esta suma vale entonces
   = 1 por  2 elevado a la {k-1} + ... + 1 por 2 elevado a la 1+1 por 2 elevado a la 0 = 
   = 2 elevado a la {k-1} + ... + 2 elevado a la 1+2 elevado a la 0 =    = 2 elevado a la {k}-1 
 
+¿Por qué esto es cierto?
+
 Usando ambos argumentos hemos llegado a que el número más grande que
 podemos representar con k dígitos binarios es 2 elevado a la k-1. Por lo tanto, el
 rango de representación de un sistema sin signo a k dígitos, o SS(k), es
@@ -324,6 +326,8 @@ Ejemplos
     obtenemos 1 1 0 0. Sumando 1, queda 1 1 0 1.
 -   Comprobemos que el resultado obtenido en el último caso, 1 1 0 1, es
     efectivamente el opuesto de 0 0 1 1: 0 0 1 1 + 1 1 0 1 = 0.
+
+¿Por qué funciona este método?
 
 Representación en Complemento a 2
 
