@@ -252,7 +252,7 @@ Por otro lado, los números positivos quedan representados por combinaciones id�
 Si descartamos el bit de signo y consideramos sólo las magnitudes, los números negativos en SM aparecen con sus magnitudes crecientes alejándose del 0, mientras que en C2 esas magnitudes comienzan en cero al representar el negativo más pequeño posible y crecen a medida que se acercan al cero.
 
 
-###Complementar a 2 y representar en C2
+###Complementar a 2 vs. representar en C2
 
 Un error frecuente es confundir la **operación de complementar a 2** y la **representación en complemento a 2**. ¡No son lo mismo!
 
@@ -435,31 +435,42 @@ Para convertir un decimal con parte fraccionaria a base 2:
 1. Se separan la parte entera (PE) y la parte fraccionaria (PF).
 1. Se convierte la PE a base 2 separadamente.
 1. La PF se multiplica por 2 y se toma la PE del resultado. Este dígito binario se agrega al resultado.
-1. Se repite el paso anterior hasta llegar a 0, o hasta lograr la precisión deseada.
+1. Se repite el paso anterior con la nueva parte fraccionaria obtenida, hasta que ésta sea 0, o hasta lograr la precisión deseada.
 
 
 **Ejemplo**
 
 Convirtamos el número $n = 3.625$ a base 2. Primero separamos parte entera (3) y parte fraccionaria (0.625).
 
-**Parte entera**
+**1. Parte entera**
 
 La parte entera de $n$ se convierte a base 2 como entero sin signo (dando $11_{(2}$).
 
+**2. Parte fraccionaria**
+
+Para calcular la parte fraccionaria binaria de $n$ seguimos un procedimiento **iterativo** (es decir, que consta de pasos que se repiten). 
 
 
-**Parte fraccionaria**
 
-Para calcular la parte fraccionaria binaria de $n$ seguimos un procedimiento iterativo (es decir, que consta de pasos que se repiten). 
+La parte fraccionaria decimal de $n$ se multiplica por 2. Separamos este resultado a su vez en parte entera y parte fraccionaria. Guardamos la parte entera del resultado **y repetimos**, es decir, volvemos a multiplicar por 2 la parte fraccionaria recién obtenida, separamos la parte entera, etc. 
 
-La parte fraccionaria decimal de $n$ se multiplica por 2: $0.625 \times 2 = 1.25$. Separamos este resultado a su vez en parte entera y parte fraccionaria. Guardamos la parte entera del resultado (que es 1) **y repetimos**, es decir, volvemos a multiplicar por 2 la parte fraccionaria recién obtenida (que es 0.25), separamos la parte entera, etc. 
+El procedimiento de separar, guardar, multiplicar, se repite hasta que la **parte fraccionaria** obtenida en una multiplicación sea 0 (ya no tiene sentido seguir el procedimiento porque el resultado será siempre 0) o hasta que tengamos suficientes dígitos computados para nuestra aplicación. 
+
+Para el ejemplo donde queremos obtener la expresión binaria de la parte fraccionaria 0.625, el procedimiento dará:
+
+- $0.625 \times 2 = 1.25$
+- $0.25 \times 2 = 0.5$
+- $0.5 \times 2 = 1.0$
+
+Al llegar al tercer paso, el procedimiento finaliza porque la parte fraccionaria encontrada es 0.
 
 **La sucesión de dígitos aparecidos como partes enteras** durante este procedimiento servirán para **construir la parte fraccionaria** del resultado. Notemos que estos dígitos que aparecen solamente pueden ser ceros y unos, porque son la parte entera de $2\times x$ con $x < 1$.
 
-El procedimiento de separar, guardar, multiplicar, se repite hasta que la parte entera obtenida sea 0 (ya no tiene sentido seguir el procedimiento porque el resultado será siempre 0) o hasta que tengamos suficientes dígitos computados para nuestra aplicación. 
+En el ejemplo, las partes enteras parciales son **1, 0 y 1**, dando la parte fraccionaria final $.101_{(2}$.
 
+**3. Resultado final**
 
-El resultado final es la suma, en base 2, de la parte entera de $n$ calculada anteriormente, más una parte fraccionaria construida con los dígitos que fueron apareciendo durante el procedimiento de duplicar la parte fraccionaria.
+El resultado final del ejemplo es la suma, en base 2, de la parte entera de $n$ calculada separadamente, más la parte fraccionaria construida con los dígitos que fueron apareciendo como partes enteras durante el procedimiento de duplicar la parte fraccionaria.
 
 La conversión a base 2 del número $n = 3.625$ que buscábamos será $11_{(2} + 0.101_{(2} = 11.101_{(2}$.
 
@@ -532,10 +543,7 @@ Para convertir un binario en notación de punto fijo en $n$ lugares con $k$ frac
 - ¿Cuál es el RR de $PF(8,3)$? ¿Y de $PF(8,k)$?
 
 
-La representación de punto fijo es adecuada para cierta clase de problemas donde los datos que se manejan son de magnitudes y precisiones comparables. 
-
-- En la situación contraria, cuando las magnitudes de los datos son muy variadas, habrá datos de valor absoluto muy grande, lo que hará que sea necesario elegir una representación de una gran cantidad de bits de ancho. Pero esta cantidad de bits quedará desperdiciada al representar los datos de magnitud pequeña.  
-- Otro tanto ocurre con los bits destinados a la parte fraccionaria. Si los requerimientos de precisión de los diferentes datos son muy altos, será necesario reservar una gran cantidad de bits para la parte fraccionaria. Esto permitirá almacenar los datos con mayor cantidad de dígitos fraccionarios, pero esos bits quedarán desperdiciados al almacenar otros datos.
+### Ventajas y desventajas de Punto Fijo
 
 Las ventajas de la representación en punto fijo provienen, sobre todo, de que permite reutilizar completamente la lógica ya implementada para tratar enteros en complemento a 2, sin introducir nuevos problemas ni necesidad de nuevos recursos. Como la lógica para C2 es sencilla y rápida, la representación de punto fijo es adecuada para sistemas que deben ofrecer una determinada *performance*:
 
@@ -545,9 +553,12 @@ Las ventajas de la representación en punto fijo provienen, sobre todo, de que p
 
 
 
-Por el contrario, algunas clases de programas suelen manipular datos de otra naturaleza. No es raro que aparezcan en el mismo programa, e incluso en la misma instrucción de programa, datos o variables de magnitud o precisión extremadamente diferentes. 
+Por otro lado, la representación de punto fijo es adecuada para cierta clase de problemas donde los datos que se manejan son de magnitudes y precisiones comparables. Sin embargo, algunas clases de programas tratan con datos de naturalezas diferentes. 
 
-Por ejemplo, si un programa de cómputo científico necesita calcular el **tiempo en que la luz recorre una millonésima de milímetro**, la fórmula a aplicar relacionará la velocidad de la luz en metros por segundo (unos $300.000.000 m/s$) con el tamaño en metros de un nanómetro ($0.000000001 m$). 
+- Cuando las magnitudes de los datos son muy variadas, habrá datos de valor absoluto muy grande, lo que hará que sea necesario elegir una representación de una gran cantidad de bits de ancho. Pero esta cantidad de bits quedará desperdiciada al representar los datos de magnitud pequeña.  
+- Otro tanto ocurre con los bits destinados a la parte fraccionaria. Si los requerimientos de precisión de los diferentes datos son muy altos, será necesario reservar una gran cantidad de bits para la parte fraccionaria. Esto permitirá almacenar los datos con mayor cantidad de dígitos fraccionarios, pero esos bits quedarán desperdiciados al almacenar otros datos.
+
+No es raro que aparezcan en el mismo programa, e incluso en la misma instrucción de programa, datos o variables de magnitud o precisión extremadamente diferentes. Por ejemplo, si un programa de cómputo científico necesita calcular el **tiempo en que la luz recorre una millonésima de milímetro**, la fórmula a aplicar relacionará la velocidad de la luz en metros por segundo (unos $300.000.000 m/s$) con el tamaño en metros de un nanómetro ($0.000000001 m$). 
 
 Estos dos datos son extremadamente diferentes en magnitud y cantidad de dígitos fraccionarios. La velocidad de la luz es un número astronómicamente grande en comparación a la cantidad de metros en un nanómetro; y la precisión con que necesitamos representar al nanómetro no es para nada necesaria al representar la velocidad de la luz.
 
