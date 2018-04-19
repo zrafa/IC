@@ -63,7 +63,7 @@ all: siste uni repre texto arqui soft comp so redes
 	--toc \
 	--listings \
 	--number-sections \
-		head.md \
+		head.yaml \
 		SistemasDeNumeración.md \
 		UnidadesDeInformación.md \
 		RepresentaciónDigitalDeDatos.md \
