@@ -1,45 +1,10 @@
-<!-- INCLUDE src/reveal.header -->
 
-<section data-markdown data-coursemod-shown="false" data-title="Representación de la información">
- <script type="text/template">
-##Unidad I 
-###Representación de la Información 
-
-1. Sistemas de Numeración 
-1. Unidades de Información
-1. Representación Digital de Datos 
- 1. Datos Numéricos <!-- .element: class="postit" -->
- 1. Texto
- 1. Multimedia
- </script>
-<aside data-markdown class="notes">
 #Representación de la Información
-</aside>
-</section>
 
 
-<section>
-<h1>Representación de datos numéricos</h1>
-<aside data-markdown class="notes">
 Veremos de qué manera puede ser tratada mediante computadoras la información correspondiente a números, textos, imágenes y otros datos. Necesitaremos conocer las formas de representación de datos, y comenzaremos por los datos numéricos.
-</aside>
-</section>
 
-<section>
-<h2>Vimos hasta ahora</h2>
-<ul>
-<li>Sistemas de numeración decimal, hexadecimal, octal, binario</li>
-<li>Simplificaciones</li>
-<ul>
-<li>Siempre hemos representado <b>enteros</b></li>
-<li>Siempre <b>no negativos</b></li>
-<li>Suponíamos <b>infinitos dígitos</b></li>
-<ul>
-<li>Pero las computadoras adoptan algún <b>sistema de representación</b> con alguna cantidad fija de bits</li>
-</ul>
-</ul>
-</ul>
-<aside data-markdown class="notes">
+
 ##Representación de datos numéricos
 
 Hemos visto ejemplos de sistemas de numeración: en base 6, en base 10, o decimal, en base 2, o binario, en base 16, o hexadecimal, y en base 8, u octal; y sabemos convertir la representación de un número en cada una de estas bases, a los sistemas en las demás bases. Sin embargo, aún nos falta considerar la representación numérica de varios casos importantes:  
@@ -49,159 +14,8 @@ Hemos visto ejemplos de sistemas de numeración: en base 6, en base 10, o decima
 - Por otra parte, no nos hemos planteado el problema de la **cantidad de dígitos**. Idealmente, un sistema de numeración puede usar infinitos dígitos para representar números arbitrariamente grandes. Si bien esto es matemáticamente correcto, las computadoras son objetos físicos que tienen unas ciertas limitaciones, y con ellas no es posible representar números de infinita cantidad de dígitos. 
 
 En esta parte de la unidad mostraremos sistemas de representación utilizados en computación que permiten tratar estos problemas.
-</aside>
-</section>
 
 
-
-<section>
-
-<h2>Clasificación de los números</h2>
-<div style="text-align: center;">
-<table class="plain" style="font-size: 50%; text-align: left; margin:2em; border-collapse:collapse" width="100%">
-<tr>
-<td>
-<table style="margin:4px; border:2px solid silver">
-<tr>
-<td>
-<table style="margin:1em">
-<tr>
-<td>
-<center><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_complejo" title="Número complejo">Complejos</a><br />
-<big><big><big><span class="Unicode">ℂ</span></big></big></big></center>
-</td>
-<td>
-<table style="border-left:4px solid green">
-<tr>
-<td>
-<table>
-<tr>
-<td>
-<center><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_real" title="Número real">Reales</a><br />
-<big><big><big><span class="Unicode">ℝ</span></big></big></big></center>
-</td>
-<td>
-<table style="border-left:4px solid green">
-<tr>
-<td>
-<table>
-<tr>
-<td>
-<center> <a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_racional" title="Número racional">Racionales</a><br />
-<big><big><big><span class="Unicode">ℚ</span></big></big></big></center>
-</td>
-<td>
-<table style="border-left:4px solid green">
-<tr>
-<td>
-<table>
-<tr>
-<td>
-<center><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_entero" title="Número entero">Enteros</a><br />
-<big><big><big><span class="Unicode">ℤ</span></big></big></big></center>
-</td>
-<td>
-<table style="border-left:4px solid green">
-<tr>
-<td>
-<table>
-<tr>
-<td>
-<center><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_natural" title="Número natural">Naturales</a><br />
-<big><big><big><span class="Unicode">ℕ</span></big></big></big></center>
-</td>
-<td>
-<table style="border-left:4px solid green">
-<tr>
-<td>1: <a href="https://es.m.wikipedia.org/wiki/Uno" title="Uno">uno</a></td>
-</tr>
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_primo" title="Número primo">Naturales primos</a></td>
-</tr>
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_compuesto" title="Número compuesto">Naturales compuestos</a></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td>0: <a href="https://es.m.wikipedia.org/wiki/Cero" title="Cero">Cero</a></td>
-</tr>
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/Entero_negativo" class="mw-redirect" title="Entero negativo">Enteros negativos</a></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td>
-<table width="100%">
-<tr> <td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_fraccionario" class="mw-redirect" title="Número fraccionario">Fraccionarios</a></td> <td>
-<table style="border-left:4px solid green">
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/Fracci%C3%B3n_propia" class="mw-redirect" title="Fracción propia">Fracción propia</a></td>
-</tr>
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/Fracci%C3%B3n_impropia" class="mw-redirect" title="Fracción impropia">Fracción impropia</a></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr style="text-align: left;">
-<td>
-<table width="100%">
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_irracional" title="Número irracional">Irracionales</a></td>
-<td>
-<table style="border-left:4px solid green">
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_algebraico" title="Número algebraico">Irracionales algebraicos</a></td>
-</tr>
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_trascendente" title="Número trascendente">Trascendentes</a></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td><a href="https://es.m.wikipedia.org/wiki/N%C3%BAmero_imaginario" title="Número imaginario">Imaginarios</a></td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</div>
-<aside data-markdown class="notes">
 ###Clasificación de los números
 Es conveniente repasar la clasificación de los diferentes conjuntos de números y conocer las diferencias importantes entre éstos. Los títulos en el cuadro (tomado de Wikipedia) son referencias a los artículos enciclopédicos sobre cada uno de esos conjuntos.
 
@@ -233,28 +47,8 @@ Es conveniente repasar la clasificación de los diferentes conjuntos de números
 - El número 0.9999... con 9 periódico, y el número 1, ¿son dos números diferentes o el mismo número? Si son diferentes, ¿qué número se encuentra entre ellos dos?
 - El número 1 es a la vez natural y entero. ¿Por qué no puede haber un número que sea a la vez racional e irracional?
 - ¿Por qué jamás podremos computar la sucesión completa de decimales de $\pi$?
-</aside>
-</section>
 
 
-
-<section>
-<h2>Representación de datos numéricos</h2>
-<ul>
-<li>Enteros</li>
-<ul>
-<li>Sin signo</li>
-<li>Signo-Magnitud</li>
-<li>Complemento a 2 </li>
-<li>Notación en exceso</li>
-</ul>
-<li>Fraccionarios</li>
-<ul>
-<li>Punto fijo</li>
-<li>Punto flotante</li>
-</ul>
-<ul>
-<aside data-markdown class="notes">
 ###Datos enteros
 
 Veremos un sistema de representación de datos no negativos, llamado **sin signo**, y tres sistemas de representación de datos numéricos enteros, llamados **signo-magnitud**, **complemento a 2** y **notación en exceso**.
@@ -262,21 +56,8 @@ Veremos un sistema de representación de datos no negativos, llamado **sin signo
 ###Datos fraccionarios
 
 Para representar fraccionarios consideraremos los sistemas de **punto fijo** y **punto flotante**.
-</aside>
-</section>
 
-<section>
-<h2>Rango de representación (RR)</h2>
-<ul>
-<li>Intervalo de números representables de un sistema de representación numérica</li>
-<li>Notación $[a, b]$, con $a$ y $b$ límites inferior y superior del RR</li>
-<li>Depende:</li>
-<ul>
-<li>De la cantidad de dígitos del sistema de representación</li>
-<li>De la forma como funciona el sistema de representación </li>
-</ul>
-</ul>
-<aside data-markdown class="notes">
+
 ##Rango de representación
 
 Cada sistema de representación de datos numéricos tiene su propio **rango de representación** (que podemos abreviar **RR**), o intervalo de números representables. Ningún número fuera de este rango puede ser representado en dicho sistema. Conocer este intervalo es importante para saber con qué limitaciones puede enfrentarse un programa que utilice alguno de esos sistemas.
@@ -286,30 +67,8 @@ El rango de los números representados bajo un sistema está dado por sus **lím
 Por la forma en que están diseñados, algunos sistemas de representación sólo pueden representar números muy pequeños, o sólo positivos, o tanto negativos como positivos.  En general, el RR **será más grande cuantos más dígitos binarios**, o bits, tenga el sistema. Sin embargo, el RR depende también de la forma como el sistema **utilice** esos dígitos binarios, ya que un sistema puede ser más o menos **eficiente** que otro en el uso de esos dígitos, aunque la cantidad de dígitos sea la misma en ambos sistemas.
 
 Por lo tanto, decimos que el rango de representación depende a la vez de la **cantidad de dígitos** y de la **forma de funcionamiento** del sistema de representación. 
-</aside>
-</section>
 
-<section>
-<h2>Representación sin signo SS(k)</h2>
-<ul>
-   <li><b>SS(k)</b> expresa sólo números <b>no negativos</b></li>
-   <li>Simplemente usar $k$ dígitos binarios</li>
-   <div class="fragment">
-   <ol>
-   <li>Con $k$ bits, tengo $2^k$ posibilidades: $2 \times 2 \times 2 ... = 2^k$</li>
-   <li class="fragment">Con $k$ bits, el mayor número binario posible es 111111....1 = $\sum_{i=0}^k{2^i} = 2^k-1$</li>
-   </ol>
-   </div>
-   <li class="fragment"> &rarr; Rango de representación <span class="post_it">$[0, 2^k-1]$</span></li>
-   <div>
-	<ul>
-	   <li class="fragment">Con 4 bits: $[0, 2^4-1] = [0, 15]$</li>
-	   <li class="fragment">Con 8 bits: $[0, 2^8-1] = [0, 255]$</li>
-	   <li class="fragment">Con 32 bits: $[0, 2^{32}-1] = [0, 4.294.967.295]$</li>
-	</ul>
-   </div>
-</ul>
-<aside data-markdown class="notes">
+
 ##Representación sin signo SS(k)
 
 Consideremos primero qué ocurre cuando queremos representar números enteros **no negativos** (es decir, **positivos o cero**) sobre una cantidad fija de bits. 
@@ -348,23 +107,8 @@ Usando ambos argumentos hemos llegado a que el número más grande que podemos r
 - Para un sistema de representación sin signo a 8 bits: $[0, 2^8-1] = [0, 255]$
 - Con 16 bits: $[0, 2^{16}-1] = [0, 65.535]$
 - Con 32 bits: $[0, 2^{32}-1] = [0, 4.294.967.295]$
-</aside>
-</section>
 
-<section>
-<h2>Representación con signo</h2>
-<ul>
-<li>Permite representar <b>negativos y no negativos</b></li>
-<li><strong>Varias técnicas</strong></li>
-	<ul>
-		<li>Signo-magnitud (<strong>SM</strong>)</li>
-		<li>Complemento a 2 (<strong>C2</strong>)</li>
-		<li>Notación en exceso</li>
-	</ul>
-<li>Solamente se puede operar entre datos representados con el mismo sistema de representación</li>
-<li>El resultado de toda operación vuelve a estar representado en el mismo sistema</li>
-</ul>
-<aside data-markdown class="notes">
+
 ##Representación con signo
 
 En la vida diaria manejamos continuamente números negativos, y los distinguimos de los positivos simplemente agregando un signo "menos". Representar esos datos en la memoria de la computadora no es tan directo, porque, como hemos visto, la memoria **solamente puede alojar ceros y unos**. Es decir, ¡no podemos simplemente guardar un signo "menos"! Lo único que podemos hacer es almacenar secuencias de ceros y unos.
@@ -374,80 +118,27 @@ Esto no era un problema cuando los números eran no negativos. Para poder repres
 Veremos los **sistemas de representación con signo** llamados **Signo-magnitud (SM)**, **Complemento a 2 (C2)** y **Notación en exceso**.
 
 Es importante tener en cuenta que **solamente se puede operar entre datos representados con el mismo sistema de representación**, y que el **resultado** de toda operación **vuelve a estar representado en el mismo sistema**.
-</aside>
-</section>
 
-<section class="preguntas" data-coursemod-shown="false" data-background="#3c53b5" data-background-transition="zoom">
-<h2>Preguntas</h2>
-<ol>
-	<li class="fragment">¿Cuáles son los límites del rango de representación de un sistema de representación numérica?</li>
-	<li class="fragment">Un número escrito en un sistema de representación <b>con signo</b>, ¿es siempre negativo?</li>
-	<li class="fragment">¿Para qué querríamos escribir un número positivo en un sistema de representación con signo?</li>
-</ol>
-<aside data-markdown class="notes">
+
 **Preguntas**
 
 - ¿Cuáles son los límites del rango de representación de un sistema de representación numérica?
 - Un número escrito en un sistema de representación **con signo**, ¿es siempre negativo?
 - ¿Para qué querríamos escribir un número positivo en un sistema de representación con signo?
-</aside>
-</section>
 
 
-<section>
-<h2>Sistema de Signo-magnitud</h2>
-<ul>
-   <li>El primer bit a la izquierda representa el signo</li>
-	<ul>
-	<li>0 &rarr; positivo</li>
-	<li>1 &rarr; negativo</li>
-	</ul>
-   <li>Los restantes bits, el valor absoluto o magnitud</li>
-   <div class="fragment">
-	<ul>
-	   <li>Positivos</li>
-		$7_{(10} = 00000111_{(2}$
-	   <span class="fragment">
-	   <li>Negativos</li>
-		$-7_{(10} = 10000111_{(2}$
-	   </span>
-	</ul>
-   </div>
-   <li class="fragment">¿Rango de representación?</li>
-</ul>
-<aside data-markdown class="notes">
 ##Sistema de Signo-magnitud SM(k)
 
 El sistema de **Signo-magnitud** no es el más utilizado en la práctica, pero es el más sencillo de comprender. Se trata simplemente de utilizar un bit (el de más a la izquierda) para representar el **signo**. Si este bit tiene valor 0, el número representado es positivo; si es 1, es negativo. Los demás bits se utilizan para representar la **magnitud**, es decir, el **valor absoluto** del número en cuestión.
 
 **Ejemplos**
 
-- `$7_{(10} = 00000111_{(2}$`
-- `$-7_{(10} = 10000111_{(2}$`
+- $7_{(10} = 00000111_{(2}$
+- $-7_{(10} = 10000111_{(2}$
 
 Como estamos reservando un bit para expresar el signo, ese bit ya no se puede usar para representar magnitud; y como el sistema tiene una cantidad de bits fija, el RR ya no podrá representar el número máximo que era posible con el sistema **sin signo**.
-</aside>
-</section>
 
-<section>
-<h2>RR de SM(k)</h2>
-<ul>
-   <li>Hay $k$ bits pero uno es para el signo</li>
-   <ul>
-   <li class="fragment">El valor absoluto se expresa en $k-1$ bits</li>
-   <li class="fragment">El RR de <b>SS(k-1)</b> es $[0, 2^{k-1}-1]$</li>
-   <li class="fragment"><b>SM(k)</b> puede expresar tantos positivos como negativos</li>
-   </ul>
-   <li class="fragment">Luego, el RR de <b>SM(k)</b> es <span class="post_it">$[-(2^{k-1}-1), 2^{k-1}-1]$</span></li>
-   <div class="fragment">
-   <ul>
-   <li>RR SM(4) = $[-(2^{3}-1), 2^{3}-1]$ $=$ $[-7,7]$</li>
-   <li>RR SM(8) = $[-(2^{7}-1), 2^{7}-1]$ $=$ $[-127,127]$</li>
-   <li>RR SM(16) = $[-(2^{15}-1), 2^{15}-1]$ $=$ $[-32767,32767]$</li>
-   </ul>
-   </div>
-</ul>
-<aside data-markdown class="notes">
+
 ###Rango de representación de SM(k)
 
 - En todo número escrito en el sistema de signo-magnitud a $k$ bits, ya sea positivo o negativo, hay un bit reservado para el signo, lo que implica que quedan $k-1$ bits para representar su valor absoluto. 
@@ -458,37 +149,8 @@ Como estamos reservando un bit para expresar el signo, ese bit ya no se puede us
 - Pero en SM(k) también se puede representar su opuesto negativo, simplemente cambiando el bit más alto por 1. El opuesto del máximo positivo representable es a su vez el número más pequeño, negativo, representable: $-(2^{k-1}-1)$.
 
 Con lo cual hemos calculado tanto el límite inferior como el superior del rango de representación de SM(k), que, finalmente, es $[-(2^{k-1}-1),2^{k-1}-1]$.
-</aside>
-</section>
-
-<section data-background="#3c53b5" class="preguntas" data-background-transition="zoom" data-coursemod-shown="false">
-<h2>Preguntas</h2>
-<p>
-Signo-Magnitud en 8 bits
-</p>
-<ol>
-<li>$9_{(10} = X_{(2} =$ <span class="fragment"> $00001001$</span></li>
-<li>$-9_{(10} = X_{(2} =$ <span class="fragment"> $10001001$</span></li>
-<li>$50_{(10} = X_{(2} =$ <span class="fragment"> $00110010$</span></li>
-<li>$-50_{(10} = X_{(2} =$ <span class="fragment"> $10110010$</span></li>
-<li>$-128_{(10} = X_{(2} =$ <span class="fragment">Imposible</span></li>
-<li>$10000000_{(2} = X_{(10} =$ <span class="fragment">¿Y $00000000_{(2}$?</span></li>
-</ol>
-</section>
 
 
-<section>
-<h2>Limitaciones de SM</h2>
-<ul>
-<li>No utiliza eficientemente el espacio de representación</li>
-<li>No es conveniente para la aritmética</li>
-<li>Complemento a 2 (C2) 
-<ul>
-	<li>Corrige los problemas de signo-magnitud</li>
-	<li>La forma de representación en C2 es diferente</li>
-</ul>
-</ul>
-<aside data-markdown class="notes">
 ###Limitaciones de Signo-Magnitud
 Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
 
@@ -500,31 +162,8 @@ Si bien **SM(k)** es simple, no es tan efectivo, por varias razones:
 Por estos motivos, el sistema de SM dejó de usarse y se diseñó un sistema que eliminó estos problemas, el sistema de **complemento a 2**.
 
 
-</aside>
-</section>
 
-<section>
-<h2>Operación de complemento a 2</h2>
-<ul>
-	<li>Devuelve el opuesto de un número</li>
-	<ul>
-	<li>Si $a > 0, -a < 0$</li>
-	<li>Si $a < 0, -a > 0$</li>
-	<li>$a + (-a) = 0$</li>
-	</ul>
-<div class="post_it fragment">
-	<li>Procedimiento</li>
-	<ol>
-	<li>Se invierten todos los bits</li>
-	<li>Se suma 1</li>
-	</ol>
-</div>
-	<li class="fragment">Ejemplo: $111010$ &rarr; $000110$</li>
-	<ul>
-		<li class="fragment">¿Son opuestos?</li>
-	</ul>
-</ul>
-<aside data-markdown class="notes">
+
 ##Sistema de Complemento a 2
 
 Para comprender el sistema de complemento a 2 es necesario primero conocer la **operación** de complementar a 2.
@@ -544,7 +183,7 @@ Otro modo de calcular el complemento a 2 de un número en base 2 es **copiar los
 
 El resultado de esta operación, C2($a$), es el opuesto del número original $a$, y por lo tanto tiene la propiedad de que $a$ y C2($a$) suman 0:
 
-`$$C2(a) + a = 0$$`
+$$C2(a) + a = 0$$
 
 **Comprobación**
 
@@ -557,25 +196,8 @@ Podemos comprobar si la complementación fue bien hecha aplicando la **propiedad
 - Comprobemos que el resultado obtenido en el último caso, $1101$, es efectivamente el opuesto de $0011$: $0011 + 1101 = 0$.
 
 [¿Por qué funciona este método?](Complemento.pdf)
-</aside>
-</section>
 
-<section>
-<h2>Representar en C2</h2>
-<table>
-<tr><th>Procedimiento</th><th>Ejemplo</th></tr>
-<tr><td><li>Positivos o cero</li></td>			<td align="right">$17_{(10}$</td></tr>
-<tr><td>&nbsp;&nbsp;Se representan como en SM</td>	<td align="right">$00010001_{(2}$</td></tr>
-</table>
-<div class="fragment">
-<table>
-<tr><td><li>Negativos</li></td>			<td align="right">$-17_{(10}$</td></tr>
-<tr><td>&nbsp;&nbsp;1. Se expresa su valor absoluto</td><td align="right">$00010001_{(2}$</td></tr>
-<tr><td>&nbsp;&nbsp;2. Se invierten todos los bits</td><td align="right">$11101110_{(2}$</td></tr>
-<tr><td>&nbsp;&nbsp;3. Se suma 1</td>		<td align="right">$11101111_{(2}$</td></tr>
-</div>
-</table>
-<aside data-markdown class="notes">
+
 ###Representación en Complemento a 2
 
 Ahora que contamos con la **operación de complementar a 2**, podemos ver cómo se construye el **sistema de representación en Complemento a 2**.
@@ -590,25 +212,8 @@ Para representar un número $a$ en complemento a 2 a k bits, comenzamos por cons
 
 - Representemos el número 17 en complemento a 2 con 8 bits. Como es positivo, lo escribimos en base 2, obteniendo $00010001$, que es 17 en notación complemento a 2 con 8 bits.
 - Representemos el número -17 en complemento a 2 con 8 bits. Como es negativo, escribimos su valor absoluto en base 2, que es $00010001$, y lo complementamos a 2. El resultado final es $11101111$ que es -17 en notación complemento a 2 con 8 bits.
-</aside>
-</section>
 
-<section>
-<h2>C2 en 8 bits &rarr; decimal</h2>
-<ul>
-	<li>Lo primero es determinar el signo</li>
-	<li>$00010001$ es positivo</li>
-	<ul>
-	<li>$00010001_{(2} = 17_{(10}$</li>
-	</ul>
-	<li>$11101111$ es negativo</li>
-	<ol>
-		<li>Invirtiendo, $11101111_{(2} = 00010000_{(2}$</li>
-		<li>$00010000_{(2} + 000000001_{(2} = 00010001_{(2} = 17_{(10}$</li>
-		<li>$-1 \times 17 = -17$</li>
-	</ol>
-</ul>
-<aside data-markdown class="notes">
+
 ###Conversión de C2 a base 10
 
 Para convertir un número $n$, escrito en el sistema de complemento a 2, a decimal, lo primero es determinar el signo. Si el bit más alto es 1, $n$ es negativo. En otro caso, $n$ es positivo. Utilizaremos esta información enseguida.
@@ -620,39 +225,8 @@ Para convertir un número $n$, escrito en el sistema de complemento a 2, a decim
 
 - Convertir a decimal $n = 00010001$. Es positivo, luego, aplicamos la Expresión General dando $17\_{(10}$.
 - Convertir a decimal $n = 11101111$. Es negativo; luego, lo complementamos a 2 obteniendo $00010001$. Aplicamos la Expresión General obteniendo $17\_{(10}$. Como $n$ era negativo, agregamos el signo menos y obtenemos el resultado final $-17\_{(10}$.
-</aside>
-</section>
 
-    
-<section class="preguntas" data-coursemod-shown="false" data-background="#3c53b5" data-background-transition="zoom">
-<h2>Preguntas</h2>
-<p>
-Complemento a 2 en 8 bits
-</p>
-   <ol>
-	<li>$9_{(10} =$ <span class="fragment">$00001001_{(2}$</span></li>
-	<li>$-9_{(10} =$ <span class="fragment">$11110111_{(2}$</span></li>
-	<li>$50_{(10} =$ <span class="fragment">$00110010_{(2}$</span></li>
-	<li>$-50_{(10} =$ <span class="fragment">$11001110_{(2}$</span></li>
-	<li>$-128_{(10} =$ <span class="fragment">$10000000_{(2}$</span></li>
-   </ol>
-</section>
 
-    
-<section>
-<h2>RR de C2 con $k$ bits</h2>
-<ul>
-	<li>RR SM $k$ bits: $[-(2^{k-1}-1), 2^{k-1}-1]$</li>
-	<li>RR C2 $k$ bits: $[-(2^{k-1}), 2^{k-1}-1]$</li>
-	<li class="fragment"><span class="post_it">El RR de C2 tiene un valor más que el de SM</span></li>
-	<div class="fragment">
-	<li>En C2 a 8 bits, $-128 = -2^{k-1}$ 
-		<ul>
-		<li>¡Era imposible en SM(8)!</li>
-		</ul>
-	</div>
-</ul>
-<aside data-markdown class="notes">
 ###RR de C2 con $k$ bits
 
 La forma de utilizar los bits en el sistema de complemento a 2 permite recuperar un representante que estaba desperdiciado en SM. 
@@ -665,14 +239,8 @@ El sistema de complemento a 2 tiene otras ventajas sobre SM:
 - Las cuentas se hacen bit a bit, en lugar de requerir comprobaciones de signo.
 - El mecanismo de cálculo es eficiente y fácil de implementar en hardware.
 - Solamente se requiere diseñar un algoritmo para **sumar**, no uno para sumar y otro para restar.
-</aside>
-</section>
-   
 
-<section>
-<h2>Comparando los RR</h2>
-<img src="img/sistemas.png" class="stretch">
-<aside data-markdown class="notes">
+
 ###Comparando rangos de representación
 
 Diferentes sistemas, entonces, tienen diferentes rangos de representación. Si construimos un cuadro donde podamos comparar los rangos de representación **sin signo, signo-magnitud y complemento a 2** para una misma cantidad de bits, veremos que todas las combinaciones de bits están utilizadas, sólo que de diferente forma. 
@@ -682,82 +250,22 @@ El cuadro comparativo para cuatro bits mostrará que las combinaciones 0000...11
 Por otro lado, los números positivos quedan representados por combinaciones idénticas en los tres sistemas, hasta donde lo permite el rango de representación de cada uno.
 
 Si descartamos el bit de signo y consideramos sólo las magnitudes, los números negativos en SM aparecen con sus magnitudes crecientes alejándose del 0, mientras que en C2 esas magnitudes comienzan en cero al representar el negativo más pequeño posible y crecen a medida que se acercan al cero.
-</aside>
-</section>
 
-<section>
-<h2>Error MUY frecuente</h2>
-<img src="img/errorC2.jpg" class="stretch plain">
-<aside data-markdown class="notes">
+
 ###Complementar a 2 y representar en C2
 
 Un error frecuente es confundir la **operación de complementar a 2** y la **representación en complemento a 2**. ¡No son lo mismo!
 
 Al representar en complemento a 2, la operación de complementar a 2 **únicamente se aplica cuando queremos obtener el opuesto** de un número. Por ejemplo, cuando queremos representar un número negativo, complementando a 2 su valor absoluto que es positivo.
-</aside>
-</section>
 
-<!----------------------------------------
-<section>
-<h2>Aritmética en C2</h2>
-<ul>
-    <li><strong>$A + B$</strong></li>
-	<ul>
-		<li>Las cuentas se hacen bit a bit
-	</ul>
-	<li><strong>$A - B$</strong></li>
-	<ul>
-		<li>$A - B = A + (-B)$</li>
-		<li>Se complementa $B$ y se suman bit a bit </li>
-	</ul>
-</ul>
-</section>
 
-<section>
-<h2>Aritmética en C2</h2>
-<ul>
-<li>Sumar $9 + 8$ en C2, 8 bits</li>
-<ul class="post_it">
-$\frac{00001001\\+\\00001000}{00010001}$
-</ul>
-</ul>
-</section>
------------------------------------>
-
-<section>
-<h2>Aritmética en C2</h2>
-<ul>
-<li>Restar $9 - 8$ en C2, 8 bits</li>
-	<ul>
-	<li>$9 - 8 = 9 + (-8)$</li>
-	<li>Complementamos a 2 el positivo 8</li>
-	<li>$-8 = C2(00001000) = 11111000$</li>
-	</ul>
-	<li>Hacemos la suma</li>
-	<ul class="post_it">
-		$\frac{00001001\\+\\11111000}{00000001}$
-	</ul>
-</ul>
-<aside data-markdown class="notes">
 ###Aritmética en C2
 
 Una gran ventaja que aporta el sistema en Complemento a 2 es que los diseñadores de hardware no necesitan implementar algoritmos de resta además de los de la suma. Cuando se necesita efectuar una resta, **se complementa el sustraendo** y luego se lo **suma** al minuendo. Las computadoras no restan: siempre suman.
 
 Por ejemplo, la operación $9 - 8$ se realiza como $9 + (-8)$, donde (-8) es el complemento a 2 de 8.
-</aside>
-</section>
 
-<section class="preguntas" data-coursemod-shown="false" data-background="#3c53b5" data-background-transition="zoom">
-<h2>Preguntas</h2>
-<ol>
-	<li class="fragment">Un número en complemento a 2, ¿tiene siempre su bit más a la izquierda en 1?</li>
-	<li class="fragment">El complemento a 2 de un número, es decir, $C2(x)$, ¿es siempre un número negativo?</li>
-	<li class="fragment">¿Quién es $C2(0)$?</li>
-	<li class="fragment">¿Cuánto vale $C2(C2(x))$? Es decir, ¿qué pasa si complemento a 2 el complemento a 2 de $x$?</li>
-	<li class="fragment">¿Cuánto vale $x + C2(x)$? Es decir, ¿qué pasa si sumo a $x$ su propio complemento a 2?</li>
-	<li class="fragment">¿Cómo puedo verificar si calculé correctamente un complemento a 2?</li>
-</ol>
-<aside data-markdown class="notes">
+
 **Preguntas**
 
 - Un número en complemento a 2, ¿tiene siempre su bit más a la izquierda en 1?
@@ -767,34 +275,8 @@ Por ejemplo, la operación $9 - 8$ se realiza como $9 + (-8)$, donde (-8) es el 
 - ¿Cuánto vale **x + C2(x)**? Es decir, ¿qué pasa si sumo a $x$ su propio complemento a 2?
 - ¿Cómo puedo verificar si calculé correctamente un complemento a 2?
 
-</aside>
-</section>
 
-<!-------------------------------
-<section data-background="#3c53b5" data-background-transition="zoom">
-<h2>Desafío</h2>
-<ul>
-	<li class="fragment">Adoptemos la notación $x = (x_{n-1}, ... , x_1, x_0)$ para un número en $C^n_2$, es decir, en complemento a 2 sobre $n$ bits</li>
-	<ol>
-	<li class="fragment">Con la notación anterior, comprobar que $x = $ $-1 \times x_{n-1} \times 2^{n-1} + x_{n-2} \times 2^{n-2} +$ $...$ $+ x_1 \times 2 + x_0 =$ $-x_{n-1} \times 2^{n-1}+ \sum_{i=0}^{n-2}({x_i \times 2^i})$</li>
-	<li class="fragment">Con la misma notación, pero si $x$ está en Signo-magnitud, ¿cuál es la expresión de $x$ como función de los dígitos binarios $x_i$?</li>
-	</ol>
-</ul>
-</section>
-------------------------------->
 
-<section>
-<h2>Overflow o desbordamiento en C2</h2>
-    <ul>		
-	<li>Cuando el resultado de una operación excede la cantidad de dígitos del sistema, el resultado es inválido</li>
-    	<li>Puede ocurrir tanto al sumar dos números positivos como dos negativos</li>
-	<li>Condición sobre los dos últimos bits de <strong>carry</strong> o acarreo</li>
-    <ul>		
-	<li>Diferentes &#8680; hay <i>overflow</i></li>
-	<li>Iguales &#8680; no hay <i>overflow</i></li>
-    </ul>
-    </ul>
-<aside data-markdown class="notes">
 ###Overflow o desbordamiento en C2
 
 
@@ -806,176 +288,19 @@ El último bit de la fila de carry, el que se posiciona en la última de las $k$
 
 - Si, luego de efectuar una suma en C2, los valores de los bits de *carry-in* y *carry-out* son **iguales**, entonces la computadora detecta que el resultado no ha desbordado y que **la suma es válida**. La operación de suma se ha efectuado exitosamente.
 - Si, luego de efectuar una suma en C2, los valores de los bits de *carry-in* y *carry-out* son **diferentes**, entonces la computadora detecta que el resultado ha desbordado y que **la suma no es válida**. La operación de suma no se ha llevado a cabo exitosamente, y el resultado debe ser descartado.  
-</aside>
-</section>
 
 
-
-
-<section data-menu-title="Caso sin overflow">
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<div class="snapsvg stretch" width="100%" height="100%">
-	<svg id="ss1" viewBox="0 0 400 300" width="100%" height="100%"></svg>
-	<script src="src/svgfragments.js"></script>
-	<!-- {
-		"imgset"   : [ "img/no-of0.png", "img/no-of1.png", "img/no-of2.png", "img/no-of3.png", "img/no-of4.png", "img/no-of5.png", "img/no-of6.png", "img/no-of7.png", "img/no-of8.png" ], 
-		"width" : 400,
-		"height": 300,
-		"svg" : "#ss1",
-		"initialize": "function(container, options) { svgfragments(container, options) }"
-	} -->
-</div>
-<aside data-markdown class="notes">
 **Suma sin overflow**
 
 Siguiendo atentamente la secuencia de bits de carry podemos detectar, igual que lo hace la computadora, si se producirá un desbordamiento. En el caso de la operación $23 + (-9)$, el resultado (que es 14) cae dentro del rango de representación, y esto se refleja en los bits de *carry-in* y de *carry-out*, cuyos valores son iguales.
-</aside>
-</section>
 
 
-
-
-
-
-<section data-menu-title="Caso con overflow">
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<div class="snapsvg stretch" width="100%" height="100%">
-	<svg id="ss2" viewBox="0 0 400 300" width="100%" height="100%"></svg>
-	<!-- {
-		"imgset"   : [ "img/si-of0.png", "img/si-of1.png", "img/si-of2.png", "img/si-of3.png", "img/si-of4.png", "img/si-of5.png", "img/si-of6.png", "img/si-of7.png", "img/si-of8.png" ], 
-		"width" : 400,
-		"height": 300,
-		"svg" : "#ss2",
-		"initialize": "function(container, options) { svgfragments(container, options) }"
-	} -->
-</div>
-<aside data-markdown class="notes">
 
 **Suma con overflow**
 
 En el caso de la operación $123 + 9$ en C2 a 8 bits, el resultado (que es 132) cae fuera del rango de representación. Esto se refleja en los bits de *carry-in* y de *carry-out*, que son diferentes. El resultado no es válido y debe ser descartado.
-</aside>
-</section>
 
 
-<!------------------------------------------------------------------------
-
-<section data-menu-title="Caso sin overflow">
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of0.png" class="plain stretch">
-	</section>
-
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of1.png" class="plain stretch">
-	</section>
-
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of2.png" class="plain stretch">
-	</section>
-
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of3.png" class="plain stretch">
-	</section>
-
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of4.png" class="plain stretch">
-	</section>
-
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of5.png" class="plain stretch">
-	</section>
-
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of6.png" class="plain stretch">
-	</section>
-
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of7.png" class="plain stretch">
-	</section>
-
-	<section data-transition="fade-in">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/no-of8.png" class="plain stretch">
-	</section>
-
-</section>
-
-<section data-menu-title="Caso con overflow">
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of0.png" class="plain stretch">
-	</section>
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of1.png" class="plain stretch">
-	</section>
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of2.png" class="plain stretch">
-	</section>
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of3.png" class="plain stretch">
-	</section>
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of4.png" class="plain stretch">
-	</section>
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of5.png" class="plain stretch">
-	</section>
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of6.png" class="plain stretch">
-	</section>
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of7.png" class="plain stretch">
-	</section>
-	<section data-transition="none">
-	<h2>Bits de acarreo o <i>carry</i></h2>
-	<img src="img/si-of8.png" class="plain stretch">
-	</section>
-<aside data-markdown class="notes">
-</aside>
-</section>
-
----------------->
-
-<section class="preguntas"  data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false">
-<h2>Preguntas</h2>
-<ol>
-	<li class="fragment">¿Qué condición sobre los bits de carry permite asegurar que <b>no habrá</b> <i>overflow</i>?</li>
-	<li class="fragment">¿Para qué sistemas de representación numérica usamos la condición de detección de <i>overflow</i>?</li>
-	<li class="fragment">¿Puede existir <i>overflow</i> al sumar dos números de diferente signo?</li>
-	<li class="fragment">¿Qué condición sobre los bits <b>de signo</b> de los operandos permite asegurar que <b>no</b> habrá <i>overflow</i>?</li>
-	<li class="fragment">¿Puede haber casos de <i>overflow</i> al sumar dos números negativos?</li>
-	<li class="fragment">¿Puede haber casos de <i>overflow</i> al restar dos números?</li>
-</ol>
-<aside data-markdown class="notes">
 **Preguntas** 
 
 - ¿Qué condición sobre los bits de carry permite asegurar que **no habrá** overflow?
@@ -984,21 +309,8 @@ En el caso de la operación $123 + 9$ en C2 a 8 bits, el resultado (que es 132) 
 - ¿Qué condición sobre los bits **de signo** de los operandos permite asegurar que **no habrá** overflow?
 - ¿Puede haber casos de overflow al sumar dos números negativos?
 - ¿Puede haber casos de overflow al restar dos números?
-</aside>
-</section>
 
 
-<section>
-<h2>Extensión de signo en C2</h2>
-    <ul>		
-	<li>Dos operandos en C2 deben tener la misma cantidad de bits</li>
-    	<li>Si uno fuera más corto que el otro, se necesita extenderlo por la izquierda</li>
-    <ul>		
-	<li>Positivo &#8680; se completa con ceros</li>
-	<li>Negativo &#8680; se completa con unos</li>
-    </ul>
-    </ul>
-<aside data-markdown class="notes">
 ###Extensión de signo en C2
 
 Para poder efectuar una suma de dos números, ambos operandos deben estar representados en el mismo sistema de representación. 
@@ -1009,53 +321,18 @@ Para poder efectuar una suma de dos números, ambos operandos deben estar repres
 En una suma en C2, si uno de los operandos estuviera expresado en un sistema con menos bits que el otro, será necesario convertirlo al sistema del otro (**extenderlo**) y operar con ambos en ese sistema de mayor ancho. 
 
 Si el operando en el sistema de menor ancho es positivo, la extensión se realiza simplemente **completando con ceros a la izquierda** hasta obtener la cantidad de dígitos del otro sistema. Si el operando del menor ancho es negativo, la extensión de signo se hace **agregando unos**.
-</aside>
-</section>
 
-<section data-coursemod-shown="false">
-<h2>Extensión de signo en C2</h2>
-    <ul>		
-  <div class="fragment">
-	<li>$A + B = 00101011_{(2} + 00101_{(2}$</li>
-    <ul>		
-	<li>A está en $C^8_2$ y B en $C^5_2$ &rarr; ambos a $C^8_2$</li>
-    	<li>Se completa B (positivo) como $00000101_{(2}$</li>
-    </ul>
-  </div>
-  <div class="fragment">
-	<li>$A + B = 1010_{(2} + 0110100_{(2}$</li>
-    <ul>		
-	<li>A está en $C^4_2$ y B en $C^7_2$ &rarr; ambos a $C^7_2$</li>
-	<li>Se completa A (negativo) como $1111010_{(2}$</li>
-    </ul>
-  </div>
-    </ul>
-<aside data-markdown class="notes">
+
 **Ejemplos**
 
-- `$A + B = 00101011_{(2} + 00101_{(2}$`
+- $A + B = 00101011_{(2} + 00101_{(2}$
     - A está en $C^8_2$ y B en $C^5_2$ &rarr; llevar ambos a $C^8_2$
     - Se completa B (positivo) como $00000101_{(2}$
-- `$A + B = 1010_{(2} + 0110100_{(2}$`
+- $A + B = 1010_{(2} + 0110100_{(2}$
     - A está en $C^4_2$ y B en $C^7_2$ &rarr; llevar ambos a $C^7_2$
     - Se completa A (negativo) como $1111010_{(2}$
-</aside>
-</section>
 
-<section>
-<h2>Notación en exceso o <i>Bias</i></h2>
-<ul>
-<li>Utiliza un sistema sin signo en $k$ bits</li>
-<li>Representa un intervalo $[a, b]$ de $2^k$ enteros</li>
-<ul>
-	<li>Este intervalo contiene $b - a + 1$ enteros</li>
-	<li>Necesitamos $k$ de modo que $2^k = b - a + 1$</li>
-	<li>Para $[10, 25]$ es $25 - 10 + 1 = 16$ &rarr; $k$ = 4 bits</li>
-	<li>Para $[-3, 4]$ es $4 - (-3) + 1$ $= 8$ &rarr; $k$ = 3 bits</li>
-</ul>
-<li>Asigna los binarios en orden</li>
-$a$ &#8680; $0000$, $a + 1$ &#8680; $0001$, ..., $b$ &#8680; $1111$ 
-<aside data-markdown class="notes">
+
 ##Notación en exceso o *bias*
 
 En un sistema de notación en exceso, se elige un intervalo $[a, b]$ de enteros a representar, y todos los valores dentro del intervalo se representan con una secuencia de bits de la misma longitud. 
@@ -1075,83 +352,8 @@ Notemos que tanto $a$ como $b$ pueden ser **negativos**. Así podemos representa
 Con este método no es necesario que el bit de orden más alto represente el signo. Tampoco que el intervalo contenga la misma cantidad de números negativos que positivos o cero, aunque para la mayoría de las aplicaciones es lo más razonable.
 
 El sistema en exceso se utiliza como componente de otro sistema de representación más complejo, la representación en punto flotante.
-</aside>
-</section>
-
-<!------------------------------------------
-<section>
-<section data-transition="fade">
-<img src="img/newbias-0.png" class="plain stretch">
-</section>
-
-<section data-transition="fade">
-<img src="img/newbias-1.png" class="plain stretch">
-</section>
-
-<section data-transition="fade">
-<img src="img/newbias-2.png" class="plain stretch">
-</section>
-
-<section data-transition="fade">
-<img src="img/newbias-3.png" class="plain stretch">
-</section>
-
-<section data-transition="fade">
-<img src="img/newbias-4.png" class="plain stretch">
-</section>
-</section>
------------------------------------------->
 
 
-<!------------------------
-<h2>Notación en exceso</h2>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<span class="fragment" data-fragmentshown="nextimg" data-fragmenthidden="previmg"></span>
-<div class="snapsvg stretch" width="100%" height="100%">
-        <svg id="bias" viewBox="0 0 500 200" width="100%" height="100%"></svg>
-        <! -- {
-                "imgset"   : [ "img/newbias-0.png", "img/newbias-1.png", "img/newbias-2.png", "img/newbias-3.png", "img/newbias-4.png" ],
-                "width" : 500,
-                "height": 200,
-                "svg" : "#bias",
-                "initialize": "function(container, options) { Bias(container, options) }"
-        } -- >
-</div>
-------------------------------->
-
-<section>
-<h2>Notación en exceso</h2>
-<span class="post_it fragment"><i>Valor binario = valor decimal - a</i></span>
-<!------------------------
-<div class="snapsvg stretch" width="100%" height="100%">
-	<script src="src/bias.js"></script>
-        <svg id="bias" viewBox="0 0 100 50" width="100%" height="100%"></svg>
-        <! -- {
-                "width" : 100,
-                "height": 50,
-                "svg" : "#bias",
-                "initialize": "function(container, options) { Bias(container, options) }"
-        } -- >
-</div>
------------------------->
-<!------------------------
-<div class="snapsvg stretch" width="100%" height="100%">
-<span class="fragment" data-fragmentshown="inter1" data-fragmenthidden="inter1"></span>
-<span class="fragment" data-fragmentshown="inter2" data-fragmenthidden="inter2"></span>
-        <svg id="biascontainer" viewBox="0 0 100 50" width="100%" height="100%"></svg>
-	<script src="src/zoombias.js"></script>
-        <! --{
-                "svg" : "#biascontainer",
-                "initialize": "function(container, options) { ZoomBias(container, options) }"
-        }-- >
-</div>
------------------------->
-<div class="stretch" width="100%" height="100%">
-<img class="plain" src="img/bias.svg"></img>
-</div>
-<aside data-markdown class="notes">
 ###Conversión entre exceso y decimal
 
 Una vez establecido un sistema en exceso que representa el intervalo $[a, b]$ en $k$ bits:
@@ -1170,56 +372,8 @@ Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3)
 
 - Para calcular la secuencia que corresponde al número 2, hacemos $2 -(-3) = 5$ y el resultado será la secuencia **101**.
 - Para calcular el valor decimal que está representando la secuencia **011**, convertimos 011 a decimal, que es 3, y le sumamos -3; el resultado es $0$.
-</aside>
-</section>
 
 
-<!-----------------------------------------
-<section>
-<h3>Exceso para $[-5, 10]$, $n = 4$</h3>
-<table>
-<tr><td>-5</td><td>&#8680;</td><td>0000</td>  <td>&nbsp;</td>  <td>&nbsp;</td>    <td>3</td><td>&#8680;</td><td>1000</td></tr>
-<tr><td>-4</td><td>&#8680;</td><td>0001</td>  <td>&nbsp;</td>  <td>&nbsp;</td>    <td>4</td><td>&#8680;</td><td>1001</td></tr>
-<tr><td>-3</td><td>&#8680;</td><td>0010</td>  <td>&nbsp;</td>  <td>&nbsp;</td>    <td>5</td><td>&#8680;</td><td>1010</td></tr>
-<tr><td>-2</td><td>&#8680;</td><td>0011</td>  <td>&nbsp;</td>  <td>&nbsp;</td>    <td>6</td><td>&#8680;</td><td>1011</td></tr>
-<tr><td>-1</td><td>&#8680;</td><td>0100</td>  <td>&nbsp;</td>  <td>&nbsp;</td>    <td>7</td><td>&#8680;</td><td>1100</td></tr>
-<tr><td> 0</td><td>&#8680;</td><td>0101</td>  <td>&nbsp;</td>  <td>&nbsp;</td>    <td>8</td><td>&#8680;</td><td>1101</td></tr>
-<tr><td>1</td><td>&#8680;</td><td>0110</td>  <td>&nbsp;</td>   <td>&nbsp;</td>    <td>9</td><td>&#8680;</td><td>1110</td></tr>
-<tr><td>2</td><td>&#8680;</td><td>0111</td>  <td>&nbsp;</td>   <td>&nbsp;</td>    <td>10</td><td>&#8680;</td><td>1111</td></tr>
-</table>
-</section>
-
-
-
-<section>
-<h2>Notación en exceso o <i>Bias</i></h2>
-<ul>
-<li>El valor representado es el valor sin signo del binario, más el límite inferior del intervalo</li>
-<li>Se puede representar un intervalo simétrico o no</li>
-<li>Dados A y B es fácil compararlos
-<ul>
-	<li>Es decir, determinar si A > B o B > A</li>
-	<li>Al contrario que en C2</li>
-</ul>
-<li>La aritmética, sin embargo, es dificultosa</li>
-<li>Usado en representación en punto flotante</li>
-</ul>
-<aside data-markdown class="notes">
-</aside>
-</section>
-
------------------------------------------->
-<section class="preguntas" data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false">
-<h2>Preguntas</h2>
-<div align="center">Sobre Notación en Exceso</div>
-<ol>
-	<li class="fragment">Dado un valor decimal a representar, ¿cómo calculamos el binario?</li>
-	<li class="fragment">Dado un binario, ¿cómo calculamos el valor decimal representado?</li>
-	<li class="fragment">El sistema en exceso ¿destina un bit para representar el signo?</li>
-	<li class="fragment">¿Se puede representar un intervalo que no contenga el cero?</li>
-	<li class="fragment">¿Cómo se comparan dos números en exceso para saber cuál es el mayor?</li>
-</ol>
-<aside data-markdown class="notes">
 **Preguntas sobre Notación en Exceso**
 
 - Dado un valor decimal a representar, ¿cómo calculamos el binario?
@@ -1227,37 +381,8 @@ Representemos en sistema en exceso el intervalo $[-3, 4]$ (que contiene $4 -(-3)
 - El sistema en exceso ¿destina un bit para representar el signo?
 - ¿Se puede representar un intervalo que no contenga el cero?
 - ¿Cómo se comparan dos números en exceso para saber cuál es el mayor?
-</aside>
-</section>
-	
 
 
-<section data-markdown data-background="#00CCFF" data-background-transition="zoom" data-coursemod-shown="false">
-##Representación de datos numéricos
-* Enteros
- * Signo-Magnitud  &#10004;
- * Complemento a 2  &#10004;
- * Notación en exceso  &#10004;
-* Fraccionarios
- * Punto fijo
- * Punto flotante
-</section>
-
-
-<!-- -------------------------------------------------------------------------------------------------- -->
-<section>
-<h2>Representación de fraccionarios</h2>
-<ul>
-<li>Racionales &rarr; tienen parte decimal finita o periódica</li>
-<li>Irracionales &rarr; tienen parte decimal infinita</li>
-<li>Coma o punto fraccionario</h2>
-<ul>
-<li>En los enteros, está a la derecha de los dígitos y no se escribe</li>
-<li>Marca el lugar donde los exponentes de la base se hacen negativos</li>
-</ul>
-</ul>
-<div class="post_it" align="center">$3.14 = 3 \times 10^0 + 1 \times  10^{-1} + 4 \times  10^{-2}$</div>
-<aside data-markdown class="notes">
 ##Representación de fraccionarios
 
 ###Racionales
@@ -1270,39 +395,20 @@ De manera que, al escribir irracionales en su forma decimal, en realidad siempre
 
 ###Coma o punto decimal
 Al escribir un número con cifras decimales en nuestro sistema numérico habitual de base 10, usamos una marca especial para separar la parte entera de la decimal: es la **coma o punto decimal**. En el desarrollo decimal, la coma o punto decimal señala el lugar donde los exponentes de la base en el desarrollo de potencias de 10 **se hacen negativos**. Cuando queremos representar números fraccionarios con computadoras, nos vemos en el problema de representar este signo especial.
-</aside>
-</section>
 
 
-
-<section>
-<h2>Fraccionario en base 2 &rarr; decimal</h2>
-<p>$11.101_{(2}  = $</p>
-<p>$1 \times 2^1 + 1 \times 2^0 +$ <span class="fragment"> $1 \times 2^{-1} + 0 \times 2^{-2} + 1 \times 2^{-3} =$</span></p>
-<p class="fragment">$2 + 1 + 0.5 + 0 + 0.125 = $</p>
-<p class="fragment">$3.625$</p>
-<aside data-markdown class="notes">
 Podemos trasladar la idea de coma o punto decimal al sistema binario. Si extendemos la Expresión General con exponentes negativos, podemos escribir números fraccionarios en base 2. 
 
 ###Fraccionario en base 2 a decimal
 
-Si encontramos una expresión como `$11.101_{(2}$`, la Expresión General extendida nos dice cómo obtener su valor en base 10: 
+Si encontramos una expresión como $11.101_{(2}$, la Expresión General extendida nos dice cómo obtener su valor en base 10: 
 $$11.101_{(2}  = $$ 
 $$1 \times 2^1 + 1 \times 2^0 +$$ 
 $$1 \times 2^{-1} + 0 \times 2^{-2} + 1 \times 2^{-3} =$$ 
 $$2 + 1 + 0.5 + 0 + 0.125 = $$
 $$3.625$$
-</aside>
-</section>
-    
-<section>
-<h2>Fraccionario en base 2 &rarr; decimal</h2>
-<h3>Otra manera</h3>
-<p>Notar que $11.101_{(2} =$<span class="fragment"> $ 11101_{(2} / 8$:</span></p>
-<p>$1 \times 2^1 + 1 \times 2^0 + 1 \times 2^{-1} + 0 \times 2^{-2} + 1 \times 2^{-3} = $</p>
-<p class="fragment">$\frac{1 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0}{2^3} = $ $\frac{16 + 8 + 4 + 0 + 1}{8} = $</p>
-<p class="fragment">$29 / 8 = 3.625$</p>
-<aside data-markdown class="notes">
+
+
 
 **Otra manera**
 
@@ -1319,22 +425,9 @@ Con este método esencialmente estamos calculando el valor decimal  de $n$ **sin
 
 **Ejemplo**
 
-El número `$n = 11.101_{(2}$` tiene tres cifras decimales ($k = 3$). Lo convertimos en entero dejando `$11101_{(2}$`; averiguamos que este número en base 10 es 29; y finalmente dividimos 29 por $2^3$. Concluimos que `$n = 11.101_{(2} = 29/8 = 3.625$`.
-</aside>
-</section>
-    
-<section id="decfrac" data-coursemod-shown="false">
-<h2>Decimal fraccionario &rarr; base 2</h2>
-<ul>
-<li>Se separan la parte entera (PE) y la parte fraccionaria (PF)</li>
-<li>Se convierte la PE a base 2 separadamente</li>
-<li>La PF se multiplica por 2 y se toma la PE del resultado</li>
-<ul>
-<li>Este dígito binario se agrega al resultado</li>
-</ul>
-<li>Se repite el paso anterior hasta llegar a 0, o hasta lograr la precisión deseada</li>
-</ul>
-<aside data-markdown class="notes">
+El número $n = 11.101_{(2}$ tiene tres cifras decimales ($k = 3$). Lo convertimos en entero dejando $11101_{(2}$; averiguamos que este número en base 10 es 29; y finalmente dividimos 29 por $2^3$. Concluimos que $n = 11.101_{(2} = 29/8 = 3.625$.
+
+
 ###Decimal fraccionario a base 2
 
 Para convertir un decimal con parte fraccionaria a base 2:
@@ -1343,17 +436,8 @@ Para convertir un decimal con parte fraccionaria a base 2:
 1. Se convierte la PE a base 2 separadamente.
 1. La PF se multiplica por 2 y se toma la PE del resultado. Este dígito binario se agrega al resultado.
 1. Se repite el paso anterior hasta llegar a 0, o hasta lograr la precisión deseada.
-</aside>
-</section>
 
-<section>
-<h2>Decimal fraccionario &rarr; base 2</h2>
-<ul>
-<li>$3.625 = 3 + 0.625 = PE + PF$</li>
-<li class="fragment">$PE = 3_{(10} = 11_{(2}$</li>
-<li class="fragment">$PF = 0.625_{(10}$ <span class="fragment">$= ?_{(2}$</span></li>
-</ul>
-<aside data-markdown class="notes">
+
 **Ejemplo**
 
 Convirtamos el número $n = 3.625$ a base 2. Primero separamos parte entera (3) y parte fraccionaria (0.625).
@@ -1362,25 +446,8 @@ Convirtamos el número $n = 3.625$ a base 2. Primero separamos parte entera (3) 
 
 La parte entera de $n$ se convierte a base 2 como entero sin signo (dando $11_{(2}$).
 
-</aside>
-</section>
 
 
-<section>
-<h2>Decimal fraccionario &rarr; base 2</h2>
-<ul>
-<li>$PF \times 2 = 0.625 \times 2 = 1.25$ <span class="fragment">&#8680; $1 + $<span class="post_it">$0.25$</span></span></li>
-<li class="fragment">$PF' \times 2 =$ <span class="post_it">$0.25$</span> $\times 2 = 0.5$ <span class="fragment">&#8680; $0 + 0.5$</span></li>
-<li class="fragment">$PF'' \times 2 = 0.5 \times 2 = 1.0$ <span class="fragment">&#8680; $1 + 0.0$</span></li>
-<li class="fragment">$PF''' \times 2 = 0.0 \times 2 = 0.0$ <span class="fragment">&#8680; Fin</span></li>
-<span></hr></span>
-<li class="fragment">Finalmente:</li>
-<ul>
-<li class="fragment">$PF = 0.625$ <span class="fragment">&#8680; $0.101_{(2}$</span></li>
-<li class="fragment">$3.625 = 3 + 0.625 = 11_{(2} + 0.101_{(2} = 11.101_{(2}$</li>
-</ul>
-</ul>
-<aside data-markdown class="notes">
 **Parte fraccionaria**
 
 Para calcular la parte fraccionaria binaria de $n$ seguimos un procedimiento iterativo (es decir, que consta de pasos que se repiten). 
@@ -1394,26 +461,9 @@ El procedimiento de separar, guardar, multiplicar, se repite hasta que la parte 
 
 El resultado final es la suma, en base 2, de la parte entera de $n$ calculada anteriormente, más una parte fraccionaria construida con los dígitos que fueron apareciendo durante el procedimiento de duplicar la parte fraccionaria.
 
-La conversión a base 2 del número $n = 3.625$ que buscábamos será `$11_{(2} + 0.101_{(2} = 11.101_{(2}$`.
-</aside>
-</section>
+La conversión a base 2 del número $n = 3.625$ que buscábamos será $11_{(2} + 0.101_{(2} = 11.101_{(2}$.
 
 
-<section>
-<h2>Representación de punto fijo</h2>
-<ul>
-<li>Parte entera y fraccionaria son campos de un <i>ancho</i> determinado</li>
-<ul>
-<li>$PF(n,k) = $"Punto fijo en $n$ dígitos binarios con $k$ fraccionarios"</li>
-</ul>
-<ul>
-<li>En $PF(8,3)$, $00011101 \equiv 00011.101_{(2} = 3.625$</li>
-<li>El software opera con enteros de $n$ dígitos</li>
-<li>El punto no se almacena</li>
-<li>Sólo imprime el punto del resultado final</li>
-</ul>
-</ul>
-<aside data-markdown class="notes">
 ##Representación de punto fijo
 
 ¿Cómo aplicamos el método de conversión visto, de fraccionarios decimales a binarios y viceversa, en las computadoras? El problema es parecido al de almacenar el signo "menos": no podemos guardar en la memoria otra cosa que bits, de forma que habrá que establecer alguna convención para indicar dónde está el punto o coma fraccionaria. 
@@ -1432,36 +482,8 @@ Sin embargo, todas las operaciones intermedias, entre datos expresados en punto 
 - La suma se efectuará bit a bit como si se tratara de enteros y será **00100111**.
 - Si pedimos a la computadora que imprima este valor, aplicará la convención $PF(8,3)$ e imprimirá **00100.111**, o su interpretación en decimal, $4.875$, que es efectivamente $3.625 + 1.25$.
 
-</aside>
-</section>
 
-<!--------------------------------------
-<section data-markdown>
-##Operaciones en punto fijo
-* Los operandos tienen el mismo tamaño de PE y PF
-* Se ignora el punto y se tratan los números como en C2
-* Los puntos fraccionarios se encolumnan automáticamente
-* El resultado debe conservar el *ancho* de PE y PF
-</section>
----------------------------------------->
 
-<section>
-<h2>Punto fijo con signo</h2>
-<h3>Decimal fraccionario &rarr; binario</h3>
-<ul>
-	<li>Caso positivo</li>
-	<ul>
-		<li>Se expresan la PE y PF en binario, con el ancho adecuado</li>
-		<li>$2.25 = 00010.010$</li>
-
-	</ul>
-	<li>Caso negativo</li>
-	<ul>
-		<li>Se expresa su valor absoluto como en el caso positivo y se complementa a 2, ignorando la posición del punto</li>
-		<li>$-2.25 = C2(00010.010) = 11101.110$ </li>
-	</ul>
-</ul>
-<aside data-markdown class="notes">
 ###Decimal a PF(n,k)
 
 Para representar un decimal fraccionario $a$, positivo o negativo, en notación de punto fijo en $n$ lugares con $k$ fraccionarios ($PF(n,k)$), necesitamos obtener su parte entera y su parte fraccionaria, y expresar cada una de ellas en la cantidad de bits adecuada a la notación. Para esto completaremos la parte entera con ceros a la izquierda hasta obtener $n-k$ dígitos, y completaremos la parte fraccionaria con ceros por la derecha, hasta obtener $k$ dígitos.
@@ -1484,26 +506,8 @@ Representemos 3.1459 en notación PF(8,3). Parte entera: 00011. Parte fraccionar
 Reconvirtiendo 00011001 a decimal, obtenemos parte entera 3 y parte fraccionaria 0.125; de modo que el número representado en PF(8,3) como 00011001 es en realidad **3.125** y no 3.1459.
 
 El error de truncamiento es $3.1459 - 3.1250 = 0.0209$, que es menor que $2^{-3} = 0.125$.
-</aside>
-</section>
 
-<section>
-<h2>Punto fijo con signo</h2>
-<h3>Binario fraccionario &rarr; decimal</h3>
-<ul>
-	<li>Caso positivo</li>
-	<ul>
-		<li>Se aplica la Expresión General con exponentes negativos incluidos</li>
-		<li>O bien, se lo trata como entero y se divide por $2^k$</li>
 
-	</ul>
-	<li>Caso negativo</li>
-	<ul>
-		<li>Se complementa a 2 y se lo trata como en el caso positivo</li>
-		<li>Finalmente se restituye el signo $-$</li>
-	</ul>
-</ul>
-<aside data-markdown class="notes">
 ###PF(n,k) a decimal
 
 Para convertir un binario en notación de punto fijo en $n$ lugares con $k$ fraccionarios (PF(n,k)) a decimal:
@@ -1514,27 +518,8 @@ Para convertir un binario en notación de punto fijo en $n$ lugares con $k$ frac
 - Si es negativo, lo complementamos a 2 y terminamos operando como en el caso positivo.
    - Finalmente agregamos el signo $-$ para expresar que se trata de un número negativo.
 
-</aside>
-</section>
 
 
-<section class="preguntas" data-background="#3c53b5" data-background-transition="zoom" data-coursemod-shown="false">
-<h2>Preguntas</h2>
-<ol>
-<li>¿A qué número decimal corresponde...</li>
-	<ol>
-	<li>$0011.0000$?</li>
-	<li>$0001.1000$?</li>
-	<li>$0000.1100$?</li>
-	</ol>
-<li>¿Cómo se representan en $PF(8,4)$...</li>
-	<ol>
-	<li>$0.5$?</li>
-	<li>$-7.5$?</li>
-	</ol>
-<li>¿Cuál es el RR de $PF(8,3)$? ¿Y de $PF(8,k)$?</li>
-</ol>
-<aside data-markdown class="notes">
 ###Preguntas
 
 - ¿A qué número decimal corresponde...
@@ -1545,23 +530,8 @@ Para convertir un binario en notación de punto fijo en $n$ lugares con $k$ frac
     - $0.5$?
     - $-7.5$?
 - ¿Cuál es el RR de $PF(8,3)$? ¿Y de $PF(8,k)$?
-</aside>
-</section>
 
 
-
-<section>
-<h2>Representación de punto fijo</h2>
-<ul>
-<li>Adecuada para problemas con datos de magnitudes y precisiones similares</li>
-<li>Aplicada en</li>
-<ul>
-	<li>Sistemas <strong>de tiempo real</strong></li>
-	<li>Sistemas donde es importante la velocidad de cómputo, como juegos</li>
-	<li>Sistemas <strong>empotrados o embebidos</strong> con procesadores de recursos limitados</li>
-</ul>
-</ul>
-<aside class="notes" data-markdown>
 La representación de punto fijo es adecuada para cierta clase de problemas donde los datos que se manejan son de magnitudes y precisiones comparables. 
 
 - En la situación contraria, cuando las magnitudes de los datos son muy variadas, habrá datos de valor absoluto muy grande, lo que hará que sea necesario elegir una representación de una gran cantidad de bits de ancho. Pero esta cantidad de bits quedará desperdiciada al representar los datos de magnitud pequeña.  
@@ -1573,45 +543,15 @@ Las ventajas de la representación en punto fijo provienen, sobre todo, de que p
 - Los de tiempo real, donde la respuesta a un cómputo debe estar disponible en un tiempo menor a un plazo límite, generalmente muy corto.
 - Los sistemas empotrados o embebidos, que suelen enfrentar restricciones de espacio de memoria y de potencia de procesamiento.
 
-</aside>
-</section>
 
-   
-<!-- 
-https://es.m.wikipedia.org/wiki/IEEE_coma_flotante
--->
-    
 
-<section>
-<h2>Variables muy diferentes</h2>
-<ul>	
-<li>"Tiempo en que la luz recorre una millonésima de milímetro"</li>
-<ul>	
-	<li>$t = e / v$</li>
-	<li>$e = 1\ nm = 0,000000001\ m$</li>
-	<li>$v = 300.000\ km/s = 300.000.000\ m/s$</li>
-</ul>
-</ul>
-<aside data-markdown class="notes">
 Por el contrario, algunas clases de programas suelen manipular datos de otra naturaleza. No es raro que aparezcan en el mismo programa, e incluso en la misma instrucción de programa, datos o variables de magnitud o precisión extremadamente diferentes. 
 
 Por ejemplo, si un programa de cómputo científico necesita calcular el **tiempo en que la luz recorre una millonésima de milímetro**, la fórmula a aplicar relacionará la velocidad de la luz en metros por segundo (unos $300.000.000 m/s$) con el tamaño en metros de un nanómetro ($0.000000001 m$). 
 
 Estos dos datos son extremadamente diferentes en magnitud y cantidad de dígitos fraccionarios. La velocidad de la luz es un número astronómicamente grande en comparación a la cantidad de metros en un nanómetro; y la precisión con que necesitamos representar al nanómetro no es para nada necesaria al representar la velocidad de la luz.
-</aside>
-</section>
-    
-<section>
-<h2>Notación científica</h2>
-<ul>	
-<li>$e = 0.000000001\ m$ <span class="fragment">$ = 1 \times 10^{-9}\ m$</span></li>
-<li>$v = 300000000\ m/s$ <span class="fragment">$ = 3 \times 10^8\ m/s$</span></li>
-<li>$t = e/v = 0.00000000000000000333\ s$</li>
-<li class="fragment">$t = e / v = (1 \times 10^{-9}\ m) / (3 \times 10^8\ m/s)$</li>
-<li class="fragment">$t = e / v = \frac{(1 \times 10^{-9}\ m)}{(3 \times 10^8\ m/s)}$ <span class="fragment"> $ = \frac{1}{3} \times \frac{10^{-9}\ m}{10^8\ m/s}$</span></li>
-<li class="fragment">$t = 1 / 3 \times 10^{-9-8}\ s \Longrightarrow t = 0.333 \times 10^{-17}\ s$</li>
-</ul>
-<aside data-markdown class="notes">
+
+
 ###Notación Científica
 
 En Matemática, la respuesta al problema del cálculo con variables tan diferentes existe desde hace mucho tiempo, y es la llamada **Notación Científica**. En Notación Científica, los números se expresan en una forma estandarizada que consiste de un **coeficiente, significando o mantisa** multiplicado por **una potencia de 10**. Es decir, la forma general de la notación es $m \times 10^e$, donde $m$, el coeficiente, **es un número positivo o negativo**, y $e$, el **exponente**, es un entero positivo o negativo.
@@ -1624,43 +564,20 @@ Los números mencionados hace instantes, la velocidad de la luz en metros por se
 
 El tiempo en que la luz recorre una millonésima de milímetro se computará con la fórmula $t = e/v$, con los datos expresados en notación científica, como:
 
-`$$e = 1\times10^{-9}m$$`
-`$$v = 3\times10^{8}m/s$$`
-`$$t = e / v = (1 \times 10^{-9}\ m) / (3 \times 10^8\ m/s) = $$`
-`$$t = 1 / 3 \times 10^{-9-8}\ s =$$`
-`$$t = 0.333 \times 10^{-17}\ s$$`
-</aside>
-</section>
+$$e = 1\times10^{-9}m$$
+$$v = 3\times10^{8}m/s$$
+$$t = e / v = (1 \times 10^{-9}\ m) / (3 \times 10^8\ m/s) = $$
+$$t = 1 / 3 \times 10^{-9-8}\ s =$$
+$$t = 0.333 \times 10^{-17}\ s$$
 
-<section>
-<h2>Notación científica normalizada</h2>
-<ul>	
-	<li>$t = 0.333 \times 10^{-17}\ s$</li>
-	<ul>
-		<li>Coeficiente = $0.333$</li>
-		<li>Exponente = $-17$</li>
-	</ul>
-	<li class="fragment">Normalización</li>
-	<ul class="fragment">
-		<li>$1 <= coeficiente < base$</li>
-		<li>$0.333 \times 10^{-17} = 3.33 \times 10^{-18}$</li>
-	</ul>
-	<li class="fragment">Normalización en base 2</li>
-	<ul class="fragment">
-		<li>$1 <= coeficiente < base$</li>
-		<li>$100.111 = 1.00111 \times 2^2$</li>
-		<li>$0.0001101 = 1.101 \times 2^{-4}$</li>
-	</ul>
-</ul>
 
-<aside data-markdown class="notes">
 ###Normalización
 
 El resultado que hemos obtenido en el ejemplo anterior debe quedar **normalizado** llevando el coeficiente $m$ a un valor **mayor o igual que 1 y menor que 10**.  Si modificamos el coeficiente al normalizar, para no cambiar el resultado debemos ajustar el exponente.
 
 **Ejemplo**
 
-El resultado que obtuvimos anteriormente al computar `$t = 1 / 3 \times 10^{-9-8}\ s $` fue `$0.333 \times 10^{-17}\ s$`. Este coeficiente $0.333$ no cumple la regla de normalización porque no es **mayor o igual que 1**. 
+El resultado que obtuvimos anteriormente al computar $t = 1 / 3 \times 10^{-9-8}\ s $ fue $0.333 \times 10^{-17}\ s$. Este coeficiente $0.333$ no cumple la regla de normalización porque no es **mayor o igual que 1**. 
 
 - Para normalizarlo, lo multiplicamos por 10, convirtiéndolo en $3.33$.
 - Para no cambiar el resultado, dividimos todo por 10 afectando el exponente, que de -17 pasa a ser -18.
@@ -1672,33 +589,11 @@ Es perfectamente posible definir una notación científica en otras bases. En ba
 
 **Ejemplos**
 
-- `$100.111_{(2} = 1.00111_{(2} \times 2^2$`
-- `$0.0001101_{(2} = 1.101_{(2} \times 2^{-4}$`
-
-</aside>
-</section>
+- $100.111_{(2} = 1.00111_{(2} \times 2^2$
+- $0.0001101_{(2} = 1.101_{(2} \times 2^{-4}$
 
 
-<section>
-<h2>Representación en punto flotante</h2>
-<ul>	
-	<li>Formato <i>IEEE 754 single precision</i>, 32 bits</li>
-	<ul>
-		<li>1 bit de <strong>signo</strong></li>
-		<li>8 bits para el <strong>exponente</strong> (en exceso a 127)</li>
-		<li>23 bits para la <strong>mantisa</strong></li>
-	</ul>
-	<span class="fragment">
-	<li>Formato <i>IEEE 754 double precision</i>, 64 bits</li>
-	<ul>
-		<li>1 bit de <strong>signo</strong></li>
-		<li>11 bits para el <strong>exponente</strong> (en exceso a 1023)</li>
-		<li>52 bits para la <strong>mantisa</strong></li>
-	</ul>
-	</span>
-</ul>
 
-<aside data-markdown class="notes">
 ##Representación en Punto Flotante
 
 La herramienta matemática de la Notación Científica ha sido adaptada al dominio de la computación definiendo métodos de **representación en punto flotante**. Estos métodos resuelven los problemas de los sistemas de punto fijo, abandonando la idea de una cantidad fija de bits para parte entera y parte fraccionaria. En su lugar, inspirándose en la notación científica, los formatos de punto flotante permiten escribir números de un gran rango de magnitudes y precisiones en un campo de tamaño fijo.
@@ -1721,25 +616,8 @@ Estos estándares son dos, llamados **IEEE 754 en precisión simple y en precisi
 La definición de los formatos está acompañada por la especificación de mecanismos de cálculo para usarlos, manejo de errores y otra información importante.
 
 En el curso utilizaremos siempre el formato de precisión simple. 
-</aside>
-</section>
 
 
-<section data-coursemod-shown="false">
-<h2>IEEE 754 single precision</h2>
-<img class="plain stretch" src="img/ieee754.png">
-</section>
-
-
-<section data-transition="convex" data-transition-speed="slow">
-  <h2>Decimal a punto flotante</h2>
-  <ol>	
-	<li>Separar el <b>signo</b> y escribir el valor absoluto en base 2</li>
-	<li>Convertirlo a notación científica en base 2 <b>normalizada</b></li>
-	<li>Expresar el exponente en notación <b>en exceso</b></li>
-	<li>Guardar el coeficiente <b>sin parte entera</b> en la mantisa</li>
-  </ol>
-<aside data-markdown class="notes">
 ###Conversión de decimal a punto flotante 
 
 Para convertir manualmente un número decimal $n$ a punto flotante necesitamos calcular los tres elementos del formato de punto flotante: **signo** (que llamaremos $s$), **exponente** (que llamaremos $e$) y **mantisa** (que llamaremos $m$), en la cantidad de bits correcta según el formato de precisión simple o doble que utilicemos.
@@ -1756,163 +634,54 @@ Una vez conocidos $s$, $e$ y $m$, sólo resta escribirlos como secuencias de bit
 4. El coeficiente calculado se guarda **sin su parte entera** en la parte de mantisa.
      - Como la normalización obliga a que la parte entera de la mantisa sea 1, no tiene mayor sentido utilizar un bit para guardarlo en el formato de punto flotante: guardarlo no aportaría ninguna información. Por eso basta con almacenar la parte fraccionaria de la mantisa, hasta los 23 bits disponibles (o completando con ceros).
 
-</aside>
-</section>
 
 
-<!----------------------------------------
-<section> 
-  <section data-transition="convex" data-transition-speed="slow">
-  <h2>Decimal a punto flotante</h2>
-  <h3>1. Escribir el valor absoluto en base 2</h3>
-  <ul>
-	<li>Lo vimos al convertir un <a href="#decfrac" target="_blank">decimal fraccionario a base 2</a></li>
-	<li>Separo y guardo el signo</li>
-  </ul>
-  </section>
-
-  <section data-transition="convex" data-transition-speed="slow">
-  <h2>Decimal a punto flotante</h2>
-  <h3>2. Convertir a notación científica base 2</h3>
-  <ul>
-	 <li>Desplazo el punto fraccionario hasta dejar un 1 en la parte entera</li>
-	 <li>Compenso la multiplicación o división por $2^k$ que hice</li>
-	 <ul>
-		 <li>$101.11 = 1.0111 \times 2^2$</li>
-		 <li>$0.0011111 = 1.1111 \times 2^{-3}$</li>
-	 </ul>
-	<li>Obtuve coeficiente y exponente</li>
-  </section>
-
-  <section data-transition="convex" data-transition-speed="slow">
-  <h2>Decimal a punto flotante</h2>
-   <h3>3. Expresar el exponente</h3>
-    <ul>	
-	<li>El exponente puede ser positivo o negativo</li>
-	<li>Se representa <strong>en exceso a 127</strong></li>
-	<li>&rarr; Se le suma 127 para obtener un número no negativo </li>
-    </ul>
-</section>
-
-  <section data-transition="convex" data-transition-speed="slow">
-  <h2>Decimal a punto flotante</h2>
-    <h3>4. Guardar la mantisa</h3>
-    <ul>	
-	<li>El primer dígito del coeficiente es siempre 1</li>
-	<li>&rarr; no hace falta almacenarlo</li>
-	<li>Se guarda $coeficiente - 1$,  completando con ceros</li>
-    </ul>
-</section>
-</section>
------------------------------------>
-
-<!---------------------
-<section>
-<h2>Ejemplo de Punto Flotante</h2>
-    <div align="center" class="post_it">$n = -5.5$</div>
-    <ol>	
-	<li class="fragment"><span class="post_it">$s = 1$</span><span class="fragment">; $|n| = 5.5_{(10} = 101.1_{(2}$</span></li>
-	<li class="fragment">$101.1_{(2} = 1.011_{(2} \times  2^2$</li>
-	<li class="fragment post_it">$e = 2 + 127 = 129$</li>
-	<li class="fragment">$1.011 - 1 = .011$ <span class="fragment post_it">&rarr; $m = 011000...$</span></li>
-    </ol>
-</section>
------------------------------------>
-
-<section id="experimento">
-<h2>Ejemplo Punto Flotante</h2>
-<h3>$n = -5.5$</h3>
-    <ol>	
-	<li>Separar el signo y escribir el valor absoluto en base 2</li>
-	    <ul>	
-	<li class="fragment"><span class="post_it">$s = 1$</li>
-	<li class="fragment">$|n| = 5.5_{(10} = 101.1_{(2}$</li>
-		</ul>
-	<li>Convertirlo a notación científica en base 2 <b>normalizada</b></li>
-	    <ul>	
-	<li class="fragment">$101.1 = 1.011 \times  2^2$</li>
-		</ul>
-	<li>Expresar el exponente en notación <b>en exceso</b></li>
-	    <ul>	
-	<li class="fragment post_it">$e = 2 + 127 = 129$</li>
-		</ul>
-	<li>Guardar el coeficiente <b>sin parte entera</b> en la mantisa</li>
-	    <ul>	
-	<li class="fragment">$1.011 - 1 = .011$ <span class="fragment post_it">&rarr; $m = 011000...$</span></li>
-		</ul>
-    </ol>
-<aside data-markdown class="notes">
 ###Ejemplo de Punto Flotante
 
 Recorramos los pasos para la conversión manual a punto flotante precisión simple, partiendo del decimal $n = -5.5$. Recordemos que necesitamos averiguar $s$, $e$ y $m$.
 
 - $n$ es negativo, luego $s = 1$.
 - $|n| = 5.5$. Convirtiendo el valor absoluto a binario obtenemos $101.1_{(2}$.
-- Normalizando, queda `$101.1_{(2} = 1.011_{(2}\times 2^2$`.
+- Normalizando, queda $101.1_{(2} = 1.011_{(2}\times 2^2$.
 - Del paso anterior, el exponente 2 se representa en exceso a 127 como $e = 2 + 127 = 129$. En base 2, $129 = 10000001_{(2}$.
 - Del mismo paso anterior extraemos la mantisa quitando la parte entera: $1.011 - 1 = 0.011$. Los bits de $m$ son $011000000...$ con ceros hasta la posición 23.
 - Finalmente, $s, e, m = 1, 10000001, 011000000000...$.
 
 Lo que significa que la representación en punto flotante de $-5.5$ es igual a $1100000010110000000...$ (con ceros hasta completar los 32 bits de ancho total).
-</aside>
-</section>
 
-<section data-coursemod-shown="false">
-<h2>Ejemplo de Punto Flotante</h2>
-	<div align="center" class="post_it">$n = -5.5$</div>
-	<div align="center"> s = 1, e = 129, m = 011000... </div>
-	<img class="plain stretch" src="img/ejemploFP.png">
-</section>
 
-<section>
-<h2>Resultado en hexadecimal</h2>
-	<img class="plain stretch" src="img/ejemploFPhexa.png">
-<aside data-markdown class="notes">
 ###Expresión de punto flotante en hexadecimal
 
 Para facilitar la escritura y comprobación de los resultados, es conveniente leer los 32 bits de la representación en punto flotante precisión simple como si se tratara de 8 dígitos hexadecimales. Se aplica la regla, que ya conocemos, de sustituir directamente cada grupo de 4 bits por un dígito hexadecimal.
 
-Así, en el ejemplo anterior, la conversión del decimal $-5.5$ resultó en la secuencia de bits `$11000000101100000...$` (con más ceros). 
+Así, en el ejemplo anterior, la conversión del decimal $-5.5$ resultó en la secuencia de bits $11000000101100000...$ (con más ceros). 
 
 Es fácil equivocarse al transcribir este resultado. Pero sustituyendo los bits, de a grupos de 4, por dígitos hexadecimales, obtenemos la secuencia equivalente $C0B00000$, que es más simple de leer y de comunicar.
-</aside>
-</section>
-    
-    
-<section>
-<h2>Punto Flotante &rarr; decimal</h2>
-<ul>	
-	<li>Usando $s$, $e$ y $m$:</li>
-<div class="post_it" align="center">$n = (-1)^s \times 2^{(e-127)} \times (1 + m)$</div>
-	<li class="fragment">$s = 1   \Longrightarrow       (-1)^s = -1$</li>
-	<li class="fragment">$e = 129      \Longrightarrow                   2^{(e-127)} = 2^2$</li>
-	<li class="fragment">$m = 011000...      \Longrightarrow            1.m = 1.011000...$</li>
-	<li class="fragment">Resulta $n = (-1) \times 2^2 \times 1.011000..._{(2} =$ $(-1) \times 101.1000..._{(2} =$ $(-1) \times 5.5 = -5.5$</li>
-</ul>
-<aside data-markdown class="notes">
+
+
 ###Conversión de punto flotante a decimal
 
 Teniendo un número expresado en punto flotante precisión simple, queremos saber a qué número decimal equivale. Separamos la representación en sus componentes $s$, $e$ y $m$, que tienen **1, 8 y 23 bits** respectivamente, y "deshacemos" la transformación que llevó a esos datos a ocupar esos lugares. De cada componente obtendremos un factor de la fórmula final.
 
 - Signo
     - El valor de $s$ nos dice si el decimal es positivo o negativo. 
-    - La fórmula `$(-1)^s$` da -1 si $s=1$, y 1 si $s=0$.
+    - La fórmula $(-1)^s$ da -1 si $s=1$, y 1 si $s=0$.
 - Exponente
     - El exponente está almacenado en la representación IEEE 754 como ocho bits en exceso a 127. Corresponde **restar 127** para volver a obtener el exponente de 2 que afectaba al número originalmente en notación científica normalizada. 
-    - La fórmula `$2^{(e - 127)}$` dice cuál es la potencia de 2 que debemos usar para ajustar la mantisa.
+    - La fórmula $2^{(e - 127)}$ dice cuál es la potencia de 2 que debemos usar para ajustar la mantisa.
 - Mantisa
     - La mantisa está almacenada sin su parte entera, que en la notación científica normalizada en base 2 **siempre es 1**. Para recuperar el coeficiente o mantisa original hay que restituir esa parte entera igual a 1. 
-    - La fórmula `$1 + m$` nos da la mantisa binaria original.
+    - La fórmula $1 + m$ nos da la mantisa binaria original.
 
 Reuniendo las fórmulas aplicadas a los tres elementos de la representación, hacemos el cálculo multiplicando los tres factores:
 
-`$$n = (-1)^s \times 2^{(e-127)}  \times (1+m)$$`
+$$n = (-1)^s \times 2^{(e-127)}  \times (1+m)$$
 
 obteniendo finalmente el valor decimal representado.
 
 **Ejemplo**
 
-Para el valor de punto flotante IEEE 754 precisión simple representado por la secuencia hexadecimal $C0B00000$, encontramos que $s=1$, $e=129$, `$m=011000...$`.
+Para el valor de punto flotante IEEE 754 precisión simple representado por la secuencia hexadecimal $C0B00000$, encontramos que $s=1$, $e=129$, $m=011000...$.
 
 - Signo
     - $(-1)^s = (-1)^1 = -1$
@@ -1923,28 +692,8 @@ Para el valor de punto flotante IEEE 754 precisión simple representado por la s
 
 Ajustando la mantisa $1.011000...$ por el factor $2^2$ obtenemos $101.1$. Convirtiendo a decimal obtenemos $5.5$. Aplicando el signo recuperamos finalmente el valor $-5.5$, que es lo que está representando la secuencia $C0B00000$.
 
-</aside>
-</section>
 
-<section>
-<h2>Error de truncamiento</h2>
-<pre><code>
-  $ python
-  Python 2.7.9 (default, Mar  1 2015, 12:57:24) 
-  [GCC 4.9.2] on linux2
-  Type "help", "copyright", "credits" or "license" for more information.
-  >>> a = 0.1
-  >>> b = 0.2
-  >>> c = a + b
-  >>> c == a + b
-  True
-  >>> c == 0.3
-  False
-  >>> c
-  0.30000000000000004
 
-</code></pre>
-<aside data-markdown class="notes">
 ###Error de truncamiento
 
 Aunque los 23 bits de mantisa del formato de punto flotante en precisión simple son suficientes para la mayoría de las aplicaciones, existen números que no pueden ser representados, ni aun en doble precisión. El caso más evidente es el de aquellos números que por su magnitud caen fuera del rango de representación del sistema. Sin embargo, el formato IEEE 754 también encuentra limitaciones al tratar con números aparentemente tan pequeños como 0.1 o 0.2. ¿Cuál es el problema en este caso?
@@ -1957,55 +706,8 @@ A partir del momento en que ese número queda representado en forma aproximada, 
 
 En precisión simple, se considera que tan sólo **los primeros siete decimales** de un número en base 10 son representados en forma correcta. En precisión doble, sólo los primeros quince decimales son correctos.  
 
-</aside>
-</section>
-
-<section data-coursemod-shown="false">
-<h2>Humor para nerds</h2>
-<img class="stretch plain" src="img/robot.png"></img>
-</section>
-
-<!------------
-<section>
-<h2>Error de aproximación</h2>
- <div class="asciicast">
-        <! --
-        {
-                "URL": "src/fp.json"
-        }
-        -- >
-  </div>
-</section>
-------------->
 
 
-<!--
-<section>
-<h2>Cálculo de punto flotante</h2>
-<span id="ieee754Calc">
-<table>
-<tr><td>Decimal</td><td class="TKNumberField" data-var="decimal"></td></tr>
-<tr><td>Signo</td><td data-var="sign"></td></tr>
-<tr><td>Exponente</td><td data-var="exponent"></td></tr>
-<tr><td>Mantisa</td><td data-var="mantissa"></td></tr>
-<tr><td>Hexa</td><td data-var="hexa"></td></tr>
-</table>        
-    <p class="post_it" data-var="math" style="text-align: center;" id="ieee754Formula">$ $</p>  
-</span>
-</section>
--->
-
-<section>
-<h2>Casos especiales en IEEE 754</h2>
-<table>
-<tr><th>Clase de números</th><th>Exponente</th><th>Mantisa</th><th>Signo</th></tr>
-<tr><td>Ceros</td><td align="center">$0$</td><td align="center">$0$</td><td>$+/-$</td></tr>
-<tr><td>Desnormalizados</td><td align="center">$0$</td><td align="center">$\neq 0$</td><td>$+/-$</td></tr>
-<tr><td>Normalizados</td><td align="center">$\neq 0$</td><td align="center">Cualquiera</td><td>$+/-$</td></tr>
-<tr><td>Infinito</td><td align="center">$1...1$</td><td align="center">$0$</td><td>$+/-$</td></tr>
-<tr><td>NaN (Not a Number)</td><td align="center">$1...1$</td><td align="center">$\neq 0$</td><td>$+/-$</td></tr>
-</table>
-<aside data-markdown class="notes">
 ###Casos especiales en punto flotante
 
 En el estándar IEEE 754, no todas las combinaciones de $s$, $e$ y $m$ dan representaciones con sentido, o con el sentido esperable. 
@@ -2017,112 +719,4 @@ Los números **normalizados** en IEEE 754 son aquellos que provienen de una expr
 Otros números especiales son aquellos donde el exponente consiste en ocho **unos** binarios con mantisa 0. Estos casos están reservados para representar los valores **infinito** positivo y negativo (que aparecen cuando una operación arroja un resultado de **overflow** del formato de punto flotante). 
 
 Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0, se está representando un caso de **NaN** (**Not a Number**, "no es un número"). Estos casos patológicos sólo ocurren cuando un proceso de cálculo lleva a una condición de error (por intentar realizar una operación sin sentido en el campo real, como obtener una raíz cuadrada de un real negativo).
-</aside>
-</section>
 
-
-
-
- <section data-coursemod-shown="false">
- <h2>Cálculo de punto flotante</h2>
- <div class="tangle" id="ieee754Calc">
-         <script type="text/javascript" src="ieee754.js"></script>
-         <!--
-         {
-                 "initialize":"function(container) {
-                         var rootElement = document.getElementById('ieee754Calc');
-                         var model = {
-                                 initialize: function() {
-                                         this.decimal = 0;
-                                         this.sign = 0;
-                                         this.exponent = 0;
-                                         this.mantissa = 0;
-                                         this.hexa = '00000000';
-                                 },
-                                 update: function() {
-                                         var e = this.decimal;
-                                         var n = parseFloat(e);
-                                         var f = packIEEE754(e, 8, 23);
-                                         this.hexa = hexaString(f);
-                                         this.sign = f[0];
-                                         this.exponent = f.slice(1,9).join('');
-                                         this.mantissa = f.slice(9,32).join('');
-                                         var mstr;
-                                         if (n === 0) {
-                                                 return;
-                                         } else if (n !== n) {
-                                                 mstr = 'NaN';
-                                         } else if (n === Infinity) {
-                                                 mstr = '\\infty';
-                                         } else if (n === -Infinity) {
-                                                 mstr = '- \\infty';
-                                         } else {
-                                                 mstr = mathString(e, this.sign, this.exponent, this.mantissa);
-                                         }
-                                         var mathfield = MathJax.Hub.getAllJax('ieee754Formula')[0];
-                                         MathJax.Hub.Queue(['Text',mathfield,mstr]);
-                                 }
-                         };
-                         var tangle=new Tangle(rootElement, model);
-                   }"
-         }
-         -->
-         <table>
-                 <tr><td>Decimal</td><td class="TKNumberField" data-var="decimal"></td></tr>
-                 <tr><td>Signo</td><td data-var="sign"></td></tr>
-                 <tr><td>Exponente</td><td data-var="exponent"></td></tr>
-                 <tr><td>Mantisa</td><td data-var="mantissa"></td></tr>
-                 <tr><td>Hexa</td><td data-var="hexa"></td></tr>
-         </table>
-         <p class="post_it" data-var="math" style="text-align: center;" id="ieee754Formula">$ $</p>
- </div>
- </section>
- 
-
- 
-
-
-<section data-background="#3c53b5" class="preguntas" data-background-transition="zoom" data-coursemod-shown="false">
-<h2>Preguntas</h2>
-<ul>
-	<li>¿Cuál es el RR de IEEE754, precisión simple?</li>
-	<li>Usando el calculador de IEEE754 contenido en este material, o cualquier otro:</li>
-	<ol>
-		<li class="fragment">¿Qué pasa con el resultado a medida que agregamos <b>muchos</b> decimales?</li>
-		<li class="fragment">¿Qué pasa con el resultado si ingresamos números <b>enormes</b> como 1e30 (que significa $1 \times 10^{30}$), 1e35, etc.?</li>
-		<li class="fragment">Si ingresamos el dato $0.1$, ¿qué resultado da $(-1)^s \times 2^{e-127} \times (1+m)$? ¿Se reconstruye exactamente el valor $0.1$? ¿Cuál es el error en este caso?</li>
-	</ol>
-</ul>
-</section>
-
-<section data-background="#00CCFF" data-background-transition="zoom" data-coursemod-shown="false">
-<h2>Representación de datos numéricos</h2>
-<ul>
-	<li>Enteros</li>
-	<ul>
-		<li>Signo-Magnitud &#10004;</li>
-		<li>Complemento a 2 &#10004;</li>
-		<li>Notación en exceso &#10004; </li>
-	</ul>
-	<li class="fragment">Fraccionarios</li>
-	<ul>
-		<li class="fragment">Punto fijo &#10004;</li>
-		<li class="fragment">Punto flotante &#10004;</li>
-	</ul>
-</ul>
-</section>
-
-
-<section data-coursemod-shown="false">
-<h2>Referencias</h2>
-<ul>
-
-<li><a href="RepresentaciónDigitalDeDatos-notes.pdf">Notas de esta presentación</li>
-<!-- <li><a href="http://pedco.fi.uncoma.edu.ar/mod/resource/view.php?id=145680" target="_blank">Apunte de Cátedra: Representación de Datos Numéricos</a></li> -->
-<li><a href="https://es.m.wikipedia.org/wiki/Complemento_a_dos" target="_blank">Wikipedia: Complemento a dos</a></li>
-<li><a href="https://es.m.wikipedia.org/wiki/Representaci%C3%B3n_de_n%C3%BAmeros_con_signo" target="_blank">Wikipedia: Representación de números con signo</li>
-<li><a href="http://perso.ens-lyon.fr/jean-michel.muller/goldberg.pdf" target="_blank">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a>, David Goldberg, Xerox PARC, 1991</li>
-</ul>
-</section>
-
-<!-- INCLUDE src/reveal.trailer -->

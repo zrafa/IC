@@ -21,7 +21,7 @@ redes: Redes.html
 	util/asides.pl $*.html > $*.md
 	pandoc \
 		-V lang=spanish \
-		-V fontfamily=sans\
+		-V fontfamily=sans \
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
 		$*.md --toc -o $*-notes.pdf
@@ -43,18 +43,36 @@ redes: Redes.html
 
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
 
+# --template eisvogel
+# \PassOptionsToPackage{spanish}{babel}
 
 all: siste uni repre texto arqui soft comp so redes
-	pandoc -V lang=spanish -V fontfamily=sans -V papersize=A4 -V title="Introducción a la Computación 2017" --toc \
-	SistemasDeNumeración.md \
-	UnidadesDeInformación.md \
-	RepresentaciónDigitalDeDatos.md \
-	TextoYMultimedia.md \
-	ArquitecturaDeComputadoras.md \
-	Software.md \
-	SistemasDeCómputo.md \
-	SistemasOperativos.md \
-	Redes.md \
+	mkdir -p ~/.pandoc/templates
+	cp src/eisvogel.latex ~/.pandoc/templates
+	pandoc \
+	--template eisvogel \
+	-V title="Introducción a la Computación 2018" \
+	-V lang=spanish \
+	-V fontfamily=lmodern \
+	-V mainfont=bookman \
+	-V papersize=A4 \
+	-V toc-title="Contenidos" \
+	-V titlepage=true \
+	-V titlepage-color="FFFFFF" \
+	-V titlepage-text-color="000000" \
+	--toc \
+	--listings \
+	--number-sections \
+		head.md \
+		SistemasDeNumeración.md \
+		UnidadesDeInformación.md \
+		RepresentaciónDigitalDeDatos.md \
+		TextoYMultimedia.md \
+		ArquitecturaDeComputadoras.md \
+		Software.md \
+		SistemasDeCómputo.md \
+		SistemasOperativos.md \
+		Redes.md \
 	-o IC2017-notes.pdf
 
 git: 
