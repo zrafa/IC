@@ -43,10 +43,12 @@ redes: Redes.html
 
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
 
+
+all: pdf epub
+
 # --template eisvogel
 # \PassOptionsToPackage{spanish}{babel}
-
-all: siste uni repre texto arqui soft comp so redes
+pdf: siste uni repre texto arqui soft comp so redes
 	mkdir -p ~/.pandoc/templates
 	cp src/eisvogel.latex ~/.pandoc/templates
 	pandoc \
@@ -64,7 +66,7 @@ all: siste uni repre texto arqui soft comp so redes
 	--toc \
 	--listings \
 	--number-sections \
-		head.yaml \
+		pdf.yaml \
 		SistemasDeNumeración.md \
 		UnidadesDeInformación.md \
 		RepresentaciónDigitalDeDatos.md \
@@ -76,10 +78,45 @@ all: siste uni repre texto arqui soft comp so redes
 		Redes.md \
 	-o IC2017-notes.pdf
 
+epub: siste uni repre texto arqui soft comp so redes
+	pandoc \
+	-V title="Introducción a la Computación" \
+	-V lang=spanish \
+	-V fontfamily=lmodern \
+	-V mainfont=bookman \
+	--toc \
+	--listings \
+	--number-sections \
+	--epub-metadata=epub.yaml \
+	--to=epub \
+		SistemasDeNumeración.md \
+		UnidadesDeInformación.md \
+		RepresentaciónDigitalDeDatos.md \
+		TextoYMultimedia.md \
+		ArquitecturaDeComputadoras.md \
+		Software.md \
+		SistemasDeCómputo.md \
+		SistemasOperativos.md \
+		Redes.md \
+	-o IC2017-notes.epub
+
 git: 
 	util/github "mm"
 
 
 clean: 
-	mv Presentación.html Software.html SistemasOperativos.html SistemasDeCómputo.html SistemasDeNumeración.html UnidadesDeInformación.html RepresentaciónDigitalDeDatos.html TextoYMultimedia.html ArquitecturaDeComputadoras.html Redes.html attic
+	mv \
+		Presentación.html\
+		Software.html \
+		SistemasOperativos.html \
+		SistemasDeCómputo.html \
+		SistemasDeNumeración.html \
+		UnidadesDeInformación.html \
+		RepresentaciónDigitalDeDatos.html \
+		TextoYMultimedia.html \
+		ArquitecturaDeComputadoras.html \
+		Redes.html \
+	attic
 	rm *.tex *.aux *.log *.out
+
+
