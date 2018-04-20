@@ -58,8 +58,9 @@ all: siste uni repre texto arqui soft comp so redes
 	-V papersize=A4 \
 	-V toc-title="Contenidos" \
 	-V titlepage=true \
-	-V titlepage-color="FFFFFF" \
-	-V titlepage-text-color="000000" \
+	-V titlepage-color="EEEEFF" \
+	-V titlepage-text-color="435488" \
+	-V titlepage-rule-height=20 \
 	--toc \
 	--listings \
 	--number-sections \

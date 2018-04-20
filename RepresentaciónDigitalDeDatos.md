@@ -658,7 +658,7 @@ Recorramos los pasos para la conversión manual a punto flotante precisión simp
 - Del mismo paso anterior extraemos la mantisa quitando la parte entera: $1.011 - 1 = 0.011$. Los bits de $m$ son $011000000...$ con ceros hasta la posición 23.
 - Finalmente, $s, e, m = 1, 10000001, 011000000000...$.
 
-Lo que significa que la representación en punto flotante de $-5.5$ es igual a $1100000010110000000...$ (con ceros hasta completar los 32 bits de ancho total).
+Lo que significa que la representación en punto flotante de -5.5 es igual a 1100000010110000000... (con ceros hasta completar los 32 bits de ancho total).
 
 
 ###Expresión de punto flotante en hexadecimal
