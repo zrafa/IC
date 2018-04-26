@@ -58,15 +58,16 @@ pdf: siste uni repre texto arqui soft comp so redes
 	-V fontfamily=lmodern \
 	-V mainfont=bookman \
 	-V papersize=A4 \
-	-V toc-title="Contenidos" \
+	-V toctitle="Contenidos" \
 	-V titlepage=true \
 	-V titlepage-color="EEEEFF" \
 	-V titlepage-text-color="435488" \
 	-V titlepage-rule-height=20 \
+	--titlepage \
 	--toc \
 	--listings \
 	--number-sections \
-		pdf.yaml \
+		src/pdf.yaml \
 		SistemasDeNumeración.md \
 		UnidadesDeInformación.md \
 		RepresentaciónDigitalDeDatos.md \
@@ -80,15 +81,17 @@ pdf: siste uni repre texto arqui soft comp so redes
 
 epub: siste uni repre texto arqui soft comp so redes
 	pandoc \
+	-s \
 	-V title="Introducción a la Computación" \
+	-V subtitle="Facultad de Informática UNC" \
 	-V lang=spanish \
 	-V fontfamily=lmodern \
 	-V mainfont=bookman \
 	--toc \
 	--listings \
 	--number-sections \
-	--epub-metadata=epub.yaml \
 	--to=epub \
+		src/epub.yaml \
 		SistemasDeNumeración.md \
 		UnidadesDeInformación.md \
 		RepresentaciónDigitalDeDatos.md \

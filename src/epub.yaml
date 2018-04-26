@@ -1,7 +1,9 @@
 ---
-title:
-- type: title
+title: 
+- type: main
   text: Introducción a la Computación
 - type: subtitle
   text: Lic. Cs. Computación, Lic. Sistemas de Información FAI-UNC
-...
+lang: es
+---
+
