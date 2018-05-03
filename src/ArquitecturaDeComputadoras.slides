@@ -662,7 +662,6 @@ Queda como ejercicio seguir la traza e interpretar qué está ocurriendo en cada
 <li class="fragment" data-audio-src="audio/Arquitectura/67-Las instrucciones de salto.mp3">Las instrucciones de salto copian el contenido de la dirección en el acumulador.</li>
 </ul>
 <aside data-markdown class="notes">
-
 Proponemos como ejercicio **examinar** las siguientes frases, tomadas de exámenes de la materia, a ver si descubrimos qué está mal en cada una de ellas.
 
 1. El primer paso del ciclo de instrucción es cargar el IR en el PC.
@@ -670,7 +669,8 @@ Proponemos como ejercicio **examinar** las siguientes frases, tomadas de exámen
 1. Las instrucciones de salto sirven como desplazamiento de instrucciones y cambian el orden de los registros.
 1. La instrucción de salto incondicional es un desplazamiento sin signo, la de salto condicional es un desplazamiento con signo.
 1. Las instrucciones de salto copian el contenido de la dirección en el acumulador.
-</aside></section>
+</aside>
+</section>
 
 
 <section data-coursemod-shown="false">
@@ -682,7 +682,9 @@ Proponemos como ejercicio **examinar** las siguientes frases, tomadas de exámen
 <li><a href="https://es.m.wikipedia.org/wiki/Unidad_central_de_procesamiento">Unidad Central de Procesamiento, CPU</a></li>
 <li><a href="https://es.m.wikipedia.org/wiki/Memoria_(inform%C3%A1tica)">Memoria</a></li>
 </ul>
-<aside data-markdown class="notes"> </aside></section>
+<aside data-markdown class="notes">
+</aside>
+</section>
 
 
 <!-- INCLUDE src/reveal.trailer-audio -->

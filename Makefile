@@ -1,4 +1,4 @@
-DEPS = src/reveal.header src/reveal.trailer
+DEPS = src/reveal.header src/reveal.trailer src/ic2017.html
 DTAPE=/home/oso/IC2016/decktape
 
 index: index.html
@@ -63,7 +63,6 @@ pdf: siste uni repre texto arqui soft comp so redes
 	-V titlepage-color="EEEEFF" \
 	-V titlepage-text-color="435488" \
 	-V titlepage-rule-height=20 \
-	--titlepage \
 	--toc \
 	--listings \
 	--number-sections \
@@ -83,6 +82,7 @@ epub: siste uni repre texto arqui soft comp so redes
 	pandoc \
 	-s \
 	-V title="Introducción a la Computación" \
+	-M title="Introducción a la Computación" \
 	-V subtitle="Facultad de Informática UNC" \
 	-V lang=spanish \
 	-V fontfamily=lmodern \
