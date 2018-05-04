@@ -98,7 +98,7 @@ $$  = 1\times 2^{k-1} + ... + 1\times2^1+1\times2^0 = $$
 $$  = 2^{k-1} + ... + 2^1+2^0 = $$ 
 $$  = 2^{k}-1 $$ 
 
-[¿Por qué esto es cierto?](Suma2k-1.pdf)
+[¿Por qué esto es cierto?](#Suma2k-1)
 
 Usando ambos argumentos hemos llegado a que el número más grande que podemos representar con $k$ dígitos binarios es $2^k-1$. Por lo tanto, **el rango de representación de un sistema sin signo a $k$ dígitos, o SS(k), es $[0, 2^k - 1]$**. Todos los números representables en esta clase de sistemas son **positivos o cero**.
 
@@ -195,7 +195,7 @@ Podemos comprobar si la complementación fue bien hecha aplicando la **propiedad
 - Busquemos el complemento a 2 de $0011$. Invirtiendo todos los bits, obtenemos $1100$. Sumando 1, queda $1101$.
 - Comprobemos que el resultado obtenido en el último caso, $1101$, es efectivamente el opuesto de $0011$: $0011 + 1101 = 0$.
 
-[¿Por qué funciona este método?](Complemento.pdf)
+[¿Por qué funciona este método?](#ComplementoALaBase)
 
 
 ###Representación en Complemento a 2

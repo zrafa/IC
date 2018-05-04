@@ -1,4 +1,4 @@
-## ¿Por qué $2^{k-1} + ... + 2^1 + 2^0 = 2^{k} - 1$?
+## ¿Por qué $2^{k-1} + ... + 2^1 + 2^0 = 2^{k} - 1$? {#Suma2k-1}
 
 ### Razonamiento 1
 Si escribimos k "unos", éste es el número más grande que podemos escribir con esa cantidad de dígitos.
@@ -19,40 +19,40 @@ Esta es una identidad conocida que se suele usar en Álgebra. Una demostración 
 
 Llamemos 'a' al primer miembro de la igualdad para simplificar un poco:
 
-$a = 2^{k-1} + 2^{k-2} + ... + 2^1 + 2^0$
+$$a = 2^{k-1} + 2^{k-2} + ... + 2^1 + 2^0$$
 
 Y ahora multipliquemos ambos miembros por 2. Si dos expresiones son iguales, al multiplicar *ambas* por 2 van a seguir siendo iguales.
 
-$2a = 2 \times [2^{k-1} + 2^{k-2} + ... + 2^1 + 2^0]$
+$$2a = 2 \times [2^{k-1} + 2^{k-2} + ... + 2^1 + 2^0]$$
 
 Operemos en el segundo miembro, distribuyendo el factor 2:
 
-$2a = 2^k + 2^{k-1} + ... + 2^2 + 2^1$
+$$2a = 2^k + 2^{k-1} + ... + 2^2 + 2^1$$
 
 Ahora sumemos y restemos 1 al segundo miembro, con lo cual no cambiamos su valor:
 
-$2a = 2^k + 2^{k-1} + ... + 2^2 + 2^1 + 1 - 1$
+$$2a = 2^k + 2^{k-1} + ... + 2^2 + 2^1 + 1 - 1$$
 
 Y reescribamos un 1 como $2^0$:
 
-$2a = 2^k + 2^{k-1} + ... + 2^2 + 2^1 + 2^0 - 1$
+$$2a = 2^k + 2^{k-1} + ... + 2^2 + 2^1 + 2^0 - 1$$
 
 
 Pero ahora, en el centro de esta expresión de varios sumandos aparece de vuelta 'a' (lo que ponemos entre corchetes):
 
-$2a = 2^k + [ 2^{k-1} + ... + 2^2 + 2^1 + 2^0 ] - 1$
+$$2a = 2^k + [ 2^{k-1} + ... + 2^2 + 2^1 + 2^0 ] - 1$$
 
 Luego 
-$2a = 2^k + a -1$
+$$2a = 2^k + a -1$$
 
 Ahora despejamos llevando el 'a' del segundo miembro al primero:
 
-$2a - a = 2^k - 1$
+$$2a - a = 2^k - 1$$
 
-$a = 2^k - 1$
+$$a = 2^k - 1$$
 
 Pero ¿quién era 'a'? Reemplacemos:
 
-$2^{k-1} + 2^{k-2} + ... + 2^1 + 2^0 = 2^k - 1$
+$$2^{k-1} + 2^{k-2} + ... + 2^1 + 2^0 = 2^k - 1$$
 
 Que era lo que queríamos demostrar. 
