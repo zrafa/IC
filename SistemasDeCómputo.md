@@ -106,6 +106,8 @@ Según la combinación de los elementos, el material será de tipo **P** (atrae 
 Gracias a estas propiedades el transistor funciona como un interruptor, con el cual se pueden implementar todas las funciones lógicas necesarias en los circuitos de la CPU y otros componentes de las computadoras.  El transistor resulta así un reemplazo eficaz de las antiguas válvulas termoiónicas. 
 
 
+
+
 ###Minicomputadoras
 
 Los transistores abarataron las computadoras y redujeron su tamaño. Algunas de las desarrolladas en esta época recibieron el nombre de **minicomputadoras**.
