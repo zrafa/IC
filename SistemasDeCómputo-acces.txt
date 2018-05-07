@@ -252,6 +252,53 @@ en los circuitos de la CPU y otros componentes de las computadoras. El
 transistor resulta así un reemplazo eficaz de las antiguas válvulas
 termoiónicas.
 
+Del transistor a la memoria
+---------------------------
+
+Un transistor permite el pasaje de corriente entre colector y emisor,
+sólo cuando recibe corriente la base. De esta manera opera como un
+conmutador o switch.
+
+Compuertas
+
+Conectando varios transistores adecuadamente es posible crear
+compuertas, que son circuitos elementales que implementan funciones
+lógicas. Por ejemplo, una Compuerta NOR implementa una función lógica
+que es la combinación de otras dos aun más simples: NOT y OR.
+
+-   NOT es una función lógica de una entrada y una salida. El valor
+    lógico de salida de NOT es el opuesto de su entrada. Es decir, la
+    salida será 1 cuando la entrada sea 0, y viceversa.
+-   OR es una función lógica de dos entradas y una salida. Su valor
+    lógico es la disyunción de ambas entradas. Es decir, el valor lógico
+    de la salida será 0 sólo si ambas entradas son 0.
+-   La salida de la función NOR, que es la combinación de ambas
+    anteriores, será 1 sólo cuando ambas entradas sean 0.
+
+Flip-Flop
+
+Un Flip-Flop es un circuito capaz de memorizar un valor lógico, por lo
+cual implementa una memoria de un bit. Al poder almacenar dos posibles
+valores, 0 o 1, se dice que es un circuito biestable.
+
+Se construye con compuertas (NOR, NAND, XOR...) dispuestas de manera que
+la salida de cada una realimente la entrada de la otra. Las dos salidas
+de un Flip-Flop son, cada una, la inversa lógica de la otra. Normalmente
+se utiliza una de ellas.
+
+Las entradas de un Flip-Flop de tipo RS se llaman Reset y Set.
+
+-   Cuando el procesador necesita almacenar un bit 0, activa la entrada
+    Reset. El valor lógico de salida queda permanentemente a 0.
+-   Cuando se necesita almacenar un 1, se activa la entrada Set, y el
+    valor lógico de salida queda establecido en 1.
+
+Un byte de memoria puede implementarse como un vector de ocho
+Flip-Flops. Un Kibibyte de memoria comprenderá entonces 2 elevado a la {10} de estos
+vectores. Las tecnologías modernas de integración en gran escala
+permiten concentrar millones de estos componentes en un espacio muy
+reducido.
+
 Minicomputadoras
 
 Los transistores abarataron las computadoras y redujeron su tamaño.

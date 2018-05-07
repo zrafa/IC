@@ -1,0 +1,101 @@
+<!-- INCLUDE src/reveal.header -->
+
+
+<section data-transition="slide-in none-out"  data-background="img/enlaces.svg" data-background-size="50%" class="transparent_bg">
+<h2>Enlaces de fibra óptica</h2>
+<img src="img/worldcables.png" class="plain stretch"> 
+<aside data-markdown class="notes">
+Las principales compañías de conectividad del mundo tienden enlaces de fibra óptica transoceánicos. Como la instalación de estos cables es una maniobra muy compleja y tiene un costo altísimo, se aseguran de instalar capacidad de transmisión en abundancia. Por ejemplo, uno de estos enlaces tiene una capacidad de 3.2 Tbps, lo que permitiría transmitir el contenido completo de un disco rígido de 1 TB en menos de tres segundos. Esta capacidad es compartida entre varios proveedores de Internet que compran el servicio de transporte.
+
+**Interesante**
+
+[Submarine Cable Map](http://www.submarinecablemap.com/#/landing-point/las-toninas-argentina)
+</aside>
+</section>
+
+
+
+<section data-transition="slide-in slide-out" >
+<h2>Máscara de subred</h2>
+<ul>
+	<li class="fragment">Las subredes son conjuntos de direcciones con un mismo <b>prefijo</b> o secuencia inicial de bits</b></li>
+	<li class="fragment">La longitud de un prefijo se indica utilizando una <b>máscara</b></li>
+	<ul>
+	<li class="fragment">32 dígitos binarios, primeros $n$ <b>unos</b> y restantes <b>ceros</b></li>
+	</ul>
+	<span class="fragment">
+	<li><b>192.168.1.1 con máscara 255.255.255.0</b></li>
+	<li><b>192.168.1.1/24</b></li>
+	<li class="fragment">Prefijo y dirección de subred</li>
+	<ul>
+		<li class="fragment">11000000 10101000 00000001 00000001</li>
+		<li class="fragment">11111111&nbsp;11111111&nbsp;11111111&nbsp;00000000</li>
+	</span>
+	<span class="fragment">
+		<li><span style="color: blue">11000000 10101000 00000001</span> 00000000</li>
+	</span>
+	<li class="fragment">Dirección de subred <b>192.168.1.0</b></li>
+	</ul>
+	</span>
+</ul>
+<aside data-markdown class="notes">
+###Prefijo de subred
+
+¿Cómo agrupar estas direcciones para definir las subredes? 
+
+*Todas las direcciones con el mismo **prefijo** de una cierta longitud formarán una subred.*
+
+**Ejemplo**
+
+- Las direcciones IP 130.240.10.17 y 130.240.11.15 pertenecen a una subred con prefijo común 130.240 de 16 bits. Todas las direcciones pertenecientes a esta subred se escriben como 130.240.XXX.XXX.
+- Sin embargo, notemos que, si escribimos las direcciones IP anteriores en su forma binaria, encontraremos que en realidad existe un prefijo común aún más largo. En efecto, 
+    
+    130.240.10.17 = **10000010.11110000.0000101**0.00010001
+
+    130.240.11.15 = **10000010.11110000.0000101**1.00001111
+
+    Los primeros **23 bits** de ambas direcciones son iguales, luego comparten un prefijo común de longitud 23. Para escribirlo en notación decimal, adoptemos la convención de completar con ceros la parte no común:
+
+    130.240.10.0 = 10000010.11110000.00001010.00000000
+
+    Esta convención no es otra cosa que lo que llamamos la dirección de la subred.
+
+###Dirección de subred y máscara de subred
+
+Cuando en una tabla de ruteo se especifique una ruta para todas las direcciones con un mismo prefijo, la dirección destino de la ruta será una **dirección de subred**. 
+
+Una dirección de subred se calcula utilizando una **máscara de subred**, que es una sucesión de 32 dígitos binarios. Los primeros $n$ dígitos de la máscara son **unos**, y los restantes **ceros**. 
+
+La cantidad de dígitos "uno" dice cuál es la longitud del prefijo compartido. Estos primeros $n$ dígitos "unos" definen cuál será el prefijo compartido por todas las direcciones IP que pertenecen a la subred. 
+
+
+**Ejemplo**
+
+- Una máscara de **24 bits** de longitud puede expresarse como **11111111 11111111 11111111 00000000**, que en la misma notación decimal de las direcciones IP suele escribirse **255.255.255.0**. 
+- Una máscara de **26 bits** de longitud puede expresarse como **11111111 11111111 11111111 11000000**, o **255.255.255.192**.
+
+
+###Cálculo de la dirección de subred
+
+Para calcular la dirección de subred a la cual pertenece una dirección IP, superponemos la dirección y su máscara de modo de encolumnar todos los dígitos y efectuamos una operación AND bit a bit. El operador AND es el que devuelve 1 solamente si ambos operandos son 1, y en otro caso devuelve 0.
+
+El efecto de este AND es **copiar** en las primeras $n$ columnas del resultado los bits tal cual figuran en la dirección IP, y **completar con ceros** hasta el final del resultado. Este resultado es la dirección de subred a la cual pertenece la dirección IP original.
+
+
+**Ejemplo**
+
+- ¿Cuál es la dirección de subred de la dirección IP **170.210.80.129** con máscara 255.255.255.0? 
+
+	Aplicando la máscara de 24 bits de longitud, la operación AND devuelve la dirección de subred **170.210.80.0**.
+
+- ¿Cuál es la dirección de subred de la dirección IP **170.210.80.129** con máscara 255.255.255.128? 
+
+    Si escribimos esta máscara en forma binaria, vemos que contiene **25 unos**. La operación AND que copia los primeros 25 bits de la dirección IP y deja los restantes en 0 da la dirección de subred **170.210.80.128**.
+
+**Notación alternativa**
+
+Una máscara de subred con $n$ bits suele expresarse también como "$/n$". Así, la dirección IP **192.168.1.1 con máscara 255.255.255.0** puede escribirse más sencillamente como **192.168.1.1/24**.
+</aside>
+</section>
+
+<!-- INCLUDE src/reveal.trailer -->

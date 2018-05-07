@@ -277,13 +277,37 @@ Gracias a estas propiedades el transistor funciona como un interruptor, con el c
 </section>
 
 
-<section data-coursemod-shown="false">
+<section>
 <h2>Del transistor a la memoria</h2>
 <ul>
 <li><a href="https://www.falstad.com/circuit/circuitjs.html?cct=$+1+0.000005+10.20027730826997+50+5+50%0Av+144+352+144+80+0+0+40+5+0+0+0.5%0Aw+144+80+256+80+0%0At+256+256+368+256+0+1+-4.8794390341750855+0.12056096262068222+100%0Ar+256+80+256+176+0+10000%0As+256+176+256+256+0+1+false%0Aw+256+80+368+80+0%0Ar+368+80+368+240+0+300%0Aw+368+272+368+352+0%0Aw+368+352+144+352+0%0Ax+59+24+164+27+4+24+Transistor%0A">Transistor</a></li>
 <li><a href="https://www.falstad.com/circuit/circuitjs.html?cct=$+1+0.000005+0.32112705431535615+50+5+50%0At+624+240+656+240+0+1+-4.999999999854001+1.0499999999568948e-10+100%0At+640+336+672+336+0+1+-4.999999999854001+1.0499999999568948e-10+100%0Aw+656+144+704+144+0%0Aw+656+144+656+224+0%0Aw+656+256+752+256+0%0Aw+752+256+752+400+0%0Aw+704+144+704+320+0%0Aw+704+320+672+320+0%0Aw+672+352+672+400+0%0Aw+752+400+672+400+0%0Ax+290+64+468+67+4+24+Compuerta%5CsNOR%0AL+528+240+480+240+2+0+false+5+0%0AL+528+336+480+336+2+0+false+5+0%0AM+704+144+752+144+2+2.5%0Ag+752+400+752+416+0%0Ar+528+240+624+240+0+1000%0Ar+528+336+640+336+0+1000%0AR+528+144+480+144+0+0+40+5+0+0+0.5%0Ar+528+144+656+144+0+100%0Ax+299+209+312+212+4+24+0%0Ax+390+209+403+212+4+24+1%0Ax+344+209+357+212+4+24+0%0Ax+344+236+357+239+4+24+1%0Ax+390+236+403+239+4+24+0%0Ax+299+236+312+239+4+24+0%0Ax+343+264+356+267+4+24+0%0Ax+389+264+402+267+4+24+0%0Ax+298+264+311+267+4+24+1%0Ax+343+291+356+294+4+24+1%0Ax+389+291+402+294+4+24+0%0Ax+298+291+311+294+4+24+1%0Ab+278+172+375+309+0%0Ab+374+172+416+309+0%0A">Compuerta NOR</a></li>
 <li><a href="https://www.falstad.com/circuit/circuitjs.html?cct=$+1+0.000005+1.500424758475255+50+5+50%0Aw+368+160+368+192+0%0Aw+368+192+256+256+0%0Aw+368+288+368+256+0%0Aw+368+256+256+192+0%0Aw+256+192+256+176+0%0Aw+256+256+256+272+0%0AM+368+160+448+160+2+2.5%0AM+368+288+448+288+2+2.5%0Ax+146+310+178+313+4+24+set%0Ax+128+152+181+155+4+24+reset%0Ax+116+69+378+72+4+24+Biestable%5CsS-R%5Cs(set-reset)%0A153+256+160+368+160+0+2+5+5%0A153+256+288+368+288+0+2+0+5%0AL+256+144+208+144+0+0+true+5+0%0AL+256+304+208+304+0+0+true+5+0%0Ax+473+168+491+171+4+24+Q%0Ax+480+299+498+302+6+24+Q%0A">Flip-flop</a></li>
 <aside data-markdown class="notes">
+## Del transistor a la memoria
+
+Un transistor permite el pasaje de corriente entre **colector y emisor**, sólo cuando recibe corriente la **base**. De esta manera opera como un conmutador o switch.
+
+### Compuertas
+
+Conectando varios transistores adecuadamente es posible crear **compuertas**, que son circuitos elementales que implementan funciones lógicas. Por ejemplo, una **Compuerta NOR** implementa una función lógica que es la combinación de otras dos aun más simples: **NOT** y **OR**. 
+
+- NOT es una función lógica de una entrada y una salida. El valor lógico de salida de NOT es el opuesto de su entrada. Es decir, la salida será 1 cuando la entrada sea 0, y viceversa.
+- OR es una función lógica de dos entradas y una salida. Su valor lógico es la disyunción de ambas entradas. Es decir, el valor lógico de la salida será 0 sólo si ambas entradas son 0.
+- La salida de la función NOR, que es la combinación de ambas anteriores, será 1 sólo cuando ambas entradas sean 0.
+
+### Flip-Flop
+
+Un Flip-Flop es un circuito capaz de memorizar un valor lógico, por lo cual implementa una **memoria de un bit**. Al poder almacenar dos posibles valores, 0 o 1, se dice que es un circuito **biestable**.
+
+Se construye con compuertas (NOR, NAND, XOR...) dispuestas de manera que la salida de cada una realimente la entrada de la otra. Las dos salidas de un Flip-Flop son, cada una, la inversa lógica de la otra. Normalmente se utiliza una de ellas.
+
+Las entradas de un Flip-Flop de tipo RS se llaman **Reset y Set**. 
+
+- Cuando el procesador necesita almacenar un bit 0, activa la entrada Reset. El valor lógico de salida queda permanentemente a 0. 
+- Cuando se necesita almacenar un 1, se activa la entrada Set, y el valor lógico de salida queda establecido en 1.
+
+Un **byte de memoria** puede implementarse como un vector de **ocho Flip-Flops**. Un Kibibyte de memoria comprenderá entonces $2^{10}$ de estos vectores. Las tecnologías modernas de integración en gran escala permiten concentrar millones de estos componentes en un espacio muy reducido.
 </aside>
 </section>
 
