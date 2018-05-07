@@ -284,11 +284,11 @@ Gracias a estas propiedades el transistor funciona como un interruptor, con el c
 <li><a href="https://www.falstad.com/circuit/circuitjs.html?cct=$+1+0.000005+0.32112705431535615+50+5+50%0At+624+240+656+240+0+1+-4.999999999854001+1.0499999999568948e-10+100%0At+640+336+672+336+0+1+-4.999999999854001+1.0499999999568948e-10+100%0Aw+656+144+704+144+0%0Aw+656+144+656+224+0%0Aw+656+256+752+256+0%0Aw+752+256+752+400+0%0Aw+704+144+704+320+0%0Aw+704+320+672+320+0%0Aw+672+352+672+400+0%0Aw+752+400+672+400+0%0Ax+290+64+468+67+4+24+Compuerta%5CsNOR%0AL+528+240+480+240+2+0+false+5+0%0AL+528+336+480+336+2+0+false+5+0%0AM+704+144+752+144+2+2.5%0Ag+752+400+752+416+0%0Ar+528+240+624+240+0+1000%0Ar+528+336+640+336+0+1000%0AR+528+144+480+144+0+0+40+5+0+0+0.5%0Ar+528+144+656+144+0+100%0Ax+299+209+312+212+4+24+0%0Ax+390+209+403+212+4+24+1%0Ax+344+209+357+212+4+24+0%0Ax+344+236+357+239+4+24+1%0Ax+390+236+403+239+4+24+0%0Ax+299+236+312+239+4+24+0%0Ax+343+264+356+267+4+24+0%0Ax+389+264+402+267+4+24+0%0Ax+298+264+311+267+4+24+1%0Ax+343+291+356+294+4+24+1%0Ax+389+291+402+294+4+24+0%0Ax+298+291+311+294+4+24+1%0Ab+278+172+375+309+0%0Ab+374+172+416+309+0%0A">Compuerta NOR</a></li>
 <li><a href="https://www.falstad.com/circuit/circuitjs.html?cct=$+1+0.000005+1.500424758475255+50+5+50%0Aw+368+160+368+192+0%0Aw+368+192+256+256+0%0Aw+368+288+368+256+0%0Aw+368+256+256+192+0%0Aw+256+192+256+176+0%0Aw+256+256+256+272+0%0AM+368+160+448+160+2+2.5%0AM+368+288+448+288+2+2.5%0Ax+146+310+178+313+4+24+set%0Ax+128+152+181+155+4+24+reset%0Ax+116+69+378+72+4+24+Biestable%5CsS-R%5Cs(set-reset)%0A153+256+160+368+160+0+2+5+5%0A153+256+288+368+288+0+2+0+5%0AL+256+144+208+144+0+0+true+5+0%0AL+256+304+208+304+0+0+true+5+0%0Ax+473+168+491+171+4+24+Q%0Ax+480+299+498+302+6+24+Q%0A">Flip-flop</a></li>
 <aside data-markdown class="notes">
-## Del transistor a la memoria
+### Del transistor a la memoria
 
-Un transistor permite el pasaje de corriente entre **colector y emisor**, sólo cuando recibe corriente la **base**. De esta manera opera como un conmutador o switch.
+Un transistor permite el pasaje de corriente entre **colector y emisor**, sólo cuando recibe corriente el conector **base**. De esta manera opera como un conmutador o switch accionado electrónicamente.
 
-### Compuertas
+#### Compuertas
 
 Conectando varios transistores adecuadamente es posible crear **compuertas**, que son circuitos elementales que implementan funciones lógicas. Por ejemplo, una **Compuerta NOR** implementa una función lógica que es la combinación de otras dos aun más simples: **NOT** y **OR**. 
 
@@ -296,7 +296,7 @@ Conectando varios transistores adecuadamente es posible crear **compuertas**, qu
 - OR es una función lógica de dos entradas y una salida. Su valor lógico es la disyunción de ambas entradas. Es decir, el valor lógico de la salida será 0 sólo si ambas entradas son 0.
 - La salida de la función NOR, que es la combinación de ambas anteriores, será 1 sólo cuando ambas entradas sean 0.
 
-### Flip-Flop
+#### Flip-Flop
 
 Un Flip-Flop es un circuito capaz de memorizar un valor lógico, por lo cual implementa una **memoria de un bit**. Al poder almacenar dos posibles valores, 0 o 1, se dice que es un circuito **biestable**.
 
@@ -444,7 +444,6 @@ Una consecuencia importante de la Era del Multicore es que la mejora en velocida
 
 
 
-<section>
 <section data-transition="slide-in fade-out"
 	data-audio-src="audio/SistemasDeCómputo/19-a.mp3">
 <h2>Intel I7</h2>
@@ -506,7 +505,6 @@ El i7 pertenece a una generación de procesadores donde, para enfrentar los prob
 <aside data-markdown  class="notes">
 - En la misma "pastilla" o unidad física del microprocesador se encuentra una unidad procesadora de gráficos o GPU. Esta GPU es un procesador con una arquitectura especial, dedicado a la generación de gráficos avanzados, pero que además puede utilizarse para cómputos paralelos de propósito general.
 </aside>
-</section>
 </section>
 
 <section

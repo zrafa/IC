@@ -253,11 +253,10 @@ transistor resulta así un reemplazo eficaz de las antiguas válvulas
 termoiónicas.
 
 Del transistor a la memoria
----------------------------
 
 Un transistor permite el pasaje de corriente entre colector y emisor,
-sólo cuando recibe corriente la base. De esta manera opera como un
-conmutador o switch.
+sólo cuando recibe corriente el conector base. De esta manera opera como
+un conmutador o switch accionado electrónicamente.
 
 Compuertas
 

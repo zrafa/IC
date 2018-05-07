@@ -106,11 +106,11 @@ Según la combinación de los elementos, el material será de tipo **P** (atrae 
 Gracias a estas propiedades el transistor funciona como un interruptor, con el cual se pueden implementar todas las funciones lógicas necesarias en los circuitos de la CPU y otros componentes de las computadoras.  El transistor resulta así un reemplazo eficaz de las antiguas válvulas termoiónicas. 
 
 
-## Del transistor a la memoria
+### Del transistor a la memoria
 
-Un transistor permite el pasaje de corriente entre **colector y emisor**, sólo cuando recibe corriente la **base**. De esta manera opera como un conmutador o switch.
+Un transistor permite el pasaje de corriente entre **colector y emisor**, sólo cuando recibe corriente el conector **base**. De esta manera opera como un conmutador o switch accionado electrónicamente.
 
-### Compuertas
+#### Compuertas
 
 Conectando varios transistores adecuadamente es posible crear **compuertas**, que son circuitos elementales que implementan funciones lógicas. Por ejemplo, una **Compuerta NOR** implementa una función lógica que es la combinación de otras dos aun más simples: **NOT** y **OR**. 
 
@@ -118,7 +118,7 @@ Conectando varios transistores adecuadamente es posible crear **compuertas**, qu
 - OR es una función lógica de dos entradas y una salida. Su valor lógico es la disyunción de ambas entradas. Es decir, el valor lógico de la salida será 0 sólo si ambas entradas son 0.
 - La salida de la función NOR, que es la combinación de ambas anteriores, será 1 sólo cuando ambas entradas sean 0.
 
-### Flip-Flop
+#### Flip-Flop
 
 Un Flip-Flop es un circuito capaz de memorizar un valor lógico, por lo cual implementa una **memoria de un bit**. Al poder almacenar dos posibles valores, 0 o 1, se dice que es un circuito **biestable**.
 
