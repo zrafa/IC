@@ -290,7 +290,7 @@ Un transistor permite el pasaje de corriente entre **colector y emisor**, sólo 
 
 #### Compuertas
 
-Conectando varios transistores adecuadamente es posible crear **compuertas**, que son circuitos elementales que implementan funciones lógicas. Por ejemplo, una **Compuerta NOR** implementa una función lógica que es la combinación de otras dos aun más simples: **NOT** y **OR**. 
+Conectando varios transistores adecuadamente es posible crear **compuertas**, que son circuitos elementales que implementan funciones lógicas. Por ejemplo, una **Compuerta NOR** implementa una función lógica que es la combinación de otras dos aún más simples: **NOT** y **OR**. 
 
 - NOT es una función lógica de una entrada y una salida. El valor lógico de salida de NOT es el opuesto de su entrada. Es decir, la salida será 1 cuando la entrada sea 0, y viceversa.
 - OR es una función lógica de dos entradas y una salida. Su valor lógico es la disyunción de ambas entradas. Es decir, el valor lógico de la salida será 0 sólo si ambas entradas son 0.
