@@ -56,7 +56,7 @@ pdf: siste uni repre texto arqui soft comp so redes
 	-V title="Introducción a la Computación 2018" \
 	-V lang=spanish \
 	-V fontfamily=lmodern \
-	-V mainfont=bookman \
+	-V mainfont="Baskervaldx" \
 	-V papersize=A4 \
 	-V toctitle="Contenidos" \
 	-V titlepage=true \

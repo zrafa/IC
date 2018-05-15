@@ -45,7 +45,7 @@ Las principales compañías de conectividad del mundo tienden enlaces de fibra �
 
 *Todas las direcciones con el mismo **prefijo** de una cierta longitud formarán una subred.*
 
-**Ejemplo**
+<div class="ejemplo">
 
 - Las direcciones IP 130.240.10.17 y 130.240.11.15 pertenecen a una subred con prefijo común 130.240 de 16 bits. Todas las direcciones pertenecientes a esta subred se escriben como 130.240.XXX.XXX.
 - Sin embargo, notemos que, si escribimos las direcciones IP anteriores en su forma binaria, encontraremos que en realidad existe un prefijo común aún más largo. En efecto, 
@@ -60,6 +60,8 @@ Las principales compañías de conectividad del mundo tienden enlaces de fibra �
 
     Esta convención no es otra cosa que lo que llamamos la dirección de la subred.
 
+</div>
+
 ###Dirección de subred y máscara de subred
 
 Cuando en una tabla de ruteo se especifique una ruta para todas las direcciones con un mismo prefijo, la dirección destino de la ruta será una **dirección de subred**. 
@@ -69,11 +71,13 @@ Una dirección de subred se calcula utilizando una **máscara de subred**, que e
 La cantidad de dígitos "uno" dice cuál es la longitud del prefijo compartido. Estos primeros $n$ dígitos "unos" definen cuál será el prefijo compartido por todas las direcciones IP que pertenecen a la subred. 
 
 
-**Ejemplo**
+<div class="ejemplo">
 
 - Una máscara de **24 bits** de longitud puede expresarse como **11111111 11111111 11111111 00000000**, que en la misma notación decimal de las direcciones IP suele escribirse **255.255.255.0**. 
 - Una máscara de **26 bits** de longitud puede expresarse como **11111111 11111111 11111111 11000000**, o **255.255.255.192**.
 
+
+</div>
 
 ###Cálculo de la dirección de subred
 
@@ -82,7 +86,7 @@ Para calcular la dirección de subred a la cual pertenece una dirección IP, sup
 El efecto de este AND es **copiar** en las primeras $n$ columnas del resultado los bits tal cual figuran en la dirección IP, y **completar con ceros** hasta el final del resultado. Este resultado es la dirección de subred a la cual pertenece la dirección IP original.
 
 
-**Ejemplo**
+<div class="ejemplo">
 
 - ¿Cuál es la dirección de subred de la dirección IP **170.210.80.129** con máscara 255.255.255.0? 
 
@@ -91,6 +95,8 @@ El efecto de este AND es **copiar** en las primeras $n$ columnas del resultado l
 - ¿Cuál es la dirección de subred de la dirección IP **170.210.80.129** con máscara 255.255.255.128? 
 
     Si escribimos esta máscara en forma binaria, vemos que contiene **25 unos**. La operación AND que copia los primeros 25 bits de la dirección IP y deja los restantes en 0 da la dirección de subred **170.210.80.128**.
+
+</div>
 
 **Notación alternativa**
 
