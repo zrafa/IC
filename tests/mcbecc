@@ -1,0 +1,255 @@
+#!/usr/bin/perl -n -w
+use strict;
+use Data::Dumper;
+
+my $DEBUG = 0;
+
+my %vars;
+my @prog;
+my @consts;
+my $lastconst = 0; 
+
+my ($main, $endmain) = (0,0);
+
+/int main()/ and setmain(1);
+/}/ and setmain(0);
+
+
+sub setmain {
+	my $v = shift;
+	if($v == 0) {
+		$endmain = 1;
+	} else {
+		$main = 1;
+	}
+}
+
+/^\s*int\s*([[:alpha:]]+\d*)\s*=\s*(\d*)\s*;\s*$/ and newinit($1, $2);	# int a = 1
+/^\s*int\s*([[:alpha:]]+\d*)\s*;\s*$/ and newvar($1);			# int a
+
+/^\s*([[:alpha:]]+\d*)\+\+ *; *$/ and asg3($1, $1, "+", 1);	# a++;
+/^\s*([[:alpha:]]+\d*)-- *; *$/ and asg3($1, $1, "-", 1);	# a--;
+/^\s*([[:alpha:]]+\d*) *= *([[:alpha:]]+\d*) *; *$/ and asg4($1, $2); 		# a = b;
+/^\s*([[:alpha:]]+\d*) *= *([[:alpha:]]+\d*) *([\+-]) *(\d+) *; *$/ and asg3($1, $2, $3, $4);	# a = a + 1 o a = b + 1;
+/^\s*([[:alpha:]]+\d*) *= *(\d*) *([\+-]) *([[:alpha:]]+\d*) *; *$/ and asg5($1, $2, $3, $4);	# a = 1 + a o a = 1 + b;
+
+/^\s*([[:alpha:]]+\d*) *= *(\d+) *([\+-]) *(\d+) *; *$/ and asg2($1, $2, $3, $4);	# a = 1 + 2;
+/^\s*([[:alpha:]]+\d*) *= *(\d+) *; *$/ and asg1($1, $2); 		# a = 1;
+
+/^\s*in\(&([[:alpha:]]+\d*)\) *; *$/ and in($1);
+/^\s*out\(([[:alpha:]]+\d*)\) *; *$/ and out($1);
+
+
+sub fatal {
+	my $msg = shift;
+	print "error: $msg\n";
+	exit;
+}
+
+sub myprint {
+	my @msg = @_;
+	print "@msg\n" if $DEBUG;
+}
+
+sub in {
+	my $k = shift;
+
+	if(! testvar($k)) {
+		fatal("Variable $k no declarada");
+	} 
+	push @prog, (
+		"\tLD IN",
+		(sprintf "\tST %s", uc($k))
+	);
+}
+sub out {
+	my $k = shift;
+
+	if(! testvar($k)) {
+		fatal("Variable $k no declarada");
+	} 
+	push @prog, (
+		(sprintf "\tLD %s", uc($k)),
+		"\tST OUT"
+	);
+}
+
+	
+sub asg4 { # a = b
+	my ($k1, $k2) = @_;
+
+	if(! testvar($k1)) {
+		fatal("Variable $k1 no declarada");
+	} 
+	if(! testvar($k2)) {
+		fatal("Variable $k2 no declarada");
+	} 
+	
+	if($k1 eq $k2) { # a = a 
+		return;
+	} else { # a = b 
+		push @prog, (
+			(sprintf "\tLD %s", uc($k2)),
+			(sprintf "\tST %s",uc($k1))
+
+		)
+	}
+}
+
+sub asg5 { # a = 1 + a o a = 1 + b
+	my ($k1, $v, $s, $k2) = @_;
+
+	if(! testvar($k1)) {
+		fatal("Variable $k1 no declarada");
+	} 
+	if(! testvar($k2)) {
+		fatal("Variable $k2 no declarada");
+	} 
+	
+	my $dato = "DATO".$lastconst++;
+	push @consts, "$dato:\t$v";
+
+	push @prog, (
+		(sprintf "\tLD $dato"),
+		(sprintf "\t%s %s", ($s eq "+") ? "ADD" : "SUB", uc($k2)),
+		(sprintf "\tST %s",uc($k1))
+	);
+}
+
+sub asg3 { # a = a + 1 o a = b + 1
+	my ($k1, $k2, $s, $v) = @_;
+
+	if(! testvar($k1)) {
+		fatal("Variable $k1 no declarada");
+	} 
+	if(! testvar($k2)) {
+		fatal("Variable $k2 no declarada");
+	} 
+	
+	my $dato = "DATO".$lastconst++;
+	push @consts, "$dato:\t$v";
+
+	if($k1 eq $k2) { # a = a + 1
+		push @prog, (
+			(sprintf "\tLD %s", uc($k1)),
+			(($s eq "+") ? "\tADD $dato" : "\tSUB $dato"),
+			(sprintf "\tST %s",uc($k1))
+		);
+	} else { # a = b + 1
+		push @prog, (
+			(sprintf "\tLD %s", uc($k2)),
+			(($s eq "+") ? "\tADD $dato" : "\tSUB $dato"),
+			(sprintf "\tST %s",uc($k1))
+
+		)
+	}
+}
+sub asg1 { # a = 1
+	my ($k, $v) = @_;
+
+	if(! testvar($k)) {
+		fatal("Variable $k no declarada");
+	} 
+	
+	my $dato = "DATO".$lastconst++;
+	push @consts, "$dato:\t$v";
+	push @prog, (
+		"\tLD $dato",
+		sprintf "\tST %s",uc($k)
+	);
+}
+
+sub asg2 { # a = 1 + 2
+	my ($k, $v1, $s, $v2) = @_;
+
+	myprint "ENTRANDO EN ASG2 s=$s\n";
+
+	if(! testvar($k)) {
+		fatal("Variable $k no declarada");
+	} 
+	
+	my $dato1 = "DATO".$lastconst++;
+	my $dato2 = "DATO".$lastconst++;
+
+	push @consts, "$dato1:\t$v1";
+	push @consts, "$dato2:\t$v2";
+	my $seq1 = sprintf "\t%s $dato2", ($s eq "+") ? "ADD" : "SUB";
+	my $seq2 = sprintf "\tST %s", uc($k);
+	push @prog, (
+		"\tLD $dato1",
+		$seq1, 
+		$seq2
+	);
+}
+	
+
+sub testvar {
+	my $k = shift;
+	
+	if(defined $vars{$k}) {
+		myprint("Encontrado $k con ". $vars{$k});
+		return 1;
+	} else { return 0; }
+}
+
+sub setvar {
+	my ($k, $v) = @_;
+	$vars{$k} = $v;
+	
+}
+
+sub newvar {
+	my $k = shift;
+
+	if(testvar($k)) {
+		fatal("Variable $k redeclarada");
+	}
+	setvar($k, 0);
+}
+
+sub newinit {
+	my ($k, $v) = @_;
+
+	if(testvar($k)) {
+		fatal("Variable $k redeclarada");
+	}
+	setvar($k, $v);
+}
+
+sub outprog {
+	push @prog, ("\tHLT");
+	foreach my $i (@prog) {
+		print "$i\n";
+	}
+}
+
+sub outvars {
+	while(my ($k,$v) = each %vars) {
+		printf "%s:\t%s\n", uc($k), $v;
+	}
+}
+
+sub outconsts {
+	foreach my $i (@consts) {
+		print "$i\n";
+	}
+}
+
+
+END {
+	$DEBUG=0;
+	myprint(Dumper(%vars));
+	myprint(Dumper(@prog));
+	myprint(Dumper(@consts));
+	myprint("-----------");
+	if($main == 0) {
+		fatal("error: Falta main()");
+	}
+	if($endmain == 0) {
+		fatal("error: Falta cerrar main()");
+	}
+	outprog;
+	outvars;
+	outconsts;
+	
+}		
