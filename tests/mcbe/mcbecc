@@ -38,8 +38,8 @@ sub setmain {
 /^\s*([[:alpha:]]+\d*) *= *(\d+) *([\+-]) *(\d+) *; *$/ and asg2($1, $2, $3, $4);	# a = 1 + 2;
 /^\s*([[:alpha:]]+\d*) *= *(\d+) *; *$/ and asg1($1, $2); 		# a = 1;
 
-/^\s*in\(&([[:alpha:]]+\d*)\) *; *$/ and in($1);
-/^\s*out\(([[:alpha:]]+\d*)\) *; *$/ and out($1);
+/^\s*in\(&([[:alpha:]]+\d*)\)\s*;\s*$/ and in($1);
+/^\s*out\(([[:alpha:]]+\d*)\)\s*;\s*$/ and out($1);
 
 /^\s*while\(([[:alpha:]]+\d*)\s*\!=\s*(\d+)\)\s*{\s*$/ and while1begin($1,$2); # while(a != 2)
 /^\s*while\(([[:alpha:]]+\d*)\s*\!=\s*([[:alpha:]]+\d*)\)\s*{\s*$/ and while2begin($1,$2); # while(a != b)
@@ -163,6 +163,7 @@ sub in {
 		(sprintf "\tST %s", uc($k))
 	);
 }
+
 sub out {
 	my $k = shift;
 

@@ -1,6 +1,12 @@
 int main()
 {
 	int a;
+	int b = 1;
 
-	a = 2;
+	in(&a);
+	while(b != a) {
+		out(b);	
+		b++;
+	}
 }
+
