@@ -308,7 +308,7 @@ sub run {
 #----------------------------------
 
 if(scalar(@ARGV) == 0) {
-	my $msg = "mcbe $ARGV[0] [opciones] fuente.mcbe\n";
+	my $msg = "mcbeas $ARGV[0] [opciones] fuente.mcbe\n";
 	$msg .= "\t-a\tEnsamblar\n";
 	$msg .= "\t-i\tInterpretar\n";
 	$msg .= "\t-v\tVerboso\n";
