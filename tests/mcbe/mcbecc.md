@@ -124,10 +124,33 @@ int main()
 
 ## Sentencias de control
 
+Se proveen las sentencias de control if() y while(). No pueden anidarse.
+- Las condiciones de control para ambas construcciones pueden ser:
+    - La comparación por diferencia (!=) entre una variable y una constante.
+    - La comparación por diferencia (!=) entre dos variables.
+
+### Sentencia if()
+
+- Permite decidir entre dos alternativas.
+
+```
+int main()
+{
+	int a;
+
+    in(&a);
+	if(a != 10) {
+		a = a + 1;
+	}
+	out(a);
+}
+```
+
+
 ### Sentencia while()
 
 - Permite iterar un conjunto de sentencias mientras una condición sea verdadera.
-- La condición puede ser la comparación por diferencia (!=) entre una variable y una constante.
+
 
 ```
 int main()
@@ -143,23 +166,5 @@ int main()
 }
 ```
 
-### Sentencia if()
 
-- Permite decidir entre dos alternativas.
-- TODO
-
-## Ejemplos
-
-- Un programa que recibe un dato del usuario, le suma 1 y lo imprime.
-
-```
-int main()
-{
-   int a;
-   
-   in(&a);
-   a++;
-   out(a);
-}
-```
 

@@ -8,14 +8,13 @@ my %vars;
 my @prog;
 my @consts;
 my $lastconst = 0; 
-my $lastloop = 0; 
+my $lastcond = 0; 
 
 my ($main, $endmain) = (0,0);
-my $whilein = 0;
+my $inwhile = 0;
+my $inif = 0;
 
 /int main()/ and setmain(1);
-/}/ and setmain(0);
-
 
 sub setmain {
 	my $v = shift;
@@ -43,7 +42,12 @@ sub setmain {
 /^\s*out\(([[:alpha:]]+\d*)\) *; *$/ and out($1);
 
 /^\s*while\(([[:alpha:]]+\d*)\s*\!=\s*(\d+)\)\s*{\s*$/ and while1begin($1,$2); # while(a != 2)
-/}/ and whileend();
+/^\s*while\(([[:alpha:]]+\d*)\s*\!=\s*([[:alpha:]]+\d*)\)\s*{\s*$/ and while2begin($1,$2); # while(a != b)
+/}/ and condend();
+
+/^\s*if\(([[:alpha:]]+\d*)\s*\!=\s*(\d+)\)\s*{\s*$/ and if1begin($1,$2); # if(a != 2)
+/^\s*if\(([[:alpha:]]+\d*)\s*\!=\s*([[:alpha:]]+\d*)\)\s*{\s*$/ and if2begin($1,$2); # if(a != b)
+
 
 sub fatal {
 	my $msg = shift;
@@ -56,45 +60,104 @@ sub myprint {
 	print "@msg\n" if $DEBUG;
 }
 
-sub while1begin {# while(a != 2)
+sub if1begin {# if(a != 2)
 	my ($k, $v) = @_;
 	
-	if(! testvar($k)) {
-		fatal("Variable $k no declarada");
-	} 
+	testvar($k);
 	
 	my $dato = "DATO".$lastconst++;
 	push @consts, "$dato:\t$v";
 
-	my $loopb = "LAZO".$lastloop;
-	my $loope = "FIN".$lastloop;
+	my $conde = "COND".$lastcond;
+	push @prog, (
+		(sprintf "\tLD %s", uc($k)),
+		"\tSUB $dato",
+		"\tJZ $conde"
+	);
+	$inif = 1;
+}
+
+sub if2begin {# if(a != b)
+	my ($k1, $k2) = @_;
+	
+	testvar($k1);
+	testvar($k2);
+	
+	my $conde = "COND".$lastcond;
+	push @prog, (
+		(sprintf "\tLD %s", uc($k1)),
+		(sprintf "\tSUB %s", uc($k2)),
+		"\tJZ $conde"
+	);
+	$inif = 1;
+}
+
+sub while1begin {# while(a != 2)
+	my ($k, $v) = @_;
+	
+	testvar($k);
+	
+	my $dato = "DATO".$lastconst++;
+	push @consts, "$dato:\t$v";
+
+	my $loopb = "LAZO".$lastcond;
+	my $loope = "FIN".$lastcond;
 	push @prog, (
 		(sprintf "%s:\tLD %s", $loopb, uc($k)),
 		"\tSUB $dato",
 		"\tJZ $loope"
 	);
-	$whilein = 1;
+	$inwhile = 1;
 }
 
-sub whileend {
-	if($whilein) {
-		$whilein = 0;
-		my $loopb = "LAZO".$lastloop;
-		my $loope = "FIN".$lastloop;
+# TODO: lazos no pueden ser anidados - apilar lastcond
+sub while2begin {# while(a != b)
+	my ($k1, $k2) = @_;
+	
+	testvar($k1);
+	testvar($k2);
+	
+	my $loopb = "LAZO".$lastcond;
+	my $loope = "FIN".$lastcond;
+	push @prog, (
+		(sprintf "%s:\tLD %s", $loopb, uc($k1)),
+		(sprintf "\tSUB %s", uc($k2)),
+		"\tJZ $loope"
+	);
+	$inwhile = 1;
+}
+
+sub condend {
+	if($inwhile) {
+		$inwhile = 0;
+		my $loopb = "LAZO".$lastcond;
+		my $loope = "FIN".$lastcond;
 		push @prog, (
 			"\tJMP $loopb",
 			"$loope:\tNOP"
 		);
-		$lastloop++;
+		$lastcond++;
+		return;
 	}
+
+	if($inif) {
+		$inif = 0;
+		my $conde = "COND".$lastcond;
+		push @prog, (
+			"$conde:\tNOP"
+		);
+		$lastcond++;
+		return;
+	}
+	
+	setmain(0); # } cierra main
+	
 }
 
 sub in {
 	my $k = shift;
 
-	if(! testvar($k)) {
-		fatal("Variable $k no declarada");
-	} 
+	testvar($k);
 	push @prog, (
 		"\tLD IN",
 		(sprintf "\tST %s", uc($k))
@@ -103,9 +166,7 @@ sub in {
 sub out {
 	my $k = shift;
 
-	if(! testvar($k)) {
-		fatal("Variable $k no declarada");
-	} 
+	testvar($k);
 	push @prog, (
 		(sprintf "\tLD %s", uc($k)),
 		"\tST OUT"
@@ -116,15 +177,11 @@ sub out {
 sub asg4 { # a = b
 	my ($k1, $k2) = @_;
 
-	if(! testvar($k1)) {
-		fatal("Variable $k1 no declarada");
-	} 
-	if(! testvar($k2)) {
-		fatal("Variable $k2 no declarada");
-	} 
+	testvar($k1);
+	testvar($k2);
 	
 	if($k1 eq $k2) { # a = a 
-		return;
+		return; # optimizing compiler!
 	} else { # a = b 
 		push @prog, (
 			(sprintf "\tLD %s", uc($k2)),
@@ -137,15 +194,9 @@ sub asg4 { # a = b
 sub asg6 { # a = b + c
 	my ($k1, $k2, $s, $k3) = @_;
 
-	if(! testvar($k1)) {
-		fatal("Variable $k1 no declarada");
-	} 
-	if(! testvar($k2)) {
-		fatal("Variable $k2 no declarada");
-	} 
-	if(! testvar($k3)) {
-		fatal("Variable $k2 no declarada");
-	} 
+	testvar($k1);
+	testvar($k2);
+	testvar($k3);
 	
 	push @prog, (
 		(sprintf "\tLD %s", uc($k2)),
@@ -157,12 +208,8 @@ sub asg6 { # a = b + c
 sub asg5 { # a = 1 + a o a = 1 + b
 	my ($k1, $v, $s, $k2) = @_;
 
-	if(! testvar($k1)) {
-		fatal("Variable $k1 no declarada");
-	} 
-	if(! testvar($k2)) {
-		fatal("Variable $k2 no declarada");
-	} 
+	testvar($k1);
+	testvar($k2);
 	
 	my $dato = "DATO".$lastconst++;
 	push @consts, "$dato:\t$v";
@@ -177,12 +224,8 @@ sub asg5 { # a = 1 + a o a = 1 + b
 sub asg3 { # a = a + 1 o a = b + 1
 	my ($k1, $k2, $s, $v) = @_;
 
-	if(! testvar($k1)) {
-		fatal("Variable $k1 no declarada");
-	} 
-	if(! testvar($k2)) {
-		fatal("Variable $k2 no declarada");
-	} 
+	testvar($k1);
+	testvar($k2);
 	
 	my $dato = "DATO".$lastconst++;
 	push @consts, "$dato:\t$v";
@@ -202,12 +245,11 @@ sub asg3 { # a = a + 1 o a = b + 1
 		)
 	}
 }
+
 sub asg1 { # a = 1
 	my ($k, $v) = @_;
 
-	if(! testvar($k)) {
-		fatal("Variable $k no declarada");
-	} 
+	testvar($k);
 	
 	my $dato = "DATO".$lastconst++;
 	push @consts, "$dato:\t$v";
@@ -222,9 +264,7 @@ sub asg2 { # a = 1 + 2
 
 	myprint "ENTRANDO EN ASG2 s=$s\n";
 
-	if(! testvar($k)) {
-		fatal("Variable $k no declarada");
-	} 
+	testvar($k);
 	
 	my $dato1 = "DATO".$lastconst++;
 	my $dato2 = "DATO".$lastconst++;
@@ -244,34 +284,29 @@ sub asg2 { # a = 1 + 2
 sub testvar {
 	my $k = shift;
 	
-	if(defined $vars{$k}) {
-		myprint("Encontrado $k con ". $vars{$k});
-		return 1;
-	} else { return 0; }
-}
-
-sub setvar {
-	my ($k, $v) = @_;
-	$vars{$k} = $v;
-	
+	if(! defined $vars{$k}) {
+		fatal("Variable $k no declarada");
+	} else { 
+		myprint("Encontrado $k con ".$vars{$k});
+	}
 }
 
 sub newvar {
 	my $k = shift;
 
-	if(testvar($k)) {
+	if(defined $vars{$k}) {
 		fatal("Variable $k redeclarada");
 	}
-	setvar($k, 0);
+	$vars{$k} = 0;
 }
 
 sub newinit {
 	my ($k, $v) = @_;
 
-	if(testvar($k)) {
+	if(defined $vars{$k}) {
 		fatal("Variable $k redeclarada");
 	}
-	setvar($k, $v);
+	$vars{$k} = $v;
 }
 
 sub outprog {
