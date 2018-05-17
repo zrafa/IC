@@ -63,10 +63,12 @@ int main()
 {
    int a;
    int b = 1;
+   int c;
    
    a = 2;
    b = a + 3;
    a = 2 + b;
+   c = a + b;
 }
 ```
 
@@ -119,6 +121,32 @@ int main()
    out(b);
 }
 ```
+
+## Sentencias de control
+
+### Sentencia while()
+
+- Permite iterar un conjunto de sentencias mientras una condición sea verdadera.
+- La condición puede ser la comparación por diferencia (!=) entre una variable y una constante.
+
+```
+int main()
+{
+	int a;
+	int b;
+
+	while(a != 10) {
+		b = b + a;
+		a++;
+	}
+	out(b);
+}
+```
+
+### Sentencia if()
+
+- Permite decidir entre dos alternativas.
+- TODO
 
 ## Ejemplos
 

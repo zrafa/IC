@@ -8,8 +8,10 @@ my %vars;
 my @prog;
 my @consts;
 my $lastconst = 0; 
+my $lastloop = 0; 
 
 my ($main, $endmain) = (0,0);
+my $whilein = 0;
 
 /int main()/ and setmain(1);
 /}/ and setmain(0);
@@ -32,6 +34,7 @@ sub setmain {
 /^\s*([[:alpha:]]+\d*) *= *([[:alpha:]]+\d*) *; *$/ and asg4($1, $2); 		# a = b;
 /^\s*([[:alpha:]]+\d*) *= *([[:alpha:]]+\d*) *([\+-]) *(\d+) *; *$/ and asg3($1, $2, $3, $4);	# a = a + 1 o a = b + 1;
 /^\s*([[:alpha:]]+\d*) *= *(\d*) *([\+-]) *([[:alpha:]]+\d*) *; *$/ and asg5($1, $2, $3, $4);	# a = 1 + a o a = 1 + b;
+/^\s*([[:alpha:]]+\d*) *= *([[:alpha:]]+\d*) *([\+-]) *([[:alpha:]]+\d*) *; *$/ and asg6($1, $2, $3, $4);	# a = b + c
 
 /^\s*([[:alpha:]]+\d*) *= *(\d+) *([\+-]) *(\d+) *; *$/ and asg2($1, $2, $3, $4);	# a = 1 + 2;
 /^\s*([[:alpha:]]+\d*) *= *(\d+) *; *$/ and asg1($1, $2); 		# a = 1;
@@ -39,6 +42,8 @@ sub setmain {
 /^\s*in\(&([[:alpha:]]+\d*)\) *; *$/ and in($1);
 /^\s*out\(([[:alpha:]]+\d*)\) *; *$/ and out($1);
 
+/^\s*while\(([[:alpha:]]+\d*)\s*\!=\s*(\d+)\)\s*{\s*$/ and while1begin($1,$2); # while(a != 2)
+/}/ and whileend();
 
 sub fatal {
 	my $msg = shift;
@@ -49,6 +54,39 @@ sub fatal {
 sub myprint {
 	my @msg = @_;
 	print "@msg\n" if $DEBUG;
+}
+
+sub while1begin {# while(a != 2)
+	my ($k, $v) = @_;
+	
+	if(! testvar($k)) {
+		fatal("Variable $k no declarada");
+	} 
+	
+	my $dato = "DATO".$lastconst++;
+	push @consts, "$dato:\t$v";
+
+	my $loopb = "LAZO".$lastloop;
+	my $loope = "FIN".$lastloop;
+	push @prog, (
+		(sprintf "%s:\tLD %s", $loopb, uc($k)),
+		"\tSUB $dato",
+		"\tJZ $loope"
+	);
+	$whilein = 1;
+}
+
+sub whileend {
+	if($whilein) {
+		$whilein = 0;
+		my $loopb = "LAZO".$lastloop;
+		my $loope = "FIN".$lastloop;
+		push @prog, (
+			"\tJMP $loopb",
+			"$loope:\tNOP"
+		);
+		$lastloop++;
+	}
 }
 
 sub in {
@@ -94,6 +132,26 @@ sub asg4 { # a = b
 
 		)
 	}
+}
+
+sub asg6 { # a = b + c
+	my ($k1, $k2, $s, $k3) = @_;
+
+	if(! testvar($k1)) {
+		fatal("Variable $k1 no declarada");
+	} 
+	if(! testvar($k2)) {
+		fatal("Variable $k2 no declarada");
+	} 
+	if(! testvar($k3)) {
+		fatal("Variable $k2 no declarada");
+	} 
+	
+	push @prog, (
+		(sprintf "\tLD %s", uc($k2)),
+		(sprintf "\t%s %s", ($s eq "+") ? "ADD" : "SUB", uc($k3)),
+		(sprintf "\tST %s",uc($k1))
+	);
 }
 
 sub asg5 { # a = 1 + a o a = 1 + b
