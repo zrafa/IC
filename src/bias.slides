@@ -13,7 +13,7 @@
 	} -->
 </div>
 <aside data-markdown class="notes">
-###Conversión entre exceso y decimal
+### Conversión entre exceso y decimal
 
 Una vez establecido un sistema en exceso que representa el intervalo $[a, b]$ en $k$ bits:
 

@@ -39,7 +39,7 @@
 %%
 
 \PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
-\PassOptionsToPackage{spanish,es-nodecimaldot}{babel}
+\PassOptionsToPackage{spanish.nodecimaldot}{babel}
 \PassOptionsToPackage{hyphens}{url}
 $if(colorlinks)$
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}

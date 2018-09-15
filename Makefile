@@ -20,21 +20,21 @@ redes: Redes.html
 	echo DATA-TITLE ${TITLE}
 	util/asides.pl $*.html > $*.md
 	pandoc \
-		-V lang=spanish \
+		-V lang=es-ES \
 		-V fontfamily=sans \
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
 		$*.md --toc -o $*-notes.pdf
 	pandoc \
 		-s \
-		-V lang=spanish \
+		-V lang=es-ES \
 		-V fontfamily=sans \
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
 		$*.md -t plain | util/plain2acces > $*-acces.txt
 	pandoc \
 		-s \
-		-V lang=spanish \
+		-V lang=es-ES \
 		-V fontfamily=sans \
 		-V papersize=A4 \
 		-V title="$(TITLE)" \
@@ -52,9 +52,9 @@ pdf: siste uni repre texto arqui soft comp so redes
 	mkdir -p ~/.pandoc/templates
 	cp src/eisvogel.latex ~/.pandoc/templates
 	pandoc \
-	--template eisvogel \
+	--template eisvogel.latex \
 	-V title="Introducción a la Computación 2018" \
-	-V lang=spanish \
+	-V lang=es-ES \
 	-V fontfamily=lmodern \
 	-V mainfont="Baskervaldx" \
 	-V papersize=A4 \
@@ -87,7 +87,7 @@ epub: siste uni repre texto arqui soft comp so redes
 	-V title="Introducción a la Computación" \
 	-M title="Introducción a la Computación" \
 	-V subtitle="Facultad de Informática UNC" \
-	-V lang=spanish \
+	-V lang=es-ES \
 	-V fontfamily=lmodern \
 	-V mainfont=bookman \
 	--toc \

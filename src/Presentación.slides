@@ -1,10 +1,10 @@
 <!-- INCLUDE src/reveal-pres.header -->
 				
 <section data-markdown>
-##Introducción 
-##a la Computación 
-##2018
-### Eduardo Grosclaude
+## Introducción 
+## a la Computación 
+## 2018
+###  Eduardo Grosclaude
 </section>
 
 
@@ -92,7 +92,7 @@ Ciencias Agrarias, Ciencias y Tecnologías de los Alimentos, Ciencias del Ambien
     
 
 <section data-markdown>
-##Ingeniería de Computadoras
+## Ingeniería de Computadoras
 Algunas materias que dicta
 - Introducción a la Computación
 - Arquitectura y Organización de Computadoras
@@ -121,11 +121,11 @@ Algunas materias que dicta
 
 
 <section data-markdown>
-#Introducción a la Computación 2018
+# Introducción a la Computación 2018
 </section>
 
 <section data-markdown>
-##Equipo de Cátedra
+## Equipo de Cátedra
 * Eduardo Grosclaude: oso@fi.uncoma.edu.ar
 * Rafael Zurita: rafa@fi.uncoma.edu.ar
 * Rodrigo Cañibano: rcanibano@fi.uncoma.edu.ar
@@ -147,7 +147,7 @@ Algunas materias que dicta
 </section>
 
 <section data-markdown>
-##PEDCO 
+## PEDCO 
 * Plataforma web educativa de la UNC
 * http://pedco.uncoma.edu.ar
 * Material, prácticos, apuntes, novedades, foros
@@ -156,7 +156,7 @@ Algunas materias que dicta
 
 
 <section data-markdown>
-##Metodología
+## Metodología
 * Clases teóricas y prácticas
 * Dos exámenes parciales con sus recuperatorios
  * Contenidos prácticos y teóricos

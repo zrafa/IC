@@ -3,7 +3,7 @@
 <section data-background="#00CCFF" data-coursemod-shown="false" data-title="Sistemas Operativos">
 <h1>Sistemas Operativos</h1>
 <aside data-markdown class="notes">
-#Sistemas Operativos
+# Sistemas Operativos
 </aside>
 </section>
 
@@ -11,7 +11,7 @@
 <h2>Sistemas de cómputo</h2>
 <img src="img/sistcomp-0.png" class="stretch plain">
 <aside data-markdown class="notes">
-##Del hardware al software
+## Del hardware al software
 Hemos visto la evolución de los sistemas de cómputo desde el punto de vista del hardware, y cómo llegaron a soportar varios usuarios corriendo varias aplicaciones, todo sobre un mismo equipamiento.
 </aside>
 </section>
@@ -36,27 +36,27 @@ La pieza que falta en este complejo mecanismo es el **sistema operativo**, un so
 <tr class="fragment"><td>Computación personal</td><td>Inicialmente sencillo pero en evolución</td></tr>
 </table>
 <aside data-markdown class="notes">
-##Evolución del software de base
+## Evolución del software de base
 
-###Open Shop
+### Open Shop
 
 Las primeras computadoras estaban dedicadas a una única tarea, perteneciente a un único usuario. Podían ser utilizadas por diferentes usuarios, pero cada uno debía esperar su turno para reprogramarlas manualmente, lo cual era laborioso y se llevaba gran parte del tiempo por el cual esos usuarios pagaban.
 
-###Sistemas Batch
+### Sistemas Batch
 
 Una vez que se popularizaron las máquinas de programa almacenado, se pudo minimizar el tiempo ocioso adoptando **esquemas de carga automática** de trabajos. 
 Un trabajo típico consistía en la compilación y ejecución de un programa, o la carga de un programa compilado más un lote de datos de entrada, y la impresión de un cierto resultado de salida del programa. 
 Estos trabajos estaban definidos por conjuntos o lotes de tarjetas perforadas, de ahí su nombre de trabajos **por lotes** o, en inglés, *batch*. 
 
-###Sistemas Multiprogramados
+### Sistemas Multiprogramados
 
 Más adelante, conforme las tecnologías permitían ir aumentando la velocidad de procesamiento, se notó que los procesadores quedaban desaprovechados gran parte del tiempo debido a la inevitable **actividad de entrada/salida**. Así se idearon sistemas que optimizaban la utilización de la CPU, al poderse cargar más de un programa en la memoria y poder conmutar el uso del procesador entre ellos. Éstos fueron los primeros **sistemas multiprogramados**.
 
-###Sistemas de Tiempo Compartido
+### Sistemas de Tiempo Compartido
 
 Una vez que llegó la posibilidad de tener varios programas coexistiendo simultáneamente en la memoria, se buscó que la conmutación del uso del procesador entre ellos fuera tan rápida, que pareciera que cada programa funcionaba sin interrupciones. Aunque el sistema era de **tiempo compartido**, el usuario utilizaba la computadora como si estuviera dedicada exclusivamente a correr su programa. Así los sistemas multiprogramados se volvieron **interactivos**.
 
-###Computación personal
+### Computación personal
 Todas éstas fueron innovaciones de software, y fueron estableciendo principios y técnicas que serían adoptadas en lo sucesivo. Con la llegada de la computación personal, los sistemas de cómputo eran de capacidades modestas. Los **sistemas operativos** que permitían la ejecución de aplicaciones de los usuarios en estos sistemas de cómputo comenzaron pudiendo correr una sola aplicación por vez y de un solo usuario; es decir, se trataba de sistemas **monotarea** y **monousuario**. 
 
 Sin embargo, con la industria de las computadoras personales y la del software para computadoras personales traccionándose una a la otra, aparecieron sistemas operativos **multiusuario** y **multitarea**, sumamente complejos, que se convirtieron en un nuevo terreno para ensayar y mejorar las tecnologías de software y hardware.
@@ -73,7 +73,7 @@ Sin embargo, con la industria de las computadoras personales y la del software p
 <li>¿Cuál fue la necesidad que impulsó la creación de sistemas de tiempo compartido?</li>
 </ul>
 <aside data-markdown class="notes">
-###Preguntas
+### Preguntas
 - ¿Cuáles son los cinco momentos evolutivos del software de base que reconocemos?
 - ¿A qué se llama un **trabajo batch** o lote de trabajo? ¿Qué es un **archivo batch** en el mundo de la computación personal?
 - ¿Cuál fue la necesidad que impulsó la creación de sistemas *batch*?
@@ -92,7 +92,7 @@ Sin embargo, con la industria de las computadoras personales y la del software p
 </ul>
 <img src="img/shell.png" class="stretch plain">
 <aside data-markdown class="notes">
-##Componentes del SO
+## Componentes del SO
 Los modernos sistemas operativos tienen varios componentes bien diferenciados. 
 Los sistemas operativos **de propósito general** normalmente se presentan en una **distribución** que contiene e integra al menos tres componentes.
 
@@ -108,7 +108,7 @@ Los sistemas operativos **de propósito general** normalmente se presentan en un
 
     También se encuentra junto a este software del sistema alguna forma de **interfaz de usuario**, que puede ser gráfica o de caracteres. Esta interfaz de usuario se llama en general **shell**, especialmente cuando la interfaz es un procesador de comandos, basado en caracteres, y los comandos se tipean.
 
-###Sistemas empotrados o embebidos
+### Sistemas empotrados o embebidos
 
 Hay algunas excepciones a esta estructura de componentes, por ejemplo, en los sistemas operativos **empotrados** o **embebidos** (*embedded systems*), que están ligados a un dispositivo especial y muy específico, como es el caso de algunos robots, instrumental médico, routers, electrodomésticos avanzados, etc.
  
@@ -145,7 +145,7 @@ Estos sistemas operativos constan de un kernel que tiene la misión de hacer fun
 </ul>
 </div>
 <aside data-markdown class="notes">
-##Aplicaciones
+## Aplicaciones
 
 Un típico sistema operativo multipropósito, actual, debe dar soporte entonces a la actividad de una gran variedad de aplicaciones. No solamente a la interfaz de usuario o procesador de comandos, más el software de sistema incluido, sino también a toda la gama de aplicaciones que desee ejecutar el usuario, como programas de comunicaciones (navegadores, programas de transferencia de archivos, de mensajería); aplicaciones de desarrollo de programas (compiladores, intérpretes de diferentes lenguajes).
 </aside>
@@ -164,20 +164,20 @@ Un típico sistema operativo multipropósito, actual, debe dar soporte entonces 
 	<li>Corre en <b>modo privilegiado</b> del procesador</li>
 </ul>
 <aside data-markdown class="notes">
-##Kernel
+## Kernel
 El **kernel** o núcleo es esencialmente un conjunto de rutinas que permanecen siempre residentes en memoria mientras la computadora está operando. Estas rutinas intervienen en todas las acciones que tengan que ver con la operación del hardware. 
 
-###Recursos
+### Recursos
 Los **recursos físicos** del sistema son todos los elementos de hardware que pueden ser de utilidad para el software, como la CPU, la memoria, los discos, los dispositivos de entrada/salida, etc. El kernel funciona no solamente como un mecanismo de administración y control del hardware o conjunto de recursos físicos, sino también de ciertos recursos del sistema que son **lógicos**, como los archivos. 
 
 
-###Procesos
+### Procesos
 El kernel tiene la capacidad de poner en ejecución a los programas que se encuentran almacenados en el sistema. Cuando un programa está en ejecución, lo llamamos un **proceso**. El sistema operativo controla la creación, ejecución y finalización de los procesos.
 
-###Llamadas al sistema o system calls
+### Llamadas al sistema o system calls
 El kernel ofrece su capacidad de control de todos los recursos a los procesos o programas en ejecución, quienes le solicitan determinadas operaciones sobre esos recursos. Por ejemplo, un proceso que necesita utilizar un dispositivo de entrada/salida, o un recurso lógico como un archivo, hace una **petición de servicio, llamada al sistema, o system call**, solicitando un servicio al sistema operativo. El servicio puede tratarse de una operación de lectura, escritura, creación, borrado, etc. El sistema operativo centraliza y coordina estas peticiones de forma que los procesos no interfieran entre sí en el uso de los recursos.
 
-###Modo dual de operación
+### Modo dual de operación
 Si los procesos de usuario pudieran utilizar directamente los recursos en cualquier momento y sin coordinación, los resultados podrían ser desastrosos. Por ejemplo, si dos o más programas quisieran usar la impresora al mismo tiempo, en el papel impreso se vería una mezcla de las salidas de los programas que no serviría a ninguno de ellos.
 
 Como el sistema operativo debe coordinar el acceso de los diferentes procesos a esos recursos, resulta necesario que cuente con alguna forma de imponer conductas y límites a esos usuarios y programas, para evitar que alguno de ellos tome control del sistema en perjuicio de los demás. Para garantizarle este poder por sobre los usuarios, el sistema operativo requiere apoyo del hardware: su código se ejecuta en un modo especial de operación del hardware, el **modo privilegiado** del procesador.
@@ -193,7 +193,7 @@ Los modernos procesadores funcionan en lo que llamamos **modo dual** de ejecuci�
 <h2>Llamadas al sistema</h2>
 <img src="img/modos-0.png" class="stretch plain">
 <aside data-markdown class="notes">
-##Llamadas al sistema
+## Llamadas al sistema
 El procesador ejecutará instrucciones del programa en ejecución en modo no privilegiado hasta que éste necesite un servicio del sistema operativo, tal como el acceso a un recurso físico o lógico.
 </aside>
 </section>
@@ -235,7 +235,7 @@ Si se cumplen todos los requisitos, se ejecutará el servicio pedido y luego se 
 <h2>Aplicaciones</h2>
 <img src="img/so-0.png" class="stretch plain">
 <aside data-markdown class="notes">
-##Ejecución de aplicaciones
+## Ejecución de aplicaciones
 Al ejecutar procesos de usuario o de sistema se pone en juego una jerarquía de piezas de software que ocupa varios niveles. 
 
 Normalmente, cualquier aplicación que funcione en el sistema, ya sean las del sistema o las generadas por el usuario, competirá con las demás por los recursos en igualdad de condiciones.
@@ -279,7 +279,7 @@ La comunicación entre los procesos de usuario y sus bibliotecas, por un lado, y
 <h2>Cronología</h2>
 <img src="img/so-crono-0.png" class="stretch plain">
 <aside data-markdown class="notes">
-##Una cronología de los SO
+## Una cronología de los SO
 Entre la década de 1960 y principios del siglo XXI surgieron gran cantidad de innovaciones tecnológicas en el área de sistemas operativos. Muchas de ellas han tenido éxito más allá de los fines experimentales y han sido adoptadas por sistemas operativos con gran cantidad de usuarios. Diferentes sistemas operativos han influido en el diseño de otros posteriores, creándose así líneas genealógicas de sistemas operativos.
 
 Es interesante seguir el rastro de lo que ocurrió con algunos sistemas importantes a lo largo del tiempo, y ver cómo han ido reconvirtiéndose unos sistemas en otros. 
@@ -330,7 +330,7 @@ Es interesante seguir el rastro de lo que ocurrió con algunos sistemas importan
 	</ul>
 </ul>
 <aside data-markdown class="notes">
-##Servicios del SO
+## Servicios del SO
 Después de conocer estas cuestiones generales sobre los sistemas operativos, veremos con un poco más de detalle los diferentes **servicios** provistos por los principales subsistemas de un SO:
 
 - Ejecución de procesos
@@ -363,10 +363,10 @@ Si bien la discusión que sigue es suficientemente general para comprender bási
 	<li><b>Concurrencia</b> y <b>paralelismo</b></li>
 </ul>
 <aside data-markdown class="notes">
-##Ejecución de procesos
+## Ejecución de procesos
 
 
-###Creación de procesos
+### Creación de procesos
 ¿Cómo se inicia la ejecución de un proceso? Todo proceso es **hijo** de algún otro proceso que lo crea. 
 
 Inicialmente, el SO crea una cantidad de procesos de sistema. Uno de ellos es un **shell** o interfaz de usuario. Este proceso sirve para que el usuario pueda comunicarse con el SO y solicitarle la ejecución de otros procesos.
@@ -377,10 +377,10 @@ En respuesta a la petición del usuario, el SO carga ese programa en memoria y p
 
 Una vez que el programa está en ejecución, decimos que tenemos un nuevo **proceso** activo en el sistema. Este nuevo proceso es un **hijo** del shell, y a su vez puede crear nuevos procesos hijos si es necesario.
 
-###Estados de los procesos
+### Estados de los procesos
 Durante su vida, el proceso atravesará diferentes **estados**. Un proceso puede no estar siempre en estado de ejecución (utilizando la CPU), sino que en un momento dado puede pasar a otro estado, quedando transitoriamente suspendido, para dejar que otro proceso utilice la CPU.
 
-###Scheduler o planificador
+### Scheduler o planificador
 El ciclo de cambios de estado de los procesos es administrado por un componente esencial del SO, el **scheduler** o **planificador**, que lleva el control de qué proceso debe ser el próximo en ejecutarse. El planificador seguirá una estrategia que permita obtener el máximo rendimiento posible de la CPU. 
 
 El scheduler o planificador mantiene una cola de procesos que están esperando por la CPU, y elige qué proceso pasar a estado de ejecutando. Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose cambia de estado hasta que vuelva a tocarle el uso de la CPU.
@@ -398,9 +398,9 @@ El scheduler o planificador mantiene una cola de procesos que están esperando p
 <h3>Sistema multiprogramado</h3>
 <img src="img/procesos-0.png" class="plain stretch">
 <aside data-markdown class="notes">
-##Ciclo de estados 
+## Ciclo de estados 
 
-###Ciclo de estados en un sistema multiprogramado
+### Ciclo de estados en un sistema multiprogramado
 En un sistema **multiprogramado**, varios procesos pueden estar presentes en la memoria del sistema de cómputo. Durante su vida en el sistema, cada proceso atravesará un ciclo de estados.
 
 - Cuando recién se crea un proceso, su estado es **listo**, porque está preparado para recibir la CPU cuando el planificador o scheduler lo disponga.
@@ -439,7 +439,7 @@ En un sistema **multiprogramado**, varios procesos pueden estar presentes en la 
 <img src="img/procesos-3.png" class="plain stretch">
 <aside data-markdown class="notes">
 
-###Ciclo de estados en un sistema de tiempo compartido
+### Ciclo de estados en un sistema de tiempo compartido
 Los sistemas **de tiempo compartido** están diseñados para ser **interactivos**, y tienen la misión de hacer creer a cada usuario que el sistema de cómputo está dedicado exclusivamente a sus procesos. Sin embargo, normalmente existen muchísimos procesos activos simultáneamente en un SO de propósito general. 
 
 Para lograr esto el planificador de estos SO debe ser capaz de hacer los cambios de estado con mucha velocidad. El resultado es que los usuarios prácticamente no perciben estos cambios de estado. 
@@ -452,7 +452,7 @@ En un sistema **de tiempo compartido**, el ciclo de estados de los procesos es s
 - Al agotarse el quantum, el SO **interrumpirá** al proceso y le impondrá el estado de **listo**. Al quedar libre la CPU, el siguiente proceso planificado entrará en estado de ejecución.
 - Sin embargo, si un proceso decide solicitar un servicio del SO antes de que se agote su quantum, el ciclo continuará de la misma manera que en el sistema multiprogramado, pasando a estado **en espera** hasta que finalice el servicio.
 
-###Comparando multiprogramación y *time sharing*
+### Comparando multiprogramación y *time sharing*
 Notemos que los diagramas de estados del **sistema multiprogramado** y del sistema **de tiempo compartido** se diferencian sólo en una transición: la que lleva del estado de **ejecutando** al de **listo** en este último sistema.
 
 - En un sistema multiprogramado, un proceso sólo abandona la CPU cuando ejecuta una petición de servicio al SO. 
@@ -469,7 +469,7 @@ Notemos que los diagramas de estados del **sistema multiprogramado** y del siste
 <li>¿Y en un sistema de tiempo compartido?</li>
 </ul>
 <aside data-markdown class="notes">
-###Preguntas
+### Preguntas
 - ¿Por qué un proceso que ejecuta una solicitud de entrada/salida no pasa directamente al estado de **listo**?
 - ¿En qué radica la diferencia entre el scheduling de un sistema multiprogramado y el de un sistema de tiempo compartido?
 - Si en un sistema multiprogramado se ejecuta un programa escrito de forma que **nunca** ejecuta una operación de entrada/salida, ¿liberará alguna vez la CPU durante su vida?
@@ -556,7 +556,7 @@ Notemos que los diagramas de estados del **sistema multiprogramado** y del siste
 <h2>Procesos concurrentes</h2>
 <img src="img/estados-anim.gif" class="plain stretch">
 <aside data-markdown class="notes">
-###Concurrencia y paralelismo
+### Concurrencia y paralelismo
 Si el sistema de tiempo compartido dispone de **una sola unidad de ejecución o CPU**, habrá solamente **un proceso ejecutándose** en cada momento dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo, alternándose en el uso de esa CPU. 
 
 - Cuando los procesos coexisten en el sistema simultáneamente pero se alternan en el uso de **una única CPU** decimos que esos procesos son **concurrentes**. Todos están activos en el sistema durante un período de tiempo dado; sin embargo, no hay dos procesos en estado de ejecución en el mismo momento, por lo cual no podemos decir que se ejecutan "simultáneamente".
@@ -576,10 +576,10 @@ Si el sistema de tiempo compartido dispone de **una sola unidad de ejecución o 
 <h2>Procesos</h2>
 <img src="img/top.png" class="stretch plain">
 <aside data-markdown class="notes">
-###Monitorización de procesos
+### Monitorización de procesos
 Los sistemas operativos suelen ofrecer herramientas para monitorizar o controlar los procesos del sistema. 
 
-###Comando top
+### Comando top
 En Linux, el comando **`top`** ofrece una vista de los procesos, información acerca de los recursos que están ocupando, y algunas estadísticas globales del sistema.
 
 Es conveniente consultar el manual del comando (`man top`) para investigar a fondo los significados de cada uno de los datos presentados en pantalla.
@@ -646,7 +646,7 @@ El comando `top` tiene muchas opciones y comandos interactivos. Uno de ellos mue
 <tr><td>kill</td><td></td><td>Envía una señal</td></tr>
 </table>
 <aside data-markdown class="notes">
-##Comandos de procesos
+## Comandos de procesos
 
 En los sistemas operativos de la familia de Unix encontramos un rico conjunto de comandos de usuario destinados al control de procesos. Algunos interesantes son:
 
@@ -679,7 +679,7 @@ Este emulador de PC construido en Javascript nos permite practicar los comandos 
 * Para copiar un archivo desde la máquina virtual al equipo local:
   - Ejecutar en la máquina virtual el comando "export_file nombreDeArchivo".
 
-### Algunos comandos para probar
+###  Algunos comandos para probar
 
 - `ls`
 - `ls -l`
@@ -721,29 +721,29 @@ Este emulador de PC construido en Javascript nos permite practicar los comandos 
 	<li>Estructura jerárquica de <b>directorios</b></li>
 </ul>
 <aside data-markdown class="notes">
-##Gestión de archivos
+## Gestión de archivos
 
-###Archivos
+### Archivos
 La información que se guarda en medios de almacenamiento permanente, como los **discos**, se organiza en **archivos**, que son secuencias de bytes. Estos bytes pueden estar codificando cualquier clase de información: texto, código fuente de programas, código ejecutable, multimedia, etc. 
 
 Cualquier pieza de información que sea tratable mediante las computadoras puede ser almacenada y comunicada en forma de archivos.
 
-###Sistema de archivos
+### Sistema de archivos
 El componente del SO responsable de los servicios relacionados con archivos es el llamado **sistema de archivos** o **filesystem**.
 
 En general, el filesystem no se ocupa de cuál es el contenido de los archivos, o de qué sentido tienen los datos que contienen. Son las aplicaciones quienes tienen conocimiento de cómo interpretar y procesar los datos contenidos en los archivos.
 
 En cambio, el filesystem mantiene información **acerca** de los archivos: en qué bloques del disco están almacenados, qué tamaño tienen, cuándo fueron creados, modificados o accedidos por última vez, qué usuarios tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
 
-###Metadatos
+### Metadatos
 Como todos estos datos son **acerca de los archivos**, y no tienen nada que ver con los datos **contenidos en** los archivos, son llamados **metadatos**. El sistema de archivos o filesystem mantiene tablas y listas de metadatos que describen los archivos contenidos en un medio de almacenamiento. 
 
-###Directorios
+### Directorios
 Una característica compartida por la mayoría de los sistemas de archivos es la organización jerárquica de los archivos en estructura de **directorios**. Los directorios son contenedores de archivos (y de otros directorios). 
 
 Los directorios han sido llamados, en la metáfora de las interfaces visuales de usuario, **carpetas**.
 
-###Varios significados
+### Varios significados
 En rigor de verdad, el nombre de sistema de archivos o filesystem designa varias cosas, relacionadas pero diferentes:
 
 * **Una pieza de software**
@@ -770,14 +770,14 @@ En rigor de verdad, el nombre de sistema de archivos o filesystem designa varias
 <h2>Árbol de directorios</h2>
 <img src="img/tree.png" class="plain stretch">
 <aside data-markdown class="notes">
-##Árbol de directorios
+## Árbol de directorios
 En los filesystems de tipo Unix, la organización de los directorios es jerárquica y recuerda a un árbol con **raíz** y ramas. Algunos directorios cumplen una función especial en el sistema porque contienen archivos especiales, y por eso tienen nombres establecidos. 
 
 - Por ejemplo, el directorio raíz, donde se origina toda la jerarquía de directorios, tiene el nombre especial "/". 
 - El directorio `lib` (abreviatura de **library** o biblioteca) contiene bibliotecas de software. 
 - Los directorios `bin`, `sbin`. `/usr/bin`, etc., contienen archivos ejecutables (a veces llamados **binarios**).
 
-###Nombres de archivo y referencias
+### Nombres de archivo y referencias
 Los nombres completos, o **referencias absolutas**, de los archivos y directorios se dan indicando cuál es el camino que hay que recorrer, para encontrarlos, **desde la raíz** del sistema de archivos. 
 
 **Ejemplo**
@@ -811,22 +811,22 @@ La referencia es relativa porque, si el proceso cambia de directorio activo, ya 
 	<li>Superblock</li>
 </ul>
 <aside data-markdown class="notes">
-##Elementos del sistema de archivos
+## Elementos del sistema de archivos
 
-###Particiones
+### Particiones
 Los medios de almacenamiento se dividen en **particiones** o zonas de almacenamiento. Cada partición puede contener un sistema de archivos, con sus archivos y metadatos.
 
-###Bloques
+### Bloques
 Los **bloques** son las unidades mínimas de almacenamiento que ofrecen los diferentes dispositivos, como los discos. Un **bloque** es como un contenedor de datos que se asigna a un archivo. 
 
 Los archivos quedan almacenados, en los discos y en otros medios, como una sucesión de bloques de datos. El filesystem tiene la responsabilidad de mantener la lista de referencias a esos bloques, para poder manipular los archivos como un todo.
 
-###Inodos
+### Inodos
 Los **nodos índice** o **inodos** son estructuras de datos que describen, cada una, un archivo. Los inodos contienen los principales metadatos de cada archivo, excepto el nombre.
 
 En los sistemas de archivos del tipo de Unix, los nombres y los inodos de los archivos están separados. Como consecuencia, un archivo puede tener más de un nombre.
 
-###Superblock
+### Superblock
 El **superblock** grabado en una partición es una estructura de datos compleja donde se mantienen los datos del sistema de archivos. El superblock contiene una lista de bloques libres y una lista de inodos.
 </aside>
 </section>
@@ -895,7 +895,7 @@ El **superblock** grabado en una partición es una estructura de datos compleja 
 	<li>Punteros a bloques</li>
 </ul>
 <aside data-markdown class="notes">
-##Inodos
+## Inodos
 
 Cada **inodo** describe a un archivo de datos en un filesystem. El inodo contiene metadatos como:
 
@@ -938,7 +938,7 @@ drwxr-xr-x 2 oso oso 4096 May 26 18:14 prueba
 </tr>
 </table>
 <aside data-markdown class="notes">
-###Metadatos
+### Metadatos
 Los metadatos de cada archivo, contenidos en su inodo, pueden ser consultados y modificados con comandos de usuario. 
 
 **Ejemplo**
@@ -998,7 +998,7 @@ El último dato de cada línea es el nombre del archivo.
 <h2>Punteros directos a bloques</h2>
 <img src="img/inodos-0.svg" class="plain stretch">
 <aside data-markdown class="notes">
-##Bloques de disco
+## Bloques de disco
 
 El SO ve los discos como un vector de bloques o espacios de tamaño fijo. Cada bloque se identifica por su número de posición en el vector, o **dirección de bloque**. Esta dirección es utilizada para todas las operaciones de lectura o escritura en el disco. 
 
@@ -1072,12 +1072,12 @@ Supongamos que un disco ha sido formateado de modo de contener 1 TiB de espacio 
 <h2>Directorios</h2>
 <img src="img/directorio.svg" class="plain stretch">
 <aside data-markdown class="notes">
-##Directorios
+## Directorios
 Notemos que en ningún momento hemos mencionado el **nombre** de los archivos entre los metadatos. En el filesystem de Unix, los nombres de archivo no se encuentran en el superblock, sino en los directorios. Otros sistemas de archivos adoptan otras estrategias. 
 
 En Unix, un directorio es simplemente un conjunto de bloques de datos, como los archivos regulares, pero juega un papel especial en el funcionamiento del sistema de archivos, y sus contenidos tienen un formato especial. Los archivos especiales de tipo directorio son archivos de datos que podemos pensar organizados como una tabla de dos columnas. Contienen una lista de entradas con **nombres de archivo** (o **links**) y números de **inodos** que los representan. 
 
-###Links o nombres de archivo
+### Links o nombres de archivo
 
 Al separar el archivo (representado por el inodo), de su nombre **o link** (contenido en el directorio), el filesystem permite que un archivo pueda tener **más de un nombre**. 
 
@@ -1097,7 +1097,7 @@ Si un proceso intenta borrar un archivo, en realidad estará borrando **uno de s
 </div>
 <img src="img/busq-root.svg" class="plain stretch">
 <aside data-markdown class="notes">
-###Búsqueda de un archivo en el filesystem
+### Búsqueda de un archivo en el filesystem
 Supongamos que un proceso necesita leer los bloques de datos del archivo `/etc/group`. Deberá entregarle al filesystem el nombre de este archivo para que pueda localizarlo y devolverle esos datos.  
 
 Supongamos además que especifica el nombre mediante una referencia absoluta.  El filesystem analizará la referencia absoluta que le ha entregado el proceso, descomponiéndola en sus partes componentes y usándola como mapa para llegar al archivo, desde el directorio raíz.
