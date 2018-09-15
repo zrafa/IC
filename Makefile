@@ -104,6 +104,9 @@ epub: siste uni repre texto arqui soft comp so redes
 		SistemasDeCómputo.md \
 		SistemasOperativos.md \
 		Redes.md \
+		Anexos.md \
+			ComplementoALaBase.md \
+			Suma2k-1.md \
 	-o IC2017-notes.epub
 
 git: 
