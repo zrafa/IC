@@ -1,15 +1,17 @@
-Arquitectura y Organización de Computadoras
-===========================================
 
-¿Cómo definimos una computadora? ¿Cuándo un dispositivo es una
+
+ARQUITECTURA Y ORGANIZACIÓN DE COMPUTADORAS
+
+
+¿Cómo DEFINIMOS una computadora? ¿Cuándo un dispositivo es una
 computadora y cuándo decimos que no lo es? En esta unidad, vemos estos
 temas y estudiamos los diferentes componentes que tienen las
 computadoras.
 
-Componentes de una computadora simple
--------------------------------------
 
-En primer lugar, una memoria principal, que es donde se almacenan todos
+Componentes de una computadora simple
+
+En primer lugar, una MEMORIA PRINCIPAL, que es donde se almacenan todos
 los datos y las instrucciones de programa. Todo lo que puede hacer la
 computadora, lo hace únicamente con contenidos que estén en la memoria.
 Para poder procesar un dato, primero hay que hacerlo llegar a la memoria
@@ -18,61 +20,61 @@ en disco, en un pendrive, o ser introducido por el teclado, pero sólo
 cuando llega a la memoria principal es que puede ser procesado por la
 CPU.
 
-La CPU, o Unidad Central de Procesamiento, es el componente que
+La CPU, O UNIDAD CENTRAL DE PROCESAMIENTO, es el componente que
 realmente lleva a cabo los cómputos. Trabaja leyendo instrucciones y
 datos de la memoria; y ejecuta esas instrucciones que operan sobre esos
 datos. Vamos a hablar mucho más sobre la CPU en esta unidad.
 
-Los dispositivos de Entrada y Salida son todos aquellos dispositivos que
+Los DISPOSITIVOS DE ENTRADA Y SALIDA son todos aquellos dispositivos que
 conectamos a la computadora para hacer que el conjunto CPU + Memoria se
 comunique con el ambiente.
 
 -   Con dispositivos como el teclado, mouse, o tableta digitalizadora,
-    podemos introducir datos. Son dispositivos de entrada.
+    podemos introducir datos. Son dispositivos de ENTRADA.
 -   Con dispositivos como pantalla o impresora, podemos hacer que la
     computadora presente los resultados de los cómputos y los entregue
-    al usuario. Son dispositivos de salida.
+    al usuario. Son dispositivos de SALIDA.
 -   Algunos dispositivos son de entrada y salida a la vez, como la
     tarjeta de red.
 
 Todos estos componentes, y muchos otros que pueden estar o no presentes,
-dependiendo de la arquitectura, o modo de construcción, de la
-computadora, están conectados entre sí mediante buses o líneas de
+dependiendo de la ARQUITECTURA, o modo de construcción, de la
+computadora, están conectados entre sí mediante BUSES o líneas de
 interconexión.
 
 Memoria
 
 La memoria es un componente fundamental de la computadora. Está
 implementada con circuitos que pueden estar en uno de dos estados
-eléctricos, y por esto los llamamos biestables.
+eléctricos, y por esto los llamamos BIESTABLES.
 
 Cada circuito biestable puede almacenar la información correspondiente a
-un bit. Los bits están agrupados de a ocho formando los bytes. Estos
+un BIT. Los bits están agrupados de a ocho formando los BYTES. Estos
 circuitos, con las tecnologías de hoy, están super miniaturizados y
 contienen muchos millones de posiciones donde se pueden almacenar
 temporariamente los datos y las instrucciones de programa.
 
 Para poder utilizar la memoria es imprescindible conocer el número, o
-dirección, de la posición de memoria donde está el dato o instrucción
-que se necesita acceder. Con esta dirección podemos recuperar, es decir,
-leer, el valor que está alojado en ese byte de la memoria, o escribir
+DIRECCIÓN, de la posición de memoria donde está el dato o instrucción
+que se necesita acceder. Con esta dirección podemos RECUPERAR, es decir,
+LEER, el valor que está alojado en ese byte de la memoria, o escribir
 sobre ese byte un contenido de ocho bits.
 
 CPU
 
 La CPU está implementada como un circuito sumamente complejo que
-contiene registros. Éstos son lugares de almacenamiento temporario de
+contiene REGISTROS. Éstos son lugares de almacenamiento temporario de
 datos e instrucciones que se utilizan durante el cómputo.
 
 Si, en un momento dado, sacamos una foto instantánea de una CPU, sus
 registros tendrán un cierto conjunto de valores. Ese conjunto de valores
-se llama el estado de la CPU. La CPU, mientras opera, va cambiando de
+se llama el ESTADO de la CPU. La CPU, mientras opera, va cambiando de
 estado, es decir, paso a paso va modificando los valores de sus
 registros hasta llegar a un resultado de cada instrucción.
 
 Por atravesar esta sucesión de cambios de estado, se dice que una CPU es
-un circuito secuencial. Los cambios de estado son disparados por un
-reloj, que es un circuito auxiliar que produce pulsos o impulsos
+un circuito SECUENCIAL. Los cambios de estado son disparados por un
+RELOJ, que es un circuito auxiliar que produce pulsos o impulsos
 eléctricos que hacen marchar a la CPU.
 
 La CPU puede interpretar un conjunto determinado de instrucciones. Estas
@@ -82,25 +84,25 @@ instrucciones, que son muy básicas, como sumar dos datos, o leer el dato
 que está en una determinada dirección de la memoria.
 
 Sin embargo, cuando escribimos una secuencia de instrucciones en la
-memoria, es decir, un programa, podemos hacer que la CPU desarrolle
+memoria, es decir, un PROGRAMA, podemos hacer que la CPU desarrolle
 otras tareas que no estaban previstas en su arquitectura. Por ejemplo,
 podemos tener una CPU que no sepa multiplicar o dividir, pero si cuenta
 con un programa con las instrucciones adecuadas, puede ejecutar
 operaciones de multiplicación o división de datos.
 
 La CPU está constituida por varios circuitos componentes o unidades
-funcionales, como la Unidad de Control y la Unidad Lógico-Aritmética.
+funcionales, como la UNIDAD DE CONTROL y la UNIDAD LÓGICO-ARITMÉTICA.
 
 -   La Unidad de Control es la que contiene la lógica necesaria para
-    leer cada instrucción del programa que está en memoria, ejecutarla,
-    y pasar a la siguiente instrucción. Esta lógica se llama el ciclo de
-    instrucción y se repite continuamente mientras la CPU está
+    LEER cada instrucción del programa que está en memoria, EJECUTARLA,
+    y pasar a la SIGUIENTE instrucción. Esta lógica se llama el CICLO DE
+    INSTRUCCIÓN y se repite CONTINUAMENTE mientras la CPU está
     funcionando.
 -   La Unidad Lógico-Aritmética es la que efectivamente realiza los
     cómputos con los datos.
 
+
 Arquitectura de Von Neumann
----------------------------
 
 Máquina de programa almacenado
 
@@ -109,8 +111,8 @@ muchas otras cosas que físicamente forman parte de la computadora; pero
 la descripción de la computadora que hemos hecho hasta el momento dice,
 por lo menos en líneas generales, los componentes fundamentales que
 tiene cualquier computadora actual. Esta descripción puede resumirse
-diciendo que la computadora es una máquina de Von Neumann o máquina de
-programa almacenado.
+diciendo que la computadora es una MÁQUINA DE VON NEUMANN O MÁQUINA DE
+PROGRAMA ALMACENADO.
 
 En esta clase de máquinas, existe una memoria; que contiene
 instrucciones y datos; que como contenidos de esa memoria, no se
@@ -123,24 +125,24 @@ instrucción y pasando a la siguiente.
 
 CPU y Memoria
 
-En una máquina de Von Neumann, entonces, aparecen dos componentes
+En una MÁQUINA DE VON NEUMANN, entonces, aparecen dos componentes
 básicos fundamentales que son la CPU y la memoria,
 
-la primera conteniendo una Unidad de Control, o UC, para realizar el
-ciclo de instrucción,
+la primera conteniendo una UNIDAD DE CONTROL, O UC, para realizar el
+CICLO DE INSTRUCCIÓN,
 
-y una Unidad Lógico-Aritmética, o ALU, para el cómputo.
+y una UNIDAD LÓGICO-ARITMÉTICA, O ALU, para el cómputo.
 
 Buses
 
 En la máquina existen diferentes clases de buses para interconectar los
 componentes:
 
--   buses internos de la CPU para comunicar la UC y la ALU,
+-   BUSES INTERNOS de la CPU para comunicar la UC y la ALU,
 
--   buses de sistema que relacionan la CPU y la memoria,
+-   BUSES DE SISTEMA que relacionan la CPU y la memoria,
 
--   y otros buses de Entrada/Salida para comunicar todo el sistema con
+-   y otros BUSES DE ENTRADA/SALIDA para comunicar todo el sistema con
     los dispositivos de entrada o de salida.
 
 ¿En qué momento se utilizará cada clase de bus?
@@ -154,11 +156,11 @@ componentes:
     del cómputo al usuario, usará un bus de Entrada/Salida para emitir
     ese resultado por pantalla o por impresora.
 
+
 Modelo Computacional Binario Elemental
---------------------------------------
 
 Para comprender desde lo más básico cómo opera la computadora,
-recurrimos al MCBE o Modelo Computacional Binario Elemental, que es una
+recurrimos al MCBE O MODELO COMPUTACIONAL BINARIO ELEMENTAL, que es una
 máquina teórica. El MCBE es una computadora extremadamente simple, pero
 que podría ser implementada físicamente, y funcionaría como la mayoría
 de las computadoras actuales. Bueno, con muchas menos capacidades,
@@ -169,13 +171,13 @@ Esquema del MCBE
 
 [Esquema del MCBE]
 
-En este esquema del MCBE vemos los tres registros de la CPU: el PC o
-contador de programa, el IR o registro de instrucción, situados en la
-Unidad de Control, y el Acumulador, situado en la Unidad
+En este esquema del MCBE vemos los tres registros de la CPU: el PC O
+CONTADOR DE PROGRAMA, el IR O REGISTRO DE INSTRUCCIÓN, situados en la
+Unidad de Control, y el ACUMULADOR, situado en la Unidad
 Lógico-aritmética. Los tres son registros de ocho bits.
 
-Además se representa la memoria, compuesta por 32 bytes de ocho bits.
-Las direcciones de los bytes van, entonces, de 0 a 31. Aquí hemos
+Además se representa LA MEMORIA, compuesta por 32 bytes de ocho bits.
+Las direcciones de los bytes van, entonces, DE 0 A 31. Aquí hemos
 descompuesto la memoria en trozos solamente para poder representarla
 completa en el esquema, pero conviene pensar en la memoria como una
 única sucesión de bytes, numerados de 0 a 31. Es costumbre, al
@@ -184,10 +186,10 @@ direcciones menores en la parte inferior del diagrama, y las direcciones
 mayores arriba; como si la memoria fuera una escalera con posiciones
 numeradas a partir de 0 y ascendiendo.
 
-Estado de la máquina
+ESTADO DE LA MÁQUINA
 
 Cada combinación posible de ceros y unos en los bits de cualquiera de
-los registros o posiciones de memoria representa un estado de la
+los registros o posiciones de memoria representa un ESTADO de la
 máquina, porque define los valores de la memoria y de los registros en
 un momento dado. Es decir, el estado de la máquina en cada momento es el
 conjunto de valores de los tres registros y de los 32 bytes de la
@@ -196,7 +198,7 @@ memoria.
 El estado de la máquina en cada momento define cuál será el estado
 siguiente. Ninguna otra cosa interviene en el comportamiento de la
 máquina. En particular, la máquina no tiene voluntad ni toma decisiones
-propias: solamente cumple el ciclo de instrucción, que la hace ejecutar
+propias: solamente cumple el CICLO DE INSTRUCCIÓN, que la hace ejecutar
 las instrucciones del programa que tenga almacenado.
 
 Memoria del MCBE
@@ -223,57 +225,57 @@ memoria, en el sentido de que se pueden leer o escribir datos en ellos,
 pero normalmente en una computadora física su velocidad de acceso es
 mayor.
 
-Los registros del MCBE tienen diferentes funciones. El registro PC, o
-contador de programa, contiene en cada momento la dirección de la
+Los registros del MCBE tienen diferentes funciones. El registro PC, O
+CONTADOR DE PROGRAMA, contiene en cada momento la dirección de la
 próxima instrucción que se va a ejecutar; es decir, contiene un número
 que es la dirección de la posición de memoria donde está almacenada la
 instrucción que está por ejecutar el MCBE.
 
-Antes de ejecutar cada instrucción, la CPU va a copiarla en el registro
-IR, o registro de instrucción; y mientras está almacenada allí la
+Antes de ejecutar cada instrucción, la CPU va a COPIARLA en el registro
+IR, O REGISTRO DE INSTRUCCIÓN; y mientras está almacenada allí la
 instrucción, va a ser decodificada, es decir, la CPU va a interpretar de
 qué instrucción se trata, y la va a ejecutar.
 
-El registro acumulador, que pertenece a la ALU, es un registro que
+El registro ACUMULADOR, que pertenece a la ALU, es un registro que
 interviene en casi todas las operaciones del MCBE; sobre todo para las
 operaciones aritméticas.
 
 CPU del MCBE
 
-Entonces la CPU del MCBE queda definida como el conjunto de Unidad de
-Control con dos registros PC e IR, más Unidad lógico-aritmética con un
-registro acumulador.
+Entonces la CPU del MCBE queda definida como el conjunto de UNIDAD DE
+CONTROL con dos registros PC E IR, más UNIDAD LÓGICO-ARITMÉTICA con un
+registro ACUMULADOR.
 
 Esta CPU va a ser muy limitada y solamente va a ejecutar operaciones de
 suma y resta en complemento a 2, con ocho bits. No va a ejecutar
-multiplicaciones, ni divisiones, ni operaciones en punto flotante.
+MULTIPLICACIONES, ni DIVISIONES, ni operaciones en PUNTO FLOTANTE.
 
 Formato de instrucciones del MCBE
 
-Código de instrucción Las instrucciones del MCBE se codifican en ocho
+CÓDIGO DE INSTRUCCIÓN Las instrucciones del MCBE se codifican en ocho
 bits y por lo tanto pueden ser almacenadas en un byte de la memoria, o
 en el registro IR. Cada instrucción se divide en dos partes: los tres
-bits de más a la izquierda se destinan a representar el código de
-instrucción.
+bits de más a la izquierda se destinan a representar el CÓDIGO DE
+INSTRUCCIÓN.
 
-Argumentos u operandos Los cinco bits restantes representan el argumento
-u operando de esa instrucción, es decir, el dato con el cual tiene que
+ARGUMENTOS U OPERANDOS Los cinco bits restantes representan el ARGUMENTO
+U OPERANDO de esa instrucción, es decir, el dato con el cual tiene que
 operar esa instrucción.
 
-Direcciones y desplazamientos Por otro lado, los operandos pueden ser de
-dos clases: o bien direcciones, o bien desplazamientos. Si el operando
+DIRECCIONES Y DESPLAZAMIENTOS Por otro lado, los operandos pueden ser de
+dos clases: o bien DIRECCIONES, o bien DESPLAZAMIENTOS. Si el operando
 es una dirección, es porque la CPU necesita conocer la dirección de un
-dato. Si es un desplazamiento, ese desplazamiento es una cantidad de
-posiciones que hay que trasladarse en la memoria, para encontrar la
+dato. Si es un desplazamiento, ese desplazamiento es UNA CANTIDAD DE
+POSICIONES que hay que trasladarse en la memoria, para encontrar la
 siguiente instrucción que hay que procesar.
 
 -   Cuando el operando es una dirección, los cinco bits del operando
     representan una cantidad sin signo (porque no pueden existir
     direcciones negativas).
--   Cuando es un desplazamiento, esos cinco bits son con signo, y más
+-   Cuando es un desplazamiento, esos cinco bits son CON SIGNO, y más
     precisamente, en complemento a 2; porque el desplazamiento puede ser
-    negativo, indicando que hay que volver hacia atrás, a una cierta
-    dirección de la memoria a ejecutar una instrucción que tal vez ya
+    NEGATIVO, indicando que hay que VOLVER HACIA ATRÁS, A UNA CIERTA
+    DIRECCIÓN DE LA MEMORIA a ejecutar una instrucción que tal vez ya
     fue ejecutada.
 
 Notemos que al representar las direcciones con cinco bits, sin signo,
@@ -290,24 +292,24 @@ Conjunto de instrucciones del MCBE
 Las instrucciones del MCBE se dividen en cuatro grupos.
 
 -   Las instrucciones de transferencia de datos son las que leen o
-    escriben datos en la memoria.  
+    escriben datos en la memoria.
 -   Las aritméticas son las que operan entre esos datos de la memoria y
-    el valor presente en el registro acumulador.  
+    el valor presente en el registro acumulador.
 -   Las de salto o transferencia de control, las que desvían, derivan o
-    trasladan la ejecución a otra posición de memoria.  
+    trasladan la ejecución a otra posición de memoria.
 -   Y las de control, completan el funcionamiento de la máquina, por
     ejemplo controlando cuándo va a detenerse el programa.
 
-Notemos que, como tenemos un campo de tres bits para definir el código
-de instrucción, no vamos a poder tener más que ocho instrucciones.
+Notemos que, como tenemos un campo de TRES BITS para definir el código
+de instrucción, no vamos a poder tener más que OCHO INSTRUCCIONES.
 Precisamente hay dos instrucciones en cada grupo de estos cuatro que
 hemos definido.
 
-Instrucciones de transferencia de datos
+INSTRUCCIONES DE TRANSFERENCIA DE DATOS
 
 Las instrucciones de transferencia de datos son dos. El código 0 1 0 copia
 un byte de la memoria hacia el acumulador. Para esto se necesita la
-dirección de ese byte, y esa dirección es precisamente el argumento u
+DIRECCIÓN de ese byte, y esa dirección es precisamente el argumento u
 operando de la instrucción, y por lo tanto esa dirección está codificada
 en los cinco bits de operando de la instrucción.
 
@@ -326,7 +328,7 @@ instrucción 0 1 0, o el valor de una posición de memoria, en el caso del
 código 0 1 1, y el valor del PC se incrementa en 1. No ocurre ningún otro
 cambio en el estado de la máquina, ni en los registros ni en la memoria.
 
-Instrucciones aritméticas
+INSTRUCCIONES ARITMÉTICAS
 
 Las instrucciones aritméticas también son dos. Si el código es 1 0 0, la
 CPU va a buscar el valor contenido en la dirección dada por el operando,
@@ -340,11 +342,11 @@ consiste en complementar a 2 el operando y luego sumar. El resultado,
 igual que en la instrucción de suma, queda en el acumulador, y la
 posición de memoria queda sin cambios. Como en las instrucciones de
 transferencia de datos, el registro PC se incrementa en 1. Decimos que
-el PC queda apuntando a la siguiente instrucción.
+el PC QUEDA APUNTANDO a la siguiente instrucción.
 
-Instrucciones de salto
+INSTRUCCIONES DE SALTO
 
-Las dos instrucciones de salto, o de transferencia de control, tienen un
+Las dos instrucciones DE SALTO, O DE TRANSFERENCIA DE CONTROL, tienen un
 efecto diferente. Funcionan modificando exclusivamente el valor del
 registro PC. En ambos casos, el operando es un valor con signo a cinco
 bits. En el caso del código 1 1 0, ese valor se suma algebraicamente al
@@ -354,15 +356,15 @@ donde estaba antes. Así, el ciclo de instrucción siguiente va a leer la
 instrucción ubicada en esa nueva dirección que ahora está contenida en
 el PC.
 
-El código 1 1 0 es una instrucción de salto incondicional, es decir,
-siempre provoca un salto en la ejecución. En el caso del código 1 1 1, el
-salto es condicional, y depende del valor del registro acumulador. Si el
-acumulador tiene un valor 0, se produce el salto, sumando el valor del
+El código 1 1 0 es una instrucción de salto INCONDICIONAL, es decir,
+SIEMPRE provoca un SALTO en la ejecución. En el caso del código 1 1 1, el
+salto es CONDICIONAL, Y DEPENDE DEL VALOR DEL REGISTRO ACUMULADOR. Si el
+acumulador TIENE UN VALOR 0, se produce el salto, sumando el valor del
 desplazamiento al registro PC. Pero si el acumulador no vale cero,
 simplemente se incrementa el PC en 1 como en el resto de las
 instrucciones; y el control sigue secuencialmente como es normal.
 
-Otras instrucciones
+OTRAS INSTRUCCIONES
 
 Hasta el momento no hemos explicado cómo se detiene la máquina. El ciclo
 de instrucción continuamente va a ejecutar la instrucción siguiente, sin
@@ -375,11 +377,11 @@ La operación 0 0 0 no tiene ningún efecto sobre el estado del MCBE, salvo
 incrementar el PC. Ningún otro registro ni posición de memoria cambia su
 valor.
 
-Ciclo de instrucción
---------------------
 
-Ahora podemos definir con más rigurosidad lo que se entiende por ciclo
-de instrucción. El MCBE inicia su operación con todos los contenidos de
+Ciclo de instrucción
+
+Ahora podemos definir con más rigurosidad lo que se entiende por CICLO
+DE INSTRUCCIÓN. El MCBE inicia su operación con todos los contenidos de
 la memoria y registros en 0, y se pone a ejecutar continuamente el ciclo
 de instrucción. Para esto repite continuamente las fases siguientes.
 
@@ -399,16 +401,16 @@ de instrucción. Para esto repite continuamente las fases siguientes.
     leyendo la siguiente instrucción que haya que ejecutar, que será
     aquella cuya dirección esté contenida en el PC.
 
+
 Programación del MCBE
----------------------
 
 ¿Cómo es, entonces, un programa para esta máquina teórica? Es una
 sucesión de bytes, que representan instrucciones y datos, contenidos en
 la memoria a partir de la dirección 0, y donde cada byte va a ser
 interpretado como instrucción o como dato según lo diga el programa.
-Como el estado inicial de la máquina es con todos los valores en 0, lo
-único que puede decirse con seguridad es que la primera posición de la
-memoria contiene una instrucción. Pero a partir de allí, el desarrollo
+Como el estado inicial de la máquina es CON TODOS LOS VALORES EN 0, lo
+único que puede decirse con seguridad es que LA PRIMERA POSICIÓN DE LA
+MEMORIA CONTIENE UNA INSTRUCCIÓN. Pero a partir de allí, el desarrollo
 de la ejecución va a ser dado por las instrucciones particulares que
 contenga el programa.
 
@@ -444,17 +446,17 @@ contenga el programa.
 Traza de ejecución
 
 ¿Qué es realmente lo que hace este programa, y cuál es el resultado de
-ejecutarlo? Para poder saberlo, lo más conveniente es hacer una traza
-del programa. Una traza es un diagrama o planilla donde preparamos
-columnas con los nombres de los registros, la memoria y la salida, para
+ejecutarlo? Para poder saberlo, lo más conveniente es hacer una TRAZA
+DEL PROGRAMA. Una traza es un diagrama o planilla donde preparamos
+COLUMNAS con los nombres de los REGISTROS, LA MEMORIA Y LA SALIDA, para
 poder ir simulando manualmente la ejecución, e ir anotando qué valores
 toman esos registros; es decir, cuáles son los sucesivos estados del
 MCBE.
 
 Para cada instrucción que se ejecute usaremos un renglón de la planilla.
 
-En la traza solamente escribiremos los elementos del estado que se
-modifiquen en cada paso. En la columna de MEMORIA anotaremos cuándo hay
+En la traza solamente escribiremos los elementos del estado QUE SE
+MODIFIQUEN en cada paso. En la columna de MEMORIA anotaremos cuándo hay
 una operación de escritura en memoria, en la columna de SALIDA
 anotaremos cuando haya un contenido que se escriba en pantalla, etc.
 
@@ -488,8 +490,8 @@ Ayuda
 -   1 1 0 Salto
 -   1 1 1 Salto cond
 
+
 Preguntas
----------
 
 1.  El MCBE, ¿puede encontrar una instrucción que no sea capaz de
     decodificar?
@@ -500,7 +502,7 @@ Preguntas
 3.  ¿Podría aumentarse la capacidad de memoria del MCBE? ¿Esto
     requeriría algún cambio adicional a la máquina?
 
-Proponemos como ejercicio examinar las siguientes frases, tomadas de
+Proponemos como ejercicio EXAMINAR las siguientes frases, tomadas de
 exámenes de la materia, a ver si descubrimos qué está mal en cada una de
 ellas.
 

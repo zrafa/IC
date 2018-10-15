@@ -1,59 +1,72 @@
-\documentclass[spanish,A4,]{article}
-\usepackage{sans}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[spanish,a4paper,]{article}
+\usepackage[]{sans}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{spanish}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=spanish]{babel}
 \else
-  \usepackage[spanish]{babel}
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{spanish}
 \fi
 
 \title{Unidades de Información}
+\date{}
 
 \begin{document}
 \maketitle
 
-\section{Unidades de Información}\label{unidades-de-informaciuxf3n}
+\hypertarget{unidades-de-informaciuxf3n}{%
+\section{Unidades de Información}\label{unidades-de-informaciuxf3n}}
 
 En este segundo tema de la unidad veremos qué es la información y cómo
 podemos cuantificar, es decir, medir, la cantidad de información que
@@ -61,7 +74,8 @@ puede alojar un dispositivo, o la cantidad de información que representa
 una pieza cualquiera de información. Veremos además las relaciones entre
 las diferentes unidades de información.
 
-\subsection{Información}\label{informaciuxf3n}
+\hypertarget{informaciuxf3n}{%
+\subsection{Información}\label{informaciuxf3n}}
 
 A lo largo de la historia se han inventado y fabricado máquinas, que son
 dispositivos que \textbf{transforman la energía}, es decir, convierten
@@ -89,7 +103,8 @@ una decisión respecto de algo.
 pero ¿se puede medir? Y si se puede medir, ¿entonces se puede medir la
 cantidad de información que aporta un texto, una imagen?
 
-\subsection{Bit}\label{bit}
+\hypertarget{bit}{%
+\subsection{Bit}\label{bit}}
 
 La Teoría de la Información, una teoría matemática desarrollada
 alrededor de 1950, dice que el \textbf{bit} es ``la mínima unidad de
@@ -124,7 +139,8 @@ por una secuencia de bits. Los bits son, en cierta forma, como los
 usamos para medirla, y definiremos también algunas unidades mayores, o
 múltiplos.
 
-\subsubsection{El viaje de un bit}\label{el-viaje-de-un-bit}
+\hypertarget{el-viaje-de-un-bit}{%
+\subsubsection{El viaje de un bit}\label{el-viaje-de-un-bit}}
 
 En una famosa película de aventuras hay una ciudad en problemas. Uno de
 los héroes enciende una pila de leña porque se prepara un terrible
@@ -157,7 +173,8 @@ permite tomar una decisión entre dos alternativas. Sin embargo, la
 identificación de los bits con los dígitos binarios es útil para todo lo
 que tiene que ver con las computadoras.
 
-\subsection{Byte}\label{byte}
+\hypertarget{byte}{%
+\subsection{Byte}\label{byte}}
 
 Como el bit es una medida tan pequeña de información, resulta necesario
 definir unidades más grandes. En particular, y debido a la forma como se
@@ -169,7 +186,7 @@ casilleros. Cada uno de estos estantes es una \textbf{posición o celda
 de memoria}, y contiene exactamente ocho bits (un byte) de información.
 
 Como los valores de los bits que forman un byte son independientes entre
-sí, existen $2^8$ diferentes valores para esos ocho bits. Si los
+sí, existen \(2^8\) diferentes valores para esos ocho bits. Si los
 asociamos con números en el sistema binario, esos valores serán
 \textbf{00000000}, \textbf{00000001}, \textbf{00000010}, \ldots{}, etc.,
 hasta el \textbf{11111111}. En decimal, esos valores corresponden a los
@@ -182,8 +199,9 @@ información: si los vemos como bytes independientes, pueden representar
 estar formando parte de otras estructuras de información más complejas,
 y tener otros significados.
 
+\hypertarget{representando-datos-con-bytes}{%
 \subsection{Representando datos con
-bytes}\label{representando-datos-con-bytes}
+bytes}\label{representando-datos-con-bytes}}
 
 Para poder tratar y comunicar la información, que está organizada en
 bytes, es necesario que exista una asignación fija de valores binarios a
@@ -214,25 +232,26 @@ sucesivos múltiplos. En el caso del Sistema Internacional, todos los
 factores son alguna potencia de 1000. En el caso del Sistema de Prefijos
 Binarios, todos los factores son potencias de 1024.
 
-\subsubsection{Sistema Internacional}\label{sistema-internacional}
+\hypertarget{sistema-internacional}{%
+\subsubsection{Sistema Internacional}\label{sistema-internacional}}
 
 En el llamado Sistema Internacional, la unidad básica, el byte, se
 multiplica por potencias de 1000. Así, tenemos:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El \textbf{kilobyte} (1000 bytes)
 \item
-  El \textbf{megabyte} (1000 $\times$ 1000 bytes = 1000 kilobytes = un
+  El \textbf{megabyte} (1000 \(\times\) 1000 bytes = 1000 kilobytes = un
   millón de bytes)
 \item
-  El \textbf{gigabyte} (1000 $\times$ 1000 $\times$ 1000 bytes = mil
+  El \textbf{gigabyte} (1000 \(\times\) 1000 \(\times\) 1000 bytes = mil
   megabytes = mil millones de bytes)
 \item
-  El \textbf{terabyte} (1000 $\times$ 1000 $\times$ 1000 $\times$ 1000
-  bytes = mil gigabytes = un billón de bytes), y otros múltiplos mayores
-  como \textbf{petabyte, exabyte, zettabyte, yottabyte}.
+  El \textbf{terabyte} (1000 \(\times\) 1000 \(\times\) 1000 \(\times\)
+  1000 bytes = mil gigabytes = un billón de bytes), y otros múltiplos
+  mayores como \textbf{petabyte, exabyte, zettabyte, yottabyte}.
 \end{itemize}
 
 Como puede verse, cada unidad se forma multiplicando la anterior por
@@ -243,27 +262,28 @@ son \textbf{k minúscula} para \textbf{kilo}, \textbf{M mayúscula} para
 \textbf{mega}, \textbf{G mayúscula} para \textbf{giga}, \textbf{T
 mayúscula} para \textbf{tera}, etc.
 
+\hypertarget{sistema-de-prefijos-binarios}{%
 \subsubsection{Sistema de Prefijos
-Binarios}\label{sistema-de-prefijos-binarios}
+Binarios}\label{sistema-de-prefijos-binarios}}
 
 En el llamado Sistema de Prefijos Binarios, el byte se multiplica por
-potencias de $2^{10}$, que es 1024. Así, tenemos:
+potencias de \(2^{10}\), que es 1024. Así, tenemos:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El \textbf{kibibyte} (1024 bytes)
 \item
-  El \textbf{mebibyte} (1024 $\times$ 1024 bytes,
+  El \textbf{mebibyte} (1024 \(\times\) 1024 bytes,
   \textbf{aproximadamente} un millón de bytes, pero exactamente 1048576
   bytes)
 \item
-  El \textbf{gibibyte} (1024 $\times$ 1024 $\times$ 1024 bytes,
+  El \textbf{gibibyte} (1024 \(\times\) 1024 \(\times\) 1024 bytes,
   \textbf{aproximadamente} mil millones de bytes)
 \item
-  El \textbf{tebibyte} (1024 $\times$ 1024 $\times$ 1024 $\times$ 1024
-  bytes, aproximadamente un millón de mebibytes, o aproximadamente un
-  billón de bytes), y otros múltiplos mayores como \textbf{pebibyte,
+  El \textbf{tebibyte} (1024 \(\times\) 1024 \(\times\) 1024 \(\times\)
+  1024 bytes, aproximadamente un millón de mebibytes, o aproximadamente
+  un billón de bytes), y otros múltiplos mayores como \textbf{pebibyte,
   exbibyte, zebibyte, yobibyte}.
 \end{itemize}
 
@@ -284,7 +304,7 @@ adopción del Sistema de Prefijos Binarios se debe a las características
 de la memoria de las computadoras:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cada posición o celda de la memoria tiene su dirección, que es el
   número de la posición de esa celda dentro del conjunto de toda la
@@ -300,8 +320,8 @@ de la memoria de las computadoras:
 \item
   Por lo tanto, la cantidad de posiciones que puede acceder usando
   direcciones es una potencia de 2: si usa 8 bits para especificar cada
-  dirección, accederá a $2^8$ bytes, cuyas direcciones estarán entre 0 y
-  255. Si usa 10 bits, accederá a $2^{10}$ bytes, cuyas direcciones
+  dirección, accederá a \(2^8\) bytes, cuyas direcciones estarán entre 0
+  y 255. Si usa 10 bits, accederá a \(2^{10}\) bytes, cuyas direcciones
   serán 0 a 1023.
 \item
   Entonces, tener una memoria de, por ejemplo, exactamente \textbf{mil
@@ -323,7 +343,7 @@ Prefijos Binarios al hablar de almacenamiento de memoria, o en unidades
 de almacenamiento permanente, como los discos.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Entonces, cuando un proveedor de servicios de Internet ofrece
   \textbf{un enlace de 1 Mbps}, nos está diciendo que por ese enlace
@@ -341,7 +361,7 @@ de almacenamiento permanente, como los discos.
   memorias, discos rígidos o pendrives, deberían (aunque a veces no lo
   hacen) utilizar Prefijos Binarios para expresar las capacidades de
   almacenamiento de esos medios. Así, un \emph{``pendrive de dieciséis
-  gigabytes''}, si tiene una capacidad de $16 \times 2^{30}$ bytes,
+  gigabytes''}, si tiene una capacidad de \(16 \times 2^{30}\) bytes,
   debería publicitarse en realidad como \emph{``pendrive de dieciséis
   gibibytes''}.
 \end{itemize}

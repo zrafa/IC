@@ -1,13 +1,15 @@
-Representación de la Información
-================================
+
+
+REPRESENTACIÓN DE LA INFORMACIÓN
+
 
 Veremos de qué manera puede ser tratada mediante computadoras la
 información correspondiente a números, textos, imágenes y otros datos.
 Necesitaremos conocer las formas de representación de datos, y
 comenzaremos por los datos numéricos.
 
+
 Representación de datos numéricos
----------------------------------
 
 Hemos visto ejemplos de sistemas de numeración: en base 6, en base 10, o
 decimal, en base 2, o binario, en base 16, o hexadecimal, y en base 8, u
@@ -16,14 +18,14 @@ estas bases, a los sistemas en las demás bases. Sin embargo, aún nos
 falta considerar la representación numérica de varios casos importantes:
 
 -   Hemos utilizado estos sistemas para representar únicamente números
-    enteros. Nos falta ver de qué manera representar números racionales,
+    ENTEROS. Nos falta ver de qué manera representar números racionales,
     es decir aquellos que tienen una parte fraccionaria (los
-    "decimales").
--   Además estos enteros han sido siempre no negativos, es decir,
+    “decimales”).
+-   Además estos enteros han sido siempre NO NEGATIVOS, es decir,
     sabemos representar únicamente el 0 y los naturales. Nos falta
     considerar los negativos.
--   Por otra parte, no nos hemos planteado el problema de la cantidad de
-    dígitos. Idealmente, un sistema de numeración puede usar infinitos
+-   Por otra parte, no nos hemos planteado el problema de la CANTIDAD DE
+    DÍGITOS. Idealmente, un sistema de numeración puede usar infinitos
     dígitos para representar números arbitrariamente grandes. Si bien
     esto es matemáticamente correcto, las computadoras son objetos
     físicos que tienen unas ciertas limitaciones, y con ellas no es
@@ -58,78 +60,78 @@ enciclopédicos sobre cada uno de esos conjuntos.
 -   Trascendentes
 -   Imaginarios
 
-Preguntas
+PREGUNTAS
 
--   El cero, ¿es un natural?
+-   El CERO, ¿es un natural?
 -   ¿Existen números naturales negativos? ¿Y racionales negativos?
 -   ¿Es correcto decir que un racional tiene una parte decimal que es, o
     bien finita, o bien periódica?
 -   ¿Puede haber dos expresiones diferentes para el mismo número, en el
     mismo sistema de numeración decimal?
--   El número 0.9999... con 9 periódico, y el número 1, ¿son dos números
+-   El número 0.9999… con 9 periódico, y el número 1, ¿son dos números
     diferentes o el mismo número? Si son diferentes, ¿qué número se
     encuentra entre ellos dos?
 -   El número 1 es a la vez natural y entero. ¿Por qué no puede haber un
     número que sea a la vez racional e irracional?
 -   ¿Por qué jamás podremos computar la sucesión completa de decimales
-    de PI?
+    de π?
 
 Datos enteros
 
-Veremos un sistema de representación de datos no negativos, llamado sin
-signo, y tres sistemas de representación de datos numéricos enteros,
-llamados signo-magnitud, complemento a 2 y notación en exceso.
+Veremos un sistema de representación de datos no negativos, llamado SIN
+SIGNO, y tres sistemas de representación de datos numéricos enteros,
+llamados SIGNO-MAGNITUD, COMPLEMENTO A 2 y NOTACIÓN EN EXCESO.
 
 Datos fraccionarios
 
-Para representar fraccionarios consideraremos los sistemas de punto fijo
-y punto flotante.
+Para representar fraccionarios consideraremos los sistemas de PUNTO FIJO
+y PUNTO FLOTANTE.
+
 
 Rango de representación
------------------------
 
-Cada sistema de representación de datos numéricos tiene su propio rango
-de representación (que podemos abreviar RR), o intervalo de números
+Cada sistema de representación de datos numéricos tiene su propio RANGO
+DE REPRESENTACIÓN (que podemos abreviar RR), o intervalo de números
 representables. Ningún número fuera de este rango puede ser representado
 en dicho sistema. Conocer este intervalo es importante para saber con
 qué limitaciones puede enfrentarse un programa que utilice alguno de
 esos sistemas.
 
 El rango de los números representados bajo un sistema está dado por sus
-límites inferior y superior, que definen qué zona de la recta numérica
+LÍMITES INFERIOR Y SUPERIOR, que definen qué zona de la recta numérica
 puede ser representada. Como ocurre con todo intervalo numérico cerrado,
-el rango de representación puede ser escrito como [a, b], donde a y b
+el rango de representación puede ser escrito como [a, b], donde a y b
 son sus límites inferior y superior, respectivamente.
 
 Por la forma en que están diseñados, algunos sistemas de representación
 sólo pueden representar números muy pequeños, o sólo positivos, o tanto
-negativos como positivos. En general, el RR será más grande cuantos más
-dígitos binarios, o bits, tenga el sistema. Sin embargo, el RR depende
-también de la forma como el sistema utilice esos dígitos binarios, ya
-que un sistema puede ser más o menos eficiente que otro en el uso de
+negativos como positivos. En general, el RR SERÁ MÁS GRANDE CUANTOS MÁS
+DÍGITOS BINARIOS, o bits, tenga el sistema. Sin embargo, el RR depende
+también de la forma como el sistema UTILICE esos dígitos binarios, ya
+que un sistema puede ser más o menos EFICIENTE que otro en el uso de
 esos dígitos, aunque la cantidad de dígitos sea la misma en ambos
 sistemas.
 
 Por lo tanto, decimos que el rango de representación depende a la vez de
-la cantidad de dígitos y de la forma de funcionamiento del sistema de
+la CANTIDAD DE DÍGITOS y de la FORMA DE FUNCIONAMIENTO del sistema de
 representación.
 
+
 Representación sin signo SS(k)
-------------------------------
 
 Consideremos primero qué ocurre cuando queremos representar números
-enteros no negativos (es decir, positivos o cero) sobre una cantidad
+enteros NO NEGATIVOS (es decir, POSITIVOS O CERO) sobre una cantidad
 fija de bits.
 
-En el sistema sin signo, simplemente usamos el sistema binario de
-numeración, tal como lo conocemos, pero limitándonos a una cantidad fija
+En el sistema SIN SIGNO, simplemente usamos el sistema binario de
+numeración, tal como lo conocemos, PERO LIMITÁNDONOS A UNA CANTIDAD FIJA
 de dígitos binarios o bits. Podemos entonces abreviar el nombre de este
-sistema como SS(k), donde k es la cantidad fija de bits, o ancho, de
+sistema como SS(K), donde k es la cantidad fija de bits, o ancho, de
 cada número representado.
 
 Rango de representación de SS(k)
 
-¿Cuál será el rango de representación? El cero puede representarse, así
+¿Cuál será el rango de representación? El CERO puede representarse, así
 que el límite inferior del rango de representación será 0. Pero ¿cuál
 será el límite superior? Es decir, si la cantidad de dígitos binarios en
 este sistema es k, ¿cuál es el número más grande que podremos
@@ -137,7 +139,7 @@ representar?
 
 Podemos estudiarlo de dos maneras.
 
-1. Usando combinatoria
+1. USANDO COMBINATORIA
 
 Contemos cuántos números diferentes podemos escribir con k dígitos
 binarios. Imaginemos un número binario cualquiera con k dígitos. El
@@ -148,126 +150,128 @@ Por cada una de éstas, hay dos posibilidades para el siguiente (dando
 las ocho posibilidades 0 0 0, 0 0 1, 0 1 0, 0 1 1, 1 0 0, 1 0 1, 1 1 0, 1 1 1), etc., y
 así hasta la posición k. No hay más posibilidades. Como hemos
 multiplicado 2 por sí mismo k veces, la cantidad de números que se
-pueden escribir es 2 elevado a la k. Luego, el número más grande posible es 2 elevado a la k - 1.
-(Pregunta: ¿Por qué 2 elevado a la k - 1 y no 2 elevado a la k?).
+pueden escribir es 2 elevado a la (k). Luego, el número más grande posible es
+2 elevado a la (k) − 1. (PREGUNTA: ¿Por qué 2 elevado a la (k) − 1 y no 2 elevado a la (k)?).
 
-2. Usando álgebra
+2. USANDO ÁLGEBRA
 
 El número más grande que podemos representar en un sistema sin signo a k
 dígitos es, seguramente, aquel donde todos los k dígitos valen 1. La
 Expresión General que hemos visto nos dice que si un número n está
-escrito en base 2, con k dígitos, entonces
-n = x$ sub k-1 $ por  2 elevado a la {k-1} + ... + x$ sub $1 por 2 elevado a la 1+x$ sub $0 por 2 elevado a la 0 y, si
-queremos escribir el más grande de todos, deberán ser todos los x$ sub $i
-iguales a 1. (Pregunta: ¿Por qué si el número n tiene k dígitos
-binarios, el índice del más significativo es k-1 y no k?)
+escrito en base 2, CON k DÍGITOS, entonces
+$ sub $n$ sub $ = $ sub $x$ sub $$ sub $($ sub $k$ sub $ − 1) × 2 elevado a la ($ sub $k$ sub $ − 1) + ... + $ sub $x$ sub $₁ × 2¹ + $ sub $x$ sub $₀ × 2⁰
+ y, si queremos escribir el más grande de todos, deberán ser todos los
+x$ sub $(i) iguales a 1. (PREGUNTA: ¿Por qué si el número n tiene k dígitos
+binarios, el índice del más significativo es k − 1 y no k?)
 
 Esta suma vale entonces
 
- x$ sub k-1 $ por  2 elevado a la {k-1} + ... + x$ sub $1 por 2 elevado a la 1+x$ sub $0 por 2 elevado a la 0 = 
-  = 1 por  2 elevado a la {k-1} + ... + 1 por 2 elevado a la 1+1 por 2 elevado a la 0 = 
-  = 2 elevado a la {k-1} + ... + 2 elevado a la 1+2 elevado a la 0 =    = 2 elevado a la {k}-1 
+$ sub $x$ sub $$ sub $($ sub $k$ sub $ − 1) × 2 elevado a la ($ sub $k$ sub $ − 1) + ... + $ sub $x$ sub $₁ × 2¹ + $ sub $x$ sub $₀ × 2⁰=
+ = 1 × 2 elevado a la ($ sub $k$ sub $ − 1) + ... + 1 × 2¹ + 1 × 2⁰=
+ = 2 elevado a la ($ sub $k$ sub $ − 1) + ... + 2¹ + 2⁰=
+ = 2 elevado a la ($ sub $k$ sub $) − 1
 
 ¿Por qué esto es cierto?
 
 Usando ambos argumentos hemos llegado a que el número más grande que
-podemos representar con k dígitos binarios es 2 elevado a la k-1. Por lo tanto, el
-rango de representación de un sistema sin signo a k dígitos, o SS(k), es
-[0, 2 elevado a la k - 1]. Todos los números representables en esta clase de sistemas
-son positivos o cero.
+podemos representar con k dígitos binarios es 2 elevado a la (k) − 1. Por lo tanto,
+EL RANGO DE REPRESENTACIÓN DE UN SISTEMA SIN SIGNO A k DÍGITOS, O SS(K),
+ES [0, 2 elevado a la (k) − 1]. Todos los números representables en esta clase de
+sistemas son POSITIVOS O CERO.
 
-Ejemplos
+EJEMPLOS
 
 -   Para un sistema de representación sin signo a 8 bits:
-    [0, 2 elevado a la 8-1] = [0, 255]
--   Con 16 bits: [0, 2 elevado a la {16}-1] = [0, 65.535]
--   Con 32 bits: [0, 2 elevado a la {32}-1] = [0, 4.294.967.295]
+    [0, 2⁸ − 1] = [0, 255]
+-   Con 16 bits: [0, 2¹⁶ − 1] = [0, 65.535]
+-   Con 32 bits: [0, 2³² − 1] = [0, 4.294.967.295]
+
 
 Representación con signo
-------------------------
 
 En la vida diaria manejamos continuamente números negativos, y los
-distinguimos de los positivos simplemente agregando un signo "menos".
+distinguimos de los positivos simplemente agregando un signo “menos”.
 Representar esos datos en la memoria de la computadora no es tan
-directo, porque, como hemos visto, la memoria solamente puede alojar
-ceros y unos. Es decir, ¡no podemos simplemente guardar un signo
-"menos"! Lo único que podemos hacer es almacenar secuencias de ceros y
+directo, porque, como hemos visto, la memoria SOLAMENTE PUEDE ALOJAR
+CEROS Y UNOS. Es decir, ¡no podemos simplemente guardar un signo
+“menos”! Lo único que podemos hacer es almacenar secuencias de ceros y
 unos.
 
 Esto no era un problema cuando los números eran no negativos. Para poder
-representar, ahora, tanto números positivos como negativos, necesitamos
+representar, ahora, tanto números POSITIVOS COMO NEGATIVOS, necesitamos
 cambiar la forma de representación. Esto quiere decir que una secuencia
 particular de dígitos binarios, que en un sistema sin signo tiene un
 cierto significado, ahora tendrá un significado diferente. Algunas
 secuencias, que antes representaban números positivos, ahora
 representarán negativos.
 
-Veremos los sistemas de representación con signo llamados Signo-magnitud
-(SM), Complemento a 2 (C2) y Notación en exceso.
+Veremos los SISTEMAS DE REPRESENTACIÓN CON SIGNO llamados SIGNO-MAGNITUD
+(SM), COMPLEMENTO A 2 (C2) y NOTACIÓN EN EXCESO.
 
-Es importante tener en cuenta que solamente se puede operar entre datos
-representados con el mismo sistema de representación, y que el resultado
-de toda operación vuelve a estar representado en el mismo sistema.
+Es importante tener en cuenta que SOLAMENTE SE PUEDE OPERAR ENTRE DATOS
+REPRESENTADOS CON EL MISMO SISTEMA DE REPRESENTACIÓN, y que el RESULTADO
+de toda operación VUELVE A ESTAR REPRESENTADO EN EL MISMO SISTEMA.
 
-Preguntas
+PREGUNTAS
 
 -   ¿Cuáles son los límites del rango de representación de un sistema de
     representación numérica?
--   Un número escrito en un sistema de representación con signo, ¿es
+-   Un número escrito en un sistema de representación CON SIGNO, ¿es
     siempre negativo?
 -   ¿Para qué querríamos escribir un número positivo en un sistema de
     representación con signo?
 
+
 Sistema de Signo-magnitud SM(k)
--------------------------------
 
-El sistema de Signo-magnitud no es el más utilizado en la práctica, pero
+El sistema de SIGNO-MAGNITUD no es el más utilizado en la práctica, pero
 es el más sencillo de comprender. Se trata simplemente de utilizar un
-bit (el de más a la izquierda) para representar el signo. Si este bit
+bit (el de más a la izquierda) para representar el SIGNO. Si este bit
 tiene valor 0, el número representado es positivo; si es 1, es negativo.
-Los demás bits se utilizan para representar la magnitud, es decir, el
-valor absoluto del número en cuestión.
+Los demás bits se utilizan para representar la MAGNITUD, es decir, el
+VALOR ABSOLUTO del número en cuestión.
 
-Ejemplos
+EJEMPLOS
 
--   7$ en base 10 $ = 0 0 0 0 0 1 1 1$ en base 2 $
--   -7$ en base 10 $ = 1 0 0 0 0 1 1 1$ en base 2 $
+-   7₍₁₀ = 0 0 0 0 0 1 1 1₍₂
+-    − 7₍₁₀ = 1 0 0 0 0 1 1 1₍₂
 
 Como estamos reservando un bit para expresar el signo, ese bit ya no se
 puede usar para representar magnitud; y como el sistema tiene una
 cantidad de bits fija, el RR ya no podrá representar el número máximo
-que era posible con el sistema sin signo.
+que era posible con el sistema SIN SIGNO.
 
 Rango de representación de SM(k)
 
 -   En todo número escrito en el sistema de signo-magnitud a k bits, ya
     sea positivo o negativo, hay un bit reservado para el signo, lo que
-    implica que quedan k-1 bits para representar su valor absoluto.
--   Siendo un valor absoluto, estos k-1 bits representan un número no
-    negativo. Además este número está representado con el sistema sin
-    signo sobre k-1 bits, es decir, SS(k-1).
+    implica que quedan k − 1 bits para representar su valor absoluto.
+-   Siendo un valor absoluto, estos k − 1 bits representan un número NO
+    NEGATIVO. Además este número está representado con el sistema SIN
+    SIGNO sobre k − 1 bits, es decir, SS(k-1).
 -   Este número no negativo en SS(k-1) tendrá un valor máximo
-    representable que coincide con el límite superior del rango de
-    representación de SS(k-1).
--   Sabemos que el rango de representación de SS(k) es [0, 2 elevado a la k-1]. Por
-    lo tanto, el rango de SS(k-1), reemplazando, será [0, 2 elevado a la {k-1} -1].
+    representable que coincide con el LÍMITE SUPERIOR del rango de
+    representación DE SS(K-1).
+-   Sabemos que el rango de representación de SS(k) es [0, 2 elevado a la (k) − 1].
+    Por lo tanto, el rango de SS(k-1), reemplazando, será
+    [0, 2 elevado a la (k − 1) − 1].
 -   Esto quiere decir que el número representable en SM(k) cuyo valor
-    absoluto es máximo, es 2 elevado a la {k-1}-1. Por lo tanto éste es el límite
+    absoluto es máximo, es 2 elevado a la (k − 1) − 1. Por lo tanto éste es el límite
     superior del rango de representación de SM(k).
 -   Pero en SM(k) también se puede representar su opuesto negativo,
     simplemente cambiando el bit más alto por 1. El opuesto del máximo
     positivo representable es a su vez el número más pequeño, negativo,
-    representable: -(2 elevado a la {k-1}-1).
+    representable:  − (2 elevado a la (k − 1) − 1).
 
 Con lo cual hemos calculado tanto el límite inferior como el superior
 del rango de representación de SM(k), que, finalmente, es
-[-(2 elevado a la {k-1}-1),2 elevado a la {k-1}-1].
+[ − (2 elevado a la (k − 1) − 1), 2 elevado a la (k − 1) − 1].
 
 Limitaciones de Signo-Magnitud
 
-Si bien SM(k) es simple, no es tan efectivo, por varias razones:
+Si bien SM(K) es simple, no es tan efectivo, por varias razones:
 
--   Existen dos representaciones del 0 ("positiva" y "negativa"), lo
+-   Existen dos representaciones del 0 (“positiva” y “negativa”), lo
     cual desperdicia un representante.
 -   Esto acorta el rango de representación.
 -   La aritmética en SM no es fácil, ya que cada operación debe comenzar
@@ -276,63 +280,63 @@ Si bien SM(k) es simple, no es tan efectivo, por varias razones:
     reconocido anteriormente.
 -   El problema aritmético se agrava con la existencia de las dos
     representaciones del cero: cada vez que un programa quisiera
-    comparar un valor resultado de un cómputo con 0, debería hacer dos
+    comparar un valor resultado de un cómputo con 0, debería hacer DOS
     comparaciones.
 
 Por estos motivos, el sistema de SM dejó de usarse y se diseñó un
-sistema que eliminó estos problemas, el sistema de complemento a 2.
+sistema que eliminó estos problemas, el sistema de COMPLEMENTO A 2.
+
 
 Sistema de Complemento a 2
---------------------------
 
 Para comprender el sistema de complemento a 2 es necesario primero
-conocer la operación de complementar a 2.
+conocer la OPERACIÓN de complementar a 2.
 
 Operación de Complemento a 2
 
-La operación de complementar a 2 consiste aritméticamente en obtener el
-opuesto de un número (el que tiene el mismo valor absoluto pero signo
+La OPERACIÓN de complementar a 2 consiste aritméticamente en obtener el
+OPUESTO de un número (el que tiene el mismo valor absoluto pero signo
 opuesto).
 
-Para obtener el complemento a 2 de un número escrito en base 2, se
-invierte cada uno de los bits (reemplazando 0 por 1 y viceversa) y al
-resultado se le suma 1.
+Para obtener el complemento a 2 de un número escrito en base 2, SE
+INVIERTE CADA UNO DE LOS BITS (REEMPLAZANDO 0 POR 1 Y VICEVERSA) Y AL
+RESULTADO SE LE SUMA 1.
 
-Otra forma
+OTRA FORMA
 
 Otro modo de calcular el complemento a 2 de un número en base 2 es
-copiar los bits, desde la derecha, hasta el primer 1 inclusive; e
-invertir todos los demás a la izquierda.
+COPIAR LOS BITS, DESDE LA DERECHA, HASTA EL PRIMER 1 INCLUSIVE; E
+INVERTIR TODOS LOS DEMÁS A LA IZQUIERDA.
 
-Propiedad fundamental
+PROPIEDAD FUNDAMENTAL
 
 El resultado de esta operación, C2(a), es el opuesto del número original
 a, y por lo tanto tiene la propiedad de que a y C2(a) suman 0:
 
-C2(a) + a = 0
+$ sub $C$ sub $2($ sub $a$ sub $) + $ sub $a$ sub $ = 0
 
-Comprobación
+COMPROBACIÓN
 
 Podemos comprobar si la complementación fue bien hecha aplicando la
-propiedad fundamental del complemento. Si, al sumar nuestro resultado
+PROPIEDAD FUNDAMENTAL del complemento. Si, al sumar nuestro resultado
 con el número original, no obtenemos 0, corresponde revisar la
 operación.
 
-Ejemplos
+EJEMPLOS
 
 -   Busquemos el complemento a 2 de 1 1 1 0 1 0. Invirtiendo todos los bits,
     obtenemos 0 0 0 1 0 1. Sumando 1, queda 0 0 0 1 1 0.
 -   Busquemos el complemento a 2 de 0 0 1 1. Invirtiendo todos los bits,
     obtenemos 1 1 0 0. Sumando 1, queda 1 1 0 1.
 -   Comprobemos que el resultado obtenido en el último caso, 1 1 0 1, es
-    efectivamente el opuesto de 0 0 1 1: 0 0 1 1 + 1 1 0 1 = 0.
+    efectivamente el opuesto de 0 0 1 1: 0 0 1 1 + 1 1 0 1 = 0.
 
 ¿Por qué funciona este método?
 
 Representación en Complemento a 2
 
-Ahora que contamos con la operación de complementar a 2, podemos ver
-cómo se construye el sistema de representación en Complemento a 2.
+Ahora que contamos con la OPERACIÓN DE COMPLEMENTAR A 2, podemos ver
+cómo se construye el SISTEMA DE REPRESENTACIÓN EN COMPLEMENTO A 2.
 
 Para representar un número a en complemento a 2 a k bits, comenzamos por
 considerar su signo:
@@ -341,7 +345,7 @@ considerar su signo:
     lo escribimos en base 2 a k bits.
 -   Si a es negativo, tomamos su valor absoluto y lo complementamos a 2.
 
-Ejemplos
+EJEMPLOS
 
 -   Representemos el número 17 en complemento a 2 con 8 bits. Como es
     positivo, lo escribimos en base 2, obteniendo 0 0 0 1 0 0 0 1, que es 17 en
@@ -363,17 +367,17 @@ enseguida.
     conversión de base como normalmente.
 -   Si n es negativo, se lo complementa a 2, obteniendo el opuesto de n.
     Este número, que ahora es positivo, se convierte a base 10 como en
-    el caso anterior; y finalmente se le agrega el signo "-" para
+    el caso anterior; y finalmente se le agrega el signo “-” para
     reflejar el hecho de que es negativo.
 
-Ejemplos
+EJEMPLOS
 
--   Convertir a decimal n = 0 0 0 1 0 0 0 1. Es positivo, luego, aplicamos la
-    Expresión General dando 17$ en base 10 $.
--   Convertir a decimal n = 1 1 1 0 1 1 1 1. Es negativo; luego, lo
+-   Convertir a decimal n = 0 0 0 1 0 0 0 1. Es positivo, luego, aplicamos la
+    Expresión General dando 17₍₁₀.
+-   Convertir a decimal n = 1 1 1 0 1 1 1 1. Es negativo; luego, lo
     complementamos a 2 obteniendo 0 0 0 1 0 0 0 1. Aplicamos la Expresión
-    General obteniendo 17$ en base 10 $. Como n era negativo, agregamos el signo
-    menos y obtenemos el resultado final -17$ en base 10 $.
+    General obteniendo 17₍₁₀. Como n era negativo, agregamos el signo
+    menos y obtenemos el resultado final  − 17₍₁₀.
 
 RR de C2 con k bits
 
@@ -381,9 +385,9 @@ La forma de utilizar los bits en el sistema de complemento a 2 permite
 recuperar un representante que estaba desperdiciado en SM.
 
 El rango de representación del sistema complemento a 2 sobre k bits es
-[-(2 elevado a la {k-1}), 2 elevado a la {k-1}-1]. El límite superior del RR de C2 es el mismo que
-el de SM, pero el límite inferior es menor; luego el RR de C2 es mayor
-que el de SM.
+[ − (2 elevado a la (k − 1)), 2 elevado a la (k − 1) − 1]. El límite superior del RR de C2 es el
+mismo que el de SM, pero el LÍMITE INFERIOR es menor; luego el RR de C2
+es mayor que el de SM.
 
 El sistema de complemento a 2 tiene otras ventajas sobre SM:
 
@@ -393,19 +397,19 @@ El sistema de complemento a 2 tiene otras ventajas sobre SM:
     de signo.
 -   El mecanismo de cálculo es eficiente y fácil de implementar en
     hardware.
--   Solamente se requiere diseñar un algoritmo para sumar, no uno para
+-   Solamente se requiere diseñar un algoritmo para SUMAR, no uno para
     sumar y otro para restar.
 
 Comparando rangos de representación
 
 Diferentes sistemas, entonces, tienen diferentes rangos de
 representación. Si construimos un cuadro donde podamos comparar los
-rangos de representación sin signo, signo-magnitud y complemento a 2
+rangos de representación SIN SIGNO, SIGNO-MAGNITUD Y COMPLEMENTO A 2
 para una misma cantidad de bits, veremos que todas las combinaciones de
 bits están utilizadas, sólo que de diferente forma.
 
 El cuadro comparativo para cuatro bits mostrará que las combinaciones
-0 0 0 0...1 1 1 1 representan los primeros 16 números no negativos para el
+0 0 0 0…1 1 1 1 representan los primeros 16 números no negativos para el
 sistema sin signo, mientras que esas mismas combinaciones tienen otro
 significado en los sistemas con signo. En éstos últimos, una misma
 combinación con el bit más significativo en 1 siempre es negativa, pero
@@ -421,13 +425,13 @@ alejándose del 0, mientras que en C2 esas magnitudes comienzan en cero
 al representar el negativo más pequeño posible y crecen a medida que se
 acercan al cero.
 
-Complementar a 2 vs. representar en C2
+Complementar a 2 vs. representar en C2
 
-Un error frecuente es confundir la operación de complementar a 2 y la
-representación en complemento a 2. ¡No son lo mismo!
+Un error frecuente es confundir la OPERACIÓN DE COMPLEMENTAR A 2 y la
+REPRESENTACIÓN EN COMPLEMENTO A 2. ¡No son lo mismo!
 
 Al representar en complemento a 2, la operación de complementar a 2
-únicamente se aplica cuando queremos obtener el opuesto de un número.
+ÚNICAMENTE SE APLICA CUANDO QUEREMOS OBTENER EL OPUESTO de un número.
 Por ejemplo, cuando queremos representar un número negativo,
 complementando a 2 su valor absoluto que es positivo.
 
@@ -435,33 +439,33 @@ Aritmética en C2
 
 Una gran ventaja que aporta el sistema en Complemento a 2 es que los
 diseñadores de hardware no necesitan implementar algoritmos de resta
-además de los de la suma. Cuando se necesita efectuar una resta, se
-complementa el sustraendo y luego se lo suma al minuendo. Las
+además de los de la suma. Cuando se necesita efectuar una resta, SE
+COMPLEMENTA EL SUSTRAENDO y luego se lo SUMA al minuendo. Las
 computadoras no restan: siempre suman.
 
-Por ejemplo, la operación 9 - 8 se realiza como 9 + (-8), donde (-8) es
-el complemento a 2 de 8.
+Por ejemplo, la operación 9 − 8 se realiza como 9 + ( − 8), donde (-8)
+es el complemento a 2 de 8.
 
-Preguntas
+PREGUNTAS
 
 -   Un número en complemento a 2, ¿tiene siempre su bit más a la
     izquierda en 1?
--   El complemento a 2 de un número, es decir, C2(x), ¿es siempre un
+-   El complemento a 2 de un número, es decir, C2(X), ¿es siempre un
     número negativo?
 -   ¿Quién es C2(0)?
--   ¿Cuánto vale C2(C2(x))? Es decir, ¿qué pasa si complemento a 2 el
+-   ¿Cuánto vale C2(C2(X))? Es decir, ¿qué pasa si complemento a 2 el
     complemento a 2 de x?
--   ¿Cuánto vale x + C2(x)? Es decir, ¿qué pasa si sumo a x su propio
+-   ¿Cuánto vale X + C2(X)? Es decir, ¿qué pasa si sumo a x su propio
     complemento a 2?
 -   ¿Cómo puedo verificar si calculé correctamente un complemento a 2?
 
 Overflow o desbordamiento en C2
 
-En todo sistema de ancho fijo, la suma de dos números positivos, o de
-dos números negativos puede dar un resultado que sea imposible de
+En todo sistema de ancho fijo, la suma de DOS NÚMEROS POSITIVOS, O DE
+DOS NÚMEROS NEGATIVOS puede dar un resultado que sea imposible de
 representar debido a las limitaciones del rango de representación. Este
-problema se conoce como desbordamiento, u overflow. Cuando ocurre una
-situación de overflow, el resultado de la operación no es válido y debe
+problema se conoce como desbordamiento, u $ sub $overflow$ sub $. Cuando ocurre una
+situación de overflow, el resultado de la operación NO ES VÁLIDO y debe
 ser descartado.
 
 Si conocemos los valores en decimal de dos números que queremos sumar,
@@ -472,48 +476,48 @@ computadoras no tienen forma de conocer a priori esta condición, ya que
 todo lo que tienen es la representación en C2 de ambos números. Por eso
 necesitan alguna forma de detectar las situaciones de overflow, y el
 modo más fácil para ellas es comprobar los dos últimos bits de la fila
-de bits de acarreo o carry.
+de bits de acarreo o $ sub $carry$ sub $.
 
 El último bit de la fila de carry, el que se posiciona en la última de
-las k columnas de la representación, se llama carry-in. El siguiente bit
-de carry, el que ya no puede acarrearse sobre ningún dígito válido
+las k columnas de la representación, se llama $ sub $carry-in$ sub $. El siguiente
+bit de carry, el que ya no puede acarrearse sobre ningún dígito válido
 porque se han rebasado los k dígitos de la representación, se llama el
-carry-out.
+$ sub $carry-out$ sub $.
 
 -   Si, luego de efectuar una suma en C2, los valores de los bits de
-    carry-in y carry-out son iguales, entonces la computadora detecta
-    que el resultado no ha desbordado y que la suma es válida. La
-    operación de suma se ha efectuado exitosamente.
+    $ sub $carry-in$ sub $ y $ sub $carry-out$ sub $ son IGUALES, entonces la computadora
+    detecta que el resultado no ha desbordado y que LA SUMA ES VÁLIDA.
+    La operación de suma se ha efectuado exitosamente.
 -   Si, luego de efectuar una suma en C2, los valores de los bits de
-    carry-in y carry-out son diferentes, entonces la computadora detecta
-    que el resultado ha desbordado y que la suma no es válida. La
-    operación de suma no se ha llevado a cabo exitosamente, y el
+    $ sub $carry-in$ sub $ y $ sub $carry-out$ sub $ son DIFERENTES, entonces la computadora
+    detecta que el resultado ha desbordado y que LA SUMA NO ES VÁLIDA.
+    La operación de suma no se ha llevado a cabo exitosamente, y el
     resultado debe ser descartado.
 
-Suma sin overflow
+SUMA SIN OVERFLOW
 
 Siguiendo atentamente la secuencia de bits de carry podemos detectar,
 igual que lo hace la computadora, si se producirá un desbordamiento. En
-el caso de la operación 23 + (-9), el resultado (que es 14) cae dentro
-del rango de representación, y esto se refleja en los bits de carry-in y
-de carry-out, cuyos valores son iguales.
+el caso de la operación 23 + ( − 9), el resultado (que es 14) cae dentro
+del rango de representación, y esto se refleja en los bits de $ sub $carry-in$ sub $
+y de $ sub $carry-out$ sub $, cuyos valores son iguales.
 
-Suma con overflow
+SUMA CON OVERFLOW
 
-En el caso de la operación 123 + 9 en C2 a 8 bits, el resultado (que es
+En el caso de la operación 123 + 9 en C2 a 8 bits, el resultado (que es
 132) cae fuera del rango de representación. Esto se refleja en los bits
-de carry-in y de carry-out, que son diferentes. El resultado no es
+de $ sub $carry-in$ sub $ y de $ sub $carry-out$ sub $, que son diferentes. El resultado no es
 válido y debe ser descartado.
 
-Preguntas
+PREGUNTAS
 
--   ¿Qué condición sobre los bits de carry permite asegurar que no habrá
+-   ¿Qué condición sobre los bits de carry permite asegurar que NO HABRÁ
     overflow?
 -   ¿Para qué sistemas de representación numérica usamos la condición de
     detección de overflow?
 -   ¿Puede existir overflow al sumar dos números de diferente signo?
--   ¿Qué condición sobre los bits de signo de los operandos permite
-    asegurar que no habrá overflow?
+-   ¿Qué condición sobre los bits DE SIGNO de los operandos permite
+    asegurar que NO HABRÁ overflow?
 -   ¿Puede haber casos de overflow al sumar dos números negativos?
 -   ¿Puede haber casos de overflow al restar dos números?
 
@@ -528,50 +532,50 @@ representados en el mismo sistema de representación.
 
 En una suma en C2, si uno de los operandos estuviera expresado en un
 sistema con menos bits que el otro, será necesario convertirlo al
-sistema del otro (extenderlo) y operar con ambos en ese sistema de mayor
+sistema del otro (EXTENDERLO) y operar con ambos en ese sistema de mayor
 ancho.
 
 Si el operando en el sistema de menor ancho es positivo, la extensión se
-realiza simplemente completando con ceros a la izquierda hasta obtener
+realiza simplemente COMPLETANDO CON CEROS A LA IZQUIERDA hasta obtener
 la cantidad de dígitos del otro sistema. Si el operando del menor ancho
-es negativo, la extensión de signo se hace agregando unos.
+es negativo, la extensión de signo se hace AGREGANDO UNOS.
 
-Ejemplos
+EJEMPLOS
 
--   A + B = 0 0 1 0 1 0 1 1$ en base 2 $ + 0 0 1 0 1$ en base 2 $
-    -   A está en C elevado a la 8$ sub $2 y B en C elevado a la 5$ sub $2 → llevar ambos a C elevado a la 8$ sub $2
-    -   Se completa B (positivo) como 0 0 0 0 0 1 0 1$ en base 2 $
--   A + B = 1 0 1 0$ en base 2 $ + 0 1 1 0 1 0 0$ en base 2 $
-    -   A está en C elevado a la 4$ sub $2 y B en C elevado a la 7$ sub $2 → llevar ambos a C elevado a la 7$ sub $2
-    -   Se completa A (negativo) como 1 1 1 1 0 1 0$ en base 2 $
+-   A + B = 0 0 1 0 1 0 1 1₍₂ + 0 0 1 0 1₍₂
+    -   A está en C₂⁸ y B en C₂⁵ → llevar ambos a C₂⁸
+    -   Se completa B (positivo) como 0 0 0 0 0 1 0 1₍₂
+-   A + B = 1 0 1 0₍₂ + 0 1 1 0 1 0 0₍₂
+    -   A está en C₂⁴ y B en C₂⁷ → llevar ambos a C₂⁷
+    -   Se completa A (negativo) como 1 1 1 1 0 1 0₍₂
 
-Notación en exceso o bias
--------------------------
 
-En un sistema de notación en exceso, se elige un intervalo [a, b] de
+Notación en exceso o $ sub $bias$ sub $
+
+En un sistema de notación en exceso, se elige un intervalo [a, b] de
 enteros a representar, y todos los valores dentro del intervalo se
 representan con una secuencia de bits de la misma longitud.
 
 La cantidad de bits deberá ser la necesaria para representar todos los
 enteros del intervalo, inclusive los límites, y por lo tanto estará en
-función de la longitud del intervalo. Un intervalo [a, b] de enteros,
-con sus límites incluidos, comprende exactamente n = b - a + 1 valores.
+función de la longitud del intervalo. Un intervalo [a, b] de enteros,
+con sus límites incluidos, comprende exactamente n = b − a + 1 valores.
 Esta longitud del intervalo debe ser cubierta con una cantidad k de bits
-suficiente, lo cual obliga a que 2 elevado a la k \geq n. Supongamos que n sea una
-potencia de 2 para facilitar las ideas, de forma que 2 elevado a la k = n.
+suficiente, lo cual obliga a que 2 elevado a la (k) ≥ n. Supongamos que n sea una
+potencia de 2 para facilitar las ideas, de forma que 2 elevado a la (k) = n.
 
-Las 2 elevado a la k secuencias de k bits, ordenadas como de costumbre según su valor
-aritmético, se aplican a los enteros en [a, b], uno por uno. Es decir,
-si usamos 3 bits, las secuencias serán 0 0 0, 0 0 1, 0 1 0, ... hasta 1 1 1; y
-los valores representados serán respectivamente:
+Las 2 elevado a la (k) secuencias de k bits, ordenadas como de costumbre según su
+valor aritmético, se aplican a los enteros en [a, b], uno por uno. Es
+decir, si usamos 3 bits, las secuencias serán 0 0 0, 0 0 1, 0 1 0, … hasta
+1 1 1; y los valores representados serán respectivamente:
 
 -   0 0 0 = a
--   0 0 1 = a + 1
--   0 1 0 = a + 2
--   ...
+-   0 0 1 = a + 1
+-   0 1 0 = a + 2
+-   …
 -   1 1 1 = b
 
-Notemos que tanto a como b pueden ser negativos. Así podemos representar
+Notemos que tanto a como b pueden ser NEGATIVOS. Así podemos representar
 intervalos de enteros arbitrarios con secuencias de k bits, lo que nos
 vuelve a dar un sistema de representación con signo.
 
@@ -586,39 +590,39 @@ representación más complejo, la representación en punto flotante.
 Conversión entre exceso y decimal
 
 Una vez establecido un sistema en exceso que representa el intervalo
-[a, b] en k bits:
+[a, b] en k bits:
 
 -   Para calcular la secuencia binaria que corresponde a un valor
-    decimal d, a d le restamos a y luego convertimos el resultado (que
-    será no negativo) a SS(k), es decir, a binario sin signo sobre k
+    decimal d, a d LE RESTAMOS a y luego convertimos el resultado (que
+    será NO NEGATIVO) a SS(K), es decir, a binario sin signo sobre k
     bits.
 -   Para calcular el valor decimal d representado por una secuencia
-    binaria, convertimos la secuencia a decimal como en SS(k), y al
-    resultado (que será no negativo) le sumamos el valor de a.
+    binaria, convertimos la secuencia a decimal como en SS(K), y al
+    resultado (que será NO NEGATIVO) le SUMAMOS el valor de a.
 
-Ejemplos
+EJEMPLOS
 
-Representemos en sistema en exceso el intervalo [10, 25] (que contiene
-25 - 10 + 1 = 16 enteros). Como necesitamos 16 secuencias binarias,
-usaremos 4 bits que producirán las secuencias 0 0 0 0, 0 0 0 1, ..., 1 1 1 1.
+Representemos en sistema en exceso el intervalo [10, 25] (que contiene
+25 − 10 + 1 = 16 enteros). Como necesitamos 16 secuencias binarias,
+usaremos 4 bits que producirán las secuencias 0 0 0 0, 0 0 0 1, …, 1 1 1 1.
 
 -   Para calcular la secuencia que corresponde al número 20, hacemos
-    20 - 10 = 10 y el resultado será la secuencia 1 0 1 0.
+    20 − 10 = 10 y el resultado será la secuencia 1 0 1 0.
 -   Para calcular el valor decimal que está representando la secuencia
     1 0 1 1, convertimos 1 0 1 1 a decimal, que es 11, y le sumamos 10; el
     resultado es 21.
 
-Representemos en sistema en exceso el intervalo [-3, 4] (que contiene
-4 -(-3) + 1 = 8 enteros). Como necesitamos 8 secuencias binarias,
-usaremos 3 bits que producirán las secuencias 0 0 0, 0 0 1, ..., 1 1 1.
+Representemos en sistema en exceso el intervalo [ − 3, 4] (que contiene
+4 − ( − 3) + 1 = 8 enteros). Como necesitamos 8 secuencias binarias,
+usaremos 3 bits que producirán las secuencias 0 0 0, 0 0 1, …, 1 1 1.
 
 -   Para calcular la secuencia que corresponde al número 2, hacemos
-    2 -(-3) = 5 y el resultado será la secuencia 1 0 1.
+    2 − ( − 3) = 5 y el resultado será la secuencia 1 0 1.
 -   Para calcular el valor decimal que está representando la secuencia
     0 1 1, convertimos 0 1 1 a decimal, que es 3, y le sumamos -3; el
     resultado es 0.
 
-Preguntas sobre Notación en Exceso
+PREGUNTAS SOBRE NOTACIÓN EN EXCESO
 
 -   Dado un valor decimal a representar, ¿cómo calculamos el binario?
 -   Dado un binario, ¿cómo calculamos el valor decimal representado?
@@ -626,48 +630,48 @@ Preguntas sobre Notación en Exceso
 -   ¿Se puede representar un intervalo que no contenga el cero?
 -   ¿Cómo se comparan dos números en exceso para saber cuál es el mayor?
 
+
 Representación de fraccionarios
--------------------------------
 
 Racionales
 
-Los números fraccionarios son aquellos racionales que no son enteros. Se
+Los números fraccionarios son aquellos RACIONALES que no son enteros. Se
 escriben como una razón, fracción o cociente de dos enteros. Por
-ejemplo, 3/4 y -12/5 son números fraccionarios. El signo de división que
-usamos para escribir las fracciones tiene precisamente ese significado
-aritmético: si hacemos la operación de división correspondiente entre
-numerador y divisor de la fracción, obtenemos la forma decimal del mismo
-número, con una parte entera y una parte decimal. Así, por ejemplo, 3/4
-también puede escribirse como 0.75, y -12/5 como -2.4. Estas dos formas
-son equivalentes. En los racionales, la parte decimal es finita o
-periódica.
+ejemplo, 3/4 y  − 12/5 son números fraccionarios. El signo de división
+que usamos para escribir las fracciones tiene precisamente ese
+significado aritmético: si hacemos la operación de división
+correspondiente entre numerador y divisor de la fracción, obtenemos la
+forma decimal del mismo número, con UNA PARTE ENTERA Y UNA PARTE
+DECIMAL. Así, por ejemplo, 3/4 también puede escribirse como 0.75, y
+ − 12/5 como  − 2.4. Estas dos formas son equivalentes. En los
+racionales, la parte decimal es FINITA o PERIÓDICA.
 
 Aproximación racional a los irracionales
 
 Por otro lado, existen números reales que no son racionales, en el
 sentido de que no existe una razón, fracción o cociente que les sea
 igual, pero también pueden escribirse como decimales con una parte
-entera y una parte decimal. Estos son los irracionales. Los irracionales
+entera y una parte decimal. Estos son los IRRACIONALES. Los irracionales
 pueden expresarse sintéticamente como el resultado de alguna operación
-(como cuando escribimos \sqrt 2) o en su forma decimal. Sin embargo,
-tienen la característica de que su desarrollo decimal es infinito no
+(como cuando escribimos $\sqrt 2$) o en su forma decimal. Sin embargo,
+tienen la característica de que su desarrollo decimal ES INFINITO no
 periódico, por lo cual siempre que escribimos un irracional por su
-desarrollo decimal, en realidad estamos truncando ese desarrollo a
+desarrollo decimal, en realidad estamos TRUNCANDO ese desarrollo a
 alguna porción inicial. Jamás podremos escribir la sucesión completa de
 decimales.
 
 De manera que, al escribir irracionales en su forma decimal, en realidad
-siempre tratamos con aproximaciones racionales a esos irracionales. Por
+siempre tratamos con APROXIMACIONES RACIONALES a esos irracionales. Por
 ejemplo, 3.14 y 3.1459 son aproximaciones racionales al verdadero valor
-irracional de PI, cuya parte decimal tiene infinitos dígitos.
+irracional de π, cuya parte decimal tiene infinitos dígitos.
 
 Coma o punto decimal
 
 Al escribir un número con cifras decimales en nuestro sistema numérico
 habitual de base 10, usamos una marca especial para separar la parte
-entera de la decimal: es la coma o punto decimal. En el desarrollo
+entera de la decimal: es la COMA O PUNTO DECIMAL. En el desarrollo
 decimal, la coma o punto decimal señala el lugar donde los exponentes de
-la base en el desarrollo de potencias de 10 se hacen negativos. Cuando
+la base en el desarrollo de potencias de 10 SE HACEN NEGATIVOS. Cuando
 queremos representar números fraccionarios con computadoras, nos vemos
 en el problema de representar este signo especial.
 
@@ -677,13 +681,15 @@ escribir números fraccionarios en base 2.
 
 Fraccionario en base 2 a decimal
 
-Si encontramos una expresión como 11.1 0 1$ en base 2 $, la Expresión General
-extendida nos dice cómo obtener su valor en base 10: 11.1 0 1$ en base 2 $  = 
-1  por  2 elevado a la 1 + 1  por  2 elevado a la 0 +
-1  por  2 elevado a la {-1} + 0  por  2 elevado a la {-2} + 1  por  2 elevado a la {-3} =
-2 + 1 + 0.5 + 0 + 0.125 =  3.625
+Si encontramos una expresión como 11.1 0 1₍₂, la Expresión General
+extendida nos dice cómo obtener su valor en base 10:
+11.1 0 1₍₂=
+1 × 2¹ + 1 × 2⁰+
+1 × 2 elevado a la ( − 1) + 0 × 2 elevado a la ( − 2) + 1 × 2 elevado a la ( − 3)=
+2 + 1 + 0.5 + 0 + 0.125=
+3.625
 
-Otra manera
+OTRA MANERA
 
 Otra manera de obtener el valor decimal de un número fraccionario n en
 base 2 consiste en utilizar el hecho de que cada vez que desplazamos el
@@ -694,22 +700,22 @@ dividimos por 2.
 El método consiste en:
 
 -   Identificar cuántas posiciones fraccionarias tiene n (llamémoslas k)
--   Multiplicar n por 2 elevado a la k obteniendo un entero en base 2
+-   Multiplicar n por 2 elevado a la (k) obteniendo un ENTERO en base 2
 -   Convertir el entero resultante a base 10, lo cual ya sabemos hacer
--   Dividir el resultado por 2 elevado a la k, obteniendo n en base 10
+-   Dividir el resultado por 2 elevado a la (k), obteniendo n en base 10
 
 Con este método esencialmente estamos calculando el valor decimal de n
-sin considerar el signo de coma fraccionaria (es decir, imaginando que n
+SIN CONSIDERAR EL SIGNO DE COMA FRACCIONARIA (es decir, imaginando que n
 fuera un entero); convirtiendo ese valor a decimal, y luego dividiendo
-el resultado en base 10 por 2 elevado a la k para recuperar el valor original de n,
+el resultado en base 10 por 2 elevado a la (k) para recuperar el valor original de n,
 sólo que ahora en base 10.
 
-Ejemplo
+EJEMPLO
 
-El número n = 11.1 0 1$ en base 2 $ tiene tres cifras decimales (k = 3). Lo
-convertimos en entero dejando 1 1 1 0 1$ en base 2 $; averiguamos que este número en
-base 10 es 29; y finalmente dividimos 29 por 2 elevado a la 3. Concluimos que
-n = 11.1 0 1$ en base 2 $ = 29/8 = 3.625.
+El número n = 11.1 0 1₍₂ tiene tres cifras decimales (k = 3). Lo
+convertimos en entero dejando 1 1 1 0 1₍₂; averiguamos que este número en
+base 10 es 29; y finalmente dividimos 29 por 2³. Concluimos que
+n = 11.1 0 1₍₂ = 29/8 = 3.625.
 
 Decimal fraccionario a base 2
 
@@ -722,29 +728,29 @@ Para convertir un decimal con parte fraccionaria a base 2:
 4.  Se repite el paso anterior con la nueva parte fraccionaria obtenida,
     hasta que ésta sea 0, o hasta lograr la precisión deseada.
 
-Ejemplo
+EJEMPLO
 
-Convirtamos el número n = 3.625 a base 2. Primero separamos parte entera
+Convirtamos el número n = 3.625 a base 2. Primero separamos parte entera
 (3) y parte fraccionaria (0.625).
 
-1. Parte entera
+1. PARTE ENTERA
 
 La parte entera de n se convierte a base 2 como entero sin signo (dando
-11$ en base 2 $).
+11₍₂).
 
-2. Parte fraccionaria
+2. PARTE FRACCIONARIA
 
 Para calcular la parte fraccionaria binaria de n seguimos un
-procedimiento iterativo (es decir, que consta de pasos que se repiten).
+procedimiento ITERATIVO (es decir, que consta de pasos que se repiten).
 
 La parte fraccionaria decimal de n se multiplica por 2. Separamos este
 resultado a su vez en parte entera y parte fraccionaria. Guardamos la
-parte entera del resultado y repetimos, es decir, volvemos a multiplicar
+parte entera del resultado Y REPETIMOS, es decir, volvemos a multiplicar
 por 2 la parte fraccionaria recién obtenida, separamos la parte entera,
 etc.
 
 El procedimiento de separar, guardar, multiplicar, se repite hasta que
-la parte fraccionaria obtenida en una multiplicación sea 0 (ya no tiene
+la PARTE FRACCIONARIA obtenida en una multiplicación sea 0 (ya no tiene
 sentido seguir el procedimiento porque el resultado será siempre 0) o
 hasta que tengamos suficientes dígitos computados para nuestra
 aplicación.
@@ -752,53 +758,53 @@ aplicación.
 Para el ejemplo donde queremos obtener la expresión binaria de la parte
 fraccionaria 0.625, el procedimiento dará:
 
--   0.625  por  2 = 1.25
--   0.25  por  2 = 0.5
--   0.5  por  2 = 1.0
+-   0.625 × 2 = 1.25
+-   0.25 × 2 = 0.5
+-   0.5 × 2 = 1.0
 
 Al llegar al tercer paso, el procedimiento finaliza porque la parte
 fraccionaria encontrada es 0.
 
-La sucesión de dígitos aparecidos como partes enteras durante este
-procedimiento servirán para construir la parte fraccionaria del
+LA SUCESIÓN DE DÍGITOS APARECIDOS COMO PARTES ENTERAS durante este
+procedimiento servirán para CONSTRUIR LA PARTE FRACCIONARIA del
 resultado. Notemos que estos dígitos que aparecen solamente pueden ser
-ceros y unos, porque son la parte entera de 2 por  x con x < 1.
+ceros y unos, porque son la parte entera de 2 × x con x < 1.
 
-En el ejemplo, las partes enteras parciales son 1, 0 y 1, dando la parte
-fraccionaria final .1 0 1$ en base 2 $.
+En el ejemplo, las partes enteras parciales son 1, 0 Y 1, dando la parte
+fraccionaria final .1 0 1₍₂.
 
-3. Resultado final
+3. RESULTADO FINAL
 
 El resultado final del ejemplo es la suma, en base 2, de la parte entera
 de n calculada separadamente, más la parte fraccionaria construida con
 los dígitos que fueron apareciendo como partes enteras durante el
 procedimiento de duplicar la parte fraccionaria.
 
-La conversión a base 2 del número n = 3.625 que buscábamos será
-11$ en base 2 $ + 0.1 0 1$ en base 2 $ = 11.1 0 1$ en base 2 $.
+La conversión a base 2 del número n = 3.625 que buscábamos será
+11₍₂ + 0.1 0 1₍₂ = 11.1 0 1₍₂.
+
 
 Representación de punto fijo
-----------------------------
 
 ¿Cómo aplicamos el método de conversión visto, de fraccionarios
 decimales a binarios y viceversa, en las computadoras? El problema es
-parecido al de almacenar el signo "menos": no podemos guardar en la
+parecido al de almacenar el signo “menos”: no podemos guardar en la
 memoria otra cosa que bits, de forma que habrá que establecer alguna
 convención para indicar dónde está el punto o coma fraccionaria.
 
-A veces las computadoras utilizan sistemas de punto fijo para
+A veces las computadoras utilizan sistemas DE PUNTO FIJO para
 representar números con parte fraccionaria. Los sistemas de punto fijo
-establecen una cantidad de bits o ancho total (que llamaremos n) y una
+establecen una cantidad de bits o ANCHO total (que llamaremos n) y una
 cantidad fija de bits para la parte fraccionaria (que llamaremos k).
 Todos los datos manipulados por la computadora tienen la misma cantidad
-n-k de bits de parte entera y la misma cantidad k de bits de parte
-fraccionaria. Por ejemplo, la notación PF(8,3) denota un sistema de
-punto fijo con 8 bits en total, de los cuales 3 son para la parte
-fraccionaria.
+n − k de bits de parte entera y la misma cantidad k de bits de parte
+fraccionaria. Por ejemplo, la notación PF(8, 3) denota un SISTEMA DE
+PUNTO FIJO CON 8 BITS EN TOTAL, DE LOS CUALES 3 SON PARA LA PARTE
+FRACCIONARIA.
 
 Esta convención contiene toda la información necesaria. Al ser fijos los
-anchos de parte entera y fraccionaria, la computadora puede tratar
-aritméticamente a todos los números como si fueran enteros, sin
+anchos de parte entera y fraccionaria, la computadora PUEDE TRATAR
+ARITMÉTICAMENTE A TODOS LOS NÚMEROS COMO SI FUERAN ENTEROS, sin
 preocuparse por partes enteras ni fraccionarias. Solamente habrá que
 utilizar la convención al momento de imprimir o comunicar un resultado.
 La impresora, o la pantalla, deberán mostrar un resultado con coma
@@ -809,30 +815,31 @@ en punto fijo, habrán podido llevarse a cabo sin tener en cuenta el
 lugar de la coma. Dos números en punto fijo se sumarán como si los
 representados fueran dos enteros.
 
-Ejemplo
+EJEMPLO
 
--   Supongamos que queremos computar 3.625 + 1.25 en un sistema PF(8,3).
+-   Supongamos que queremos computar 3.625 + 1.25 en un sistema
+    PF(8, 3).
 -   Las conversiones de estos sumandos a fraccionarios binarios son,
     respectivamente, 11.1 0 1 y 1.01.
 -   Pero en la memoria se almacenarán como 0 0 0 1 1 1 0 1 y 0 0 0 0 1 0 1 0. Nótese
     que al ser todas las partes fraccionarias del mismo ancho, quedan
-    automáticamente "encolumnados" los invisibles puntos fraccionarios.
+    automáticamente “encolumnados” los invisibles puntos fraccionarios.
 -   La suma se efectuará bit a bit como si se tratara de enteros y será
     0 0 1 0 0 1 1 1.
 -   Si pedimos a la computadora que imprima este valor, aplicará la
-    convención PF(8,3) e imprimirá 0 0 1 0 0.1 1 1, o su interpretación en
-    decimal, 4.875, que es efectivamente 3.625 + 1.25.
+    convención PF(8, 3) e imprimirá 0 0 1 0 0.1 1 1, o su interpretación en
+    decimal, 4.875, que es efectivamente 3.625 + 1.25.
 
 Decimal a PF(n,k)
 
 Para representar un decimal fraccionario a, positivo o negativo, en
-notación de punto fijo en n lugares con k fraccionarios (PF(n,k)),
+notación de punto fijo en n lugares con k fraccionarios (PF(n, k)),
 necesitamos obtener su parte entera y su parte fraccionaria, y expresar
 cada una de ellas en la cantidad de bits adecuada a la notación. Para
 esto completaremos la parte entera con ceros a la izquierda hasta
-obtener n-k dígitos, y completaremos la parte fraccionaria con ceros por
-la derecha, hasta obtener k dígitos. Una vez expresado así, lo tratamos
-como si en realidad fuera a  por  2 elevado a la k, y por lo tanto, un entero.
+obtener n − k dígitos, y completaremos la parte fraccionaria con ceros
+por la derecha, hasta obtener k dígitos. Una vez expresado así, lo
+tratamos como si en realidad fuera a × 2 elevado a la (k), y por lo tanto, un entero.
 
 -   Si es positivo, calculamos la secuencia de dígitos binarios que
     expresan su parte entera y su parte fraccionaria, y escribimos ambas
@@ -845,13 +852,13 @@ Truncamiento
 
 Al escribir la parte fraccionaria de un número a en k bits (porque ésta
 es la capacidad del sistema de representación de punto fijo con k
-dígitos fraccionarios), en el caso general estaremos truncando el
+dígitos fraccionarios), en el caso general estaremos TRUNCANDO el
 desarrollo fraccionario. El número a podría tener otros dígitos
 diferentes de cero más allá de la posición k. Sin embargo, el sistema no
 permite representarlos, y esa información se perderá.
 
-La consecuencia del truncamiento es la aparición de un error de
-truncamiento o pérdida de precisión. El número almacenado en el sistema
+La consecuencia del truncamiento es la aparición de un ERROR DE
+TRUNCAMIENTO o pérdida de precisión. El número almacenado en el sistema
 PF(n,k) será una aproximación con k dígitos fraccionarios al número
 original a, y no estará representándolo con todos sus dígitos
 fraccionarios.
@@ -859,9 +866,9 @@ fraccionarios.
 ¿Cuál es el valor de este error de truncamiento, es decir, cuál es,
 cuantitativamente, la diferencia entre a y la representación en PF(n,k)?
 Si los primeros k dígitos del desarrollo fraccionario real de a se han
-conservado, entonces la diferencia es menor que 2 elevado a la {-k}.
+conservado, entonces la diferencia es menor que 2 elevado a la ( − k).
 
-Ejemplo
+EJEMPLO
 
 Representemos 3.1459 en notación PF(8,3). Parte entera: 0 0 0 1 1. Parte
 fraccionaria: 0 0 1. Representación obtenida: 0 0 0 1 1 0 0 1. Reconvirtiendo
@@ -869,8 +876,8 @@ fraccionaria: 0 0 1. Representación obtenida: 0 0 0 1 1 0 0 1. Reconvirtiendo
 de modo que el número representado en PF(8,3) como 0 0 0 1 1 0 0 1 es en
 realidad 3.125 y no 3.1459.
 
-El error de truncamiento es 3.1459 - 3.1250 = 0.0209, que es menor que
-2 elevado a la {-3} = 0.125.
+El error de truncamiento es 3.1459 − 3.1250 = 0.0209, que es menor que
+2 elevado a la ( − 3) = 0.125.
 
 PF(n,k) a decimal
 
@@ -879,23 +886,23 @@ fraccionarios (PF(n,k)) a decimal:
 
 -   Si es positivo, aplicamos la Expresión General extendida, utilizando
     los exponentes negativos para la parte fraccionaria.
--   O bien, lo consideramos como un entero, convertimos a decimal y
-    finalmente lo dividimos por 2 elevado a la k.
+    -   O bien, lo consideramos como un entero, convertimos a decimal y
+        finalmente lo dividimos por 2 elevado a la (k).
 -   Si es negativo, lo complementamos a 2 y terminamos operando como en
     el caso positivo.
--   Finalmente agregamos el signo - para expresar que se trata de un
-    número negativo.
+    -   Finalmente agregamos el signo − para expresar que se trata de un
+        número negativo.
 
 Preguntas
 
--   ¿A qué número decimal corresponde...
+-   ¿A qué número decimal corresponde…
     -   0 0 1 1.0 0 0 0?
     -   0 0 0 1.1 0 0 0?
     -   0 0 0 0.1 1 0 0?
--   ¿Cómo se representan en PF(8,4)...
+-   ¿Cómo se representan en PF(8, 4)…
     -   0.5?
-    -   -7.5?
--   ¿Cuál es el RR de PF(8,3)? ¿Y de PF(8,k)?
+    -    − 7.5?
+-   ¿Cuál es el RR de PF(8, 3)? ¿Y de PF(8, k)?
 
 Ventajas y desventajas de Punto Fijo
 
@@ -904,7 +911,7 @@ de que permite reutilizar completamente la lógica ya implementada para
 tratar enteros en complemento a 2, sin introducir nuevos problemas ni
 necesidad de nuevos recursos. Como la lógica para C2 es sencilla y
 rápida, la representación de punto fijo es adecuada para sistemas que
-deben ofrecer una determinada performance:
+deben ofrecer una determinada $ sub $performance$ sub $:
 
 -   Los sistemas que deben ofrecer un tiempo de respuesta corto,
     especialmente aquellos interactivos, como los juegos.
@@ -923,7 +930,7 @@ con datos de naturalezas diferentes.
     valor absoluto muy grande, lo que hará que sea necesario elegir una
     representación de una gran cantidad de bits de ancho. Pero esta
     cantidad de bits quedará desperdiciada al representar los datos de
-    magnitud pequeña.  
+    magnitud pequeña.
 -   Otro tanto ocurre con los bits destinados a la parte fraccionaria.
     Si los requerimientos de precisión de los diferentes datos son muy
     altos, será necesario reservar una gran cantidad de bits para la
@@ -934,10 +941,10 @@ con datos de naturalezas diferentes.
 No es raro que aparezcan en el mismo programa, e incluso en la misma
 instrucción de programa, datos o variables de magnitud o precisión
 extremadamente diferentes. Por ejemplo, si un programa de cómputo
-científico necesita calcular el tiempo en que la luz recorre una
-millonésima de milímetro, la fórmula a aplicar relacionará la velocidad
-de la luz en metros por segundo (unos 300.0 0 0.0 0 0 m/s) con el tamaño en
-metros de un nanómetro (0.0 0 0 0 0 0 0 0 1 m).
+científico necesita calcular el TIEMPO EN QUE LA LUZ RECORRE UNA
+MILLONÉSIMA DE MILÍMETRO, la fórmula a aplicar relacionará la velocidad
+de la luz en metros por segundo (unos 300.0 0 0.0 0 0 m/s) con el tamaño en
+metros de un nanómetro (0.0 0 0 0 0 0 0 0 1 m).
 
 Estos dos datos son extremadamente diferentes en magnitud y cantidad de
 dígitos fraccionarios. La velocidad de la luz es un número
@@ -948,13 +955,12 @@ no es para nada necesaria al representar la velocidad de la luz.
 Notación Científica
 
 En Matemática, la respuesta al problema del cálculo con variables tan
-diferentes existe desde hace mucho tiempo, y es la llamada Notación
-Científica. En Notación Científica, los números se expresan en una forma
-estandarizada que consiste de un coeficiente, significando o mantisa
-multiplicado por una potencia de 10. Es decir, la forma general de la
-notación es m  por  10 elevado a la e, donde m, el coeficiente, es un número
-positivo o negativo, y e, el exponente, es un entero positivo o
-negativo.
+diferentes existe desde hace mucho tiempo, y es la llamada NOTACIÓN
+CIENTÍFICA. En Notación Científica, los números se expresan en una forma
+estandarizada que consiste de un COEFICIENTE, SIGNIFICANDO O MANTISA
+multiplicado por UNA POTENCIA DE 10. Es decir, la forma general de la
+notación es m × 10 elevado a la (e), donde m, el coeficiente, ES UN NÚMERO POSITIVO O
+NEGATIVO, y e, el EXPONENTE, es un entero positivo o negativo.
 
 La notación científica puede representar entonces números muy pequeños y
 muy grandes, todos en el mismo formato, con economía de signos y
@@ -962,60 +968,61 @@ permitiendo operar entre ellos con facilidad. Al operar con cantidades
 en esta notación podemos aprovechar las reglas del Álgebra para calcular
 m y e separadamente, y evitar cuentas con muchos dígitos.
 
-Ejemplo
+EJEMPLO
 
 Los números mencionados hace instantes, la velocidad de la luz en metros
 por segundo, y la longitud en metros de un nanómetro, se representarán
-en notación científica como 3 por 10 elevado a la 8 y 1 por 10 elevado a la {-9},
-respectivamente.
+en notación científica como 3 × 10⁸ y 1 × 10 elevado a la ( − 9), respectivamente.
 
 El tiempo en que la luz recorre una millonésima de milímetro se
-computará con la fórmula t = e/v, con los datos expresados en notación
+computará con la fórmula t = e/v, con los datos expresados en notación
 científica, como:
 
-e = 1 por 10 elevado a la {-9}m v = 3 por 10 elevado a la {8}m/s
-t = e / v = (1  por  10 elevado a la {-9}\ m) / (3  por  10 elevado a la 8\ m/s) = 
-t = 1 / 3  por  10 elevado a la {-9-8}\ s = t = 0.333  por  10 elevado a la {-17}\ s
+$ sub $e$ sub $ = 1 × 10 elevado a la ( − 9) $ sub $m$ sub $
+$ sub $v$ sub $ = 3 × 10⁸ $ sub $m$ sub $/$ sub $s$ sub $
+$ sub $t$ sub $ = $ sub $e$ sub $/$ sub $v$ sub $ = (1 × 10 elevado a la ( − 9) $ sub $m$ sub $)/(3 × 10⁸ $ sub $m$ sub $/$ sub $s$ sub $)=
+$ sub $t$ sub $ = 1/3 × 10 elevado a la ( − 9 − 8) $ sub $s$ sub $=
+$ sub $t$ sub $ = 0.333 × 10 elevado a la ( − 17) $ sub $s$ sub $
 
 Normalización
 
 El resultado que hemos obtenido en el ejemplo anterior debe quedar
-normalizado llevando el coeficiente m a un valor mayor o igual que 1 y
-menor que 10. Si modificamos el coeficiente al normalizar, para no
+NORMALIZADO llevando el coeficiente m a un valor MAYOR O IGUAL QUE 1 Y
+MENOR QUE 10. Si modificamos el coeficiente al normalizar, para no
 cambiar el resultado debemos ajustar el exponente.
 
-Ejemplo
+EJEMPLO
 
 El resultado que obtuvimos anteriormente al computar
-t = 1 / 3  por  10 elevado a la {-9-8}\ s  fue 0.333  por  10 elevado a la {-17}\ s. Este
-coeficiente 0.333 no cumple la regla de normalización porque no es mayor
-o igual que 1.
+t = 1/3 × 10 elevado a la ( − 9 − 8) s fue 0.333 × 10 elevado a la ( − 17) s. Este coeficiente
+0.333 no cumple la regla de normalización porque no es MAYOR O IGUAL QUE
+1.
 
 -   Para normalizarlo, lo multiplicamos por 10, convirtiéndolo en 3.33.
 -   Para no cambiar el resultado, dividimos todo por 10 afectando el
     exponente, que de -17 pasa a ser -18.
--   El resultado queda normalizado como 0.333 por  10 elevado a la {-18}.
+-   El resultado queda normalizado como 3.33 × 10 elevado a la ( − 18).
 
 Normalización en base 2
 
 Es perfectamente posible definir una notación científica en otras bases.
 En base 2, podemos escribir números con parte fraccionaria en notación
 científica normalizada desplazando la coma o punto fraccionario hasta
-dejar una parte entera igual a 1 (ya que es el único valor binario que
+dejar una parte entera IGUAL A 1 (ya que es el único valor binario que
 cumple la condición de normalización) y ajustando el exponente de base
 2, de manera de no modificar el resultado.
 
-Ejemplos
+EJEMPLOS
 
--   1 0 0.1 1 1$ en base 2 $ = 1.0 0 1 1 1$ en base 2 $  por  2 elevado a la 2
--   0.0 0 0 1 1 0 1$ en base 2 $ = 1.1 0 1$ en base 2 $  por  2 elevado a la {-4}
+-   1 0 0.1 1 1₍₂ = 1.0 0 1 1 1₍₂ × 2²
+-   0.0 0 0 1 1 0 1₍₂ = 1.1 0 1₍₂ × 2 elevado a la ( − 4)
+
 
 Representación en Punto Flotante
---------------------------------
 
 La herramienta matemática de la Notación Científica ha sido adaptada al
-dominio de la computación definiendo métodos de representación en punto
-flotante. Estos métodos resuelven los problemas de los sistemas de punto
+dominio de la computación definiendo métodos de REPRESENTACIÓN EN PUNTO
+FLOTANTE. Estos métodos resuelven los problemas de los sistemas de punto
 fijo, abandonando la idea de una cantidad fija de bits para parte entera
 y parte fraccionaria. En su lugar, inspirándose en la notación
 científica, los formatos de punto flotante permiten escribir números de
@@ -1023,21 +1030,21 @@ un gran rango de magnitudes y precisiones en un campo de tamaño fijo.
 
 Actualmente se utilizan los estándares de cómputo en punto flotante
 definidos por la organización de estándares IEEE (Instituto de
-Ingeniería Eléctrica y Electrónica, o "I triple E").
+Ingeniería Eléctrica y Electrónica, o “I triple E”).
 
-Estos estándares son dos, llamados IEEE 754 en precisión simple y en
-precisión doble.
+Estos estándares son dos, llamados IEEE 754 EN PRECISIÓN SIMPLE Y EN
+PRECISIÓN DOBLE.
 
 -   IEEE 754 precisión simple
     -   Se define sobre un campo de 32 bits
-    -   Cuenta con 1 bit de signo
-    -   Reserva 8 bits para el exponente
-    -   Reserva 23 bits para la mantisa
+    -   Cuenta con 1 BIT DE SIGNO
+    -   Reserva 8 BITS PARA EL EXPONENTE
+    -   Reserva 23 BITS PARA LA MANTISA
 -   IEEE 754 precisión doble
     -   Se define sobre un campo de 64 bits
-    -   Cuenta con 1 bit de signo igual que en precisión simple
-    -   Reserva 11 bits para el exponente
-    -   Reserva 52 bits para la mantisa
+    -   Cuenta con 1 BIT DE SIGNO igual que en precisión simple
+    -   Reserva 11 BITS PARA EL EXPONENTE
+    -   Reserva 52 BITS PARA LA MANTISA
 
 La definición de los formatos está acompañada por la especificación de
 mecanismos de cálculo para usarlos, manejo de errores y otra información
@@ -1049,36 +1056,33 @@ Conversión de decimal a punto flotante
 
 Para convertir manualmente un número decimal n a punto flotante
 necesitamos calcular los tres elementos del formato de punto flotante:
-signo (que llamaremos s), exponente (que llamaremos e) y mantisa (que
+SIGNO (que llamaremos s), EXPONENTE (que llamaremos e) y MANTISA (que
 llamaremos m), en la cantidad de bits correcta según el formato de
 precisión simple o doble que utilicemos.
 
 Una vez conocidos s, e y m, sólo resta escribirlos como secuencias de
 bits de la longitud que especifica el formato.
 
-1.  Separar el signo y escribir el valor absoluto de n en base 2.
+1.  Separar el SIGNO y escribir el valor absoluto de n en base 2.
     -   Si n es positivo (respectivamente, negativo), s será 0
         (respectivamente, 1). Separado el signo, consideramos únicamente
-        el valor absoluto de n y lo representamos en base 2 como se vio
+        el VALOR ABSOLUTO de n y lo representamos en base 2 como se vio
         al convertir un decimal fraccionario a base 2.
-
-2.  Escribir el valor binario de n en notación científica en base 2
-    normalizada.
+2.  Escribir el valor binario de n en notación científica EN BASE 2
+    NORMALIZADA.
     -   Para convertir n a notación científica lo multiplicamos por una
         potencia de 2 de modo que la parte entera sea 1 (condición para
         la normalización). El resto de la expresión binaria se convierte
         en parte fraccionaria. Para no cambiar el valor de n, lo
         multiplicamos por una potencia de 2 inversa a aquella que
         utilizamos.
-
 3.  El exponente, positivo o negativo, que aplicamos en el paso anterior
     debe ser expresado en notación en exceso a 127.
     -   Al exponente se le suma 127 para representar valores en el
-        intervalo [-127,128] con 8 bits. Esta representación se elige
+        intervalo [ − 127, 128] con 8 bits. Esta representación se elige
         para poder hacer comparables directamente dos números expresados
         en punto flotante.
-
-4.  El coeficiente calculado se guarda sin su parte entera en la parte
+4.  El coeficiente calculado se guarda SIN SU PARTE ENTERA en la parte
     de mantisa.
     -   Como la normalización obliga a que la parte entera de la mantisa
         sea 1, no tiene mayor sentido utilizar un bit para guardarlo en
@@ -1090,22 +1094,22 @@ bits de la longitud que especifica el formato.
 Ejemplo de Punto Flotante
 
 Recorramos los pasos para la conversión manual a punto flotante
-precisión simple, partiendo del decimal n = -5.5. Recordemos que
+precisión simple, partiendo del decimal n =  − 5.5. Recordemos que
 necesitamos averiguar s, e y m.
 
--   n es negativo, luego s = 1.
--   |n| = 5.5. Convirtiendo el valor absoluto a binario obtenemos
-    1 0 1.1$ en base 2 $.
--   Normalizando, queda 1 0 1.1$ en base 2 $ = 1.0 1 1$ en base 2 $ por  2 elevado a la 2.
+-   n es negativo, luego s = 1.
+-   |n| = 5.5. Convirtiendo el valor absoluto a binario obtenemos
+    1 0 1.1₍₂.
+-   Normalizando, queda 1 0 1.1₍₂ = 1.0 1 1₍₂ × 2².
 -   Del paso anterior, el exponente 2 se representa en exceso a 127 como
-    e = 2 + 127 = 129. En base 2, 129 = 1 0 0 0 0 0 0 1$ en base 2 $.
+    e = 2 + 127 = 129. En base 2, 129 = 1 0 0 0 0 0 0 1₍₂.
 -   Del mismo paso anterior extraemos la mantisa quitando la parte
-    entera: 1.0 1 1 - 1 = 0.0 1 1. Los bits de m son 0 1 1 0 0 0 0 0 0... con ceros
+    entera: 1.0 1 1 − 1 = 0.0 1 1. Los bits de m son 0 1 1 0 0 0 0 0 0... con ceros
     hasta la posición 23.
--   Finalmente, s, e, m = 1, 1 0 0 0 0 0 0 1, 0 1 1 0 0 0 0 0 0 0 0 0....
+-   Finalmente, s, e, m = 1, 1 0 0 0 0 0 0 1, 0 1 1 0 0 0 0 0 0 0 0 0....
 
 Lo que significa que la representación en punto flotante de -5.5 es
-igual a 1 1 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0 0 0... (con ceros hasta completar los 32 bits de
+igual a 1 1 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0 0 0… (con ceros hasta completar los 32 bits de
 ancho total).
 
 Expresión de punto flotante en hexadecimal
@@ -1116,7 +1120,7 @@ precisión simple como si se tratara de 8 dígitos hexadecimales. Se
 aplica la regla, que ya conocemos, de sustituir directamente cada grupo
 de 4 bits por un dígito hexadecimal.
 
-Así, en el ejemplo anterior, la conversión del decimal -5.5 resultó en
+Así, en el ejemplo anterior, la conversión del decimal  − 5.5 resultó en
 la secuencia de bits 1 1 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0... (con más ceros).
 
 Es fácil equivocarse al transcribir este resultado. Pero sustituyendo
@@ -1128,52 +1132,52 @@ Conversión de punto flotante a decimal
 
 Teniendo un número expresado en punto flotante precisión simple,
 queremos saber a qué número decimal equivale. Separamos la
-representación en sus componentes s, e y m, que tienen 1, 8 y 23 bits
-respectivamente, y "deshacemos" la transformación que llevó a esos datos
+representación en sus componentes s, e y m, que tienen 1, 8 Y 23 BITS
+respectivamente, y “deshacemos” la transformación que llevó a esos datos
 a ocupar esos lugares. De cada componente obtendremos un factor de la
 fórmula final.
 
 -   Signo
     -   El valor de s nos dice si el decimal es positivo o negativo.
-    -   La fórmula (-1) elevado a la s da -1 si s=1, y 1 si s=0.
+    -   La fórmula ( − 1) elevado a la (s) da -1 si s = 1, y 1 si s = 0.
 -   Exponente
     -   El exponente está almacenado en la representación IEEE 754 como
-        ocho bits en exceso a 127. Corresponde restar 127 para volver a
+        ocho bits en exceso a 127. Corresponde RESTAR 127 para volver a
         obtener el exponente de 2 que afectaba al número originalmente
         en notación científica normalizada.
-    -   La fórmula 2 elevado a la {(e - 127)} dice cuál es la potencia de 2 que
+    -   La fórmula 2 elevado a la ((e − 127)) dice cuál es la potencia de 2 que
         debemos usar para ajustar la mantisa.
 -   Mantisa
     -   La mantisa está almacenada sin su parte entera, que en la
-        notación científica normalizada en base 2 siempre es 1. Para
+        notación científica normalizada en base 2 SIEMPRE ES 1. Para
         recuperar el coeficiente o mantisa original hay que restituir
         esa parte entera igual a 1.
-    -   La fórmula 1 + m nos da la mantisa binaria original.
+    -   La fórmula 1 + m nos da la mantisa binaria original.
 
 Reuniendo las fórmulas aplicadas a los tres elementos de la
 representación, hacemos el cálculo multiplicando los tres factores:
 
-n = (-1) elevado a la s  por  2 elevado a la {(e-127)}   por  (1+m)
+$ sub $n$ sub $ = ( − 1) elevado a la ($ sub $s$ sub $) × 2 elevado a la (($ sub $e$ sub $ − 127)) × (1 + $ sub $m$ sub $)
 
 obteniendo finalmente el valor decimal representado.
 
-Ejemplo
+EJEMPLO
 
 Para el valor de punto flotante IEEE 754 precisión simple representado
-por la secuencia hexadecimal C0B0 0 0 0 0, encontramos que s=1, e=129,
-m=0 1 1 0 0 0....
+por la secuencia hexadecimal C0B0 0 0 0 0, encontramos que s = 1, e = 129,
+m = 0 1 1 0 0 0....
 
 -   Signo
-    -   (-1) elevado a la s = (-1) elevado a la 1 = -1
+    -   ( − 1) elevado a la (s) = ( − 1)¹ =  − 1
 -   Exponente
-    -   e = 129 → 2 elevado a la {(e-127)} = 2 elevado a la 2
+    -   e = 129 → 2 elevado a la ((e − 127)) = 2²
 -   Mantisa
-    -   m = 0 1 1 0 0 0 0... → (1 + m) = 1.0 1 1 0 0 0....
+    -   m = 0 1 1 0 0 0 0... → (1 + m) = 1.0 1 1 0 0 0....
 
-Ajustando la mantisa 1.0 1 1 0 0 0... por el factor 2 elevado a la 2 obtenemos 1 0 1.1.
+Ajustando la mantisa 1.0 1 1 0 0 0... por el factor 2² obtenemos 1 0 1.1.
 Convirtiendo a decimal obtenemos 5.5. Aplicando el signo recuperamos
-finalmente el valor -5.5, que es lo que está representando la secuencia
-C0B0 0 0 0 0.
+finalmente el valor  − 5.5, que es lo que está representando la
+secuencia C0B0 0 0 0 0.
 
 Error de truncamiento
 
@@ -1187,31 +1191,31 @@ aparentemente tan pequeños como 0.1 o 0.2. ¿Cuál es el problema en este
 caso?
 
 Si hacemos manualmente el cálculo de la parte fraccionaria binaria de
-0.1 (o de 0.2) encontraremos que esta parte fraccionaria es periódica.
-Esto ocurre porque 0.1 = 1/10, y el denominador 10 contiene factores que
+0.1 (o de 0.2) encontraremos que esta parte fraccionaria es PERIÓDICA.
+Esto ocurre porque 0.1 = 1/10, y el denominador 10 contiene factores que
 no dividen a la base (es decir, el 5, que no divide a 2). Lo mismo
 ocurre en base 10 cuando computamos 1/3, que tiene infinitos decimales
 periódicos porque el denominador 3 no divide a 10, la base.
 
 Cuando un lenguaje de computación reconoce una cadena de caracteres como
-"0.1", introducida por el programador o el usuario, advierte que se está
+“0.1”, introducida por el programador o el usuario, advierte que se está
 haciendo referencia a un número con decimales, e intenta representarlo
 en la memoria como un número en punto flotante. La parte fraccionaria
-debe ser forzosamente truncada, ya sea a los 23 bits, porque se utiliza
+debe ser forzosamente TRUNCADA, ya sea a los 23 bits, porque se utiliza
 precisión simple, o a los 52 bits, cuando se utiliza precisión doble. En
 ambos casos, el número representado es una aproximación al 0.1 original,
 y esta aproximación será mejor cuantos más bits se utilicen; pero en
 cualquier caso, esta parte fraccionaria almacenada en la representación
-en punto flotante es finita, de manera que nunca refleja el verdadero
+en punto flotante es FINITA, de manera que nunca refleja el verdadero
 valor que le atribuimos al número original.
 
 A partir del momento en que ese número queda representado en forma
 aproximada, todos los cómputos realizados con esa representación
-adolecen de un error de truncamiento, que va agravándose a medida que se
+adolecen de un ERROR DE TRUNCAMIENTO, que va agravándose a medida que se
 opera con ese número representado.
 
-En precisión simple, se considera que tan sólo los primeros siete
-decimales de un número en base 10 son representados en forma correcta.
+En precisión simple, se considera que tan sólo LOS PRIMEROS SIETE
+DECIMALES de un número en base 10 son representados en forma correcta.
 En precisión doble, sólo los primeros quince decimales son correctos.
 
 Casos especiales en punto flotante
@@ -1220,28 +1224,28 @@ En el estándar IEEE 754, no todas las combinaciones de s, e y m dan
 representaciones con sentido, o con el sentido esperable.
 
 Por ejemplo, con las fórmulas presentadas, no es posible representar el
-cero, ya que toda mantisa normalizada lleva una parte entera igual a 1,
+CERO, ya que toda mantisa normalizada lleva una parte entera igual a 1,
 y los demás factores nunca pueden ser iguales a 0. Entonces, para
-representar el 0 en IEEE 754 se recurre a una convención, que se ha
-definido como la combinación de exponente 0 y mantisa 0, cualquiera sea
+representar el 0 en IEEE 754 se recurre a una CONVENCIÓN, que se ha
+definido como la combinación de EXPONENTE 0 Y MANTISA 0, cualquiera sea
 el signo.
 
-Los números normalizados en IEEE 754 son aquellos que provienen de una
+Los números NORMALIZADOS en IEEE 754 son aquellos que provienen de una
 expresión en notación científica normalizada con exponente diferente de
 -127, y son la gran mayoría de los representables. Sin embargo, el
 estándar permite la representación de una clase de números muy pequeños,
 con parte entera 0 en la notación científica, que son los llamados
-desnormalizados.
+DESNORMALIZADOS.
 
 Otros números especiales son aquellos donde el exponente consiste en
-ocho unos binarios con mantisa 0. Estos casos están reservados para
-representar los valores infinito positivo y negativo (que aparecen
-cuando una operación arroja un resultado de overflow del formato de
+ocho UNOS binarios con mantisa 0. Estos casos están reservados para
+representar los valores INFINITO positivo y negativo (que aparecen
+cuando una operación arroja un resultado de OVERFLOW del formato de
 punto flotante).
 
 Similarmente, cuando el exponente vale ocho unos, y la mantisa es
-diferente de 0, se está representando un caso de NaN (Not a Number, "no
-es un número"). Estos casos patológicos sólo ocurren cuando un proceso
+diferente de 0, se está representando un caso de NAN (NOT A NUMBER, “no
+es un número”). Estos casos patológicos sólo ocurren cuando un proceso
 de cálculo lleva a una condición de error (por intentar realizar una
 operación sin sentido en el campo real, como obtener una raíz cuadrada
 de un real negativo).

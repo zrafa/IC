@@ -1,18 +1,18 @@
 
-#El Software
+# El Software
 
 En esta parte de la unidad, **El Software**, nos interesa conocer el proceso de desarrollo de software, desde el punto de vista de la organización de computadoras. Explicaremos cómo se llega desde un programa, en un lenguaje de alto o bajo nivel, a obtener una sucesión de instrucciones de máquina para un procesador. 
 
 
-##Lenguajes de bajo nivel
+## Lenguajes de bajo nivel
 
-###Lenguaje de máquina o código máquina
+### Lenguaje de máquina o código máquina
 
 Hemos visto un conjunto de instrucciones y convenciones sobre cómo se utilizan los datos en el MCBE, que es el llamado **lenguaje de máquina** del MCBE. En este lenguaje, las operaciones y los datos se escriben como secuencias de dígitos binarios.
 
   Por supuesto, escribir un programa para el MCBE y **depurarlo**, es decir, identificar y corregir sus errores, es una tarea muy dificultosa, porque los códigos de operación, las direcciones y los datos, fácilmente terminan confundiéndonos.  Para facilitar la programación, se ha definido un lenguaje alternativo llamado el **ensamblador** del MCBE. 
 
-###Lenguaje ensamblador
+### Lenguaje ensamblador
 
 Cuando escribimos un programa en el lenguaje **ensamblador** del MCBE, las instrucciones se corresponden una a una con las del programa en lenguaje de máquina. Pero en el lenguaje ensamblador del MCBE: 
 
@@ -25,7 +25,7 @@ Cada CPU del mundo real tiene su propio lenguaje de máquina, y aunque mucho má
 El lenguaje de máquina de cualquier CPU, y su lenguaje ensamblador (o *Assembler*), son llamados en general **lenguajes de bajo nivel**. 
 
 
-###Mnemónicos
+### Mnemónicos
 
 Los **mnemónicos** o nombres simbólicos de las instrucciones se basan en los nombres en inglés de las operaciones correspondientes. Disponemos de los mnemónicos:
 
@@ -35,7 +35,7 @@ Los **mnemónicos** o nombres simbólicos de las instrucciones se basan en los n
 * HLT para la instrucción de parada (código 001) y NOP para la operación nula o no operación (código 000).
 
 
-###Rótulos
+### Rótulos
 
 Cuando necesitamos hacer referencia a una dirección, como en las operaciones de transferencia o en las aritméticas, el ensamblador nos permite independizarnos del valor de esa dirección y simplemente indicar un **nombre simbólico o rótulo** para esa dirección. Así, un rótulo equivale en lenguaje ensamblador a la **dirección de un dato**.
 
@@ -57,7 +57,7 @@ Dirección | Instrucción | Rótulo  | Mnemónico | Argumento
 
 En este ejemplo, SIGUE, FIN, UNO y CANT son rótulos. El rótulo CANT, por ejemplo, nos permite referirnos en la primera instrucción, LD CANT, a un dato declarado más adelante con ese nombre. Del mismo modo, cuando la instrucción es de salto, podemos hacer referencia a la posición de memoria donde se hará el salto usando un rótulo, como en la quinta instrucción, JMP SIGUE. 
 
-###Rótulos en instrucciones de salto
+### Rótulos en instrucciones de salto
 
 Es importante recordar que, de todas maneras, en la traducción de ensamblador a lenguaje de máquina **para las instrucciones de salto**, el rótulo se sustituye por un **desplazamiento**, y no por una dirección.
 
@@ -65,7 +65,7 @@ Es importante recordar que, de todas maneras, en la traducción de ensamblador a
 
 - En el ejemplo existe un rótulo SIGUE que identifica a la instrucción en la posición 1. La instrucción del ejemplo JMP SIGUE, al ser ejecutada, deriva el control a la instrucción 1. Es decir, almacena un 1 en el registro PC, para que la siguiente iteración del ciclo de instrucción ejecute la instrucción en la dirección 1 de la memoria. Sin embargo, el argumento para la instrucción JMP **no vale 1** sino **-3**, como podemos corroborar en la columna "Instrucción" de la tabla.
 
-###Rótulos predefinidos
+### Rótulos predefinidos
 
 Los rótulos IN y OUT vienen predefinidos en el lenguaje ensamblador de MCBE y corresponden a las posiciones de memoria 30 (para entrada) y 31 (para salida) respectivamente. 
 
@@ -75,13 +75,13 @@ La instrucción en línea 2, ST OUT, almacena el contenido del acumulador en la 
  
 
 
-##Traductores
+## Traductores
 
 Uno puede pensar en un programa cualquiera como si se tratara de una máquina, cuyo funcionamiento es, en principio, desconocido. Todo lo que vemos es que, si introducimos ciertos datos, de alguna forma esta "máquina" devolverá un resultado.
 
 Si pensamos en una clase especial de estos programas, donde los datos que ingresan son a su vez un programa, y donde la salida devuelta por la máquina es, a su vez, un programa, entonces esa clase especial de programas son los **traductores**. 
 
-##Ensambladores
+## Ensambladores
 
 Como hemos dicho anteriormente, una CPU como el MCBE sólo sabe ejecutar instrucciones de código máquina expresadas con unos y ceros. Cuando vimos el lenguaje ensamblador del MCBE lo propusimos simplemente como una forma de abreviar las instrucciones de máquina, o como una forma de facilitar la escritura, porque los mnemónicos y rótulos eran más fáciles de memorizar y de leer que las instrucciones con unos y ceros. 
 
@@ -90,7 +90,7 @@ Sin embargo, un programa escrito en ensamblador del MCBE podría ser traducido a
 Esta clase de traductores, que reciben un programa en lenguaje ensamblador y devuelven un programa en código de máquina, son los llamados **ensambladores** o **assemblers**.
 
 
-###Ensamblador x86
+### Ensamblador x86
 
 Cada CPU tiene su propio lenguaje ensamblador, y existen programas traductores (ensambladores) para cada una de ellas. Por ejemplo, la familia de procesadores de [Intel](https://es.m.wikipedia.org/wiki/Intel_Corporation) para computadoras personales comparte el mismo ISA, o arquitectura y conjunto de instrucciones. Cualquiera de estos procesadores puede ser programado usando un ensamblador para la familia **x86**.
 
@@ -120,7 +120,7 @@ msg:
 Los procesadores de la familia x86 se encuentran en casi todas las computadoras personales y notebooks.
 
 
-###Ensamblador ARM
+### Ensamblador ARM
 
 Por supuesto, los procesadores de familias diferentes tienen conjuntos de instrucciones diferentes. Así, un lenguaje y un programa ensamblador están ligados a un procesador determinado. El código máquina producido por un ensamblador no puede ser trasladado sin cambios a otro procesador que no sea aquel para el cual fue ensamblado. Las instrucciones de máquina tendrán sentidos completamente diferentes para uno y otro. 
 
@@ -149,7 +149,7 @@ hola:
 El ARM es un procesador que suele encontrarse en plataformas móviles como *tablets* o teléfonos celulares, porque ha sido diseñado para minimizar el consumo de energía, una característica que lo hace ideal para construir esos productos portátiles. Su arquitectura, y por lo tanto, su conjunto de instrucciones, están basados en esos principios de diseño. 
 
 
-###Ensamblador PowerPC
+### Ensamblador PowerPC
 
 Lo mismo ocurre con otras familias de procesadores como el [PowerPC](https://es.m.wikipedia.org/wiki/PowerPC), un procesador que fue utilizado para algunas generaciones de consolas de juegos, como la PlayStation 3. 
 
@@ -176,23 +176,23 @@ _start:
 
 
 
-##Lenguajes de programación
+## Lenguajes de programación
 
-###Lenguajes de bajo nivel
+### Lenguajes de bajo nivel
 
 Como vemos, tanto el lenguaje de máquina como el ensamblador o **Assembler** son lenguajes **orientados a la máquina**. Ofrecen control total sobre lo que puede hacerse con un procesador o con el sistema construido alrededor de ese procesador. Por este motivo son elegidos para proyectos de software donde se necesita dialogar estrechamente con el hardware, como ocurre con los sistemas operativos. 
 
 Sin embargo, como están ligados a un procesador determinado, requieren conocimiento profundo de dicho procesador y resultan poco **portables**. Escribir un programa para resolver un problema complejo en un lenguaje de bajo nivel suele ser muy costoso en tiempo y esfuerzo. 
 
 
-###Lenguajes de alto nivel
+### Lenguajes de alto nivel
 
 Otros lenguajes, los de **alto nivel**, ocultan al usuario los detalles de la arquitectura de las computadoras y le facilitan la programación de problemas de software complejos.  Son más **orientados al problema**, lo que quiere decir que nos aíslan de cómo funcionan los procesadores o de cómo se escriben las instrucciones de máquina, y nos permiten especificar las operaciones que necesitamos para resolver nuestro problema en forma más parecida al lenguaje natural, matemático, o humano.
 
 Una ventaja adicional de los lenguajes de alto nivel es que resultan más portables, y su **depuración** (el proceso de corregir errores de programación) es normalmente más fácil.
 
 
-##Niveles de lenguajes
+## Niveles de lenguajes
 
 Se han diseñado muchísimos lenguajes de programación. Cada uno de ellos es más apto para alguna clase de tareas de programación y cada uno tiene sus aplicaciones.
 
@@ -202,14 +202,14 @@ Se han diseñado muchísimos lenguajes de programación. Cada uno de ellos es m�
 
 
 
-##Paradigmas de programación
+## Paradigmas de programación
 
 La programación en lenguajes de alto nivel puede adoptar varias formas. Existen diferentes modos de diseñar un lenguaje, y varios modos de trabajar para obtener los resultados que necesita el programador. Esos modos de pensar o trabajar se llaman **paradigmas de lenguajes de programación**. 
 
 Hay al menos cuatro paradigmas reconocidos, que son, aproximadamente en orden histórico de aparición, **imperativo** o procedural, **lógico o declarativo**, **funcional** y **orientado a objetos**. Los paradigmas lógico y funcional son los más asociados a la disciplina de la Inteligencia Artificial.
 
 
-###Paradigma imperativo o procedural
+### Paradigma imperativo o procedural
 
 Bajo el paradigma imperativo, los programas consisten en una sucesión de instrucciones o comandos, como si el programador diera órdenes a alguien que las cumpliera. El ejemplo en lenguaje **C** explica cuáles son las órdenes que deben ejecutarse, una por una. 
 
@@ -227,7 +227,7 @@ int factorial(int n)
 
 
 
-###Paradigma lógico o declarativo
+### Paradigma lógico o declarativo
 
 El lenguaje Prolog representa el paradigma lógico y con frecuencia constituye el corazón de los sistemas de Inteligencia Artificial que realizan **razonamiento**.
 
@@ -243,7 +243,7 @@ El usuario de este programa puede usarlo de dos maneras. Podría preguntar el va
 
 
 
-###Paradigma funcional
+### Paradigma funcional
 
 En el lenguaje Lisp, perteneciente al paradigma funcional, una función es un enunciado entre paréntesis que puede contener a otras funciones. En particular la definición de **factorial** presentada aquí contiene a su vez una invocación de la misma función, volviéndola una función **recursiva**.
 
@@ -257,7 +257,7 @@ En el lenguaje Lisp, perteneciente al paradigma funcional, una función es un en
 El lenguaje Lisp utiliza notación prefija para los operadores. 
 
 
-###Orientación a objetos
+### Orientación a objetos
 
 En un lenguaje **orientado a objetos**, definimos una **clase** que funciona como un molde para crear múltiples instancias de objetos que se parecen entre sí, ya que tienen los mismos datos que los componen y la misma funcionalidad. Los objetos creados se comunican entre sí por **mensajes**, disparando **métodos** o conductas de otros objetos.
 
@@ -279,7 +279,7 @@ print a
 En el ejemplo de programación orientada a objetos en Python, definimos una clase **Combinatoria** que producirá objetos con la conducta **factorial**. El programa crea un objeto, instancia de la clase Combinatoria, llamado **c**, al cual se le envía el mensaje **factorial**, que dispara la conducta correspondiente especificada en el método del mismo nombre. Finalmente se imprime su valor.
 
 
-##Compiladores e intérpretes 
+## Compiladores e intérpretes 
 
 Los traductores de lenguajes de alto nivel pueden funcionar de dos maneras: o bien producen una versión en código máquina del programa fuente (**compiladores**) o bien analizan instrucción por instrucción del programa fuente, y además de generar una traducción a código máquina de cada línea, la ejecutan (**intérpretes**).
 
@@ -287,21 +287,21 @@ Luego de la compilación, el programa en código máquina obtenido puede ser eje
 
 
 
-###Velocidad de ejecución
+### Velocidad de ejecución
 
 - Una ventaja comparativa de la compilación respecto de la interpretación es la mayor velocidad de ejecución. Al separar las fases de traducción y ejecución, un compilador alcanza la máxima velocidad de ejecución posible en un procesador dado. 
 - Por el contrario, un intérprete alterna las fases de traducción y ejecución, por lo cual la ejecución completa del mismo programa tardará algo más de tiempo.
 
 
-###Portabilidad
+### Portabilidad
 - El código interpretado presenta la ventaja de ser directamente portable. Dos plataformas diferentes podrán ejecutar el mismo programa interpretable, siempre que cuenten con intérpretes para el mismo lenguaje. 
 - Por el contrario, un programa compilado está en el código de máquina de alguna arquitectura específica, así que no será compatible con otras.
 
 
 
-##Ciclo de compilación
+## Ciclo de compilación
 
-###Terminología 
+### Terminología 
 
 - Cuando utilizamos un **compilador** para obtener un programa **ejecutable**, el programa que nosotros escribimos, en algún lenguaje, se llama **programa fuente**, y estará generalmente contenido en algún **archivo fuente**. 
 - El resultado de la traducción será un archivo llamado **objeto** conteniendo las instrucciones de código máquina equivalentes. 
@@ -313,7 +313,7 @@ Luego de la compilación, el programa en código máquina obtenido puede ser eje
 - Si la vinculación resulta exitosa, el resultado final es un programa **ejecutable**.
 
 
-###Fases del ciclo de compilación
+### Fases del ciclo de compilación
 
 - El desarrollador que necesita producir un archivo ejecutable utilizará varios programas de sistema como editores, traductores, vinculadores, etc.
 
@@ -336,7 +336,7 @@ Luego de la compilación, el programa en código máquina obtenido puede ser eje
 - El resultado final del ciclo de compilación es un **ejecutable**.
 
 
-###Entornos de desarrollo o IDE
+### Entornos de desarrollo o IDE
 
 Muchos desarrolladores utilizan algún **ambiente integrado de desarrollo (IDE)**, que es un programa que actúa como intermediario entre el usuario y los componentes del ciclo de compilación (editor, compilador, vinculador, bibliotecas). 
 

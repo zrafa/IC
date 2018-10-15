@@ -1,27 +1,41 @@
-\documentclass[spanish,A4,]{article}
-\usepackage{sans}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[spanish,a4paper,]{article}
+\usepackage[]{sans}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage{longtable,booktabs}
-\usepackage{graphicx}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -30,47 +44,48 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{spanish}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=spanish]{babel}
 \else
-  \usepackage[spanish]{babel}
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{spanish}
 \fi
 
 \title{Redes}
+\date{}
 
 \begin{document}
 \maketitle
 
-\section{Redes de computadoras}\label{redes-de-computadoras}
+\hypertarget{redes-de-computadoras}{%
+\section{Redes de computadoras}\label{redes-de-computadoras}}
 
 Un conjunto de computadoras conectadas para compartir información u
 otros recursos es una \textbf{red} de computadoras. En cualquier red se
 distinguen por lo menos tres elementos de hardware:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Las computadoras conectadas se llaman \textbf{hosts} o nodos
   terminales.
@@ -114,7 +129,7 @@ aplicaciones utilizan.
 Estas diferentes redes se pueden clasificar por su tamaño.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Una red cuyos límites (o \textbf{diámetro}) son pequeños, se llama una
   \textbf{red de área local o LAN (Local Area Network)}. Típicamente,
@@ -130,7 +145,8 @@ Estas diferentes redes se pueden clasificar por su tamaño.
   Internet (ISPs)} suelen clasificarse como WANs.
 \end{itemize}
 
-\subsection{Modelo de Internet}\label{modelo-de-internet}
+\hypertarget{modelo-de-internet}{%
+\subsection{Modelo de Internet}\label{modelo-de-internet}}
 
 Las redes pueden estudiarse y comprenderse mediante modelos jerárquicos
 compuestos por capas, donde cada pieza de hardware o de software
@@ -168,7 +184,8 @@ soluciones provistas por la capa inmediatamente inferior.
   señales que representan la información.
 \end{itemize}
 
-\subsection{Switches}\label{switches}
+\hypertarget{switches}{%
+\subsection{Switches}\label{switches}}
 
 En las redes de área local, o LAN, encontramos enlaces compartidos. El
 cableado de una oficina, un aula o un edificio es un único medio de
@@ -201,7 +218,8 @@ la LAN. Por eso decimos que la función de \textbf{nivel de enlace} de
 una red es entregar el tráfico \textbf{entre nodos adyacentes}. Es
 decir, los que se encuentran sobre el mismo enlace.
 
-\subsection{Routers}\label{routers}
+\hypertarget{routers}{%
+\subsection{Routers}\label{routers}}
 
 Suele definirse a Internet como ``red de redes''. Las grandes redes, y
 en particular Internet, se componen interconectando redes a través de
@@ -247,7 +265,8 @@ físicas y tamaños.
   diferentes.
 \end{itemize}
 
-\subsection{Interfaces}\label{interfaces}
+\hypertarget{interfaces}{%
+\subsection{Interfaces}\label{interfaces}}
 
 La interfaz es el punto de conexión entre un enlace y un nodo de la red.
 Es la pieza de hardware que convierte bits a señales capaces de viajar
@@ -273,14 +292,15 @@ interfaz receptora decodifica las señales, recuperando los bits
 originales y comunicándolos al software que espera los datos. Ambas
 partes de la aplicación distribuida se han comunicado un mensaje.
 
-\subsection{Medios y enlaces}\label{medios-y-enlaces}
+\hypertarget{medios-y-enlaces}{%
+\subsection{Medios y enlaces}\label{medios-y-enlaces}}
 
 El material que atraviesan las señales transmitidas sobre un enlace se
 llama el \textbf{medio} del enlace. Las tecnologías de construcción de
 los enlaces son muchas.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cuando las señales se codifican mediante impulsos eléctricos, como en
   las redes de cables de \textbf{par trenzado} o \textbf{coaxial}, el
@@ -341,14 +361,15 @@ atravesar áreas continentales, o para distribuir tráfico hacia muchos
 puntos simultáneos de bajada, como en los medios de comunicación
 televisivos (aplicación llamada \textbf{broadcasting}).
 
+\hypertarget{velocidades-de-transmisiuxf3n-y-de-propagaciuxf3n}{%
 \subsection{Velocidades de transmisión y de
-propagación}\label{velocidades-de-transmisiuxf3n-y-de-propagaciuxf3n}
+propagación}\label{velocidades-de-transmisiuxf3n-y-de-propagaciuxf3n}}
 
 Cada interfaz funciona a una determinada \textbf{velocidad de
 transmisión}, que es la cantidad de bits por segundo que es capaz de
 escribir en el enlace, o leer del enlace. Las unidades utilizadas para
 expresar la velocidad de transmisión son las del sistema decimal. Así,
-una medida habitual es el Gbps o gigabit por segundo ($10^9 b/s$). La
+una medida habitual es el Gbps o gigabit por segundo (\(10^9 b/s\)). La
 velocidad de transmisión suele ser llamada también \textbf{ancho de
 banda digital}.
 
@@ -358,10 +379,10 @@ interfaz del otro extremo del enlace. Ese viaje, aunque se realiza a
 velocidades cercanas a la de la luz, \textbf{no es instantáneo}.
 Dependiendo del medio, la \textbf{velocidad de propagación} de un bit
 puede ser de alrededor de un 60\% a 90\% de la velocidad de la luz, que
-es de unos 300.000 km/s, o $3\times 10^8 m/s$.
+es de unos 300.000 km/s, o \(3\times 10^8 m/s\).
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Notemos que la \textbf{velocidad de transmisión} depende
   exclusivamente de las características tecnológicas de la interfaz. Son
@@ -379,8 +400,9 @@ tecnologías de interfaz en los extremos del enlace. Pero un medio tiene
 una determinada velocidad de \textbf{propagación}, y ningún cambio en la
 tecnologia de las interfaces cambiará esa velocidad.
 
+\hypertarget{tiempo-de-transferencia-de-un-mensaje}{%
 \subsection{Tiempo de transferencia de un
-mensaje}\label{tiempo-de-transferencia-de-un-mensaje}
+mensaje}\label{tiempo-de-transferencia-de-un-mensaje}}
 
 Conocer las velocidades de transmisión y de propagación nos permite
 definir un modelo para el \textbf{tiempo de transferencia} de un mensaje
@@ -393,27 +415,27 @@ otro lado, de la \textbf{distancia} que separa las interfaces.
 Supongamos que:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
-  La velocidad de transmisión de la interfaz es $V_{transm}$.
+  La velocidad de transmisión de la interfaz es \(V_{transm}\).
 \item
-  La velocidad de propagación del medio es $V_{prop}$.
+  La velocidad de propagación del medio es \(V_{prop}\).
 \item
-  El mensaje es de $L$ bits.
+  El mensaje es de \(L\) bits.
 \item
-  La distancia entre interfaces, o longitud del enlace, es $D$.
+  La distancia entre interfaces, o longitud del enlace, es \(D\).
 \end{itemize}
 
 Entonces:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
-  El \textbf{tiempo de transmisión} para los $L$ bits será
-  $T_{transm} = L / V_{transm}$.
+  El \textbf{tiempo de transmisión} para los \(L\) bits será
+  \(T_{transm} = L / V_{transm}\).
 \item
-  El \textbf{tiempo de propagación} para el enlace de $D$ m será
-  $T_{prop} = D / V_{prop}$.
+  El \textbf{tiempo de propagación} para el enlace de \(D\) m será
+  \(T_{prop} = D / V_{prop}\).
 \end{itemize}
 
 Notemos una vez más que el \textbf{tiempo de transmisión es dependiente
@@ -422,8 +444,8 @@ del enlace. Y además, que el \textbf{tiempo de propagación es función de
 la longitud del enlace}, y no de la velocidad de transmisión de las
 interfaces.
 
-El \textbf{tiempo de transferencia} que demorarán en llegar los $L$ bits
-a destino, será la suma de ambos tiempos:
+El \textbf{tiempo de transferencia} que demorarán en llegar los \(L\)
+bits a destino, será la suma de ambos tiempos:
 
 \[T_{tot} = T_{transm} + T_{prop}\].
 
@@ -453,7 +475,7 @@ del \textbf{enlace 2} (línea verde). Como las líneas de propagación
 tienen el mismo ángulo, inferimos que los enlaces son de la misma
 longitud.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics{img/enlaces-1.png}
 \caption{Comparando enlaces de la misma longitud}
@@ -468,13 +490,14 @@ longitud, la situación podría invertirse. Un enlace de mayor velocidad
 de transmisión (línea azul) podría seguir siendo el de mayor tiempo de
 transferencia si fuera de longitud suficientemente mayor que el otro.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics{img/enlaces-2.png}
 \caption{Comparando enlaces de longitudes diferentes}
 \end{figure}
 
-\subsection{Entidades de red}\label{entidades-de-red}
+\hypertarget{entidades-de-red}{%
+\subsection{Entidades de red}\label{entidades-de-red}}
 
 Llamamos \textbf{entidades} a las piezas de software o de hardware que
 funcionan como componentes de los nodos dentro de una red. Las entidades
@@ -484,13 +507,15 @@ interfaces de red, o las partes de una aplicación distribuida.
 Las entidades de nodos diferentes que van a comunicarse estarán siempre
 al mismo nivel.
 
-\subsection{Eventos de red}\label{eventos-de-red}
+\hypertarget{eventos-de-red}{%
+\subsection{Eventos de red}\label{eventos-de-red}}
 
 Llamamos \textbf{eventos} a cualquier suceso de interés que ocurre
 dentro de la red, especialmente si se trata de una interacción entre
 entidades. Por ejemplo, la llegada de un mensaje.
 
-\subsection{Protocolos}\label{protocolos}
+\hypertarget{protocolos}{%
+\subsection{Protocolos}\label{protocolos}}
 
 Los \textbf{protocolos} son conjuntos de reglas que definen la
 interacción entre dos entidades de la red.
@@ -499,7 +524,7 @@ Para comunicarse, las entidades de cualquier nivel deben compartir un
 protocolo. Los protocolos especifican:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cuál es el \textbf{formato} de los mensajes que pueden intercambiar
   las entidades;
@@ -523,14 +548,15 @@ peticiones o requerimientos (\emph{requests}), las respuestas
 Todas éstas son fases habituales en la comunicación entre los humanos,
 pero también en los protocolos de las redes.
 
-\subsubsection{Modelo cliente-servidor}\label{modelo-cliente-servidor}
+\hypertarget{modelo-cliente-servidor}{%
+\subsubsection{Modelo cliente-servidor}\label{modelo-cliente-servidor}}
 
 Estas fases habituales aparecen en los protocolos que definen relaciones
 de \textbf{cliente y servidor} entre entidades. En el modelo
 cliente-servidor:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El nodo cliente es el que inicia una interacción, con un
   \textbf{request} o requerimiento hacia el servidor.
@@ -544,7 +570,8 @@ La mayoría de las aplicaciones de Internet siguen este \textbf{modelo
 cliente-servidor} de interacción. El protocolo \textbf{HTTP}, motor de
 la \textbf{WWW}, es un ejemplo claro.
 
-\subsubsection{Modelo peer-to-peer}\label{modelo-peer-to-peer}
+\hypertarget{modelo-peer-to-peer}{%
+\subsubsection{Modelo peer-to-peer}\label{modelo-peer-to-peer}}
 
 El modelo cliente-servidor es asimétrico: los roles de cliente y de
 servidor están bien diferenciados. Un modelo alternativo, diferente, es
@@ -552,7 +579,8 @@ el llamado \textbf{peer-to-peer}, donde no existe un nodo servidor
 propiamente dicho, sino que todos los nodos que comparten el protocolo
 son, a la vez, clientes y servidores, en igualdad de condiciones.
 
-\subsubsection{Autómatas}\label{autuxf3matas}
+\hypertarget{autuxf3matas}{%
+\subsubsection{Autómatas}\label{autuxf3matas}}
 
 Los \textbf{autómatas} son una herramienta formal muy útil para
 describir detalladamente los protocolos. Un autómata es la
@@ -572,7 +600,7 @@ de burbujas y flechas.
   ejecutar la entidad como respuesta al evento.
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     Cuando no se requiere un evento para entrar en un estado (por
     ejemplo, porque es el estado inicial del autómata), el evento es
@@ -586,9 +614,10 @@ de burbujas y flechas.
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Autómata del cliente}\label{autuxf3mata-del-cliente}
+\hypertarget{autuxf3mata-del-cliente}{%
+\subsubsection{Autómata del cliente}\label{autuxf3mata-del-cliente}}
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics{img/protocolo-cliente.png}
 \caption{Autómata del cliente}
@@ -601,7 +630,8 @@ respuesta que reciba, podrá enviar una nueva solicitud. Finalmente,
 emitirá un mensaje de cierre de conexión y terminará la interacción con
 el servidor.
 
-\subsubsection{Autómata del servidor}\label{autuxf3mata-del-servidor}
+\hypertarget{autuxf3mata-del-servidor}{%
+\subsubsection{Autómata del servidor}\label{autuxf3mata-del-servidor}}
 
 Por su parte, el servidor presenta un autómata complementario al del
 cliente. La mayor parte del tiempo, el servidor estará en el estado
@@ -611,14 +641,15 @@ acepta solicitudes y emite respuestas. Cuando el cliente decide poner
 fin a la interacción, vuelve al estado de esperar conexión de un nuevo
 cliente.
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics{img/protocolo-servidor.png}
 \caption{Autómata del servidor}
 \end{figure}
 
+\hypertarget{protocolos-de-parada-y-espera}{%
 \subsubsection{Protocolos de parada y
-espera}\label{protocolos-de-parada-y-espera}
+espera}\label{protocolos-de-parada-y-espera}}
 
 ¿Cómo se relacionan, por un lado, las medidas de tiempo de transmisión y
 tiempo de propagación, y, por el otro, los autómatas de un protocolo
@@ -663,7 +694,7 @@ parada y espera. Los mensajes de este protocolo son comandos de la forma
 \textbf{derecha}, etc.
 
 La distancia teórica mínima al planeta Marte es de unos
-$54 \times 10^6 km$. Esto se traduce en unos 3 minutos de retardo de
+\(54 \times 10^6 km\). Esto se traduce en unos 3 minutos de retardo de
 propagación. Quiere decir que cada comando enviado desde la Tierra a
 Marte demorará, en el mejor caso, unos 6 minutos en ser confirmado. Esto
 ocasiona problemas para controlar el vehículo, porque una mala maniobra
@@ -673,7 +704,8 @@ marciano. Se necesita una velocidad de respuesta mucho mayor.
 Elevar el ancho de banda digital del enlace, de 1Gbps a 10Gbps, ¿sería
 una solución?
 
-\subsection{Direcciones de red}\label{direcciones-de-red}
+\hypertarget{direcciones-de-red}{%
+\subsection{Direcciones de red}\label{direcciones-de-red}}
 
 Para poder dirigir los mensajes entre nodos, es necesario identificarlos
 de alguna forma, asignándoles \textbf{direcciones} o identificadores de
@@ -693,13 +725,14 @@ separados por puntos.
 \textbf{Ejemplo}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La dirección IPv4 \textbf{11000000101010000000000100000001} se puede
   escribir en notación decimal con punto como \textbf{192.168.1.1}.
 \end{itemize}
 
-\subsection{Paquetes IP}\label{paquetes-ip}
+\hypertarget{paquetes-ip}{%
+\subsection{Paquetes IP}\label{paquetes-ip}}
 
 Internet es una red del tipo de \textbf{conmutación por paquetes}, lo
 que significa que los flujos de datos que van de un nodo emisor a un
@@ -722,7 +755,8 @@ los datos con un \textbf{encabezado} conteniendo la dirección IP del
 nodo emisor, o \textbf{dirección origen}, y la dirección IP del nodo
 destino, o \textbf{dirección destino}.
 
-\subsection{Ruteo o encaminamiento}\label{ruteo-o-encaminamiento}
+\hypertarget{ruteo-o-encaminamiento}{%
+\subsection{Ruteo o encaminamiento}\label{ruteo-o-encaminamiento}}
 
 Cuando un paquete llega a un router, lo hace por algún enlace. La tarea
 del router es \textbf{reenviar} este paquete por otro de sus enlaces, de
@@ -732,8 +766,9 @@ El router debe aplicar alguna regla lógica para decidir hacia qué otro
 enlace \textbf{reenviar} el paquete. Esta decisión de cuál será ese otro
 enlace es una acción de \textbf{ruteo} o \textbf{encaminamiento}.
 
+\hypertarget{tabla-de-reenvuxedo-o-de-ruteo}{%
 \subsubsection{Tabla de reenvío o de
-ruteo}\label{tabla-de-reenvuxedo-o-de-ruteo}
+ruteo}\label{tabla-de-reenvuxedo-o-de-ruteo}}
 
 La decisión de ruteo es tomada por los routers usando la información de
 \textbf{destino} que llevan consigo los paquetes, más información de
@@ -748,7 +783,7 @@ con la dirección destino de la ruta.
 En líneas generales, el algoritmo de ruteo es como sigue:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Al recibir un paquete, el router examinará la dirección destino
   \textbf{del paquete} y la comparará con la dirección destino
@@ -762,7 +797,8 @@ En líneas generales, el algoritmo de ruteo es como sigue:
 Sin embargo, ésta es una simplificación. La verdadera forma de la tabla
 de ruteo es algo diferente. ¿Por qué?
 
-\subsubsection{Subredes}\label{subredes}
+\hypertarget{subredes}{%
+\subsubsection{Subredes}\label{subredes}}
 
 Notemos que, ya que las direcciones IP se escriben usando 32 bits,
 existen más de \textbf{cuatro mil millones} de direcciones IPv4
@@ -781,7 +817,8 @@ la misma subred recibirá la misma decisión de ruteo.
 Si las subredes son agrupaciones suficientemente grandes, la cantidad de
 reglas de ruteo o rutas disminuirá convenientemente.
 
-\subsubsection{Prefijo de subred}\label{prefijo-de-subred}
+\hypertarget{prefijo-de-subred}{%
+\subsubsection{Prefijo de subred}\label{prefijo-de-subred}}
 
 ¿Cómo agrupar estas direcciones para definir las subredes?
 
@@ -815,26 +852,27 @@ longitud formarán una subred.}
   subred.
 \end{itemize}
 
+\hypertarget{direcciuxf3n-de-subred-y-muxe1scara-de-subred}{%
 \subsubsection{Dirección de subred y máscara de
-subred}\label{direcciuxf3n-de-subred-y-muxe1scara-de-subred}
+subred}\label{direcciuxf3n-de-subred-y-muxe1scara-de-subred}}
 
 Cuando en una tabla de ruteo se especifique una ruta para todas las
 direcciones con un mismo prefijo, la dirección destino de la ruta será
 una \textbf{dirección de subred}.
 
 Una dirección de subred se calcula utilizando una \textbf{máscara de
-subred}, que es una sucesión de 32 dígitos binarios. Los primeros $n$
+subred}, que es una sucesión de 32 dígitos binarios. Los primeros \(n\)
 dígitos de la máscara son \textbf{unos}, y los restantes \textbf{ceros}.
 
 La cantidad de dígitos ``uno'' dice cuál es la longitud del prefijo
-compartido. Estos primeros $n$ dígitos ``unos'' definen cuál será el
+compartido. Estos primeros \(n\) dígitos ``unos'' definen cuál será el
 prefijo compartido por todas las direcciones IP que pertenecen a la
 subred.
 
 \textbf{Ejemplo}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Una máscara de \textbf{24 bits} de longitud puede expresarse como
   \textbf{11111111 11111111 11111111 00000000}, que en la misma notación
@@ -845,8 +883,9 @@ subred.
   \textbf{255.255.255.192}.
 \end{itemize}
 
+\hypertarget{cuxe1lculo-de-la-direcciuxf3n-de-subred}{%
 \subsubsection{Cálculo de la dirección de
-subred}\label{cuxe1lculo-de-la-direcciuxf3n-de-subred}
+subred}\label{cuxe1lculo-de-la-direcciuxf3n-de-subred}}
 
 Para calcular la dirección de subred a la cual pertenece una dirección
 IP, superponemos la dirección y su máscara de modo de encolumnar todos
@@ -854,7 +893,7 @@ los dígitos y efectuamos una operación AND bit a bit. El operador AND es
 el que devuelve 1 solamente si ambos operandos son 1, y en otro caso
 devuelve 0.
 
-El efecto de este AND es \textbf{copiar} en las primeras $n$ columnas
+El efecto de este AND es \textbf{copiar} en las primeras \(n\) columnas
 del resultado los bits tal cual figuran en la dirección IP, y
 \textbf{completar con ceros} hasta el final del resultado. Este
 resultado es la dirección de subred a la cual pertenece la dirección IP
@@ -881,8 +920,8 @@ original.
 
 \textbf{Notación alternativa}
 
-Una máscara de subred con $n$ bits suele expresarse también como
-``$/n$''. Así, la dirección IP \textbf{192.168.1.1 con máscara
+Una máscara de subred con \(n\) bits suele expresarse también como
+``\(/n\)''. Así, la dirección IP \textbf{192.168.1.1 con máscara
 255.255.255.0} puede escribirse más sencillamente como
 \textbf{192.168.1.1/24}.
 
@@ -901,24 +940,21 @@ reenvío será básicamente el mismo que con las direcciones reales IPv4 de
 
 \textbf{Ejemplo}
 
-\begin{longtable}[c]{@{}ccc@{}}
-\toprule\addlinespace
-Dirección de subred & Máscara & Interfaz de salida
-\\\addlinespace
-\midrule\endhead
-00000 & 11100 & 0
-\\\addlinespace
-00100 & 11100 & 1
-\\\addlinespace
-00010 & 11110 & 2
-\\\addlinespace
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Dirección de subred & Máscara & Interfaz de salida\tabularnewline
+\midrule
+\endhead
+00000 & 11100 & 0\tabularnewline
+00100 & 11100 & 1\tabularnewline
+00010 & 11110 & 2\tabularnewline
 \bottomrule
 \end{longtable}
 
 Esta tabla de ruteo dice que:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La subred 00000 con máscara 11100 se alcanza mediante la interfaz de
   salida 0. Es decir, que si los primeros tres bits de la dirección
@@ -939,7 +975,7 @@ Esta tabla de ruteo dice que:
 \textbf{Preguntas}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   En el ejemplo anterior, ¿puede darse un caso donde quepa la duda de si
   aplicar la primera o la segunda regla?
@@ -948,8 +984,9 @@ Esta tabla de ruteo dice que:
   tercera regla?
 \end{itemize}
 
-\subsubsection{Ruta por defecto o ruta
-\emph{default}}\label{ruta-por-defecto-o-ruta-default}
+\hypertarget{ruta-por-defecto-o-ruta-default}{%
+\subsubsection{\texorpdfstring{Ruta por defecto o ruta
+\emph{default}}{Ruta por defecto o ruta default}}\label{ruta-por-defecto-o-ruta-default}}
 
 Aun con la estrategia de ruteo por prefijos, los routers no pueden
 conocer \textbf{todas} las rutas a todos los destinos. Siempre se apoyan
@@ -975,8 +1012,9 @@ router sea la que ``mira'' al centro de la Internet, en la dirección
 donde hay más nodos. Allí es más probable que existan routers con una
 configuración mejor.
 
+\hypertarget{rutas-muxe1s-especuxedficas-y-muxe1scaras-muxe1s-largas}{%
 \subsubsection{Rutas más específicas y máscaras más
-largas}\label{rutas-muxe1s-especuxedficas-y-muxe1scaras-muxe1s-largas}
+largas}\label{rutas-muxe1s-especuxedficas-y-muxe1scaras-muxe1s-largas}}
 
 El caso de la ruta default nos permite ver que la ruta más genérica, la
 menos específica, es la que tiene la máscara más corta. Representa a
@@ -996,17 +1034,14 @@ más específica}).
 
 \textbf{Ejemplo}
 
-\begin{longtable}[c]{@{}ccc@{}}
-\toprule\addlinespace
-Dirección de subred & Máscara & Interfaz de salida
-\\\addlinespace
-\midrule\endhead
-00000 & 11100 & 0
-\\\addlinespace
-00100 & 11100 & 1
-\\\addlinespace
-00010 & 11110 & 2
-\\\addlinespace
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Dirección de subred & Máscara & Interfaz de salida\tabularnewline
+\midrule
+\endhead
+00000 & 11100 & 0\tabularnewline
+00100 & 11100 & 1\tabularnewline
+00010 & 11110 & 2\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1017,19 +1052,20 @@ excepciones. Los destinos que cumplan lo anterior pero tengan su
 La tercera regla es una excepción a la primera porque trata un conjunto
 más específico de direcciones.
 
-\subsection{Algoritmo de reenvío}\label{algoritmo-de-reenvuxedo}
+\hypertarget{algoritmo-de-reenvuxedo}{%
+\subsection{Algoritmo de reenvío}\label{algoritmo-de-reenvuxedo}}
 
 Finalmente podemos presentar el algoritmo de reenvío tal cual lo
 ejecutan los routers de Internet.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Para cada regla en la tabla de ruteo, en orden descendente por
   longitud de prefijo
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     Subred destino del paquete = Dirección destino del paquete AND
     Máscara de la ruta
@@ -1041,7 +1077,7 @@ ejecutan los routers de Internet.
   Si se agotó la tabla pero hay una ruta default
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     Reenviar el paquete por la ruta default
   \end{itemize}
@@ -1049,7 +1085,7 @@ ejecutan los routers de Internet.
   Si se agotó la tabla sin éxito
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     Devolver error de red inalcanzable
   \end{itemize}
@@ -1064,26 +1100,23 @@ preferencia sobre las menos específicas.
 Volvamos a la tabla de ruteo de un ejemplo anterior, sólo que
 agregándole una ruta default por la interfaz 2:
 
-\begin{longtable}[c]{@{}cccc@{}}
-\toprule\addlinespace
-Regla & Dirección de subred & Máscara & Interfaz de salida
-\\\addlinespace
-\midrule\endhead
-1 & 00000 & 11100 & 0
-\\\addlinespace
-2 & 00100 & 11100 & 1
-\\\addlinespace
-3 & 00010 & 11110 & 2
-\\\addlinespace
-4 & 00000 & 00000 & 2
-\\\addlinespace
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+Regla & Dirección de subred & Máscara & Interfaz de
+salida\tabularnewline
+\midrule
+\endhead
+1 & 00000 & 11100 & 0\tabularnewline
+2 & 00100 & 11100 & 1\tabularnewline
+3 & 00010 & 11110 & 2\tabularnewline
+4 & 00000 & 00000 & 2\tabularnewline
 \bottomrule
 \end{longtable}
 
 ¿Qué camino tomarán los paquetes con la siguiente dirección destino?
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   00001 → Interfaz 0, por la regla 1
 \item
@@ -1095,8 +1128,9 @@ Regla & Dirección de subred & Máscara & Interfaz de salida
   resultado en coincidencias.
 \end{itemize}
 
+\hypertarget{servicio-de-nombres-de-dominio-dns}{%
 \subsection{Servicio de Nombres de Dominio
-(DNS)}\label{servicio-de-nombres-de-dominio-dns}
+(DNS)}\label{servicio-de-nombres-de-dominio-dns}}
 
 Como hemos visto, el funcionamiento de Internet se basa en la existencia
 de \textbf{direcciones}, que permiten enviar y encaminar el tráfico
@@ -1118,8 +1152,9 @@ Técnicamente, Internet podría funcionar perfectamente (y, de hecho, lo
 hizo durante algún tiempo) \textbf{sin} la existencia del servicio DNS,
 pero la costumbre lo ha convertido en una parte indispensable de la red.
 
+\hypertarget{jerarquuxeda-de-nombres-de-dominio}{%
 \subsubsection{Jerarquía de nombres de
-dominio}\label{jerarquuxeda-de-nombres-de-dominio}
+dominio}\label{jerarquuxeda-de-nombres-de-dominio}}
 
 Estos nombres simbólicos tienen una cierta estructura jerárquica, es
 decir, organizada por niveles. Un nombre consta de varias partes,
@@ -1130,7 +1165,7 @@ conjuntos más pequeños, contenidos en aquellos conjuntos mayores.
 \textbf{Ejemplo}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El nombre \textbf{pedco.uncoma.edu.ar} designa al nodo \textbf{pedco},
   que pertenece al conjunto \textbf{uncoma}, contenido en el conjunto
@@ -1157,7 +1192,8 @@ ejemplo anterior, el TLD es \textbf{ar}, el dominio es \textbf{edu.ar}
 \textbf{pedco.uncoma.edu.ar} es el nombre de un nodo perteneciente a la
 Universidad del Comahue, educación, Argentina.
 
-\subsubsection{Resolución de nombres}\label{resoluciuxf3n-de-nombres}
+\hypertarget{resoluciuxf3n-de-nombres}{%
+\subsubsection{Resolución de nombres}\label{resoluciuxf3n-de-nombres}}
 
 Los servidores DNS se clasifican por el tipo de función que cumplen.
 Cada uno interviene de una manera especial en el mecanismo de traducción
@@ -1224,14 +1260,16 @@ han sido resueltos quedan guardados en una memoria temporaria o
 podrán responderse sin necesidad de volver a generar tráfico hacia el
 resto de la Internet.
 
-\subsection{Administración de redes}\label{administraciuxf3n-de-redes}
+\hypertarget{administraciuxf3n-de-redes}{%
+\subsection{Administración de redes}\label{administraciuxf3n-de-redes}}
 
 Existen herramientas de software que permiten diagnosticar las
 condiciones en que se realiza el ruteo, o encaminamiento, de los
 paquetes IP. El administrador de redes las utiliza para investigar el
 origen de los problemas en la red.
 
-\subsubsection{Comando ping}\label{comando-ping}
+\hypertarget{comando-ping}{%
+\subsubsection{Comando ping}\label{comando-ping}}
 
 El comando \textbf{ping} emite paquetes hacia un nodo destino. Si los
 paquetes logran atravesar la Internet, el nodo destino emitirá una
@@ -1247,7 +1285,8 @@ la capa de red: la comunicación a nivel físico, de enlace y de red entre
 ambos nodos es operativa. Si existe alguna condición de error, se deberá
 a problemas relacionados con las aplicaciones, que habrá que investigar.
 
-\subsubsection{Comando traceroute}\label{comando-traceroute}
+\hypertarget{comando-traceroute}{%
+\subsubsection{Comando traceroute}\label{comando-traceroute}}
 
 El comando \textbf{traceroute} permite investigar cuál es la cadena
 particular de routers que debe atravesar un paquete para llegar a un

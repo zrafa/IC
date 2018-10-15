@@ -1,60 +1,75 @@
-\documentclass[spanish,A4,]{article}
-\usepackage{sans}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[spanish,a4paper,]{article}
+\usepackage[]{sans}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\usepackage{longtable,booktabs}
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{spanish}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=spanish]{babel}
 \else
-  \usepackage[spanish]{babel}
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{spanish}
 \fi
 
 \title{Sistemas de cómputo}
+\date{}
 
 \begin{document}
 \maketitle
 
-\section{Sistemas de Cómputo}\label{sistemas-de-cuxf3mputo}
+\hypertarget{sistemas-de-cuxf3mputo}{%
+\section{Sistemas de Cómputo}\label{sistemas-de-cuxf3mputo}}
 
 Un sistema de cómputo es un conjunto de elementos electrónicos
 organizados para permitir el procesamiento de información. A lo largo
@@ -62,8 +77,9 @@ del tiempo los sistemas de cómputo han evolucionado notablemente, y en
 este material vamos a ver las cosas más importantes que han ocurrido
 durante esta evolución.
 
+\hypertarget{evoluciuxf3n-de-los-sistemas-de-cuxf3mputo}{%
 \subsection{Evolución de los sistemas de
-cómputo}\label{evoluciuxf3n-de-los-sistemas-de-cuxf3mputo}
+cómputo}\label{evoluciuxf3n-de-los-sistemas-de-cuxf3mputo}}
 
 Los sistemas de cómputo constituyen una industria, y como en toda
 industria, existe la competencia entre los fabricantes, que buscan
@@ -74,7 +90,7 @@ simultáneamente, la reducción de costos y tamaños físicos de los
 componentes.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Las sucesivas generaciones de sistemas de cómputo han ido creciendo en
   la velocidad de procesamiento y capacidad de memoria, así como en las
@@ -95,8 +111,9 @@ importante es que las partes del sistema funcionen en armonía. De lo
 contrario, pueden presentarse desbalances que impidan que el sistema
 funcione en forma óptima.
 
+\hypertarget{antecedentes-histuxf3ricos}{%
 \subsubsection{Antecedentes
-históricos}\label{antecedentes-histuxf3ricos}
+históricos}\label{antecedentes-histuxf3ricos}}
 
 En la antigüedad se crearon los que podríamos llamar sistemas de cómputo
 primitivos, aunque ingeniosos. Aquí citamos unos pocos ejemplos, como el
@@ -122,8 +139,9 @@ Inventada en 1642 por el filósofo y matemático francés Blaise Pascal
 Pascalina} permitía sumar y restar dos números de manera directa y hacer
 la multiplicación y división por repetición.
 
+\hypertarget{la-tabuladora-de-hollerith}{%
 \subsubsection{La Tabuladora de
-Hollerith}\label{la-tabuladora-de-hollerith}
+Hollerith}\label{la-tabuladora-de-hollerith}}
 
 Entre estos proto-sistemas de computación es especialmente notable, por
 varios motivos, la máquina de Hollerith. Herman Hollerith trabajaba para
@@ -161,7 +179,8 @@ importante, y porque, tomando su invento como punto de partida,
 Hollerith formó una importante empresa de computación que tuvo gran
 influencia en el desarrollo de la tecnología del siglo XX.
 
-\subsection{Primera generación}\label{primera-generaciuxf3n}
+\hypertarget{primera-generaciuxf3n}{%
+\subsection{Primera generación}\label{primera-generaciuxf3n}}
 
 Las primeras computadoras electrónicas usaban \textbf{bulbos, tubos de
 vacío, o válvulas}, como interruptores, implementando dispositivos que
@@ -187,7 +206,8 @@ se encuentra la primera computadora de programa almacenado según el
 modelo de Von Neumann. Fue el IAS (siglas de \textbf{Institute for
 Advanced Study}), que usaba 1500 tubos de vacío y tenía 5 kB de memoria.
 
-\subsubsection{El tubo de vacío}\label{el-tubo-de-vacuxedo}
+\hypertarget{el-tubo-de-vacuxedo}{%
+\subsubsection{El tubo de vacío}\label{el-tubo-de-vacuxedo}}
 
 El \textbf{tubo de vacío o válvula termoiónica} fue patentado por Edison
 y fue sucesivamente modificado para diferentes usos en electrónica hasta
@@ -215,7 +235,8 @@ esto a una alta tasa de fallos, las válvulas fueron rápidamente
 abandonadas en favor de una tecnología más conveniente, el
 \textbf{transistor}.
 
-\subsubsection{Memorias de núcleos}\label{memorias-de-nuxfacleos}
+\hypertarget{memorias-de-nuxfacleos}{%
+\subsubsection{Memorias de núcleos}\label{memorias-de-nuxfacleos}}
 
 Las primeras implementaciones de la memoria principal (memorias de
 núcleos o \textbf{core memories}) fueron realizadas con pequeños anillos
@@ -232,7 +253,8 @@ y capacidad millones de veces superior. Una memoria Micro-SD de hoy, por
 ejemplo, puede alojar 32 GiB de información en una centésima parte del
 espacio ocupado por un 1 Kib de memoria de núcleos.
 
-\subsubsection{ENIAC}\label{eniac}
+\hypertarget{eniac}{%
+\subsubsection{ENIAC}\label{eniac}}
 
 Presentado en 1946, \textbf{ENIAC} es reconocido como el primer
 computador digital, completamente electrónico, de propósito general.
@@ -255,7 +277,8 @@ construyó un circuito integrado completamente equivalente al
 ENIAC\ldots{} del tamaño de una moneda (y habrían cabido muchos más en
 el mismo espacio).
 
-\subsubsection{Clementina}\label{clementina}
+\hypertarget{clementina}{%
+\subsubsection{Clementina}\label{clementina}}
 
 ¿Qué pasaba en nuestro país durante estas épocas? La actividad de la
 computación aquí no había comenzado. Recién a principios de los años 60
@@ -267,9 +290,11 @@ involucradas por ese entonces en el proyecto científico y tecnológico
 argentino, y explica el contexto histórico en el que fue iniciado (y,
 lamentablemente, truncado) ese proyecto.
 
-\subsection{Segunda generación}\label{segunda-generaciuxf3n}
+\hypertarget{segunda-generaciuxf3n}{%
+\subsection{Segunda generación}\label{segunda-generaciuxf3n}}
 
-\subsubsection{Semiconductores}\label{semiconductores}
+\hypertarget{semiconductores}{%
+\subsubsection{Semiconductores}\label{semiconductores}}
 
 En 1948 los físicos habían descubierto que combinando, en ciertas
 proporciones, elementos que eran vecinos en la Tabla Periódica, se
@@ -295,7 +320,8 @@ dispositivos \textbf{discretos}, es decir, separados, para distinguirla
 de la generación siguiente, donde esos dispositivos fueron
 \textbf{integrados}.
 
-\subsubsection{El transistor}\label{el-transistor}
+\hypertarget{el-transistor}{%
+\subsubsection{El transistor}\label{el-transistor}}
 
 El \textbf{transistor} consiste en tres pequeñas piezas, puestas en
 contacto entre sí, hechas de materiales especialmente preparados. Estas
@@ -323,14 +349,16 @@ en los circuitos de la CPU y otros componentes de las computadoras. El
 transistor resulta así un reemplazo eficaz de las antiguas válvulas
 termoiónicas.
 
+\hypertarget{del-transistor-a-la-memoria}{%
 \subsubsection{Del transistor a la
-memoria}\label{del-transistor-a-la-memoria}
+memoria}\label{del-transistor-a-la-memoria}}
 
 Un transistor permite el pasaje de corriente entre \textbf{colector y
 emisor}, sólo cuando recibe corriente el conector \textbf{base}. De esta
 manera opera como un conmutador o switch accionado electrónicamente.
 
-\paragraph{Compuertas}\label{compuertas}
+\hypertarget{compuertas}{%
+\paragraph{Compuertas}\label{compuertas}}
 
 Conectando varios transistores adecuadamente es posible crear
 \textbf{compuertas}, que son circuitos elementales que implementan
@@ -339,7 +367,7 @@ una función lógica que es la combinación de otras dos aún más simples:
 \textbf{NOT} y \textbf{OR}.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   NOT es una función lógica de una entrada y una salida. El valor lógico
   de salida de NOT es el opuesto de su entrada. Es decir, la salida será
@@ -353,7 +381,8 @@ una función lógica que es la combinación de otras dos aún más simples:
   anteriores, será 1 sólo cuando ambas entradas sean 0.
 \end{itemize}
 
-\paragraph{Flip-Flop}\label{flip-flop}
+\hypertarget{flip-flop}{%
+\paragraph{Flip-Flop}\label{flip-flop}}
 
 Un Flip-Flop es un circuito capaz de memorizar un valor lógico, por lo
 cual implementa una \textbf{memoria de un bit}. Al poder almacenar dos
@@ -367,7 +396,7 @@ Normalmente se utiliza una de ellas.
 Las entradas de un Flip-Flop de tipo RS se llaman \textbf{Reset y Set}.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cuando el procesador necesita almacenar un bit 0, activa la entrada
   Reset. El valor lógico de salida queda permanentemente a 0.
@@ -378,11 +407,12 @@ Las entradas de un Flip-Flop de tipo RS se llaman \textbf{Reset y Set}.
 
 Un \textbf{byte de memoria} puede implementarse como un vector de
 \textbf{ocho Flip-Flops}. Un Kibibyte de memoria comprenderá entonces
-$2^{10}$ de estos vectores. Las tecnologías modernas de integración en
+\(2^{10}\) de estos vectores. Las tecnologías modernas de integración en
 gran escala permiten concentrar millones de estos componentes en un
 espacio muy reducido.
 
-\subsubsection{Minicomputadoras}\label{minicomputadoras}
+\hypertarget{minicomputadoras}{%
+\subsubsection{Minicomputadoras}\label{minicomputadoras}}
 
 Los transistores abarataron las computadoras y redujeron su tamaño.
 Algunas de las desarrolladas en esta época recibieron el nombre de
@@ -394,7 +424,8 @@ de tiempo compartido (time-sharing)} que hacía posible la utilización de
 la máquina por varios usuarios a la vez. Tenía 144 KB de memoria
 principal y ejecutaba 100.000 instrucciones por segundo.
 
-\subsection{Tercera generación}\label{tercera-generaciuxf3n}
+\hypertarget{tercera-generaciuxf3n}{%
+\subsection{Tercera generación}\label{tercera-generaciuxf3n}}
 
 A mediados de los 60 se desarrollaron los \textbf{circuitos integrados o
 microchips}, que empaquetaban una gran cantidad de transistores en un
@@ -427,7 +458,8 @@ y conocidos, y estaba públicamente documentada; de manera que otras
 empresas podían libremente fabricar componentes compatibles con esta
 computadora.
 
-\subsubsection{Circuitos integrados}\label{circuitos-integrados}
+\hypertarget{circuitos-integrados}{%
+\subsubsection{Circuitos integrados}\label{circuitos-integrados}}
 
 Los \textbf{circuitos integrados} fueron el resultado de un proceso de
 fabricación completamente nuevo llamado \textbf{fotomicrolitografía}.
@@ -442,7 +474,8 @@ miniaturización de un circuito completo con miles de transistores en un
 espacio muy reducido. Los modernos circuitos integrados reúnen miles de
 millones de transistores en menos de un centímetro cúbico de volumen.
 
-\subsubsection{Microprocesador}\label{microprocesador}
+\hypertarget{microprocesador}{%
+\subsubsection{Microprocesador}\label{microprocesador}}
 
 Un programador utiliza un microprocesador a través de su
 \textbf{conjunto de instrucciones} (aritméticas, de transferencia, de
@@ -483,13 +516,14 @@ instrucciones, pero manteniendo intactas todas las de los productos
 anteriores. Esta forma de compatibilidad se llama a veces
 retrocompatibilidad o \textbf{compatibilidad hacia atrás}.
 
-\subsection{Cuarta generación}\label{cuarta-generaciuxf3n}
+\hypertarget{cuarta-generaciuxf3n}{%
+\subsection{Cuarta generación}\label{cuarta-generaciuxf3n}}
 
 Gracias a nuevos procesos de fabricación de circuitos integrados, se
 logró cada vez mayor miniaturización de componentes.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   SSI: de 10 a 100 componentes por chip
 \item
@@ -516,7 +550,7 @@ siglo XXI. Sin embargo, los procesadores pronto encontraron obstáculos
 que forzaron a un cambio de paso.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Los componentes se acercaban entre sí cada vez más
 \item
@@ -551,7 +585,9 @@ procesadores multicore. La Ley de Moore se sigue cumpliendo, sólo que
 ahora los transistores se distribuyen en varios núcleos en lugar de
 concentrarse en un único procesador.
 
-\subsubsection{Microprocesador Intel I7}\label{microprocesador-intel-i7}
+\hypertarget{microprocesador-intel-i7}{%
+\subsubsection{Microprocesador Intel
+I7}\label{microprocesador-intel-i7}}
 
 El microprocesador I7 es actualmente el procesador más avanzado para
 computadoras personales de la firma Intel. Es retrocompatible con toda
@@ -560,7 +596,7 @@ por esa firma. La cronología siguiente muestra algunos significativos
 cambios de microarquitectura.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   1979: 8086, 8088, primeros microprocesadores de arquitectura x86
 \item
@@ -622,8 +658,9 @@ de, las unidades de cómputo o \textbf{núcleos}.
   paralelos de propósito general.
 \end{itemize}
 
+\hypertarget{tiempos-de-acceso-a-los-datos}{%
 \subsection{Tiempos de acceso a los
-datos}\label{tiempos-de-acceso-a-los-datos}
+datos}\label{tiempos-de-acceso-a-los-datos}}
 
 Como sabemos, no podemos utilizar un dato si no lo hacemos llegar
 primero al procesador o CPU; y el tiempo que tarda en llegar a un
@@ -643,25 +680,19 @@ microarquitectura de la CPU. Pero la CPU, para ejecutar esa instrucción,
 necesita tener a disposición, en sus registros, los datos sobre los
 cuales debe operar.
 
-\begin{longtable}[c]{@{}lll@{}}
-\toprule\addlinespace
-Evento & Latencia & Escalado
-\\\addlinespace
-\midrule\endhead
-Un ciclo de CPU & 0.3 ns & 1 s
-\\\addlinespace
-Acceso a memoria cache & 13 ns & 40 s
-\\\addlinespace
-Acceso a memoria RAM & 120 ns & 6 min
-\\\addlinespace
-Disco de estado sólido & 150 $\mu$s & 6 días
-\\\addlinespace
-Disco magnético & 10 ms & 12 meses
-\\\addlinespace
-Internet América $\longleftrightarrow$ Europa & 81 ms & 8 años
-\\\addlinespace
-Reboot & 5 min & 32000 años
-\\\addlinespace
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Evento & Latencia & Escalado\tabularnewline
+\midrule
+\endhead
+Un ciclo de CPU & 0.3 ns & 1 s\tabularnewline
+Acceso a memoria cache & 13 ns & 40 s\tabularnewline
+Acceso a memoria RAM & 120 ns & 6 min\tabularnewline
+Disco de estado sólido & 150 \(\mu\)s & 6 días\tabularnewline
+Disco magnético & 10 ms & 12 meses\tabularnewline
+Internet América \(\longleftrightarrow\) Europa & 81 ms & 8
+años\tabularnewline
+Reboot & 5 min & 32000 años\tabularnewline
 \bottomrule
 \end{longtable}
 

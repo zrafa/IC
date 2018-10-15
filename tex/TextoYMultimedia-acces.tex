@@ -1,65 +1,79 @@
-\documentclass[spanish,A4,]{article}
-\usepackage{sans}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[spanish,a4paper,]{article}
+\usepackage[]{sans}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{spanish}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=spanish]{babel}
 \else
-  \usepackage[spanish]{babel}
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{spanish}
 \fi
 
 \title{Representación de texto y multimedia}
+\date{}
 
 \begin{document}
 \maketitle
 
+\hypertarget{representaciuxf3n-de-texto-y-multimedia}{%
 \section{Representación de Texto y
-multimedia}\label{representaciuxf3n-de-texto-y-multimedia}
+multimedia}\label{representaciuxf3n-de-texto-y-multimedia}}
 
 En esta parte de la unidad veremos la forma de representar otras clases
 de información no numérica, como los textos y las imágenes.
 
-\subsection{Codificación de texto}\label{codificaciuxf3n-de-texto}
+\hypertarget{codificaciuxf3n-de-texto}{%
+\subsection{Codificación de texto}\label{codificaciuxf3n-de-texto}}
 
 Cuando escribimos texto en nuestra computadora, estamos almacenando
 temporariamente en la memoria una cierta secuencia de números que
@@ -83,13 +97,14 @@ y cada fabricante de computadoras definía el suyo propio. La
 comunicación entre diferentes computadoras y sistemas era complicada y
 llevaba mucho trabajo improductivo.
 
-\subsection{Códigos de caracteres}\label{cuxf3digos-de-caracteres}
+\hypertarget{cuxf3digos-de-caracteres}{%
+\subsection{Códigos de caracteres}\label{cuxf3digos-de-caracteres}}
 
 Inicialmente se estableció con este fin el \textbf{código ASCII}, que
 durante algún tiempo fue una buena solución. El código ASCII relaciona
 cada secuencia de \textbf{siete bits} con un carácter (o
 \textbf{grafema}) específico de la \textbf{Tabla ASCII}. Es decir que
-hay $2^7 = 128$ posibles caracteres codificados por el código ASCII.
+hay \(2^7 = 128\) posibles caracteres codificados por el código ASCII.
 
 Sin embargo, el código ASCII es insuficiente para muchas aplicaciones:
 no contempla las necesidades de diversos idiomas. Por ejemplo, nuestra
@@ -119,13 +134,14 @@ la codificación de símbolos usuales como los dígitos, símbolos
 matemáticos, y otros. Por este motivo son relativamente compatibles,
 aunque cuando el texto utiliza otros caracteres aparecen diferencias.
 
-\subsection{Tabla de códigos ASCII}\label{tabla-de-cuxf3digos-ascii}
+\hypertarget{tabla-de-cuxf3digos-ascii}{%
+\subsection{Tabla de códigos ASCII}\label{tabla-de-cuxf3digos-ascii}}
 
 El código ASCII asigna patrones de siete bits a un conjunto de
 caracteres que incluye:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Las 25 letras del alfabeto inglés, mayúsculas y minúsculas;
 \item
@@ -147,7 +163,8 @@ teclado tienen un código ASCII asignado. Como sólo se usan siete bits,
 el bit de mayor orden (el de más a la izquierda) de cada byte siempre es
 cero, y por lo tanto los códigos ASCII toman valores de 0 a 127.
 
-\subsection{Textos y documentos}\label{textos-y-documentos}
+\hypertarget{textos-y-documentos}{%
+\subsection{Textos y documentos}\label{textos-y-documentos}}
 
 Un archivo de texto es una sucesión de caracteres codificados bajo algún
 estándar. Puede manipularse con programas básicos como los
@@ -166,7 +183,8 @@ por los procesadores de texto es específica de cada programa y convierte
 al documento en algo que sólo puede ser leído con el procesador de texto
 correspondiente.
 
-\subsection{Archivos de hipertexto}\label{archivos-de-hipertexto}
+\hypertarget{archivos-de-hipertexto}{%
+\subsection{Archivos de hipertexto}\label{archivos-de-hipertexto}}
 
 Una página HTML servida por un servidor Web es un archivo de texto que
 suele estar codificado en el estándar UTF-8. El contenido de este texto
@@ -219,7 +237,7 @@ que los reemplaza por puntos.
 \textbf{Pregunta}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Estos comandos aplicados a un documento HTML muestran información
   legible porque se trata, esencialmente, de un archivo de texto. ¿Qué
@@ -227,7 +245,8 @@ que los reemplaza por puntos.
   procesador de texto?
 \end{itemize}
 
-\subsection{Imagen digital}\label{imagen-digital}
+\hypertarget{imagen-digital}{%
+\subsection{Imagen digital}\label{imagen-digital}}
 
 Otras clases de datos, diferentes del texto, también requieren
 codificación (porque siempre deben ser almacenados en la memoria en
@@ -262,7 +281,7 @@ Notemos que la digitalización de una imagen implica la discretización de
 \textbf{dos} variables analógicas:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Por un lado, los infinitos puntos de la imagen analógica,
   bidimensional, deben reducirse a unos pocos rectángulos discretos.
@@ -276,7 +295,8 @@ Este proceso de digitalización es el que hacen automáticamente una
 cámara de fotos digital o un celular, almacenando luego los bytes que
 representan la imagen tomada.
 
-\subsection{Color}\label{color}
+\hypertarget{color}{%
+\subsection{Color}\label{color}}
 
 Hay varias maneras de representar el color en las imágenes digitales.
 Una forma es definir, para cada pixel o punto de la imagen, tres
@@ -301,7 +321,8 @@ Así, la terna (0, 0, 0) representa el negro (ausencia de los tres
 colores), la terna (255, 255, 255) el blanco (valores máximos de los
 tres colores, sumados), etc.
 
-\subsubsection{Profundidad de color}\label{profundidad-de-color}
+\hypertarget{profundidad-de-color}{%
+\subsubsection{Profundidad de color}\label{profundidad-de-color}}
 
 Con este esquema de representación de color, cada pixel o elemento de la
 imagen quedaría representado por tres bytes, o 24 bits. Sin embargo, las
@@ -309,7 +330,8 @@ cámaras fotográficas digitales modernas utilizan un esquema de
 codificación con mucha mayor \textbf{profundidad de color} (es decir,
 más bits por cada coordenada de color) que en el ejemplo anterior.
 
-\subsection{Formato de imagen}\label{formato-de-imagen}
+\hypertarget{formato-de-imagen}{%
+\subsection{Formato de imagen}\label{formato-de-imagen}}
 
 Lógicamente, para las imágenes con muchos colores (como las escenas de
 la naturaleza donde hay gradaciones de colores) es conveniente contar
@@ -363,7 +385,8 @@ Nuestro formato de imagen digital debe contener información \textbf{de
 dimensiones y de profundidad de color}, para poder ser comunicado
 efectivamente hacia otros programas o computadoras.
 
-\subsection{Un formato de imagen}\label{un-formato-de-imagen}
+\hypertarget{un-formato-de-imagen}{%
+\subsection{Un formato de imagen}\label{un-formato-de-imagen}}
 
 Teniendo en cuenta todo lo anterior, podemos definir un formato de
 imagen como sigue. El formato de archivo de imagen tendrá una primera
@@ -372,7 +395,7 @@ sección o \textbf{cabecera} con datos acerca de la imagen, o
 imagen propiamente dichos.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El primer byte de la cabecera del archivo se reserva para especificar
   el \textbf{ancho} de la imagen, es decir, cuántos pixels hay en cada
@@ -384,8 +407,8 @@ imagen propiamente dichos.
   El tercer byte especifica la profundidad de color, o cantidad de
   \textbf{bits por pixel}. Esta cantidad de bits por pixel define la
   cantidad de colores que se pueden codificar en la imagen. Si la imagen
-  tiene $n$ bits por pixel, hay $2^n$ posibilidades para el código de
-  color y por lo tanto $2^n$ colores representables.
+  tiene \(n\) bits por pixel, hay \(2^n\) posibilidades para el código
+  de color y por lo tanto \(2^n\) colores representables.
 \item
   Finalmente, el resto del archivo contiene los bits que representan a
   cada uno de los pixels por su color. Éstos son los datos de la imagen
@@ -404,7 +427,8 @@ Entonces el archivo del ejemplo se representa por el hexadecimal
 050502\ldots{} y a continuación siguen en hexadecimal los códigos de
 color de los pixels.
 
-\subsection{Reconstruyendo una imagen}\label{reconstruyendo-una-imagen}
+\hypertarget{reconstruyendo-una-imagen}{%
+\subsection{Reconstruyendo una imagen}\label{reconstruyendo-una-imagen}}
 
 Para interpretar qué imagen describe un archivo dado, consideramos
 primero su cabecera y buscamos cuál es el ancho y el alto (indicados por
@@ -415,10 +439,10 @@ es difícil dibujar la imagen.
 \textbf{Ejemplo}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Una imagen dada por la cadena hexadecimal \textbf{070401AEBF3\ldots{}}
-  tendrá $7 \times 4$ pixels, y un solo bit de paleta.
+  tendrá \(7 \times 4\) pixels, y un solo bit de paleta.
 \item
   Como la paleta se codifica con un solo bit, esta imagen es en blanco y
   negro (no puede haber más que dos valores de color).
@@ -428,7 +452,8 @@ es difícil dibujar la imagen.
   individuales están en negro (bits en 1) y en blanco (bits en 0).
 \end{itemize}
 
-\subsection{Compresión de datos}\label{compresiuxf3n-de-datos}
+\hypertarget{compresiuxf3n-de-datos}{%
+\subsection{Compresión de datos}\label{compresiuxf3n-de-datos}}
 
 Muchas veces es interesante reducir el tamaño de un archivo, para que
 ocupe menos espacio de almacenamiento o para que su transferencia a
@@ -442,7 +467,8 @@ La compresión de un archivo se ejecuta mediante un programa que utiliza
 un algoritmo especial de compresión. Este algoritmo puede ser de
 \textbf{compresión sin pérdida}, o de \textbf{compresión con pérdida}.
 
-\subsection{Compresión sin pérdida}\label{compresiuxf3n-sin-puxe9rdida}
+\hypertarget{compresiuxf3n-sin-puxe9rdida}{%
+\subsection{Compresión sin pérdida}\label{compresiuxf3n-sin-puxe9rdida}}
 
 Decimos que la compresión ha sido \textbf{sin pérdida} cuando puede
 extraerse del archivo comprimido exactamente la misma información que
@@ -467,7 +493,8 @@ cuentan con el conocimiento para identificar cuándo una página está
 comprimida, y saben descomprimirla en forma transparente, es decir, sin
 que el usuario necesite hacer ni saber nada.
 
-\subsection{Compresión con pérdida}\label{compresiuxf3n-con-puxe9rdida}
+\hypertarget{compresiuxf3n-con-puxe9rdida}{%
+\subsection{Compresión con pérdida}\label{compresiuxf3n-con-puxe9rdida}}
 
 Cuando la compresión se hace con una técnica \textbf{con pérdida}, no
 existe un algoritmo de descompresión que recupere la información
@@ -502,12 +529,13 @@ comprimidos con pérdida. Para comprimir con pérdida imágenes, se reduce
 su calidad, ya sea disminuyendo la resolución o utilizando menos
 colores.
 
-\subsubsection{Reducción de color}\label{reducciuxf3n-de-color}
+\hypertarget{reducciuxf3n-de-color}{%
+\subsubsection{Reducción de color}\label{reducciuxf3n-de-color}}
 
-Si la imagen tiene $ancho \times alto$ pixels, y la información de color
-es de $n$ bits por pixel, el archivo sin su cabecera mide
-$ancho \times alto \times n$ bits. Una forma sencilla de compresión con
-pérdida, que no modifica la resolución, es la reducción de la
+Si la imagen tiene \(ancho \times alto\) pixels, y la información de
+color es de \(n\) bits por pixel, el archivo sin su cabecera mide
+\(ancho \times alto \times n\) bits. Una forma sencilla de compresión
+con pérdida, que no modifica la resolución, es la reducción de la
 profundidad de color de una imagen. Si la imagen puede seguir siendo
 útil con menos colores, comprimiendo la paleta de colores puede
 obtenerse un archivo de menor tamaño.
@@ -522,21 +550,21 @@ costo de perder información de color de la imagen.
 \textbf{Ejemplo}
 
 Sea una imagen a cuatro colores; luego la cantidad de bits por pixel es
-2. Al reducir la profundidad de color, los colores 00 y 10 pasan a ser
+2. Al reducir la profundidad de color, los colores 00 y 01 pasan a ser
 el único color 0; y los colores 10 y 11 pasan a ser el único color 1.
 Todos los pixels quedan expresados por un único bit 0 o 1, reduciendo
 efectivamente el tamaño de la imagen.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La información ha sido \textbf{comprimida con pérdida} porque el
   archivo original no puede ser reconstruido a partir de este nuevo
   archivo.
 \item
   El nuevo archivo, sin su cabecera, mide
-  $ancho \times alto \times (n - 1)$, o sea, es $ancho \times alto$ bits
-  más corto que el original.
+  \(ancho \times alto \times (n - 1)\), o sea, es \(ancho \times alto\)
+  bits más corto que el original.
 \end{itemize}
 
 Un método para reducir a la mitad la profundidad de color puede ser como
@@ -544,7 +572,7 @@ sigue:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Escribir la tabla de códigos de color.
 \item
@@ -574,7 +602,7 @@ pixels: 10 10 11 10 10 10 11 11 11 11 10 10 11 10 10 00 10 10 01 10 00
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La tabla de códigos de color es \{00 01 10 11\}.
 \item
@@ -596,21 +624,23 @@ La imagen comprimida queda como \textbf{05050123C82000} (ancho: 5, alto:
 \textbf{Pregunta}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Se ha visto cómo reducir la profundidad de color en exactamente 1 bit.
   ¿Cómo podemos generalizar el método, para reducir la información de
   color en una cantidad de bits cualquiera?
 \end{itemize}
 
+\hypertarget{algoritmos-de-compresiuxf3n-sin-puxe9rdida}{%
 \subsection{Algoritmos de compresión sin
-pérdida}\label{algoritmos-de-compresiuxf3n-sin-puxe9rdida}
+pérdida}\label{algoritmos-de-compresiuxf3n-sin-puxe9rdida}}
 
 Aunque los programas que aplican algoritmos de compresión sin pérdida
 pueden ser muy sofisticados, algunas ideas básicas son muy sencillas.
 
+\hypertarget{run-length-encoding-o-rle}{%
 \subsubsection{Run Length Encoding o
-RLE}\label{run-length-encoding-o-rle}
+RLE}\label{run-length-encoding-o-rle}}
 
 Supongamos tener una imagen en el formato que ya hemos descripto, y
 supongamos además que los datos de la imagen, es decir, la sucesión de
@@ -644,7 +674,7 @@ cantidad de bits, ya que define el tamaño máximo de los coeficientes,
 debe ser elegida con cuidado:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Si los coeficientes son pequeños, y la redundancia del archivo es muy
   alta, no aprovecharemos la capacidad de compresión del método.
@@ -657,7 +687,7 @@ debe ser elegida con cuidado:
 \textbf{Ejemplo}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Si quisiéramos almacenar o transmitir un patrón de 253 ``unos''
   seguidos de 119 ``ceros'' y luego 87 ``unos'', sin ninguna compresión,
@@ -668,8 +698,9 @@ debe ser elegida con cuidado:
   ocuparía tan sólo 27 bits.
 \end{itemize}
 
+\hypertarget{cuxf3digos-de-huffmann-o-de-longitud-variable}{%
 \subsubsection{Códigos de Huffmann o de longitud
-variable}\label{cuxf3digos-de-huffmann-o-de-longitud-variable}
+variable}\label{cuxf3digos-de-huffmann-o-de-longitud-variable}}
 
 La compresión sin pérdida por el método de Huffmann utiliza códigos de
 longitud variable. El método consiste esencialmente en examinar el
@@ -689,23 +720,24 @@ menos espacio que con un código de longitud uniforme.
 \textbf{Ejemplo}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El texto de once caracteres ``ABRACADABRA'' contiene cinco ``A'', dos
   ``B'', dos ``R'', una ``C'' y una ``D''. Si no utilizamos compresión,
-  se necesitan $11 \times 8 = 88$ bits para representarlo. Si utilizamos
-  compresión por códigos de longitud variable, crearemos un pequeño
-  diccionario de la forma \{ A → 1, B → 01, R → 001, C → 0001, D → 00001
-  \}. Con este diccionario, el texto se podrá representar como ``1 01
-  001 1 0001 1 00001 1 01 001 1'', en tan sólo 23 bits.
+  se necesitan \(11 \times 8 = 88\) bits para representarlo. Si
+  utilizamos compresión por códigos de longitud variable, crearemos un
+  pequeño diccionario de la forma \{ A → 1, B → 01, R → 001, C → 0001, D
+  → 00001 \}. Con este diccionario, el texto se podrá representar como
+  ``1 01 001 1 0001 1 00001 1 01 001 1'', en tan sólo 23 bits.
 \end{itemize}
 
 \textbf{Interesante}
 
 \href{https://es.m.wikipedia.org/wiki/Ley_de_Zipf}{Ley de Zipf}
 
+\hypertarget{compresiuxf3n-de-imuxe1genes-con-rle}{%
 \subsubsection{Compresión de imágenes con
-RLE}\label{compresiuxf3n-de-imuxe1genes-con-rle}
+RLE}\label{compresiuxf3n-de-imuxe1genes-con-rle}}
 
 Fijada la cantidad de bits para coeficientes, la imagen se comprime
 indicando, para cada secuencia de pixels iguales, qué factor de
@@ -724,8 +756,9 @@ datos de la imagen se comprimirán como \{ 010 10 111 11 110 10\ldots{}
 \}. Los primeros treinta bits de los datos de imagen han quedado
 comprimidos a \textbf{quince} bits.
 
+\hypertarget{compresiuxf3n-con-puxe9rdida-y-puxe9rdida-de-informaciuxf3n}{%
 \subsection{Compresión con pérdida y pérdida de
-información}\label{compresiuxf3n-con-puxe9rdida-y-puxe9rdida-de-informaciuxf3n}
+información}\label{compresiuxf3n-con-puxe9rdida-y-puxe9rdida-de-informaciuxf3n}}
 
 Es importante insistir en el punto siguiente, que con frecuencia es mal
 comprendido.
@@ -742,7 +775,7 @@ descompresión fallará o entrará en una condición de error.
 caso de compresión con pérdida}.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La compresión \textbf{con pérdida} implica una pérdida de información
   que es \textbf{intencional}. La información ha sido quitada a

@@ -1,10 +1,10 @@
 
-#Unidades de Información
+# Unidades de Información
 
 
 En este segundo tema de la unidad veremos qué es la información y cómo podemos cuantificar, es decir, medir, la cantidad de información que puede alojar un dispositivo, o la cantidad de información que representa una pieza cualquiera de información. Veremos además las relaciones entre las diferentes unidades de información.
 
-##Información
+## Información
 
 A lo largo de la historia se han inventado y fabricado máquinas, que son dispositivos que **transforman la energía**, es decir, convierten una forma de energía en otra. Las computadoras, en cambio, convierten una forma de **información** en otra. 
 
@@ -15,7 +15,7 @@ Un epistemólogo dice que la información es "una diferencia relevante". Si vemo
 ¿Qué es, exactamente, esta información? No podemos tocarla ni pesarla, pero ¿se puede medir? Y si se puede medir, ¿entonces se puede medir la cantidad de información que aporta un texto, una imagen?
 
 
-##Bit
+## Bit
 
 La Teoría de la Información, una teoría matemática desarrollada alrededor de 1950, dice que el **bit** es "la mínima unidad de información". Un bit es la información que recibimos "cuando se especifica una de dos alternativas igualmente probables". Si tenemos una pregunta **binaria**, es decir, aquella que puede ser respondida **con un sí o con un no**, entonces, al recibir una respuesta, estamos recibiendo un bit de información. Las preguntas binarias son las más simples posibles (porque no podemos decidir entre **menos** respuestas), de ahí que la información necesaria para responderlas sea la mínima unidad de información. 
 
@@ -26,7 +26,7 @@ Cuando las computadoras trabajan con piezas de información complejas, como los 
 La memoria de las computadoras está diseñada de forma que **no se puede almacenar otra cosa que bits** en esa memoria. Los textos, las imágenes, los sonidos, los videos, los programas que ejecuta, los mensajes que recibe o envía; todo lo que puede guardar, procesar, o emitir una computadora digital, debe estar en algún momento representado por una secuencia de bits. Los bits son, en cierta forma, como los átomos de la información.  Por eso el bit es la unidad fundamental que usamos para medirla, y definiremos también algunas unidades mayores, o múltiplos.
 
 
-###El viaje de un bit
+### El viaje de un bit
 
 En una famosa película de aventuras hay una ciudad en problemas. Uno de los héroes enciende una pila de leña porque se prepara un terrible ataque sobre la ciudad. La pila de leña es el dispositivo preestablecido que tiene la ciudad para pedir ayuda en caso de emergencia. 
 
@@ -39,7 +39,7 @@ Esta pregunta es **binaria**: se responde con un sí o con un no. Por lo tanto, 
 Notemos que, en los manuales de lógica o de informática, encontraremos siempre asociados los **bits** con los valores de **0 y 1**. Aunque esto es útil a los efectos de emplear los bits en computación, no es del todo exacto. Un bit no es exactamente un dígito. Lo que viajó desde la ciudad sitiada hasta su destino no es un 0 ni un 1. Es **un bit de información**, aquella unidad de información que permite tomar una decisión entre dos alternativas. Sin embargo, la identificación de los bits con los dígitos binarios es útil para todo lo que tiene que ver con las computadoras.
 
 
-##Byte
+## Byte
 Como el bit es una medida tan pequeña de información, resulta necesario definir unidades más grandes. En particular, y debido a la forma como se organiza la memoria de las computadoras, es útil tener como unidad al **byte** (abreviado **B** mayúscula), que es una secuencia de **8 bits**. Podemos imaginarnos la memoria de las computadoras como una estantería muy alta, compuesta por estantes que contienen ocho casilleros. Cada uno de estos estantes es una **posición o celda de memoria**, y contiene exactamente ocho bits (un byte) de información.
 
 Como los valores de los bits que forman un byte son independientes entre sí, existen $2^8$ diferentes valores para esos ocho bits. Si los asociamos con números en el sistema binario, esos valores serán **00000000**, **00000001**, **00000010**, ..., etc., hasta el **11111111**. En decimal, esos valores corresponden a los números **0, 1, 2, ..., 255**.
@@ -47,7 +47,7 @@ Como los valores de los bits que forman un byte son independientes entre sí, ex
 Cada byte de la memoria de una computadora, entonces, puede alojar un número entre 0 y 255. Esos números representarán diferentes piezas de información: si los vemos como bytes independientes, pueden representar **caracteres** como letras y otros símbolos, pero también pueden estar formando parte de otras estructuras de información más complejas, y tener otros significados.
 
 
-##Representando datos con bytes
+## Representando datos con bytes
 Para poder tratar y comunicar la información, que está organizada en bytes, es necesario que exista una asignación fija de valores binarios a caracteres. Es decir, se necesita una **tabla de caracteres** que asigne un símbolo a cada valor posible entre 0 y 255.
 
 
@@ -61,7 +61,7 @@ Existen en realidad dos sistemas diferentes de múltiplos: el **Sistema Internac
 Los dos sistemas difieren esencialmente en el factor de la unidad en los sucesivos múltiplos. En el caso del Sistema Internacional, todos los factores son alguna potencia de 1000. En el caso del Sistema de Prefijos Binarios, todos los factores son potencias de 1024. 
 
 
-###Sistema Internacional
+### Sistema Internacional
 En el llamado Sistema Internacional, la unidad básica, el byte, se multiplica por potencias de 1000. Así, tenemos:
 
 - El **kilobyte** (1000 bytes)
@@ -74,7 +74,7 @@ Como puede verse, cada unidad se forma multiplicando la anterior por 1000.
 Los símbolos de cada múltiplo, utilizados al especificar las unidades, son **k minúscula** para **kilo**, **M mayúscula** para **mega**, **G mayúscula** para **giga**, **T mayúscula** para **tera**, etc.
 
 
-###Sistema de Prefijos Binarios
+### Sistema de Prefijos Binarios
 En el llamado Sistema de Prefijos Binarios, el byte se multiplica por potencias de $2^{10}$, que es 1024. Así, tenemos:
 
 - El **kibibyte** (1024 bytes)

@@ -1,7 +1,7 @@
 
 
 
-#Redes de computadoras
+# Redes de computadoras
 
 Un conjunto de computadoras conectadas para compartir información u otros recursos es una **red** de computadoras. En cualquier red se distinguen por lo menos tres elementos de hardware:
 
@@ -24,7 +24,7 @@ Estas diferentes redes se pueden clasificar por su tamaño.
 - Una red mayor, que cubre distancias entre ciudades, países o continentes, se llama una **red de área extensa o WAN (Wide Area Network)**. Las redes de los **proveedores de servicios de Internet (ISPs)** suelen clasificarse como WANs.
 
 
-##Modelo de Internet
+## Modelo de Internet
 
 Las redes pueden estudiarse y comprenderse mediante modelos jerárquicos compuestos por capas, donde cada pieza de hardware o de software pertenece a una capa o nivel. 
 
@@ -51,7 +51,7 @@ Cada capa corresponde a un conjunto de problemas relacionados, y a las solucione
     La capa Física define la forma como se codifican y transmiten las señales que representan la información.
 
 
-##Switches 
+## Switches 
 En las redes de área local, o LAN, encontramos enlaces compartidos. El cableado de una oficina, un aula o un edificio es un único medio de comunicación compartido por todos los nodos de la red. El cableado se concentra en un punto de conmutación llamado **switch** o, justamente, conmutador, que distribuye el tráfico entre los nodos conectados. Un switch tiene muchas **interfaces** donde se conectan cables punto a punto hacia los nodos de la LAN. 
 
 Es posible conectar switches entre sí para mejor distribución del tráfico, formando una **topología** de estrella o de árbol. Todo el conjunto de switches y enlaces de la LAN constituye un enlace compartido, ya que todos los nodos de la LAN pueden comunicarse a través de él.
@@ -62,7 +62,7 @@ Un switch 802.3 conduce unas unidades de tráfico básicas, los **frames o trama
 
 
 
-##Routers
+## Routers
 Suele definirse a Internet como "red de redes". 
 Las grandes redes, y en particular Internet, se componen interconectando redes a través de enlaces, a veces de gran longitud. 
 Entre cada dos de estas redes siempre existe un **router**.  
@@ -85,7 +85,7 @@ Dependiendo del ambiente donde deben trabajar y de la cantidad de tráfico que d
 
 
 
-##Interfaces
+## Interfaces
 
 La interfaz es el punto de conexión entre un enlace y un nodo de la red. Es la pieza de hardware que convierte bits a señales capaces de viajar por la red, y viceversa. Cuando un nodo debe comunicar algo a otro, prepara su mensaje en una zona de la memoria, y entrega esos contenidos binarios a la interfaz a través de un bus de comunicación. 
 
@@ -96,7 +96,7 @@ Las modernas interfaces de red pueden funcionar a **velocidades de transmisión*
 El tren de bits viaja en forma de señales físicas por el enlace hasta llegar a la interfaz del nodo destino dentro de la red de área local. La interfaz receptora decodifica las señales, recuperando los bits originales y comunicándolos al software que espera los datos. Ambas partes de la aplicación distribuida se han comunicado un mensaje.
 
 
-##Medios y enlaces
+## Medios y enlaces
 El material que atraviesan las señales transmitidas sobre un enlace se llama el **medio** del enlace. Las tecnologías de construcción de los enlaces son muchas. 
 
 - Cuando las señales se codifican mediante impulsos eléctricos, como en las redes de cables de **par trenzado** o **coaxial**, el medio es un conductor, como el cobre.
@@ -118,7 +118,7 @@ Su principal inconveniente es la alta **latencia o retardo** en la llegada de la
 Paulatinamente van siendo abandonados en favor de la fibra óptica para comunicación de datos a grandes distancias. Hoy se estima que sólo un 5% del tráfico internacional es satelital, y el resto es conducido por fibras ópticas. Sin embargo, siguen siendo una buena solución para atravesar áreas continentales, o para distribuir tráfico hacia muchos puntos simultáneos de bajada, como en los medios de comunicación televisivos (aplicación llamada **broadcasting**).
 
 
-##Velocidades de transmisión y de propagación
+## Velocidades de transmisión y de propagación
 Cada interfaz funciona a una determinada **velocidad de transmisión**, que es la cantidad de bits por segundo que es capaz de escribir en el enlace, o leer del enlace. Las unidades utilizadas para expresar la velocidad de transmisión son las del sistema decimal. Así, una medida habitual es el Gbps o gigabit por segundo ($10^9 b/s$). La velocidad de transmisión suele ser llamada también **ancho de banda digital**.
 
 Por otro lado, una vez que **cada bit** ha sido escrito en un enlace, ese bit aún debe viajar desde la interfaz de salida hasta la interfaz del otro extremo del enlace. Ese viaje, aunque se realiza a velocidades cercanas a la de la luz, **no es instantáneo**. Dependiendo del medio, la **velocidad de propagación** de un bit puede ser de alrededor de un 60% a 90% de la velocidad de la luz, que es de unos 300.000 km/s, o $3\times 10^8 m/s$.
@@ -130,7 +130,7 @@ La velocidad de **transmisión** puede mejorarse si se mejoran las tecnologías 
 
 
 
-##Tiempo de transferencia de un mensaje
+## Tiempo de transferencia de un mensaje
 Conocer las velocidades de transmisión y de propagación nos permite definir un modelo para el **tiempo de transferencia** de un mensaje a través de un enlace. 
 
 Este modelo dependerá de otras dos variables: por un lado, como es lógico, del **tamaño** del mensaje que se quiere transmitir; y por otro lado, de la **distancia** que separa las interfaces.
@@ -181,15 +181,15 @@ Sin embargo, el tiempo de transmisión no es lo único que determina un mayor ti
 [enlaces2]: img/enlaces-2.png "Comparando enlaces"
 
 
-##Entidades de red
+## Entidades de red
 Llamamos **entidades** a las piezas de software o de hardware que funcionan como componentes de los nodos dentro de una red. Las entidades pueden ubicarse a cualquier nivel: pueden ser dos routers, dos interfaces de red, o las partes de una aplicación distribuida. 
 
 Las entidades de nodos diferentes que van a comunicarse estarán siempre al mismo nivel.
 
-##Eventos de red
+## Eventos de red
 Llamamos **eventos** a cualquier suceso de interés que ocurre dentro de la red, especialmente si se trata de una interacción entre entidades. Por ejemplo, la llegada de un mensaje.
 
-##Protocolos
+## Protocolos
 Los **protocolos** son conjuntos de reglas que definen la interacción entre dos entidades de la red. 
 
 Para comunicarse, las entidades de cualquier nivel deben compartir un protocolo. Los protocolos especifican:
@@ -205,7 +205,7 @@ Aunque los contenidos específicos de los mensajes pueden variar, es habitual qu
 
 Todas éstas son fases habituales en la comunicación entre los humanos, pero también en los protocolos de las redes.
 
-###Modelo cliente-servidor
+### Modelo cliente-servidor
 Estas fases habituales aparecen en los protocolos que definen relaciones de **cliente y servidor** entre entidades. En el modelo cliente-servidor:
 
 - El nodo cliente es el que inicia una interacción, con un **request** o requerimiento hacia el servidor. 
@@ -214,12 +214,12 @@ Estas fases habituales aparecen en los protocolos que definen relaciones de **cl
 
 La mayoría de las aplicaciones de Internet siguen este **modelo cliente-servidor** de interacción. El protocolo **HTTP**, motor de la **WWW**, es un ejemplo claro.
 
-###Modelo peer-to-peer
+### Modelo peer-to-peer
 El modelo cliente-servidor es asimétrico: los roles de cliente y de servidor están bien diferenciados. Un modelo alternativo, diferente, es el llamado **peer-to-peer**, donde no existe un nodo servidor propiamente dicho, sino que todos los nodos que comparten el protocolo son, a la vez, clientes y servidores, en igualdad de condiciones.
 
 
 
-###Autómatas
+### Autómatas
 
 Los **autómatas** son una herramienta formal muy útil para describir detalladamente los protocolos. Un autómata es la especificación de los **estados** en los que puede encontrarse una entidad y los **eventos** que disparan los cambios de estado o **transiciones**. El autómata puede tomar la forma de un diagrama de burbujas y flechas.
 
@@ -230,7 +230,7 @@ Los **autómatas** son una herramienta formal muy útil para describir detallada
     - Cuando no se requiere un evento para entrar en un estado (por ejemplo, porque es el estado inicial del autómata), el evento es **vacío** (y se denota "-").
     - Un mensaje de respuesta que confirma la recepción correcta de un mensaje anterior se llama un **reconocimiento o acknowledgement (ACK)**. Si el mensaje de respuesta indica la **recepción incorrecta**, se llama un **acknowledgement negativo** o **NAK**.
 
-###Autómata del cliente
+### Autómata del cliente
 
 ![Autómata del cliente][cliente]
 
@@ -239,14 +239,14 @@ Los **autómatas** son una herramienta formal muy útil para describir detallada
 En el ejemplo, el cliente ingresa al estado de **Abriendo conexión** presentando sus credenciales. Si son aceptadas, envía su primera solicitud y pasa al estado **En servicio**. A cada respuesta que reciba, podrá enviar una nueva solicitud. Finalmente, emitirá un mensaje de cierre de conexión y terminará la interacción con el servidor.
 
 
-###Autómata del servidor
+### Autómata del servidor
 Por su parte, el servidor presenta un autómata complementario al del cliente. La mayor parte del tiempo, el servidor estará en el estado **Esperando conexión** hasta que reciba unas credenciales de un cliente. Si las reconoce, pasa al estado **En servicio** donde acepta solicitudes y emite respuestas. Cuando el cliente decide poner fin a la interacción, vuelve al estado de esperar conexión de un nuevo cliente.
 
 ![Autómata del servidor][servidor]
 
 [servidor]: img/protocolo-servidor.png "Autómata del servidor"
 
-###Protocolos de parada y espera
+### Protocolos de parada y espera
 ¿Cómo se relacionan, por un lado, las medidas de tiempo de transmisión y tiempo de propagación, y, por el otro, los autómatas de un protocolo cliente-servidor? 
 
 Muchos protocolos requieren que una entidad reciba la confirmación de un mensaje anterior antes de poder enviar el siguiente mensaje. Cuando esto ocurre, decimos que el protocolo es del tipo de **parada y espera (*stop and wait*)**.  Cuando el enlace entre dos entidades es de longitud muy grande, un protocolo de parada y espera puede tener una eficiencia muy reducida. 
@@ -267,7 +267,7 @@ Elevar el ancho de banda digital del enlace, de 1Gbps a 10Gbps, ¿sería una sol
 
 
 
-##Direcciones de red
+## Direcciones de red
 
 Para poder dirigir los mensajes entre nodos, es necesario identificarlos de alguna forma, asignándoles **direcciones** o identificadores de red. 
 
@@ -281,7 +281,7 @@ El protocolo IPv4 define las direcciones de red como números de 32 bits que se 
 - La dirección IPv4 **11000000101010000000000100000001** se puede escribir en notación decimal con punto como **192.168.1.1**.
 
 
-##Paquetes IP
+## Paquetes IP
 
 Internet es una red del tipo de **conmutación por paquetes**, lo que significa que los flujos de datos que van de un nodo emisor a un receptor son fraccionados en **paquetes** o trozos de datos, de un cierto tamaño máximo, y que los nodos intermedios tratan a cada paquete individualmente para encaminarlos a su destino.
 
@@ -295,13 +295,13 @@ Cada nodo intermedio o router en el camino entre el emisor y el receptor tomará
 Al generar un paquete, para que pueda ser encaminado, el emisor completa los datos con un **encabezado** conteniendo la dirección IP del nodo emisor, o **dirección origen**, y la dirección IP del nodo destino, o **dirección destino**.
 
 
-##Ruteo o encaminamiento
+## Ruteo o encaminamiento
 Cuando un paquete llega a un router, lo hace por algún enlace. La tarea del router es **reenviar** este paquete por otro de sus enlaces, de modo que se aproxime a su destino.
 
 El router debe aplicar alguna regla lógica para decidir hacia qué otro enlace **reenviar** el paquete. Esta decisión de cuál será ese otro enlace es una acción de **ruteo** o **encaminamiento**.
 
 
-###Tabla de reenvío o de ruteo
+### Tabla de reenvío o de ruteo
 La decisión de ruteo es tomada por los routers usando la información de **destino** que llevan consigo los paquetes, más información de ruteo contenida en una **tabla de reenvío** o tabla de ruteo, almacenada en la memoria del router.
 
 
@@ -315,7 +315,7 @@ En líneas generales, el algoritmo de ruteo es como sigue:
 Sin embargo, ésta es una simplificación. La verdadera forma de la tabla de ruteo es algo diferente. ¿Por qué?
 
 
-###Subredes
+### Subredes
 Notemos que, ya que las direcciones IP se escriben usando 32 bits, existen más de **cuatro mil millones** de direcciones IPv4 posibles. Una tabla de ruteo completa, con una ruta por cada dirección destino, tal como la hemos descrito, tendría enormes requerimientos de memoria, y el equipamiento de ruteo sería muy costoso.
 
 Las tablas de ruteo verdaderas, entonces, no contienen una ruta por cada dirección destino, sino que las rutas corresponden a conjuntos o agrupaciones de direcciones, llamadas **subredes**. 
@@ -325,7 +325,7 @@ Un paquete cuya dirección destino pertenezca a una subred utilizará la ruta de
 Si las subredes son agrupaciones suficientemente grandes, la cantidad de reglas de ruteo o rutas disminuirá convenientemente.
 
 
-###Prefijo de subred
+### Prefijo de subred
 
 ¿Cómo agrupar estas direcciones para definir las subredes? 
 
@@ -346,7 +346,7 @@ Si las subredes son agrupaciones suficientemente grandes, la cantidad de reglas 
 
     Esta convención no es otra cosa que lo que llamamos la dirección de la subred.
 
-###Dirección de subred y máscara de subred
+### Dirección de subred y máscara de subred
 
 Cuando en una tabla de ruteo se especifique una ruta para todas las direcciones con un mismo prefijo, la dirección destino de la ruta será una **dirección de subred**. 
 
@@ -361,7 +361,7 @@ La cantidad de dígitos "uno" dice cuál es la longitud del prefijo compartido. 
 - Una máscara de **26 bits** de longitud puede expresarse como **11111111 11111111 11111111 11000000**, o **255.255.255.192**.
 
 
-###Cálculo de la dirección de subred
+### Cálculo de la dirección de subred
 
 Para calcular la dirección de subred a la cual pertenece una dirección IP, superponemos la dirección y su máscara de modo de encolumnar todos los dígitos y efectuamos una operación AND bit a bit. El operador AND es el que devuelve 1 solamente si ambos operandos son 1, y en otro caso devuelve 0.
 
@@ -410,7 +410,7 @@ Esta tabla de ruteo dice que:
 - ¿Puede darse un caso donde quepa la duda de si aplicar la primera o la tercera regla?
 
 
-###Ruta por defecto o ruta *default*
+### Ruta por defecto o ruta *default*
 
 Aun con la estrategia de ruteo por prefijos, los routers no pueden conocer **todas** las rutas a todos los destinos. Siempre se apoyan en que alguno de sus routers vecinos que esté más próximo al destino tenga más información que ellos. 
 
@@ -421,7 +421,7 @@ Para definir una ruta por defecto agregamos una regla a la tabla de ruteo con **
 
 En Internet, tiene sentido que la interfaz de la ruta default en cada router sea la que "mira" al centro de la Internet, en la dirección donde hay más nodos. Allí es más probable que existan routers con una configuración mejor.
 
-###Rutas más específicas y máscaras más largas
+### Rutas más específicas y máscaras más largas
 
 El caso de la ruta default nos permite ver que la ruta más genérica, la menos específica, es la que tiene la máscara más corta. Representa a cualquier subred, o al conjunto de todas las subredes.
 
@@ -443,7 +443,7 @@ La primera regla indica que todo destino con sus primeros tres bits iguales a ce
 
 
 
-##Algoritmo de reenvío
+## Algoritmo de reenvío
 
 Finalmente podemos presentar el algoritmo de reenvío tal cual lo ejecutan los routers de Internet. 
 
@@ -486,7 +486,7 @@ Regla | Dirección de subred | Máscara | Interfaz de salida
 
 
 
-##Servicio de Nombres de Dominio (DNS)
+## Servicio de Nombres de Dominio (DNS)
 
 Como hemos visto, el funcionamiento de Internet se basa en la existencia de **direcciones**, que permiten enviar y encaminar el tráfico entre los diferentes puntos de la red. Sin embargo, las direcciones IP de 32 bits, o su equivalente de cuatro decimales con puntos, son incómodas de manejar para los humanos. El **servicio de nombres de dominio**, o Domain Name Service (**DNS**) es un servicio agregado a la Internet para comodidad de los usuarios. 
 
@@ -494,7 +494,7 @@ El servicio DNS permite a los usuarios referirse a los nodos de Internet mediant
 
 Técnicamente, Internet podría funcionar perfectamente (y, de hecho, lo hizo durante algún tiempo) **sin** la existencia del servicio DNS, pero la costumbre lo ha convertido en una parte indispensable de la red. 
 
-###Jerarquía de nombres de dominio
+### Jerarquía de nombres de dominio
 
 Estos nombres simbólicos tienen una cierta estructura jerárquica, es decir, organizada por niveles. Un nombre consta de varias partes, separadas por puntos. En cada nombre, las partes más a la derecha designan conjuntos mayores de nodos, y las partes más a la izquierda, conjuntos más pequeños, contenidos en aquellos conjuntos mayores. 
 
@@ -510,7 +510,7 @@ Los dominios de nivel superior contienen otros espacios de nombres, llamados a s
 
 
 
-###Resolución de nombres
+### Resolución de nombres
 
 Los servidores DNS se clasifican por el tipo de función que cumplen. Cada uno interviene de una manera especial en el mecanismo de traducción de nombres a direcciones. Este mecanismo de traducción se llama **resolución** de nombres.
 
@@ -540,11 +540,11 @@ Los servidores DNS se clasifican por el tipo de función que cumplen. Cada uno i
 Todo este complejo mecanismo debería tener lugar cada vez que un cliente de la red consulta por un nombre. Sin embargo, como este mecanismo es costoso en tiempo y en ancho de banda de las redes, se adopta un esquema de **cache** o reserva de información. Como es muy probable que esa información vuelva a ser solicitada, los pares (nombre, dirección) que han sido resueltos quedan guardados en una memoria temporaria o **cache** del servidor local. De esta manera las próximas consultas podrán responderse sin necesidad de volver a generar tráfico hacia el resto de la Internet.
 
 
-##Administración de redes
+## Administración de redes
 
 Existen herramientas de software que permiten diagnosticar las condiciones en que se realiza el ruteo, o encaminamiento, de los paquetes IP. El administrador de redes las utiliza para investigar el origen de los problemas en la red.
 
-###Comando ping
+### Comando ping
 
 El comando **ping** emite paquetes hacia un nodo destino. Si los paquetes logran atravesar la Internet, el nodo destino emitirá una respuesta. El comando ping muestra los paquetes de respuesta que llegan o se pierden, y el tiempo que demora cada respuesta en llegar. 
 
@@ -552,7 +552,7 @@ Cuando los usuarios tienen problemas con alguna aplicación de red, el comando p
 
 
 
-###Comando traceroute
+### Comando traceroute
 
 El comando **traceroute** permite investigar cuál es la cadena particular de routers que debe atravesar un paquete para llegar a un destino dado. Además, da información sobre la demora en atravesar cada enlace, lo que puede dar una idea de si existe una condición de **congestión** en el camino de los paquetes, y en qué lugar de Internet.
 

@@ -1,61 +1,75 @@
-\documentclass[spanish,A4,]{article}
-\usepackage{sans}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[spanish,a4paper,]{article}
+\usepackage[]{sans}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{spanish}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=spanish]{babel}
 \else
-  \usepackage[spanish]{babel}
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{spanish}
 \fi
 
 \title{Sistemas Operativos}
+\date{}
 
 \begin{document}
 \maketitle
 
-\section{Sistemas Operativos}\label{sistemas-operativos}
+\hypertarget{sistemas-operativos}{%
+\section{Sistemas Operativos}\label{sistemas-operativos}}
 
-\subsection{Del hardware al software}\label{del-hardware-al-software}
+\hypertarget{del-hardware-al-software}{%
+\subsection{Del hardware al software}\label{del-hardware-al-software}}
 
 Hemos visto la evolución de los sistemas de cómputo desde el punto de
 vista del hardware, y cómo llegaron a soportar varios usuarios corriendo
@@ -71,10 +85,12 @@ La pieza que falta en este complejo mecanismo es el \textbf{sistema
 operativo}, un software básico cuya función principal es la de ser
 intermediario entre los usuarios y el hardware del sistema de cómputo.
 
+\hypertarget{evoluciuxf3n-del-software-de-base}{%
 \subsection{Evolución del software de
-base}\label{evoluciuxf3n-del-software-de-base}
+base}\label{evoluciuxf3n-del-software-de-base}}
 
-\subsubsection{Open Shop}\label{open-shop}
+\hypertarget{open-shop}{%
+\subsubsection{Open Shop}\label{open-shop}}
 
 Las primeras computadoras estaban dedicadas a una única tarea,
 perteneciente a un único usuario. Podían ser utilizadas por diferentes
@@ -82,7 +98,8 @@ usuarios, pero cada uno debía esperar su turno para reprogramarlas
 manualmente, lo cual era laborioso y se llevaba gran parte del tiempo
 por el cual esos usuarios pagaban.
 
-\subsubsection{Sistemas Batch}\label{sistemas-batch}
+\hypertarget{sistemas-batch}{%
+\subsubsection{Sistemas Batch}\label{sistemas-batch}}
 
 Una vez que se popularizaron las máquinas de programa almacenado, se
 pudo minimizar el tiempo ocioso adoptando \textbf{esquemas de carga
@@ -93,8 +110,9 @@ salida del programa. Estos trabajos estaban definidos por conjuntos o
 lotes de tarjetas perforadas, de ahí su nombre de trabajos \textbf{por
 lotes} o, en inglés, \emph{batch}.
 
+\hypertarget{sistemas-multiprogramados}{%
 \subsubsection{Sistemas
-Multiprogramados}\label{sistemas-multiprogramados}
+Multiprogramados}\label{sistemas-multiprogramados}}
 
 Más adelante, conforme las tecnologías permitían ir aumentando la
 velocidad de procesamiento, se notó que los procesadores quedaban
@@ -104,8 +122,9 @@ optimizaban la utilización de la CPU, al poderse cargar más de un
 programa en la memoria y poder conmutar el uso del procesador entre
 ellos. Éstos fueron los primeros \textbf{sistemas multiprogramados}.
 
+\hypertarget{sistemas-de-tiempo-compartido}{%
 \subsubsection{Sistemas de Tiempo
-Compartido}\label{sistemas-de-tiempo-compartido}
+Compartido}\label{sistemas-de-tiempo-compartido}}
 
 Una vez que llegó la posibilidad de tener varios programas coexistiendo
 simultáneamente en la memoria, se buscó que la conmutación del uso del
@@ -115,7 +134,8 @@ compartido}, el usuario utilizaba la computadora como si estuviera
 dedicada exclusivamente a correr su programa. Así los sistemas
 multiprogramados se volvieron \textbf{interactivos}.
 
-\subsubsection{Computación personal}\label{computaciuxf3n-personal}
+\hypertarget{computaciuxf3n-personal}{%
+\subsubsection{Computación personal}\label{computaciuxf3n-personal}}
 
 Todas éstas fueron innovaciones de software, y fueron estableciendo
 principios y técnicas que serían adoptadas en lo sucesivo. Con la
@@ -133,10 +153,11 @@ aparecieron sistemas operativos \textbf{multiusuario} y
 nuevo terreno para ensayar y mejorar las tecnologías de software y
 hardware.
 
-\subsubsection{Preguntas}\label{preguntas}
+\hypertarget{preguntas}{%
+\subsubsection{Preguntas}\label{preguntas}}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   ¿Cuáles son los cinco momentos evolutivos del software de base que
   reconocemos?
@@ -154,7 +175,8 @@ hardware.
   compartido?
 \end{itemize}
 
-\subsection{Componentes del SO}\label{componentes-del-so}
+\hypertarget{componentes-del-so}{%
+\subsection{Componentes del SO}\label{componentes-del-so}}
 
 Los modernos sistemas operativos tienen varios componentes bien
 diferenciados. Los sistemas operativos \textbf{de propósito general}
@@ -184,8 +206,9 @@ integra al menos tres componentes.
   en caracteres, y los comandos se tipean.
 \end{itemize}
 
+\hypertarget{sistemas-empotrados-o-embebidos}{%
 \subsubsection{Sistemas empotrados o
-embebidos}\label{sistemas-empotrados-o-embebidos}
+embebidos}\label{sistemas-empotrados-o-embebidos}}
 
 Hay algunas excepciones a esta estructura de componentes, por ejemplo,
 en los sistemas operativos \textbf{empotrados} o \textbf{embebidos}
@@ -200,7 +223,8 @@ realidad comunicarse directamente con ellos) o no incluyen software de
 sistema porque sus usuarios no son quienes se encargan de su
 mantenimiento.
 
-\subsection{Aplicaciones}\label{aplicaciones}
+\hypertarget{aplicaciones}{%
+\subsection{Aplicaciones}\label{aplicaciones}}
 
 Un típico sistema operativo multipropósito, actual, debe dar soporte
 entonces a la actividad de una gran variedad de aplicaciones. No
@@ -211,14 +235,16 @@ comunicaciones (navegadores, programas de transferencia de archivos, de
 mensajería); aplicaciones de desarrollo de programas (compiladores,
 intérpretes de diferentes lenguajes).
 
-\subsection{Kernel}\label{kernel}
+\hypertarget{kernel}{%
+\subsection{Kernel}\label{kernel}}
 
 El \textbf{kernel} o núcleo es esencialmente un conjunto de rutinas que
 permanecen siempre residentes en memoria mientras la computadora está
 operando. Estas rutinas intervienen en todas las acciones que tengan que
 ver con la operación del hardware.
 
-\subsubsection{Recursos}\label{recursos}
+\hypertarget{recursos}{%
+\subsubsection{Recursos}\label{recursos}}
 
 Los \textbf{recursos físicos} del sistema son todos los elementos de
 hardware que pueden ser de utilidad para el software, como la CPU, la
@@ -227,15 +253,17 @@ funciona no solamente como un mecanismo de administración y control del
 hardware o conjunto de recursos físicos, sino también de ciertos
 recursos del sistema que son \textbf{lógicos}, como los archivos.
 
-\subsubsection{Procesos}\label{procesos}
+\hypertarget{procesos}{%
+\subsubsection{Procesos}\label{procesos}}
 
 El kernel tiene la capacidad de poner en ejecución a los programas que
 se encuentran almacenados en el sistema. Cuando un programa está en
 ejecución, lo llamamos un \textbf{proceso}. El sistema operativo
 controla la creación, ejecución y finalización de los procesos.
 
+\hypertarget{llamadas-al-sistema-o-system-calls}{%
 \subsubsection{Llamadas al sistema o system
-calls}\label{llamadas-al-sistema-o-system-calls}
+calls}\label{llamadas-al-sistema-o-system-calls}}
 
 El kernel ofrece su capacidad de control de todos los recursos a los
 procesos o programas en ejecución, quienes le solicitan determinadas
@@ -248,7 +276,8 @@ borrado, etc. El sistema operativo centraliza y coordina estas
 peticiones de forma que los procesos no interfieran entre sí en el uso
 de los recursos.
 
-\subsubsection{Modo dual de operación}\label{modo-dual-de-operaciuxf3n}
+\hypertarget{modo-dual-de-operaciuxf3n}{%
+\subsubsection{Modo dual de operación}\label{modo-dual-de-operaciuxf3n}}
 
 Si los procesos de usuario pudieran utilizar directamente los recursos
 en cualquier momento y sin coordinación, los resultados podrían ser
@@ -270,7 +299,7 @@ dual} de ejecución, donde el ISA se divide en dos grupos de
 instrucciones.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Ciertas instrucciones que controlan el modo de operación de la CPU, el
   acceso a memoria, o a las unidades de Entrada/Salida, pertenecen al
@@ -282,7 +311,8 @@ instrucciones.
   privilegiado.
 \end{itemize}
 
-\subsection{Llamadas al sistema}\label{llamadas-al-sistema}
+\hypertarget{llamadas-al-sistema}{%
+\subsection{Llamadas al sistema}\label{llamadas-al-sistema}}
 
 El procesador ejecutará instrucciones del programa en ejecución en modo
 no privilegiado hasta que éste necesite un servicio del sistema
@@ -309,7 +339,7 @@ El subsistema que corresponda hará las verificaciones necesarias para
 cumplir el servicio:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El usuario dueño del proceso, ¿tiene los permisos necesarios?
 \item
@@ -323,8 +353,9 @@ Si se cumplen todos los requisitos, se ejecutará el servicio pedido y
 luego se volverá a modo no privilegiado, a continuar con la ejecución
 del proceso.
 
+\hypertarget{ejecuciuxf3n-de-aplicaciones}{%
 \subsection{Ejecución de
-aplicaciones}\label{ejecuciuxf3n-de-aplicaciones}
+aplicaciones}\label{ejecuciuxf3n-de-aplicaciones}}
 
 Al ejecutar procesos de usuario o de sistema se pone en juego una
 jerarquía de piezas de software que ocupa varios niveles.
@@ -354,7 +385,7 @@ de manejar diferentes clases de recursos.
 Por ejemplo:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Si un proceso necesita solicitar más memoria durante la ejecución, la
   pedirá al subsistema de \textbf{gestión de memoria}.
@@ -374,7 +405,9 @@ una llamada al sistema o system call. Es en este momento cuando se cruza
 el límite entre modo usuario y modo privilegiado, o espacio de usuario y
 espacio del kernel.
 
-\subsection{Una cronología de los SO}\label{una-cronologuxeda-de-los-so}
+\hypertarget{una-cronologuxeda-de-los-so}{%
+\subsection{Una cronología de los
+SO}\label{una-cronologuxeda-de-los-so}}
 
 Entre la década de 1960 y principios del siglo XXI surgieron gran
 cantidad de innovaciones tecnológicas en el área de sistemas operativos.
@@ -441,14 +474,15 @@ unos sistemas en otros.
   es masivo, como es el caso del \textbf{sistema de tiempo real} QNX.
 \end{itemize}
 
-\subsection{Servicios del SO}\label{servicios-del-so}
+\hypertarget{servicios-del-so}{%
+\subsection{Servicios del SO}\label{servicios-del-so}}
 
 Después de conocer estas cuestiones generales sobre los sistemas
 operativos, veremos con un poco más de detalle los diferentes
 \textbf{servicios} provistos por los principales subsistemas de un SO:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Ejecución de procesos
 \item
@@ -468,9 +502,11 @@ estos subsistemas y servicios en la familia de sistemas \textbf{Unix},
 que, como hemos dicho, es el modelo de referencia académico para la
 mayoría de la investigación y desarrollo de sistemas operativos.
 
-\subsection{Ejecución de procesos}\label{ejecuciuxf3n-de-procesos}
+\hypertarget{ejecuciuxf3n-de-procesos}{%
+\subsection{Ejecución de procesos}\label{ejecuciuxf3n-de-procesos}}
 
-\subsubsection{Creación de procesos}\label{creaciuxf3n-de-procesos}
+\hypertarget{creaciuxf3n-de-procesos}{%
+\subsubsection{Creación de procesos}\label{creaciuxf3n-de-procesos}}
 
 ¿Cómo se inicia la ejecución de un proceso? Todo proceso es
 \textbf{hijo} de algún otro proceso que lo crea.
@@ -494,14 +530,17 @@ Una vez que el programa está en ejecución, decimos que tenemos un nuevo
 \textbf{hijo} del shell, y a su vez puede crear nuevos procesos hijos si
 es necesario.
 
-\subsubsection{Estados de los procesos}\label{estados-de-los-procesos}
+\hypertarget{estados-de-los-procesos}{%
+\subsubsection{Estados de los procesos}\label{estados-de-los-procesos}}
 
 Durante su vida, el proceso atravesará diferentes \textbf{estados}. Un
 proceso puede no estar siempre en estado de ejecución (utilizando la
 CPU), sino que en un momento dado puede pasar a otro estado, quedando
 transitoriamente suspendido, para dejar que otro proceso utilice la CPU.
 
-\subsubsection{Scheduler o planificador}\label{scheduler-o-planificador}
+\hypertarget{scheduler-o-planificador}{%
+\subsubsection{Scheduler o
+planificador}\label{scheduler-o-planificador}}
 
 El ciclo de cambios de estado de los procesos es administrado por un
 componente esencial del SO, el \textbf{scheduler} o
@@ -515,7 +554,7 @@ Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose
 cambia de estado hasta que vuelva a tocarle el uso de la CPU.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cuando en el sistema coexisten varios procesos activos durante un
   espacio de tiempo, decimos que esos procesos son
@@ -526,10 +565,12 @@ cambia de estado hasta que vuelva a tocarle el uso de la CPU.
   paralela.
 \end{itemize}
 
-\subsection{Ciclo de estados}\label{ciclo-de-estados}
+\hypertarget{ciclo-de-estados}{%
+\subsection{Ciclo de estados}\label{ciclo-de-estados}}
 
+\hypertarget{ciclo-de-estados-en-un-sistema-multiprogramado}{%
 \subsubsection{Ciclo de estados en un sistema
-multiprogramado}\label{ciclo-de-estados-en-un-sistema-multiprogramado}
+multiprogramado}\label{ciclo-de-estados-en-un-sistema-multiprogramado}}
 
 En un sistema \textbf{multiprogramado}, varios procesos pueden estar
 presentes en la memoria del sistema de cómputo. Durante su vida en el
@@ -574,8 +615,9 @@ sistema, cada proceso atravesará un ciclo de estados.
   SO.
 \end{itemize}
 
+\hypertarget{ciclo-de-estados-en-un-sistema-de-tiempo-compartido}{%
 \subsubsection{Ciclo de estados en un sistema de tiempo
-compartido}\label{ciclo-de-estados-en-un-sistema-de-tiempo-compartido}
+compartido}\label{ciclo-de-estados-en-un-sistema-de-tiempo-compartido}}
 
 Los sistemas \textbf{de tiempo compartido} están diseñados para ser
 \textbf{interactivos}, y tienen la misión de hacer creer a cada usuario
@@ -592,7 +634,7 @@ procesos es similar al del sistema multiprogramado, pero con una
 importante diferencia.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El sistema de tiempo compartido tiene la capacidad de
   \textbf{desalojar} a un proceso de la CPU, sin necesidad de esperar a
@@ -616,8 +658,9 @@ importante diferencia.
   hasta que finalice el servicio.
 \end{itemize}
 
-\subsubsection{Comparando multiprogramación y \emph{time
-sharing}}\label{comparando-multiprogramaciuxf3n-y-time-sharing}
+\hypertarget{comparando-multiprogramaciuxf3n-y-time-sharing}{%
+\subsubsection{\texorpdfstring{Comparando multiprogramación y \emph{time
+sharing}}{Comparando multiprogramación y time sharing}}\label{comparando-multiprogramaciuxf3n-y-time-sharing}}
 
 Notemos que los diagramas de estados del \textbf{sistema
 multiprogramado} y del sistema \textbf{de tiempo compartido} se
@@ -625,7 +668,7 @@ diferencian sólo en una transición: la que lleva del estado de
 \textbf{ejecutando} al de \textbf{listo} en este último sistema.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   En un sistema multiprogramado, un proceso sólo abandona la CPU cuando
   ejecuta una petición de servicio al SO.
@@ -635,10 +678,11 @@ diferencian sólo en una transición: la que lleva del estado de
   su quantum.
 \end{itemize}
 
-\subsubsection{Preguntas}\label{preguntas-1}
+\hypertarget{preguntas-1}{%
+\subsubsection{Preguntas}\label{preguntas-1}}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   ¿Por qué un proceso que ejecuta una solicitud de entrada/salida no
   pasa directamente al estado de \textbf{listo}?
@@ -653,8 +697,9 @@ diferencian sólo en una transición: la que lleva del estado de
   ¿Y en un sistema de tiempo compartido?
 \end{itemize}
 
+\hypertarget{concurrencia-y-paralelismo}{%
 \subsubsection{Concurrencia y
-paralelismo}\label{concurrencia-y-paralelismo}
+paralelismo}\label{concurrencia-y-paralelismo}}
 
 Si el sistema de tiempo compartido dispone de \textbf{una sola unidad de
 ejecución o CPU}, habrá solamente \textbf{un proceso ejecutándose} en
@@ -678,13 +723,15 @@ mismo tiempo, alternándose en el uso de esa CPU.
   CPU).
 \end{itemize}
 
+\hypertarget{monitorizaciuxf3n-de-procesos}{%
 \subsubsection{Monitorización de
-procesos}\label{monitorizaciuxf3n-de-procesos}
+procesos}\label{monitorizaciuxf3n-de-procesos}}
 
 Los sistemas operativos suelen ofrecer herramientas para monitorizar o
 controlar los procesos del sistema.
 
-\subsubsection{Comando top}\label{comando-top}
+\hypertarget{comando-top}{%
+\subsubsection{Comando top}\label{comando-top}}
 
 En Linux, el comando \textbf{top} ofrece una vista de los procesos,
 información acerca de los recursos que están ocupando, y algunas
@@ -699,7 +746,7 @@ pantalla.
 En el cuadro superior, \textbf{top} muestra:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El \textbf{tiempo} de funcionamiento desde el inicio del sistema
 \item
@@ -711,18 +758,22 @@ En el cuadro superior, \textbf{top} muestra:
   La cantidad de procesos o tareas en actividad y en diferentes estados
 \item
   Las estadísticas de uso de la CPU, contabilizando los tiempos:
-\item
-  \textbf{De usuario}
-\item
-  \textbf{De sistema}
-\item
-  \textbf{De nice} o ``de cortesía''
-\item
-  \textbf{Ocioso}
-\item
-  \textbf{De espera}
-\item
-  Tiempos imputables a \textbf{interrupciones}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{De usuario}
+  \item
+    \textbf{De sistema}
+  \item
+    \textbf{De nice} o ``de cortesía''
+  \item
+    \textbf{Ocioso}
+  \item
+    \textbf{De espera}
+  \item
+    Tiempos imputables a \textbf{interrupciones}
+  \end{itemize}
 \item
   Estadísticas de memoria RAM total, usada y libre, y ocupada por
   buffers de entrada/salida
@@ -736,7 +787,7 @@ En el cuadro superior, \textbf{top} muestra:
 Para cada proceso, el programa top muestra:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El \textbf{PID} o identificación de proceso
 \item
@@ -761,14 +812,15 @@ El comando top tiene muchas opciones y comandos interactivos. Uno de
 ellos muestra los datos de sistema desglosados por CPU o unidad de
 ejecución.
 
-\subsection{Comandos de procesos}\label{comandos-de-procesos}
+\hypertarget{comandos-de-procesos}{%
+\subsection{Comandos de procesos}\label{comandos-de-procesos}}
 
 En los sistemas operativos de la familia de Unix encontramos un rico
 conjunto de comandos de usuario destinados al control de procesos.
 Algunos interesantes son:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   ps y pstree listan los procesos activos en el sistema
 \item
@@ -785,9 +837,11 @@ de procesos}
 \href{https://www.ibm.com/developerworks/ssa/linux/library/l-lpic1-v3-103-6}{Prioridades
 de ejecución de procesos}
 
-\subsection{Gestión de archivos}\label{gestiuxf3n-de-archivos}
+\hypertarget{gestiuxf3n-de-archivos}{%
+\subsection{Gestión de archivos}\label{gestiuxf3n-de-archivos}}
 
-\subsubsection{Archivos}\label{archivos}
+\hypertarget{archivos}{%
+\subsubsection{Archivos}\label{archivos}}
 
 La información que se guarda en medios de almacenamiento permanente,
 como los \textbf{discos}, se organiza en \textbf{archivos}, que son
@@ -798,7 +852,8 @@ ejecutable, multimedia, etc.
 Cualquier pieza de información que sea tratable mediante las
 computadoras puede ser almacenada y comunicada en forma de archivos.
 
-\subsubsection{Sistema de archivos}\label{sistema-de-archivos}
+\hypertarget{sistema-de-archivos}{%
+\subsubsection{Sistema de archivos}\label{sistema-de-archivos}}
 
 El componente del SO responsable de los servicios relacionados con
 archivos es el llamado \textbf{sistema de archivos} o
@@ -815,7 +870,8 @@ cuándo fueron creados, modificados o accedidos por última vez, qué
 usuarios tienen permisos para ejecutar qué acciones con cada uno de
 ellos, etc.
 
-\subsubsection{Metadatos}\label{metadatos}
+\hypertarget{metadatos}{%
+\subsubsection{Metadatos}\label{metadatos}}
 
 Como todos estos datos son \textbf{acerca de los archivos}, y no tienen
 nada que ver con los datos \textbf{contenidos en} los archivos, son
@@ -823,7 +879,8 @@ llamados \textbf{metadatos}. El sistema de archivos o filesystem
 mantiene tablas y listas de metadatos que describen los archivos
 contenidos en un medio de almacenamiento.
 
-\subsubsection{Directorios}\label{directorios}
+\hypertarget{directorios}{%
+\subsubsection{Directorios}\label{directorios}}
 
 Una característica compartida por la mayoría de los sistemas de archivos
 es la organización jerárquica de los archivos en estructura de
@@ -833,7 +890,8 @@ otros directorios).
 Los directorios han sido llamados, en la metáfora de las interfaces
 visuales de usuario, \textbf{carpetas}.
 
-\subsubsection{Varios significados}\label{varios-significados}
+\hypertarget{varios-significados}{%
+\subsubsection{Varios significados}\label{varios-significados}}
 
 En rigor de verdad, el nombre de sistema de archivos o filesystem
 designa varias cosas, relacionadas pero diferentes:
@@ -863,7 +921,7 @@ designa varias cosas, relacionadas pero diferentes:
   implementación en particular de un sistema de archivos.
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     Algunos sistemas de archivos específicos tienen ciertas
     restricciones en la forma de los nombres de los archivos, y otros
@@ -877,7 +935,8 @@ designa varias cosas, relacionadas pero diferentes:
   \end{itemize}
 \end{itemize}
 
-\subsection{Árbol de directorios}\label{uxe1rbol-de-directorios}
+\hypertarget{uxe1rbol-de-directorios}{%
+\subsection{Árbol de directorios}\label{uxe1rbol-de-directorios}}
 
 En los filesystems de tipo Unix, la organización de los directorios es
 jerárquica y recuerda a un árbol con \textbf{raíz} y ramas. Algunos
@@ -885,7 +944,7 @@ directorios cumplen una función especial en el sistema porque contienen
 archivos especiales, y por eso tienen nombres establecidos.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Por ejemplo, el directorio raíz, donde se origina toda la jerarquía de
   directorios, tiene el nombre especial ``/''.
@@ -897,8 +956,9 @@ archivos especiales, y por eso tienen nombres establecidos.
   ejecutables (a veces llamados \textbf{binarios}).
 \end{itemize}
 
+\hypertarget{nombres-de-archivo-y-referencias}{%
 \subsubsection{Nombres de archivo y
-referencias}\label{nombres-de-archivo-y-referencias}
+referencias}\label{nombres-de-archivo-y-referencias}}
 
 Los nombres completos, o \textbf{referencias absolutas}, de los archivos
 y directorios se dan indicando cuál es el camino que hay que recorrer,
@@ -916,7 +976,7 @@ usuario que quiere utilizarlo. Todo proceso, al ejecutarse, tiene una
 noción de lugar del filesystem donde se encuentra.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Por ejemplo, el shell de cada usuario funciona dentro del directorio
   \textbf{home} o espacio privado del usuario.
@@ -940,16 +1000,19 @@ shell es /home/juan, la referencia relativa será simplemente texto.txt.
 La referencia es relativa porque, si el proceso cambia de directorio
 activo, ya no servirá como referencia para ese mismo archivo.
 
+\hypertarget{elementos-del-sistema-de-archivos}{%
 \subsection{Elementos del sistema de
-archivos}\label{elementos-del-sistema-de-archivos}
+archivos}\label{elementos-del-sistema-de-archivos}}
 
-\subsubsection{Particiones}\label{particiones}
+\hypertarget{particiones}{%
+\subsubsection{Particiones}\label{particiones}}
 
 Los medios de almacenamiento se dividen en \textbf{particiones} o zonas
 de almacenamiento. Cada partición puede contener un sistema de archivos,
 con sus archivos y metadatos.
 
-\subsubsection{Bloques}\label{bloques}
+\hypertarget{bloques}{%
+\subsubsection{Bloques}\label{bloques}}
 
 Los \textbf{bloques} son las unidades mínimas de almacenamiento que
 ofrecen los diferentes dispositivos, como los discos. Un \textbf{bloque}
@@ -960,7 +1023,8 @@ una sucesión de bloques de datos. El filesystem tiene la responsabilidad
 de mantener la lista de referencias a esos bloques, para poder manipular
 los archivos como un todo.
 
-\subsubsection{Inodos}\label{inodos}
+\hypertarget{inodos}{%
+\subsubsection{Inodos}\label{inodos}}
 
 Los \textbf{nodos índice} o \textbf{inodos} son estructuras de datos que
 describen, cada una, un archivo. Los inodos contienen los principales
@@ -970,19 +1034,21 @@ En los sistemas de archivos del tipo de Unix, los nombres y los inodos
 de los archivos están separados. Como consecuencia, un archivo puede
 tener más de un nombre.
 
-\subsubsection{Superblock}\label{superblock}
+\hypertarget{superblock}{%
+\subsubsection{Superblock}\label{superblock}}
 
 El \textbf{superblock} grabado en una partición es una estructura de
 datos compleja donde se mantienen los datos del sistema de archivos. El
 superblock contiene una lista de bloques libres y una lista de inodos.
 
-\subsection{Inodos}\label{inodos-1}
+\hypertarget{inodos-1}{%
+\subsection{Inodos}\label{inodos-1}}
 
 Cada \textbf{inodo} describe a un archivo de datos en un filesystem. El
 inodo contiene metadatos como:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El tamaño en bytes del archivo
 \item
@@ -990,21 +1056,29 @@ inodo contiene metadatos como:
   pertenece el archivo
 \item
   El tipo de archivo
-\item
-  Puede tratarse de un archivo regular (de datos) o de un directorio
-\item
-  Puede ser un pseudoarchivo, o dispositivo de caracteres o de bloques
-\item
-  Puede ser un dispositivo de comunicaciones entre procesos, como un
-  \textbf{socket}, un \textbf{pipe} o tubería, u otros
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Puede tratarse de un archivo regular (de datos) o de un directorio
+  \item
+    Puede ser un pseudoarchivo, o dispositivo de caracteres o de bloques
+  \item
+    Puede ser un dispositivo de comunicaciones entre procesos, como un
+    \textbf{socket}, un \textbf{pipe} o tubería, u otros
+  \end{itemize}
 \item
   Los permisos o modo de acceso
-\item
-  Los archivos en Unix pueden tener permisos de lectura, de
-  escritura/modificación, o de ejecución
-\item
-  Esos permisos se especifican en relación al dueño del archivo, al
-  grupo del archivo, o al resto de los usuarios
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Los archivos en Unix pueden tener permisos de lectura, de
+    escritura/modificación, o de ejecución
+  \item
+    Esos permisos se especifican en relación al dueño del archivo, al
+    grupo del archivo, o al resto de los usuarios
+  \end{itemize}
 \item
   La fecha y hora de creación, de última modificación y de último acceso
 \item
@@ -1014,7 +1088,8 @@ inodo contiene metadatos como:
   bloques
 \end{itemize}
 
-\subsubsection{Metadatos}\label{metadatos-1}
+\hypertarget{metadatos-1}{%
+\subsubsection{Metadatos}\label{metadatos-1}}
 
 Los metadatos de cada archivo, contenidos en su inodo, pueden ser
 consultados y modificados con comandos de usuario.
@@ -1065,7 +1140,7 @@ modificado. Una \textbf{x} en el tercer lugar, que puede ser ejecutado.
 Cuando no existen estos permisos, aparece un carácter \textbf{guión}.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Así, el archivo github del ejemplo tiene permisos \textbf{rwxr-xr-x},
   que se separan en permisos \textbf{rwx} para el dueño (el dueño puede
@@ -1103,7 +1178,8 @@ Aparecen la fecha y hora de última modificación de cada archivo.
 
 El último dato de cada línea es el nombre del archivo.
 
-\subsection{Bloques de disco}\label{bloques-de-disco}
+\hypertarget{bloques-de-disco}{%
+\subsection{Bloques de disco}\label{bloques-de-disco}}
 
 El SO ve los discos como un vector de bloques o espacios de tamaño fijo.
 Cada bloque se identifica por su número de posición en el vector, o
@@ -1111,7 +1187,7 @@ Cada bloque se identifica por su número de posición en el vector, o
 operaciones de lectura o escritura en el disco.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cuando el SO necesita acceder a un bloque para escribir o leer sus
   contenidos, envía un mensaje al controlador del disco especificando su
@@ -1148,7 +1224,7 @@ tamaños muy diferentes, se impone un diseño cuidadoso de esta lista de
 bloques.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Si se define en el inodo un espacio demasiado pequeño para guardar la
   lista de punteros a bloques, cada inodo representará archivos con
@@ -1202,7 +1278,7 @@ preguntas.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   ¿Qué cantidad \textbf{cB} de bloques habrá en el disco?
 \item
@@ -1241,7 +1317,8 @@ preguntas.
   ¿Cuánto espacio ocupará el superblock (\textbf{ts}) en el disco?
 \end{enumerate}
 
-\subsection{Directorios}\label{directorios-1}
+\hypertarget{directorios-1}{%
+\subsection{Directorios}\label{directorios-1}}
 
 Notemos que en ningún momento hemos mencionado el \textbf{nombre} de los
 archivos entre los metadatos. En el filesystem de Unix, los nombres de
@@ -1257,15 +1334,16 @@ columnas. Contienen una lista de entradas con \textbf{nombres de
 archivo} (o \textbf{links}) y números de \textbf{inodos} que los
 representan.
 
+\hypertarget{links-o-nombres-de-archivo}{%
 \subsubsection{Links o nombres de
-archivo}\label{links-o-nombres-de-archivo}
+archivo}\label{links-o-nombres-de-archivo}}
 
 Al separar el archivo (representado por el inodo), de su nombre
 \textbf{o link} (contenido en el directorio), el filesystem permite que
 un archivo pueda tener \textbf{más de un nombre}.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   En un mismo directorio puede haber dos entradas con nombres
   diferentes, que apunten al mismo inodo.
@@ -1283,8 +1361,9 @@ decrementará en 1. Sólo cuando la cuenta de links, o nombres, llegue a
 cero, se liberarán los bloques de datos del archivo y se devolverán a la
 lista de bloques libres en el superblock.
 
+\hypertarget{buxfasqueda-de-un-archivo-en-el-filesystem}{%
 \subsubsection{Búsqueda de un archivo en el
-filesystem}\label{buxfasqueda-de-un-archivo-en-el-filesystem}
+filesystem}\label{buxfasqueda-de-un-archivo-en-el-filesystem}}
 
 Supongamos que un proceso necesita leer los bloques de datos del archivo
 /etc/group. Deberá entregarle al filesystem el nombre de este archivo
@@ -1317,19 +1396,21 @@ usándola como mapa para llegar al archivo, desde el directorio raíz.
   bloques devolviendo el contenido del archivo /etc/group.
 \end{itemize}
 
-\subsection{Gestión de memoria}\label{gestiuxf3n-de-memoria}
+\hypertarget{gestiuxf3n-de-memoria}{%
+\subsection{Gestión de memoria}\label{gestiuxf3n-de-memoria}}
 
 En un sistema multiprogramado, la memoria debe ser dividida de alguna
 forma entre los procesos que existen simultáneamente en el sistema. La
 tarea de controlar qué proceso recibe qué región de memoria, o
 \textbf{gestión de memoria}, es un problema con varias soluciones.
 
-\subsubsection{Mapa de memoria}\label{mapa-de-memoria}
+\hypertarget{mapa-de-memoria}{%
+\subsubsection{Mapa de memoria}\label{mapa-de-memoria}}
 
 Un programa se compone, como mínimo, de:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Las instrucciones para el procesador (\textbf{código} o \textbf{texto}
   del programa).
@@ -1346,7 +1427,7 @@ Además, los procesos requieren otros espacios de memoria para varios
 otros usos.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Por ejemplo, al llamar a una función o rutina, es necesario guardar
   temporariamente la \textbf{dirección de retorno}, que es la dirección
@@ -1363,10 +1444,12 @@ otros usos.
 Todos estos componentes forman lo que a veces se llama \textbf{mapa de
 memoria} de cada proceso, y requieren memoria física.
 
-\subsection{Espacios de direcciones}\label{espacios-de-direcciones}
+\hypertarget{espacios-de-direcciones}{%
+\subsection{Espacios de direcciones}\label{espacios-de-direcciones}}
 
+\hypertarget{espacio-de-direcciones-fuxedsicas}{%
 \subsubsection{Espacio de direcciones
-físicas}\label{espacio-de-direcciones-fuxedsicas}
+físicas}\label{espacio-de-direcciones-fuxedsicas}}
 
 La memoria física del sistema se ve como un arreglo, vector o secuencia
 ordenada de celdas o posiciones de almacenamiento. Cada posición tiene
@@ -1375,8 +1458,9 @@ para leer o escribir su contenido. En un sistema de cómputo, el conjunto
 de direcciones de la memoria física es un \textbf{espacio de direcciones
 físicas}.
 
+\hypertarget{espacio-de-direcciones-luxf3gicas}{%
 \subsubsection{Espacio de direcciones
-lógicas}\label{espacio-de-direcciones-luxf3gicas}
+lógicas}\label{espacio-de-direcciones-luxf3gicas}}
 
 Al ejecutarse un proceso, las instrucciones que va ejecutando la CPU
 \textbf{referenciarán} a los objetos del mapa de memoria mediante su
@@ -1394,7 +1478,7 @@ sabemos, una instrucción como \textbf{01000111} indica que se debe
 cargar en el acumulador el contenido de la dirección 7.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Al ejecutarse esta instrucción, el procesador envía el número 7 al
   sistema de memoria para que éste le entregue el contenido de esa
@@ -1407,8 +1491,9 @@ cargar en el acumulador el contenido de la dirección 7.
   número 7.
 \end{itemize}
 
+\hypertarget{traducciuxf3n-de-direcciones}{%
 \subsection{Traducción de
-direcciones}\label{traducciuxf3n-de-direcciones}
+direcciones}\label{traducciuxf3n-de-direcciones}}
 
 En un sistema multiprogramado, los programas son cargados en diferentes
 posiciones del espacio de memoria física. Esto hace que los espacios
@@ -1422,8 +1507,9 @@ generadas por el procesador pertenecerán al espacio lógico del proceso;
 pero el mecanismo de traducción de direcciones \textbf{mapeará} esas
 direcciones lógicas a las direcciones físicas asignadas.
 
+\hypertarget{unidad-de-gestiuxf3n-de-memoria-o-mmu}{%
 \subsubsection{Unidad de gestión de memoria o
-MMU}\label{unidad-de-gestiuxf3n-de-memoria-o-mmu}
+MMU}\label{unidad-de-gestiuxf3n-de-memoria-o-mmu}}
 
 Esta traducción tiene lugar, automáticamente, en el momento en que el
 procesador emite una dirección hacia el sistema de memoria, y está a
@@ -1432,7 +1518,7 @@ se llama la \textbf{unidad de gestión de memoria} (\textbf{MMU, Memory
 Management Unit}).
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El sistema de memoria recibe únicamente las direcciones
   \textbf{físicas}, traducidas, y ``no sabe'' que el procesador ha
@@ -1481,8 +1567,9 @@ funcionamiento deseado. \textbf{Sin} traducción de direcciones, la
 instrucción ST SUMA almacenará el resultado en la posición cuya
 dirección física es 6\ldots{} ¡que pertenece a otro proceso!
 
+\hypertarget{asignaciuxf3n-de-memoria-contigua}{%
 \subsubsection{Asignación de memoria
-contigua}\label{asignaciuxf3n-de-memoria-contigua}
+contigua}\label{asignaciuxf3n-de-memoria-contigua}}
 
 Uno de los esquemas de asignación de memoria más simples consiste en
 asignar una región de memoria \textbf{contigua} (un conjunto de
@@ -1493,7 +1580,8 @@ Si un SO utiliza este esquema de asignación de memoria, establece
 requerimientos de cada proceso. Cuando un proceso termina, su región de
 memoria se libera y puede ser asignada a un nuevo proceso.
 
-\subsubsection{Fragmentación externa}\label{fragmentaciuxf3n-externa}
+\hypertarget{fragmentaciuxf3n-externa}{%
+\subsubsection{Fragmentación externa}\label{fragmentaciuxf3n-externa}}
 
 El problema de este esquema es que, a medida que el sistema opere, las
 regiones que queden libres pueden ser tan pequeñas que un proceso nuevo
@@ -1516,7 +1604,8 @@ Esta clase de cargas extra en tareas administrativas, que quitan
 capacidad al sistema para atender el trabajo genuino, se llama
 \textbf{sobrecarga} u \textbf{overhead}.
 
-\subsection{Segmentación}\label{segmentaciuxf3n}
+\hypertarget{segmentaciuxf3n}{%
+\subsection{Segmentación}\label{segmentaciuxf3n}}
 
 Un esquema de asignación que reduce la fragmentación externa es el de
 \textbf{segmentación}. Con este esquema, el mapa de memoria del proceso
@@ -1541,7 +1630,8 @@ Este esquema de asignación de memoria reduce, aunque no elimina, la
 fragmentación externa, ya que los segmentos son más pequeños y
 reubicables dinámicamente.
 
-\subsection{Paginación}\label{paginaciuxf3n}
+\hypertarget{paginaciuxf3n}{%
+\subsection{Paginación}\label{paginaciuxf3n}}
 
 El esquema de asignación de memoria conocido como \textbf{paginación}
 considera la memoria dividida en regiones del mismo tamaño
@@ -1554,7 +1644,8 @@ Al contrario que en un sistema de particiones, en un sistema con
 paginación de memoria los procesos reciben más de una región de memoria
 o marco. Los marcos asignados a un proceso pueden no ser contiguos.
 
-\subsubsection{Fragmentación interna}\label{fragmentaciuxf3n-interna}
+\hypertarget{fragmentaciuxf3n-interna}{%
+\subsubsection{Fragmentación interna}\label{fragmentaciuxf3n-interna}}
 
 Bajo este esquema no hay fragmentación externa, porque, si existe
 espacio libre, siempre será suficiente para alojar al menos una página.
@@ -1563,7 +1654,8 @@ exactamente divisible por el tamaño de la página; por lo tanto, puede
 haber algún espacio desaprovechado en las páginas asignadas. Esta
 condición se llama \textbf{fragmentación interna}.
 
-\subsubsection{Tabla de páginas}\label{tabla-de-puxe1ginas}
+\hypertarget{tabla-de-puxe1ginas}{%
+\subsubsection{Tabla de páginas}\label{tabla-de-puxe1ginas}}
 
 Para poder mantener la correspondencia entre marcos de memoria y páginas
 de los procesos, el SO mantiene una \textbf{tabla de páginas} por cada
@@ -1583,7 +1675,8 @@ proceso.
   kernel pueden aparecer en el mapa de memoria de todos los procesos.
 \end{itemize}
 
-\subsubsection{Paginación por demanda}\label{paginaciuxf3n-por-demanda}
+\hypertarget{paginaciuxf3n-por-demanda}{%
+\subsubsection{Paginación por demanda}\label{paginaciuxf3n-por-demanda}}
 
 Debido a que los programas no utilizan sino una pequeña parte de su
 espacio lógico en cada momento (fenómeno llamado \textbf{localidad de
@@ -1610,7 +1703,8 @@ contando con un espacio de almacenamiento extra en disco para
 implementar un sistema de \textbf{memoria virtual}. La mayoría de los SO
 multipropósito para hardware con MMU utiliza esta técnica.
 
-\subsection{Memoria virtual}\label{memoria-virtual}
+\hypertarget{memoria-virtual}{%
+\subsection{Memoria virtual}\label{memoria-virtual}}
 
 Con memoria virtual, el espacio de direcciones lógicas y el espacio
 físico se independizan completamente. El espacio lógico puede tener un
@@ -1619,7 +1713,7 @@ páginas de un proceso ya no se ve limitada por la cantidad de marcos de
 la memoria física.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Podemos ejecutar \textbf{más procesos} de los que cabrían en memoria
   física si debiéramos asignar todo el espacio lógico de una vez.
@@ -1657,7 +1751,7 @@ contiene datos sobre los permisos asociados con cada página.
 El mecanismo de memoria virtual funciona de la siguiente manera:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cada dirección virtual tiene un cierto conjunto de bits que determinan
   el número de página. Los bits restantes determinan el desplazamiento
@@ -1687,7 +1781,8 @@ El mecanismo de memoria virtual funciona de la siguiente manera:
   \textbf{modificada}.
 \end{itemize}
 
-\subsubsection{Reemplazo de páginas}\label{reemplazo-de-puxe1ginas}
+\hypertarget{reemplazo-de-puxe1ginas}{%
+\subsubsection{Reemplazo de páginas}\label{reemplazo-de-puxe1ginas}}
 
 Cuando no existan más marcos libres en memoria para asignar, el SO
 elegirá una página \textbf{víctima} del mismo u otro proceso y la
@@ -1695,7 +1790,7 @@ desalojará de la memoria. Aquí es donde se utiliza el bit de
 \textbf{modificación} de la tabla de páginas.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Si la página víctima no está modificada, simplemente se marca como
   \textbf{no válida} y se reutiliza el marco que ocupaba.
@@ -1779,7 +1874,7 @@ de 8 páginas}, el sistema seguiría funcionando del mismo modo.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La cantidad de bits de página y la cantidad de bits de marco, ¿deben
   ser iguales? ¿Qué posibilidades hay, y qué consecuencias tiene cada

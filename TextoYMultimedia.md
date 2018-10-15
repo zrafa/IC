@@ -1,10 +1,10 @@
 
-#Representación de Texto y multimedia
+# Representación de Texto y multimedia
 
 En esta parte de la unidad veremos la forma de representar otras clases de información no numérica, como los textos y las imágenes.
 
 
-##Codificación de texto
+## Codificación de texto
 
 Cuando escribimos texto en nuestra computadora, estamos almacenando temporariamente en la
 memoria una cierta secuencia de números que corresponden a los **caracteres**, o símbolos que tipeamos en nuestro teclado.
@@ -24,7 +24,7 @@ computadoras y sistemas era complicada y llevaba mucho trabajo improductivo.
 
 
 
-##Códigos de caracteres
+## Códigos de caracteres
 
 Inicialmente se estableció con este fin el **código ASCII**, que durante algún tiempo
 fue una buena solución. El código ASCII relaciona cada secuencia de **siete bits** con un carácter 
@@ -52,7 +52,7 @@ occidentales, y en la codificación de símbolos usuales como los dígitos, sím
 Por este motivo son relativamente compatibles, aunque cuando el texto utiliza otros caracteres aparecen diferencias.
 
 
-##Tabla de códigos ASCII
+## Tabla de códigos ASCII
 
 El código ASCII asigna patrones de siete bits a un conjunto de caracteres
 que incluye:
@@ -70,13 +70,13 @@ ASCII asignado. Como sólo se usan siete bits, el bit de mayor orden (el de más
 cada byte siempre es cero, y por lo tanto los códigos ASCII toman valores de 0 a 127.
 
 
-##Textos y documentos
+## Textos y documentos
 
 Un archivo de texto es una sucesión de caracteres codificados bajo algún estándar. Puede manipularse con programas básicos como los **editores de texto** u otras herramientas que ofrece el ambiente del sistema operativo. Un archivo de texto es directamente legible por humanos porque contiene únicamente los caracteres que constituyen las palabras, espacios en blanco o saltos de línea.
 
 Otra clase de archivos, los que son creados y manipulados por **procesadores de texto**, además de esa información tienen una estructura compleja que permite definir características de presentación y organización del texto. Esto incluye los diferentes tipos, tamaños o colores de los caracteres, las dimensiones de la página, la organización en secciones o capítulos, etc. La estructura de los archivos generados por los procesadores de texto es específica de cada programa y convierte al documento en algo que sólo puede ser leído con el procesador de texto correspondiente.
 
-##Archivos de hipertexto
+## Archivos de hipertexto
 
 Una página HTML servida por un servidor Web es un archivo de texto que suele estar codificado en el estándar UTF-8. El contenido de este texto es directamente legible, pero no es exactamente lo que muestra el navegador, sino que esa representación gráfica está indicada por el lenguaje HTML en el que está escrito el documento. Las propiedades de navegación del documento también están determinadas por elementos del lenguaje HTML.
 
@@ -102,7 +102,7 @@ Del mismo modo, el comando **hexdump -C** muestra cada uno de los grafemas de lo
 - Estos comandos aplicados a un documento HTML muestran información legible porque se trata, esencialmente, de un archivo de texto. ¿Qué ocurre si los mismos comandos se aplican a un archivo creado por un procesador de texto?
 
 
-##Imagen digital
+## Imagen digital
 
 Otras clases de datos, diferentes del texto, también requieren codificación (porque siempre deben
 ser almacenados en la memoria en forma de bits y bytes), pero su tratamiento es diferente.
@@ -137,7 +137,7 @@ almacenando luego los bytes que representan la imagen tomada.
 
 
 
-##Color
+## Color
 
 Hay varias maneras de representar el color en las imágenes digitales. Una forma es definir, para cada pixel o punto de la imagen, tres coordenadas que describen las intensidades de luz **roja, verde y azul** que conforman cada color. 
 
@@ -147,11 +147,11 @@ Para cada punto, esas tres coordenadas son números en un cierto intervalo. El v
 
 Así, la terna (0, 0, 0) representa el negro (ausencia de los tres colores), la terna (255, 255, 255) el blanco (valores máximos de los tres colores, sumados), etc.
 
-###Profundidad de color
+### Profundidad de color
 Con este esquema de representación de color, cada pixel o elemento de la imagen quedaría representado por tres bytes, o 24 bits. Sin embargo, las cámaras fotográficas digitales modernas utilizan un esquema de codificación con mucha mayor **profundidad de color** (es decir, más bits por cada coordenada de color) que en el ejemplo anterior.
 
 
-##Formato de imagen
+## Formato de imagen
 
 Lógicamente, para las imágenes con muchos colores (como las escenas de la naturaleza donde hay gradaciones de colores) es conveniente contar con muchos bits de profundidad de color. Sin embargo, cuando una imagen se compone de pocos colores, la imagen digital es innecesariamente grande, costosa de almacenar y de transmitir. En estos casos es útil definir un **formato de imagen** que represente esos pocos colores utilizando menos bits.
 
@@ -175,7 +175,7 @@ El programa que reciba esta sucesión de bits debe conocer además cómo se disp
 Nuestro formato de imagen digital debe contener información **de dimensiones y de profundidad de color**, para poder ser comunicado efectivamente hacia otros programas o computadoras.
 
 
-##Un formato de imagen
+## Un formato de imagen
 
 Teniendo en cuenta todo lo anterior, podemos definir un formato de imagen como sigue. El formato de archivo de imagen tendrá una primera sección o **cabecera** con datos acerca de la imagen, o **metadatos**, y una segunda sección con los bits o datos de la imagen propiamente dichos.
 
@@ -192,7 +192,7 @@ Como la cantidad de datos binarios de un archivo en este formato es muy grande, 
 
 
 
-##Reconstruyendo una imagen
+## Reconstruyendo una imagen
 
 Para interpretar qué imagen describe un archivo dado, consideramos primero su cabecera y buscamos cuál es el ancho y el alto (indicados por los primeros dos bytes), y cuántos bits por pixel están codificados en el resto del archivo (indicados por el tercer byte). De esta manera no es difícil dibujar la imagen.
 
@@ -203,7 +203,7 @@ Para interpretar qué imagen describe un archivo dado, consideramos primero su c
 - Los dígitos hexadecimales a partir de la cadena **AEBF3...** se analizan como grupos de cuatro bits y nos dicen cuáles pixels individuales están en negro (bits en 1) y en blanco (bits en 0).
 
 
-##Compresión de datos
+## Compresión de datos
 
 Muchas veces es interesante reducir el tamaño de un archivo, para que ocupe menos espacio de
 almacenamiento o para que su transferencia a través de una red sea más rápida. Al ser todo archivo
@@ -215,7 +215,7 @@ La compresión de un archivo se ejecuta mediante un programa que utiliza un algo
 compresión. Este algoritmo puede ser de **compresión sin pérdida**, o de **compresión con pérdida**.
 
 
-##Compresión sin pérdida
+## Compresión sin pérdida
 
 Decimos que la compresión ha sido **sin pérdida** cuando puede extraerse del archivo comprimido 
 exactamente la misma información que antes de la compresión, utilizando otro algoritmo que
@@ -237,7 +237,7 @@ identificar cuándo una página está comprimida, y saben descomprimirla en form
 es decir, sin que el usuario necesite hacer ni saber nada.
 
 
-##Compresión con pérdida
+## Compresión con pérdida
 
 Cuando la compresión se hace con una técnica **con pérdida**, no existe un algoritmo de 
 descompresión que recupere la información original; es decir, no existe un algoritmo inverso. 
@@ -264,7 +264,7 @@ comprimir con pérdida imágenes, se reduce su calidad, ya sea disminuyendo la r
 o utilizando menos colores.  
 
 
-###Reducción de color
+### Reducción de color
 
 Si la imagen tiene $ancho \times alto$ pixels, y la información de color es de $n$ bits por pixel, el archivo sin su cabecera mide $ancho \times alto \times n$ bits. Una forma sencilla de compresión con pérdida, que no modifica la resolución, es la reducción de la profundidad de color de una imagen. Si la imagen puede seguir siendo útil con menos colores, comprimiendo la paleta de colores puede obtenerse un archivo de menor tamaño.
 
@@ -272,7 +272,7 @@ Comprimir la paleta de colores consiste en reescribir la imagen con una cantidad
 
 **Ejemplo**
 
-Sea una imagen a cuatro colores; luego la cantidad de bits por pixel es 2. Al reducir la profundidad de color, los colores 00 y 10 pasan a ser el único color 0; y los colores 10 y 11 pasan a ser el único color 1. Todos los pixels quedan expresados por un único bit 0 o 1, reduciendo efectivamente el tamaño de la imagen.
+Sea una imagen a cuatro colores; luego la cantidad de bits por pixel es 2. Al reducir la profundidad de color, los colores 00 y 01 pasan a ser el único color 0; y los colores 10 y 11 pasan a ser el único color 1. Todos los pixels quedan expresados por un único bit 0 o 1, reduciendo efectivamente el tamaño de la imagen.
 
 - La información ha sido **comprimida con pérdida** porque el archivo original no puede ser reconstruido a partir de este nuevo archivo. 
 - El nuevo archivo, sin su cabecera, mide $ancho \times alto \times (n - 1)$, o sea, es $ancho \times alto$ bits más corto que el original.
@@ -309,11 +309,11 @@ La imagen comprimida queda como **05050123C82000** (ancho: 5, alto: 5, bits por 
 - Se ha visto cómo reducir la profundidad de color en exactamente 1 bit. ¿Cómo podemos generalizar el método, para reducir la información de color en una cantidad de bits cualquiera?
 
 
-##Algoritmos de compresión sin pérdida
+## Algoritmos de compresión sin pérdida
 
 Aunque los programas que aplican algoritmos de compresión sin pérdida pueden ser muy sofisticados, algunas ideas básicas son muy sencillas. 
 
-###Run Length Encoding o RLE
+### Run Length Encoding o RLE
 
 Supongamos tener una imagen en el formato que ya hemos descripto, y supongamos además que los datos de la imagen, es decir, la sucesión de bits que codifican los pixels, presentan grandes zonas de pixels con el mismo valor (muchos "1" seguidos, y muchos "0" seguidos). Si quisiéramos transmitir esta información por teléfono a alguien más, para que la imagen pudiera ser dibujada del otro lado, tarde o temprano la conversación incluiría frases como "...ahora cinco unos, ahora doce ceros...". Esta forma de descripción es mucho más económica, y menos propensa a errores.
 
@@ -332,7 +332,7 @@ Para comprimir sin pérdida una pieza de información cualquiera con la técnica
 - Si quisiéramos almacenar o transmitir un patrón de 253 "unos" seguidos de 119 "ceros" y luego 87 "unos", sin ninguna compresión, deberíamos manejar 458 bits. Si nuestra compresión utilizara la técnica RLE con ocho bits para el "coeficiente" y un bit para el valor repetido, bastaría con la secuencia binaria (11111101, 1, 01110111, 0, 01010111, 1) (en decimal 253, 1, 119, 0, 87, 1) que ocuparía tan sólo 27 bits.
 
 
-###Códigos de Huffmann o de longitud variable
+### Códigos de Huffmann o de longitud variable
 
 La compresión sin pérdida por el método de Huffmann utiliza códigos de longitud variable. El método consiste esencialmente en examinar el archivo completo buscando subsecuencias de bits repetidas. Se computa la frecuencia, o cantidad de veces que aparece, para cada una de estas subsecuencias. Las subsecuencias se ordenan descendentemente por frecuencia, y cada una se reemplaza por un [código instantáneo](https://es.m.wikipedia.org/wiki/C%C3%B3digo_prefijo) de bits de longitud creciente. 
 
@@ -350,7 +350,7 @@ Por ejemplo, el carácter más frecuente será reemplazado por el código 1; el 
 
 
 
-###Compresión de imágenes con RLE
+### Compresión de imágenes con RLE
 
 Fijada la cantidad de bits para coeficientes, la imagen se comprime indicando, para cada secuencia de pixels iguales, qué factor de repetición corresponde y qué valor de color llevan los pixels repetidos. 
 
@@ -361,7 +361,7 @@ La imagen con profundidad de color 2, cuyos datos de imagen son {10 10 11 11 11 
 Si utilizamos **tres bits para el coeficiente**, los coeficientes RLE **2, 7 y 6** se expresarán como **010, 111 y 110**. Los datos de la imagen se comprimirán como { 010 10 111 11 110 10... }. Los primeros treinta bits de los datos de imagen han quedado comprimidos a **quince** bits.
 
 
-##Compresión con pérdida y pérdida de información
+## Compresión con pérdida y pérdida de información
 
 Es importante insistir en el punto siguiente, que con frecuencia es mal comprendido.
 

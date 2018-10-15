@@ -1,27 +1,41 @@
-\documentclass[spanish,A4,]{article}
-\usepackage{sans}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[spanish,a4paper,]{article}
+\usepackage[]{sans}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage{longtable,booktabs}
-\usepackage{graphicx}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -30,49 +44,51 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{spanish}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=spanish]{babel}
 \else
-  \usepackage[spanish]{babel}
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{spanish}
 \fi
 
 \title{Arquitectura de computadoras}
+\date{}
 
 \begin{document}
 \maketitle
 
+\hypertarget{arquitectura-y-organizaciuxf3n-de-computadoras}{%
 \section{Arquitectura y Organización de
-Computadoras}\label{arquitectura-y-organizaciuxf3n-de-computadoras}
+Computadoras}\label{arquitectura-y-organizaciuxf3n-de-computadoras}}
 
 ¿Cómo \textbf{definimos} una computadora? ¿Cuándo un dispositivo es una
 computadora y cuándo decimos que no lo es? En esta unidad, vemos estos
 temas y estudiamos los diferentes componentes que tienen las
 computadoras.
 
+\hypertarget{componentes-de-una-computadora-simple}{%
 \subsection{Componentes de una computadora
-simple}\label{componentes-de-una-computadora-simple}
+simple}\label{componentes-de-una-computadora-simple}}
 
 En primer lugar, una \textbf{memoria principal}, que es donde se
 almacenan todos los datos y las instrucciones de programa. Todo lo que
@@ -93,7 +109,7 @@ dispositivos que conectamos a la computadora para hacer que el conjunto
 CPU + Memoria se comunique con el ambiente.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Con dispositivos como el teclado, mouse, o tableta digitalizadora,
   podemos introducir datos. Son dispositivos de \textbf{entrada}.
@@ -111,7 +127,8 @@ dependiendo de la \textbf{arquitectura}, o modo de construcción, de la
 computadora, están conectados entre sí mediante \textbf{buses} o líneas
 de interconexión.
 
-\subsubsection{Memoria}\label{memoria}
+\hypertarget{memoria}{%
+\subsubsection{Memoria}\label{memoria}}
 
 La memoria es un componente fundamental de la computadora. Está
 implementada con circuitos que pueden estar en uno de dos estados
@@ -130,7 +147,8 @@ instrucción que se necesita acceder. Con esta dirección podemos
 en ese byte de la memoria, o escribir sobre ese byte un contenido de
 ocho bits.
 
-\subsubsection{CPU}\label{cpu}
+\hypertarget{cpu}{%
+\subsubsection{CPU}\label{cpu}}
 
 La CPU está implementada como un circuito sumamente complejo que
 contiene \textbf{registros}. Éstos son lugares de almacenamiento
@@ -165,7 +183,7 @@ funcionales, como la \textbf{Unidad de Control} y la \textbf{Unidad
 Lógico-Aritmética}.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La Unidad de Control es la que contiene la lógica necesaria para
   \textbf{leer} cada instrucción del programa que está en memoria,
@@ -177,11 +195,13 @@ Lógico-Aritmética}.
   cómputos con los datos.
 \end{itemize}
 
+\hypertarget{arquitectura-de-von-neumann}{%
 \subsection{Arquitectura de Von
-Neumann}\label{arquitectura-de-von-neumann}
+Neumann}\label{arquitectura-de-von-neumann}}
 
+\hypertarget{muxe1quina-de-programa-almacenado}{%
 \subsubsection{Máquina de programa
-almacenado}\label{muxe1quina-de-programa-almacenado}
+almacenado}\label{muxe1quina-de-programa-almacenado}}
 
 Por supuesto, además de todos esos componentes que hemos nombrado, hay
 muchas otras cosas que físicamente forman parte de la computadora; pero
@@ -200,7 +220,8 @@ secuencialmente, es decir, procediendo desde las direcciones inferiores
 de la memoria hacia las superiores, leyendo y ejecutando cada
 instrucción y pasando a la siguiente.
 
-\subsubsection{CPU y Memoria}\label{cpu-y-memoria}
+\hypertarget{cpu-y-memoria}{%
+\subsubsection{CPU y Memoria}\label{cpu-y-memoria}}
 
 En una \textbf{máquina de Von Neumann}, entonces, aparecen dos
 componentes básicos fundamentales que son la CPU y la memoria,
@@ -210,7 +231,8 @@ realizar el \textbf{ciclo de instrucción},
 
 y una \textbf{Unidad Lógico-Aritmética, o ALU}, para el cómputo.
 
-\subsubsection{Buses}\label{buses}
+\hypertarget{buses}{%
+\subsubsection{Buses}\label{buses}}
 
 En la máquina existen diferentes clases de buses para interconectar los
 componentes:
@@ -228,7 +250,7 @@ componentes:
 ¿En qué momento se utilizará cada clase de bus?
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cuando la UC disponga que se debe ejecutar una instrucción, tal como
   una suma, enviará los datos de partida, y la instrucción, a la ALU a
@@ -242,8 +264,9 @@ componentes:
   resultado por pantalla o por impresora.
 \end{itemize}
 
+\hypertarget{modelo-computacional-binario-elemental}{%
 \subsection{Modelo Computacional Binario
-Elemental}\label{modelo-computacional-binario-elemental}
+Elemental}\label{modelo-computacional-binario-elemental}}
 
 Para comprender desde lo más básico cómo opera la computadora,
 recurrimos al \textbf{MCBE o Modelo Computacional Binario Elemental},
@@ -253,9 +276,10 @@ la mayoría de las computadoras actuales. Bueno, con muchas menos
 capacidades, claro, pero manteniendo lo esencial de las computadoras de
 programa almacenado.
 
-\subsubsection{Esquema del MCBE}\label{esquema-del-mcbe}
+\hypertarget{esquema-del-mcbe}{%
+\subsubsection{Esquema del MCBE}\label{esquema-del-mcbe}}
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics{img/MCBE.png}
 \caption{Esquema del MCBE}
@@ -292,13 +316,14 @@ máquina. En particular, la máquina no tiene voluntad ni toma decisiones
 propias: solamente cumple el \textbf{ciclo de instrucción}, que la hace
 ejecutar las instrucciones del programa que tenga almacenado.
 
-\subsubsection{Memoria del MCBE}\label{memoria-del-mcbe}
+\hypertarget{memoria-del-mcbe}{%
+\subsubsection{Memoria del MCBE}\label{memoria-del-mcbe}}
 
 Las 32 posiciones de memoria, cada una de 8 bits, son casi todas
 iguales, con dos excepciones.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La posición 30 (casi al final de la memoria) está reservada para
   comunicación con dispositivos de entrada. Es sólo de lectura, es
@@ -313,7 +338,8 @@ iguales, con dos excepciones.
   solamente así podemos saber el resultado de un cómputo.
 \end{itemize}
 
-\subsubsection{Registros del MCBE}\label{registros-del-mcbe}
+\hypertarget{registros-del-mcbe}{%
+\subsubsection{Registros del MCBE}\label{registros-del-mcbe}}
 
 Como hemos dicho, los registros son lugares de almacenamiento temporario
 para varios usos. Los registros funcionan en forma parecida a la
@@ -336,7 +362,8 @@ El registro \textbf{acumulador}, que pertenece a la ALU, es un registro
 que interviene en casi todas las operaciones del MCBE; sobre todo para
 las operaciones aritméticas.
 
-\subsubsection{CPU del MCBE}\label{cpu-del-mcbe}
+\hypertarget{cpu-del-mcbe}{%
+\subsubsection{CPU del MCBE}\label{cpu-del-mcbe}}
 
 Entonces la CPU del MCBE queda definida como el conjunto de
 \textbf{Unidad de Control} con dos registros \textbf{PC e IR}, más
@@ -347,8 +374,9 @@ suma y resta en complemento a 2, con ocho bits. No va a ejecutar
 \textbf{multiplicaciones}, ni \textbf{divisiones}, ni operaciones en
 \textbf{punto flotante}.
 
+\hypertarget{formato-de-instrucciones-del-mcbe}{%
 \subsubsection{Formato de instrucciones del
-MCBE}\label{formato-de-instrucciones-del-mcbe}
+MCBE}\label{formato-de-instrucciones-del-mcbe}}
 
 \textbf{Código de instrucción} Las instrucciones del MCBE se codifican
 en ocho bits y por lo tanto pueden ser almacenadas en un byte de la
@@ -369,7 +397,7 @@ trasladarse en la memoria, para encontrar la siguiente instrucción que
 hay que procesar.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cuando el operando es una dirección, los cinco bits del operando
   representan una cantidad sin signo (porque no pueden existir
@@ -391,13 +419,14 @@ tenemos un rango de -16 a 15. Lo que quiere decir que al trasladarnos de
 un lugar a otro de la memoria, vamos a poder hacerlo en saltos de a lo
 sumo 16 bytes hacia atrás o 15 bytes hacia adelante.
 
+\hypertarget{conjunto-de-instrucciones-del-mcbe}{%
 \subsubsection{Conjunto de instrucciones del
-MCBE}\label{conjunto-de-instrucciones-del-mcbe}
+MCBE}\label{conjunto-de-instrucciones-del-mcbe}}
 
 Las instrucciones del MCBE se dividen en cuatro grupos.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Las instrucciones de transferencia de datos son las que leen o
   escriben datos en la memoria.\\
@@ -490,7 +519,8 @@ La operación 000 no tiene ningún efecto sobre el estado del MCBE, salvo
 incrementar el PC. Ningún otro registro ni posición de memoria cambia su
 valor.
 
-\subsection{Ciclo de instrucción}\label{ciclo-de-instrucciuxf3n}
+\hypertarget{ciclo-de-instrucciuxf3n}{%
+\subsection{Ciclo de instrucción}\label{ciclo-de-instrucciuxf3n}}
 
 Ahora podemos definir con más rigurosidad lo que se entiende por
 \textbf{ciclo de instrucción}. El MCBE inicia su operación con todos los
@@ -500,7 +530,7 @@ las fases siguientes.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Copia en el registro IR la instrucción cuya dirección está en el PC.
   Como el PC comienza con un valor 0, esto significa copiar la
@@ -522,7 +552,8 @@ las fases siguientes.
   aquella cuya dirección esté contenida en el PC.
 \end{enumerate}
 
-\subsection{Programación del MCBE}\label{programaciuxf3n-del-mcbe}
+\hypertarget{programaciuxf3n-del-mcbe}{%
+\subsection{Programación del MCBE}\label{programaciuxf3n-del-mcbe}}
 
 ¿Cómo es, entonces, un programa para esta máquina teórica? Es una
 sucesión de bytes, que representan instrucciones y datos, contenidos en
@@ -534,34 +565,25 @@ posición de la memoria contiene una instrucción}. Pero a partir de allí,
 el desarrollo de la ejecución va a ser dado por las instrucciones
 particulares que contenga el programa.
 
-\begin{longtable}[c]{@{}cc@{}}
-\toprule\addlinespace
-Dirección & Contenido
-\\\addlinespace
-\midrule\endhead
-00000 & 01000110
-\\\addlinespace
-00001 & 10000111
-\\\addlinespace
-00010 & 01101000
-\\\addlinespace
-00011 & 00100000
-\\\addlinespace
-00100 &
-\\\addlinespace
-00101 &
-\\\addlinespace
-00110 & 00001100
-\\\addlinespace
-00111 & 00000001
-\\\addlinespace
-01000 &
-\\\addlinespace
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+Dirección & Contenido\tabularnewline
+\midrule
+\endhead
+00000 & 01000110\tabularnewline
+00001 & 10000111\tabularnewline
+00010 & 01101000\tabularnewline
+00011 & 00100000\tabularnewline
+00100 &\tabularnewline
+00101 &\tabularnewline
+00110 & 00001100\tabularnewline
+00111 & 00000001\tabularnewline
+01000 &\tabularnewline
 \bottomrule
 \end{longtable}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   En este programa en particular, la primera instrucción es 010 00110,
   que es una instrucción de transferencia de datos de la posición 6 al
@@ -586,7 +608,8 @@ Dirección & Contenido
   diagrama.
 \end{itemize}
 
-\subsubsection{Traza de ejecución}\label{traza-de-ejecuciuxf3n}
+\hypertarget{traza-de-ejecuciuxf3n}{%
+\subsubsection{Traza de ejecución}\label{traza-de-ejecuciuxf3n}}
 
 ¿Qué es realmente lo que hace este programa, y cuál es el resultado de
 ejecutarlo? Para poder saberlo, lo más conveniente es hacer una
@@ -610,36 +633,28 @@ Queda como ejercicio seguir la traza e interpretar qué está ocurriendo
 en cada momento con cada uno de los registros y las posiciones de
 memoria.
 
-\begin{longtable}[c]{@{}cc@{}}
-\toprule\addlinespace
-Dirección & Contenido
-\\\addlinespace
-\midrule\endhead
-00000 & 01000110
-\\\addlinespace
-00001 & 10000111
-\\\addlinespace
-00010 & 01101000
-\\\addlinespace
-00011 & 00100000
-\\\addlinespace
-00100 &
-\\\addlinespace
-00101 &
-\\\addlinespace
-00110 & 00001100
-\\\addlinespace
-00111 & 00000001
-\\\addlinespace
-01000 & 00001101
-\\\addlinespace
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+Dirección & Contenido\tabularnewline
+\midrule
+\endhead
+00000 & 01000110\tabularnewline
+00001 & 10000111\tabularnewline
+00010 & 01101000\tabularnewline
+00011 & 00100000\tabularnewline
+00100 &\tabularnewline
+00101 &\tabularnewline
+00110 & 00001100\tabularnewline
+00111 & 00000001\tabularnewline
+01000 & 00001101\tabularnewline
 \bottomrule
 \end{longtable}
 
-\subsubsection{Ayuda}\label{ayuda}
+\hypertarget{ayuda}{%
+\subsubsection{Ayuda}\label{ayuda}}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   000 No operación
 \item
@@ -658,11 +673,12 @@ Dirección & Contenido
   111 Salto cond
 \end{itemize}
 
-\subsection{Preguntas}\label{preguntas}
+\hypertarget{preguntas}{%
+\subsection{Preguntas}\label{preguntas}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El MCBE, ¿puede encontrar una instrucción que no sea capaz de
   decodificar?
@@ -682,7 +698,7 @@ cada una de ellas.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El primer paso del ciclo de instrucción es cargar el IR en el PC.
 \item

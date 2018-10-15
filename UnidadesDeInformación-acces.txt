@@ -1,5 +1,7 @@
-Unidades de Información
-=======================
+
+
+UNIDADES DE INFORMACIÓN
+
 
 En este segundo tema de la unidad veremos qué es la información y cómo
 podemos cuantificar, es decir, medir, la cantidad de información que
@@ -7,27 +9,27 @@ puede alojar un dispositivo, o la cantidad de información que representa
 una pieza cualquiera de información. Veremos además las relaciones entre
 las diferentes unidades de información.
 
+
 Información
------------
 
 A lo largo de la historia se han inventado y fabricado máquinas, que son
-dispositivos que transforman la energía, es decir, convierten una forma
+dispositivos que TRANSFORMAN LA ENERGÍA, es decir, convierten una forma
 de energía en otra. Las computadoras, en cambio, convierten una forma de
-información en otra.
+INFORMACIÓN en otra.
 
 Los programas de computadora reciben alguna forma de información (la
-entrada del programa), la procesan de alguna manera, y emiten alguna
-información de salida. La entrada es un conjunto de datos de partida,
-para que trabaje el programa, y la salida generada por el programa es
+ENTRADA del programa), la PROCESAN de alguna manera, y emiten alguna
+información de SALIDA. La ENTRADA es un conjunto de datos de partida,
+para que trabaje el programa, y la SALIDA generada por el programa es
 alguna forma de respuesta o solución a un problema. Sabemos, además, que
 el material con el cual trabajan las computadoras son textos,
 documentos, mensajes, imágenes, sonido, etc. Todas estas son formas en
 las que se codifica y se almacena la información.
 
-Un epistemólogo dice que la información es "una diferencia relevante".
+Un epistemólogo dice que la información es “una diferencia relevante”.
 Si vemos que el semáforo cambia de rojo a verde, recibimos información
-("podemos avanzar"). Al cambiar el estado del semáforo aparece una
-diferencia que puedo observar. Es relevante porque modifica de alguna
+(“podemos avanzar”). Al cambiar el estado del semáforo aparece una
+DIFERENCIA que puedo observar. Es RELEVANTE porque modifica de alguna
 forma el estado de mi conocimiento o me permite tomar una decisión
 respecto de algo.
 
@@ -35,22 +37,22 @@ respecto de algo.
 pero ¿se puede medir? Y si se puede medir, ¿entonces se puede medir la
 cantidad de información que aporta un texto, una imagen?
 
+
 Bit
----
 
 La Teoría de la Información, una teoría matemática desarrollada
-alrededor de 1950, dice que el bit es "la mínima unidad de información".
-Un bit es la información que recibimos "cuando se especifica una de dos
-alternativas igualmente probables". Si tenemos una pregunta binaria, es
-decir, aquella que puede ser respondida con un sí o con un no, entonces,
+alrededor de 1950, dice que el BIT es “la mínima unidad de información”.
+Un bit es la información que recibimos “cuando se especifica una de dos
+alternativas igualmente probables”. Si tenemos una pregunta BINARIA, es
+decir, aquella que puede ser respondida CON UN SÍ O CON UN NO, entonces,
 al recibir una respuesta, estamos recibiendo un bit de información. Las
 preguntas binarias son las más simples posibles (porque no podemos
-decidir entre menos respuestas), de ahí que la información necesaria
+decidir entre MENOS respuestas), de ahí que la información necesaria
 para responderlas sea la mínima unidad de información.
 
 De manera que un bit es una unidad de información que puede tomar sólo
-dos valores. Podemos pensar estos valores como verdadero o falso, como
-sí o no, o como 0 y 1.
+dos valores. Podemos pensar estos valores como VERDADERO O FALSO, como
+SÍ O NO, o como 0 Y 1.
 
 Cuando las computadoras trabajan con piezas de información complejas,
 como los textos o imágenes, estas piezas son representadas como
@@ -60,8 +62,8 @@ Un documento estará constituido por palabras; éstas están formadas por
 símbolos como las letras, y éstas serán representadas por secuencias de
 bits.
 
-La memoria de las computadoras está diseñada de forma que no se puede
-almacenar otra cosa que bits en esa memoria. Los textos, las imágenes,
+La memoria de las computadoras está diseñada de forma que NO SE PUEDE
+ALMACENAR OTRA COSA QUE BITS en esa memoria. Los textos, las imágenes,
 los sonidos, los videos, los programas que ejecuta, los mensajes que
 recibe o envía; todo lo que puede guardar, procesar, o emitir una
 computadora digital, debe estar en algún momento representado por una
@@ -86,51 +88,51 @@ dispositivo se utilizó en la realidad, para comunicar en tan sólo una
 noche la noticia de la caída de Troya.
 
 La información que está transportando la señal que viaja es la respuesta
-a una pregunta muy sencilla: "¿la ciudad necesita nuestra ayuda?".
+a una pregunta muy sencilla: “¿LA CIUDAD NECESITA NUESTRA AYUDA?”.
 
-Esta pregunta es binaria: se responde con un sí o con un no. Por lo
-tanto, lo que ha viajado es un bit de información.
+Esta pregunta es BINARIA: se responde con un sí o con un no. Por lo
+tanto, lo que ha viajado es UN BIT DE INFORMACIÓN.
 
 Notemos que, en los manuales de lógica o de informática, encontraremos
-siempre asociados los bits con los valores de 0 y 1. Aunque esto es útil
+siempre asociados los BITS con los valores de 0 Y 1. Aunque esto es útil
 a los efectos de emplear los bits en computación, no es del todo exacto.
 Un bit no es exactamente un dígito. Lo que viajó desde la ciudad sitiada
-hasta su destino no es un 0 ni un 1. Es un bit de información, aquella
+hasta su destino no es un 0 ni un 1. Es UN BIT DE INFORMACIÓN, aquella
 unidad de información que permite tomar una decisión entre dos
 alternativas. Sin embargo, la identificación de los bits con los dígitos
 binarios es útil para todo lo que tiene que ver con las computadoras.
 
+
 Byte
-----
 
 Como el bit es una medida tan pequeña de información, resulta necesario
 definir unidades más grandes. En particular, y debido a la forma como se
 organiza la memoria de las computadoras, es útil tener como unidad al
-byte (abreviado B mayúscula), que es una secuencia de 8 bits. Podemos
+BYTE (abreviado B mayúscula), que es una secuencia de 8 BITS. Podemos
 imaginarnos la memoria de las computadoras como una estantería muy alta,
 compuesta por estantes que contienen ocho casilleros. Cada uno de estos
-estantes es una posición o celda de memoria, y contiene exactamente ocho
+estantes es una POSICIÓN O CELDA DE MEMORIA, y contiene exactamente ocho
 bits (un byte) de información.
 
 Como los valores de los bits que forman un byte son independientes entre
-sí, existen 2 elevado a la 8 diferentes valores para esos ocho bits. Si los asociamos
+sí, existen 2⁸ diferentes valores para esos ocho bits. Si los asociamos
 con números en el sistema binario, esos valores serán 0 0 0 0 0 0 0 0,
-0 0 0 0 0 0 0 1, 0 0 0 0 0 0 1 0, ..., etc., hasta el 1 1 1 1 1 1 1 1. En decimal, esos
-valores corresponden a los números 0, 1, 2, ..., 255.
+0 0 0 0 0 0 0 1, 0 0 0 0 0 0 1 0, …, etc., hasta el 1 1 1 1 1 1 1 1. En decimal, esos valores
+corresponden a los números 0, 1, 2, …, 255.
 
 Cada byte de la memoria de una computadora, entonces, puede alojar un
 número entre 0 y 255. Esos números representarán diferentes piezas de
 información: si los vemos como bytes independientes, pueden representar
-caracteres como letras y otros símbolos, pero también pueden estar
+CARACTERES como letras y otros símbolos, pero también pueden estar
 formando parte de otras estructuras de información más complejas, y
 tener otros significados.
 
+
 Representando datos con bytes
------------------------------
 
 Para poder tratar y comunicar la información, que está organizada en
 bytes, es necesario que exista una asignación fija de valores binarios a
-caracteres. Es decir, se necesita una tabla de caracteres que asigne un
+caracteres. Es decir, se necesita una TABLA DE CARACTERES que asigne un
 símbolo a cada valor posible entre 0 y 255.
 
 La memoria de la computadora es como un espacio donde se almacenan
@@ -145,10 +147,10 @@ qué capacidad tendrá la memoria de una computadora dada y qué tamaño
 tendrán las piezas de información que caben en esta memoria. Como la
 memoria de una computadora, y la cantidad de información que compone un
 mensaje, un programa, una imagen, etc., suelen ser muy grandes,
-utilizamos múltiplos de la unidad de memoria, que es el byte.
+utilizamos MÚLTIPLOS de la unidad de memoria, que es el byte.
 
-Existen en realidad dos sistemas diferentes de múltiplos: el Sistema
-Internacional y el Sistema de Prefijos Binarios. Las unidades de ambos
+Existen en realidad dos sistemas diferentes de múltiplos: el SISTEMA
+INTERNACIONAL y el SISTEMA DE PREFIJOS BINARIOS. Las unidades de ambos
 sistemas son parecidas, pero no exactamente iguales.
 
 Los dos sistemas difieren esencialmente en el factor de la unidad en los
@@ -161,49 +163,48 @@ Sistema Internacional
 En el llamado Sistema Internacional, la unidad básica, el byte, se
 multiplica por potencias de 1 0 0 0. Así, tenemos:
 
--   El kilobyte (1 0 0 0 bytes)
--   El megabyte (1 0 0 0  por  1 0 0 0 bytes = 1 0 0 0 kilobytes = un millón de
+-   El KILOBYTE (1 0 0 0 bytes)
+-   El MEGABYTE (1 0 0 0 × 1 0 0 0 bytes = 1 0 0 0 kilobytes = un millón de
     bytes)
--   El gigabyte (1 0 0 0  por  1 0 0 0  por  1 0 0 0 bytes = mil megabytes =
-    mil millones de bytes)
--   El terabyte (1 0 0 0  por  1 0 0 0  por  1 0 0 0  por  1 0 0 0 bytes = mil
-    gigabytes = un billón de bytes), y otros múltiplos mayores como
-    petabyte, exabyte, zettabyte, yottabyte.
+-   El GIGABYTE (1 0 0 0 × 1 0 0 0 × 1 0 0 0 bytes = mil megabytes = mil millones
+    de bytes)
+-   El TERABYTE (1 0 0 0 × 1 0 0 0 × 1 0 0 0 × 1 0 0 0 bytes = mil gigabytes = un
+    billón de bytes), y otros múltiplos mayores como PETABYTE, EXABYTE,
+    ZETTABYTE, YOTTABYTE.
 
 Como puede verse, cada unidad se forma multiplicando la anterior por
 1 0 0 0.
 
 Los símbolos de cada múltiplo, utilizados al especificar las unidades,
-son k minúscula para kilo, M mayúscula para mega, G mayúscula para giga,
-T mayúscula para tera, etc.
+son K MINÚSCULA para KILO, M MAYÚSCULA para MEGA, G MAYÚSCULA para GIGA,
+T MAYÚSCULA para TERA, etc.
 
 Sistema de Prefijos Binarios
 
 En el llamado Sistema de Prefijos Binarios, el byte se multiplica por
-potencias de 2 elevado a la {10}, que es 1024. Así, tenemos:
+potencias de 2¹⁰, que es 1024. Así, tenemos:
 
--   El kibibyte (1024 bytes)
--   El mebibyte (1024  por  1024 bytes, aproximadamente un millón de
-    bytes, pero exactamente 1048576 bytes)
--   El gibibyte (1024  por  1024  por  1024 bytes, aproximadamente mil
-    millones de bytes)
--   El tebibyte (1024  por  1024  por  1024  por  1024 bytes,
-    aproximadamente un millón de mebibytes, o aproximadamente un billón
-    de bytes), y otros múltiplos mayores como pebibyte, exbibyte,
-    zebibyte, yobibyte.
+-   El KIBIBYTE (1024 bytes)
+-   El MEBIBYTE (1024 × 1024 bytes, APROXIMADAMENTE un millón de bytes,
+    pero exactamente 1048576 bytes)
+-   El GIBIBYTE (1024 × 1024 × 1024 bytes, APROXIMADAMENTE mil millones
+    de bytes)
+-   El TEBIBYTE (1024 × 1024 × 1024 × 1024 bytes, aproximadamente un
+    millón de mebibytes, o aproximadamente un billón de bytes), y otros
+    múltiplos mayores como PEBIBYTE, EXBIBYTE, ZEBIBYTE, YOBIBYTE.
 
 Como puede verse, cada unidad se forma multiplicando la anterior por
 1024.
 
-Notemos que los prefijos kilo, mega, giga, tera, del Sistema
-Internacional, cambian a kibi, mebi, gibi, tebi, del sistema de Prefijos
+Notemos que los prefijos KILO, MEGA, GIGA, TERA, del Sistema
+Internacional, cambian a KIBI, MEBI, GIBI, TEBI, del sistema de Prefijos
 Binarios.
 
 Los símbolos de cada múltiplo, utilizados al especificar las unidades,
-son Ki, con K mayúscula, para kibi, Mi para mebi, Gi para gibi, Ti para
-tebi, etc.
+son KI, con K mayúscula, para KIBI, MI para MEBI, GI para GIBI, TI para
+TEBI, etc.
 
-¿Por qué existen dos sistemas en lugar de uno? En realidad la adopción
+¿Por qué existen DOS sistemas en lugar de uno? En realidad la adopción
 del Sistema de Prefijos Binarios se debe a las características de la
 memoria de las computadoras:
 
@@ -218,10 +219,10 @@ memoria de las computadoras:
     binarios.
 -   Por lo tanto, la cantidad de posiciones que puede acceder usando
     direcciones es una potencia de 2: si usa 8 bits para especificar
-    cada dirección, accederá a 2 elevado a la 8 bytes, cuyas direcciones estarán
-    entre 0 y 255. Si usa 10 bits, accederá a 2 elevado a la {10} bytes, cuyas
-    direcciones serán 0 a 1023.
--   Entonces, tener una memoria de, por ejemplo, exactamente mil bytes,
+    cada dirección, accederá a 2⁸ bytes, cuyas direcciones estarán entre
+    0 y 255. Si usa 10 bits, accederá a 2¹⁰ bytes, cuyas direcciones
+    serán 0 a 1023.
+-   Entonces, tener una memoria de, por ejemplo, exactamente MIL BYTES,
     complicaría técnicamente las cosas porque las direcciones 1 0 0 0 a
     1023 no existirían. Si un programa quisiera acceder a la posición
     1020 habría un grave problema. Habría que tener en cuenta
@@ -237,12 +238,12 @@ velocidades de transmisión de datos o tamaños de archivos, pero usar
 Prefijos Binarios al hablar de almacenamiento de memoria, o en unidades
 de almacenamiento permanente, como los discos.
 
--   Entonces, cuando un proveedor de servicios de Internet ofrece un
-    enlace de 1 Mbps, nos está diciendo que por ese enlace podremos
-    transferir exactamente 1 millón de bits por segundo. El proveedor
+-   Entonces, cuando un proveedor de servicios de Internet ofrece UN
+    ENLACE DE 1 MBPS, nos está diciendo que por ese enlace podremos
+    transferir EXACTAMENTE 1 MILLÓN DE BITS POR SEGUNDO. El proveedor
     utiliza el Sistema Internacional.
 -   Los textos, imágenes, sonido, video, programas, etc., se guardan en
-    archivos, que son sucesiones de bytes. Encontramos archivos en el
+    ARCHIVOS, que son sucesiones de bytes. Encontramos archivos en el
     disco de nuestra computadora, y podemos descargar archivos desde las
     redes. Cuando nos interesa saber cuánto mide un archivo, en términos
     de bytes, usamos el Sistema Internacional porque el archivo no tiene
@@ -250,7 +251,6 @@ de almacenamiento permanente, como los discos.
 -   Por el contrario, los fabricantes de medios de almacenamiento, como
     memorias, discos rígidos o pendrives, deberían (aunque a veces no lo
     hacen) utilizar Prefijos Binarios para expresar las capacidades de
-    almacenamiento de esos medios. Así, un "pendrive de dieciséis
-    gigabytes", si tiene una capacidad de 16  por  2 elevado a la {30} bytes,
-    debería publicitarse en realidad como "pendrive de dieciséis
-    gibibytes".
+    almacenamiento de esos medios. Así, un $ sub $“pendrive de dieciséis
+    gigabytes”$ sub $, si tiene una capacidad de 16 × 2³⁰ bytes, debería
+    publicitarse en realidad como $ sub $“pendrive de dieciséis gibibytes”$ sub $.

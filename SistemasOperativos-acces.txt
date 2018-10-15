@@ -1,8 +1,9 @@
-Sistemas Operativos
-===================
+
+
+SISTEMAS OPERATIVOS
+
 
 Del hardware al software
-------------------------
 
 Hemos visto la evolución de los sistemas de cómputo desde el punto de
 vista del hardware, y cómo llegaron a soportar varios usuarios corriendo
@@ -14,12 +15,12 @@ diferentes aplicaciones pudieran compartir el hardware sin ocasionarse
 problemas unos a otros, y obteniendo el máximo rendimiento posible del
 equipamiento.
 
-La pieza que falta en este complejo mecanismo es el sistema operativo,
+La pieza que falta en este complejo mecanismo es el SISTEMA OPERATIVO,
 un software básico cuya función principal es la de ser intermediario
 entre los usuarios y el hardware del sistema de cómputo.
 
+
 Evolución del software de base
-------------------------------
 
 Open Shop
 
@@ -32,47 +33,47 @@ por el cual esos usuarios pagaban.
 Sistemas Batch
 
 Una vez que se popularizaron las máquinas de programa almacenado, se
-pudo minimizar el tiempo ocioso adoptando esquemas de carga automática
+pudo minimizar el tiempo ocioso adoptando ESQUEMAS DE CARGA AUTOMÁTICA
 de trabajos. Un trabajo típico consistía en la compilación y ejecución
 de un programa, o la carga de un programa compilado más un lote de datos
 de entrada, y la impresión de un cierto resultado de salida del
 programa. Estos trabajos estaban definidos por conjuntos o lotes de
-tarjetas perforadas, de ahí su nombre de trabajos por lotes o, en
-inglés, batch.
+tarjetas perforadas, de ahí su nombre de trabajos POR LOTES o, en
+inglés, $ sub $batch$ sub $.
 
 Sistemas Multiprogramados
 
 Más adelante, conforme las tecnologías permitían ir aumentando la
 velocidad de procesamiento, se notó que los procesadores quedaban
-desaprovechados gran parte del tiempo debido a la inevitable actividad
-de entrada/salida. Así se idearon sistemas que optimizaban la
+desaprovechados gran parte del tiempo debido a la inevitable ACTIVIDAD
+DE ENTRADA/SALIDA. Así se idearon sistemas que optimizaban la
 utilización de la CPU, al poderse cargar más de un programa en la
 memoria y poder conmutar el uso del procesador entre ellos. Éstos fueron
-los primeros sistemas multiprogramados.
+los primeros SISTEMAS MULTIPROGRAMADOS.
 
 Sistemas de Tiempo Compartido
 
 Una vez que llegó la posibilidad de tener varios programas coexistiendo
 simultáneamente en la memoria, se buscó que la conmutación del uso del
 procesador entre ellos fuera tan rápida, que pareciera que cada programa
-funcionaba sin interrupciones. Aunque el sistema era de tiempo
-compartido, el usuario utilizaba la computadora como si estuviera
+funcionaba sin interrupciones. Aunque el sistema era de TIEMPO
+COMPARTIDO, el usuario utilizaba la computadora como si estuviera
 dedicada exclusivamente a correr su programa. Así los sistemas
-multiprogramados se volvieron interactivos.
+multiprogramados se volvieron INTERACTIVOS.
 
 Computación personal
 
 Todas éstas fueron innovaciones de software, y fueron estableciendo
 principios y técnicas que serían adoptadas en lo sucesivo. Con la
 llegada de la computación personal, los sistemas de cómputo eran de
-capacidades modestas. Los sistemas operativos que permitían la ejecución
+capacidades modestas. Los SISTEMAS OPERATIVOS que permitían la ejecución
 de aplicaciones de los usuarios en estos sistemas de cómputo comenzaron
 pudiendo correr una sola aplicación por vez y de un solo usuario; es
-decir, se trataba de sistemas monotarea y monousuario.
+decir, se trataba de sistemas MONOTAREA y MONOUSUARIO.
 
 Sin embargo, con la industria de las computadoras personales y la del
 software para computadoras personales traccionándose una a la otra,
-aparecieron sistemas operativos multiusuario y multitarea, sumamente
+aparecieron sistemas operativos MULTIUSUARIO y MULTITAREA, sumamente
 complejos, que se convirtieron en un nuevo terreno para ensayar y
 mejorar las tecnologías de software y hardware.
 
@@ -80,46 +81,46 @@ Preguntas
 
 -   ¿Cuáles son los cinco momentos evolutivos del software de base que
     reconocemos?
--   ¿A qué se llama un trabajo batch o lote de trabajo? ¿Qué es un
-    archivo batch en el mundo de la computación personal?
--   ¿Cuál fue la necesidad que impulsó la creación de sistemas batch?
+-   ¿A qué se llama un TRABAJO BATCH o lote de trabajo? ¿Qué es un
+    ARCHIVO BATCH en el mundo de la computación personal?
+-   ¿Cuál fue la necesidad que impulsó la creación de sistemas $ sub $batch$ sub $?
 -   ¿Cuál fue la necesidad que impulsó la creación de sistemas
     multiprogramados?
 -   ¿Cuál fue la necesidad que impulsó la creación de sistemas de tiempo
     compartido?
 
+
 Componentes del SO
-------------------
 
 Los modernos sistemas operativos tienen varios componentes bien
-diferenciados. Los sistemas operativos de propósito general normalmente
-se presentan en una distribución que contiene e integra al menos tres
+diferenciados. Los sistemas operativos DE PROPÓSITO GENERAL normalmente
+se presentan en una DISTRIBUCIÓN que contiene e integra al menos tres
 componentes.
 
--   Kernel
+-   KERNEL
 
     El componente que constituye el sistema operativo propiamente dicho
-    es el llamado núcleo o kernel.
+    es el llamado NÚCLEO o KERNEL.
 
--   Software de sistema
+-   SOFTWARE DE SISTEMA
 
-    Junto al kernel es habitual encontrar un conjunto de programas
-    utilitarios o software de sistema, que no es parte del sistema
+    Junto al kernel es habitual encontrar un conjunto de PROGRAMAS
+    UTILITARIOS O SOFTWARE DE SISTEMA, que no es parte del sistema
     operativo, estrictamente hablando, pero que en general es
     indispensable para la administración y mantenimiento del sistema.
 
--   Interfaz de usuario
+-   INTERFAZ DE USUARIO
 
     También se encuentra junto a este software del sistema alguna forma
-    de interfaz de usuario, que puede ser gráfica o de caracteres. Esta
-    interfaz de usuario se llama en general shell, especialmente cuando
+    de INTERFAZ DE USUARIO, que puede ser gráfica o de caracteres. Esta
+    interfaz de usuario se llama en general SHELL, especialmente cuando
     la interfaz es un procesador de comandos, basado en caracteres, y
     los comandos se tipean.
 
 Sistemas empotrados o embebidos
 
 Hay algunas excepciones a esta estructura de componentes, por ejemplo,
-en los sistemas operativos empotrados o embebidos (embedded systems),
+en los sistemas operativos EMPOTRADOS o EMBEBIDOS ($ sub $embedded systems$ sub $),
 que están ligados a un dispositivo especial y muy específico, como es el
 caso de algunos robots, instrumental médico, routers, electrodomésticos
 avanzados, etc.
@@ -131,8 +132,8 @@ realidad comunicarse directamente con ellos) o no incluyen software de
 sistema porque sus usuarios no son quienes se encargan de su
 mantenimiento.
 
+
 Aplicaciones
-------------
 
 Un típico sistema operativo multipropósito, actual, debe dar soporte
 entonces a la actividad de una gran variedad de aplicaciones. No
@@ -143,28 +144,28 @@ comunicaciones (navegadores, programas de transferencia de archivos, de
 mensajería); aplicaciones de desarrollo de programas (compiladores,
 intérpretes de diferentes lenguajes).
 
-Kernel
-------
 
-El kernel o núcleo es esencialmente un conjunto de rutinas que
+Kernel
+
+El KERNEL o núcleo es esencialmente un conjunto de rutinas que
 permanecen siempre residentes en memoria mientras la computadora está
 operando. Estas rutinas intervienen en todas las acciones que tengan que
 ver con la operación del hardware.
 
 Recursos
 
-Los recursos físicos del sistema son todos los elementos de hardware que
+Los RECURSOS FÍSICOS del sistema son todos los elementos de hardware que
 pueden ser de utilidad para el software, como la CPU, la memoria, los
 discos, los dispositivos de entrada/salida, etc. El kernel funciona no
 solamente como un mecanismo de administración y control del hardware o
 conjunto de recursos físicos, sino también de ciertos recursos del
-sistema que son lógicos, como los archivos.
+sistema que son LÓGICOS, como los archivos.
 
 Procesos
 
 El kernel tiene la capacidad de poner en ejecución a los programas que
 se encuentran almacenados en el sistema. Cuando un programa está en
-ejecución, lo llamamos un proceso. El sistema operativo controla la
+ejecución, lo llamamos un PROCESO. El sistema operativo controla la
 creación, ejecución y finalización de los procesos.
 
 Llamadas al sistema o system calls
@@ -173,8 +174,8 @@ El kernel ofrece su capacidad de control de todos los recursos a los
 procesos o programas en ejecución, quienes le solicitan determinadas
 operaciones sobre esos recursos. Por ejemplo, un proceso que necesita
 utilizar un dispositivo de entrada/salida, o un recurso lógico como un
-archivo, hace una petición de servicio, llamada al sistema, o system
-call, solicitando un servicio al sistema operativo. El servicio puede
+archivo, hace una PETICIÓN DE SERVICIO, LLAMADA AL SISTEMA, O SYSTEM
+CALL, solicitando un servicio al sistema operativo. El servicio puede
 tratarse de una operación de lectura, escritura, creación, borrado, etc.
 El sistema operativo centraliza y coordina estas peticiones de forma que
 los procesos no interfieran entre sí en el uso de los recursos.
@@ -193,32 +194,32 @@ de imponer conductas y límites a esos usuarios y programas, para evitar
 que alguno de ellos tome control del sistema en perjuicio de los demás.
 Para garantizarle este poder por sobre los usuarios, el sistema
 operativo requiere apoyo del hardware: su código se ejecuta en un modo
-especial de operación del hardware, el modo privilegiado del procesador.
+especial de operación del hardware, el MODO PRIVILEGIADO del procesador.
 
-Los modernos procesadores funcionan en lo que llamamos modo dual de
+Los modernos procesadores funcionan en lo que llamamos MODO DUAL de
 ejecución, donde el ISA se divide en dos grupos de instrucciones.
 
 -   Ciertas instrucciones que controlan el modo de operación de la CPU,
     el acceso a memoria, o a las unidades de Entrada/Salida, pertenecen
-    al grupo de instrucciones del modo privilegiado.
--   Un programa de usuario que se está ejecutando funciona en modo no
-    privilegiado, donde tiene acceso a la mayoría de las instrucciones
+    al grupo de instrucciones del MODO PRIVILEGIADO.
+-   Un programa de usuario que se está ejecutando funciona en modo NO
+    PRIVILEGIADO, donde tiene acceso a la mayoría de las instrucciones
     del ISA, pero no a las instrucciones del modo privilegiado.
 
+
 Llamadas al sistema
--------------------
 
 El procesador ejecutará instrucciones del programa en ejecución en modo
 no privilegiado hasta que éste necesite un servicio del sistema
 operativo, tal como el acceso a un recurso físico o lógico.
 
 Para requerir este servicio, el proceso ejecuta una instrucción de
-llamada al sistema o system call, que es la única instrucción del
+LLAMADA AL SISTEMA o SYSTEM CALL, que es la única instrucción del
 conjunto no privilegiado que permite a la CPU conmutar al modo
 privilegiado.
 
-La llamada al sistema conmuta el modo de la CPU a modo privilegiado y
-además fuerza el salto a una cierta dirección fija de memoria donde
+La llamada al sistema conmuta el modo de la CPU a modo privilegiado Y
+ADEMÁS fuerza el salto a una cierta dirección fija de memoria donde
 existe código del kernel. En esa dirección de memoria existe una rutina
 de atención de llamadas al sistema, que determina, por el contenido de
 los registros de la CPU, qué es lo que está solicitando el proceso.
@@ -240,8 +241,8 @@ Si se cumplen todos los requisitos, se ejecutará el servicio pedido y
 luego se volverá a modo no privilegiado, a continuar con la ejecución
 del proceso.
 
+
 Ejecución de aplicaciones
--------------------------
 
 Al ejecutar procesos de usuario o de sistema se pone en juego una
 jerarquía de piezas de software que ocupa varios niveles.
@@ -251,7 +252,7 @@ las del sistema o las generadas por el usuario, competirá con las demás
 por los recursos en igualdad de condiciones.
 
 Todas las aplicaciones, en algún momento, requieren funciones que ya
-están preparadas para su uso y almacenadas en bibliotecas especializadas
+están preparadas para su uso y almacenadas en BIBLIOTECAS especializadas
 en algún área.
 
 Algunas aplicaciones pueden requerir funciones matemáticas; otras, de
@@ -259,9 +260,9 @@ gráficos; algunas, de comunicaciones. Todas ellas requerirán, sin duda,
 funciones de entrada/salida. Cada grupo de estas funciones está
 encapsulado en una o varias bibliotecas que forman parte del sistema.
 
-La vinculación de los programas de usuario con las bibliotecas puede
-hacerse al tiempo de compilación o, cuando las bibliotecas son de carga
-dinámica, al tiempo de ejecución.
+La VINCULACIÓN de los programas de usuario con las bibliotecas puede
+hacerse al tiempo de compilación o, cuando las bibliotecas son DE CARGA
+DINÁMICA, al tiempo de ejecución.
 
 Al ejecutarse los procesos, normalmente las bibliotecas necesitan
 recurrir a servicios del kernel para completar su funcionamiento. Los
@@ -271,12 +272,12 @@ de manejar diferentes clases de recursos.
 Por ejemplo:
 
 -   Si un proceso necesita solicitar más memoria durante la ejecución,
-    la pedirá al subsistema de gestión de memoria.
+    la pedirá al subsistema de GESTIÓN DE MEMORIA.
 -   Cada vez que un proceso escriba datos en un archivo, estará
     comunicándose, a través de una biblioteca, con el subsistema de
-    gestión de archivos.
+    GESTIÓN DE ARCHIVOS.
 -   Si un proceso necesita enviar o recibir datos a través de la red, el
-    kernel pondrá en funcionamiento el driver de la interfaz de red, la
+    kernel pondrá en funcionamiento el DRIVER de la interfaz de red, la
     pieza de software que sabe comunicarse con ese hardware.
 
 La comunicación entre los procesos de usuario y sus bibliotecas, por un
@@ -285,8 +286,8 @@ una llamada al sistema o system call. Es en este momento cuando se cruza
 el límite entre modo usuario y modo privilegiado, o espacio de usuario y
 espacio del kernel.
 
+
 Una cronología de los SO
-------------------------
 
 Entre la década de 1960 y principios del siglo XXI surgieron gran
 cantidad de innovaciones tecnológicas en el área de sistemas operativos.
@@ -302,7 +303,7 @@ unos sistemas en otros.
 
 -   Por ejemplo, el sistema de archivos diseñado para el sistema
     operativo CP/M de la empresa Digital, en los años 70, fue adaptado
-    para el MS-DOS de Microsoft, cuya evolución final fue Windows.
+    para el MS-DOS de Microsoft, cuya evolución final fue WINDOWS.
 
     Los diseñadores de Windows NT fueron los mismos que construyeron el
     sistema operativo VMS de los equipos VAX, también de Digital, y
@@ -311,7 +312,7 @@ unos sistemas en otros.
     idénticas.
 
 -   Otra importante línea genealógica es la que relaciona el antiguo
-    Multics, por un lado, con Unix y con Linux; y más recientemente, con
+    Multics, por un lado, con UNIX y con Linux; y más recientemente, con
     el sistema para plataformas móviles Android.
 
     Unix fue el primer sistema operativo escrito casi totalmente en un
@@ -320,7 +321,7 @@ unos sistemas en otros.
     lo adoptó como el modelo de referencia de los sistemas operativos de
     tiempo compartido.
 
-    En 1991 Linus Torvalds lanzó un proyecto de código abierto dedicado
+    En 1991 LINUS TORVALDS lanzó un proyecto de código abierto dedicado
     a la construcción de un sistema operativo compatible con Unix pero
     sin hacer uso de ningún código anteriormente escrito, lo que le
     permitió liberarlo bajo una licencia libre. La consecuencia es que
@@ -336,7 +337,7 @@ unos sistemas en otros.
     permitió que otras compañías lo emplearan en muchos otros proyectos.
 
 -   Otra empresa de productos de computación de notable trayectoria,
-    Apple, produjo un sistema operativo para su línea de computadoras
+    APPLE, produjo un sistema operativo para su línea de computadoras
     personales Macintosh. Su sistema MacOS estaba influenciado por
     desarrollos de interfaces de usuario gráficas realizadas por otra
     compañía, Xerox, y también derivó en la creación de un sistema
@@ -347,14 +348,14 @@ unos sistemas en otros.
     definitivamente en otros sistemas, desaparecer del mercado o quedar
     confinados a cierto nicho de aplicaciones. Algunos, por sus
     objetivos de diseño, son menos visibles, porque están destinados a
-    un uso que no es masivo, como es el caso del sistema de tiempo real
+    un uso que no es masivo, como es el caso del SISTEMA DE TIEMPO REAL
     QNX.
 
+
 Servicios del SO
-----------------
 
 Después de conocer estas cuestiones generales sobre los sistemas
-operativos, veremos con un poco más de detalle los diferentes servicios
+operativos, veremos con un poco más de detalle los diferentes SERVICIOS
 provistos por los principales subsistemas de un SO:
 
 -   Ejecución de procesos
@@ -366,39 +367,39 @@ provistos por los principales subsistemas de un SO:
 Si bien la discusión que sigue es suficientemente general para
 comprender básicamente el funcionamiento de cualquier sistema operativo
 moderno, nos referiremos sobre todo a la manera como se implementan
-estos subsistemas y servicios en la familia de sistemas Unix, que, como
+estos subsistemas y servicios en la familia de sistemas UNIX, que, como
 hemos dicho, es el modelo de referencia académico para la mayoría de la
 investigación y desarrollo de sistemas operativos.
 
+
 Ejecución de procesos
----------------------
 
 Creación de procesos
 
-¿Cómo se inicia la ejecución de un proceso? Todo proceso es hijo de
+¿Cómo se inicia la ejecución de un proceso? Todo proceso es HIJO de
 algún otro proceso que lo crea.
 
 Inicialmente, el SO crea una cantidad de procesos de sistema. Uno de
-ellos es un shell o interfaz de usuario. Este proceso sirve para que el
+ellos es un SHELL o interfaz de usuario. Este proceso sirve para que el
 usuario pueda comunicarse con el SO y solicitarle la ejecución de otros
 procesos.
 
-El shell puede ser gráfico, con una interfaz de ventanas; o de texto,
-con un intérprete de comandos. En cualquiera de los dos casos, de una
-forma u otra, usando el shell el usuario selecciona algún programa, que
+El $ sub $shell$ sub $ puede ser GRÁFICO, con una interfaz de ventanas; o DE TEXTO,
+con un INTÉRPRETE DE COMANDOS. En cualquiera de los dos casos, de una
+forma u otra, usando el shell el usuario selecciona algún PROGRAMA, que
 está residiendo en algún medio de almacenamiento como los discos, y pide
 al SO que lo ejecute.
 
 En respuesta a la petición del usuario, el SO carga ese programa en
-memoria y pone a la CPU a ejecutar el código de ese programa.
+memoria y pone a la CPU a EJECUTAR EL CÓDIGO de ese programa.
 
 Una vez que el programa está en ejecución, decimos que tenemos un nuevo
-proceso activo en el sistema. Este nuevo proceso es un hijo del shell, y
+PROCESO activo en el sistema. Este nuevo proceso es un HIJO del shell, y
 a su vez puede crear nuevos procesos hijos si es necesario.
 
 Estados de los procesos
 
-Durante su vida, el proceso atravesará diferentes estados. Un proceso
+Durante su vida, el proceso atravesará diferentes ESTADOS. Un proceso
 puede no estar siempre en estado de ejecución (utilizando la CPU), sino
 que en un momento dado puede pasar a otro estado, quedando
 transitoriamente suspendido, para dejar que otro proceso utilice la CPU.
@@ -406,7 +407,7 @@ transitoriamente suspendido, para dejar que otro proceso utilice la CPU.
 Scheduler o planificador
 
 El ciclo de cambios de estado de los procesos es administrado por un
-componente esencial del SO, el scheduler o planificador, que lleva el
+componente esencial del SO, el SCHEDULER o PLANIFICADOR, que lleva el
 control de qué proceso debe ser el próximo en ejecutarse. El
 planificador seguirá una estrategia que permita obtener el máximo
 rendimiento posible de la CPU.
@@ -417,24 +418,24 @@ Al elegir un nuevo proceso para ejecutar, el que estaba ejecutándose
 cambia de estado hasta que vuelva a tocarle el uso de la CPU.
 
 -   Cuando en el sistema coexisten varios procesos activos durante un
-    espacio de tiempo, decimos que esos procesos son concurrentes.
+    espacio de tiempo, decimos que esos procesos son CONCURRENTES.
 -   Cuando, además, puede haber más de uno en ejecución en el mismo
-    instante, decimos que son paralelos o que su ejecución es paralela.
+    instante, decimos que son PARALELOS o que su ejecución es paralela.
+
 
 Ciclo de estados
-----------------
 
 Ciclo de estados en un sistema multiprogramado
 
-En un sistema multiprogramado, varios procesos pueden estar presentes en
+En un sistema MULTIPROGRAMADO, varios procesos pueden estar presentes en
 la memoria del sistema de cómputo. Durante su vida en el sistema, cada
 proceso atravesará un ciclo de estados.
 
--   Cuando recién se crea un proceso, su estado es listo, porque está
+-   Cuando recién se crea un proceso, su estado es LISTO, porque está
     preparado para recibir la CPU cuando el planificador o scheduler lo
     disponga.
 
--   En algún momento recibirá la CPU y pasará a estado ejecutando.
+-   En algún momento recibirá la CPU y pasará a estado EJECUTANDO.
 -   En algún momento, el proceso ejecutará la última de sus
     instrucciones y finalizará. Es posible que su trabajo sea realmente
     muy breve y que finalice pronto.
@@ -448,24 +449,24 @@ proceso atravesará un ciclo de estados.
     la CPU para realizar cómputos, sino que deberá esperar el final de
     este servicio del SO. Como la operación de entrada/salida
     potencialmente puede demorarse mucho, el sistema lo pone en estado
-    de espera hasta que finalice la operación de entrada/salida.
+    de ESPERA hasta que finalice la operación de entrada/salida.
 
 -   Mientras tanto, como la CPU ha quedado libre, el SO aprovecha la
     oportunidad de darle la CPU a algún otro proceso que esté en estado
-    listo.
+    LISTO.
 
 -   Cuando finalice una operación de entrada/salida que ha sido
-    requerida por un proceso, este proceso volverá al estado de listo y
+    requerida por un proceso, este proceso volverá al estado de LISTO y
     esperará que algún otro proceso libere la CPU para volver a
-    ejecutando.
+    EJECUTANDO.
 
--   Al volver desde el estado de listo al estado de ejecutando, el
+-   Al volver desde el estado de LISTO al estado de EJECUTANDO, el
     proceso retomará la ejecución desde la instrucción inmediatamente
     posterior a la que solicitó el servicio del SO.
 
 Ciclo de estados en un sistema de tiempo compartido
 
-Los sistemas de tiempo compartido están diseñados para ser interactivos,
+Los sistemas DE TIEMPO COMPARTIDO están diseñados para ser INTERACTIVOS,
 y tienen la misión de hacer creer a cada usuario que el sistema de
 cómputo está dedicado exclusivamente a sus procesos. Sin embargo,
 normalmente existen muchísimos procesos activos simultáneamente en un SO
@@ -475,69 +476,69 @@ Para lograr esto el planificador de estos SO debe ser capaz de hacer los
 cambios de estado con mucha velocidad. El resultado es que los usuarios
 prácticamente no perciben estos cambios de estado.
 
-En un sistema de tiempo compartido, el ciclo de estados de los procesos
+En un sistema DE TIEMPO COMPARTIDO, el ciclo de estados de los procesos
 es similar al del sistema multiprogramado, pero con una importante
 diferencia.
 
--   El sistema de tiempo compartido tiene la capacidad de desalojar a un
+-   El sistema de tiempo compartido tiene la capacidad de DESALOJAR a un
     proceso de la CPU, sin necesidad de esperar a que el proceso
     solicite un servicio del SO.
--   Para esto, el SO define un quantum o tiempo máximo de ejecución
+-   Para esto, el SO define un QUANTUM o tiempo máximo de ejecución
     (típicamente de algunos milisegundos), al cabo del cual el proceso
     obligatoriamente deberá liberar la CPU.
 -   El SO, al entregar la CPU a un proceso que pasa de listo a
     ejecutando, pone en marcha un reloj para medir un quantum de tiempo
     que pasará ejecutando el proceso.
--   Al agotarse el quantum, el SO interrumpirá al proceso y le impondrá
-    el estado de listo. Al quedar libre la CPU, el siguiente proceso
+-   Al agotarse el quantum, el SO INTERRUMPIRÁ al proceso y le impondrá
+    el estado de LISTO. Al quedar libre la CPU, el siguiente proceso
     planificado entrará en estado de ejecución.
 -   Sin embargo, si un proceso decide solicitar un servicio del SO antes
     de que se agote su quantum, el ciclo continuará de la misma manera
-    que en el sistema multiprogramado, pasando a estado en espera hasta
+    que en el sistema multiprogramado, pasando a estado EN ESPERA hasta
     que finalice el servicio.
 
-Comparando multiprogramación y time sharing
+Comparando multiprogramación y $ sub $time sharing$ sub $
 
-Notemos que los diagramas de estados del sistema multiprogramado y del
-sistema de tiempo compartido se diferencian sólo en una transición: la
-que lleva del estado de ejecutando al de listo en este último sistema.
+Notemos que los diagramas de estados del SISTEMA MULTIPROGRAMADO y del
+sistema DE TIEMPO COMPARTIDO se diferencian sólo en una transición: la
+que lleva del estado de EJECUTANDO al de LISTO en este último sistema.
 
 -   En un sistema multiprogramado, un proceso sólo abandona la CPU
     cuando ejecuta una petición de servicio al SO.
 -   En un sistema de tiempo compartido, un proceso abandona la CPU
-    cuando ejecuta una petición de servicio al SO o bien cuando se agota
+    cuando ejecuta una petición de servicio al SO O BIEN cuando se agota
     su quantum.
 
 Preguntas
 
 -   ¿Por qué un proceso que ejecuta una solicitud de entrada/salida no
-    pasa directamente al estado de listo?
+    pasa directamente al estado de LISTO?
 -   ¿En qué radica la diferencia entre el scheduling de un sistema
     multiprogramado y el de un sistema de tiempo compartido?
 -   Si en un sistema multiprogramado se ejecuta un programa escrito de
-    forma que nunca ejecuta una operación de entrada/salida, ¿liberará
+    forma que NUNCA ejecuta una operación de entrada/salida, ¿liberará
     alguna vez la CPU durante su vida?
 -   ¿Y en un sistema de tiempo compartido?
 
 Concurrencia y paralelismo
 
-Si el sistema de tiempo compartido dispone de una sola unidad de
-ejecución o CPU, habrá solamente un proceso ejecutándose en cada momento
+Si el sistema de tiempo compartido dispone de UNA SOLA UNIDAD DE
+EJECUCIÓN O CPU, habrá solamente UN PROCESO EJECUTÁNDOSE en cada momento
 dado, pero muchos procesos podrán desarrollar su vida al mismo tiempo,
 alternándose en el uso de esa CPU.
 
 -   Cuando los procesos coexisten en el sistema simultáneamente pero se
-    alternan en el uso de una única CPU decimos que esos procesos son
-    concurrentes. Todos están activos en el sistema durante un período
+    alternan en el uso de UNA ÚNICA CPU decimos que esos procesos son
+    CONCURRENTES. Todos están activos en el sistema durante un período
     de tiempo dado; sin embargo, no hay dos procesos en estado de
     ejecución en el mismo momento, por lo cual no podemos decir que se
-    ejecutan "simultáneamente".
+    ejecutan “simultáneamente”.
 
--   Cuando el sistema de cómputo tiene más de una CPU, entonces podemos
-    tener dos o más procesos en estado de ejecución simultáneamente, y
-    entonces decimos que esos procesos son paralelos. Para tener
-    paralelismo, además de concurrencia debemos tener redundancia de
-    hardware (es decir, más de una CPU).
+-   Cuando el sistema de cómputo tiene MÁS DE UNA CPU, entonces podemos
+    tener dos o más procesos en estado de ejecución SIMULTÁNEAMENTE, y
+    entonces decimos que esos procesos son PARALELOS. Para tener
+    paralelismo, además de concurrencia debemos tener REDUNDANCIA DE
+    HARDWARE (es decir, más de una CPU).
 
 Monitorización de procesos
 
@@ -546,7 +547,7 @@ controlar los procesos del sistema.
 
 Comando top
 
-En Linux, el comando top ofrece una vista de los procesos, información
+En Linux, el comando TOP ofrece una vista de los procesos, información
 acerca de los recursos que están ocupando, y algunas estadísticas
 globales del sistema.
 
@@ -554,48 +555,48 @@ Es conveniente consultar el manual del comando (man top) para investigar
 a fondo los significados de cada uno de los datos presentados en
 pantalla.
 
-Estadísticas globales
+ESTADÍSTICAS GLOBALES
 
-En el cuadro superior, top muestra:
+En el cuadro superior, TOP muestra:
 
--   El tiempo de funcionamiento desde el inicio del sistema
+-   El TIEMPO de funcionamiento desde el inicio del sistema
 -   La cantidad de usuarios activos
--   La carga promedio (longitud de la cola de procesos listos) medida en
+-   La CARGA PROMEDIO (longitud de la cola de procesos listos) medida en
     tres intervalos de tiempo diferentes
 -   La cantidad de procesos o tareas en actividad y en diferentes
     estados
 -   Las estadísticas de uso de la CPU, contabilizando los tiempos:
--   De usuario
--   De sistema
--   De nice o "de cortesía"
--   Ocioso
--   De espera
--   Tiempos imputables a interrupciones
+    -   DE USUARIO
+    -   DE SISTEMA
+    -   DE NICE o “de cortesía”
+    -   OCIOSO
+    -   DE ESPERA
+    -   Tiempos imputables a INTERRUPCIONES
 -   Estadísticas de memoria RAM total, usada y libre, y ocupada por
     buffers de entrada/salida
--   Estadísticas de espacio de intercambio o swap total, usado y libre.
+-   Estadísticas de espacio de intercambio o SWAP total, usado y libre.
 
-Estadísticas de procesos
+ESTADÍSTICAS DE PROCESOS
 
 Para cada proceso, el programa top muestra:
 
 -   El PID o identificación de proceso
--   El usuario dueño del proceso
--   La prioridad a la cual está ejecutando y el valor de nice o de
+-   El USUARIO DUEÑO del proceso
+-   La PRIORIDAD a la cual está ejecutando y el VALOR DE NICE o de
     cortesía
--   El tamaño del espacio virtual del proceso y los tamaños del conjunto
-    residente y regiones compartidas
--   El porcentaje de CPU recibido durante el ciclo de top
--   El porcentaje de memoria del sistema ocupada
--   El tiempo de ejecución que lleva el proceso desde su inicio
--   El comando u orden con la que fue creado el proceso.
+-   El tamaño del ESPACIO VIRTUAL del proceso y los tamaños del CONJUNTO
+    RESIDENTE y REGIONES COMPARTIDAS
+-   El PORCENTAJE DE CPU recibido durante el ciclo de top
+-   El PORCENTAJE DE MEMORIA DEL SISTEMA ocupada
+-   El TIEMPO de ejecución que lleva el proceso desde su inicio
+-   El COMANDO u orden con la que fue creado el proceso.
 
 El comando top tiene muchas opciones y comandos interactivos. Uno de
 ellos muestra los datos de sistema desglosados por CPU o unidad de
 ejecución.
 
+
 Comandos de procesos
---------------------
 
 En los sistemas operativos de la familia de Unix encontramos un rico
 conjunto de comandos de usuario destinados al control de procesos.
@@ -605,19 +606,19 @@ Algunos interesantes son:
 -   nice cambia la prioridad de un proceso
 -   kill envía una señal a un proceso
 
-Interesante
+INTERESANTE
 
 Administración de procesos
 
 Prioridades de ejecución de procesos
 
+
 Gestión de archivos
--------------------
 
 Archivos
 
 La información que se guarda en medios de almacenamiento permanente,
-como los discos, se organiza en archivos, que son secuencias de bytes.
+como los DISCOS, se organiza en ARCHIVOS, que son secuencias de bytes.
 Estos bytes pueden estar codificando cualquier clase de información:
 texto, código fuente de programas, código ejecutable, multimedia, etc.
 
@@ -627,22 +628,22 @@ computadoras puede ser almacenada y comunicada en forma de archivos.
 Sistema de archivos
 
 El componente del SO responsable de los servicios relacionados con
-archivos es el llamado sistema de archivos o filesystem.
+archivos es el llamado SISTEMA DE ARCHIVOS o FILESYSTEM.
 
 En general, el filesystem no se ocupa de cuál es el contenido de los
 archivos, o de qué sentido tienen los datos que contienen. Son las
 aplicaciones quienes tienen conocimiento de cómo interpretar y procesar
 los datos contenidos en los archivos.
 
-En cambio, el filesystem mantiene información acerca de los archivos: en
+En cambio, el filesystem mantiene información ACERCA de los archivos: en
 qué bloques del disco están almacenados, qué tamaño tienen, cuándo
 fueron creados, modificados o accedidos por última vez, qué usuarios
 tienen permisos para ejecutar qué acciones con cada uno de ellos, etc.
 
 Metadatos
 
-Como todos estos datos son acerca de los archivos, y no tienen nada que
-ver con los datos contenidos en los archivos, son llamados metadatos. El
+Como todos estos datos son ACERCA DE LOS ARCHIVOS, y no tienen nada que
+ver con los datos CONTENIDOS EN los archivos, son llamados METADATOS. El
 sistema de archivos o filesystem mantiene tablas y listas de metadatos
 que describen los archivos contenidos en un medio de almacenamiento.
 
@@ -650,37 +651,37 @@ Directorios
 
 Una característica compartida por la mayoría de los sistemas de archivos
 es la organización jerárquica de los archivos en estructura de
-directorios. Los directorios son contenedores de archivos (y de otros
+DIRECTORIOS. Los directorios son contenedores de archivos (y de otros
 directorios).
 
 Los directorios han sido llamados, en la metáfora de las interfaces
-visuales de usuario, carpetas.
+visuales de usuario, CARPETAS.
 
 Varios significados
 
 En rigor de verdad, el nombre de sistema de archivos o filesystem
 designa varias cosas, relacionadas pero diferentes:
 
--   Una pieza de software
+-   UNA PIEZA DE SOFTWARE
 
     El filesystem es el subsistema o conjunto de rutinas del kernel
     responsable de la organización de los archivos del sistema. Es un
-    componente de software o módulo del kernel, y como tal, es código
+    componente de software o módulo del kernel, y como tal, es CÓDIGO
     ejecutable.
 
--   Un conjunto de metadatos
+-   UN CONJUNTO DE METADATOS
 
     Pero, por otro lado, también hablamos del filesystem como el
     conjunto de metadatos acerca de los archivos grabados en un medio de
-    almacenamiento. El filesystem en este sentido, es la información que
+    almacenamiento. El filesystem en este sentido, es la INFORMACIÓN que
     describe unos archivos y reside en el mismo medio de almacenamiento
     que ellos.
 
--   Un conjunto de características
+-   UN CONJUNTO DE CARACTERÍSTICAS
 
     Además, cuando se diseña un sistema de archivos, se lo dota de
     ciertas capacidades distintivas. Al referirnos al filesystem,
-    podemos estar hablando del conjunto de características ofrecidas por
+    podemos estar hablando del CONJUNTO DE CARACTERÍSTICAS OFRECIDAS por
     alguna implementación en particular de un sistema de archivos.
 
     -   Algunos sistemas de archivos específicos tienen ciertas
@@ -691,48 +692,48 @@ designa varias cosas, relacionadas pero diferentes:
     -   Algunos ofrecen servicios como encriptación, compresión, o
         versionado de archivos.
 
+
 Árbol de directorios
---------------------
 
 En los filesystems de tipo Unix, la organización de los directorios es
-jerárquica y recuerda a un árbol con raíz y ramas. Algunos directorios
+jerárquica y recuerda a un árbol con RAÍZ y ramas. Algunos directorios
 cumplen una función especial en el sistema porque contienen archivos
 especiales, y por eso tienen nombres establecidos.
 
 -   Por ejemplo, el directorio raíz, donde se origina toda la jerarquía
-    de directorios, tiene el nombre especial "/".
--   El directorio lib (abreviatura de library o biblioteca) contiene
+    de directorios, tiene el nombre especial “/”.
+-   El directorio lib (abreviatura de LIBRARY o biblioteca) contiene
     bibliotecas de software.
 -   Los directorios bin, sbin. /usr/bin, etc., contienen archivos
-    ejecutables (a veces llamados binarios).
+    ejecutables (a veces llamados BINARIOS).
 
 Nombres de archivo y referencias
 
-Los nombres completos, o referencias absolutas, de los archivos y
+Los nombres completos, o REFERENCIAS ABSOLUTAS, de los archivos y
 directorios se dan indicando cuál es el camino que hay que recorrer,
-para encontrarlos, desde la raíz del sistema de archivos.
+para encontrarlos, DESDE LA RAÍZ del sistema de archivos.
 
-Ejemplo
+EJEMPLO
 
 La referencia absoluta para el archivo texto.txt ubicado en el
 directorio juan, que está dentro del directorio home, que está dentro
 del directorio raíz, es /home/juan/texto.txt.
 
-Una referencia relativa, por otro lado, es una forma de mencionar a un
+Una REFERENCIA RELATIVA, por otro lado, es una forma de mencionar a un
 archivo que depende de dónde está situado el proceso o usuario que
 quiere utilizarlo. Todo proceso, al ejecutarse, tiene una noción de
 lugar del filesystem donde se encuentra.
 
 -   Por ejemplo, el shell de cada usuario funciona dentro del directorio
-    home o espacio privado del usuario.
--   Éste es el directorio actual del proceso shell.
+    HOME o espacio privado del usuario.
+-   Éste es el DIRECTORIO ACTUAL del proceso shell.
 -   Puede ser cambiado utilizando el comando cd.
 -   El comando pwd dice cuál es el directorio actual de un shell.
 
 La referencia relativa de un archivo indica cuál es el camino que hay
-que recorrer para encontrarlo desde el directorio actual del proceso.
+que recorrer para encontrarlo DESDE EL DIRECTORIO ACTUAL del proceso.
 
-Ejemplo
+EJEMPLO
 
 Para el mismo archivo del ejemplo anterior, si el directorio activo del
 shell es /home/juan, la referencia relativa será simplemente texto.txt.
@@ -740,19 +741,19 @@ shell es /home/juan, la referencia relativa será simplemente texto.txt.
 La referencia es relativa porque, si el proceso cambia de directorio
 activo, ya no servirá como referencia para ese mismo archivo.
 
+
 Elementos del sistema de archivos
----------------------------------
 
 Particiones
 
-Los medios de almacenamiento se dividen en particiones o zonas de
+Los medios de almacenamiento se dividen en PARTICIONES o zonas de
 almacenamiento. Cada partición puede contener un sistema de archivos,
 con sus archivos y metadatos.
 
 Bloques
 
-Los bloques son las unidades mínimas de almacenamiento que ofrecen los
-diferentes dispositivos, como los discos. Un bloque es como un
+Los BLOQUES son las unidades mínimas de almacenamiento que ofrecen los
+diferentes dispositivos, como los discos. Un BLOQUE es como un
 contenedor de datos que se asigna a un archivo.
 
 Los archivos quedan almacenados, en los discos y en otros medios, como
@@ -762,7 +763,7 @@ los archivos como un todo.
 
 Inodos
 
-Los nodos índice o inodos son estructuras de datos que describen, cada
+Los NODOS ÍNDICE o INODOS son estructuras de datos que describen, cada
 una, un archivo. Los inodos contienen los principales metadatos de cada
 archivo, excepto el nombre.
 
@@ -772,40 +773,42 @@ tener más de un nombre.
 
 Superblock
 
-El superblock grabado en una partición es una estructura de datos
+El SUPERBLOCK grabado en una partición es una estructura de datos
 compleja donde se mantienen los datos del sistema de archivos. El
 superblock contiene una lista de bloques libres y una lista de inodos.
 
-Inodos
-------
 
-Cada inodo describe a un archivo de datos en un filesystem. El inodo
+Inodos
+
+Cada INODO describe a un archivo de datos en un filesystem. El inodo
 contiene metadatos como:
 
 -   El tamaño en bytes del archivo
 -   La identidad del usuario dueño del archivo y del grupo al cual
     pertenece el archivo
 -   El tipo de archivo
--   Puede tratarse de un archivo regular (de datos) o de un directorio
--   Puede ser un pseudoarchivo, o dispositivo de caracteres o de bloques
--   Puede ser un dispositivo de comunicaciones entre procesos, como un
-    socket, un pipe o tubería, u otros
+    -   Puede tratarse de un archivo regular (de datos) o de un
+        directorio
+    -   Puede ser un pseudoarchivo, o dispositivo de caracteres o de
+        bloques
+    -   Puede ser un dispositivo de comunicaciones entre procesos, como
+        un SOCKET, un PIPE o tubería, u otros
 -   Los permisos o modo de acceso
--   Los archivos en Unix pueden tener permisos de lectura, de
-    escritura/modificación, o de ejecución
--   Esos permisos se especifican en relación al dueño del archivo, al
-    grupo del archivo, o al resto de los usuarios
+    -   Los archivos en Unix pueden tener permisos de lectura, de
+        escritura/modificación, o de ejecución
+    -   Esos permisos se especifican en relación al dueño del archivo,
+        al grupo del archivo, o al resto de los usuarios
 -   La fecha y hora de creación, de última modificación y de último
     acceso
--   La cuenta de links, o cantidad de nombres que tiene el archivo
--   Los números de bloque que almacenan los datos, o punteros a bloques
+-   La cuenta de $ sub $links$ sub $, o cantidad de nombres que tiene el archivo
+-   Los números de bloque que almacenan los datos, o PUNTEROS a bloques
 
 Metadatos
 
 Los metadatos de cada archivo, contenidos en su inodo, pueden ser
 consultados y modificados con comandos de usuario.
 
-Ejemplo
+EJEMPLO
 
 El comando ls -l muestra los nombres de los archivos contenidos en un
 directorio. Para cada archivo, consulta el inodo correspondiente, extrae
@@ -822,68 +825,68 @@ espacios.
     drwxr-xr-x 2 oso oso 4096 May 26 18:14 prueba
     -rwxr-xr-x 1 oso oso   30 Feb  9 16:28 server
 
-Tipo de archivo
+TIPO DE ARCHIVO
 
 El primer elemento de cada fila contiene un carácter que indica el tipo
 del archivo, y los siguientes caracteres indican los permisos asignados
-al archivo. El tipo indicado por el guión es archivo regular, y el
-indicado por la letra d es directorio. En el ejemplo, todos los archivos
-son regulares salvo prueba, que es un directorio. Otros tipos de archivo
+al archivo. El tipo indicado por el GUIÓN es ARCHIVO REGULAR, y el
+indicado por la letra D es DIRECTORIO. En el ejemplo, todos los archivos
+son regulares salvo PRUEBA, que es un directorio. Otros tipos de archivo
 tienen otros caracteres indicadores.
 
-Permisos
+PERMISOS
 
 Los permisos de cada archivo están indicados por los nueve caracteres
 siguientes hasta el espacio. Para interpretarlos, se separan en tres
 grupos de tres caracteres. Los primeros tres caracteres indican los
-permisos que tiene el usuario dueño del archivo; los siguientes tres,
-los permisos para el grupo al cual pertenece el archivo; y los últimos
-tres, los permisos que tienen otros usuarios.
+permisos que tiene el usuario DUEÑO del archivo; los siguientes tres,
+los permisos para el GRUPO al cual pertenece el archivo; y los últimos
+tres, los permisos que tienen OTROS USUARIOS.
 
-Cada grupo de permisos indica si se permite la lectura, escritura, o
-ejecución del archivo. Una letra r en el primer lugar del grupo indica
-que el archivo puede ser escrito. Una w en el segundo lugar, que puede
-ser escrito o modificado. Una x en el tercer lugar, que puede ser
-ejecutado. Cuando no existen estos permisos, aparece un carácter guión.
+Cada grupo de permisos indica si se permite la LECTURA, ESCRITURA, o
+EJECUCIÓN del archivo. Una letra R en el primer lugar del grupo indica
+que el archivo puede ser escrito. Una W en el segundo lugar, que puede
+ser escrito o modificado. Una X en el tercer lugar, que puede ser
+ejecutado. Cuando no existen estos permisos, aparece un carácter GUIÓN.
 
--   Así, el archivo github del ejemplo tiene permisos rwxr-xr-x, que se
-    separan en permisos rwx para el dueño (el dueño puede leerlo,
-    escribirlo o modificarlo, y ejecutarlo), r-x para el grupo
+-   Así, el archivo github del ejemplo tiene permisos RWXR-XR-X, que se
+    separan en permisos RWX para el dueño (el dueño puede leerlo,
+    escribirlo o modificarlo, y ejecutarlo), R-X para el grupo
     (cualquier usuario del grupo puede leerlo y ejecutarlo), y lo mismo
     para el resto de los usuarios.
--   Por el contrario, el archivo howto.txt tiene permisos rw-r--r--, que
-    se separan en permisos rw- para el dueño (el dueño puede leerlo,
-    escribirlo o modificarlo, pero no ejecutarlo), r-- para el grupo
+-   Por el contrario, el archivo howto.txt tiene permisos RW-R–R–, que
+    se separan en permisos RW- para el dueño (el dueño puede leerlo,
+    escribirlo o modificarlo, pero no ejecutarlo), R– para el grupo
     (cualquier usuario del grupo puede leerlo, pero no modificarlo ni
     ejecutarlo), y lo mismo para el resto de los usuarios.
 
-Cuenta de links
+CUENTA DE LINKS
 
-La cuenta de links es la cantidad de nombres que tiene un archivo.
+La cuenta de links es la cantidad de NOMBRES que tiene un archivo.
 
-Dueño y grupo
+DUEÑO Y GRUPO
 
 Las columnas tercera y cuarta indican el usuario y grupo de usuarios al
 cual pertenece el archivo.
 
-Tamaño
+TAMAÑO
 
 Aparece el tamaño en bytes de los archivos regulares.
 
-Fecha y hora
+FECHA Y HORA
 
 Aparecen la fecha y hora de última modificación de cada archivo.
 
-Nombre
+NOMBRE
 
 El último dato de cada línea es el nombre del archivo.
 
+
 Bloques de disco
-----------------
 
 El SO ve los discos como un vector de bloques o espacios de tamaño fijo.
 Cada bloque se identifica por su número de posición en el vector, o
-dirección de bloque. Esta dirección es utilizada para todas las
+DIRECCIÓN DE BLOQUE. Esta dirección es utilizada para todas las
 operaciones de lectura o escritura en el disco.
 
 -   Cuando el SO necesita acceder a un bloque para escribir o leer sus
@@ -906,11 +909,11 @@ Recorrer un archivo (para leerlo o para hacer cualquier clase de
 procesamiento de sus contenidos) implica acceder a todos sus bloques de
 disco, en el orden en que han sido almacenados esos contenidos. La
 información para saber qué bloques componen un archivo, y en qué orden,
-está en el inodo del archivo.
+está en el INODO del archivo.
 
 El inodo contiene entre sus metadatos una lista de las direcciones de
 todos los bloques que contienen la información del archivo. Cada una de
-estas direcciones de bloques se llama un apuntador o puntero a bloque.
+estas direcciones de bloques se llama un apuntador o PUNTERO a bloque.
 
 Como el inodo es una estructura de datos de tamaño fijo, esta lista de
 punteros tendrá un tamaño máximo. Como, además, los archivos tienen
@@ -928,30 +931,30 @@ bloques.
 
 Para administrar mejor el espacio en el superblock, y para mantener el
 inodo de un tamaño razonable, esos punteros a bloques se dividen en tres
-clases: punteros directos, indirectos y doble-indirectos.
+clases: punteros DIRECTOS, INDIRECTOS Y DOBLE-INDIRECTOS.
 
-Punteros directos
+PUNTEROS DIRECTOS
 
-Los punteros directos son simplemente direcciones de bloques de datos.
+Los punteros DIRECTOS son simplemente direcciones de bloques de datos.
 El filesystem clásico de Unix tiene una cantidad fija de diez punteros
 directos en el inodo. Si un archivo tiene una cantidad de bytes igual o
 menor a diez bloques de disco, los punteros directos permiten recorrer
 el archivo completo.
 
-Punteros indirectos
+PUNTEROS INDIRECTOS
 
 Si el archivo es más grande, y los diez punteros directos no alcanzan
-para enumerar los bloques que lo componen, se utilizan punteros
-indirectos. Un puntero indirecto contiene la dirección de un bloque que
-a su vez contiene punteros directos. Hay dos punteros indirectos en el
+para enumerar los bloques que lo componen, se utilizan PUNTEROS
+INDIRECTOS. Un puntero indirecto contiene la dirección de un bloque QUE
+A SU VEZ CONTIENE PUNTEROS DIRECTOS. Hay dos punteros indirectos en el
 inodo del filesystem Unix clásico.
 
-Punteros doble-indirectos
+PUNTEROS DOBLE-INDIRECTOS
 
 Si tampoco son suficientes los punteros directos y los indirectos, el
 inodo del filesystem clásico de Unix contiene un puntero
-doble-indirecto. Es un puntero a un bloque que a su vez contiene
-punteros indirectos.
+DOBLE-INDIRECTO. Es un puntero a un bloque QUE A SU VEZ CONTIENE
+PUNTEROS INDIRECTOS.
 
 Esta estrategia de las tres clases de punteros permite que los inodos
 sean de tamaño reducido pero tengan la capacidad de direccionar una gran
@@ -959,40 +962,40 @@ cantidad de bloques. Así, el filesystem puede contener archivos de
 tamaño considerablemente grande y al mismo tiempo conservar el espacio
 en el superblock.
 
-Preguntas
+PREGUNTAS
 
 Supongamos que un disco ha sido formateado de modo de contener 1 TiB de
 espacio de almacenamiento, y que el tamaño de un bloque de disco sea de
 4 KiB. Propongamos las fórmulas necesarias para responder las siguientes
 preguntas.
 
-1.  ¿Qué cantidad cB de bloques habrá en el disco?
-2.  ¿Con cuántos bits cb representaremos cada dirección de bloque? Dicho
+1.  ¿Qué cantidad CB de bloques habrá en el disco?
+2.  ¿Con cuántos bits CB representaremos cada dirección de bloque? Dicho
     de otra manera, ¿qué cantidad de bits serán necesarios para un
     puntero a bloque?
 3.  ¿Qué tamaño máximo de archivo se puede representar con tres punteros
     directos a bloque?
-4.  ¿Cuántos punteros a bloque cp caben en un bloque indirecto?
-5.  ¿Y en un doble-indirecto (cd)?
+4.  ¿Cuántos punteros a bloque CP caben en un bloque indirecto?
+5.  ¿Y en un doble-indirecto (CD)?
 6.  ¿Qué tamaño máximo de archivo se puede representar con tres punteros
     directos a bloque y uno indirecto?
 7.  Si el inodo tiene 10 punteros directos, 2 indirectos y uno
-    doble-indirecto, ¿cuánto espacio (tp) ocupa la tabla de punteros
+    doble-indirecto, ¿cuánto espacio (TP) ocupa la tabla de punteros
     dentro del inodo?
-8.  ¿Cuál es el tamaño máximo tm de un archivo según esta configuración
+8.  ¿Cuál es el tamaño máximo TM de un archivo según esta configuración
     del inodo?
 9.  Si sabemos que el tamaño promedio de un archivo de datos será de 512
-    MiB, ¿cuántos archivos (ca) podrá haber en el disco?
-10. ¿Cuántos inodos (ci) deberá haber en el superblock entonces?
-11. ¿Cuánto espacio ocupará la lista de inodos (ti) en el superblock?
-12. ¿Cuánto espacio ocupará la lista de bloques libres (tl) en el
+    MiB, ¿cuántos archivos (CA) podrá haber en el disco?
+10. ¿Cuántos inodos (CI) deberá haber en el superblock entonces?
+11. ¿Cuánto espacio ocupará la lista de inodos (TI) en el superblock?
+12. ¿Cuánto espacio ocupará la lista de bloques libres (TL) en el
     superblock?
-13. ¿Cuánto espacio ocupará el superblock (ts) en el disco?
+13. ¿Cuánto espacio ocupará el superblock (TS) en el disco?
+
 
 Directorios
------------
 
-Notemos que en ningún momento hemos mencionado el nombre de los archivos
+Notemos que en ningún momento hemos mencionado el NOMBRE de los archivos
 entre los metadatos. En el filesystem de Unix, los nombres de archivo no
 se encuentran en el superblock, sino en los directorios. Otros sistemas
 de archivos adoptan otras estrategias.
@@ -1002,14 +1005,14 @@ como los archivos regulares, pero juega un papel especial en el
 funcionamiento del sistema de archivos, y sus contenidos tienen un
 formato especial. Los archivos especiales de tipo directorio son
 archivos de datos que podemos pensar organizados como una tabla de dos
-columnas. Contienen una lista de entradas con nombres de archivo (o
-links) y números de inodos que los representan.
+columnas. Contienen una lista de entradas con NOMBRES DE ARCHIVO (o
+LINKS) y números de INODOS que los representan.
 
 Links o nombres de archivo
 
-Al separar el archivo (representado por el inodo), de su nombre o link
+Al separar el archivo (representado por el inodo), de su nombre O LINK
 (contenido en el directorio), el filesystem permite que un archivo pueda
-tener más de un nombre.
+tener MÁS DE UN NOMBRE.
 
 -   En un mismo directorio puede haber dos entradas con nombres
     diferentes, que apunten al mismo inodo.
@@ -1019,8 +1022,8 @@ tener más de un nombre.
 En estos casos, el archivo podrá ser accedido por cualquiera de esos
 nombres. Ninguno de ellos es privilegiado o especial.
 
-Si un proceso intenta borrar un archivo, en realidad estará borrando uno
-de sus nombres. La cuenta de links en el inodo se decrementará en 1.
+Si un proceso intenta borrar un archivo, en realidad estará borrando UNO
+DE SUS NOMBRES. La cuenta de links en el inodo se decrementará en 1.
 Sólo cuando la cuenta de links, o nombres, llegue a cero, se liberarán
 los bloques de datos del archivo y se devolverán a la lista de bloques
 libres en el superblock.
@@ -1037,7 +1040,7 @@ entregado el proceso, descomponiéndola en sus partes componentes y
 usándola como mapa para llegar al archivo, desde el directorio raíz.
 
 -   Para encontrar el archivo, el filesystem lee el inodo 0, que
-    corresponde al directorio raíz, y recoge de allí los bloques de
+    corresponde al DIRECTORIO RAÍZ, y recoge de allí los bloques de
     datos del directorio raíz.
 
 -   Esos bloques de datos contienen nombres de otros archivos y
@@ -1055,64 +1058,64 @@ usándola como mapa para llegar al archivo, desde el directorio raíz.
 -   Finalmente, leyendo este inodo, el filesystem recorrerá los punteros
     a bloques devolviendo el contenido del archivo /etc/group.
 
+
 Gestión de memoria
-------------------
 
 En un sistema multiprogramado, la memoria debe ser dividida de alguna
 forma entre los procesos que existen simultáneamente en el sistema. La
-tarea de controlar qué proceso recibe qué región de memoria, o gestión
-de memoria, es un problema con varias soluciones.
+tarea de controlar qué proceso recibe qué región de memoria, o GESTIÓN
+DE MEMORIA, es un problema con varias soluciones.
 
 Mapa de memoria
 
 Un programa se compone, como mínimo, de:
 
--   Las instrucciones para el procesador (código o texto del programa).
--   Los datos con los que operarán esas instrucciones.
+-   Las instrucciones para el procesador (CÓDIGO o TEXTO del programa).
+-   Los DATOS con los que operarán esas instrucciones.
 
 Para que este programa pueda convertirse en un proceso, tanto
 instrucciones como datos deben estar almacenados en posiciones de
-memoria principal. Solamente de allí pueden ser leídos por el
+MEMORIA PRINCIPAL. Solamente de allí pueden ser leídos por el
 procesador.
 
 Además, los procesos requieren otros espacios de memoria para varios
 otros usos.
 
 -   Por ejemplo, al llamar a una función o rutina, es necesario guardar
-    temporariamente la dirección de retorno, que es la dirección de la
+    temporariamente la DIRECCIÓN DE RETORNO, que es la dirección de la
     instrucción a la cual se debe volver una vez terminada la rutina.
-    Estas direcciones se guardan en una zona denominada la pila o stack
+    Estas direcciones se guardan en una zona denominada la PILA o STACK
     del proceso.
--   El proceso puede necesitar crear dinámicamente estructuras de datos
+-   El proceso puede necesitar crear dinámicamente ESTRUCTURAS DE DATOS
     que no existían al momento de carga del programa en memoria. Estos
     componentes también necesitan ser almacenados en memoria,
-    típicamente en una zona denominada el heap.
+    típicamente en una zona denominada el HEAP.
 
-Todos estos componentes forman lo que a veces se llama mapa de memoria
+Todos estos componentes forman lo que a veces se llama MAPA DE MEMORIA
 de cada proceso, y requieren memoria física.
 
+
 Espacios de direcciones
------------------------
 
 Espacio de direcciones físicas
 
 La memoria física del sistema se ve como un arreglo, vector o secuencia
 ordenada de celdas o posiciones de almacenamiento. Cada posición tiene
-una dirección que es el número con el que se la puede acceder para leer
+una DIRECCIÓN que es el número con el que se la puede acceder para leer
 o escribir su contenido. En un sistema de cómputo, el conjunto de
-direcciones de la memoria física es un espacio de direcciones físicas.
+direcciones de la memoria física es un ESPACIO DE DIRECCIONES FÍSICAS.
 
 Espacio de direcciones lógicas
 
 Al ejecutarse un proceso, las instrucciones que va ejecutando la CPU
-referenciarán a los objetos del mapa de memoria mediante su dirección.
+REFERENCIARÁN a los objetos del mapa de memoria mediante su dirección.
 Cada vez que la CPU necesite cargar una instrucción para decodificarla,
 hará una referencia a la dirección donde reside esa instrucción. Cada
 vez que una instrucción necesite acceder a un dato en memoria, la CPU
 hará una referencia a su dirección. El conjunto de todas las direcciones
-de estos objetos forma el espacio de direcciones lógicas del proceso.
+de estos objetos forma el ESPACIO DE DIRECCIONES LÓGICAS del proceso.
 
-Ejemplo
+EJEMPLO
 
 En nuestro modelo MCBE, los espacios físico y lógico coinciden. Como
 sabemos, una instrucción como 0 1 0 0 0 1 1 1 indica que se debe cargar en el
@@ -1120,38 +1123,38 @@ acumulador el contenido de la dirección 7.
 
 -   Al ejecutarse esta instrucción, el procesador envía el número 7 al
     sistema de memoria para que éste le entregue el contenido de esa
-    posición. El procesador hace una referencia a la dirección 7. Por lo
+    posición. El procesador hace una REFERENCIA a la dirección 7. Por lo
     tanto, la dirección 7 pertenece al espacio lógico del programa.
 -   Además, el sistema de memoria utiliza directamente el número 7
     recibido de la CPU como la dirección de memoria que debe devolver.
     La posición física consultada por el sistema de memoria es
     exactamente la número 7.
 
+
 Traducción de direcciones
--------------------------
 
 En un sistema multiprogramado, los programas son cargados en diferentes
 posiciones del espacio de memoria física. Esto hace que los espacios
-lógico y físico de direcciones de un proceso, en general, no coincidan.
+LÓGICO Y FÍSICO de direcciones de un proceso, en general, no coincidan.
 
-Para que las referencias a direcciones lógicas conserven el sentido
+Para que las referencias a direcciones LÓGICAS conserven el sentido
 deseado por el programador, el sistema utiliza alguna forma de
-traducción de direcciones. Las referencias a direcciones generadas por
+TRADUCCIÓN DE DIRECCIONES. Las referencias a direcciones generadas por
 el procesador pertenecerán al espacio lógico del proceso; pero el
-mecanismo de traducción de direcciones mapeará esas direcciones lógicas
+mecanismo de traducción de direcciones MAPEARÁ esas direcciones lógicas
 a las direcciones físicas asignadas.
 
 Unidad de gestión de memoria o MMU
 
 Esta traducción tiene lugar, automáticamente, en el momento en que el
 procesador emite una dirección hacia el sistema de memoria, y está a
-cargo de un componente especial del hardware. Este componente se llama
-la unidad de gestión de memoria (MMU, Memory Management Unit).
+cargo de un COMPONENTE ESPECIAL DEL HARDWARE. Este componente se llama
+la UNIDAD DE GESTIÓN DE MEMORIA (MMU, MEMORY MANAGEMENT UNIT).
 
--   El sistema de memoria recibe únicamente las direcciones físicas,
-    traducidas, y "no sabe" que el procesador ha solicitado acceder a
-    una dirección lógica diferente.
--   Por su parte, el procesador "no sabe" que la dirección física
+-   El sistema de memoria recibe únicamente las direcciones FÍSICAS,
+    traducidas, y “no sabe” que el procesador ha solicitado acceder a
+    una dirección LÓGICA diferente.
+-   Por su parte, el procesador “no sabe” que la dirección física
     accedida es diferente de la dirección lógica cuyo acceso ha
     solicitado.
 
@@ -1161,7 +1164,7 @@ dirección va a ser cargado su programa, y debería preparar las
 referencias a las direcciones de modo de que ambos espacios
 coincidieran.
 
-Ejemplo
+EJEMPLO
 
 El siguiente programa sencillo en lenguaje ensamblador de MCBE hace
 referencias a algunas direcciones.
@@ -1175,7 +1178,7 @@ referencias a algunas direcciones.
     0 0 1 1 0  SUMA: 0
 
 En este ejemplo, DATO, CANT y SUMA son las posiciones de memoria 4, 5 y
-6. Si este programa se carga en la posición cero de la memoria física,
+6. Si este programa se carga en la posición CERO de la memoria física,
 los espacios físico y lógico coincidirán. Sin embargo, en un sistema
 multiprogramado, es posible que el proceso reciba otras posiciones de
 memoria física.
@@ -1184,21 +1187,21 @@ Por ejemplo, el programa podría haber sido cargado a partir de la
 dirección 20 de la memoria. Entonces, la posición de memoria física
 donde residirá el valor SUMA no es la posición 6, sino la 26.
 
-El mecanismo de traducción de direcciones del sistema deberá sumar el
-valor base de la memoria (en este caso, 20) a todas las referencias a
-memoria generadas por el procesador para mantener el funcionamiento
-deseado. Sin traducción de direcciones, la instrucción ST SUMA
-almacenará el resultado en la posición cuya dirección física es 6...
-¡que pertenece a otro proceso!
+El mecanismo de traducción de direcciones del sistema DEBERÁ SUMAR EL
+VALOR BASE DE LA MEMORIA (en este caso, 20) A TODAS LAS REFERENCIAS A
+MEMORIA GENERADAS POR EL PROCESADOR para mantener el funcionamiento
+deseado. SIN traducción de direcciones, la instrucción ST SUMA
+almacenará el resultado en la posición cuya dirección física es 6… ¡que
+pertenece a otro proceso!
 
 Asignación de memoria contigua
 
 Uno de los esquemas de asignación de memoria más simples consiste en
-asignar una región de memoria contigua (un conjunto de posiciones de
+asignar una región de memoria CONTIGUA (un conjunto de posiciones de
 memoria sin interrupciones) a cada proceso.
 
 Si un SO utiliza este esquema de asignación de memoria, establece
-particiones de la memoria, de un tamaño adecuado a los requerimientos de
+PARTICIONES de la memoria, de un tamaño adecuado a los requerimientos de
 cada proceso. Cuando un proceso termina, su región de memoria se libera
 y puede ser asignada a un nuevo proceso.
 
@@ -1206,14 +1209,14 @@ Fragmentación externa
 
 El problema de este esquema es que, a medida que el sistema opere, las
 regiones que queden libres pueden ser tan pequeñas que un proceso nuevo
-no pueda obtener una región de tamaño suficiente, a pesar de que exista
-memoria libre en cantidad suficiente en el sistema. Este fenómeno se
-llama fragmentación externa.
+no pueda obtener una región de tamaño suficiente, A PESAR DE QUE EXISTA
+MEMORIA LIBRE EN CANTIDAD SUFICIENTE en el sistema. Este fenómeno se
+llama FRAGMENTACIÓN EXTERNA.
 
-Un remedio para la fragmentación externa es la compactación de la
+Un remedio para la fragmentación externa es la COMPACTACIÓN de la
 memoria, es decir, reubicar los procesos que estén ocupando memoria, de
 manera de que sus regiones sean contiguas entre sí. De esta forma los
-"huecos" en la memoria se unen y se crean regiones libres contiguas
+“huecos” en la memoria se unen y se crean regiones libres contiguas
 grandes.
 
 El problema con esta solución es que la reubicación de los procesos es
@@ -1223,26 +1226,26 @@ y el sistema perderá productividad.
 
 Esta clase de cargas extra en tareas administrativas, que quitan
 capacidad al sistema para atender el trabajo genuino, se llama
-sobrecarga u overhead.
+SOBRECARGA u OVERHEAD.
+
 
 Segmentación
-------------
 
 Un esquema de asignación que reduce la fragmentación externa es el de
-segmentación. Con este esquema, el mapa de memoria del proceso se divide
-en trozos de diferentes tamaños, llamados segmentos, conteniendo cada
+SEGMENTACIÓN. Con este esquema, el mapa de memoria del proceso se divide
+en trozos de diferentes tamaños, llamados SEGMENTOS, conteniendo cada
 uno un conjunto de instrucciones o de datos.
 
 Durante la compilación de un programa fuente, el compilador distribuye
 los trozos de código y las estructuras de datos en distintos segmentos.
-Cada segmento tiene un tamaño o límite, calculado y especificado por el
+Cada segmento tiene un tamaño o LÍMITE, calculado y especificado por el
 compilador, y grabado en la cabecera del archivo ejecutable resultante
 de la compilación.
 
 Al cargar un programa en memoria, el SO destina cada segmento a una
-determinada dirección base física. La dirección base de cada segmento es
+determinada DIRECCIÓN BASE física. La dirección base de cada segmento es
 utilizada por el mecanismo de traducción de direcciones. El dato de
-tamaño o límite de cada segmento es utilizado para la protección,
+tamaño o límite de cada segmento es utilizado para la PROTECCIÓN,
 asegurando que las referencias a memoria generadas por la CPU no rebasen
 los límites de cada segmento. De esta forma, un proceso no puede
 corromper el espacio de otros.
@@ -1251,12 +1254,12 @@ Este esquema de asignación de memoria reduce, aunque no elimina, la
 fragmentación externa, ya que los segmentos son más pequeños y
 reubicables dinámicamente.
 
-Paginación
-----------
 
-El esquema de asignación de memoria conocido como paginación considera
-la memoria dividida en regiones del mismo tamaño (marcos de memoria), y
-el espacio lógico de los procesos dividido en regiones (páginas) de
+Paginación
+
+El esquema de asignación de memoria conocido como PAGINACIÓN considera
+la memoria dividida en regiones del mismo tamaño (MARCOS de memoria), y
+el espacio lógico de los procesos dividido en regiones (PÁGINAS) de
 igual tamaño que los marcos. Las páginas de los procesos se asignan
 individualmente a los marcos, una página por vez.
 
@@ -1271,12 +1274,12 @@ espacio libre, siempre será suficiente para alojar al menos una página.
 Sin embargo, en general, el tamaño del espacio lógico del proceso no es
 exactamente divisible por el tamaño de la página; por lo tanto, puede
 haber algún espacio desaprovechado en las páginas asignadas. Esta
-condición se llama fragmentación interna.
+condición se llama FRAGMENTACIÓN INTERNA.
 
 Tabla de páginas
 
 Para poder mantener la correspondencia entre marcos de memoria y páginas
-de los procesos, el SO mantiene una tabla de páginas por cada proceso.
+de los procesos, el SO mantiene una TABLA DE PÁGINAS por cada proceso.
 
 -   La tabla de páginas de cada proceso dice, para cada página del
     proceso, qué marco le ha sido asignado, además de otra información
@@ -1291,32 +1294,32 @@ de los procesos, el SO mantiene una tabla de páginas por cada proceso.
 Paginación por demanda
 
 Debido a que los programas no utilizan sino una pequeña parte de su
-espacio lógico en cada momento (fenómeno llamado localidad de
-referencias), la asignación por paginación tiene una propiedad muy
+espacio lógico en cada momento (fenómeno llamado LOCALIDAD DE
+REFERENCIAS), la asignación por paginación tiene una propiedad muy
 interesante: no es necesario que todas las páginas de un proceso estén
 en memoria física para que pueda ser ejecutado.
 
-Esto permite la creación de sistemas con paginación por demanda, donde
+Esto permite la creación de sistemas con PAGINACIÓN POR DEMANDA, donde
 las páginas se cargan en memoria a medida que se necesitan. Un proceso
 puede empezar a ejecutarse apenas esté cargada la primera de sus páginas
 en memoria, sin necesidad de esperar a que todo su espacio lógico tenga
 memoria física asignada.
 
-Cada proceso demanda al SO la carga de una página de su espacio lógico
+Cada proceso DEMANDA al SO la carga de una página de su espacio lógico
 al espacio físico en el momento en que referencia algún objeto
 perteneciente a esa página. De esta manera la actividad de
 entrada/salida desde el disco a la memoria se reduce al mínimo
 necesario.
 
-Utilizando 1) paginación por demanda, 2) agregando algunas
-características al mecanismo de traducción de direcciones, y 3) contando
-con un espacio de almacenamiento extra en disco para intercambio de
-páginas o swapping, se puede implementar un sistema de memoria virtual.
+Utilizando 1) PAGINACIÓN POR DEMANDA, 2) agregando algunas
+características al mecanismo de TRADUCCIÓN DE DIRECCIONES, y 3) contando
+con un espacio de almacenamiento extra en disco para INTERCAMBIO DE
+PÁGINAS o SWAPPING, se puede implementar un sistema de MEMORIA VIRTUAL.
 La mayoría de los SO multipropósito para hardware con MMU utiliza esta
 técnica.
 
+
 Memoria virtual
----------------
 
 Con memoria virtual, el espacio de direcciones lógicas y el espacio
 físico se independizan completamente. El espacio lógico puede tener un
@@ -1324,20 +1327,20 @@ tamaño completamente diferente del espacio físico. La cantidad de
 páginas de un proceso ya no se ve limitada por la cantidad de marcos de
 la memoria física.
 
--   Podemos ejecutar más procesos de los que cabrían en memoria física
+-   Podemos ejecutar MÁS PROCESOS de los que cabrían en memoria física
     si debiéramos asignar todo el espacio lógico de una vez.
--   Los procesos pueden tener un tamaño de espacio lógico más grande de
+-   Los procesos pueden tener un tamaño de espacio lógico MÁS GRANDE de
     lo que permite el tamaño de la memoria física.
 
 En un sistema de memoria virtual, la tabla de páginas mantiene, además
 de los números de página y de marco asociados, datos de estado sobre la
 condición de cada página.
 
--   Bit de validez
+-   BIT DE VALIDEZ
 
     Indica si la página del proceso tiene memoria física asignada.
 
--   Bit de modificación
+-   BIT DE MODIFICACIÓN
 
     Indica si la página ha sido modificada desde que se le asignó
     memoria física.
@@ -1345,7 +1348,7 @@ condición de cada página.
 El bit de validez de cada página indica si la página tiene o no asignado
 un marco, y es crucial para el funcionamiento del sistema de memoria
 virtual. Cuando la CPU genera una referencia a una página no válida, la
-condición que se produce se llama un fallo de página (page fault) y se
+condición que se produce se llama un FALLO DE PÁGINA (PAGE FAULT) y se
 resuelve asignando un marco, luego de lo cual el proceso puede
 continuar.
 
@@ -1373,28 +1376,28 @@ El mecanismo de memoria virtual funciona de la siguiente manera:
     tabla de páginas. Los contenidos de la página se traerán del disco.
 -   La MMU entrega la dirección física requerida al sistema de memoria.
 -   Si la operación era de escritura, se marca la página como
-    modificada.
+    MODIFICADA.
 
 Reemplazo de páginas
 
 Cuando no existan más marcos libres en memoria para asignar, el SO
-elegirá una página víctima del mismo u otro proceso y la desalojará de
-la memoria. Aquí es donde se utiliza el bit de modificación de la tabla
+elegirá una página VÍCTIMA del mismo u otro proceso y la desalojará de
+la memoria. Aquí es donde se utiliza el bit de MODIFICACIÓN de la tabla
 de páginas.
 
 -   Si la página víctima no está modificada, simplemente se marca como
-    no válida y se reutiliza el marco que ocupaba.
+    NO VÁLIDA y se reutiliza el marco que ocupaba.
 -   Si la página víctima está modificada, además de marcarla como no
-    válida, sus contenidos deben guardarse en el espacio de intercambio
-    o swap.
+    válida, sus contenidos deben guardarse en el ESPACIO DE INTERCAMBIO
+    O SWAP.
 
 Posteriormente, en algún otro momento, el proceso dueño de esta página
 querrá accederla. La MMU verificará que la página no es válida y
-disparará una condición de fallo de página. La página será traída del
+disparará una condición de FALLO DE PÁGINA. La página será traída del
 espacio de intercambio, en el estado en que se encontraba al ser
 desalojada, y el proceso podrá proseguir su ejecución.
 
-Ejemplo
+EJEMPLO
 
 Supongamos un sistema donde existen dos procesos activos, con algunas
 páginas en memoria principal, y una zona de intercambio en disco.
@@ -1440,8 +1443,8 @@ páginas en memoria principal, y una zona de intercambio en disco.
     continúa su operación normalmente.
 
 Notemos que en este ejemplo existen tres procesos cuyos tamaños de
-espacio lógico miden 4, 5 y 6 páginas, dando un total de 15 páginas. Sin
-embargo, el sistema de cómputo sólo tiene ocho marcos.
+espacio lógico miden 4, 5 Y 6 PÁGINAS, dando un total de 15 PÁGINAS. Sin
+embargo, el sistema de cómputo sólo tiene OCHO MARCOS.
 
 Sin paginación por demanda y memoria virtual, solamente podría entrar en
 el sistema uno de los tres procesos. Durante las operaciones de
@@ -1451,10 +1454,10 @@ páginas, no podría ser ejecutado.
 
 Con la técnica de memoria virtual, los tres procesos pueden estar
 activos simultáneamente en el sistema, aumentando la utilización de CPU.
-Y, si alguno de esos procesos tuviera un espacio lógico de más de 8
-páginas, el sistema seguiría funcionando del mismo modo.
+Y, si alguno de esos procesos tuviera un espacio lógico de MÁS DE 8
+PÁGINAS, el sistema seguiría funcionando del mismo modo.
 
-Preguntas
+PREGUNTAS
 
 1.  La cantidad de bits de página y la cantidad de bits de marco, ¿deben
     ser iguales? ¿Qué posibilidades hay, y qué consecuencias tiene cada

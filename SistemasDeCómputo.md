@@ -1,11 +1,11 @@
 
 
 
-#Sistemas de Cómputo
+# Sistemas de Cómputo
 Un sistema de cómputo es un conjunto de elementos electrónicos organizados para permitir el procesamiento de información. A lo largo del tiempo los sistemas de cómputo han evolucionado notablemente, y en este material vamos a ver las cosas más importantes que han ocurrido durante esta evolución.
 
 
-##Evolución de los sistemas de cómputo
+## Evolución de los sistemas de cómputo
 
 Los sistemas de cómputo constituyen una industria, y como en toda industria, existe la competencia entre los fabricantes, que buscan obtener más mercado mejorando las características de sus productos. En ninguna otra industria como en la computación es tan notable el crecimiento de las capacidades de los sistemas de cómputo y, simultáneamente, la reducción de costos y tamaños físicos de los componentes.
 
@@ -17,7 +17,7 @@ Los sistemas de cómputo constituyen una industria, y como en toda industria, ex
 Sin embargo, los diferentes componentes se producen con procesos de fabricación diferentes y que incorporan avances cada uno a su ritmo, por lo cual no siempre más rápido o más pequeño es mejor, sino que lo más importante es que las partes del sistema funcionen en armonía. De lo contrario, pueden presentarse desbalances que impidan que el sistema funcione en forma óptima.
 
 
-###Antecedentes históricos
+### Antecedentes históricos
 
 En la antigüedad se crearon los que podríamos llamar sistemas de cómputo primitivos, aunque ingeniosos. Aquí citamos unos pocos ejemplos, como el ábaco chino; los quipus incas; los dispositivos de cálculo analógicos aparecidos en diferentes civilizaciones, como los que permitían calcular la torsión de los tensores de las catapultas romanas; el misterioso Mecanismo de Anticitera, un aparato astronómico encontrado entre los restos de un naufragio griego. 
 
@@ -30,7 +30,7 @@ Supuestamente construido por científicos griegos, el instrumento conocido como 
 Inventada en 1642 por el filósofo y matemático francés Blaise Pascal (1623-1662), [la Pascalina](https://es.m.wikipedia.org/wiki/Pascalina) permitía sumar y restar dos números de manera directa y hacer la multiplicación y división por repetición.
 
 
-###La Tabuladora de Hollerith
+### La Tabuladora de Hollerith
 
 Entre estos proto-sistemas de computación es especialmente notable, por varios motivos, la máquina de Hollerith. Herman Hollerith trabajaba para la Oficina de Inmigración de EEUU hacia fines del siglo XIX, en momentos en que se formó una gran corriente inmigratoria desde Europa. La gran cantidad de personas que llegaban a radicarse, nunca vista antes, hizo desbordar el sistema de información nacional. Los responsables del censo poblacional se encontraban con un gran problema.
 
@@ -41,7 +41,7 @@ La Tabuladora de Hollerith era un dispositivo que contabilizaba perforaciones en
 La máquina de Hollerith es especialmente interesante porque sienta las bases del cálculo digital como se conocerá en los años siguientes (de hecho, las tarjetas perforadas siguieron utilizándose hasta muchos años después como medio de entrada, para codificar programas y datos), porque demostró el poder del cómputo automático con una aplicación concreta e importante, y porque, tomando su invento como punto de partida, Hollerith formó una importante empresa de computación que tuvo gran influencia en el desarrollo de la tecnología del siglo XX. 
 
 
-##Primera generación
+## Primera generación
 
 Las primeras computadoras electrónicas usaban **bulbos, tubos de vacío, o válvulas**, como interruptores, implementando dispositivos que realizaban operaciones aritméticas y lógicas.
 
@@ -52,7 +52,7 @@ El **ENIAC** es un claro representante de esta clase de máquinas. Pesaba 30 ton
 El ENIAC no era una máquina de Von Neumann porque su programa no residía en memoria, sino que la computadora se programaba con un intricado sistema de interruptores manuales. Entre las máquinas de esta generación se encuentra la primera computadora de programa almacenado según el modelo de Von Neumann. Fue el IAS (siglas de **Institute for Advanced Study**), que usaba 1500 tubos de vacío y tenía 5 kB de memoria.
 
 
-###El tubo de vacío
+### El tubo de vacío
 
 El **tubo de vacío o válvula termoiónica** fue patentado por Edison y fue sucesivamente modificado para diferentes usos en electrónica hasta llegar a ser usado en las computadoras de la primera generación. Una de sus variedades, el **triodo**, tiene tres electrodos o terminales conectados al resto del circuito, llamados **cátodo, ánodo y rejilla o grilla de control**. En éstos, la corriente eléctrica se dirige siempre desde el cátodo al ánodo, pero únicamente circula cuando existe una determinada carga negativa en la grilla, que funciona como un interruptor. 
 
@@ -61,7 +61,7 @@ De esta manera se puede controlar el flujo de corriente por un circuito y constr
 La grilla de las válvulas necesita alcanzar una alta temperatura para poder gobernar el flujo de electrones. De ahí que el consumo de electricidad fuera altísimo y su funcionamiento sumamente lento. Unido esto a una alta tasa de fallos, las válvulas fueron rápidamente abandonadas en favor de una tecnología más conveniente, el **transistor**.
 
 
-###Memorias de núcleos
+### Memorias de núcleos
 
 Las primeras implementaciones de la memoria principal (memorias de núcleos o **core memories**) fueron realizadas con pequeños anillos metálicos atravesados por alambres. El flujo eléctrico que conducían estos alambres magnetizaba en forma estable los anillos, que almacenaban un bit de información cada uno. El sistema de memoria podía leer, más tarde, la **polaridad** magnética de cada anillo, y así se recuperaba el valor binario que había sido almacenado en ese bit.
 
@@ -69,7 +69,7 @@ Las primeras implementaciones de la memoria principal (memorias de núcleos o **
 La tecnología de las memorias ha evolucionado espectacularmente desde la creación de las primitivas memorias de núcleos. Hoy, cincuenta años después, existen memorias de bajo costo, menor tamaño, mayor velocidad, y capacidad millones de veces superior. Una memoria Micro-SD de hoy, por ejemplo, puede alojar 32 GiB de información en una centésima parte del espacio ocupado por un 1 Kib de memoria de núcleos.
 
 
-###ENIAC
+### ENIAC
 
 Presentado en 1946, **ENIAC** es reconocido como el primer computador digital, completamente electrónico, de propósito general. Usaba números representados en base 10. Tenía una capacidad de memoria de 1000 bits donde podía almacenar unos veinte números decimales de diez dígitos. 
 
@@ -79,14 +79,14 @@ El ENIAC fue propuesto para cómputos de trayectoria de proyectiles, aplicación
 Pero más notable todavía es que cincuenta años y varias generaciones de computadoras después, en 1997, el proyecto **ENIAC-on-a-chip** construyó un circuito integrado completamente equivalente al ENIAC... del tamaño de una moneda (y habrían cabido muchos más en el mismo espacio).
 
 
-###Clementina 
+### Clementina 
 
 ¿Qué pasaba en nuestro país durante estas épocas? La actividad de la computación aquí no había comenzado. Recién a principios de los años 60 la universidad argentina decidió hacer una importante inversión, que fue la compra de una computadora de primera generación, bautizada aquí **Clementina**. El video adjunto cuenta interesantes detalles técnicos de la computadora, muestra cómo eran las personalidades involucradas por ese entonces en el proyecto científico y tecnológico argentino, y explica el contexto histórico en el que fue iniciado (y, lamentablemente, truncado) ese proyecto.
 
 
-##Segunda generación
+## Segunda generación
 
-###Semiconductores
+### Semiconductores
 
 En 1948 los físicos habían descubierto que combinando, en ciertas proporciones, elementos que eran vecinos en la Tabla Periódica, se creaban nuevos materiales con un desbalance de electrones; y que de esta manera se podía controlar el sentido de las corrientes eléctricas que atravesaban esos materiales. Así fue inventado un componente electrónico revolucionario, el **transistor**, que era básicamente un **triodo de estado sólido**, es decir, podía cumplir el mismo papel en un circuito que la válvula termoiónica de tres electrodos, pero era construido de una forma completamente diferente. 
 
@@ -95,7 +95,7 @@ Esto significa que las mismas funciones lógicas de los interruptores, que en la
 Decimos que esta segunda generación de computadoras fue construida con dispositivos **discretos**, es decir, separados, para distinguirla de la generación siguiente, donde esos dispositivos fueron **integrados**.
 
 
-###El transistor 
+### El transistor 
 
 El **transistor** consiste en tres pequeñas piezas, puestas en contacto entre sí, hechas de materiales especialmente preparados. Estas piezas consisten, cada una, de un núcleo de un cierto elemento, conteniendo impurezas de un segundo elemento diferente.
 
@@ -106,7 +106,7 @@ Según la combinación de los elementos, el material será de tipo **P** (atrae 
 Gracias a estas propiedades el transistor funciona como un interruptor, con el cual se pueden implementar todas las funciones lógicas necesarias en los circuitos de la CPU y otros componentes de las computadoras.  El transistor resulta así un reemplazo eficaz de las antiguas válvulas termoiónicas. 
 
 
-### Del transistor a la memoria
+###  Del transistor a la memoria
 
 Un transistor permite el pasaje de corriente entre **colector y emisor**, sólo cuando recibe corriente el conector **base**. De esta manera opera como un conmutador o switch accionado electrónicamente.
 
@@ -132,14 +132,14 @@ Las entradas de un Flip-Flop de tipo RS se llaman **Reset y Set**.
 Un **byte de memoria** puede implementarse como un vector de **ocho Flip-Flops**. Un Kibibyte de memoria comprenderá entonces $2^{10}$ de estos vectores. Las tecnologías modernas de integración en gran escala permiten concentrar millones de estos componentes en un espacio muy reducido.
 
 
-###Minicomputadoras
+### Minicomputadoras
 
 Los transistores abarataron las computadoras y redujeron su tamaño. Algunas de las desarrolladas en esta época recibieron el nombre de **minicomputadoras**.
 
 El PDP-1 fue uno de los primeros computadores que pudieron ser accedidos masivamente por los estudiantes de computación. Tenía un **sistema de tiempo compartido (time-sharing)** que hacía posible la utilización de la máquina por varios usuarios a la vez. Tenía 144 KB de memoria principal y ejecutaba 100.000 instrucciones por segundo. 
 
 
-##Tercera generación
+## Tercera generación
 
 A mediados de los 60 se desarrollaron los **circuitos integrados o microchips**, que empaquetaban una gran cantidad de transistores en un solo componente, con importantes mejoras en el aspecto funcional y en la economía de la producción de computadoras. Aparecieron computadoras más baratas que llegaron a empresas y establecimientos educativos más pequeños, popularizándose el uso de la computación. 
 
@@ -151,14 +151,14 @@ También aparecieron las primeras **supercomputadoras**, como el Cray-1, en 1976
 El **microprocesador** desarrollado por Intel reunió la mayor parte de las funciones de las computadoras en un solo microchip. La existencia del microprocesador favoreció la creación de una industria de las computadoras personales. En 1982 IBM propuso el PC (Personal Computer), un **computador personal o microcomputador** del cual descienden la mayoría de las computadoras domésticas y de oficina que se usan hoy. Al contrario que las computadoras de hasta entonces, construidas con procedimientos y componentes propios del fabricante, y a veces secretos, la **arquitectura abierta** del PC utilizaba componentes existentes y conocidos, y estaba públicamente documentada; de manera que otras empresas podían libremente fabricar componentes compatibles con esta computadora. 
 
 
-###Circuitos integrados
+### Circuitos integrados
 
 Los **circuitos integrados** fueron el resultado de un proceso de fabricación completamente nuevo llamado **fotomicrolitografía**. Los ingenieros preparaban un diagrama del circuito deseado, con sus transistores, conexiones y demás componentes, y el diagrama se reducía por medios ópticos hasta un tamaño casi microscópico. La imagen resultante se grababa sobre un sustrato de silicio.
 
 Repitiendo el procedimiento con diferentes diagramas, sobre sucesivas capas de materiales semiconductores y aislantes, se lograba la miniaturización de un circuito completo con miles de transistores en un espacio muy reducido. Los modernos circuitos integrados reúnen miles de millones de transistores en menos de un centímetro cúbico de volumen.
 
 
-###Microprocesador
+### Microprocesador
 
 Un programador utiliza un microprocesador a través de su **conjunto de instrucciones** (aritméticas, de transferencia, de salto, etc.). Por otro lado, el microprocesador tiene un cierto comportamiento, que el programador necesita conocer: qué papeles cumplen sus registros, qué efecto tienen las instrucciones sobre esos registros, qué modos de acceder a los datos son posibles, etc. Este comportamiento puede llamarse un **modelo de programación** del microprocesador.
 
@@ -173,7 +173,7 @@ La forma de implementar una arquitectura es llamada la **microarquitectura** del
 Una familia de microprocesadores también puede ampliar su conjunto de instrucciones, pero manteniendo intactas todas las de los productos anteriores. Esta forma de compatibilidad se llama a veces retrocompatibilidad o **compatibilidad hacia atrás**.  
 
 
-##Cuarta generación
+## Cuarta generación
 
 Gracias a nuevos procesos de fabricación de circuitos integrados, se logró cada vez mayor miniaturización de componentes. 
 
@@ -198,7 +198,7 @@ Esta mejora en el procesamiento era lo que mantenía en crecimiento a la industr
 Una consecuencia importante de la Era del Multicore es que la mejora en velocidad de ejecución ya no se logra simplemente comprando hardware nuevo; sino que los programas deben ser especialmente escritos para aprovechar las características de **procesamiento paralelo** de los procesadores multicore. La Ley de Moore se sigue cumpliendo, sólo que ahora los transistores se distribuyen en varios núcleos en lugar de concentrarse en un único procesador.
 
 
-###Microprocesador Intel I7
+### Microprocesador Intel I7
 
 El microprocesador I7 es actualmente el procesador más avanzado para computadoras personales de la firma Intel. Es retrocompatible con toda la línea de procesadores de la **arquitectura x86** desarrollada por esa firma. La cronología siguiente muestra algunos significativos cambios de microarquitectura. 
 
@@ -231,7 +231,7 @@ El i7 pertenece a una generación de procesadores donde, para enfrentar los prob
 - En la misma "pastilla" o unidad física del microprocesador se encuentra una unidad procesadora de gráficos o GPU. Esta GPU es un procesador con una arquitectura especial, dedicado a la generación de gráficos avanzados, pero que además puede utilizarse para cómputos paralelos de propósito general.
 
 
-##Tiempos de acceso a los datos
+## Tiempos de acceso a los datos
 
 Como sabemos, no podemos utilizar un dato si no lo hacemos llegar primero al procesador o CPU; y el tiempo que tarda en llegar a un registro de la CPU, para poder operar sobre él, depende de dónde esté localizado este dato. Es interesante comparar los diferentes tiempos de demora en el acceso a un dato, o **latencia**, según en qué componente del sistema de cómputo se encuentra ese dato. 
 

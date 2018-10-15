@@ -1,60 +1,75 @@
-\documentclass[spanish,A4,]{article}
-\usepackage{sans}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[spanish,a4paper,]{article}
+\usepackage[]{sans}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\usepackage{longtable,booktabs}
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{spanish}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=spanish]{babel}
 \else
-  \usepackage[spanish]{babel}
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{spanish}
 \fi
 
 \title{El Software}
+\date{}
 
 \begin{document}
 \maketitle
 
-\section{El Software}\label{el-software}
+\hypertarget{el-software}{%
+\section{El Software}\label{el-software}}
 
 En esta parte de la unidad, \textbf{El Software}, nos interesa conocer
 el proceso de desarrollo de software, desde el punto de vista de la
@@ -62,10 +77,12 @@ organización de computadoras. Explicaremos cómo se llega desde un
 programa, en un lenguaje de alto o bajo nivel, a obtener una sucesión de
 instrucciones de máquina para un procesador.
 
-\subsection{Lenguajes de bajo nivel}\label{lenguajes-de-bajo-nivel}
+\hypertarget{lenguajes-de-bajo-nivel}{%
+\subsection{Lenguajes de bajo nivel}\label{lenguajes-de-bajo-nivel}}
 
+\hypertarget{lenguaje-de-muxe1quina-o-cuxf3digo-muxe1quina}{%
 \subsubsection{Lenguaje de máquina o código
-máquina}\label{lenguaje-de-muxe1quina-o-cuxf3digo-muxe1quina}
+máquina}\label{lenguaje-de-muxe1quina-o-cuxf3digo-muxe1quina}}
 
 Hemos visto un conjunto de instrucciones y convenciones sobre cómo se
 utilizan los datos en el MCBE, que es el llamado \textbf{lenguaje de
@@ -78,14 +95,15 @@ porque los códigos de operación, las direcciones y los datos, fácilmente
 terminan confundiéndonos. Para facilitar la programación, se ha definido
 un lenguaje alternativo llamado el \textbf{ensamblador} del MCBE.
 
-\subsubsection{Lenguaje ensamblador}\label{lenguaje-ensamblador}
+\hypertarget{lenguaje-ensamblador}{%
+\subsubsection{Lenguaje ensamblador}\label{lenguaje-ensamblador}}
 
 Cuando escribimos un programa en el lenguaje \textbf{ensamblador} del
 MCBE, las instrucciones se corresponden una a una con las del programa
 en lenguaje de máquina. Pero en el lenguaje ensamblador del MCBE:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   En lugar de códigos de tres bits usamos unas abreviaturas un poco más
   significativas (llamadas los \textbf{mnemónicos} de las
@@ -111,14 +129,15 @@ El lenguaje de máquina de cualquier CPU, y su lenguaje ensamblador (o
 \emph{Assembler}), son llamados en general \textbf{lenguajes de bajo
 nivel}.
 
-\subsubsection{Mnemónicos}\label{mnemuxf3nicos}
+\hypertarget{mnemuxf3nicos}{%
+\subsubsection{Mnemónicos}\label{mnemuxf3nicos}}
 
 Los \textbf{mnemónicos} o nombres simbólicos de las instrucciones se
 basan en los nombres en inglés de las operaciones correspondientes.
 Disponemos de los mnemónicos:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   LD para la operación de cargar el Acumulador con un contenido de
   memoria (código 010), y ST para la operación inversa (código 011).
@@ -133,7 +152,8 @@ Disponemos de los mnemónicos:
   nula o no operación (código 000).
 \end{itemize}
 
-\subsubsection{Rótulos}\label{ruxf3tulos}
+\hypertarget{ruxf3tulos}{%
+\subsubsection{Rótulos}\label{ruxf3tulos}}
 
 Cuando necesitamos hacer referencia a una dirección, como en las
 operaciones de transferencia o en las aritméticas, el ensamblador nos
@@ -147,27 +167,19 @@ por un carácter ``:'' del resto de la línea.
 
 \textbf{Ejemplo}
 
-\begin{longtable}[c]{@{}llrll@{}}
-\toprule\addlinespace
-Dirección & Instrucción & Rótulo & Mnemónico & Argumento
-\\\addlinespace
-\midrule\endhead
-00000 & 01000111 & & LD & CANT
-\\\addlinespace
-00001 & 11100100 & SIGUE: & JZ & FIN
-\\\addlinespace
-00010 & 01111111 & & ST & OUT
-\\\addlinespace
-00011 & 10100110 & & SUB & UNO
-\\\addlinespace
-00100 & 11011101 & & JMP & SIGUE
-\\\addlinespace
-00101 & 00100000 & FIN: & HLT
-\\\addlinespace
-00110 & 00000001 & UNO: & 1
-\\\addlinespace
-00111 & 00000011 & CANT: & 3
-\\\addlinespace
+\begin{longtable}[]{@{}llrll@{}}
+\toprule
+Dirección & Instrucción & Rótulo & Mnemónico & Argumento\tabularnewline
+\midrule
+\endhead
+00000 & 01000111 & & LD & CANT\tabularnewline
+00001 & 11100100 & SIGUE: & JZ & FIN\tabularnewline
+00010 & 01111111 & & ST & OUT\tabularnewline
+00011 & 10100110 & & SUB & UNO\tabularnewline
+00100 & 11011101 & & JMP & SIGUE\tabularnewline
+00101 & 00100000 & FIN: & HLT &\tabularnewline
+00110 & 00000001 & UNO: & 1 &\tabularnewline
+00111 & 00000011 & CANT: & 3 &\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -178,8 +190,9 @@ instrucción es de salto, podemos hacer referencia a la posición de
 memoria donde se hará el salto usando un rótulo, como en la quinta
 instrucción, JMP SIGUE.
 
+\hypertarget{ruxf3tulos-en-instrucciones-de-salto}{%
 \subsubsection{Rótulos en instrucciones de
-salto}\label{ruxf3tulos-en-instrucciones-de-salto}
+salto}\label{ruxf3tulos-en-instrucciones-de-salto}}
 
 Es importante recordar que, de todas maneras, en la traducción de
 ensamblador a lenguaje de máquina \textbf{para las instrucciones de
@@ -189,7 +202,7 @@ una dirección.
 \textbf{Ejemplo}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   En el ejemplo existe un rótulo SIGUE que identifica a la instrucción
   en la posición 1. La instrucción del ejemplo JMP SIGUE, al ser
@@ -201,7 +214,8 @@ una dirección.
   ``Instrucción'' de la tabla.
 \end{itemize}
 
-\subsubsection{Rótulos predefinidos}\label{ruxf3tulos-predefinidos}
+\hypertarget{ruxf3tulos-predefinidos}{%
+\subsubsection{Rótulos predefinidos}\label{ruxf3tulos-predefinidos}}
 
 Los rótulos IN y OUT vienen predefinidos en el lenguaje ensamblador de
 MCBE y corresponden a las posiciones de memoria 30 (para entrada) y 31
@@ -213,7 +227,8 @@ La instrucción en línea 2, ST OUT, almacena el contenido del acumulador
 en la posición 31, lo que equivale a escribir ese contenido en la salida
 del MCBE.
 
-\subsection{Traductores}\label{traductores}
+\hypertarget{traductores}{%
+\subsection{Traductores}\label{traductores}}
 
 Uno puede pensar en un programa cualquiera como si se tratara de una
 máquina, cuyo funcionamiento es, en principio, desconocido. Todo lo que
@@ -225,7 +240,8 @@ que ingresan son a su vez un programa, y donde la salida devuelta por la
 máquina es, a su vez, un programa, entonces esa clase especial de
 programas son los \textbf{traductores}.
 
-\subsection{Ensambladores}\label{ensambladores}
+\hypertarget{ensambladores}{%
+\subsection{Ensambladores}\label{ensambladores}}
 
 Como hemos dicho anteriormente, una CPU como el MCBE sólo sabe ejecutar
 instrucciones de código máquina expresadas con unos y ceros. Cuando
@@ -242,7 +258,8 @@ Esta clase de traductores, que reciben un programa en lenguaje
 ensamblador y devuelven un programa en código de máquina, son los
 llamados \textbf{ensambladores} o \textbf{assemblers}.
 
-\subsubsection{Ensamblador x86}\label{ensamblador-x86}
+\hypertarget{ensamblador-x86}{%
+\subsubsection{Ensamblador x86}\label{ensamblador-x86}}
 
 Cada CPU tiene su propio lenguaje ensamblador, y existen programas
 traductores (ensambladores) para cada una de ellas. Por ejemplo, la
@@ -280,7 +297,8 @@ msg:
 Los procesadores de la familia x86 se encuentran en casi todas las
 computadoras personales y notebooks.
 
-\subsubsection{Ensamblador ARM}\label{ensamblador-arm}
+\hypertarget{ensamblador-arm}{%
+\subsubsection{Ensamblador ARM}\label{ensamblador-arm}}
 
 Por supuesto, los procesadores de familias diferentes tienen conjuntos
 de instrucciones diferentes. Así, un lenguaje y un programa ensamblador
@@ -322,7 +340,8 @@ para construir esos productos portátiles. Su arquitectura, y por lo
 tanto, su conjunto de instrucciones, están basados en esos principios de
 diseño.
 
-\subsubsection{Ensamblador PowerPC}\label{ensamblador-powerpc}
+\hypertarget{ensamblador-powerpc}{%
+\subsubsection{Ensamblador PowerPC}\label{ensamblador-powerpc}}
 
 Lo mismo ocurre con otras familias de procesadores como el
 \href{https://es.m.wikipedia.org/wiki/PowerPC}{PowerPC}, un procesador
@@ -350,10 +369,13 @@ _start:
     sc         # llamada al kernel
 \end{verbatim}
 
+\hypertarget{lenguajes-de-programaciuxf3n}{%
 \subsection{Lenguajes de
-programación}\label{lenguajes-de-programaciuxf3n}
+programación}\label{lenguajes-de-programaciuxf3n}}
 
-\subsubsection{Lenguajes de bajo nivel}\label{lenguajes-de-bajo-nivel-1}
+\hypertarget{lenguajes-de-bajo-nivel-1}{%
+\subsubsection{Lenguajes de bajo
+nivel}\label{lenguajes-de-bajo-nivel-1}}
 
 Como vemos, tanto el lenguaje de máquina como el ensamblador o
 \textbf{Assembler} son lenguajes \textbf{orientados a la máquina}.
@@ -368,7 +390,8 @@ conocimiento profundo de dicho procesador y resultan poco
 complejo en un lenguaje de bajo nivel suele ser muy costoso en tiempo y
 esfuerzo.
 
-\subsubsection{Lenguajes de alto nivel}\label{lenguajes-de-alto-nivel}
+\hypertarget{lenguajes-de-alto-nivel}{%
+\subsubsection{Lenguajes de alto nivel}\label{lenguajes-de-alto-nivel}}
 
 Otros lenguajes, los de \textbf{alto nivel}, ocultan al usuario los
 detalles de la arquitectura de las computadoras y le facilitan la
@@ -383,14 +406,15 @@ Una ventaja adicional de los lenguajes de alto nivel es que resultan más
 portables, y su \textbf{depuración} (el proceso de corregir errores de
 programación) es normalmente más fácil.
 
-\subsection{Niveles de lenguajes}\label{niveles-de-lenguajes}
+\hypertarget{niveles-de-lenguajes}{%
+\subsection{Niveles de lenguajes}\label{niveles-de-lenguajes}}
 
 Se han diseñado muchísimos lenguajes de programación. Cada uno de ellos
 es más apto para alguna clase de tareas de programación y cada uno tiene
 sus aplicaciones.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Entre estos lenguajes, que podemos organizar en una jerarquía,
   encontramos los de bajo nivel u orientados a la máquina, los de alto
@@ -403,8 +427,9 @@ sus aplicaciones.
   otros, \textbf{interpretables}.
 \end{itemize}
 
+\hypertarget{paradigmas-de-programaciuxf3n}{%
 \subsection{Paradigmas de
-programación}\label{paradigmas-de-programaciuxf3n}
+programación}\label{paradigmas-de-programaciuxf3n}}
 
 La programación en lenguajes de alto nivel puede adoptar varias formas.
 Existen diferentes modos de diseñar un lenguaje, y varios modos de
@@ -418,8 +443,9 @@ orden histórico de aparición, \textbf{imperativo} o procedural,
 objetos}. Los paradigmas lógico y funcional son los más asociados a la
 disciplina de la Inteligencia Artificial.
 
+\hypertarget{paradigma-imperativo-o-procedural}{%
 \subsubsection{Paradigma imperativo o
-procedural}\label{paradigma-imperativo-o-procedural}
+procedural}\label{paradigma-imperativo-o-procedural}}
 
 Bajo el paradigma imperativo, los programas consisten en una sucesión de
 instrucciones o comandos, como si el programador diera órdenes a alguien
@@ -438,8 +464,9 @@ int factorial(int n)
 }
 \end{verbatim}
 
+\hypertarget{paradigma-luxf3gico-o-declarativo}{%
 \subsubsection{Paradigma lógico o
-declarativo}\label{paradigma-luxf3gico-o-declarativo}
+declarativo}\label{paradigma-luxf3gico-o-declarativo}}
 
 El lenguaje Prolog representa el paradigma lógico y con frecuencia
 constituye el corazón de los sistemas de Inteligencia Artificial que
@@ -462,7 +489,8 @@ El usuario de este programa puede usarlo de dos maneras. Podría
 preguntar el valor del factorial de un número N, o consultar si es
 cierto que el factorial de N es otro número dado Y.
 
-\subsubsection{Paradigma funcional}\label{paradigma-funcional}
+\hypertarget{paradigma-funcional}{%
+\subsubsection{Paradigma funcional}\label{paradigma-funcional}}
 
 En el lenguaje Lisp, perteneciente al paradigma funcional, una función
 es un enunciado entre paréntesis que puede contener a otras funciones.
@@ -479,7 +507,8 @@ función \textbf{recursiva}.
 
 El lenguaje Lisp utiliza notación prefija para los operadores.
 
-\subsubsection{Orientación a objetos}\label{orientaciuxf3n-a-objetos}
+\hypertarget{orientaciuxf3n-a-objetos}{%
+\subsubsection{Orientación a objetos}\label{orientaciuxf3n-a-objetos}}
 
 En un lenguaje \textbf{orientado a objetos}, definimos una
 \textbf{clase} que funciona como un molde para crear múltiples
@@ -509,8 +538,9 @@ Combinatoria, llamado \textbf{c}, al cual se le envía el mensaje
 \textbf{factorial}, que dispara la conducta correspondiente especificada
 en el método del mismo nombre. Finalmente se imprime su valor.
 
+\hypertarget{compiladores-e-intuxe9rpretes}{%
 \subsection{Compiladores e
-intérpretes}\label{compiladores-e-intuxe9rpretes}
+intérpretes}\label{compiladores-e-intuxe9rpretes}}
 
 Los traductores de lenguajes de alto nivel pueden funcionar de dos
 maneras: o bien producen una versión en código máquina del programa
@@ -522,10 +552,11 @@ Luego de la compilación, el programa en código máquina obtenido puede
 ser ejecutado muchas veces. En cambio, el programa interpretado debe ser
 traducido cada vez que se ejecute.
 
-\subsubsection{Velocidad de ejecución}\label{velocidad-de-ejecuciuxf3n}
+\hypertarget{velocidad-de-ejecuciuxf3n}{%
+\subsubsection{Velocidad de ejecución}\label{velocidad-de-ejecuciuxf3n}}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Una ventaja comparativa de la compilación respecto de la
   interpretación es la mayor velocidad de ejecución. Al separar las
@@ -537,10 +568,11 @@ traducido cada vez que se ejecute.
   tardará algo más de tiempo.
 \end{itemize}
 
-\subsubsection{Portabilidad}\label{portabilidad}
+\hypertarget{portabilidad}{%
+\subsubsection{Portabilidad}\label{portabilidad}}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El código interpretado presenta la ventaja de ser directamente
   portable. Dos plataformas diferentes podrán ejecutar el mismo programa
@@ -552,12 +584,14 @@ traducido cada vez que se ejecute.
   otras.
 \end{itemize}
 
-\subsection{Ciclo de compilación}\label{ciclo-de-compilaciuxf3n}
+\hypertarget{ciclo-de-compilaciuxf3n}{%
+\subsection{Ciclo de compilación}\label{ciclo-de-compilaciuxf3n}}
 
-\subsubsection{Terminología}\label{terminologuxeda}
+\hypertarget{terminologuxeda}{%
+\subsubsection{Terminología}\label{terminologuxeda}}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Cuando utilizamos un \textbf{compilador} para obtener un programa
   \textbf{ejecutable}, el programa que nosotros escribimos, en algún
@@ -568,7 +602,7 @@ traducido cada vez que se ejecute.
   conteniendo las instrucciones de código máquina equivalentes.
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     Sin embargo, este archivo objeto puede no estar completo, ya que el
     programador puede hacer uso de rutinas o funciones que vienen
@@ -598,8 +632,9 @@ traducido cada vez que se ejecute.
   \textbf{ejecutable}.
 \end{itemize}
 
+\hypertarget{fases-del-ciclo-de-compilaciuxf3n}{%
 \subsubsection{Fases del ciclo de
-compilación}\label{fases-del-ciclo-de-compilaciuxf3n}
+compilación}\label{fases-del-ciclo-de-compilaciuxf3n}}
 
 \begin{itemize}
 \item
@@ -627,8 +662,9 @@ compilación}\label{fases-del-ciclo-de-compilaciuxf3n}
   El resultado final del ciclo de compilación es un \textbf{ejecutable}.
 \end{itemize}
 
+\hypertarget{entornos-de-desarrollo-o-ide}{%
 \subsubsection{Entornos de desarrollo o
-IDE}\label{entornos-de-desarrollo-o-ide}
+IDE}\label{entornos-de-desarrollo-o-ide}}
 
 Muchos desarrolladores utilizan algún \textbf{ambiente integrado de
 desarrollo (IDE)}, que es un programa que actúa como intermediario entre

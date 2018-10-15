@@ -1,10 +1,10 @@
 
-#Arquitectura y Organización de Computadoras
+# Arquitectura y Organización de Computadoras
 
 ¿Cómo **definimos** una computadora? ¿Cuándo un dispositivo es una computadora y cuándo decimos que no lo es? En esta unidad, vemos estos temas y estudiamos los diferentes componentes que tienen las computadoras. 
 
 
-##Componentes de una computadora simple
+## Componentes de una computadora simple
 
 En primer lugar, una **memoria principal**, que es donde se almacenan todos los datos y las instrucciones de programa. Todo lo que puede hacer la computadora, lo hace únicamente con contenidos que estén en la memoria. Para poder procesar un dato, primero hay que hacerlo llegar a la memoria principal, no importa de dónde venga. Un conjunto de datos puede estar en disco, en un pendrive, o ser introducido por el teclado, pero sólo cuando llega a la memoria principal es que puede ser procesado por la CPU.
 
@@ -19,7 +19,7 @@ Los **dispositivos de Entrada y Salida** son todos aquellos dispositivos que con
 Todos estos componentes, y muchos otros que pueden estar o no presentes, dependiendo de la **arquitectura**, o modo de construcción, de la computadora, están conectados entre sí mediante **buses** o líneas de interconexión. 
 
 
-###Memoria
+### Memoria
 
 La memoria es un componente fundamental de la computadora. Está implementada con circuitos que pueden estar en uno de dos estados eléctricos, y por esto los llamamos **biestables**. 
 
@@ -28,7 +28,7 @@ Cada circuito biestable puede almacenar la información correspondiente a un **b
 Para poder utilizar la memoria es imprescindible conocer el número, o **dirección**, de la posición de memoria donde está el dato o instrucción que se necesita acceder. Con esta dirección podemos **recuperar**, es decir, **leer**, el valor que está alojado en ese byte de la memoria, o escribir sobre ese byte un contenido de ocho bits.
 
 
-###CPU
+### CPU
 
 La CPU está implementada como un circuito sumamente complejo que contiene **registros**. Éstos son lugares de almacenamiento temporario de datos e instrucciones que se utilizan durante el cómputo. 
 
@@ -46,9 +46,9 @@ La CPU está constituida por varios circuitos componentes o unidades funcionales
 * La Unidad Lógico-Aritmética es la que efectivamente realiza los cómputos con los datos.
 
 
-##Arquitectura de Von Neumann
+## Arquitectura de Von Neumann
 
-###Máquina de programa almacenado
+### Máquina de programa almacenado
 
 Por supuesto, además de todos esos componentes que hemos nombrado, hay muchas otras cosas que físicamente forman parte de la computadora; pero la descripción de la computadora que hemos hecho hasta el momento dice, por lo menos en líneas generales, los componentes fundamentales que tiene cualquier computadora actual. Esta descripción puede resumirse diciendo que la computadora es una **máquina de Von Neumann o máquina de programa almacenado**. 
 
@@ -58,7 +58,7 @@ Estas máquinas ejecutan las instrucciones almacenadas en memoria secuencialment
 
 
 
-###CPU y Memoria
+### CPU y Memoria
 
 En una **máquina de Von Neumann**, entonces, aparecen dos componentes básicos fundamentales que son la CPU y la memoria,  
 
@@ -69,7 +69,7 @@ la primera conteniendo una **Unidad de Control, o UC**, para realizar el **ciclo
 y una **Unidad Lógico-Aritmética, o ALU**, para el cómputo. 
 
 
-###Buses
+### Buses
 
 En la máquina existen diferentes clases de buses para interconectar los componentes: 
 
@@ -88,12 +88,12 @@ En la máquina existen diferentes clases de buses para interconectar los compone
 - Si la CPU encuentra instrucciones que ordenan presentar el resultado del cómputo al usuario, usará un bus de Entrada/Salida para emitir ese resultado por pantalla o por impresora.
 
 
-##Modelo Computacional Binario Elemental
+## Modelo Computacional Binario Elemental
 
 Para comprender desde lo más básico cómo opera la computadora, recurrimos al **MCBE o Modelo Computacional Binario Elemental**, que es una máquina teórica. El MCBE es una computadora extremadamente simple, pero que podría ser implementada físicamente, y funcionaría como la mayoría de las computadoras actuales. Bueno, con muchas menos capacidades, claro, pero manteniendo lo esencial de las computadoras de programa almacenado.
 
 
-###Esquema del MCBE
+### Esquema del MCBE
 
 ![Esquema del MCBE][mcbe]
 
@@ -110,7 +110,7 @@ Cada combinación posible de ceros y unos en los bits de cualquiera de los regis
 El estado de la máquina en cada momento define cuál será el estado siguiente. Ninguna otra cosa interviene en el comportamiento de la máquina. En particular, la máquina no tiene voluntad ni toma decisiones propias: solamente cumple el **ciclo de instrucción**, que la hace ejecutar las instrucciones del programa que tenga almacenado.
 
 
-###Memoria del MCBE
+### Memoria del MCBE
 
 Las 32 posiciones de memoria, cada una de 8 bits, son casi todas iguales, con dos excepciones. 
 
@@ -118,7 +118,7 @@ Las 32 posiciones de memoria, cada una de 8 bits, son casi todas iguales, con do
 - La posición 31 es solamente de escritura. Al escribir un dato en la dirección 31, hacemos que el MCBE escriba ese valor por pantalla, y solamente así podemos saber el resultado de un cómputo. 
 
 
-###Registros del MCBE
+### Registros del MCBE
 
 Como hemos dicho, los registros son lugares de almacenamiento temporario para varios usos. Los registros funcionan en forma parecida a la memoria, en el sentido de que se pueden leer o escribir datos en ellos, pero normalmente en una computadora física su velocidad de acceso es mayor. 
 
@@ -129,13 +129,13 @@ Antes de ejecutar cada instrucción, la CPU va a **copiarla** en el registro **I
 El registro **acumulador**, que pertenece a la ALU, es un registro que interviene en casi todas las operaciones del MCBE; sobre todo para las operaciones aritméticas.
 
 
-###CPU del MCBE
+### CPU del MCBE
 Entonces la CPU del MCBE queda definida como el conjunto de **Unidad de Control** con dos registros **PC e IR**, más **Unidad lógico-aritmética** con un registro **acumulador**. 
 
 Esta CPU va a ser muy limitada y solamente va a ejecutar operaciones de suma y resta en complemento a 2, con ocho bits. No va a ejecutar **multiplicaciones**, ni **divisiones**, ni operaciones en **punto flotante**.
 
 
-###Formato de instrucciones del MCBE
+### Formato de instrucciones del MCBE
 
 
 **Código de instrucción**
@@ -155,7 +155,7 @@ Notemos que al representar las direcciones con cinco bits, sin signo, tenemos un
 Para los desplazamientos, como estamos usando un sistema con signo, tenemos un rango de -16 a 15. Lo que quiere decir que al trasladarnos de un lugar a otro de la memoria, vamos a poder hacerlo en saltos de a lo sumo 16 bytes hacia atrás o 15 bytes hacia adelante.
 
 
-###Conjunto de instrucciones del MCBE
+### Conjunto de instrucciones del MCBE
 
 Las instrucciones del MCBE se dividen en cuatro grupos. 
 
@@ -199,7 +199,7 @@ Hasta el momento no hemos explicado cómo se detiene la máquina. El ciclo de in
 La operación 000 no tiene ningún efecto sobre el estado del MCBE, salvo incrementar el PC. Ningún otro registro ni posición de memoria cambia su valor.  
 
 
-##Ciclo de instrucción
+## Ciclo de instrucción
 
 Ahora podemos definir con más rigurosidad lo que se entiende por **ciclo de instrucción**. El MCBE inicia su operación con todos los contenidos de la memoria y registros en 0, y se pone a ejecutar continuamente el ciclo de instrucción. Para esto repite continuamente las fases siguientes.
 
@@ -209,7 +209,7 @@ Ahora podemos definir con más rigurosidad lo que se entiende por **ciclo de ins
 4. Una vez ejecutada la instrucción, se vuelve a repetir el ciclo, leyendo la siguiente instrucción que haya que ejecutar, que será aquella cuya dirección esté contenida en el PC.
 
 
-##Programación del MCBE
+## Programación del MCBE
 
 ¿Cómo es, entonces, un programa para esta máquina teórica? Es una sucesión de bytes, que representan instrucciones y datos, contenidos en la memoria a partir de la dirección 0, y donde cada byte va a ser interpretado como instrucción o como dato según lo diga el programa. Como el estado inicial de la máquina es **con todos los valores en 0**, lo único que puede decirse con seguridad es que **la primera posición de la memoria contiene una instrucción**. Pero a partir de allí, el desarrollo de la ejecución va a ser dado por las instrucciones particulares que contenga el programa.
 
@@ -236,7 +236,7 @@ Ahora podemos definir con más rigurosidad lo que se entiende por **ciclo de ins
 - En las restantes posiciones de memoria hay contenidos nulos, o sea, todos los bits en 0, y no los escribimos para no complicar más el diagrama.
 
 
-###Traza de ejecución
+### Traza de ejecución
 
 ¿Qué es realmente lo que hace este programa, y cuál es el resultado de ejecutarlo? Para poder saberlo, lo más conveniente es hacer una **traza del programa**. Una traza es un diagrama o planilla donde preparamos **columnas** con los nombres de los **registros, la memoria y la salida**, para poder ir simulando manualmente la ejecución, e ir anotando qué valores toman esos registros; es decir, cuáles son los sucesivos estados del MCBE. 
 
@@ -274,7 +274,7 @@ Queda como ejercicio seguir la traza e interpretar qué está ocurriendo en cada
 
 
 
-##Preguntas
+## Preguntas
 
 1. El MCBE, ¿puede encontrar una instrucción que no sea capaz de decodificar?
 1. Supongamos que hemos almacenado en la posición 14 un dato numérico que representa la edad de una persona. ¿Qué pasa si en algún momento de la ejecución el PC contiene el número 14? ¿Qué pasa si esa persona tiene 33 años?

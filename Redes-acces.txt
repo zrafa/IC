@@ -1,25 +1,27 @@
-Redes de computadoras
-=====================
+
+
+REDES DE COMPUTADORAS
+
 
 Un conjunto de computadoras conectadas para compartir información u
-otros recursos es una red de computadoras. En cualquier red se
+otros recursos es una RED de computadoras. En cualquier red se
 distinguen por lo menos tres elementos de hardware:
 
--   Las computadoras conectadas se llaman hosts o nodos terminales.
--   Los enlaces que conectan las computadoras. Los enlaces suelen
-    llamarse punto a punto cuando conectan únicamente dos nodos, o
-    compartidos cuando al mismo enlace se conectan más de dos nodos.
--   Otros nodos intermedios, los routers, que sirven para encaminar el
+-   Las computadoras conectadas se llaman HOSTS o nodos terminales.
+-   Los ENLACES que conectan las computadoras. Los enlaces suelen
+    llamarse PUNTO A PUNTO cuando conectan únicamente dos nodos, o
+    COMPARTIDOS cuando al mismo enlace se conectan más de dos nodos.
+-   Otros NODOS INTERMEDIOS, los ROUTERS, que sirven para encaminar el
     tráfico de información entre los nodos terminales.
 
 Para utilizar la red, todos los nodos que están conectados a ella, ya
-sean terminales o intermedios, corren software de red como protocolos y
-aplicaciones de red. Los protocolos son, por un lado, convenciones que
+sean terminales o intermedios, corren software de red como PROTOCOLOS y
+APLICACIONES DE RED. Los protocolos son, por un lado, convenciones que
 establecen con todo detalle cómo se realiza una comunicación, y por otro
 lado, los componentes de software que implementan esa forma de
 comunicación.
 
-Las aplicaciones de red son aplicaciones distribuidas, es decir, se
+Las aplicaciones de red son aplicaciones DISTRIBUIDAS, es decir, se
 componen de al menos dos partes, preparadas para comunicarse unas con
 otras, y esas partes funcionan en nodos terminales de la red diferentes.
 Cada aplicación de red utiliza un protocolo, porque la interacción entre
@@ -28,9 +30,9 @@ entiendan sin errores ni ambigüedades. Un protocolo puede ser utilizado
 por varias aplicaciones.
 
 Hoy, la mayoría de las redes están interconectadas por una única red
-global llamada Internet. Para conectarse a Internet, todos los nodos,
+global llamada INTERNET. Para conectarse a Internet, todos los nodos,
 terminales e intermedios, ejecutan un protocolo básico llamado IP
-(Internet Protocol), y se puede decir que, desde el punto de vista del
+(INTERNET PROTOCOL), y se puede decir que, desde el punto de vista del
 software, constituyen una sola red.
 
 Sin embargo, desde el punto de vista de la administración, dentro de
@@ -41,19 +43,19 @@ aplicaciones utilizan.
 
 Estas diferentes redes se pueden clasificar por su tamaño.
 
--   Una red cuyos límites (o diámetro) son pequeños, se llama una red de
-    área local o LAN (Local Area Network). Típicamente, una LAN está
+-   Una red cuyos límites (o DIÁMETRO) son pequeños, se llama una RED DE
+    ÁREA LOCAL O LAN (LOCAL AREA NETWORK). Típicamente, una LAN está
     contenida en una oficina, piso o edificio.
 -   Una red que abarca el área de una ciudad (y por lo tanto, cuyos
-    enlaces utilizan espacios públicos) suele llamarse red metropolitana
-    o MAN (Metropolitan Area Network).
+    enlaces utilizan espacios públicos) suele llamarse RED METROPOLITANA
+    O MAN (METROPOLITAN AREA NETWORK).
 -   Una red mayor, que cubre distancias entre ciudades, países o
-    continentes, se llama una red de área extensa o WAN (Wide Area
-    Network). Las redes de los proveedores de servicios de Internet
-    (ISPs) suelen clasificarse como WANs.
+    continentes, se llama una RED DE ÁREA EXTENSA O WAN (WIDE AREA
+    NETWORK). Las redes de los PROVEEDORES DE SERVICIOS DE INTERNET
+    (ISPS) suelen clasificarse como WANs.
+
 
 Modelo de Internet
-------------------
 
 Las redes pueden estudiarse y comprenderse mediante modelos jerárquicos
 compuestos por capas, donde cada pieza de hardware o de software
@@ -71,69 +73,69 @@ soluciones provistas por la capa inmediatamente inferior.
 -   Transporte
 
     La capa de Transporte soluciona el problema de la entrega de datos
-    entre procesos de nodos diferentes.
+    entre PROCESOS de nodos diferentes.
 
 -   Red
 
     La capa de Red soluciona el problema de la entrega de datos entre
-    nodos de diferentes redes.
+    NODOS de diferentes redes.
 
 -   Enlace
 
     La capa de Enlace soluciona el problema de la entrega de datos entre
-    nodos de la misma red.
+    NODOS DE LA MISMA RED.
 
 -   Física
 
     La capa Física define la forma como se codifican y transmiten las
     señales que representan la información.
 
+
 Switches
---------
 
 En las redes de área local, o LAN, encontramos enlaces compartidos. El
 cableado de una oficina, un aula o un edificio es un único medio de
 comunicación compartido por todos los nodos de la red. El cableado se
-concentra en un punto de conmutación llamado switch o, justamente,
+concentra en un punto de conmutación llamado SWITCH o, justamente,
 conmutador, que distribuye el tráfico entre los nodos conectados. Un
-switch tiene muchas interfaces donde se conectan cables punto a punto
+switch tiene muchas INTERFACES donde se conectan cables punto a punto
 hacia los nodos de la LAN.
 
 Es posible conectar switches entre sí para mejor distribución del
-tráfico, formando una topología de estrella o de árbol. Todo el conjunto
+tráfico, formando una TOPOLOGÍA de estrella o de árbol. Todo el conjunto
 de switches y enlaces de la LAN constituye un enlace compartido, ya que
 todos los nodos de la LAN pueden comunicarse a través de él.
 
 Los switches y los nodos de las redes de área local ejecutan un
 protocolo de enlace definido por la norma IEEE 802.3. Este protocolo
-deriva de uno anterior, llamado Ethernet. Aunque el diseño original de
+deriva de uno anterior, llamado ETHERNET. Aunque el diseño original de
 Ethernet era diferente del de 802.3, y el hardware sobre el que
 funcionaba Ethernet era muy diferente del de los switches actuales, este
 nombre de Ethernet sigue usándose informalmente para las redes
 construidas con switches 802.3.
 
-Un switch 802.3 conduce unas unidades de tráfico básicas, los frames o
-tramas 802.3, entre los nodos de la red de área local, conectados al
+Un switch 802.3 conduce unas unidades de tráfico básicas, los FRAMES O
+TRAMAS 802.3, entre los nodos de la red de área local, conectados al
 enlace compartido formado por todos los switches y cableado de la LAN.
 La misión de este protocolo de enlace termina donde termina la red de
 área local. Los frames o tramas jamás salen fuera de la LAN. Por eso
-decimos que la función de nivel de enlace de una red es entregar el
-tráfico entre nodos adyacentes. Es decir, los que se encuentran sobre el
+decimos que la función de NIVEL DE ENLACE de una red es entregar el
+tráfico ENTRE NODOS ADYACENTES. Es decir, los que se encuentran sobre el
 mismo enlace.
 
-Routers
--------
 
-Suele definirse a Internet como "red de redes". Las grandes redes, y en
+Routers
+
+Suele definirse a Internet como “red de redes”. Las grandes redes, y en
 particular Internet, se componen interconectando redes a través de
 enlaces, a veces de gran longitud. Entre cada dos de estas redes siempre
-existe un router.
+existe un ROUTER.
 
 El router presta el servicio que no alcanza a prestar el nivel de
 enlace, que es el de enviar el tráfico fuera de la red de origen. El
-nivel al que pertenecen los routers se llama nivel de red.
+nivel al que pertenecen los routers se llama NIVEL DE RED.
 
-Los routers son los elementos que toman las decisiones de enrutamiento o
+Los routers son los elementos que toman las decisiones de ENRUTAMIENTO o
 ruteo, al determinar por cuál de sus interfaces, que a veces son muchas,
 debe ser enviada la información que reciben. Esta tarea de enrutar la
 información se cumple mediante software de enrutamiento.
@@ -154,17 +156,17 @@ físicas y tamaños.
 
 -   Algunos pueden dar servicio a muchos nodos terminales al incluir
     múltiples dispositivos de nivel de enlace, como un switch 802.3 de
-    varias interfaces, y un punto de acceso para una red inalámbrica
+    varias interfaces, y un PUNTO DE ACCESO para una RED INALÁMBRICA
     secundaria basada en tecnología de radio.
 
 -   Algunos, de muy altas prestaciones, usados por los proveedores de
-    servicios de Internet, son modulares y pueden ser configurados a
-    medida de las necesidades. Cada módulo contiene interfaces
+    servicios de Internet, son MODULARES y pueden ser configurados a
+    medida de las necesidades. Cada módulo contiene INTERFACES
     especializadas en alguna tecnología de enlace, lo que les permite
     conectar redes de tecnologías completamente diferentes.
 
+
 Interfaces
-----------
 
 La interfaz es el punto de conexión entre un enlace y un nodo de la red.
 Es la pieza de hardware que convierte bits a señales capaces de viajar
@@ -172,13 +174,13 @@ por la red, y viceversa. Cuando un nodo debe comunicar algo a otro,
 prepara su mensaje en una zona de la memoria, y entrega esos contenidos
 binarios a la interfaz a través de un bus de comunicación.
 
-La interfaz contiene el hardware necesario para traducir ese tren de
-bits a señales eléctricas (cuando los enlaces son cableados), de radio
+La interfaz contiene el hardware necesario para traducir ese TREN DE
+BITS a señales eléctricas (cuando los enlaces son cableados), de radio
 (cuando el enlace es inalámbrico), o luminosas (cuando el enlace es de
 fibra óptica).
 
-Las modernas interfaces de red pueden funcionar a velocidades de
-transmisión de muchos bits por segundo. Una LAN cableada actual funciona
+Las modernas interfaces de red pueden funcionar a VELOCIDADES DE
+TRANSMISIÓN de muchos bits por segundo. Una LAN cableada actual funciona
 comúnmente en velocidades de 1 a 10 Gb/s o Gbps (gigabits por segundo).
 Una LAN inalámbrica suele funcionar a una velocidad de transmisión mucho
 menor (y, además, variable, dependiendo de condiciones físicas
@@ -190,24 +192,24 @@ interfaz receptora decodifica las señales, recuperando los bits
 originales y comunicándolos al software que espera los datos. Ambas
 partes de la aplicación distribuida se han comunicado un mensaje.
 
+
 Medios y enlaces
-----------------
 
 El material que atraviesan las señales transmitidas sobre un enlace se
-llama el medio del enlace. Las tecnologías de construcción de los
+llama el MEDIO del enlace. Las tecnologías de construcción de los
 enlaces son muchas.
 
 -   Cuando las señales se codifican mediante impulsos eléctricos, como
-    en las redes de cables de par trenzado o coaxial, el medio es un
+    en las redes de cables de PAR TRENZADO o COAXIAL, el medio es un
     conductor, como el cobre.
 -   Para distancias mayores (como las transoceánicas) o para ambientes
-    donde existe mucho ruido o interferencia electromagnética (como en
-    fábricas), se utiliza fibra óptica.
+    donde existe mucho RUIDO o interferencia electromagnética (como en
+    fábricas), se utiliza FIBRA ÓPTICA.
 -   Cuando no es posible, o práctico, tender un cable, no queda más
-    solución que utilizar emisiones de radio. Ejemplos de tecnologías de
+    solución que utilizar emisiones de RADIO. Ejemplos de tecnologías de
     radio son los enlaces satelitales, los de microondas, y las LAN
-    inalámbricas bajo norma 802.11 conocidas popularmente como WiFi.
-    Estas tecnologías utilizan como medio el espacio.
+    inalámbricas bajo norma 802.11 conocidas popularmente como WIFI.
+    Estas tecnologías utilizan como medio el ESPACIO.
 
 Las principales compañías de conectividad del mundo tienden enlaces de
 fibra óptica transoceánicos. Como la instalación de estos cables es una
@@ -218,7 +220,7 @@ contenido completo de un disco rígido de 1 TB en menos de tres segundos.
 Esta capacidad es compartida entre varios proveedores de Internet que
 compran el servicio de transporte.
 
-Interesante
+INTERESANTE
 
 Submarine Cable Map
 
@@ -229,9 +231,9 @@ la comunican a otra distante, superando el problema de la curvatura
 terrestre, que no permitiría la propagación en línea recta de la emisión
 de radio.
 
-Su principal inconveniente es la alta latencia o retardo en la llegada
+Su principal inconveniente es la alta LATENCIA O RETARDO en la llegada
 de la señal desde un punto a otro, debido a las grandes distancias que
-se deben enlazar. Los satélites geoestacionarios o de órbita alta (GEO)
+se deben enlazar. Los satélites GEOESTACIONARIOS o de órbita alta (GEO)
 se instalan a una altura de alrededor de 35700 km. Al ubicarlos a esta
 altura se alcanza un equilibrio entre la fuerza de gravedad terrestre y
 la fuerza centrífuga del satélite, lo que garantiza que permanecerán
@@ -249,74 +251,75 @@ del tráfico internacional es satelital, y el resto es conducido por
 fibras ópticas. Sin embargo, siguen siendo una buena solución para
 atravesar áreas continentales, o para distribuir tráfico hacia muchos
 puntos simultáneos de bajada, como en los medios de comunicación
-televisivos (aplicación llamada broadcasting).
+televisivos (aplicación llamada BROADCASTING).
+
 
 Velocidades de transmisión y de propagación
--------------------------------------------
 
-Cada interfaz funciona a una determinada velocidad de transmisión, que
+Cada interfaz funciona a una determinada VELOCIDAD DE TRANSMISIÓN, que
 es la cantidad de bits por segundo que es capaz de escribir en el
 enlace, o leer del enlace. Las unidades utilizadas para expresar la
 velocidad de transmisión son las del sistema decimal. Así, una medida
-habitual es el Gbps o gigabit por segundo (10 elevado a la 9 b/s). La velocidad de
-transmisión suele ser llamada también ancho de banda digital.
+habitual es el Gbps o gigabit por segundo (10⁹b/s). La velocidad de
+transmisión suele ser llamada también ANCHO DE BANDA DIGITAL.
 
-Por otro lado, una vez que cada bit ha sido escrito en un enlace, ese
+Por otro lado, una vez que CADA BIT ha sido escrito en un enlace, ese
 bit aún debe viajar desde la interfaz de salida hasta la interfaz del
 otro extremo del enlace. Ese viaje, aunque se realiza a velocidades
-cercanas a la de la luz, no es instantáneo. Dependiendo del medio, la
-velocidad de propagación de un bit puede ser de alrededor de un 60% a
+cercanas a la de la luz, NO ES INSTANTÁNEO. Dependiendo del medio, la
+VELOCIDAD DE PROPAGACIÓN de un bit puede ser de alrededor de un 60% a
 90% de la velocidad de la luz, que es de unos 300.0 0 0 km/s, o
-3 por  10 elevado a la 8 m/s.
+3 × 10⁸m/s.
 
--   Notemos que la velocidad de transmisión depende exclusivamente de
+-   Notemos que la VELOCIDAD DE TRANSMISIÓN depende exclusivamente de
     las características tecnológicas de la interfaz. Son la construcción
     y la configuración de la interfaz las que definen la velocidad de
     transmisión a la cual funcionará un enlace, y no el medio con el que
     se implementa el enlace.
--   Por el contrario, notemos también que la velocidad de propagación es
-    una cuestión puramente física y no depende de la tecnología de las
-    interfaces.
+-   Por el contrario, notemos también que la VELOCIDAD DE PROPAGACIÓN es
+    una cuestión puramente física y NO DEPENDE DE LA TECNOLOGÍA DE LAS
+    INTERFACES.
 
-La velocidad de transmisión puede mejorarse si se mejoran las
+La velocidad de TRANSMISIÓN puede mejorarse si se mejoran las
 tecnologías de interfaz en los extremos del enlace. Pero un medio tiene
-una determinada velocidad de propagación, y ningún cambio en la
+una determinada velocidad de PROPAGACIÓN, y ningún cambio en la
 tecnologia de las interfaces cambiará esa velocidad.
 
+
 Tiempo de transferencia de un mensaje
--------------------------------------
 
 Conocer las velocidades de transmisión y de propagación nos permite
-definir un modelo para el tiempo de transferencia de un mensaje a través
+definir un modelo para el TIEMPO DE TRANSFERENCIA de un mensaje a través
 de un enlace.
 
 Este modelo dependerá de otras dos variables: por un lado, como es
-lógico, del tamaño del mensaje que se quiere transmitir; y por otro
-lado, de la distancia que separa las interfaces.
+lógico, del TAMAÑO del mensaje que se quiere transmitir; y por otro
+lado, de la DISTANCIA que separa las interfaces.
 
 Supongamos que:
 
--   La velocidad de transmisión de la interfaz es V$ sub transm $.
--   La velocidad de propagación del medio es V$ sub prop $.
+-   La velocidad de transmisión de la interfaz es V$ sub $(transm).
+-   La velocidad de propagación del medio es V$ sub $(prop).
 -   El mensaje es de L bits.
 -   La distancia entre interfaces, o longitud del enlace, es D.
 
 Entonces:
 
--   El tiempo de transmisión para los L bits será
-    T$ sub transm $ = L / V$ sub transm $.
--   El tiempo de propagación para el enlace de D m será
-    T$ sub prop $ = D / V$ sub prop $.
+-   El TIEMPO DE TRANSMISIÓN para los L bits será
+    T$ sub $(transm) = L/V$ sub $(transm).
+-   El TIEMPO DE PROPAGACIÓN para el enlace de D m será
+    T$ sub $(prop) = D/V$ sub $(prop).
 
-Notemos una vez más que el tiempo de transmisión es dependiente de la
-velocidad de transmisión de las interfaces, y no de la longitud del
-enlace. Y además, que el tiempo de propagación es función de la longitud
-del enlace, y no de la velocidad de transmisión de las interfaces.
+Notemos una vez más que el TIEMPO DE TRANSMISIÓN ES DEPENDIENTE DE LA
+VELOCIDAD DE TRANSMISIÓN DE LAS INTERFACES, y no de la longitud del
+enlace. Y además, que el TIEMPO DE PROPAGACIÓN ES FUNCIÓN DE LA LONGITUD
+DEL ENLACE, y no de la velocidad de transmisión de las interfaces.
 
-El tiempo de transferencia que demorarán en llegar los L bits a destino,
+El TIEMPO DE TRANSFERENCIA que demorarán en llegar los L bits a destino,
 será la suma de ambos tiempos:
 
-T$ sub tot $ = T$ sub transm $ + T$ sub prop $.
+$ sub $T$ sub $$ sub $($ sub $t$ sub $$ sub $o$ sub $$ sub $t$ sub $) = $ sub $T$ sub $$ sub $($ sub $t$ sub $$ sub $r$ sub $$ sub $a$ sub $$ sub $n$ sub $$ sub $s$ sub $$ sub $m$ sub $) + $ sub $T$ sub $$ sub $($ sub $p$ sub $$ sub $r$ sub $$ sub $o$ sub $$ sub $p$ sub $)
+.
 
 Es habitual ver en la bibliografía de Redes los diagramas de flujo de
 mensajes, que muestran qué ocurre en cada nodo a medida que transcurre
@@ -339,8 +342,8 @@ horizontal, menor será el tiempo de propagación, lo que indica un enlace
 de menor longitud.
 
 Comparemos ambos tiempos de transmisión y propagación. Podemos tener un
-enlace 1 (línea azul) de baja velocidad de transmisión respecto del
-enlace 2 (línea verde). Como las líneas de propagación tienen el mismo
+ENLACE 1 (línea azul) de baja velocidad de transmisión respecto del
+ENLACE 2 (línea verde). Como las líneas de propagación tienen el mismo
 ángulo, inferimos que los enlaces son de la misma longitud.
 
 [Comparando enlaces de la misma longitud]
@@ -356,10 +359,10 @@ transferencia si fuera de longitud suficientemente mayor que el otro.
 
 [Comparando enlaces de longitudes diferentes]
 
-Entidades de red
-----------------
 
-Llamamos entidades a las piezas de software o de hardware que funcionan
+Entidades de red
+
+Llamamos ENTIDADES a las piezas de software o de hardware que funcionan
 como componentes de los nodos dentro de una red. Las entidades pueden
 ubicarse a cualquier nivel: pueden ser dos routers, dos interfaces de
 red, o las partes de una aplicación distribuida.
@@ -367,25 +370,25 @@ red, o las partes de una aplicación distribuida.
 Las entidades de nodos diferentes que van a comunicarse estarán siempre
 al mismo nivel.
 
-Eventos de red
---------------
 
-Llamamos eventos a cualquier suceso de interés que ocurre dentro de la
+Eventos de red
+
+Llamamos EVENTOS a cualquier suceso de interés que ocurre dentro de la
 red, especialmente si se trata de una interacción entre entidades. Por
 ejemplo, la llegada de un mensaje.
 
-Protocolos
-----------
 
-Los protocolos son conjuntos de reglas que definen la interacción entre
+Protocolos
+
+Los PROTOCOLOS son conjuntos de reglas que definen la interacción entre
 dos entidades de la red.
 
 Para comunicarse, las entidades de cualquier nivel deben compartir un
 protocolo. Los protocolos especifican:
 
--   Cuál es el formato de los mensajes que pueden intercambiar las
+-   Cuál es el FORMATO de los mensajes que pueden intercambiar las
     entidades;
--   Qué tipo de acciones o respuestas debe dar cada entidad al recibir
+-   Qué tipo de ACCIONES o respuestas debe dar cada entidad al recibir
     cada mensaje.
 
 Puede ser útil comparar los protocolos de red con protocolos sencillos
@@ -396,9 +399,9 @@ definidas.
 
 Aunque los contenidos específicos de los mensajes pueden variar, es
 habitual que existan fases en la interacción entre las personas, como el
-inicio de sesión, la autentificación, la autorización, las peticiones o
-requerimientos (requests), las respuestas (responses), y el cierre de
-sesión.
+INICIO DE SESIÓN, LA AUTENTIFICACIÓN, LA AUTORIZACIÓN, LAS PETICIONES O
+REQUERIMIENTOS ($ sub $REQUESTS$ sub $), LAS RESPUESTAS ($ sub $RESPONSES$ sub $), Y EL CIERRE
+DE SESIÓN.
 
 Todas éstas son fases habituales en la comunicación entre los humanos,
 pero también en los protocolos de las redes.
@@ -406,54 +409,54 @@ pero también en los protocolos de las redes.
 Modelo cliente-servidor
 
 Estas fases habituales aparecen en los protocolos que definen relaciones
-de cliente y servidor entre entidades. En el modelo cliente-servidor:
+de CLIENTE Y SERVIDOR entre entidades. En el modelo cliente-servidor:
 
--   El nodo cliente es el que inicia una interacción, con un request o
+-   El nodo cliente es el que inicia una interacción, con un REQUEST o
     requerimiento hacia el servidor.
--   El nodo servidor contesta con una respuesta o response.
+-   El nodo servidor contesta con una respuesta o RESPONSE.
 -   El ciclo puede repetirse indefinidamente.
 
-La mayoría de las aplicaciones de Internet siguen este modelo
-cliente-servidor de interacción. El protocolo HTTP, motor de la WWW, es
+La mayoría de las aplicaciones de Internet siguen este MODELO
+CLIENTE-SERVIDOR de interacción. El protocolo HTTP, motor de la WWW, es
 un ejemplo claro.
 
 Modelo peer-to-peer
 
 El modelo cliente-servidor es asimétrico: los roles de cliente y de
 servidor están bien diferenciados. Un modelo alternativo, diferente, es
-el llamado peer-to-peer, donde no existe un nodo servidor propiamente
+el llamado PEER-TO-PEER, donde no existe un nodo servidor propiamente
 dicho, sino que todos los nodos que comparten el protocolo son, a la
 vez, clientes y servidores, en igualdad de condiciones.
 
 Autómatas
 
-Los autómatas son una herramienta formal muy útil para describir
+Los AUTÓMATAS son una herramienta formal muy útil para describir
 detalladamente los protocolos. Un autómata es la especificación de los
-estados en los que puede encontrarse una entidad y los eventos que
-disparan los cambios de estado o transiciones. El autómata puede tomar
+ESTADOS en los que puede encontrarse una entidad y los EVENTOS que
+disparan los cambios de estado o TRANSICIONES. El autómata puede tomar
 la forma de un diagrama de burbujas y flechas.
 
--   En un diagrama de autómata, las burbujas representan estados.
--   Las flechas representan transiciones.
--   Las flechas llevan rótulos que describen qué evento es necesario
-    para disparar la transición, y qué acción debe ejecutar la entidad
+-   En un diagrama de autómata, las burbujas representan ESTADOS.
+-   Las flechas representan TRANSICIONES.
+-   Las flechas llevan RÓTULOS que describen qué EVENTO es necesario
+    para disparar la transición, y qué ACCIÓN debe ejecutar la entidad
     como respuesta al evento.
 
     -   Cuando no se requiere un evento para entrar en un estado (por
         ejemplo, porque es el estado inicial del autómata), el evento es
-        vacío (y se denota "-").
+        VACÍO (y se denota “-”).
     -   Un mensaje de respuesta que confirma la recepción correcta de un
-        mensaje anterior se llama un reconocimiento o acknowledgement
-        (ACK). Si el mensaje de respuesta indica la recepción
-        incorrecta, se llama un acknowledgement negativo o NAK.
+        mensaje anterior se llama un RECONOCIMIENTO O ACKNOWLEDGEMENT
+        (ACK). Si el mensaje de respuesta indica la RECEPCIÓN
+        INCORRECTA, se llama un ACKNOWLEDGEMENT NEGATIVO o NAK.
 
 Autómata del cliente
 
 [Autómata del cliente]
 
-En el ejemplo, el cliente ingresa al estado de Abriendo conexión
+En el ejemplo, el cliente ingresa al estado de ABRIENDO CONEXIÓN
 presentando sus credenciales. Si son aceptadas, envía su primera
-solicitud y pasa al estado En servicio. A cada respuesta que reciba,
+solicitud y pasa al estado EN SERVICIO. A cada respuesta que reciba,
 podrá enviar una nueva solicitud. Finalmente, emitirá un mensaje de
 cierre de conexión y terminará la interacción con el servidor.
 
@@ -461,8 +464,8 @@ Autómata del servidor
 
 Por su parte, el servidor presenta un autómata complementario al del
 cliente. La mayor parte del tiempo, el servidor estará en el estado
-Esperando conexión hasta que reciba unas credenciales de un cliente. Si
-las reconoce, pasa al estado En servicio donde acepta solicitudes y
+ESPERANDO CONEXIÓN hasta que reciba unas credenciales de un cliente. Si
+las reconoce, pasa al estado EN SERVICIO donde acepta solicitudes y
 emite respuestas. Cuando el cliente decide poner fin a la interacción,
 vuelve al estado de esperar conexión de un nuevo cliente.
 
@@ -476,8 +479,8 @@ cliente-servidor?
 
 Muchos protocolos requieren que una entidad reciba la confirmación de un
 mensaje anterior antes de poder enviar el siguiente mensaje. Cuando esto
-ocurre, decimos que el protocolo es del tipo de parada y espera (stop
-and wait). Cuando el enlace entre dos entidades es de longitud muy
+ocurre, decimos que el protocolo es del tipo de PARADA Y ESPERA ($ sub $STOP
+AND WAIT$ sub $). Cuando el enlace entre dos entidades es de longitud muy
 grande, un protocolo de parada y espera puede tener una eficiencia muy
 reducida.
 
@@ -489,8 +492,8 @@ ese lapso, no se puede seguir transmitiendo datos porque aún no ha
 llegado la confirmación o ACK del mensaje anterior. Las demoras pueden
 hacer que la aplicación directamente no sea viable.
 
-El punto crucial aquí es que este problema no se resuelve aumentando el
-ancho de banda de los enlaces, porque, como hemos dicho, el retardo de
+El punto crucial aquí es que este problema NO SE RESUELVE AUMENTANDO EL
+ANCHO DE BANDA DE LOS ENLACES, porque, como hemos dicho, el retardo de
 propagación no tiene nada que ver con la velocidad de transmisión de las
 interfaces.
 
@@ -499,34 +502,34 @@ resolver este problema de los protocolos de parada y espera. En
 Internet, la solución está representada por el protocolo TCP/IP, que en
 lugar de obligar a esperar un tiempo de propagación por cada mensaje, es
 capaz de encadenar varios mensajes sin necesidad de esperar confirmación
-por cada uno. El protocolo TCP pertenece al nivel de transporte de las
+por cada uno. El protocolo TCP pertenece al nivel de TRANSPORTE de las
 redes.
 
-Pregunta
+PREGUNTA
 
 Supongamos que se tiene un enlace de radio de 1Gbps entre una estación
-terrestre y un vehículo experimental que circula por la superficie de
-Marte. Supongamos además que la aplicación sea controlar
+terrestre y un vehículo experimental QUE CIRCULA POR LA SUPERFICIE DE
+MARTE. Supongamos además que la aplicación sea controlar
 interactivamente desde la Tierra este vehículo mediante un protocolo de
 parada y espera. Los mensajes de este protocolo son comandos de la forma
-avanzar, detenerse, izquierda, derecha, etc.
+AVANZAR, DETENERSE, IZQUIERDA, DERECHA, etc.
 
-La distancia teórica mínima al planeta Marte es de unos
-54  por  10 elevado a la 6 km. Esto se traduce en unos 3 minutos de retardo de
-propagación. Quiere decir que cada comando enviado desde la Tierra a
-Marte demorará, en el mejor caso, unos 6 minutos en ser confirmado. Esto
-ocasiona problemas para controlar el vehículo, porque una mala maniobra
-puede dejarlo en una situación peligrosa sobre el escarpado suelo
-marciano. Se necesita una velocidad de respuesta mucho mayor.
+La distancia teórica mínima al planeta Marte es de unos 54 × 10⁶km. Esto
+se traduce en unos 3 minutos de retardo de propagación. Quiere decir que
+cada comando enviado desde la Tierra a Marte demorará, en el mejor caso,
+unos 6 minutos en ser confirmado. Esto ocasiona problemas para controlar
+el vehículo, porque una mala maniobra puede dejarlo en una situación
+peligrosa sobre el escarpado suelo marciano. Se necesita una velocidad
+de respuesta mucho mayor.
 
 Elevar el ancho de banda digital del enlace, de 1Gbps a 10Gbps, ¿sería
 una solución?
 
+
 Direcciones de red
-------------------
 
 Para poder dirigir los mensajes entre nodos, es necesario identificarlos
-de alguna forma, asignándoles direcciones o identificadores de red.
+de alguna forma, asignándoles DIRECCIONES o identificadores de red.
 
 En Internet, las direcciones son asignadas a las interfaces, y no a los
 nodos. De esta manera, si un nodo tiene más de una interfaz, recibirá
@@ -539,24 +542,24 @@ que se asignan a cada interfaz de los nodos. Estas direcciones de 32
 bits suelen escribirse como cuatro valores decimales, entre 0 y 255,
 separados por puntos.
 
-Ejemplo
+EJEMPLO
 
 -   La dirección IPv4 1 1 0 0 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 se puede escribir
     en notación decimal con punto como 192.168.1.1.
 
-Paquetes IP
------------
 
-Internet es una red del tipo de conmutación por paquetes, lo que
+Paquetes IP
+
+Internet es una red del tipo de CONMUTACIÓN POR PAQUETES, lo que
 significa que los flujos de datos que van de un nodo emisor a un
-receptor son fraccionados en paquetes o trozos de datos, de un cierto
+receptor son fraccionados en PAQUETES o trozos de datos, de un cierto
 tamaño máximo, y que los nodos intermedios tratan a cada paquete
 individualmente para encaminarlos a su destino.
 
 En una red conmutada por paquetes, los nodos intermedios, o routers, no
 necesitan conocer todo el camino que debe atravesar cada uno de los
-paquetes. En cambio, un router sólo necesita saber a cuál de los nodos
-intermedios adyacentes encaminarlo, basándose en información
+paquetes. En cambio, un router sólo necesita saber a cuál de los NODOS
+INTERMEDIOS ADYACENTES encaminarlo, basándose en información
 transportada por el mismo paquete.
 
 Cada nodo intermedio o router en el camino entre el emisor y el receptor
@@ -564,40 +567,40 @@ tomará una nueva decisión de ruteo ante cada uno de los paquetes que
 llegan a él.
 
 Al generar un paquete, para que pueda ser encaminado, el emisor completa
-los datos con un encabezado conteniendo la dirección IP del nodo emisor,
-o dirección origen, y la dirección IP del nodo destino, o dirección
-destino.
+los datos con un ENCABEZADO conteniendo la dirección IP del nodo emisor,
+o DIRECCIÓN ORIGEN, y la dirección IP del nodo destino, o DIRECCIÓN
+DESTINO.
+
 
 Ruteo o encaminamiento
-----------------------
 
 Cuando un paquete llega a un router, lo hace por algún enlace. La tarea
-del router es reenviar este paquete por otro de sus enlaces, de modo que
+del router es REENVIAR este paquete por otro de sus enlaces, de modo que
 se aproxime a su destino.
 
 El router debe aplicar alguna regla lógica para decidir hacia qué otro
-enlace reenviar el paquete. Esta decisión de cuál será ese otro enlace
-es una acción de ruteo o encaminamiento.
+enlace REENVIAR el paquete. Esta decisión de cuál será ese otro enlace
+es una acción de RUTEO o ENCAMINAMIENTO.
 
 Tabla de reenvío o de ruteo
 
 La decisión de ruteo es tomada por los routers usando la información de
-destino que llevan consigo los paquetes, más información de ruteo
-contenida en una tabla de reenvío o tabla de ruteo, almacenada en la
+DESTINO que llevan consigo los paquetes, más información de ruteo
+contenida en una TABLA DE REENVÍO o tabla de ruteo, almacenada en la
 memoria del router.
 
 La tabla de ruteo contiene reglas para la decisión de encaminamiento de
-los paquetes. Cada regla se llama una ruta e indica cuál será la
+los paquetes. Cada regla se llama una RUTA e indica cuál será la
 interfaz de salida de los paquetes cuya dirección destino coincida con
 la dirección destino de la ruta.
 
 En líneas generales, el algoritmo de ruteo es como sigue:
 
--   Al recibir un paquete, el router examinará la dirección destino del
-    paquete y la comparará con la dirección destino de cada ruta.
+-   Al recibir un paquete, el router examinará la dirección destino DEL
+    PAQUETE y la comparará con la dirección destino DE CADA RUTA.
 -   Al encontrar una coincidencia de dirección destino entre el paquete
-    y la ruta, utilizará la información en la columna de interfaz de
-    salida de esa ruta, reenviando el paquete por esa interfaz.
+    y la ruta, utilizará la información en la columna de INTERFAZ DE
+    SALIDA de esa ruta, reenviando el paquete por esa interfaz.
 
 Sin embargo, ésta es una simplificación. La verdadera forma de la tabla
 de ruteo es algo diferente. ¿Por qué?
@@ -605,14 +608,14 @@ de ruteo es algo diferente. ¿Por qué?
 Subredes
 
 Notemos que, ya que las direcciones IP se escriben usando 32 bits,
-existen más de cuatro mil millones de direcciones IPv4 posibles. Una
+existen más de CUATRO MIL MILLONES de direcciones IPv4 posibles. Una
 tabla de ruteo completa, con una ruta por cada dirección destino, tal
 como la hemos descrito, tendría enormes requerimientos de memoria, y el
 equipamiento de ruteo sería muy costoso.
 
 Las tablas de ruteo verdaderas, entonces, no contienen una ruta por cada
 dirección destino, sino que las rutas corresponden a conjuntos o
-agrupaciones de direcciones, llamadas subredes.
+agrupaciones de direcciones, llamadas SUBREDES.
 
 Un paquete cuya dirección destino pertenezca a una subred utilizará la
 ruta de dicha subred. Cualquier otra dirección destino que pertenezca a
@@ -625,10 +628,10 @@ Prefijo de subred
 
 ¿Cómo agrupar estas direcciones para definir las subredes?
 
-Todas las direcciones con el mismo prefijo de una cierta longitud
-formarán una subred.
+$ sub $Todas las direcciones con el mismo PREFIJO de una cierta longitud
+formarán una subred.$ sub $
 
-Ejemplo
+EJEMPLO
 
 -   Las direcciones IP 130.240.10.17 y 130.240.11.15 pertenecen a una
     subred con prefijo común 130.240 de 16 bits. Todas las direcciones
@@ -641,7 +644,7 @@ Ejemplo
 
     130.240.11.15 = 1 0 0 0 0 0 1 0.1 1 1 1 0 0 0 0.0 0 0 0 1 0 1 1.0 0 0 0 1 1 1 1
 
-    Los primeros 23 bits de ambas direcciones son iguales, luego
+    Los primeros 23 BITS de ambas direcciones son iguales, luego
     comparten un prefijo común de longitud 23. Para escribirlo en
     notación decimal, adoptemos la convención de completar con ceros la
     parte no común:
@@ -655,22 +658,22 @@ Dirección de subred y máscara de subred
 
 Cuando en una tabla de ruteo se especifique una ruta para todas las
 direcciones con un mismo prefijo, la dirección destino de la ruta será
-una dirección de subred.
+una DIRECCIÓN DE SUBRED.
 
-Una dirección de subred se calcula utilizando una máscara de subred, que
+Una dirección de subred se calcula utilizando una MÁSCARA DE SUBRED, que
 es una sucesión de 32 dígitos binarios. Los primeros n dígitos de la
-máscara son unos, y los restantes ceros.
+máscara son UNOS, y los restantes CEROS.
 
-La cantidad de dígitos "uno" dice cuál es la longitud del prefijo
-compartido. Estos primeros n dígitos "unos" definen cuál será el prefijo
+La cantidad de dígitos “uno” dice cuál es la longitud del prefijo
+compartido. Estos primeros n dígitos “unos” definen cuál será el prefijo
 compartido por todas las direcciones IP que pertenecen a la subred.
 
-Ejemplo
+EJEMPLO
 
--   Una máscara de 24 bits de longitud puede expresarse como 1 1 1 1 1 1 1 1
+-   Una máscara de 24 BITS de longitud puede expresarse como 1 1 1 1 1 1 1 1
     1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0, que en la misma notación decimal de las
     direcciones IP suele escribirse 255.255.255.0.
--   Una máscara de 26 bits de longitud puede expresarse como 1 1 1 1 1 1 1 1
+-   Una máscara de 26 BITS de longitud puede expresarse como 1 1 1 1 1 1 1 1
     1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0, o 255.255.255.192.
 
 Cálculo de la dirección de subred
@@ -681,12 +684,12 @@ los dígitos y efectuamos una operación AND bit a bit. El operador AND es
 el que devuelve 1 solamente si ambos operandos son 1, y en otro caso
 devuelve 0.
 
-El efecto de este AND es copiar en las primeras n columnas del resultado
-los bits tal cual figuran en la dirección IP, y completar con ceros
+El efecto de este AND es COPIAR en las primeras n columnas del resultado
+los bits tal cual figuran en la dirección IP, y COMPLETAR CON CEROS
 hasta el final del resultado. Este resultado es la dirección de subred a
 la cual pertenece la dirección IP original.
 
-Ejemplo
+EJEMPLO
 
 -   ¿Cuál es la dirección de subred de la dirección IP 170.210.80.129
     con máscara 255.255.255.0?
@@ -698,29 +701,29 @@ Ejemplo
     con máscara 255.255.255.128?
 
     Si escribimos esta máscara en forma binaria, vemos que contiene 25
-    unos. La operación AND que copia los primeros 25 bits de la
+    UNOS. La operación AND que copia los primeros 25 bits de la
     dirección IP y deja los restantes en 0 da la dirección de subred
     170.210.80.128.
 
-Notación alternativa
+NOTACIÓN ALTERNATIVA
 
-Una máscara de subred con n bits suele expresarse también como "/n".
-Así, la dirección IP 192.168.1.1 con máscara 255.255.255.0 puede
+Una máscara de subred con n bits suele expresarse también como “/n”.
+Así, la dirección IP 192.168.1.1 CON MÁSCARA 255.255.255.0 puede
 escribirse más sencillamente como 192.168.1.1/24.
 
 Con los conceptos de direcciones de subred y máscaras, ya podemos
-rediseñar la tabla de ruteo. Habrá que especificar direcciones de subred
+rediseñar la tabla de ruteo. Habrá que especificar DIRECCIONES DE SUBRED
 en lugar de direcciones de hosts, y para cada ruta en la tabla, agregar
-cuál es la máscara que define el prefijo de la ruta.
+cuál es la MÁSCARA que define el prefijo de la ruta.
 
-Nota
+NOTA
 
 Para simplificar los ejemplos siguientes, utilizaremos direcciones y
 máscaras de cinco bits. Sin embargo, el mecanismo para el algoritmo de
 reenvío será básicamente el mismo que con las direcciones reales IPv4 de
 32 bits.
 
-Ejemplo
+EJEMPLO
 
    Dirección de subred   Máscara   Interfaz de salida
   --------------------- --------- --------------------
@@ -739,40 +742,40 @@ Esta tabla de ruteo dice que:
     destino de un paquete son 0 0 1, el paquete debe ser reenviado por la
     interfaz 1.
 -   La subred 0 0 0 1 0 con máscara 1 1 1 1 0 se alcanza mediante la interfaz de
-    salida 1. Es decir, que si los primeros cuatro bits de la dirección
+    salida 1. Es decir, que si los primeros CUATRO bits de la dirección
     destino de un paquete son 0 0 0 1, el paquete debe ser reenviado por la
     interfaz 2.
 
-Preguntas
+PREGUNTAS
 
 -   En el ejemplo anterior, ¿puede darse un caso donde quepa la duda de
     si aplicar la primera o la segunda regla?
 -   ¿Puede darse un caso donde quepa la duda de si aplicar la primera o
     la tercera regla?
 
-Ruta por defecto o ruta default
+Ruta por defecto o ruta $ sub $default$ sub $
 
 Aun con la estrategia de ruteo por prefijos, los routers no pueden
-conocer todas las rutas a todos los destinos. Siempre se apoyan en que
+conocer TODAS las rutas a todos los destinos. Siempre se apoyan en que
 alguno de sus routers vecinos que esté más próximo al destino tenga más
 información que ellos.
 
 Cuando un router no sabe cómo encaminar un paquete, lo envía por una
 interfaz predefinida, en la esperanza de que un router situado sobre ese
 enlace, que reciba el paquete, tenga mejor información. A este router se
-lo llama router por defecto o gateway default, y la ruta que le
-corresponde es la ruta por defecto o default route.
+lo llama ROUTER POR DEFECTO o GATEWAY DEFAULT, y la ruta que le
+corresponde es la RUTA POR DEFECTO O DEFAULT ROUTE.
 
 Para definir una ruta por defecto agregamos una regla a la tabla de
-ruteo con dirección de subred = 0 0 0 0 0 y máscara de red = 0 0 0 0 0. Como la
-máscara tiene cero unos, cualquier dirección IP destino da una
+ruteo con DIRECCIÓN DE SUBRED = 0 0 0 0 0 Y MÁSCARA DE RED = 0 0 0 0 0. Como la
+máscara tiene CERO UNOS, cualquier dirección IP destino da una
 coincidencia. Por eso, la regla por defecto se consulta en último lugar,
 y como último recurso. De lo contrario, la interfaz de la ruta por
 defecto absorbería todo el tráfico y nunca se reenviaría tráfico a otros
 enlaces.
 
 En Internet, tiene sentido que la interfaz de la ruta default en cada
-router sea la que "mira" al centro de la Internet, en la dirección donde
+router sea la que “mira” al centro de la Internet, en la dirección donde
 hay más nodos. Allí es más probable que existan routers con una
 configuración mejor.
 
@@ -783,18 +786,18 @@ menos específica, es la que tiene la máscara más corta. Representa a
 cualquier subred, o al conjunto de todas las subredes.
 
 Lo inverso también es cierto: si una máscara es más larga, la ruta es
-más específica. Una máscara más larga representa una subred de menor
+más específica. Una máscara más larga representa una subred de MENOR
 tamaño.
 
 Una máscara larga puede servir para indicar una excepción a una regla
-más general. Por eso, las máscaras más largas tienen preferencia en el
+más general. Por eso, las máscaras más largas TIENEN PREFERENCIA en el
 proceso de ruteo de un paquete.
 
 Cada vez que un router se encuentre con más de una ruta posible, elegirá
-aquella cuya máscara de subred sea más larga (es decir, la ruta más
-específica).
+aquella cuya máscara de subred sea más larga (es decir, LA RUTA MÁS
+ESPECÍFICA).
 
-Ejemplo
+EJEMPLO
 
    Dirección de subred   Máscara   Interfaz de salida
   --------------------- --------- --------------------
@@ -804,13 +807,13 @@ Ejemplo
 
 La primera regla indica que todo destino con sus primeros tres bits
 iguales a cero se alcanza mediante la interfaz 0. Sin embargo, hay
-excepciones. Los destinos que cumplan lo anterior pero tengan su cuarto
-bit igual a 1 deben alcanzarse mediante la interfaz 2. La tercera regla
+excepciones. Los destinos que cumplan lo anterior pero tengan su CUARTO
+BIT igual a 1 deben alcanzarse mediante la interfaz 2. La tercera regla
 es una excepción a la primera porque trata un conjunto más específico de
 direcciones.
 
+
 Algoritmo de reenvío
---------------------
 
 Finalmente podemos presentar el algoritmo de reenvío tal cual lo
 ejecutan los routers de Internet.
@@ -830,7 +833,7 @@ Como las reglas se consultan en orden de prefijos más largos a prefijos
 más cortos, las rutas más específicas se encuentran primero, y tienen
 preferencia sobre las menos específicas.
 
-Ejemplo
+EJEMPLO
 
 Volvamos a la tabla de ruteo de un ejemplo anterior, sólo que
 agregándole una ruta default por la interfaz 2:
@@ -851,26 +854,26 @@ agregándole una ruta default por la interfaz 2:
 -   0 1 0 0 1 → Interfaz 2, por la regla default, ya que las anteriores no
     han resultado en coincidencias.
 
+
 Servicio de Nombres de Dominio (DNS)
-------------------------------------
 
 Como hemos visto, el funcionamiento de Internet se basa en la existencia
-de direcciones, que permiten enviar y encaminar el tráfico entre los
+de DIRECCIONES, que permiten enviar y encaminar el tráfico entre los
 diferentes puntos de la red. Sin embargo, las direcciones IP de 32 bits,
 o su equivalente de cuatro decimales con puntos, son incómodas de
-manejar para los humanos. El servicio de nombres de dominio, o Domain
+manejar para los humanos. El SERVICIO DE NOMBRES DE DOMINIO, o Domain
 Name Service (DNS) es un servicio agregado a la Internet para comodidad
 de los usuarios.
 
 El servicio DNS permite a los usuarios referirse a los nodos de Internet
 mediante nombres simbólicos en lugar de direcciones, y entra en acción
-cada vez que se menciona el nombre de un nodo para hacer contacto con
+cada vez que se menciona el NOMBRE de un nodo para hacer contacto con
 él. Un nodo que necesita enviar un mensaje cualquiera a otro nodo
 necesita conocer su dirección IP. Si únicamente conoce su nombre, pedirá
-una traducción de nombre a algún servidor DNS.
+una TRADUCCIÓN DE NOMBRE a algún SERVIDOR DNS.
 
 Técnicamente, Internet podría funcionar perfectamente (y, de hecho, lo
-hizo durante algún tiempo) sin la existencia del servicio DNS, pero la
+hizo durante algún tiempo) SIN la existencia del servicio DNS, pero la
 costumbre lo ha convertido en una parte indispensable de la red.
 
 Jerarquía de nombres de dominio
@@ -881,27 +884,27 @@ separadas por puntos. En cada nombre, las partes más a la derecha
 designan conjuntos mayores de nodos, y las partes más a la izquierda,
 conjuntos más pequeños, contenidos en aquellos conjuntos mayores.
 
-Ejemplo
+EJEMPLO
 
--   El nombre pedco.uncoma.edu.ar designa al nodo pedco, que pertenece
-    al conjunto uncoma, contenido en el conjunto edu contenido en el
-    conjunto ar.
--   El nombre pedco.uncoma.edu.ar equivale, gracias al servicio DNS, a
-    la dirección IP 170.210.81.41.
+-   El nombre PEDCO.UNCOMA.EDU.AR designa al nodo PEDCO, que pertenece
+    al conjunto UNCOMA, contenido en el conjunto EDU contenido en el
+    conjunto AR.
+-   El nombre PEDCO.UNCOMA.EDU.AR equivale, gracias al servicio DNS, a
+    la DIRECCIÓN IP 170.210.81.41.
 
-Estos conjuntos de nombres se llaman dominios. Los dominios que aparecen
+Estos conjuntos de nombres se llaman DOMINIOS. Los dominios que aparecen
 más a la derecha son los más generales. Inicialmente fueron siete de
-propósito general (org, mil, gov, edu, com, net, int), más los
-pertenecientes a los países (ar para Argentina, cl para Chile, uy para
-Uruguay...), pero luego se agregaron otros. Por ser los más generales,
+propósito general (ORG, MIL, GOV, EDU, COM, NET, INT), más los
+pertenecientes a los países (AR para Argentina, CL para Chile, UY para
+Uruguay…), pero luego se agregaron otros. Por ser los más generales,
 están al tope de la jerarquía, y se llaman dominios de nivel superior o
-TLD (Top-Level Domains).
+TLD (TOP-LEVEL DOMAINS).
 
 Los dominios de nivel superior contienen otros espacios de nombres,
 llamados a su vez dominios, y éstos, otros llamados subdominios. En el
-ejemplo anterior, el TLD es ar, el dominio es edu.ar (educación,
-Argentina), el subdominio es uncoma.edu.ar (Universidad del Comahue,
-educación, Argentina) y finalmente pedco.uncoma.edu.ar es el nombre de
+ejemplo anterior, el TLD es AR, el dominio es EDU.AR (educación,
+Argentina), el subdominio es UNCOMA.EDU.AR (Universidad del Comahue,
+educación, Argentina) y finalmente PEDCO.UNCOMA.EDU.AR es el nombre de
 un nodo perteneciente a la Universidad del Comahue, educación,
 Argentina.
 
@@ -910,17 +913,17 @@ Resolución de nombres
 Los servidores DNS se clasifican por el tipo de función que cumplen.
 Cada uno interviene de una manera especial en el mecanismo de traducción
 de nombres a direcciones. Este mecanismo de traducción se llama
-resolución de nombres.
+RESOLUCIÓN de nombres.
 
 -   Cada nodo de Internet lleva una configuración que le dice cuál es la
-    dirección de su servidor DNS local. El servidor local es quien
+    dirección de su SERVIDOR DNS LOCAL. El servidor local es quien
     responde efectivamente una consulta DNS. Normalmente, el servidor
-    local se encuentra "cerca" del cliente en términos de redes.
+    local se encuentra “cerca” del cliente en términos de redes.
     Posiblemente, en la misma red local, o en la del proveedor de acceso
     a Internet.
 
 -   Al ser consultado por un nombre, un servidor local usará la
-    estrategia de analizar ese nombre de derecha a izquierda. Utilizará
+    estrategia de analizar ese nombre DE DERECHA A IZQUIERDA. Utilizará
     los componentes del nombre en ese orden, es decir, yendo de lo
     general a lo particular. En primer lugar utilizará el TLD o nombre
     de nivel superior para averiguar información sobre ese conjunto de
@@ -928,34 +931,34 @@ resolución de nombres.
 
     Los servidores locales no conocen todas las posibles traducciones de
     nombre a dirección IP, por lo cual necesitan el servicio de los
-    servidores raíz. Estos son alrededor de una veintena de servidores
+    SERVIDORES RAÍZ. Estos son alrededor de una veintena de servidores
     distribuidos en diferentes lugares del planeta, y todos tienen la
     misma información, replicada: las direcciones de los servidores de
     los TLD.
 
     Así, un servidor local obtendrá, de un servidor raíz, el dato de
-    dónde ubicar al servidor del TLD ar.
+    dónde ubicar al servidor del TLD AR.
 
 -   Conociendo la dirección IP del servidor del TLD, el servidor local
     lo interrogará entonces acerca del siguiente componente del nombre.
 
     Los servidores de los TLD tampoco conocen todas las posibles
     traducciones, sino que conocen las direcciones de los servidores DNS
-    de los dominios por debajo de ellos. Así, el servidor del TLD ar
+    de los dominios por debajo de ellos. Así, el servidor del TLD AR
     puede decirle al servidor local dónde ubicar al servidor del dominio
-    edu.ar.
+    EDU.AR.
 
-    Otra información que este servidor del dominio TLD ar podría darle
+    Otra información que este servidor del dominio TLD AR podría darle
     al servidor local, si la pidiera, serían las direcciones de los
-    servidores de los dominios com.ar, org.ar, etc.
+    servidores de los dominios COM.AR, ORG.AR, etc.
 
 -   Ahora el servidor local puede consultar al servidor del dominio
-    edu.ar, que es quien puede informarle la dirección del servidor del
-    subdominio uncoma.edu.ar.
+    EDU.AR, que es quien puede informarle la dirección del servidor del
+    subdominio UNCOMA.EDU.AR.
 
 -   Finalmente, el servidor local consulta al servidor del subdominio
-    uncoma.edu.ar por la traducción del nombre de nodo
-    www.uncoma.edu.ar. Este servidor tiene en sus tablas la información
+    UNCOMA.EDU.AR por la traducción del nombre de nodo
+    WWW.UNCOMA.EDU.AR. Este servidor tiene en sus tablas la información
     que dice cuál es la dirección IP asignada a ese nombre. Ahora el
     servidor local puede devolver esa información al cliente que
     originalmente hizo la consulta.
@@ -963,15 +966,15 @@ resolución de nombres.
 Todo este complejo mecanismo debería tener lugar cada vez que un cliente
 de la red consulta por un nombre. Sin embargo, como este mecanismo es
 costoso en tiempo y en ancho de banda de las redes, se adopta un esquema
-de cache o reserva de información. Como es muy probable que esa
+de CACHE o reserva de información. Como es muy probable que esa
 información vuelva a ser solicitada, los pares (nombre, dirección) que
-han sido resueltos quedan guardados en una memoria temporaria o cache
+han sido resueltos quedan guardados en una memoria temporaria o CACHE
 del servidor local. De esta manera las próximas consultas podrán
 responderse sin necesidad de volver a generar tráfico hacia el resto de
 la Internet.
 
+
 Administración de redes
------------------------
 
 Existen herramientas de software que permiten diagnosticar las
 condiciones en que se realiza el ruteo, o encaminamiento, de los
@@ -980,7 +983,7 @@ origen de los problemas en la red.
 
 Comando ping
 
-El comando ping emite paquetes hacia un nodo destino. Si los paquetes
+El comando PING emite paquetes hacia un nodo destino. Si los paquetes
 logran atravesar la Internet, el nodo destino emitirá una respuesta. El
 comando ping muestra los paquetes de respuesta que llegan o se pierden,
 y el tiempo que demora cada respuesta en llegar.
@@ -996,10 +999,10 @@ a problemas relacionados con las aplicaciones, que habrá que investigar.
 
 Comando traceroute
 
-El comando traceroute permite investigar cuál es la cadena particular de
+El comando TRACEROUTE permite investigar cuál es la cadena particular de
 routers que debe atravesar un paquete para llegar a un destino dado.
 Además, da información sobre la demora en atravesar cada enlace, lo que
-puede dar una idea de si existe una condición de congestión en el camino
+puede dar una idea de si existe una condición de CONGESTIÓN en el camino
 de los paquetes, y en qué lugar de Internet.
 
 Una condición de congestión es aquella que aparece cuando los nodos

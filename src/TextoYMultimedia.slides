@@ -954,7 +954,7 @@ Comprimir la paleta de colores consiste en reescribir la imagen con una cantidad
 
 **Ejemplo**
 
-Sea una imagen a cuatro colores; luego la cantidad de bits por pixel es 2. Al reducir la profundidad de color, los colores 00 y 10 pasan a ser el único color 0; y los colores 10 y 11 pasan a ser el único color 1. Todos los pixels quedan expresados por un único bit 0 o 1, reduciendo efectivamente el tamaño de la imagen.
+Sea una imagen a cuatro colores; luego la cantidad de bits por pixel es 2. Al reducir la profundidad de color, los colores 00 y 01 pasan a ser el único color 0; y los colores 10 y 11 pasan a ser el único color 1. Todos los pixels quedan expresados por un único bit 0 o 1, reduciendo efectivamente el tamaño de la imagen.
 
 - La información ha sido **comprimida con pérdida** porque el archivo original no puede ser reconstruido a partir de este nuevo archivo. 
 - El nuevo archivo, sin su cabecera, mide $ancho \times alto \times (n - 1)$, o sea, es $ancho \times alto$ bits más corto que el original.

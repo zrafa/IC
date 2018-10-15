@@ -1,65 +1,79 @@
-\documentclass[spanish,A4,]{article}
-\usepackage{sans}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[spanish,a4paper,]{article}
+\usepackage[]{sans}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{spanish}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=spanish]{babel}
 \else
-  \usepackage[spanish]{babel}
+  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{spanish}
 \fi
 
 \title{Sistemas de Numeración}
+\date{}
 
 \begin{document}
 \maketitle
 
-\section{Sistemas de Numeración}\label{sistemas-de-numeraciuxf3n}
+\hypertarget{sistemas-de-numeraciuxf3n}{%
+\section{Sistemas de Numeración}\label{sistemas-de-numeraciuxf3n}}
 
 En este primer tema de la unidad veremos las propiedades de los sistemas
 de numeración más importantes para el estudio de la arquitectura de
 computadoras, en especial los sistemas \textbf{binario y hexadecimal}.
 
-\subsection{Un sistema diferente}\label{un-sistema-diferente}
+\hypertarget{un-sistema-diferente}{%
+\subsection{Un sistema diferente}\label{un-sistema-diferente}}
 
 Todos conocemos el método tradicional de contar con los dedos. Como
 tenemos cinco dedos en cada mano, podemos contar hasta diez. Pero
@@ -67,7 +81,7 @@ también podemos utilizar un método diferente del tradicional, que
 resulta ser muy interesante.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Con este método, al llegar a 5 con la mano derecha, representamos el 6
   \textbf{sólo con un dedo de la izquierda}. Los dedos de la mano
@@ -80,10 +94,11 @@ resulta ser muy interesante.
   la secuencia de la mano derecha una vez}.
 \end{itemize}
 
-\subsubsection{Preguntas}\label{preguntas}
+\hypertarget{preguntas}{%
+\subsubsection{Preguntas}\label{preguntas}}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   ¿Hasta qué número se puede representar en este sistema, sólo con dos
   manos?
@@ -103,7 +118,8 @@ Notemos que este método tiene mayor capacidad que el tradicional, ya que
 podemos contar hasta diez y todavía nos queda mucho por contar con los
 dedos de ambas manos.
 
-\subsection{Sistema posicional}\label{sistema-posicional}
+\hypertarget{sistema-posicional}{%
+\subsection{Sistema posicional}\label{sistema-posicional}}
 
 Notemos además que esta ventaja se debe a que el método asigna
 \textbf{valores diferentes} a ambas manos. La derecha vale la cantidad
@@ -118,8 +134,9 @@ que podemos representar con cada mano, es decir, \textbf{en cada
 posición}. Pero los números representables solamente dependen de cuántas
 manos (o, mejor dicho, de cuántas \textbf{posiciones}) podamos utilizar.
 
+\hypertarget{calculando-cada-posiciuxf3n}{%
 \subsubsection{Calculando cada
-posición}\label{calculando-cada-posiciuxf3n}
+posición}\label{calculando-cada-posiciuxf3n}}
 
 En este sistema, dado un número no negativo que se pueda representar con
 dos manos, podemos saber qué dedos levantar en cada mano haciendo una
@@ -134,16 +151,18 @@ abreviar como \textbf{(2,3)} o directamente \textbf{23} (que se
 pronuncia \textbf{dos tres} porque \textbf{no quiere decir veintitrés},
 sino \textbf{quince}, sólo que escrito en este sistema). Como el dígito
 2 de la izquierda vale por 6, si hacemos la operación de sumar
-\textbf{$2 \times 6 + 3$} obtenemos, efectivamente, 15.
+\textbf{\(2 \times 6 + 3\)} obtenemos, efectivamente, 15.
 
+\hypertarget{base-de-un-sistema-de-numeraciuxf3n}{%
 \subsubsection{Base de un sistema de
-numeración}\label{base-de-un-sistema-de-numeraciuxf3n}
+numeración}\label{base-de-un-sistema-de-numeraciuxf3n}}
 
 La \textbf{base} de un sistema es la cantidad de dígitos de que dispone,
 o sea que el sistema decimal habitual es de base 10, mientras que el de
 los deditos es de base 6.
 
-\subsubsection{Número y numeral}\label{nuxfamero-y-numeral}
+\hypertarget{nuxfamero-y-numeral}{%
+\subsubsection{Número y numeral}\label{nuxfamero-y-numeral}}
 
 Notemos que un mismo número puede escribirse de muchas maneras: en
 prácticamente cualquier base que se nos ocurra, sin necesidad de contar
@@ -157,16 +176,17 @@ diferencia que es algo difícil de ver debido a la costumbre de
 identificar a los números con su representación en decimal.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
-  El \textbf{numeral} es lo que escribimos ($15$, \textbf{$15_{(10}$} o
-  \textbf{$23_{(6}$}).
+  El \textbf{numeral} es lo que escribimos (\(15\),
+  \textbf{\(15_{(10}\)} o \textbf{\(23_{(6}\)}).
 \item
   El \textbf{número} es la cantidad de la cual estamos hablando (la
   misma en los tres casos).
 \end{itemize}
 
-\subsubsection{Indicando la base}\label{indicando-la-base}
+\hypertarget{indicando-la-base}{%
+\subsubsection{Indicando la base}\label{indicando-la-base}}
 
 Anteriormente escribíamos \textbf{15} en el sistema de base 6 como
 \textbf{23}. Sin embargo, necesitamos evitar la confusión entre ambos
@@ -174,20 +194,20 @@ significados de \textbf{23}. Para esto usamos índices subscriptos que
 indican la base. Así,
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
-  \textbf{Quince} es \textbf{$15_{(10}$} porque está en base diez (la
+  \textbf{Quince} es \textbf{\(15_{(10}\)} porque está en base diez (la
   del sistema decimal, habitual), y
 \item
-  \textbf{$23_{(10}$} es \textbf{veintitrés},
+  \textbf{\(23_{(10}\)} es \textbf{veintitrés},
 \item
-  pero \textbf{$23_{(6}$} es \textbf{dos tres en base 6}, y por lo tanto
-  vale \textbf{quince}.
+  pero \textbf{\(23_{(6}\)} es \textbf{dos tres en base 6}, y por lo
+  tanto vale \textbf{quince}.
 \end{itemize}
 
 Como 10 es nuestra base habitual, cuando no usemos índice subscripto
 estaremos sobreentendiendo que hablamos \textbf{en base 10}. Es decir,
-\textbf{$15_{(10}$} se puede escribir, simplemente, \textbf{$15$}.
+\textbf{\(15_{(10}\)} se puede escribir, simplemente, \textbf{\(15\)}.
 
 Cuando queremos pasar un número escrito en una base a un sistema con
 otra cantidad de dígitos, el procedimiento de averiguar los dígitos que
@@ -195,7 +215,8 @@ van en cada posición se llama \textbf{conversión de base}. Más adelante
 veremos procedimientos de conversión de base para cualquier caso que
 aparezca.
 
-\subsection{Sistema decimal}\label{sistema-decimal}
+\hypertarget{sistema-decimal}{%
+\subsection{Sistema decimal}\label{sistema-decimal}}
 
 Si reflexionamos sobre el sistema decimal, de diez dígitos, encontramos
 que también forma un sistema posicional, sólo que con 10 dígitos en
@@ -208,13 +229,14 @@ y multiplíquelo por 10, y luego sume el 5''.
 Si el número (o, mejor dicho, el \textbf{numeral}) tiene más dígitos,
 esos dígitos van multiplicados por \textbf{potencias de 10} que van
 creciendo hacia la izquierda. La cifra de las unidades está multiplicada
-por la potencia de 10 de exponente 0 (es decir, por $10^0$, que es igual
-a 1).
+por la potencia de 10 de exponente 0 (es decir, por \(10^0\), que es
+igual a 1).
 
 Esto se cumple para todos los sistemas posicionales, sólo que con
 potencias \textbf{de la base correspondiente}.
 
-\subsection{Sistema binario}\label{sistema-binario}
+\hypertarget{sistema-binario}{%
+\subsection{Sistema binario}\label{sistema-binario}}
 
 Comprender y manejar la notación en sistema binario es sumamente
 importante para el estudio de la computación. El sistema binario
@@ -223,7 +245,7 @@ comprende únicamente dos dígitos, \textbf{0 y 1}.
 Igual que ocurre con el sistema decimal, los numerales se escriben como
 suma de dígitos del sistema multiplicados por potencias de la base. En
 este sistema, cada 1 en una posición indica que sumamos una potencia de
-2. Esa potencia de 2 es $2^n$, donde $n$ es la posición, y las
+2. Esa potencia de 2 es \(2^n\), donde \(n\) es la posición, y las
 posiciones se cuentan desde 0.
 
 Por ejemplo,
@@ -234,8 +256,9 @@ y
 
 \[15 = 1\times8 + 1\times4 + 1\times2 + 1\times1 = 1111_{(2}\]
 
+\hypertarget{trucos-para-conversiuxf3n-ruxe1pida}{%
 \subsubsection{Trucos para conversión
-rápida}\label{trucos-para-conversiuxf3n-ruxe1pida}
+rápida}\label{trucos-para-conversiuxf3n-ruxe1pida}}
 
 Las computadoras digitales, tal como las conocemos hoy, almacenan todos
 sus datos en forma de números binarios. Es \textbf{muy recomendable},
@@ -257,9 +280,9 @@ será \textbf{101000}.
 Otro truco interesante consiste en ver que si un numeral está en base 2,
 \textbf{multiplicarlo por 2 equivale a desplazar un lugar a la izquierda
 todos sus dígitos, completando con un 0 al final}. Así, si sabemos que
-$40_{(10} = 101000_{(2}$, ¿cómo escribimos rápidamente \textbf{80}, que
-es $40\times2$? Tomamos la expresión de 40 en base 2 y la desplazamos a
-la izquierda agregando un 0: $1010000_{(2} = 80_{(10}$.
+\(40_{(10} = 101000_{(2}\), ¿cómo escribimos rápidamente \textbf{80},
+que es \(40\times2\)? Tomamos la expresión de 40 en base 2 y la
+desplazamos a la izquierda agregando un 0: \(1010000_{(2} = 80_{(10}\).
 
 De todas maneras, estos no son más que trucos que pueden servir en no
 todos los casos. Más adelante veremos el procedimiento de conversión
@@ -268,7 +291,7 @@ general correcto.
 \textbf{Preguntas}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   ¿Cuál es el truco para calcular rápidamente la expresión binaria de
   20, si conocemos la de 40?
@@ -278,7 +301,8 @@ general correcto.
   ¿Cómo podemos expresar estas reglas en forma general?
 \end{itemize}
 
-\subsection{Sistema hexadecimal}\label{sistema-hexadecimal}
+\hypertarget{sistema-hexadecimal}{%
+\subsection{Sistema hexadecimal}\label{sistema-hexadecimal}}
 
 Otro sistema de numeración importante es el hexadecimal o de base 16. En
 este sistema tenemos \textbf{más dígitos} que en el decimal, por lo cual
@@ -290,7 +314,7 @@ expresar fácilmente números que llevarían muchos dígitos en sistema
 binario.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   La conversión entre binarios y hexadecimales es sumamente directa.
 \item
@@ -298,7 +322,8 @@ binario.
   cualquier número será más corta.
 \end{itemize}
 
-\subsection{Una expresión general}\label{una-expresiuxf3n-general}
+\hypertarget{una-expresiuxf3n-general}{%
+\subsection{Una expresión general}\label{una-expresiuxf3n-general}}
 
 Como hemos visto intuitivamente en el sistema de contar con los dedos, y
 como hemos confirmado repasando los sistemas decimal, binario y
@@ -314,19 +339,20 @@ que la suma de:
 \[2 \times 1000 + 0 \times 100 + 1 \times 10 + 7 \times 1 = \]
 \[2 \times 10^3 + 0 \times 10^2 + 1 \times 10^1 + 7 \times 10^0\]
 
-Los dígitos 2, 0, 1 y 7 multiplican, respectivamente, a $10^3$, $10^2$,
-$10^1$ y $10^0$, que son potencias de la base 10. Este \textbf{numeral}
-designa al \textbf{número} 2017 porque esta cuenta, efectivamente, da
-\textbf{2017}.
+Los dígitos 2, 0, 1 y 7 multiplican, respectivamente, a \(10^3\),
+\(10^2\), \(10^1\) y \(10^0\), que son potencias de la base 10. Este
+\textbf{numeral} designa al \textbf{número} 2017 porque esta cuenta,
+efectivamente, da \textbf{2017}.
 
 Sin embargo, si el número está expresado en otra base, la cuenta debe
-hacerse con potencias de esa otra base. Si hablamos de $2017_{(8}$,
-entonces las cifras 2, 0, 1 y 7 multiplican a $8^3$, $8^2$, $8^1$ y
-$8^0$. Este \textbf{numeral} designa al \textbf{número} 1039 porque esta
-cuenta, efectivamente, da \textbf{1039}.
+hacerse con potencias de esa otra base. Si hablamos de \(2017_{(8}\),
+entonces las cifras 2, 0, 1 y 7 multiplican a \(8^3\), \(8^2\), \(8^1\)
+y \(8^0\). Este \textbf{numeral} designa al \textbf{número} 1039 porque
+esta cuenta, efectivamente, da \textbf{1039}.
 
 Este análisis permite enunciar una ley o expresión general que indica
-cómo se escribe un número $n$ cualquiera, no negativo, en una base $b$:
+cómo se escribe un número \(n\) cualquiera, no negativo, en una base
+\(b\):
 \[n = x_{k} \times b^k + \ldots + x_{2} \times b^{2} + x_1 \times b^1 +x_{0} \times b^0\]
 
 Esta ecuación puede escribirse más sintéticamente en notación de
@@ -337,21 +363,22 @@ sumatoria como:
 En estas ecuaciones (que son equivalentes):
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
-  Los números $x_i$ son las cifras del numeral.
+  Los números \(x_i\) son las cifras del numeral.
 \item
-  Los números $b^i$ son potencias de la base, cuyos exponentes crecen de
-  derecha a izquierda y comienzan por 0.
+  Los números \(b^i\) son potencias de la base, cuyos exponentes crecen
+  de derecha a izquierda y comienzan por 0.
 \item
   Las potencias están \textbf{ordenadas y completas}, y son tantas como
   las cifras del numeral.
 \item
-  Los números $x_i$ son necesariamente \textbf{menores que $b$}, ya que
-  son dígitos en un sistema de numeración que tiene $b$ dígitos.
+  Los números \(x_i\) son necesariamente \textbf{menores que \(b\)}, ya
+  que son dígitos en un sistema de numeración que tiene \(b\) dígitos.
 \end{itemize}
 
-\subsection{Conversión de base}\label{conversiuxf3n-de-base}
+\hypertarget{conversiuxf3n-de-base}{%
+\subsection{Conversión de base}\label{conversiuxf3n-de-base}}
 
 Veremos algunos casos interesantes de conversiones de base. Serán
 especialmente importantes los casos donde el número de origen o de
@@ -359,15 +386,16 @@ destino de la conversión esté en base 10, nuestro sistema habitual, pero
 también nos dedicaremos a algunas conversiones de base donde ninguna de
 ellas sea 10.
 
+\hypertarget{conversiuxf3n-de-base-10-a-otras-bases}{%
 \subsubsection{Conversión de base 10 a otras
-bases}\label{conversiuxf3n-de-base-10-a-otras-bases}
+bases}\label{conversiuxf3n-de-base-10-a-otras-bases}}
 
 El procedimiento para convertir un número escrito en base 10 a cualquier
 otra base (llamémosla \textbf{base destino}) es siempre el mismo y se
 basa en la división entera (sin decimales):
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Dividir el número original por la base destino, anotando cociente y
   resto
@@ -375,7 +403,7 @@ basa en la división entera (sin decimales):
   Mientras se pueda seguir dividiendo:
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     Volver al paso anterior reemplazando el número original por el nuevo
     cociente
@@ -389,7 +417,7 @@ basa en la división entera (sin decimales):
 Ésta es la expresión de nuestro número original en la base destino.
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   Notemos que cada uno de los restos obtenidos es con toda seguridad
   \textbf{menor que la base destino}, ya que, en otro caso, podríamos
@@ -410,12 +438,13 @@ basa en la división entera (sin decimales):
 procedimiento es correcto, al menos para el caso de convertir \textbf{61
 a base 3}?
 
+\hypertarget{conversiuxf3n-de-otras-bases-a-base-10}{%
 \subsubsection{Conversión de otras bases a base
-10}\label{conversiuxf3n-de-otras-bases-a-base-10}
+10}\label{conversiuxf3n-de-otras-bases-a-base-10}}
 
-La conversión en el sentido opuesto, de una base $b$ cualquiera a base
+La conversión en el sentido opuesto, de una base \(b\) cualquiera a base
 10, se realiza simplemente aplicando la Expresión General. Cada uno de
-los dígitos del número original (ahora en base $b$ arbitraria) es el
+los dígitos del número original (ahora en base \(b\) arbitraria) es el
 coeficiente de alguna potencia de la base original. Esta potencia
 depende de la posición de dicho dígito. Una vez que escribimos todos los
 productos de los dígitos originales por las potencias de la base,
@@ -428,13 +457,14 @@ si escribimos estas potencias a partir de la derecha, comenzando por la
 que tiene exponente 0, y vamos completando los términos de derecha a
 izquierda hasta agotar las posiciones del número original.
 
-\subsection{Preguntas}\label{preguntas-1}
+\hypertarget{preguntas-1}{%
+\subsection{Preguntas}\label{preguntas-1}}
 
 ¿Cómo sería un sistema de \textbf{contar con los dedos en base 2}? Dedo
 arriba = 1, dedo abajo = 0\ldots{}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   ¿Cómo hacemos el 1, el 2, el 3\ldots{}?
 \item
@@ -443,20 +473,21 @@ arriba = 1, dedo abajo = 0\ldots{}
   ¿Y cómo se indica el \textbf{4} en este sistema?
 \end{itemize}
 
+\hypertarget{conversiuxf3n-entre-bases-arbitrarias}{%
 \subsection{Conversión entre bases
-arbitrarias}\label{conversiuxf3n-entre-bases-arbitrarias}
+arbitrarias}\label{conversiuxf3n-entre-bases-arbitrarias}}
 
 Hemos visto los casos de conversión entre base 10 y otras bases, en
 ambos sentidos. Ahora veamos los casos donde ninguna de las bases origen
 o destino son la base 10.
 
 La buena noticia es que, en general, \textbf{esto ya sabemos hacerlo}.
-Si tenemos dos bases $b_1$ y $b_2$ cualesquiera, ninguna de las cuales
-es 10, sabiendo hacer las conversiones anteriores podemos hacer la
-conversión de $b_1$ a $b_2$ sencillamente haciendo \textbf{dos
-conversiones pasando por la base 10}. Si queremos convertir de $b_1$ a
-$b_2$, convertimos primero \textbf{de $b_1$ a base 10}, aplicando el
-procedimiento ya visto, y luego \textbf{de base 10 a $b_2$}. Eso es
+Si tenemos dos bases \(b_1\) y \(b_2\) cualesquiera, ninguna de las
+cuales es 10, sabiendo hacer las conversiones anteriores podemos hacer
+la conversión de \(b_1\) a \(b_2\) sencillamente haciendo \textbf{dos
+conversiones pasando por la base 10}. Si queremos convertir de \(b_1\) a
+\(b_2\), convertimos primero \textbf{de \(b_1\) a base 10}, aplicando el
+procedimiento ya visto, y luego \textbf{de base 10 a \(b_2\)}. Eso es
 todo.
 
 Pero en algunos casos especiales podemos aprovechar cierta relación
@@ -470,8 +501,9 @@ aplicar un truco matemático para hacer la conversión en un solo paso y
 con muchísima facilidad. Por fortuna son estos casos especiales los que
 se presentan con mayor frecuencia en nuestra disciplina.
 
+\hypertarget{equivalencias-entre-sistemas}{%
 \subsection{Equivalencias entre
-sistemas}\label{equivalencias-entre-sistemas}
+sistemas}\label{equivalencias-entre-sistemas}}
 
 Para poder aplicar este truco se necesita la tabla de equivalencias
 entre los dígitos de los diferentes sistemas. Si no logramos
@@ -482,13 +514,13 @@ necesario. Pero con la práctica, se logra memorizarla fácilmente.
 Notemos que:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El sistema octal tiene ocho dígitos \textbf{(0 \ldots{} 7)} y cada uno
   de ellos se puede representar con \textbf{tres dígitos binarios}:
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     000
   \item
@@ -511,14 +543,14 @@ Notemos que:
 Notemos que:
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
+\tightlist
 \item
   El sistema hexadecimal tiene dieciséis dígitos \textbf{(0 \ldots{} F)}
   y cada uno de ellos se puede representar con \textbf{cuatro dígitos
   binarios}:
 
   \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
+  \tightlist
   \item
     0000
   \item
@@ -554,8 +586,9 @@ Notemos que:
   \end{itemize}
 \end{itemize}
 
+\hypertarget{conversiuxf3n-entre-sistemas-binario-y-hexadecimal}{%
 \subsubsection{Conversión entre sistemas binario y
-hexadecimal}\label{conversiuxf3n-entre-sistemas-binario-y-hexadecimal}
+hexadecimal}\label{conversiuxf3n-entre-sistemas-binario-y-hexadecimal}}
 
 El truco para convertir de base 2 a base 16 consiste simplemente en
 agrupar los dígitos binarios de a cuatro, y reemplazar cada grupo de
@@ -568,8 +601,9 @@ Si el problema es convertir, inversamente, de base 16 a base 2, de igual
 forma reemplazamos cada dígito hexadecimal por los cuatro dígitos
 binarios que lo representan.
 
+\hypertarget{conversiuxf3n-entre-sistemas-binario-y-octal}{%
 \subsubsection{Conversión entre sistemas binario y
-octal}\label{conversiuxf3n-entre-sistemas-binario-y-octal}
+octal}\label{conversiuxf3n-entre-sistemas-binario-y-octal}}
 
 El problema de convertir entre bases 2 y 8 es igual de sencillo. Basta
 con reemplazar cada grupo de \textbf{tres} dígitos binarios (completando
