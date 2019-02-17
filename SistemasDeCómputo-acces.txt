@@ -118,7 +118,7 @@ cada dos días, en promedio, una de ellas fallaba, y debía ser
 reemplazada con un procedimiento que llevaba quince minutos.
 
 El ENIAC no era una máquina de Von Neumann porque su programa no residía
-en memoria, sino que la computadora se programaba con un intricado
+en memoria, sino que la computadora se programaba con un intrincado
 sistema de interruptores manuales. Entre las máquinas de esta generación
 se encuentra la primera computadora de programa almacenado según el
 modelo de Von Neumann. Fue el IAS (siglas de INSTITUTE FOR ADVANCED
