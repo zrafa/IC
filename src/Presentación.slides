@@ -3,7 +3,7 @@
 <section data-markdown>
 ## Introducción 
 ## a la Computación 
-## 2018
+## 2019
 ###  Eduardo Grosclaude
 </section>
 
@@ -121,15 +121,19 @@ Algunas materias que dicta
 
 
 <section data-markdown>
-# Introducción a la Computación 2018
+# Introducción a la Computación 2019
 </section>
 
 <section data-markdown>
 ## Equipo de Cátedra
-* Eduardo Grosclaude: oso@fi.uncoma.edu.ar
-* Rafael Zurita: rafa@fi.uncoma.edu.ar
-* Rodrigo Cañibano: rcanibano@fi.uncoma.edu.ar
-* Guillermo Torres: guillermo.torres@fi.uncoma.edu.ar
+* Teóricas
+    * Eduardo Grosclaude: oso@fi.uncoma.edu.ar
+* Prácticas
+    * Rodrigo Cañibano
+    * Lucas Cavaliere
+    * Leandro Insúa
+    * Marina Morán
+    * Rafael Zurita
 </section>
 
 <section>
@@ -161,31 +165,70 @@ Algunas materias que dicta
 * Dos exámenes parciales con sus recuperatorios
  * Contenidos prácticos y teóricos
  * 70% práctica / 30% teoría
- * 60% &#8680; parcial aprobado
- * 70% &#8680; parcial promocionado
+ * 60% de la práctica &#8680; parcial aprobado
+ * 70% de la práctica y 70% de la teoría &#8680; parcial promocionado
+</section>
+
+
+
+<section data-transition="fade">
+<h2>Parciales</h2>
+<img src="img/acred1.svg" class="plain stretch">
+</section>
+<section data-transition="fade">
+<h2>Parciales</h2>
+<img src="img/acred2.svg" class="plain stretch">
+</section>
+<section data-transition="fade">
+<h2>Parciales</h2>
+<img src="img/acred3.svg" class="plain stretch">
+</section>
+<section data-transition="fade">
+<h2>Parciales</h2>
+<img src="img/acred4.svg" class="plain stretch">
 </section>
 
 
 
 <section>
-<h2>Acreditación</h2>
+<h2>Condición final</h2>
 <ul>
-<li>Cursado de una materia</li>
+<li>Materia cursada</li>
 	<span class="fragment"><ul><li>Aprobación de los exámenes parciales</li></ul></span>
-<li>Aprobación de la materia</li>
+<li>Materia aprobada</li>
 	<span class="fragment"><ul>
 	<li>Cursada con promoción</li>
 	<li>Cursada y aprobar examen final</li>
-	<li>Rendir examen libre</li>
+	<li>Sin cursada, rendir examen libre</li>
 	</ul></span>
 </ul>
 </section>
 
 
 
-<section>
+<section data-transition="fade">
 <h2>Acreditación</h2>
-<img src="img/cursado.png" class="plain stretch">
+<img src="img/final1.svg" class="plain stretch">
+</section>
+<section data-transition="fade">
+<h2>Acreditación</h2>
+<img src="img/final2.svg" class="plain stretch">
+</section>
+<section data-transition="fade">
+<h2>Acreditación</h2>
+<img src="img/final3.svg" class="plain stretch">
+</section>
+<section data-transition="fade">
+<h2>Acreditación</h2>
+<img src="img/final4.svg" class="plain stretch">
+</section>
+<section data-transition="fade">
+<h2>Acreditación</h2>
+<img src="img/final5.svg" class="plain stretch">
+</section>
+<section data-transition="fade">
+<h2>Acreditación</h2>
+<img src="img/final6.svg" class="plain stretch">
 </section>
 
 <!--
