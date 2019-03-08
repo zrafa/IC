@@ -137,6 +137,8 @@ Otro truco interesante consiste en ver que si un numeral está en base 2, **mult
 
 De todas maneras, estos no son más que trucos que pueden servir en no todos los casos. Más adelante veremos el procedimiento de conversión general correcto.
 
+
+
 **Preguntas**
 
 - ¿Cuál es el truco para calcular rápidamente la expresión binaria de 20, si conocemos la de 40?
