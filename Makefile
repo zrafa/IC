@@ -1,4 +1,4 @@
-DEPS = src/reveal.header src/reveal.trailer src/ic2017.html
+DEPS = src/reveal.header src/reveal.trailer src/ic.html
 DTAPE=/home/oso/IC2016/decktape
 
 index: index.html
@@ -53,7 +53,7 @@ pdf: siste uni repre texto arqui soft comp so redes
 	cp src/eisvogel.latex ~/.pandoc/templates
 	pandoc \
 	--template eisvogel.latex \
-	-V title="Introducción a la Computación 2018" \
+	-V title="Introducción a la Computación" \
 	-V lang=es-ES \
 	-V fontfamily=lmodern \
 	-V mainfont="Baskervaldx" \
@@ -79,7 +79,7 @@ pdf: siste uni repre texto arqui soft comp so redes
 		Anexos.md \
 			ComplementoALaBase.md \
 			Suma2k-1.md \
-	-o IC2017-notes.pdf
+	-o IC-notes.pdf
 
 epub: siste uni repre texto arqui soft comp so redes
 	pandoc \
@@ -107,7 +107,7 @@ epub: siste uni repre texto arqui soft comp so redes
 		Anexos.md \
 			ComplementoALaBase.md \
 			Suma2k-1.md \
-	-o IC2017-notes.epub
+	-o IC-notes.epub
 
 git: 
 	util/github "mm"
