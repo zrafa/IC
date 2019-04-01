@@ -687,7 +687,10 @@ Si descartamos el bit de signo y consideramos sólo las magnitudes, los números
 
 <section>
 <h2>Error MUY frecuente</h2>
-<img src="img/errorC2.jpg" class="stretch plain">
+<ul><li>"Para representar <b>cualquier n</b> en complemento a 2, lo tengo que complementar a 2"</li></ul>
+<div class="fragment">
+<img src="img/diego.gif" class="stretch plain">
+</div>
 <aside data-markdown class="notes">
 ### Complementar a 2 vs. representar en C2
 
