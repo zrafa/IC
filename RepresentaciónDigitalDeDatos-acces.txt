@@ -662,8 +662,9 @@ decimales.
 
 De manera que, al escribir irracionales en su forma decimal, en realidad
 siempre tratamos con APROXIMACIONES RACIONALES a esos irracionales. Por
-ejemplo, 3.14 y 3.1459 son aproximaciones racionales al verdadero valor
-irracional de π, cuya parte decimal tiene infinitos dígitos.
+ejemplo, 3.14, 3.1416 y 3.14159 son aproximaciones racionales al
+verdadero valor irracional de π, cuya parte decimal tiene infinitos
+dígitos.
 
 Coma o punto decimal
 
