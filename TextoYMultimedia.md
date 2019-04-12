@@ -43,10 +43,10 @@ de caracteres, pero agrega códigos de dos, tres y cuatro bytes para otros símb
 que hoy, con UTF-8, se pueden representar todos los caracteres de cualquier idioma conocido. Más aún,
 con UTF-8 pueden codificarse textos multilingües.
 
-Otro estándar utilizado, **ISO/IEC 8851**, codifica los caracteres de la mayoría de los idiomas de 
+Otro estándar utilizado, **ISO/IEC 8859-1**, codifica los caracteres de la mayoría de los idiomas de 
 Europa occidental. 
 
-El código ASCII, los diferentes esquemas de Unicode, y el estándar ISO/IEC 8851, coinciden en la
+El código ASCII, los diferentes esquemas de Unicode, y el estándar ISO/IEC 8859-1, coinciden en la
 codificación de las letras del alfabeto inglés, que son comunes a la mayoría de los idiomas
 occidentales, y en la codificación de símbolos usuales como los dígitos, símbolos matemáticos, y otros. 
 Por este motivo son relativamente compatibles, aunque cuando el texto utiliza otros caracteres aparecen diferencias.
