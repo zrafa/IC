@@ -57,7 +57,7 @@ Por este motivo son relativamente compatibles, aunque cuando el texto utiliza ot
 El código ASCII asigna patrones de siete bits a un conjunto de caracteres
 que incluye:
 
-- Las 25 letras del alfabeto inglés, mayúsculas y minúsculas;
+- Las 26 letras del alfabeto inglés, mayúsculas y minúsculas;
 - Los dígitos del 0 al 9,
 - Varios símbolos matemáticos, de puntuación, etc.,
 - El espacio en blanco,
