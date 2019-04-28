@@ -127,4 +127,3 @@
 	};
 	var tangle=new Tangle(rootElement, model);
   }
-  

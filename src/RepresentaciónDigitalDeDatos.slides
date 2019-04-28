@@ -2074,6 +2074,7 @@ Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0
                                          this.exponent = f.slice(1,9).join('');
                                          this.mantissa = f.slice(9,32).join('');
                                          var mstr;
+                                         var rstr;
                                          if (n === 0) {
                                                  return;
                                          } else if (n !== n) {
@@ -2083,10 +2084,13 @@ Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0
                                          } else if (n === -Infinity) {
                                                  mstr = '- \\infty';
                                          } else {
-                                                 mstr = mathString(e, this.sign, this.exponent, this.mantissa);
+                                                 mstr = mathString(this.sign, this.exponent, this.mantissa);
+                                                 rstr = mathResult(this.sign, this.exponent, this.mantissa);
                                          }
                                          var mathfield = MathJax.Hub.getAllJax('ieee754Formula')[0];
                                          MathJax.Hub.Queue(['Text',mathfield,mstr]);
+					 var resultfield = MathJax.Hub.getAllJax('ieee754Result')[0];
+                                         MathJax.Hub.Queue(['Text',resultfield,rstr]);
                                  }
                          };
                          var tangle=new Tangle(rootElement, model);
@@ -2101,6 +2105,7 @@ Similarmente, cuando el exponente vale ocho unos, y la mantisa es diferente de 0
                  <tr><td>Hexa</td><td data-var="hexa"></td></tr>
          </table>
          <p class="post_it" data-var="math" style="text-align: center;" id="ieee754Formula">$ $</p>
+         <p class="post_it" data-var="result" style="text-align: center;" id="ieee754Result">$ $</p>
  </div>
  </section>
  

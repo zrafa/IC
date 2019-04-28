@@ -162,14 +162,9 @@ conversión de y a sistema binario.
 Una manera de facilitar esto es memorizar los valores de algunas
 potencias iniciales de la base 2:
 
-2⁰ = 1
-2¹ = 2
-2² = 4
-2³ = 8
-2⁴ = 16
-2⁵ = 32
-2⁶ = 64
-2⁷ = 128
+2⁷ ||| 2⁶ ||| 2⁵ ||| 2⁴ ||| 2³ ||| 2² ||| 2¹ ||| 2⁰ —-:||| —-:||| —-:|||
+—-:||| —-:||| —-:||| —-:||| —: 128 ||| 64 ||| 32 ||| 16 ||| 8 ||| 4 |||
+2 ||| 1
 
 ¿Qué utilidad tiene memorizar esta tabla? Que nos permite convertir
 mentalmente algunos casos simples de números en sistema decimal, a base
