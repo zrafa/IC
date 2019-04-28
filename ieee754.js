@@ -71,7 +71,7 @@
 	    r = IEEE2Sign(s);
 	    r *= Math.pow(2,IEEE2Exponent(e)-127);
 	    r *= 1 + IEEE2Mantissa(m);
-	    return r;
+	    return "\\approx" + r;
     }
 
     function hexaString(f) {
