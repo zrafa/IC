@@ -32,6 +32,9 @@
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -268,20 +271,16 @@ conversión de y a sistema binario.
 Una manera de facilitar esto es memorizar los valores de algunas
 potencias iniciales de la base 2:
 
-\(2^7\) \textbar{}\textbar{}\textbar{} \(2^6\)
-\textbar{}\textbar{}\textbar{} \(2^5\) \textbar{}\textbar{}\textbar{}
-\(2^4\) \textbar{}\textbar{}\textbar{} \(2^3\)
-\textbar{}\textbar{}\textbar{} \(2^2\) \textbar{}\textbar{}\textbar{}
-\(2^1\) \textbar{}\textbar{}\textbar{} \(2^0\)
-----:\textbar{}\textbar{}\textbar{} ----:\textbar{}\textbar{}\textbar{}
-----:\textbar{}\textbar{}\textbar{} ----:\textbar{}\textbar{}\textbar{}
-----:\textbar{}\textbar{}\textbar{} ----:\textbar{}\textbar{}\textbar{}
-----:\textbar{}\textbar{}\textbar{} ---: \(128\)
-\textbar{}\textbar{}\textbar{} \(64\) \textbar{}\textbar{}\textbar{}
-\(32\) \textbar{}\textbar{}\textbar{} \(16\)
-\textbar{}\textbar{}\textbar{} \(8\) \textbar{}\textbar{}\textbar{}
-\(4\) \textbar{}\textbar{}\textbar{} \(2\)
-\textbar{}\textbar{}\textbar{} \(1\)
+\begin{longtable}[]{@{}rrrrrrrr@{}}
+\toprule
+\(2^7\) & \(2^6\) & \(2^5\) & \(2^4\) & \(2^3\) & \(2^2\) & \(2^1\) &
+\(2^0\)\tabularnewline
+\midrule
+\endhead
+\(128\) & \(64\) & \(32\) & \(16\) & \(8\) & \(4\) & \(2\) &
+\(1\)\tabularnewline
+\bottomrule
+\end{longtable}
 
 ¿Qué utilidad tiene memorizar esta tabla? Que nos permite convertir
 mentalmente algunos casos simples de números en sistema decimal, a base
