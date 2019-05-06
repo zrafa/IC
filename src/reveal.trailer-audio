@@ -157,7 +157,8 @@
 			//mathjax: 'https://cdn.mathjax.org/mathjax/latest/Ma2YthJax.js',
 			// mathjax: 'externals/mathjax/MathJax.js',
 			mathjax: window.location.search.match( /localversion/g ) ? 'externals/mathjax/MathJax.js' : 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
-			config: 'TeX-AMS_HTML-full' 
+			//config: 'TeX-AMS_HTML-full' 
+			config: 'TeX-AMS_SVG-full' 
 		},
 
 

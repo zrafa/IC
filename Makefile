@@ -1,4 +1,4 @@
-DEPS = src/reveal.header src/reveal.trailer src/ic.html
+DEPS = src/reveal.header src/reveal.trailer src/ic.html src/reveal.trailer-audio
 DTAPE=/home/oso/IC2016/decktape
 
 index: index.html
@@ -44,11 +44,11 @@ redes: Redes.html
 #	$(DTAPE)/bin/phantomjs $(DTAPE)/decktape.js reveal http://localhost:8000/$*.html $*.pdf
 
 
-all: pdf epub
+all: pdf epub 
 
 # --template eisvogel
 # \PassOptionsToPackage{spanish}{babel}
-pdf: siste uni repre texto arqui soft comp so redes
+pdf: siste uni repre texto arqui soft comp so redes $(DEPS)
 	mkdir -p ~/.pandoc/templates
 	cp src/eisvogel.latex ~/.pandoc/templates
 	pandoc \
@@ -81,7 +81,7 @@ pdf: siste uni repre texto arqui soft comp so redes
 			Suma2k-1.md \
 	-o IC-notes.pdf
 
-epub: siste uni repre texto arqui soft comp so redes
+epub: siste uni repre texto arqui soft comp so redes $(DEPS)
 	pandoc \
 	-s \
 	-V title="Introducción a la Computación" \
