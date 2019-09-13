@@ -48,15 +48,18 @@ all: pdf epub
 
 # --template eisvogel
 # \PassOptionsToPackage{spanish}{babel}
-pdf: siste uni repre texto arqui soft comp so redes $(DEPS)
+#	-V fontfamily=lmodern -V mainfont="Baskervaldx" 
+#	-V fontfamily="plex-serif" -V mainfont="IBMPlexSerif" 
+#	-V fontfamily="plex-sans" -V mainfont="IBMPlexSans" 
+
+pdf: siste uni repre texto arqui soft comp so redes $(DEPS) 
 	mkdir -p ~/.pandoc/templates
 	cp src/eisvogel.latex ~/.pandoc/templates
 	pandoc \
 	--template eisvogel.latex \
 	-V title="Introducción a la Computación" \
 	-V lang=es-ES \
-	-V fontfamily=lmodern \
-	-V mainfont="Baskervaldx" \
+	-V fontfamily=plex-serif \
 	-V papersize=A4 \
 	-V toctitle="Contenidos" \
 	-V titlepage=true \
