@@ -22,12 +22,19 @@ var writeval = function(v) {
 var Potencia = function(posx,posy,ancho,alto,peso) {
 	this.g = svg.g();
 	this.g.peso = peso;
-	for(var j=0; j<ancho; j++) 
-		for(var i=0; i<alto; i++) 
-			this.g.add(svg.rect(
-				posx + j * AnchoUnidad,
-				posy + i * AltoUnidad,
-				AnchoUnidad, AltoUnidad, 0));
+	if(this.g.peso >= 1) {
+		for(var j=0; j<ancho; j++) 
+			for(var i=0; i<alto; i++) 
+				this.g.add(svg.rect(
+					posx + j * AnchoUnidad,
+					posy + i * AltoUnidad,
+					AnchoUnidad, AltoUnidad, 0));
+	} else {
+		this.g.add(svg.rect(
+			posx, posy,
+			ancho * AnchoUnidad, alto * AltoUnidad, 
+			0));
+	}
 	var shade = function () { 
 		this.attr(this.selected ? 
 			selectedShadeAttr : plainShadeAttr);
@@ -77,11 +84,10 @@ var Conector = function(size) {
 	var y4 = AltoUnidad;
 
 	var g = svg.gradient("L(0, 0, 100, 100)#000-#489:25-#fff");
-	var p = svg.path(`
-		M${x1},0H${x2}V${y3}L${x4},${y4}H${x1}V0`).attr({
-        fill: g,
-        strokeWidth: 0
-    });
+	var p = svg.path(`M${x1},0H${x2}V${y3}L${x4},${y4}H${x1}V0`).attr({
+		fill: g,
+		strokeWidth: 0
+	});
 };
 
 var binarios = function(where) {
