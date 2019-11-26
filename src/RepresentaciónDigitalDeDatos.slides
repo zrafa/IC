@@ -1277,6 +1277,19 @@ Al escribir un número con cifras decimales en nuestro sistema numérico habitua
 </section>
 
 
+<section data-coursemod-shown="false">
+<h2>Fraccionarios en bases 2 y 10</h2>
+<div class="snapsvg" width="100%" height="60%">
+<svg id="pfsvg" viewBox="0 0 200 80" width="100%" height="100%"></svg>
+<script src="src/binarios.js"></script>
+<!-- { "initialize": "function(container, options) { binarios('#pfsvg'); }" } -->
+</div>
+<div id="texto_binario"></div>
+<div id="texto_decimal"></div>
+<aside data-markdown class="notes">
+<!-- <div width="200" height="80"><svg id="pfsvg" viewBox="0 0 200 80" width="100%" height="70%"></svg> -->
+</aside>
+</section>
 
 <section>
 <h2>Fraccionario en base 2 &rarr; decimal</h2>
