@@ -48,11 +48,12 @@ var Potencia = function(posx,posy,ancho,alto,peso) {
 		writeval(valor);
 		this.selected = ! this.selected;
 	};
-
+	var d = this.g.peso;
+	var b = this.g.peso.toString(2);
+	this.g.append(Snap.parse(`<title>${d} = ${b}</title>`));
 	this.g.hover(shade, unshade);
 	this.g.click(toggle);
 	this.g.attr(plainAttr);
-	this.g.append(Snap.parse(`<title>${this.g.peso}</title>`));
 	return this.g;
 };
 
