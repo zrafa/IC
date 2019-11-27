@@ -48,9 +48,11 @@ var Potencia = function(posx,posy,ancho,alto,peso) {
 		writeval(valor);
 		this.selected = ! this.selected;
 	};
+
 	this.g.hover(shade, unshade);
 	this.g.click(toggle);
 	this.g.attr(plainAttr);
+	this.g.append(Snap.parse(`<title>${this.g.peso}</title>`));
 	return this.g;
 };
 
