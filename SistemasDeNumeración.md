@@ -134,6 +134,8 @@ De todas maneras, estos no son más que trucos que pueden servir en no todos los
 
 
 
+
+
 **Preguntas**
 
 - ¿Cuál es el truco para calcular rápidamente la expresión binaria de 20, si conocemos la de 40?

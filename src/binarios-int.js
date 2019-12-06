@@ -13,11 +13,21 @@ var selectedShadeAttr = { fill: '#88f', stroke: '#777', strokeWidth: '0.5', };
 var valor = 0;
 
 var writeval = function(v) {
+	var tfn = document.getElementById('texto_tfn');
+	var s = "";
+	var b = v.toString(2);
+	for(var i = b.length-1; i >= 0; i = i-1) {
+		var p = b.length - 1 - i;
+		var t = (i != b.length-1) ? "+ " : "";
+		s = v.toString(2).charAt(i) + 
+			" x 2<small><sup>" + 
+			p.toString() + "</sup></small> " + t + s;
+	}
+	tfn.innerHTML = s;
 	var bin = document.getElementById('texto_binario');
-	bin.innerHTML = v.toString(2);
+	bin.innerHTML = v.toString(2); 
 	var dec = document.getElementById('texto_decimal');
 	dec.innerHTML = v.toString();
-
 };
 
 var Potencia = function(posx,posy,ancho,alto,peso) {
@@ -96,11 +106,7 @@ var Conector = function(size) {
 
 var binarios = function(where) {
 	svg = Snap(where);
-	svg.attr({viewBox: "0 0 200 80"});
-	svg.attr({width: "100%", height: "100%"});
-	Conector(Lado);
+	svg.attr({viewBox: "-20 -10 100 100"});
+	//svg.attr({width: "100%", height: "50%"});
 	new Area(Lado,0,0,1);
-	var xArea = Lado;
-	var yArea = (Lado + 5) * AnchoUnidad;
-	new Area(xArea,yArea,0,0);
 };

@@ -598,12 +598,13 @@ Podemos comprobar si la complementación fue bien hecha aplicando la **propiedad
 
 <section>
 <h2>Representar en C2</h2>
+<div class="color1">
 <table>
-<tr><th>Procedimiento</th><th>Ejemplo</th></tr>
-<tr><td><li>Positivos o cero</li></td>			<td align="right">$17_{(10}$</td></tr>
+<tr ><td><li>Positivos o cero</li></td>			<td align="right">$17_{(10}$</td></tr>
 <tr><td>&nbsp;&nbsp;Se representan como en SM</td>	<td align="right">$00010001_{(2}$</td></tr>
 </table>
-<div class="fragment">
+</div>
+<div class="fragment color2">
 <table>
 <tr><td><li>Negativos</li></td>			<td align="right">$-17_{(10}$</td></tr>
 <tr><td>&nbsp;&nbsp;1. Se expresa su valor absoluto</td><td align="right">$00010001_{(2}$</td></tr>
@@ -707,7 +708,7 @@ El sistema de complemento a 2 tiene otras ventajas sobre SM:
 
 <section>
 <h2>Comparando los RR</h2>
-<img src="img/sistemas.png" class="stretch">
+<img src="img/sistemas.png" class="zoom stretch">
 <aside data-markdown class="notes">
 ### Comparando rangos de representación
 
@@ -1033,8 +1034,8 @@ En el caso de la operación $123 + 9$ en C2 a 8 bits, el resultado (que es 132) 
 	<li>Dos operandos en C2 deben tener la misma cantidad de bits</li>
     	<li>Si uno fuera más corto que el otro, se necesita extenderlo por la izquierda</li>
     <ul>		
-	<li>Positivo &#8680; se completa con ceros</li>
-	<li>Negativo &#8680; se completa con unos</li>
+	<li class="color1">Positivo &#8680; se completa con ceros</li>
+	<li class="color2">Negativo &#8680; se completa con unos</li>
     </ul>
     </ul>
 <aside data-markdown class="notes">
@@ -1054,14 +1055,14 @@ Si el operando en el sistema de menor ancho es positivo, la extensión se realiz
 <section data-coursemod-shown="false">
 <h2>Extensión de signo en C2</h2>
     <ul>		
-  <div class="fragment">
+  <div class="fragment color1">
 	<li>$A + B = 00101011_{(2} + 00101_{(2}$</li>
     <ul>		
 	<li>A está en $C^8_2$ y B en $C^5_2$ &rarr; ambos a $C^8_2$</li>
     	<li>Se completa B (positivo) como $00000101_{(2}$</li>
     </ul>
   </div>
-  <div class="fragment">
+  <div class="fragment color2">
 	<li>$A + B = 1010_{(2} + 0110100_{(2}$</li>
     <ul>		
 	<li>A está en $C^4_2$ y B en $C^7_2$ &rarr; ambos a $C^7_2$</li>
@@ -1164,7 +1165,7 @@ El sistema en exceso se utiliza como componente de otro sistema de representaci�
 <h2>Notación en exceso</h2>
 <span class="post_it fragment"><i>Valor binario = valor decimal - a</i></span>
 <!------------------------
-<div class="snapsvg stretch" width="100%" height="100%">
+<div class="snapsvg zoom stretch" width="100%" height="100%">
 	<script src="src/bias.js"></script>
         <svg id="bias" viewBox="0 0 100 50" width="100%" height="100%"></svg>
         <! -- {
@@ -1316,7 +1317,7 @@ Al escribir un número con cifras decimales en nuestro sistema numérico habitua
 <section data-coursemod-shown="false">
 <h2>Fraccionarios en base 2</h2>
 <div class="snapsvg" width="100%" height="60%">
-<svg id="pfsvg" viewBox="0 0 200 80" width="100%" height="100%"></svg>
+<svg id="pfsvg" width="100%" height="100%"></svg>
 <script src="src/binarios.js"></script>
 <!-- { "initialize": "function(container, options) { binarios('#pfsvg'); }" } -->
 </div>
