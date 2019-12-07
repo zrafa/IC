@@ -13,6 +13,52 @@ var selectedShadeAttr = { fill: '#88f', stroke: '#777', strokeWidth: '0.5', };
 var valor = 0;
 
 var writeval = function(v) {
+	var fn = function(num,pf) {
+		var s = ""; 
+		if(pf == 1) {
+		for(var i = 0; i < num.length; i++) {
+			var p = -(i + 1);
+			var t = (i != num.length-1) ? "+ " : "";
+			var x = num.toString(2).charAt(i) + 
+				"x2<small><sup>" + 
+				p.toString() + 
+				"</sup></small> " + 
+				t;
+			s = s + x;
+			}
+		} else {
+		for(var i = num.length-1; i >= 0; i = i-1) {
+			var p = num.length - i - 1;
+			var t = (i != num.length-1) ? "+ " : "";
+			var x = num.toString(2).charAt(i) + 
+				"x2<small><sup>" + 
+				p.toString() + 
+				"</sup></small> " + 
+				t;
+			s = x + s;
+			}
+		}
+		return s;
+	};
+	var b = v.toString(2); // 111101 o 111101.001101
+	var tfnpe = document.getElementById('texto_tfn_pe');
+	var tfnpf = document.getElementById('texto_tfn_pf');
+	var dotpos = b.indexOf(".");	
+	if(dotpos >= 0) {
+		var bpe = b.substr(0,dotpos); // 111101
+		var bpf = b.substr(dotpos + 1,b.length); // 111101
+		var s1 = fn(bpe,0) + "+";
+		var s2 = fn(bpf,1);
+		tfnpe.innerHTML = s1; 
+		tfnpf.innerHTML = s2; 
+	} else {
+		if(b != 0) {
+			var s = fn(b,0);
+			tfnpe.innerHTML = s; 
+		} else 
+			tfnpe.innerHTML = ""; 
+		tfnpf.innerHTML = "";
+	}
 	var bin = document.getElementById('texto_binario');
 	bin.innerHTML = v.toString(2);
 	var dec = document.getElementById('texto_decimal');
