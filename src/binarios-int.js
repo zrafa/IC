@@ -20,7 +20,7 @@ var writeval = function(v) {
 		var p = b.length - 1 - i;
 		var t = (i != b.length-1) ? "+ " : "";
 		s = v.toString(2).charAt(i) + 
-			" x 2<small><sup>" + 
+			"x2<small><sup>" + 
 			p.toString() + "</sup></small> " + t + s;
 	}
 	tfn.innerHTML = s;
