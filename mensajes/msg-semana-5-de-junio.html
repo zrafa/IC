@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <title>Algunas aclaraciones a preguntas generales sobre Arquitectura de una Computadora y la MCBE</title>
+  <style type="text/css">
+        body{
+            margin:1em auto;
+            max-width:40em;
+            padding:0.5em .5em;
+        }
+        img{
+                width:100%;
+                max-width:40em;
+        }
+  </style>
+</head>
+<body>
+
+<h1>Algunas aclaraciones a preguntas generales sobre Arquitectura de una Computadora y la MCBE</h1>
+
+
+<ul>
+<li>Cuando nos referimos a que todas las computadoras funcionan como la MCBE
+nos referimos a su concepto teórico. Todas las computadoras tienen registros
+en sus CPUs, tienen memoria principal y dispositivos de E/S. Todo interconectado
+por uno mas buses.<br>
+<br>
+<li>Diferentes computadoras tienen diferentes cantidad de registros en sus
+CPUs, con diferentes significados. Pero todas tienen registros y realizan el ciclo de instrucción.
+<br><br>
+Esto significa, por ejemplo, que la CPU ARM de sus smartphones tiene diferentes
+cantidad de registros que en el procesador x86 de sus netbooks o PCs. Pero ambos
+tienen registros en sus CPUs y realizan el ciclo de instrucción para ejecutar
+programas.<br>
+<br>
+<li>MCBE: en la instrucción 011, almacenamiento de un byte a memoria. Cuando 
+la instrucción almacena un byte en memoria (del acumulador
+a memoria), el byte que está en el acumulador SE COPIA a la memoria.
+Por lo tanto, en el acumulador SE MANTIENE el valor. Luego de ejecutada
+la instrucción el valor que se copió en memoria tambien queda en el acumulador
+(es decir, no se elimina o se quita).<br>
+<br>
+<li>MCBE: En la instrucción 010, carga del acumulador. Cuando la instrucción 
+carga en el acumulador un byte desde la memoria, si la dirección es la 
+11110 (la 30 en base 10) significa que carga un byte desde el dispositivo de ENTRADA.
+<br> <br>
+Ese dispositivo lo usa la persona que opera la computadora,
+así que en realidad la CPU copia el byte que ingresa el usuario por un teclado, al acumulador.
+Como esto depende exclusivamente de que el operador de la computadora ingrese un valor,
+colocamos en el acumulador un valor cualquiera, que imaginemos que ingresó el operador por el teclado.
+<br>
+<br>
+
+<li>TPs o apunte: Cuando se utiliza la tabla de estado de la MCBE para mostrar
+una traza de ejecución (para "describir el efecto de la ejecucion de cada una de las instrucciones del 
+programa"), y en la tabla aparezcan "-" (guiones), significa que en esa instrucción el estado de ese componente
+no cambió. Queda con el valor que tenía anteriormente. Ej: si en el acumulador
+estaba el valor 00001010 y luego la tabla muestra un guión en la ejecución
+de la siguiente instrucción, significa que el acumulador sigue manteniendo 
+el valor 00001010.<br>
+</ul>
+
+
+</body>
+</html>
+
